@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Letter">	
+	
+	<select id="readLetterList" parameterClass="int" resultMap="letterResult">
+		select * from mail_letter where mail_domain_seq = cast(#mailDomainSeq# as INT) or  mail_domain_seq is null
+	</select>	
+		
+	<select id="readLetter" parameterClass="int" resultMap="letterResult">
+		select * from mail_letter where letter_seq = cast(#letterSeq# as INT)
+	</select>
+	
+	<select id="totalLetterCount" parameterClass="int" resultClass="int">
+		select count(letter_seq) from mail_letter where mail_domain_seq = cast(#mailDomainSeq# as INT) or  mail_domain_seq is null
+	</select>
+</sqlMap>

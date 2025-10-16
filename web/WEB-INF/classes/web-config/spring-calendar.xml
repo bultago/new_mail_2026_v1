@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.directwebremoting.org/schema/spring-dwr 
+			http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd"
+		default-autowire="byName">
+			
+			
+	<!-- =================================================================== -->
+	<!-- DAO DEFINITIONS                                                     -->
+	<!-- =================================================================== -->
+	
+	<bean id="schedulerDao"
+		class="com.terracetech.tims.webmail.scheduler.dao.SchedulerDao"
+		p:sqlMapClient-ref="sqlMapClient">
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- MANAGER DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	<bean id="schedulerManager" 
+		class="com.terracetech.tims.webmail.scheduler.manager.SchedulerManager">
+		<property name="schedulerDao"><ref bean="schedulerDao" /></property>
+		<property name="mailUserDao"><ref bean="mailUserDao" /></property>
+		<property name="organizationManager"><ref bean="orgManager" /></property>
+		<property name="searchEmailManager"><ref bean="searchEmailManager" /></property>
+		<property name="ladminManager"><ref bean="ladminManager" /></property>
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- ACTION DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	<bean 	id="schedulerCommonAction" 
+			class="com.terracetech.tims.webmail.scheduler.action.SchedulerCommonAction" scope="prototype"
+			p:mailUserManager-ref="mailUserManager"/>	
+	
+	<bean 	id="monthSchedulerAction" class="com.terracetech.tims.webmail.scheduler.action.MonthSchedulerAction" scope="prototype" 
+			p:schedulerManager-ref="schedulerManager"/>		
+	
+	<bean 	id="weekSchedulerAction" class="com.terracetech.tims.webmail.scheduler.action.WeekSchedulerAction" scope="prototype" 
+			p:schedulerManager-ref="schedulerManager"/>
+	
+	<bean 	id="daySchedulerAction" class="com.terracetech.tims.webmail.scheduler.action.DaySchedulerAction" scope="prototype" 
+			p:schedulerManager-ref="schedulerManager"/>		
+	
+	<bean 	id="progressSchedulerAction" class="com.terracetech.tims.webmail.scheduler.action.ProgressSchedulerAction" scope="prototype" 
+			p:schedulerManager-ref="schedulerManager"/>
+	
+	<bean	id="schedulerOutlookBaseAction" class="com.terracetech.tims.webmail.scheduler.action.SchedulerOutlookBaseAction" scope="prototype"
+			p:mailUserManager-ref="mailUserManager">
+	</bean>
+	
+	<bean	id="schedulerOutlookLoginAction" class="com.terracetech.tims.webmail.scheduler.action.SchedulerOutlookAuthAction" scope="prototype"
+			p:userAuthManager-ref="userAuthManager">
+			<constructor-arg value="false"/>
+	</bean>
+	
+	<bean	id="schedulerOutlookSyncAction" class="com.terracetech.tims.webmail.scheduler.action.SchedulerOutlookSyncAction" scope="prototype"
+			p:schedulerManager-ref="schedulerManager">
+	</bean>
+	
+	<bean	id="schedulerOutlookReceiveAction" class="com.terracetech.tims.webmail.scheduler.action.SchedulerOutlookReceiveAction" scope="prototype"
+			p:schedulerManager-ref="schedulerManager">
+	</bean>
+	
+	<bean	id="schedulerOutlookUpdateAction" class="com.terracetech.tims.webmail.scheduler.action.SchedulerOutlookUpdateAction" scope="prototype"
+			p:schedulerManager-ref="schedulerManager">
+	</bean>
+	
+	<bean	id="schedulerOutlookSsoAction" class="com.terracetech.tims.webmail.scheduler.action.SchedulerOutlookSsoAction" scope="prototype"/>
+	
+	<!-- =================================================================== -->
+	<!-- SERVICE DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean id="schedulerService" 
+			class="com.terracetech.tims.webmail.scheduler.service.SchedulerService" 
+			scope="session"  
+			p:schedulerManager-ref="schedulerManager">
+		<aop:scoped-proxy />
+		<dwr:remote javascript="SchedulerService"><dwr:convert type="bean" class="com.terracetech.tims.webmail.scheduler.vo.SchedulerDataVO"></dwr:convert></dwr:remote>
+	</bean>
+	
+	<bean id="schedulerShareService" 
+			class="com.terracetech.tims.webmail.scheduler.service.SchedulerShareService" 
+			scope="session"  p:schedulerManager-ref="schedulerManager">
+		<aop:scoped-proxy />
+		<dwr:remote javascript="SchedulerShareService"></dwr:remote>
+	</bean>
+	
+	<bean id="schedulerAssetService" 
+			class="com.terracetech.tims.webmail.scheduler.service.SchedulerAssetService" 
+			scope="session"  p:schedulerManager-ref="schedulerManager">
+		<aop:scoped-proxy />
+		<dwr:remote javascript="SchedulerAssetService"><dwr:convert type="bean" class="com.terracetech.tims.webmail.scheduler.vo.SchedulerAssetPlanVO"></dwr:convert></dwr:remote>
+	</bean>	
+	
+	<bean id="calendarService" 
+			class="com.terracetech.tims.service.tms.impl.CalendarService" 
+			scope="prototype"  p:schedulerManager-ref="schedulerManager"/>	
+</beans>

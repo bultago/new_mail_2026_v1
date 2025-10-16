@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">		
+		<title>SECURE MAIL</title>
+		<base href='{LOCAL_HOST}'>
+
+		<style type="text/css">
+			body {
+				font-family:{FONT_STYLE};
+				margin-top:10px;
+				margin-left:10px;
+				font-size: 12px;
+				color:#555555;
+				background: #f0fbff;
+			}
+
+			td {				
+				font-size: 12px;
+				color:#444444;
+			}
+			form {
+				padding:0px;
+				margin:0px;
+			}
+
+			img {
+				border:0px;
+			}
+			.main_body {
+				border:0px;
+				background-repeat:no-repeat;
+			}
+			.pass_table{
+				border:1px solid #D1D1D1;
+				background-color:#ffffff;
+				padding: 10px;
+			}
+			a:link      {color:#333333; letter-spacing:normal; text-decoration:none;}
+			a:active    {color:#333333; letter-spacing:normal; text-decoration:underline;}
+			a:visited   {color:#333333; letter-spacing:normal; text-decoration:none;}
+			a:hover     {color:#333333; letter-spacing:normal; text-decoration:underline;}
+		</style>
+
+		<script language="javascript">
+			function submitForm() {
+				var f = document.secureForm;
+				f.method = "post";
+				f.submit();
+			}
+		</script>
+
+	</head>
+
+	<body>
+	<form name="secureForm" action="{LOCAL_HOST}{SECURE_ACTION}">
+	<input type=hidden name="param" value="{SECURE_PARAM}">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f0fbff">
+		<tr>			
+			<td width="10"></td>
+			<td>
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr><td height="10"></td></tr>					
+					<tr>
+						<td width="100%">
+							<table border="0" cellpadding="0" cellspacing="0" width="100%">
+								<tr>
+									<td><img src="/design/common/image/secure/smail_title_left.gif"></td>
+									<td width="100%" background="/design/common/image/secure/smail_title_bg.gif" style="font-size:15px; color:#fff; font-weight:bold; text-align:left">{SECURE_MSG_TITLE}</td>
+									<td><img src="/design/common/image/secure/smail_title_right.gif"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr><td height="10"></td></tr>					
+					<tr>
+						<td style="border:1px solid #8dacdc; background:#fff" align="center">
+							<table border="0" cellpadding="0" cellspacing="0" width="535">
+								<tr>
+									<td align="center">
+										<table width="500" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td><img src="/design/common/image/secure/smail_ic_mail.gif" style="padding-right:5px"></td>
+												<td height="100" align="left">
+													<font style="font-size:14px; color:#006ecf; font-weight:bold; line-height:180%">{FORM_MSG_1}</font><br>
+													{FORM_MSG_2}
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr><td height="1" bgcolor="#e6e6e6"></td></tr>
+								<tr><td height="20"></td></tr>
+								<tr><td align="left"><img src="/design/common/image/secure/smail_ic_q.gif" style="margin-bottom:-3px; padding-right:3px">
+									<b>{FORM_MSG_3}</b>
+								</td></tr>
+								<tr><td height="5"></td></tr>
+								<tr><td style="background:#f3fbff; border:1px solid #9bbedd; height:43px; font-size:22px; color:#000000" align="center">{SECURE_HINT}</td></tr>
+								<tr><td height="20"></td></tr>
+								<tr><td align="left"><img src="/design/common/image/secure/smail_ic_a.gif" style="margin-bottom:-3px; padding-right:3px">
+									<b>{FORM_MSG_4}</b>
+								</td></tr>
+								<tr><td height="5"></td></tr>
+								<tr>
+									<td style="background:#f3fbff; border:1px solid #9bbedd" height="43" align="center">										
+										<input type="password" name="password" style="border:2px solid #458ac4; width:350px; height:21px; font-size:20px; color:#000000; font-weight:bold;" autocomplete="off">
+										<a href="javascript:submitForm()"><img src="/design/common/image/secure/smail_btn.gif" style="margin-bottom:-6px; #margin-bottom:-4px;"></a>
+									</td>
+								</tr>
+								<tr><td height=20></td></tr>
+							</table>
+						</td>
+					</tr>
+					<tr><td height=10></td></tr>
+				</table>
+			</td>
+			<td width=10></td>
+		</tr>
+	</table>
+	</form>
+	</body>
+</html>
+

@@ -1,0 +1,124 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="tctl" uri="/terrace-tag.tld"%>
+<%@ taglib prefix="c" uri="/WEB-INF/tld/c.tld"%>
+
+<script type="text/javascript" src="/dwr/interface/SchedulerService.js"></script>
+<script type="text/javascript" src="/i18n?bundle=scheduler&var=schedulerMsg"></script>
+<script language = "javascript">
+var SchedulerDataControl = Class.create({
+	initialize: function(){
+	},readDayScheduleList : function(year, month, day) {
+		var _this = this;
+		if (!year || !month || !day) {
+			year = 0;
+			month = 0;
+			day = 0;
+		}
+		
+		SchedulerService.getJsonDayScheduleList(year, month, day,{
+			callback:function(dayScheduleList){		
+		_this.checkDaySchedule(dayScheduleList);
+		}});
+	},checkDaySchedule : function(dayScheduleList) {
+		var _this = this;
+		var schedulerId; var startDate; var drowStartDate;
+		var title; var holiday;
+		var scheduleCount = 0;
+		for (var i=0; i<dayScheduleList.length; i++) {
+			if (scheduleCount >= 8) {
+				continue;
+			}
+			startDate = dayScheduleList[i].startDate.substring(0,8);
+			drowStartDate = dayScheduleList[i].drowStartDate;
+			holiday = dayScheduleList[i].holiday;
+
+			if (holiday == "on") {
+				drowHoliday(startDate, drowStartDate, dayScheduleList[i]);
+			}
+			else {
+				drowDaySchedule(i+1,dayScheduleList[i]);
+				scheduleCount = scheduleCount+1;
+			}
+		}
+	}
+});
+
+var schedulerDataControl;
+jQuery().ready(function(){
+	schedulerDataControl = new SchedulerDataControl();
+	schedulerDataControl.readDayScheduleList();
+});
+
+function viewScheduleDetail() {
+	var url = "/dynamic/scheduler/schedulerCommon.do?type=calendar";
+	this.location = url;
+}
+
+function viewSchedule(scheduleId, startDate, endDate) {
+	var url = "/dynamic/scheduler/schedulerCommon.do?type=today&scheduleId="+scheduleId+"&calendarStartDate="+startDate+"&calendarEndDate="+endDate;
+	this.location = url;
+}
+
+function makeDateFormat(date) {
+	return date.substring(0,4)+"-"+date.substring(4,6)+"-"+date.substring(6,8);
+}
+
+function makeTimeFormat(time) {
+	var ampm = schedulerMsg.scheduler_am;
+	var hour = time.substring(8,10);
+	var min = time.substring(10,12);
+	/*if (hour > 12) {
+		hour = hour - 12;
+		ampm = "";
+	} else if (hour == 12) {
+		ampm = "P";
+	}*/
+	return hour+":"+min;
+}
+
+function drowHoliday(startDate, drowStartDate, schedule) {
+	if (startDate = drowStartDate) {
+		if (jQuery("#anniversaryList span").size() > 0)
+			jQuery("#anniversaryList").append("<span onclick='viewSchedule(\""+schedule.schedulerId+"\",\""+schedule.startDate+"\",\""+schedule.endDate+"\")' type='user'>, "+schedule.title+"</span>");
+		else
+			jQuery("#anniversaryList").append("<span onclick='viewSchedule(\""+schedule.schedulerId+"\",\""+schedule.startDate+"\",\""+schedule.endDate+"\")' type='user'>"+schedule.title+"</span>");
+	}
+}
+
+function drowDaySchedule(cnt,schedule) {
+	var startTimeFormat = makeTimeFormat(schedule.startDate);
+	var endTimeFormat = makeTimeFormat(schedule.endDate);
+	var attachTime = "";
+	if (schedule.allDay != "on") {
+		attachTime = startTimeFormat+" ~ "+endTimeFormat;
+	} else {
+		attachTime = schedulerMsg.scheduler_allday;
+	}
+	jQuery("#todayScheduleTable").append("<tr><td class='cnt'>"+cnt+"</td><td class='TM_schedule_title' title='"+schedule.title+"'><a href='#' onclick='viewSchedule(\""+schedule.schedulerId+"\",\""+schedule.startDate+"\",\""+schedule.endDate+"\")'>"+schedule.title+"</a></td><td class='date'>"+attachTime+"</td></tr>");
+}
+</script>
+
+<div class="roundTitle">
+	<p>
+		<span class="title"><tctl:msg key="scheduler.menu.today" bundle="scheduler"/></span>
+		<a href="#" onclick="viewScheduleDetail()" class="btn_style5"><span><tctl:msg key="comn.detail" bundle="common"/></span></a>
+	</p>
+</div>
+<div class="portlet_body">
+	<table cellspacing="0" cellpadding="0" class="TM_portlet_todayList" >
+		<col width="25px"></col>
+		<col></col>		
+		<tr>
+			<td class="anniversary_index" title="<tctl:msg key="scheduler.anniversary" bundle="scheduler"/>">&nbsp;</td>
+			<td id="anniversaryList" class="TM_schedule_title anniversary_content">&nbsp;</td>
+		</tr>	
+	</table>
+	<table cellspacing="0" cellpadding="0" id="todayScheduleTable" class="TM_portlet_todayList" >
+		<col width="25px"></col>
+		<col></col>
+		<col width="75px"></col>
+	</table>
+</div>

@@ -1,0 +1,413 @@
+@import "btn_style.css";
+
+* {margin:0;padding:0;}
+
+table {
+border-collapse:collapse;
+}
+textarea {resize: none;}
+ul {list-style:none}
+img {border: none;}
+
+a{selector-dummy: expression(this.hideFocus=true);}  /*  For IE */
+:focus { -moz-outline-style: none; } /* for Firefox */
+
+h1 {
+	background:transparent url(/design/common/image/logo_tms.gif) no-repeat scroll 0 0;
+	height:35px;
+	text-indent:-3000px;
+	width:210px;
+}
+
+h4 {color:#333333; font-size:15px;}
+
+a.link_blue {color:#005fb0;}
+a.link_blue:hover {color:#005fb0;text-decoration:underline;}
+
+form {padding:0;margin:0;}
+.cls {clear: both;}
+.TM_separate2{margin:2px;}
+.fclear {clear: both;}
+.subMask {
+	z-index: 200;
+	position: absolute;	
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;	
+	opacity: .4;
+	filter: alpha(opacity=40);
+	/* this hack is so it works in IE
+	 * I find setting the color in the css gives me more flexibility 
+	 * than the PNG solution.
+	 */
+	background-color:transparent !important;
+	background-color: #333333;
+	/* this hack is for opera support
+	 * you can uncomment the background-image if you don't care about opera.
+	 * this gives you the flexibility to use any bg color that you want, instead of the png
+	 */
+	background-image/**/: url("/design/common/image/maskBG.png") !important; // For browsers Moz, Opera, etc.
+	background-image:none;
+	background-repeat: repeat;	
+}
+
+.subMaskW {
+	z-index: 200;
+	position: absolute;	
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;	
+	opacity: .4;
+	filter: alpha(opacity=40);
+	/* this hack is so it works in IE
+	 * I find setting the color in the css gives me more flexibility 
+	 * than the PNG solution.
+	 */
+	background-color:transparent !important;	
+	/* this hack is for opera support
+	 * you can uncomment the background-image if you don't care about opera.
+	 * this gives you the flexibility to use any bg color that you want, instead of the png
+	 */
+	background-image/**/: url("/design/common/image/maskWBG.png") !important; // For browsers Moz, Opera, etc.
+	background-image:none;
+	background-repeat: repeat;	
+}
+
+
+.itemMask {	
+	z-index: 50;	
+	opacity: .4;
+	filter: alpha(opacity=40);
+	/* this hack is so it works in IE
+	 * I find setting the color in the css gives me more flexibility 
+	 * than the PNG solution.
+	 */
+	background-color:transparent !important;
+	background-color: #333333;
+	/* this hack is for opera support
+	 * you can uncomment the background-image if you don't care about opera.
+	 * this gives you the flexibility to use any bg color that you want, instead of the png
+	 */
+	background-image/**/: url("/design/common/image/maskBG.png") !important; // For browsers Moz, Opera, etc.
+	background-image:none;
+	background-repeat: repeat;	
+}
+
+span.blue {color:#006ECF;}
+
+.TM_main_loadding_mask{
+	position: absolute; 
+	z-index: 1000; 
+	left: 0px; top: 0px; 
+	width: 100%; 
+	height: 100%; 
+	display: none;
+}
+
+
+/*================= Mail common Style ================= */
+.sortImg{margin:0px 5px 0px 5px;}
+
+/* USER MAIL FOLDER TREE*/
+
+.tnode {
+	white-space:nowrap;	
+	clear: both;
+	padding:2px 0px 0px 6px;				
+}
+
+.tchild-node {	
+	margin-left:10px;
+	clear: both;		
+}
+
+.tchild-node:after {
+    content: ".";
+    display: block;
+    margin-left:10px;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+
+.tcfolder {
+	height:15px;
+	width:15px;
+	min-height:15px;
+	min-width:15px;	
+	float:left;
+	background: url(../image/icon/ic_cfolder.gif) 0 0 no-repeat transparent;
+}
+
+.tsfolder {
+	height:15px;
+	width:15px;
+	min-height:15px;
+	min-width:15px;	
+	float:left;	
+	background: url(../image/icon/icon_folder_share_close.gif) 0 0 no-repeat transparent;
+}
+
+.tcChild {
+	height:9px;
+	width:9px;
+	min-height:9px;
+	min-width:9px;	
+	float:left;	
+	background: url(../image/icon/ic_plus.gif) 0 0 no-repeat transparent;
+	cursor:pointer;
+	border:none;
+}
+
+.toChild {
+	height:9px;
+	width:9px;
+	min-height:9px;
+	min-width:9px;	
+	float:left;	
+	background: url(../image/icon/ic_mius.gif) 0 0 no-repeat transparent;
+	cursor:pointer;
+	border:none;
+}
+.emChild {
+	height:9px;
+	width:9px;
+	min-height:9px;
+	min-width:9px;	
+	float:left;
+	margin-left:5px;
+	margin-top:4px;
+}
+
+.tcnodelink{
+	text-decoration:none;
+}
+.tcnodelink.active, .tcnodelink:hover {
+	text-decoration:none;	
+}
+
+.tcmenuOutClass {
+	border:#FFFFFF solid 2px;
+}
+.tcmenuOverClass {
+	border:#666666 dotted 2px !important;
+}
+
+.tcmenuIcon {
+	height:9px;
+	width:19px;
+	min-height:7px;
+	min-width:15px;	
+	margin-left:0px;
+	margin-top:3px;
+	background: url(/design/common/image/menu_edit.gif) 0 0 no-repeat transparent;	
+	border:none;
+	
+}
+
+.tcsubmenu{
+	background-color:#C5E7F6;
+}
+
+.tcconfirmIcon{
+	height:16px;
+	width:14px;
+	min-height:16px;
+	min-width:14px;	
+	margin-left:0px;	
+	background: url(/design/common/image/icon/ic_mini_confirm.gif) 0 0 no-repeat transparent;	
+	border:none;
+	margin:0px 0px 0px 3px;
+}
+
+.tccancelIcon{
+	height:16px;
+	width:14px;
+	min-height:16px;
+	min-width:14px;
+	margin-left:0px;	
+	background: url(/design/common/image/icon/ic_mini_cancel.gif) 0 0 no-repeat transparent;	
+	border:none;
+	margin:0px 0px 0px 3px;
+}
+
+
+.TM_ml_SimpleSearch{
+	width:190px;	
+	padding-left: 10px;		
+}
+.iconMenu {
+	display:inline-block;
+	background:#fafafa;
+	border:1px solid #dbdbdb;
+	margin:0px 8px 8px 0px;
+	height:26px;
+	text-align:center;
+	}
+.iconMenu li {	
+	height:14px !important; 
+	float: left;}
+.iconMenu li.bar {	 
+	color:#dbdbdb;
+	margin-top:8px;
+	margin-left:3px;
+	margin-right:3px;		
+	}
+.iconMenu a{	
+	display:block;	 
+	line-height:14px !important;
+	width:16px !important;
+	height:14px !important;
+	text-indent:-3000px;
+	margin:5px 2px 5px 2px;
+}
+
+.treeNodeWrapperTable{width:100%;*width:;table-layout: fixed;}
+.treeNodeWrapperCIcon{width:15px;white-space: nowrap;}
+.treeNodeWrapperIcon{width:20px;white-space: nowrap;}
+.treeNodeWrapperUnread{white-space: nowrap;text-align: right;}
+.treeNodeWrapperContents{padding-left:3px;white-space: nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+
+/*========== MailFolder ManuTree ============*/
+
+
+ul.list_st_02 li {
+	list-style-type:none;
+	background:url(/design/common/image/icon/icon_folder.gif) no-repeat 0px 2px;
+	padding-left:17px;
+	font-weight:100;
+	line-height:18px;
+}
+
+ul.list_st_02 li.list_st_dep2 {
+	margin-left:15px;
+}
+
+ul.list_st_02 li.list_st_dep3 {
+	margin-left:30px;
+}
+
+ul.list_st_02 li.left_folderlist {
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+ul.list_inc_menu li{
+	list-style-type:none;	
+	padding-left:17px;
+	font-weight:bold;
+	line-height:22px;
+}
+/* /leftmenu style */
+
+/* style of mail list */
+#gutter_mlist_sort {
+    padding-top: 20px;
+    padding: 10px 0px 3px 10px;
+    clear: right;
+    color: #666666;
+	background-color:#ffffff;
+	border:1px solid #E4EFF3;
+	border-bottom:0px;    
+    font-size: 11px;   
+}
+
+#gutter_mlist_sort a {
+    text-decoration: none;
+}
+
+#gutter_mlist_sort a:hover {
+    color: #666666;    
+    font-size: 11px;
+}
+
+#gutter_mlist_sort .TM_SORT_SEL {
+    color: #FCB527;    
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.selectMailBox {
+	position: absolute;
+	display:none;
+	padding:0px; 
+	margin:0px; 
+	width:177px; 
+	height:145px;
+}
+
+.selectMailBoxA {
+	width:172px; 
+	height:14px;
+	border:1px solid #A5ACB2; 
+	background-color:#FFFFFF; 
+	overflow:hidden; 
+	text-overflow:ellipsis; 
+	white-space:nowrap; 
+	padding:3px 0px 0px 5px; 
+	display:block;
+	align:center;
+}
+
+.gutter_layer{
+   float : left;
+   border:1px solid #C8C8C8;
+   background-color:#F7F7F7;
+   line-height:15px;
+   overflow-X:hidden;
+   overflow-Y:scroll;
+}
+
+.optionTabWrapper{height:18px;margin-top:3px;height:28px;}
+.optionTabOn{
+	cursor:pointer;
+	float:left;
+	padding:5px 5px 5px 5px;
+	height:19px;
+	background:#F3F4F3;
+	border-top:#D9D9D9 solid 1px;
+	border-left:#D9D9D9 solid 1px;
+	border-right:#D9D9D9 solid 1px;
+}
+
+.optionTabOff{
+	cursor:pointer;
+	float:left;
+	padding:5px 4px 4px 4px;
+	height:18px;
+	background:#e4e4e4;
+	border-top:#D9D9D9 solid 1px;
+	border-left:#D9D9D9 solid 1px;
+	border-right:#D9D9D9 solid 1px;
+}
+
+.listTable_s1{width:100%;*width:;border:1px solid #E6E6E6;}
+.listTable_s1 th {border-bottom:1px solid #E6E6E6;height:25px; text-align: center;background: #F7F7F7;color:#696969;}
+.listTable_s1 td {border-bottom:1px solid #E6E6E6;height:25px; padding-left:5px; text-align: left;}
+.listTable_s1 td.center {border-bottom:1px solid #E6E6E6;height:25px;text-align: center}
+.listTable_s1 td.right {border-bottom:1px solid #E6E6E6;height:25px;text-align: right; padding-right:5px;}
+
+.TM_html_m_table{table-layout: fixed; margin-top:10px; width:100%;*width:;}
+.posr {position: relative;}
+
+.TM_templateList {
+	text-align:left;
+	height:18px;
+	padding:5px 0px 0px 5px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	border-bottom:#999999 solid 1px;
+	cursor:ponter;	
+}
+.pageStyleBasic {color:#555555;font-weight:bold;cursor:pointer}
+.pageStyleSelect {color:#ff8000;font-weight:bold;cursor:pointer}
+.pageNavi {border:1px solid #CACACA;height:27px;text-align:center;font-weight:bold;font-color:#555555;line-height:28px;overflow:hidden;white-space:nowrap}
+.pageNaviTopNone {border-top:0px}
+.pageNaviBottomNone {border-bottom:0px}
+.centerText{text-align:center !important;}

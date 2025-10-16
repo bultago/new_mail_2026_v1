@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.directwebremoting.org/schema/spring-dwr 
+			http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd"
+		default-autowire="byName">
+			
+			
+	<!-- =================================================================== -->
+	<!-- DAO DEFINITIONS                                                     -->
+	<!-- =================================================================== -->
+	
+	<bean id="orgDao"
+		class="com.terracetech.tims.webmail.organization.dao.OrganizationDao"
+		p:sqlMapClient-ref="sqlMapClient" />
+	
+	<!-- =================================================================== -->
+	<!-- MANAGER DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean id="orgManager" 
+		class="com.terracetech.tims.webmail.organization.manager.OrganizationManager">
+		<property name="dao"><ref bean="orgDao" /></property>
+		<property name="systemConfigDao" ref="systemConfigDao"/>
+		<property name="emailDao" ref="cacheEmailDao"/>		
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- ACTION DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	<bean 	id="orgCommonAction" 
+			class="com.terracetech.tims.webmail.organization.action.OrganizationCommonAction" 
+			scope="prototype"
+			p:mailUserManager-ref="mailUserManager"/>
+	
+	<bean id="viewOrgTreeAction" 
+		class="com.terracetech.tims.webmail.organization.action.ViewOrganizationTreeAction" 
+		scope="prototype"
+		p:manager-ref="orgManager"/>
+	
+	<bean id="viewMemberListAction" 
+		class="com.terracetech.tims.webmail.organization.action.ViewOrganizationMemberAction" 
+		scope="prototype"
+		p:manager-ref="orgManager" p:mailUserManager-ref="mailUserManager"/>
+	
+	<bean id="viewOrgListJsonAction" 
+		class="com.terracetech.tims.webmail.organization.action.ViewOrganizationListJsonAction" 
+		scope="prototype"
+		p:manager-ref="orgManager"/>
+		
+	<bean id="viewOrgTreeJsonAction" 
+		class="com.terracetech.tims.webmail.organization.action.ViewOranizationTreeJsonAction" 
+		scope="prototype"
+		p:manager-ref="orgManager"/>
+	<!-- =================================================================== -->
+	<!-- SERVICE DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean id="orgService" 
+			class="com.terracetech.tims.webmail.organization.manager.OrganizationService" 
+			scope="session" p:manager-ref="orgManager">
+		<aop:scoped-proxy />
+		<dwr:remote javascript="OrgService">
+			<dwr:convert type="bean" class="com.terracetech.tims.webmail.organization.vo.MemberVO"></dwr:convert>
+		</dwr:remote>
+	</bean>	
+			
+</beans>

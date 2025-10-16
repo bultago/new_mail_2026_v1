@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Org">
+
+	<sql id="getMember_Where_Clause" >
+		<isNotNull property="orgCode" prepend="and">
+			<isNotNull property="orgFullCode" >
+	 		  	(aa.ORG_CODE = #orgCode# or aa.org_fullcode like #orgFullCode#)
+	 		</isNotNull>
+	 		<isNull property="orgFullCode" >
+	 			 aa.ORG_CODE = #orgCode#
+	 		</isNull>
+	 	</isNotNull>
+  		<isNotNull property="fname" >
+	 		and aa.member_name like #fname#
+	 	</isNotNull>
+	 	<isNotNull property="email" >
+	 		and aa.member_email like #email#
+	 	</isNotNull>
+	 	<isNotNull property="mobile" >
+	 		and aa.mobile_no like #mobile#
+	 	</isNotNull>
+	 	<isNotNull property="company" >
+	 		and aa.company_name like #company#
+	 	</isNotNull>
+	 	<isNotNull property="class" >
+	 		and aa.CLASS_NAME like #class#
+	 	</isNotNull>
+	 	<isNotNull property="title" >
+	 		and aa.TITLE_NAME like #title#
+	 	</isNotNull>
+  	</sql>
+  	
+  	<sql id="getMember_Order_Clause" >
+  		<isEqual property="sortBy" compareValue="name">
+   		<![CDATA[
+   			order by aa.member_name 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="email">
+   		<![CDATA[
+   			order by aa.member_email 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="tel">
+   		<![CDATA[
+   			order by aa.OFFICE_TEL 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="mobile">
+   		<![CDATA[
+   			order by aa.mobile_no 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="title">
+   		<![CDATA[
+   			order by aa.TITLE_CODE 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="class">
+   		<![CDATA[
+   			order by aa.CLASS_CODE 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="dept">
+   		<![CDATA[
+   			order by aa.dept_name 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="init">
+   		<![CDATA[
+   			order by aa.$level1$
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortDir" compareValue="asc">
+   		<![CDATA[
+   			asc 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortDir" compareValue="desc">
+   		<![CDATA[
+   			desc 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="dept">
+   		<![CDATA[
+   			, aa.$level2$ asc, aa.$level3$ asc, aa.$level4$ asc, aa.$level5$ asc, aa.$level6$ asc, aa.$level7$ asc 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="init">
+   		<![CDATA[
+   			, aa.$level2$ asc, aa.$level3$ asc, aa.$level4$ asc, aa.$level5$ asc, aa.$level6$ asc, aa.$level7$ asc 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="name">
+   		<![CDATA[
+   			, aa.title_code asc, aa.class_code asc
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="email">
+   		<![CDATA[
+   			, aa.title_code asc, aa.class_code asc 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="title">
+   		<![CDATA[
+   			, aa.class_code asc, aa.member_name 
+   		]]>
+   		</isEqual>
+   		
+   		<isEqual property="sortBy" compareValue="class">
+   		<![CDATA[
+   			, aa.TITLE_CODE, aa.member_name 
+   		]]>
+   		</isEqual>
+   		
+  	</sql>
+	
+	<insert id="insertDept" parameterClass="dept">
+		insert into TORG_ORGANIZATION 
+			(MAIL_DOMAIN_SEQ, ORG_CODE, ORG_NAME, ORG_SORT_ORDER, ORG_UPCODE, 
+			ORG_FULLCODE, REPRESENTATIVE_EMAIL)
+    	values 
+    		(#mailDomainSeq:INTEGER#, #orgCode:VARCHAR#, #orgName:VARCHAR#, #orgSortOrder:INTEGER#,#orgUpcode:VARCHAR#, 
+      		#orgFullcode:VARCHAR#, #representativeEmail:VARCHAR#)
+	</insert>
+	
+	<select id="getDept" resultMap="organizationResult" parameterClass="Map" >
+    	select 
+    		*
+    	from TORG_ORGANIZATION
+    	where 
+    		MAIL_DOMAIN_SEQ = #mailDomainSeq#
+      		and ORG_CODE = #orgCode#
+	</select>
+	
+	<select id="getDepts" resultMap="organizationResult" parameterClass="int">
+    	select 
+    		*
+    	from TORG_ORGANIZATION
+    	where 
+    		MAIL_DOMAIN_SEQ = #mailDomainSeq#
+    	order by org_sort_order asc
+	</select>
+	
+	<delete id="deleteDept" parameterClass="Map" >
+    	delete from TORG_ORGANIZATION 
+    	where 
+    		MAIL_DOMAIN_SEQ = #mailDomainSeq:INTEGER#
+      		and ORG_CODE = #orgCode:VARCHAR#
+	</delete>
+	
+	<update id="updateDept" parameterClass="dept" >
+    	update TORG_ORGANIZATION
+    	set 
+    		ORG_NAME = #orgName:VARCHAR#,
+      		ORG_SORT_ORDER = #orgSortOrder:INTEGER#,
+      		ORG_UPCODE = #orgUpcode:VARCHAR#,
+      		ORG_FULLCODE = #orgFullcode:VARCHAR#,
+      		REPRESENTATIVE_EMAIL = #representativeEmail:VARCHAR#
+    	where 
+    		MAIL_DOMAIN_SEQ = #mailDomainSeq:INTEGER#
+      		and ORG_CODE = #orgCode:VARCHAR#
+	</update>
+	
+	<update id="updateDept2" parameterClass="dept" >
+    	update TORG_ORGANIZATION
+    	<dynamic prepend="set" >
+      		<isNotNull prepend="," property="orgName" >
+        		ORG_NAME = #orgName:VARCHAR#
+      		</isNotNull>
+		    <isNotNull prepend="," property="orgSortOrder" >
+		      ORG_SORT_ORDER = #orgSortOrder:INTEGER#
+		    </isNotNull>
+		    <isNotNull prepend="," property="orgUpcode" >
+		      ORG_UPCODE = #orgUpcode:VARCHAR#
+		    </isNotNull>
+		    <isNotNull prepend="," property="orgFullcode" >
+		      ORG_FULLCODE = #orgFullcode:VARCHAR#
+		    </isNotNull>
+		    <isNotNull prepend="," property="representativeEmail" >
+		      REPRESENTATIVE_EMAIL = #representativeEmail:VARCHAR#
+		    </isNotNull>
+	    </dynamic>
+    	where 
+    		MAIL_DOMAIN_SEQ = #mailDomainSeq:INTEGER#
+      		and ORG_CODE = #orgCode:VARCHAR#
+	</update>
+	
+	<select id="getMember" resultMap="memberDetailResult" parameterClass="Map" >
+    	select 
+    		a.ORG_CODE, a.TITLE_CODE, a.SORT_ORDER, c.user_name as member_name,
+    		b.mail_uid || '@' || d.mail_domain as member_email,
+    		a.mail_user_seq,c.MOBILE_NO, c.OFFICE_TEL, c.empno,
+    		<dynamic prepend=",">
+    			<isEqual property="locale" compareValue="ko">
+    				e.org_name as dept_name
+    			</isEqual>
+    			<isEqual property="locale" compareValue="en">
+    				e.org_name_en as dept_name
+    			</isEqual>
+    			<isEqual property="locale" compareValue="jp">
+    				e.org_name_jp as dept_name
+    			</isEqual>
+    		</dynamic>
+    		,
+    		(
+    			select cc.code_name from tdomain_code cc, tdomain_code_class dd 
+    			where 
+    				cc.mail_domain_seq=dd.mail_domain_seq 	
+    				and cc.code_class=dd.code_class 
+    				and cc.code_class='101' 
+    				and cc.mail_domain_seq=#mailDomain#
+    				and cc.code_locale=#locale# 
+    				and cc.code= a.title_code
+    		) as TITLE_NAME ,
+    		(
+    			select cc.code_name from tdomain_code cc, tdomain_code_class dd 
+    			where 
+    				cc.mail_domain_seq=dd.mail_domain_seq 	
+    				and cc.code_class=dd.code_class 
+    				and cc.code_class='100' 
+    				and cc.mail_domain_seq=#mailDomain#
+    				and cc.code_locale=#locale# 
+    				and cc.code= c.class_code
+    		) as CLASS_NAME 
+    	from TORG_MEMBER a, mail_user b, mail_user_info c, mail_domain d, TORG_ORGANIZATION e
+    	where 
+	    	a.mail_user_seq=b.mail_user_seq
+	    	and b.mail_user_seq=c.mail_user_seq
+	    	and b.mail_domain_seq = d.mail_domain_seq
+	    	and b.mail_domain_seq = e.mail_domain_seq
+	    	and a.org_code=e.org_code
+    		and a.MAIL_DOMAIN_SEQ = #mailDomain#
+    		and a.mail_user_seq = #userSeq#
+    		and a.org_code=#orgCode#
+  	</select>
+  	
+  	<sql id="getMember_in_Clause" >
+  		select 
+    		a.ORG_CODE, a.TITLE_CODE, a.SORT_ORDER, c.user_name as member_name,
+    		b.mail_uid || '@' || d.mail_domain as member_email,
+    		a.mail_user_seq,c.mobile_no,c.office_tel,c.empno,c.grade_code,
+    		<dynamic prepend=",">
+    			<isEqual property="locale" compareValue="ko">
+    				e.org_name as dept_name
+    			</isEqual>
+    			<isEqual property="locale" compareValue="en">
+    				e.org_name_en as dept_name
+    			</isEqual>
+    			<isEqual property="locale" compareValue="jp">
+    				e.org_name_jp as dept_name
+    			</isEqual>
+    		</dynamic>
+    		,e.org_fullcode,b.mail_uid,
+    		(
+    			select cc.code_name from tdomain_code cc, tdomain_code_class dd 
+    			where 
+    				cc.mail_domain_seq=dd.mail_domain_seq 	
+    				and cc.code_class=dd.code_class 
+    				and cc.code_class='101' 
+    				and cc.code_locale=#locale#
+    				and cc.mail_domain_seq=#mailDomain# 
+    				and cc.code= a.title_code
+    		) as TITLE_NAME ,
+    		(
+    			select cc.code_name from tdomain_code cc, tdomain_code_class dd 
+    			where 
+    				cc.mail_domain_seq=dd.mail_domain_seq 	
+    				and cc.code_class=dd.code_class 
+    				and cc.code_class='100' 
+    				and cc.code_locale=#locale#
+    				and cc.mail_domain_seq=#mailDomain# and 
+    				cc.code= c.class_code
+    		) as CLASS_NAME ,
+    		c.class_code
+    	from TORG_MEMBER a, mail_user b, mail_user_info c, mail_domain d, TORG_ORGANIZATION e
+    	where 
+	    	a.mail_user_seq=b.mail_user_seq
+	    	and b.mail_user_seq=c.mail_user_seq
+	    	and b.mail_domain_seq = d.mail_domain_seq
+	    	and b.mail_domain_seq = e.mail_domain_seq
+	    	and a.org_code=e.org_code
+	    	and a.MAIL_DOMAIN_SEQ = #mailDomain#
+  	</sql>
+  	
+  	<select id="getMembers" resultMap="memberResult" parameterClass="Map" >
+  
+  		select * from
+  		(
+  			<include refid="getMember_in_Clause" />
+  		)aa
+  		where
+  			<![CDATA[
+  			aa.mail_user_seq >0
+  			]]>
+    		<dynamic prepend="" >
+    			<include refid="getMember_Where_Clause" />
+    			<include refid="getMember_Order_Clause" />
+    		</dynamic>
+    		
+     
+  	</select>
+  	
+  	<select id="getMemberCount" resultClass="int" parameterClass="Map" >
+  		select 
+    		count(a.member_name)
+    	from 
+    		(
+    			select * from
+		  		(
+		  			<include refid="getMember_in_Clause" />
+		  		)aa
+		  		where
+		  			<![CDATA[
+		  			aa.mail_user_seq >0
+		  			]]>
+		    		<dynamic prepend="" >
+		    			<include refid="getMember_Where_Clause" />
+		    		</dynamic>
+    		)a
+  	</select>
+  	
+  	<delete id="deleteMember" parameterClass="orgMember" >
+    	delete from TORG_MEMBER
+    	where 
+    		MAIL_DOMAIN_SEQ = #mailDomainSeq:INTEGER#
+      		and MAIL_USER_SEQ = #mailUserSeq:INTEGER#
+      		and ORG_CODE = #orgCode:VARCHAR#
+  	</delete>
+  	
+  	<insert id="insertMember" parameterClass="orgMember" >
+    	insert into TORG_MEMBER 
+    		(MAIL_DOMAIN_SEQ, MAIL_USER_SEQ, ORG_CODE, TITLE_CODE,SORT_ORDER)
+    	values 
+    		(
+    			#mailDomainSeq:INTEGER#, 
+    			#mailUserSeq:INTEGER#, 
+    			#orgCode:VARCHAR#, 
+    			#titleCode:VARCHAR#,
+      			#sortOrder:INTEGER#
+      		)
+  	</insert>
+  	
+  	<update id="updateMember" parameterClass="orgMember" >
+    	update MAILADM.TORG_MEMBER
+    	set 
+    		TITLE_CODE = #titleCode:VARCHAR#,
+      		SORT_ORDER = #sortOrder:INTEGER#
+    	where 
+    		MAIL_DOMAIN_SEQ = #mailDomainSeq:INTEGER#
+      		and MAIL_USER_SEQ = #mailUserSeq:INTEGER#
+      		and ORG_CODE = #orgCode:VARCHAR#
+  	</update>
+  	
+  	<select id="getDeptList" resultClass="String" parameterClass="Map">
+	
+	   SELECT
+	      a.org_code
+	    FROM TORG_ORGANIZATION a
+	    WHERE 
+	    	MAIL_DOMAIN_SEQ = #mailDomain#
+	    	and a.org_fullcode like #orgCode#
+	</select>
+  
+  	<select id="getAddressEmailList" resultClass="address" parameterClass="Map">
+	   select 
+    		c.user_name as name,
+    		b.mail_uid || '@' || d.mail_domain as email
+    	from TORG_MEMBER a, mail_user b, mail_user_info c, mail_domain d, TORG_ORGANIZATION e
+    	where 
+	    	a.mail_user_seq=b.mail_user_seq
+	    	and b.mail_user_seq=c.mail_user_seq
+	    	and b.mail_domain_seq = d.mail_domain_seq
+	    	and b.mail_domain_seq = e.mail_domain_seq  
+   			and a.org_code = e.org_code 
+    		and a.MAIL_DOMAIN_SEQ = #mailDomain#
+    		<dynamic>
+				<isNotNull property="orgCodes">
+					<iterate 
+						property="orgCodes"
+						prepend="AND a.org_code IN "
+						open="(" 
+						conjunction=","
+						close=")" >
+						
+						#orgCodes[]#
+					</iterate>
+				</isNotNull>
+				
+				<isNotEqual property="codeType" compareValue="all">
+					<isEqual property="codeType" compareValue="title">
+						<isNotEqual property="code" compareValue="all">
+							and a.title_code = #code#
+						</isNotEqual>
+				 	</isEqual>
+				 	<isEqual property="codeType" compareValue="class">
+						<isNotEqual property="code" compareValue="all">
+					 		and c.class_code = #code#
+					 	</isNotEqual>
+				 	</isEqual>
+			 	</isNotEqual>
+			 	
+			</dynamic>
+	</select>
+	
+	<select id="readDeptChildList" parameterClass="map" resultMap="organizationResult">
+		select * from TORG_ORGANIZATION
+    	where org_code != org_upcode and MAIL_DOMAIN_SEQ = #mailDomainSeq# and org_upcode = #orgUpcode#
+    	order by org_sort_order asc
+	</select>
+	
+	<select id="readRootDept" parameterClass="int" resultMap="organizationResult">
+		select * from torg_organization where org_code = org_upcode and mail_domain_seq = #mailDomainSeq#
+	</select>
+	
+	<select id="readHasChild" parameterClass="map" resultClass="int">
+		select count(*) from torg_organization where mail_domain_seq = #mailDomainSeq# and org_upcode = #orgCode#
+	</select>
+	
+	<select id="getDeptListByName" resultMap="organizationResult" parameterClass="Map">
+	   select 
+    		*
+    	from TORG_ORGANIZATION
+    	where 
+    		MAIL_DOMAIN_SEQ = #mailDomainSeq#
+    		and ORG_NAME=#orgName#
+	</select>
+	
+	<select id="getDeptListByNames" resultMap="organizationResult" parameterClass="Map">
+	   select 
+    		*
+    	from TORG_ORGANIZATION
+    	where 
+    		MAIL_DOMAIN_SEQ = #mailDomainSeq#
+    		<dynamic>
+				<isNotNull property="orgNames">
+					<iterate 
+						property="orgNames"
+						prepend="AND ORG_NAME IN "
+						open="(" 
+						conjunction=","
+						close=")" >
+						
+						#orgNames[]#
+					</iterate>
+				</isNotNull>
+			</dynamic>
+	</select>
+	
+	<select id="findOrgCode" parameterClass="map" resultClass="String">
+		select org_code from torg_organization where mail_domain_seq = #mailDomainSeq# and org_fullcode = #orgFullCode#
+	</select>
+</sqlMap>

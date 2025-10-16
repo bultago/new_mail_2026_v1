@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="webfolder" namespace="/webfolder" extends="tims-default">
+    	
+    	<action	name="listFolders" class="listFoldersAction">
+    		<result name="success">/classic/webfolder/listFolders.jsp</result>
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action	name="folderTree" class="folderTreeAction">
+    		<result name="view">/classic/webfolder/folderTree.jsp</result>
+      		<result name="select">/classic/webfolder/folderTreeView.jsp</result>
+    	</action>
+    	
+    	<action	name="webfolder" class="folderMainAction">
+    		<result name="success">/classic/webfolder/webfolderMain.jsp</result>
+    	</action>
+    	
+    	<action name="uploadFiles" class="uploadFilesAction">
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action name="deleteFolders" class="deleteFoldersAction">
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action name="createFolder" class="createFolderAction">
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action name="renameFolder" class="renameFolderAction">
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action name="downloadFile" class="downloadFileAction">
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action name="copyAndMoveFolders" class="copyAndMoveFoldersAction">
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action name="listFolderData" class="listFolderDataAction" />
+    	
+    	<action name="searchShareFolder" class="searchShareFolderAction">
+    		<result name="success">/classic/webfolder/searchShare.jsp</result>
+    	</action>
+    	
+    	<action name="addShareFolder" class="addShareFolderAction" />
+    	
+    	<action name="shareFolder" class="shareFolderAction">
+    		<result name="success">/classic/webfolder/shareFolders.jsp</result>
+    	</action>
+    	
+    	<action name="searchUser" class="searchUserAction"/>
+    	
+    	<action name="makeShareFolder" class="makeShareFolderAction">
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action name="modifyShareFolder" method="executeUpdate" class="makeShareFolderAction">
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action name="deleteShareFolder" class="deleteShareFolderAction">
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action name="writeAttachFile" class="writeAttachFileAction">
+    		<result name="attachList">/classic/webfolder/writeSetAttach.jsp</result>
+    		<result name="result">/classic/webfolder/webfolderResult.jsp</result>
+    	</action>
+    	
+    	<action name="webfolderPopup" class="webfolderPopupAction">
+    		<result name="success">/classic/webfolder/webfolderWrite.jsp</result>
+    	</action>
+    </package>
+</struts>

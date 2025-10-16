@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Scheduler">
+	<insert id="saveSchedule" parameterClass="scheduler" >
+  		<selectKey resultClass="int" keyProperty="schedulerId">
+			select case when max(scheduler_id) is null then 1 else max(scheduler_id)+1 end
+			from tscheduler
+		</selectKey>
+		
+	  	insert into tscheduler 
+	  	<dynamic prepend=" " open="( " close=" )">
+	  		<isNotNull property="schedulerId" prepend=",">
+	  			scheduler_id
+	  		</isNotNull>
+	  		<isNotNull property="mailUserSeq" prepend=",">
+	  			mail_user_seq
+	  		</isNotNull>
+	  		<isNotNull property="startDate" prepend=",">
+	  			start_date
+	  		</isNotNull>
+	  		<isNotNull property="endDate" prepend=",">
+	  			end_date
+	  		</isNotNull>
+	  		<isNotNull property="title" prepend=",">
+	  			title
+	  		</isNotNull>
+	  		<isNotNull property="location" prepend=",">
+	  			location
+	  		</isNotNull>
+	  		<isNotNull property="content" prepend=",">
+	  			content
+	  		</isNotNull>
+	  		<isNotNull property="allDay" prepend=",">
+	  			all_day
+	  		</isNotNull>
+	  		<isNotNull property="holiday" prepend=",">
+	  			holiday
+	  		</isNotNull>
+	  		<isNotNull property="lunar" prepend=",">
+	  			lunar
+	  		</isNotNull>
+	  		<isNotNull property="checkSendMail" prepend=",">
+	  			send_mail
+	  		</isNotNull>
+	  		<isNotNull property="repeatFlag" prepend=",">
+	  			repeat_flag
+	  		</isNotNull>
+	  		<isNotNull property="repeatTerm" prepend=",">
+	  			repeat_term
+	  		</isNotNull>
+	  		<isNotNull property="repeatEndDate" prepend=",">
+	  			repeat_end_date
+	  		</isNotNull>
+	  		<isNotNull property="createTime" prepend=",">
+	  			create_time
+	  		</isNotNull>
+	  		<isNotNull property="modifyTime" prepend=",">
+	  			modify_time
+	  		</isNotNull>
+	  		<isNotNull property="outlookSync" prepend=",">
+  				outlook_sync
+  			</isNotNull>
+	  	</dynamic>
+	  	<dynamic prepend="values " open="( " close=" )">
+			<isNotNull property="schedulerId" prepend=",">
+	  			#schedulerId#
+	  		</isNotNull>
+	  		<isNotNull property="mailUserSeq" prepend=",">
+	  			#mailUserSeq#
+	  		</isNotNull>
+	  		<isNotNull property="startDate" prepend=",">
+	  			#startDate#
+	  		</isNotNull>
+	  		<isNotNull property="endDate" prepend=",">
+	  			#endDate#
+	  		</isNotNull>
+	  		<isNotNull property="title" prepend=",">
+	  			#title#
+	  		</isNotNull>
+	  		<isNotNull property="location" prepend=",">
+	  			#location#
+	  		</isNotNull>
+	  		<isNotNull property="content" prepend=",">
+	  			#content#
+	  		</isNotNull>
+	  		<isNotNull property="allDay" prepend=",">
+	  			#allDay#
+	  		</isNotNull>
+	  		<isNotNull property="holiday" prepend=",">
+	  			#holiday#
+	  		</isNotNull>
+	  		<isNotNull property="lunar" prepend=",">
+	  			#lunar#
+	  		</isNotNull>
+	  		<isNotNull property="checkSendMail" prepend=",">
+	  			#checkSendMail#
+	  		</isNotNull>
+	  		<isNotNull property="repeatFlag" prepend=",">
+	  			#repeatFlag#
+	  		</isNotNull>
+	  		<isNotNull property="repeatTerm" prepend=",">
+	  			#repeatTerm#
+	  		</isNotNull>
+	  		<isNotNull property="repeatEndDate" prepend=",">
+	  			#repeatEndDate#
+	  		</isNotNull>
+	  		<isNotNull property="createTime" prepend=",">
+	  			#createTime#
+	  		</isNotNull>
+	  		<isNotNull property="modifyTime" prepend=",">
+	  			#modifyTime#
+	  		</isNotNull>
+	  		<isNotNull property="outlookSync" prepend=",">
+  				#outlookSync#
+  			</isNotNull>
+	  	</dynamic>
+  </insert>
+  
+  <update id="modifySchedule" parameterClass="scheduler">
+   		update tscheduler
+   		<dynamic prepend=" SET ">
+  			<isNotNull property="startDate" prepend=",">
+  				start_date = #startDate:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="endDate" prepend=",">
+  				end_date = #endDate:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="title" prepend=",">
+  				title = #title:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="location" prepend=",">
+  				location = #location:NUMBER#
+  			</isNotNull>
+  			<isNotNull property="content" prepend=",">
+  				content = #content:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="allDay" prepend=",">
+  				all_day = #allDay:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="holiday" prepend=",">
+  				holiday = #holiday:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="lunar" prepend=",">
+  				lunar = #lunar:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="checkSendMail" prepend=",">
+	  			send_mail = #checkSendMail:VARCHAR#
+	  		</isNotNull>
+  			<isNotNull property="repeatFlag" prepend=",">
+  				repeat_flag = #repeatFlag:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="repeatTerm" prepend=",">
+  				repeat_term = #repeatTerm:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="repeatEndDate" prepend=",">
+  				repeat_end_date = #repeatEndDate:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="createTime" prepend=",">
+  				create_time = #createTime:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="modifyTime" prepend=",">
+  				modify_time = #modifyTime:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="outlookSync" prepend=",">
+  				outlook_sync = #outlookSync:VARCHAR#
+  			</isNotNull>
+  			
+  		</dynamic>
+  		WHERE 
+  			scheduler_id = #schedulerId#
+   </update>
+   
+   <delete id="deleteSchedule" parameterClass="int">
+   		delete from tscheduler where scheduler_id = #schedulerId#
+   </delete>
+   
+   <select id="readScheduleList" parameterClass="map" resultMap="schedulerResult">
+   		select scheduler_id, mail_user_seq, start_date, end_date, title, location, dbms_lob.substr(content) content, all_day, 
+   			   holiday, lunar, send_mail ,repeat_flag, repeat_term, repeat_end_date, create_time, outlook_sync
+   		from tscheduler where mail_user_seq = #mailUserSeq# and outlook_sync != 'delete' and
+   		 ((start_date <![CDATA[ <= ]]> #firstDay# and end_date <![CDATA[ >= ]]> #firstDay#) or
+		 (start_date <![CDATA[ <= ]]> #lastDay# and end_date <![CDATA[ >= ]]> #lastDay#) or
+		 (start_date <![CDATA[ >= ]]> #firstDay# and start_date <![CDATA[ <= ]]> #lastDay#) or
+		 (end_date <![CDATA[ >= ]]> #firstDay# and end_date <![CDATA[ <= ]]> #lastDay#) or
+		  repeat_flag = 'on')
+		
+		<dynamic>
+			<isNotNull property="schedulerIds">
+				union
+				select scheduler_id, mail_user_seq, start_date, end_date, title, location, dbms_lob.substr(content) content, all_day, 
+   			   		   holiday, lunar, send_mail ,  repeat_flag, repeat_term, repeat_end_date, create_time, outlook_sync
+				from tscheduler where mail_user_seq != #mailUserSeq# and outlook_sync != 'delete'
+				<iterate property="schedulerIds"
+					prepend="and scheduler_id"
+					open=" in ("
+					conjunction=","
+					close=")"
+				>
+					#schedulerIds[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+   </select>
+   
+   <select id="readSchedulerShareInfo" parameterClass="map" resultMap="schedulerShareInfoResult">
+   			select m.scheduler_id, s.share_color
+			from tscheduler_share s, tscheduler_share_master m, tscheduler_share_target t, mail_user u
+			where m.share_seq = t.share_seq 
+			and m.share_seq = s.share_seq
+			and t.target_type = 'user' and t.target_value = TO_CHAR(u.mail_user_seq)
+			and u.mail_user_seq = #mailUserSeq#
+
+			union
+
+			select m.scheduler_id, s.share_color
+			from tscheduler_share s, tscheduler_share_master m, tscheduler_share_target t, mail_domain d
+			where m.share_seq = t.share_seq
+			and m.share_seq = s.share_seq 
+			and t.target_type = 'domain' and t.target_value = TO_CHAR(d.mail_domain_seq)
+			and d.mail_domain_seq = #mailDomainSeq#
+
+			union
+			
+			select m.scheduler_id, s.share_color
+			from tscheduler_share s, tscheduler_share_master m, tscheduler_share_target t
+			where m.share_seq = t.share_seq
+			and m.share_seq = s.share_seq
+			and t.target_type = 'org'
+			and t.target_value in (
+				select org_fullcode 
+				from torg_organization 
+				where mail_domain_seq = #mailDomainSeq#
+				and org_code in (select org_code from torg_member where mail_user_seq = #mailUserSeq#))
+				
+			union
+			
+			select e.scheduler_id, cast('##008000' as NVARCHAR2(10)) as share_color
+			from tscheduler t, tscheduler_share_ext e
+			where e.scheduler_id = t.scheduler_id
+			and e.email = #email#
+			and e.scheduler_id in (
+				select t.scheduler_id 
+				from mail_user u, tscheduler t, tscheduler_share_ext e
+				where e.scheduler_id = t.scheduler_id
+				and t.mail_user_seq = u.mail_user_seq
+				and u.mail_domain_seq = #mailDomainSeq#
+				)
+   </select>
+   
+   <select id="readSchedule" parameterClass="int" resultMap="schedulerResult">
+   		select * from tscheduler where scheduler_id = #schedulerId#
+   </select>
+   
+   <select id="searchSchedule" parameterClass="map" resultMap="schedulerResult">
+   		select * from (
+		  	select rownum numrow , tsch.* from (
+		   		select * from tscheduler where mail_user_seq = #mailUserSeq# and outlook_sync != 'delete'
+		   		<isNotNull property="searchType" prepend="and">
+		  			<isEqual property="searchType" compareValue="0">
+		  				title like #keyWord#
+		  			</isEqual>
+		  			<isEqual property="searchType" compareValue="1">
+		  				content like #keyWord#
+		  			</isEqual>
+		  			<isEqual property="searchType" compareValue="2">
+		  				((title like #keyWord#) or (content like #keyWord#))
+		  			</isEqual>
+		  		</isNotNull>
+		  		order by create_time desc
+  			) tsch 
+	     ) where numrow <![CDATA[ > ]]> #skipResult# and numrow <![CDATA[ <= ]]> #skipResult#+#maxResult#
+   </select>
+   
+   <select id="searchScheduleCount" parameterClass="map" resultClass="int">
+   		select count(*) from tscheduler where mail_user_seq = #mailUserSeq# and outlook_sync != 'delete'
+   		<isNotNull property="searchType" prepend="and">
+  			<isEqual property="searchType" compareValue="0">
+  				title like #keyWord#
+  			</isEqual>
+  			<isEqual property="searchType" compareValue="1">
+  				content like #keyWord#
+  			</isEqual>
+  			<isEqual property="searchType" compareValue="2">
+  				((title like #keyWord#) or (content like #keyWord#))
+  			</isEqual>
+  		</isNotNull>
+   </select>
+   
+   <select id="searchShareSchedule" parameterClass="map" resultMap="schedulerResult">
+   		select * from tscheduler where mail_user_seq != #mailUserSeq# and outlook_sync != 'delete'
+			<iterate property="schedulerIds"
+				prepend="and scheduler_id"
+				open=" in ("
+				conjunction=","
+				close=")"
+			>
+				#schedulerIds[]#
+			</iterate>
+   		
+   		<isNotNull property="searchType" prepend="and">
+  			<isEqual property="searchType" compareValue="0">
+  				title like #keyWord#
+  			</isEqual>
+  			<isEqual property="searchType" compareValue="1">
+  				content like #keyWord#
+  			</isEqual>
+  			<isEqual property="searchType" compareValue="2">
+  				((title like #keyWord#) or (content like #keyWord#))
+  			</isEqual>
+  		</isNotNull>
+  		order by create_time desc
+   </select>
+   
+   <select id="readScheduleHoliday" parameterClass="int" resultMap="holidayResult">
+		select * from tscheduler_holiday where mail_domain_seq = #mailDomainSeq#
+   </select>
+   
+   <!-- schedulerShare -->
+   
+   <insert id="saveShareGroup" parameterClass="schedulerShare">
+   		<selectKey resultClass="int" keyProperty="shareSeq">
+			select case when max(share_seq) is null then 1 else max(share_seq)+1 end
+			from tscheduler_share
+		</selectKey>
+		
+		insert into tscheduler_share
+		<dynamic prepend=" " open="( " close=" )">
+	  		<isNotNull property="shareSeq" prepend=",">
+	  			share_seq
+	  		</isNotNull>
+	  		<isNotNull property="mailUserSeq" prepend=",">
+	  			mail_user_seq	
+	  		</isNotNull>
+	  		<isNotNull property="shareName" prepend=",">
+	  			share_name
+	  		</isNotNull>
+	  		<isNotNull property="shareColor" prepend=",">
+	  			share_color
+	  		</isNotNull>
+	  	</dynamic>	
+	  	<dynamic prepend="values " open="( " close=" )">
+	  		<isNotNull property="shareSeq" prepend=",">
+	  			#shareSeq#
+	  		</isNotNull>
+	  		<isNotNull property="mailUserSeq" prepend=",">
+	  			#mailUserSeq#	
+	  		</isNotNull>
+	  		<isNotNull property="shareName" prepend=",">
+	  			#shareName#
+	  		</isNotNull>
+	  		<isNotNull property="shareColor" prepend=",">
+	  			#shareColor#
+	  		</isNotNull>
+	  	</dynamic>
+   </insert>
+   
+   <update id="modifyShareGroup" parameterClass="schedulerShare">
+		update tscheduler_share
+		<dynamic prepend=" SET ">
+	  		<isNotNull property="shareName" prepend=",">
+	  			share_name = #shareName#
+	  		</isNotNull>
+	  		<isNotNull property="shareColor" prepend=",">
+	  			share_color = #shareColor#
+	  		</isNotNull>
+	  	</dynamic>	
+	  	where share_seq = #shareSeq#
+   </update>
+   
+   <insert id="saveShareGroupTarget" parameterClass="schedulerShareTarget">
+   		
+   		insert into tscheduler_share_target
+		<dynamic prepend=" " open="( " close=" )">
+	  		<isNotNull property="shareSeq" prepend=",">
+	  			share_seq
+	  		</isNotNull>
+	  		<isNotNull property="targetType" prepend=",">
+	  			target_type	
+	  		</isNotNull>
+	  		<isNotNull property="targetValue" prepend=",">
+	  			target_value
+	  		</isNotNull>
+	  	</dynamic>	
+	  	<dynamic prepend="values " open="( " close=" )">
+	  		<isNotNull property="shareSeq" prepend=",">
+	  			#shareSeq#
+	  		</isNotNull>
+	  		<isNotNull property="targetType" prepend=",">
+	  			#targetType#
+	  		</isNotNull>
+	  		<isNotNull property="targetValue" prepend=",">
+	  			#targetValue#
+	  		</isNotNull>
+	  	</dynamic>
+   </insert>
+   
+   <select id="readShareGroupList" parameterClass="int" resultMap="shareGroupResult">
+   		select * from tscheduler_share where mail_user_seq = #mailUserSeq#
+   </select>
+   
+   <select id="readShareGroup" parameterClass="int" resultMap="shareGroupResult">
+   		select * from tscheduler_share where share_seq = #shareSeq#
+   </select>
+   
+   <select id="readShareTarget" parameterClass="int" resultMap="shareGroupTargetResult">
+   		select * from tscheduler_share_target where share_seq = #shareSeq#
+   </select>
+   
+   <delete id="deleteShareGroup" parameterClass="int">
+   		delete from tscheduler_share where share_seq = #shareSeq#
+   </delete>
+   
+   <delete id="deleteShareGroupTarget" parameterClass="int">
+   		delete from tscheduler_share_target where share_seq = #shareSeq#
+   </delete>
+   
+   <insert id="saveShareSchedule" parameterClass="map">
+   		insert into tscheduler_share_master (scheduler_id, share_seq) values (#schedulerId#, #shareSeq#)
+   </insert>
+   
+   <update id="modifyShareSchedule" parameterClass="map">
+   		update tscheduler_share_master set share_seq = #shareSeq# where scheduler_id = #schedulerId#
+   </update>
+   
+   <delete id="deleteShareSchedule" parameterClass="int">
+   		delete from tscheduler_share_master where scheduler_id = #schedulerId#
+   </delete>
+   
+   <select id="readShareSchedule" parameterClass="int" resultMap="shareGroupResult1">
+   		select s.share_seq, s.mail_user_seq, share_name, share_color, i.user_name from tscheduler_share_master m, tscheduler_share s, mail_user_info i 
+		where m.scheduler_id = #schedulerId#
+		and m.share_seq = s.share_seq
+		and s.mail_user_seq = i.mail_user_seq
+   </select>
+   
+   <!-- scheduler outlook sync -->
+   
+   <update id="schedulerOutlookMark" parameterClass="map">
+   		update tscheduler set outlook_sync = #mark#, modify_time = #modifyTime#
+   		<dynamic>
+			<isNotNull property="schedulerIds">
+				where
+				<iterate property="schedulerIds"
+					prepend="scheduler_id"
+					open=" in ("
+					conjunction=","
+					close=")"
+				>
+					#schedulerIds[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+   </update>
+   
+   <select id="schedulerIdOutlookSyncStatus" parameterClass="map" resultClass="int">
+   		select scheduler_id from tscheduler where mail_user_seq =  #mailUserSeq#
+		and outlook_sync = #syncStatus#
+		and ((((start_date <![CDATA[ >= ]]> #firstDay#) or (start_date <![CDATA[ < ]]> #firstDay# and end_date >= #firstDay#)) and repeat_flag != 'on') 
+		or  (repeat_flag = 'on' and ((repeat_end_date <![CDATA[ >= ]]> #firstDay#) or (repeat_end_date = ''))))
+   </select>
+   
+   <select id="schedulerShareModifyTime" parameterClass="map" resultMap="schedulerShareModifyTimeResult">
+   		select scheduler_id, modify_time from tscheduler where outlook_sync != 'delete'
+   		
+   		<dynamic>
+			<isNotNull property="schedulerIds">
+				<iterate property="schedulerIds"
+					prepend="and scheduler_id"
+					open=" in ("
+					conjunction=","
+					close=")"
+				>
+					#schedulerIds[]#
+				</iterate>
+				and ((((start_date <![CDATA[ >= ]]> #firstDay#) or (start_date <![CDATA[ < ]]> #firstDay# and end_date >= #firstDay#)) and repeat_flag != 'on') 
+				or  (repeat_flag = 'on' and ((repeat_end_date <![CDATA[ >= ]]> #firstDay#) or (repeat_end_date = ''))))
+			</isNotNull>
+		</dynamic>
+
+   </select>
+   
+   <select id="schedulerListOutlookSyncStatus" parameterClass="map" resultMap="schedulerResult">
+   		select * from tscheduler where mail_user_seq =  #mailUserSeq#
+		and outlook_sync = #syncStatus#
+		and ((((start_date <![CDATA[ >= ]]> #firstDay#) or (start_date <![CDATA[ < ]]> #firstDay# and end_date >= #firstDay#)) and repeat_flag != 'on') 
+		or  (repeat_flag = 'on' and ((repeat_end_date <![CDATA[ >= ]]> #firstDay#) or (repeat_end_date = ''))))
+   </select>
+   
+   <select id="schedulerShareListOutlookSyncStatus" parameterClass="map" resultMap="schedulerResult">
+   		select * from tscheduler where mail_user_seq != #mailUserSeq# and outlook_sync = #syncStatus#
+		and ((((start_date <![CDATA[ >= ]]> #firstDay#) or (start_date <![CDATA[ < ]]> #firstDay# and end_date >= #firstDay#)) and repeat_flag != 'on') 
+		or  (repeat_flag = 'on' and ((repeat_end_date <![CDATA[ >= ]]> #firstDay#) or (repeat_end_date = ''))))
+		<iterate property="schedulerIds"
+			prepend="and scheduler_id"
+			open=" in ("
+			conjunction=","
+			close=")"
+		>
+			#schedulerIds[]#
+		</iterate>
+   </select>
+   
+   <select id="readSchedulebyIds" parameterClass="map" resultMap="schedulerShareResult">
+   		select t.*, case when (share_seq) is null then 0 else share_seq end as share_seq 
+   		from tscheduler t left outer join tscheduler_share_master m
+   		on t.scheduler_id = m.scheduler_id
+   		<iterate property="schedulerIds"
+			prepend="where t.scheduler_id"
+			open=" in ("
+			conjunction=","
+			close=")"
+		>
+			#schedulerIds[]#
+		</iterate>
+   </select>
+
+   <update id="changeSyncFlag" parameterClass="map">
+   		update tscheduler set outlook_sync = #syncStatus#
+   		where scheduler_id = #schedulerId#
+   </update>
+
+   <insert id="saveRepeatIgnore" parameterClass="map">
+   		insert into tscheduler_repeat_ignore (scheduler_id, ignore_time) values (#schedulerId#, #repeatStartDate#)
+   </insert>
+   
+   <select id="readRepeatIgnoreList" parameterClass="int" resultMap="repeatIgnoreResult">
+   		select * from tscheduler_repeat_ignore where scheduler_id = #schedulerId#
+   </select>
+   
+   <delete id="deleteRepeatIgnore" parameterClass="int">
+   		delete from tscheduler_repeat_ignore where scheduler_id = #schedulerId#
+   </delete>
+   
+   <!-- schedulerAsset -->
+   <select id="readSchedulerAssetCategoryList" parameterClass="int" resultMap="schedulerAssetCategoryResult">
+   		select * from tscheduler_asset_category c
+  		left outer join tscheduler_asset a
+  		on c.category_seq = a.category_seq   
+  		where c.mail_domain_seq = #mailDomainSeq# 
+   </select>
+   
+   <select id="readAssetNotDuplicateList" parameterClass="map" resultMap="schedulerAssetCategoryResult">
+   		select * from tscheduler_asset_category c
+  		left outer join tscheduler_asset a
+  		on c.category_seq = a.category_seq   
+  		where c.mail_domain_seq = #mailDomainSeq#
+  		and a.asset_seq not in (
+  			select asset_seq from tscheduler_asset_plan 	
+			where (
+				(start_date <![CDATA[ <= ]]> #startDate# and end_date <![CDATA[ > ]]> #startDate#) or
+			 	(start_date <![CDATA[ <= ]]> #startDate# and end_date <![CDATA[ >= ]]> #endDate#) or
+			 	(start_date <![CDATA[ >= ]]> #startDate# and start_date <![CDATA[ < ]]> #endDate# and end_date <![CDATA[ >= ]]> #endDate#) or
+			 	(start_date <![CDATA[ >= ]]> #startDate# and start_date <![CDATA[ < ]]> #endDate# and end_date <![CDATA[ < ]]> #endDate#)
+		 	) 
+		 	<isGreaterThan property="mailUserSeq" compareValue="0">
+		 		and mail_user_seq != #mailUserSeq#  
+		 	</isGreaterThan>
+  		)
+   </select>
+   
+   <select id="readAssetUseList" parameterClass="map" resultMap="schedulerAssetUseResult">
+   		select p.asset_seq, p.contect, i.user_name, a.asset_name 
+		from tscheduler_asset_plan p, mail_user_info i, tscheduler_asset_category c,tscheduler_asset a 	
+		where (
+			(start_date <![CDATA[ <= ]]> #startDate# and end_date <![CDATA[ > ]]> #startDate#) or
+		 	(start_date <![CDATA[ <= ]]> #startDate# and end_date <![CDATA[ >= ]]> #endDate#) or
+		 	(start_date <![CDATA[ >= ]]> #startDate# and start_date <![CDATA[ < ]]> #endDate# and end_date <![CDATA[ >= ]]> #endDate#) or
+		 	(start_date <![CDATA[ >= ]]> #startDate# and start_date <![CDATA[ < ]]> #endDate# and end_date <![CDATA[ < ]]> #endDate#)
+		 ) 
+		<iterate property="assetSeqs"
+			prepend="and p.asset_seq"
+			open=" in ("
+			conjunction=","
+			close=")"
+		>
+			#assetSeqs[]#
+		</iterate>
+		and c.mail_domain_seq = #mailDomainSeq#
+		and p.asset_seq = a.asset_seq
+		and p.mail_user_seq = i.mail_user_seq
+		and c.category_seq = a.category_seq
+		
+		<isGreaterThan property="schedulerId" compareValue="0">
+	 		and p.scheduler_id != #schedulerId#  
+	 	</isGreaterThan>
+   </select>
+   
+   <select id="readSchedulerAssetCategoryDescription" parameterClass="int" resultMap="schedulerAssetCategoryDescriptionResult">
+   		select * from tscheduler_asset_category c
+  		left outer join tscheduler_asset_category_img i
+  		on c.category_seq = i.category_seq   
+  		where c.category_seq = #categorySeq# 
+   </select>
+   
+   <select id="readSchedulerAssetPlanList" parameterClass="map" resultMap="schedulerAssetPlanResult">
+   		select * from tscheduler_asset_plan p, tscheduler_asset a, mail_user_info i
+		where p.asset_seq = #assetSeq#
+		and p.mail_user_seq = i.mail_user_seq
+		and p.asset_seq = a.asset_seq
+   		and ((start_date <![CDATA[ <= ]]> #firstDay# and end_date <![CDATA[ >= ]]> #firstDay#) or
+		 (start_date <![CDATA[ <= ]]> #lastDay# and end_date <![CDATA[ >= ]]> #lastDay#) or
+		 (start_date <![CDATA[ >= ]]> #firstDay# and start_date <![CDATA[ <= ]]> #lastDay#) or
+		 (end_date <![CDATA[ >= ]]> #firstDay# and end_date <![CDATA[ <= ]]> #lastDay#))
+   </select>
+   
+   <insert id="saveAssetSchedule" parameterClass="SchedulerAssetPlan">
+  		<selectKey resultClass="int" keyProperty="planSeq">
+			select case when max(plan_seq) is null then 1 else max(plan_seq)+1 end
+			from tscheduler_asset_plan
+		</selectKey>
+		
+		insert into tscheduler_asset_plan
+		<dynamic prepend=" " open="( " close=" )">
+			plan_seq, asset_seq, mail_user_seq, start_date, end_date, contect, create_time
+	  		<isGreaterThan property="schedulerId" compareValue="0">
+	  			,scheduler_id
+	  		</isGreaterThan>	
+	  	</dynamic>
+	  	<dynamic prepend="values " open="( " close=" )">
+	  		#planSeq#, #assetSeq#, #mailUserSeq#, #startDate#, #endDate#, #contect#, #createTime#
+			<isGreaterThan property="schedulerId" compareValue="0">
+	  			,#schedulerId#
+	  		</isGreaterThan>
+	  	</dynamic>
+	</insert>
+	
+	<update id="modifyAssetSchedule" parameterClass="SchedulerAssetPlan">
+		update tscheduler_asset_plan
+   		<dynamic prepend=" SET ">
+  			<isNotNull property="startDate" prepend=",">
+  				start_date = #startDate#
+  			</isNotNull>
+  			<isNotNull property="endDate" prepend=",">
+  				end_date = #endDate#
+  			</isNotNull>
+  			<isNotNull property="contect" prepend=",">
+  				contect = #contect#
+  			</isNotNull>
+  			<isNotNull property="createTime" prepend=",">
+  				create_time = #createTime:VARCHAR#
+  			</isNotNull>
+  			<isGreaterThan property="schedulerId" compareValue="0" prepend=",">
+	  			scheduler_id = #schedulerId#
+	  		</isGreaterThan>
+  			
+  		</dynamic>
+  		WHERE 
+  			plan_seq = #planSeq#
+	</update>
+	
+	<select id="readAssetSchedule" parameterClass="int" resultMap="schedulerAssetPlanResult">
+		select * from tscheduler_asset_plan p, tscheduler_asset a, mail_user_info i where p.plan_seq = #planSeq#
+		and p.mail_user_seq = i.mail_user_seq
+		and p.asset_seq = a.asset_seq
+	</select>
+	
+	<delete id="deleteAssetSchedule" parameterClass="int">
+		delete from tscheduler_asset_plan where plan_seq = #planSeq#
+	</delete>
+	
+	<delete id="deleteAssetScheduleBySchedulerId" parameterClass="int">
+		delete from tscheduler_asset_plan where scheduler_id = #schedulerId#
+	</delete>
+	
+	<select id="checkAssetScheduleDuplicateCount" parameterClass="map" resultClass="int">
+		select count(*) from tscheduler_asset_plan 
+		where asset_seq = #assetSeq#
+		<dynamic>
+			<isGreaterThan prepend="and" property="planSeq" compareValue="0">
+				plan_seq != #planSeq#
+			</isGreaterThan>
+		</dynamic>
+		and (
+			(start_date <![CDATA[ <= ]]> #startDate# and end_date <![CDATA[ > ]]> #startDate#) or
+		 	(start_date <![CDATA[ <= ]]> #startDate# and end_date <![CDATA[ >= ]]> #endDate#) or
+		 	(start_date <![CDATA[ >= ]]> #startDate# and start_date <![CDATA[ < ]]> #endDate# and end_date <![CDATA[ >= ]]> #endDate#) or
+		 	(start_date <![CDATA[ >= ]]> #startDate# and start_date <![CDATA[ < ]]> #endDate# and end_date <![CDATA[ < ]]> #endDate#)
+		 	)
+	</select>
+	
+	<select id="readAssetPlanInfoBySchedulerId" parameterClass="int" resultMap="assetPlanInfoBySchedulerIdResult">
+		select a.asset_seq, a.asset_name, c.category_seq, c.category_name, p.contect 
+		from tscheduler_asset_plan p, tscheduler_asset a, tscheduler_asset_category c 
+		where p.scheduler_id = #schedulerId#
+		and p.asset_seq = a.asset_seq
+		and a.category_seq = c.category_seq
+	</select>
+	
+	<select id="checkAssetSchedulerCount" parameterClass="int" resultClass="int">
+		select count(*) from tscheduler_asset_plan where scheduler_id = #schedulerId#
+	</select>
+		
+	<select id="checkMyScheduleOrShareSchedule" parameterClass="map" resultMap="schedulerAssetPlanResult2">
+		select * from tscheduler_asset_plan 
+		where plan_seq = #planSeq# and (mail_user_seq = #mailUserSeq# 
+		<isNotNull property="schedulerIds">
+			<iterate property="schedulerIds"
+				prepend="or scheduler_id"
+				open=" in ("
+				conjunction=","
+				close=")"
+			>
+				#schedulerIds[]#
+			</iterate>
+		</isNotNull>
+		)
+	</select>
+	
+	<select id="readScheduleListAfterSyncTime" parameterClass="map" resultMap="schedulerResult">
+		select * from tscheduler 
+		where 
+			mail_user_seq = #mailUserSeq# 
+			and outlook_sync != 'delete' 
+			and create_time <![CDATA[ >= ]]> #syncTime#
+		order by start_date asc
+		limit #skipResult#, #maxResult#
+	</select>
+	
+	<select id="readDeletedScheduleListAfterSyncTime" parameterClass="map" resultMap="schedulerResult">
+		select * from tscheduler 
+		where 
+			mail_user_seq = #mailUserSeq# 
+			and outlook_sync = 'delete' 
+			and modify_time <![CDATA[ >= ]]> #syncTime#
+		order by start_date asc
+		limit #skipResult#, #maxResult#
+	</select>
+	
+	<select id="readModifiedScheduleListAfterSyncTime" parameterClass="map" resultMap="schedulerResult">
+		select * from tscheduler 
+		where 
+			mail_user_seq = #mailUserSeq# 
+			and outlook_sync != 'delete' 
+			and modify_time <![CDATA[ >= ]]> #syncTime#
+		order by start_date asc
+		limit #skipResult#, #maxResult#
+	</select>
+	
+	<select id="readUnsyncedScheduleCount" parameterClass="map" resultClass="int">
+		select count(*) from tscheduler where mail_user_seq = #mailUserSeq#
+		and ((outlook_sync != 'delete' and (start_date <![CDATA[ >= ]]> #syncTime# or repeat_flag = 'on')) or
+	 		 (outlook_sync = 'delete' and (start_date <![CDATA[ >= ]]> #syncTime# or repeat_flag = 'on')) or
+	 		 (outlook_sync != 'delete' and ((start_date <![CDATA[ >= ]]> #syncTime# or repeat_flag = 'on') and create_time != modify_time))
+	 		 )
+	</select>
+	
+	<insert id="saveSchedulerShareExt" parameterClass="map">
+		insert into tscheduler_share_ext (scheduler_id, mail_user_seq, email) values (#schedulerId#, #mailUserSeq#, #email#)
+	</insert>
+	
+	<delete id="deleteSchedulerShareExt" parameterClass="int">
+		delete from tscheduler_share_ext where scheduler_id = #schedulerId#
+	</delete>
+	
+	<select id="readSchedulerShareExtList" parameterClass="int" resultMap="schedulerShareExtResult">
+		select e.*, i.user_name from tscheduler_share_ext e, mail_user_info i 
+		where e.scheduler_id = #schedulerId# and e.mail_user_seq = i.mail_user_seq
+	</select>
+</sqlMap>

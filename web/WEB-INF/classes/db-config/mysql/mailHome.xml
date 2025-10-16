@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Home">
+
+	<select id="selectMailHomePortlet" resultMap="portletResult" parameterClass="String" >
+    	select 
+    		PORTLET_SEQ, PORTLET_NAME, PORTLET_URL, DESCRIPTION
+    	from WEBMAIL_HOME_PORTLET
+    	where 
+    		PORTLET_NAME = #name#
+    		and mail_domain_seq=#domainSeq#
+	</select>
+
+	<select id="selectMailHomePortlets" resultMap="portletResult" parameterClass="int" >
+    	select 
+    		PORTLET_SEQ, PORTLET_NAME, PORTLET_URL, DESCRIPTION
+    	from WEBMAIL_HOME_PORTLET where mail_domain_seq=#value#
+	</select>
+  
+	<select id="selectMailHomeLayout" parameterClass="int" resultMap="layoutResult">
+    	select 
+    		LAYOUT_SEQ, LAYOUT_NAME, LAYOUT_USE, PORTLET_COUNT
+    	from WEBMAIL_HOME_LAYOUT
+	</select>
+	
+	<insert id="insertLayoutPortlet" parameterClass="portlet" >
+    	insert into webmail_home_custom 
+    		(LAYOUT_SEQ, PORTLET_SEQ, MAIL_USER_SEQ, PORTLET_LOCATION)
+    	values 
+    		(#layoutSeq#,#portletSeq#, #userSeq#, #location#)
+	</insert>
+	
+	<delete id="deleteLayoutPortlet" parameterClass="int">
+    	delete from webmail_home_custom where MAIL_USER_SEQ = #value#
+	</delete>
+	
+	<select id="selectMailHomeLayoutPortlet" parameterClass="int" resultMap="layoutPortletResult">
+    	select 
+    		c.*, b.PORTLET_LOCATION
+    	from WEBMAIL_HOME_LAYOUT a, webmail_home_custom b, WEBMAIL_HOME_PORTLET c
+    	where 
+    		b.MAIL_USER_SEQ = #value#
+    		and a.LAYOUT_SEQ = b.LAYOUT_SEQ
+    		and b.PORTLET_SEQ = c.PORTLET_SEQ
+	</select>
+	
+	<insert id="insertMailHomeLayout" parameterClass="layout" >
+    	insert into WEBMAIL_HOME_LAYOUT 
+    		(LAYOUT_NAME, portlet_count, LAYOUT_USE)
+    	values 
+    		(#layoutName#, #portletCount#, #layoutUse#)
+	</insert>
+	
+	<delete id="deleteMailHomeLayout" parameterClass="int">
+    	delete from WEBMAIL_HOME_LAYOUT where MAIL_USER_SEQ = #value#
+	</delete>
+	
+	<delete id="deleteMailHomePortlet" parameterClass="int" >
+    	delete from WEBMAIL_HOME_PORTLET where PORTLET_SEQ = #value#
+	</delete>
+  
+	<insert id="insertMailHomePortlet" parameterClass="portlet" >
+		<selectKey resultClass="int" keyProperty="portletSeq">
+			select case when max(portlet_seq) is null then 1 else max(portlet_seq)+1 end
+			from WEBMAIL_HOME_PORTLET
+		</selectKey>
+    	insert into WEBMAIL_HOME_PORTLET 
+    		(mail_domain_seq, PORTLET_SEQ, PORTLET_NAME, DEFAULT_PORTLET, PORTLET_URL, DESCRIPTION)
+    	values 
+    		(#domainSeq#, #portletSeq#, #portletName#, #defaultPortlet#, #portletUrl#, #description#)
+	</insert>
+  
+	<update id="updateMailHomePortlet" parameterClass="portlet" >
+    	update WEBMAIL_HOME_PORTLET
+    		set PORTLET_NAME = #portletName:VARCHAR#,
+      			PORTLET_URL = #portletUrl:VARCHAR#,
+      			DESCRIPTION = #description:LONGVARCHAR#
+    	where PORTLET_SEQ = #portletSeq:INTEGER#
+	</update>
+	
+	<select id="selectMailMenuList" resultMap="menuResult" parameterClass="int"  cacheModel="menuCache">
+    	select 
+    		menu_seq, menu_id, mail_domain_seq, menu_url, menu_name, menu_target, order_seq, menu_apply
+    	from webmail_menu_layout where mail_domain_seq=#value# and menu_apply='on' order by order_seq asc
+	</select>
+</sqlMap>

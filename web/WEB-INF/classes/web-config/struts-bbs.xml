@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="bbs" namespace="/bbs" extends="tims-default">
+    	<action 	name="listContent"
+    				class="listContentAction">
+    		<result name="success">/classic/bbs/contentList.jsp</result>
+    		<result name="fail">/common/alertBack.jsp</result>
+    	</action>
+    	<action 	name="viewContent"
+    				class="viewContentAction">
+    		<result name="success">/classic/bbs/viewContent.jsp</result>
+    		<result name="popup">/classic/bbs/viewContentPopup.jsp</result>
+    		<result name="print">/classic/bbs/viewContentPrint.jsp</result>
+    	</action>
+    	<action		name="writeContent"
+    				class="writeContentAction">
+    		<result name="success">/classic/bbs/contentWrite.jsp</result>
+    		<result name="alertback">/common/alertBack.jsp</result>
+    	</action>
+    	<action name="modifyContent"
+					class="writeContentAction"
+					method="executeModify">
+			<result name="success">/classic/bbs/contentWrite.jsp</result>
+    		<result name="alertback">/common/alertBack.jsp</result>
+		</action>
+    	<action		name="saveContent"
+    				class="saveContentAction">
+    		<result name="success" type="redirect">/bbs/listContent.do</result>
+    	</action>
+    	<action		name="updateContent"
+    				class="saveContentAction"
+    				method="executeUpdate">
+    		<result name="success" type="redirect">/bbs/listContent.do</result>
+    	</action>
+    	<action		name="downloadAttach"
+    				class="downloadBbsAttachAction">
+    	</action>
+    	<action		name="downloadAllAttach"
+    				class="downloadBbsAllAttachAction">
+    	</action>
+    	<action		name="deleteContent"
+    				class="deleteContentAction">
+    		<result name="success" type="redirect">/bbs/listContent.do</result>
+    	</action>
+    	
+    	<action		name="listNoticeContent"
+    				class="listNoticeContentAction">
+    		<result name="success">/classic/bbs/noticeContentList.jsp</result>
+    	</action>
+    	
+    	<action		name="listNoticeContentPopup"
+    				class="listNoticeContentAction">
+    		<result name="success">/classic/bbs/noticeContentListPopup.jsp</result>
+    	</action>
+    	
+    	<action 	name="viewNoticeContentPopup"
+    				class="viewNoticeContentAction">
+    		<result name="success">/classic/bbs/viewContentPopup.jsp</result>
+    	</action>
+    	<action		name="downloadNoticeAttach"
+    				class="downloadNoticeAttachAction">
+    	</action>
+    	<action		name="downloadAllNoticeAttach"
+    				class="downloadAllNoticeAttachAction">
+    	</action>
+    	
+    	<action		name="viewContentReply"
+    				class="viewContentReplyAction">
+    		<result name="success">/classic/bbs/contentReply.jsp</result>
+    	</action>
+    	
+    	<action		name="saveContentReply" class="saveContentReplyAction"/>
+    	
+    	<action		name="deleteContentReply" class="deleteContentReplyAction"/>
+    </package>
+</struts>

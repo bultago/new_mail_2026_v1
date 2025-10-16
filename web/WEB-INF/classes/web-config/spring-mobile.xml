@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"		
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.directwebremoting.org/schema/spring-dwr 
+			http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd"
+		default-autowire="byName">
+			
+			
+	<!-- =================================================================== -->
+	<!-- =========================DAO DEFINITIONS=========================== -->
+	<!-- =================================================================== -->
+	<bean id="mobileSyncDao"
+		class="com.terracetech.tims.webmail.mobile.dao.MobileSyncDao"
+		p:sqlMapClient-ref="sqlMapClient" />
+	<!-- =================================================================== -->
+	<!-- =========================Handler DEFINITIONS======================= -->
+	<!-- =================================================================== -->
+	
+	<!-- =================================================================== -->
+	<!-- =========================MANAGER DEFINITIONS======================= -->
+	<!-- =================================================================== -->
+	<bean id="mobileSyncManager" 
+		class="com.terracetech.tims.webmail.mobile.manager.MobileSyncManager"
+		p:mobileSyncDao-ref="mobileSyncDao"
+		scope="prototype">
+	</bean>
+	<!-- =================================================================== -->
+	<!-- =========================ACTION DEFINITIONS======================== -->
+	<!-- =================================================================== -->
+	
+	<!-- ==================================COMMON================================= -->
+	
+	
+	<bean 	id="mobileWelcomeAction" class="com.terracetech.tims.mobile.common.action.WelcomeAction" scope="prototype" 
+			p:mailUserManager-ref="mailUserManager"
+			p:systemManager-ref="systemConfigManager"
+			p:logoManager-ref="logoManager">
+			<constructor-arg value="false"/>			
+	</bean>
+	
+	<bean 	id="mobileHomeAction" class="com.terracetech.tims.mobile.common.action.HomeAction" scope="prototype" 
+			p:mailManager-ref="mailManager"
+			p:schedulerManager-ref="schedulerManager">			
+	</bean>
+	
+	<bean 	id="mobileLoginAction" class="com.terracetech.tims.mobile.common.action.LoginAction" scope="prototype" 
+			p:userAuthManager-ref="userAuthManager"
+			p:systemManager-ref="systemConfigManager"
+			p:logoManager-ref="logoManager"
+			p:checkUserExistManager-ref="checkUserExistManager">
+			<constructor-arg value="false"/>
+	</bean>
+	
+	<bean 	id="changeMailModeAction" class="com.terracetech.tims.mobile.common.action.ChangeMailModeAction" scope="prototype"
+			p:userAuthManager-ref="userAuthManager">
+			<constructor-arg value="false"/>
+	</bean>
+
+	<!-- ===============================MAIL==================================== -->
+	<bean 	id="mobileMailListAction" class="com.terracetech.tims.mobile.mail.action.MailListAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	
+	<bean 	id="mobileMailReadAction" class="com.terracetech.tims.mobile.mail.action.MailReadAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	
+	<bean 	id="mobileMailWriteAction" class="com.terracetech.tims.mobile.mail.action.MailWriteAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager"
+			p:signManager-ref="signManager"
+			p:mailUserManager-ref="mailUserManager">
+	</bean>
+	
+	<bean 	id="mobileMailSendAction" class="com.terracetech.tims.mobile.mail.action.MailSendAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	
+	<bean 	id="mobileMailMdnAction" class="com.terracetech.tims.mobile.mail.action.MailMdnAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	
+	<bean 	id="mobileMailWorkAction" class="com.terracetech.tims.mobile.mail.action.MailWorkAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	
+	<!-- ===============================ADDRESS BOOK==================================== -->
+	<bean 	id="mobileAddrListAction" class="com.terracetech.tims.mobile.addrbook.action.AddressListAction" scope="prototype" 
+			p:contactService-ref="contactService">
+	</bean>
+	
+	<bean 	id="mobileAddrWorkAction" class="com.terracetech.tims.mobile.addrbook.action.AddressWorkAction" scope="prototype" 
+			p:contactService-ref="contactService">
+	</bean>
+	
+	<bean 	id="mobileAddrViewAction" class="com.terracetech.tims.mobile.addrbook.action.AddressViewAction" scope="prototype" 
+			p:contactService-ref="contactService">
+	</bean>	
+	
+	<!-- ===============================CALENDAR==================================== -->
+	<bean 	id="monthCalendarAction" class="com.terracetech.tims.mobile.calendar.action.MonthCalendarAction" scope="prototype" 
+			p:calendarService-ref="calendarService">
+	</bean>
+	
+	<bean 	id="weekCalendarAction" class="com.terracetech.tims.mobile.calendar.action.WeekCalendarAction" scope="prototype" 
+			p:calendarService-ref="calendarService">
+	</bean>
+	
+	<bean 	id="viewCalendarAction" class="com.terracetech.tims.mobile.calendar.action.ViewCalendarAction" scope="prototype" 
+			p:calendarService-ref="calendarService">
+	</bean>
+	
+	<bean 	id="writeCalendarAction" class="com.terracetech.tims.mobile.calendar.action.WriteCalendarAction" scope="prototype" 
+			p:calendarService-ref="calendarService">
+	</bean>
+	
+	<bean 	id="deleteCalendarAction" class="com.terracetech.tims.mobile.calendar.action.DeleteCalendarAction" scope="prototype" 
+			p:calendarService-ref="calendarService">
+	</bean>
+	
+	<bean 	id="assetCalendarAction" class="com.terracetech.tims.mobile.calendar.action.AssetCalendarAction" scope="prototype" 
+			p:calendarService-ref="calendarService">
+	</bean>
+	
+	<bean 	id="saveCalendarAction" class="com.terracetech.tims.mobile.calendar.action.SaveCalendarAction" scope="prototype" 
+			p:calendarService-ref="calendarService">
+	</bean>
+	
+	<!-- ===============================BBS==================================== -->
+	<bean 	id="bbsListAction" class="com.terracetech.tims.mobile.bbs.action.BbsListAction" scope="prototype" 
+			p:bbsService-ref="bbsService">
+	</bean>
+	
+	<bean 	id="bbsContentListAction" class="com.terracetech.tims.mobile.bbs.action.BbsContentListAction" scope="prototype" 
+			p:bbsService-ref="bbsService">
+	</bean>
+	
+	<bean 	id="bbsContentWriteAction" class="com.terracetech.tims.mobile.bbs.action.BbsContentWriteAction" scope="prototype" 
+			p:bbsService-ref="bbsService">
+	</bean>
+	
+	<bean 	id="bbsContentSaveAction" class="com.terracetech.tims.mobile.bbs.action.BbsContentSaveAction" scope="prototype" 
+			p:bbsService-ref="bbsService">
+	</bean>
+	
+	<bean 	id="bbsContentViewAction" class="com.terracetech.tims.mobile.bbs.action.BbsContentViewAction" scope="prototype" 
+			p:bbsService-ref="bbsService">
+	</bean>
+	
+	<bean 	id="bbsContentDeleteAction" class="com.terracetech.tims.mobile.bbs.action.BbsContentDeleteAction" scope="prototype" 
+			p:bbsService-ref="bbsService">
+	</bean>
+	
+	<bean 	id="bbsContentViewReplyAction" class="com.terracetech.tims.mobile.bbs.action.BbsContentViewReplyAction" scope="prototype" 
+			p:bbsService-ref="bbsService">
+	</bean>
+			
+	<bean 	id="bbsContentSaveReplyAction" class="com.terracetech.tims.mobile.bbs.action.BbsContentSaveReplyAction" scope="prototype" 
+			p:bbsService-ref="bbsService">
+	</bean>
+			
+	<bean 	id="bbsContentDeleteReplyAction" class="com.terracetech.tims.mobile.bbs.action.BbsContentDeleteReplyAction" scope="prototype" 
+			p:bbsService-ref="bbsService">
+	</bean>
+	
+	
+	
+	
+	<!-- ===============================Hybrid==================================== -->
+	<bean 	id="hybridMobileDao" class="com.terracetech.tims.hybrid.common.dao.HybridMobileDao" scope="prototype"
+			p:sqlMapClient-ref="sqlMapClient">
+	</bean>
+	
+	<bean 	id="hybridAuthManager" class="com.terracetech.tims.hybrid.common.manager.HybridAuthManager" scope="prototype"
+			p:hybridMobileDao-ref="hybridMobileDao"
+			p:systemManager-ref="systemConfigManager"
+			p:userAuthManager-ref="userAuthManager">
+	</bean>
+	
+	<bean 	id="hybridLoginAction" class="com.terracetech.tims.hybrid.common.action.LoginAction" scope="prototype">
+		<constructor-arg value="false"/>
+	</bean>
+	<bean 	id="hybridSsoAction" class="com.terracetech.tims.hybrid.common.action.SsoAction" scope="prototype"
+			p:hybridAuthManager-ref="hybridAuthManager">
+	</bean>
+	
+	<!-- MAIL -->
+	<bean 	id="mailHomeServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailHomeServiceAction" scope="prototype"
+			p:homeManager-ref="homeManager"
+			p:schedulerManager-ref="schedulerManager">
+	</bean>	
+	<bean 	id="mailBoxListServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailBoxListServiceAction" scope="prototype"
+			p:mailManager-ref="mailManager">
+	</bean>	
+	<bean	id="mailListServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailListServiceAction" scope="prototype"
+			p:mailServiceManager-ref="mailServiceManager"
+			p:mailManager-ref="mailManager">
+	</bean>
+	<bean	id="mailReadServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailReadServiceAction" scope="prototype"
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	<bean	id="mailDownloadServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailDownloadServiceAction" scope="prototype">
+	</bean>
+	<bean	id="mailWriteServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailWriteServiceAction" scope="prototype"
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	<bean	id="mailMdnServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailMdnServiceAction" scope="prototype"
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	<bean	id="mailWorkServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailWorkServiceAction" scope="prototype"
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	<bean	id="mailSignListServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailSignListServiceAction" scope="prototype"
+			p:signManager-ref="signManager">
+	</bean>
+	<bean	id="mailSendServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailSendServiceAction" scope="prototype"
+			p:mailServiceManager-ref="mailServiceManager"
+			p:searchEmailManager-ref="searchEmailManager">
+	</bean>
+	<bean	id="mailSendCheckServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailSendCheckServiceAction" scope="prototype"
+			p:mailUserManager-ref="mailUserManager">
+	</bean>
+	<bean	id="mailSearchEmailServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailSearchEmailServiceAction" scope="prototype"
+			p:mailManager-ref="mailManager">
+	</bean>
+	<bean	id="mailAttachServiceAction" class="com.terracetech.tims.hybrid.mail.action.MailAttachServiceAction" scope="prototype"/>
+	
+	<!-- ADDR -->
+	<bean	id="addrMemberListServiceAction" class="com.terracetech.tims.hybrid.addr.action.AddrMemberListServiceAction" scope="prototype"
+			p:contactService-ref="contactService">
+	</bean>
+	<bean	id="addrMemberSaveServiceAction" class="com.terracetech.tims.hybrid.addr.action.AddrMemberSaveServiceAction" scope="prototype"
+			p:contactService-ref="contactService">
+	</bean>
+	<bean	id="addrBookGroupServiceAction" class="com.terracetech.tims.hybrid.addr.action.AddrBookGroupServiceAction" scope="prototype"
+			p:contactService-ref="contactService">
+	</bean>
+	<bean	id="addrMemberViewServiceAction" class="com.terracetech.tims.hybrid.addr.action.AddrMemberViewServiceAction" scope="prototype"
+			p:contactService-ref="contactService">
+	</bean>
+	<bean	id="addrMemberDeleteServiceAction" class="com.terracetech.tims.hybrid.addr.action.AddrMemberDeleteServiceAction" scope="prototype"
+			p:contactService-ref="contactService">
+	</bean>
+	<bean	id="addrMemberMoveServiceAction" class="com.terracetech.tims.hybrid.addr.action.AddrMemberMoveServiceAction" scope="prototype"
+			p:contactService-ref="contactService">
+	</bean>
+		
+	<!-- =================================================================== -->
+	<!-- =========================SERVICE DEFINITIONS======================= -->
+	<!-- =================================================================== -->
+
+	<!-- =================================================================== -->
+	<!-- ========================TESTACTION DEFINITIONS===================== -->
+	<!-- =================================================================== -->
+</beans>

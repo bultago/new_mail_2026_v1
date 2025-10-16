@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"		
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.directwebremoting.org/schema/spring-dwr 
+			http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd"
+		default-autowire="byName">
+
+	<bean 	id="notePolicyDao" 
+			class="com.terracetech.tims.webmail.note.dao.NotePolicyDao"
+			p:sqlMapClient-ref="sqlMapClient"/>
+			
+	<bean 	id="noteHandler" 
+			class="com.terracetech.tims.webmail.note.manager.NoteHandler"/>
+			
+	<bean 	id="noteManager" 
+			class="com.terracetech.tims.webmail.note.manager.NoteManager"
+			p:notePolicyDao-ref="notePolicyDao"
+			p:noteHandler-ref="noteHandler"
+			p:commandHandler-ref="commandHandler"
+			p:emailDAO-ref="cacheEmailDao"
+			p:mailUserDao-ref="mailUserDao"
+			p:systemConfigDao-ref="systemConfigDao"/>
+			
+	<bean 	id="noteCommonAction" 
+			scope="prototype"
+			class="com.terracetech.tims.webmail.note.action.NoteCommonAction"/>
+			
+	<bean 	id="noteInfoAction"
+			scope="prototype" 
+			class="com.terracetech.tims.webmail.note.action.NoteInfoAction"
+			p:noteManager-ref="noteManager"
+			p:userSettingManager-ref="settingManager"/>
+	
+	<bean 	id="noteWriteAction"
+			scope="prototype" 
+			class="com.terracetech.tims.webmail.note.action.NoteWriteAction"/>
+					
+	<bean 	id="noteListAction"
+			scope="prototype" 
+			class="com.terracetech.tims.webmail.note.action.NoteListAction"
+			p:noteManager-ref="noteManager"/>
+			
+	<bean 	id="noteReadAction" 
+			class="com.terracetech.tims.webmail.note.action.NoteReadAction"
+			p:noteManager-ref="noteManager"/>
+			
+	<bean 	id="noteSendAction"
+			scope="prototype" 
+			class="com.terracetech.tims.webmail.note.action.NoteSendAction"
+			p:noteManager-ref="noteManager"
+			p:mailUserManager-ref="mailUserManager"/>
+
+	<bean 	id="noteWorkAction" 
+			scope="prototype"
+			class="com.terracetech.tims.webmail.note.action.NoteWorkAction"
+			p:noteManager-ref="noteManager"
+			p:mailUserManager-ref="mailUserManager"/>
+			
+	<bean 	id="noteMdnAction" 
+			scope="prototype"
+			class="com.terracetech.tims.webmail.note.action.NoteMdnAction"
+			p:noteManager-ref="noteManager"/>
+
+	<bean 	id="noteAllSelectAction" 
+			scope="prototype"
+			class="com.terracetech.tims.webmail.note.action.NoteAllSelectAction"
+			p:noteManager-ref="noteManager"/>
+			
+	<bean 	id="noteSettingAction" 
+			scope="prototype"
+			class="com.terracetech.tims.webmail.note.action.NoteSettingAction"
+			p:noteManager-ref="noteManager"/>
+			
+	<bean	id="searchUserListAction"
+			scope="prototype"
+			class="com.terracetech.tims.webmail.note.action.SearchUserListAction"	
+			p:noteManager-ref="noteManager"/>
+</beans>

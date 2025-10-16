@@ -1,0 +1,26 @@
+# delimiter is = or tab
+
+#<script=<script type=text/nonescript language=nonescript
+<script=<x-script style='display:none' 
+<script=<x-script
+</script=</x-script
+<iframe=<x-iframe
+</iframe=</x-iframe
+<embed=<x-embed
+</embed=</x-embed
+<object=<x-object
+</object=</x-object
+onerror=o-nerror
+<html=<x-html
+</html=</x-html
+javascript=x-javascript
+<head=<x-head
+</head=</x-head
+<body=<x-body
+</body=</x-body
+#<base=<x-base
+#<title=<x-title
+#</title=</x-title
+<META=<x-META
+</META=</x-META
+<isindex=<x-isindex

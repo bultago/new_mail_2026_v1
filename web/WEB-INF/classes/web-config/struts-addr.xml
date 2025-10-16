@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="addr" namespace="/addr" extends="tims-default">
+    	<action 	name="downloadAddr" class="exportAddrAction">
+    		<result name="success" type="stream">
+	          <param name="contentType">application/octet-stream</param>
+	          <param name="contentLength">${contentLength}</param>
+	          <param name="contentDisposition">${contentDisposition}</param>
+	          <param name="bufferSize">4096</param>
+	      </result>
+    	</action>
+    	
+    	<action 	name="uploadAddr"
+    				class="importAddrAction">
+    		<result name="success">/classic/addrbook/uploadResult.jsp</result>
+    	</action>
+    	
+    	<action 	name="pAddrlist"
+    				class="viewAddressMemberAction">
+    		<result name="success">/classic/addrbook/list.jsp</result>
+    	</action>
+    	<action 	name="pAddrAdd"
+    				class="privateAddressAddAction">
+    		<result name="success">/classic/addrbook/write.jsp</result>
+    	</action>
+    	<action 	name="pAddrSave"
+    				class="privateAddressSaveAction">
+    		<result name="success">/classic/addrbook/list.jsp</result>
+    	</action>
+    	
+    	<action 	name="saveAddress"
+    				class="saveAddressAction">
+    	</action>
+    	
+    	<action 	name="testAddrlist"
+    				class="viewAddressListTestAction">
+    		<result name="success">/classic/addrbook/list.jsp</result>
+    	</action>
+    </package>
+    <package name="dynamicAddr" namespace="/dynamic/addr" extends="tims-default">
+    	<action name="addrCommon"
+					class="addressCommonAction"
+					method="loadPage">
+			<result name="load">/dynamic/addr/addrFrame.jsp</result>
+		</action>
+		<action 	name="listAddress"
+    				class="viewAddressMemberListAction"
+    				method="executePart">
+    		<result name="success">/dynamic/addr/addrList.jsp</result>
+    		<result name="japan">/dynamic/addr/addrList_forJP.jsp</result>
+    		<result name="tab">/dynamic/addr/addrListWithTab.jsp</result>
+    		<result name="print">/dynamic/addr/addrPrintList.jsp</result>
+    	</action>
+    	<action 	name="addAddress"
+    				class="privateAddressAddAction"
+    				method="executePart">
+    		<result name="success">/dynamic/addr/addrWrite.jsp</result>
+    	</action>
+    	<action 	name="sharedBookList"
+    				class="sharedAddressBookListAction"
+    				method="executePart">
+    		<result name="success">/dynamic/addr/sharedBookList.jsp</result>
+    	</action>
+    	<action 	name="viewAddress"
+    				class="viewAddressMemberAction"
+    				method="executePart">
+    		<result name="success">/dynamic/addr/addrView.jsp</result>
+    		<result name="tab">/dynamic/addr/addrViewWithTab.jsp</result>
+    	</action>
+    	<action 	name="readerList"
+    				class="viewReaderListAction"
+    				method="executePart">
+    		<result name="success">/dynamic/addr/addrReader.jsp</result>
+    	</action>
+    	<action 	name="moderatorList"
+    				class="viewModeratorListAction"
+    				method="executePart">
+    		<result name="success">/dynamic/addr/addrModerator.jsp</result>
+    	</action>
+    	
+<!-- addr popup -->
+    	<action 	name="addrPopup"
+    				class="addrPopupAction">
+    		<result name="success">/dynamic/addr/addrPopupFrame.jsp</result>
+    	</action>
+    	<action 	name="addrPopupList"
+    				class="viewAddressMemberListAction"
+    				method="executePart">
+    		<result name="success">/dynamic/addr/addrPopupList.jsp</result>
+    	</action>
+    	<action 	name="sharePopupTree"
+    				class="sharedAddressBookListAction"
+    				method="executePart">
+    		<result name="success">/dynamic/addr/sharePopupTree.jsp</result>
+    	</action>
+    </package>
+</struts>

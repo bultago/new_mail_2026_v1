@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="VCard">
+
+	<select id="getVCard" resultMap="vcardResult" parameterClass="int">
+    	SELECT
+      		*
+    	FROM mail_vcard
+    	WHERE
+    		mail_user_seq = cast(#value# as INT)
+  	</select>
+	
+	<insert id="insertVCard" parameterMap="vcardParameter">
+		insert into mail_vcard 
+  		(
+  			mail_user_seq, member_email, member_name, first_name, middle_name,
+  			last_name, nick_name, private_homepage, office_homepage, birth_day,
+  			anniversary_day, mobile_no, home_tel, home_fax, home_postal_code,
+  			home_country, home_state, home_city, home_street, home_basic_address,
+  			home_ext_address, company_name, department_name, title_name, office_tel,
+  			office_fax, office_postal_code, office_country, office_state, office_city,
+  			office_street, office_basic_address, office_ext_address, description 
+  		) 
+  		values 
+  		(
+  				?, ?, ?, ? ,?,
+				?, ?, ?, ? ,?,
+				?, ?, ?, ? ,?,
+				?, ?, ?, ? ,?,
+				?, ?, ?, ? ,?,
+				?, ?, ?, ? ,?,
+				?, ?, ?, ?
+  		)
+	</insert>
+	
+	<update id="updateVCard" parameterMap="vcardParameter">
+  		UPDATE mail_vcard
+  		<dynamic prepend=" SET ">
+  			<isPropertyAvailable property="memberName" prepend=",">
+  				member_name= #memberName:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="memberEmail" prepend=",">
+  				member_email= #memberEmail:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="firstName" prepend=",">
+  				first_name= #firstName:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="middleName" prepend=",">
+  				middle_name= #middleName:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="lastName" prepend=",">
+  				last_name= #lastName:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="nickName" prepend=",">
+  				nick_name= #nickName:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="privateHomepage" prepend=",">
+  				private_homepage= #privateHomepage:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="officeHomepage" prepend=",">
+  				office_homepage= #officeHomepage:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="birthDay" prepend=",">
+  				birth_day= #birthDay:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="anniversaryDay" prepend=",">
+  				anniversary_day= #anniversaryDay:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="mobileNo" prepend=",">
+  				mobile_no= #mobileNo:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="homeTel" prepend=",">
+  				home_tel= #homeTel:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="homeFax" prepend=",">
+  				home_fax= #homeFax:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="homePostalCode" prepend=",">
+  				home_postal_code= #homePostalCode:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="homeCountry" prepend=",">
+  				home_country= #homeCountry:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="homeState" prepend=",">
+  				home_state= #homeState:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="homeCity" prepend=",">
+  				home_city= #homeCity:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="homeStreet" prepend=",">
+  				home_street= #homeStreet:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="homeBasicAddress" prepend=",">
+  				home_basic_address= #homeBasicAddress:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="homeExtAddress" prepend=",">
+  				home_ext_address= #homeExtAddress:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="companyName" prepend=",">
+  				company_name= #companyName:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="departmentName" prepend=",">
+  				department_name= #departmentName:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="titleName" prepend=",">
+  				title_name= #titleName:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="officeTel" prepend=",">
+  				office_tel= #officeTel:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="officeFax" prepend=",">
+  				office_fax= #officeFax:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="officePostalCode" prepend=",">
+  				office_postal_code= #officePostalCode:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="officeCountry" prepend=",">
+  				office_country= #officeCountry:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="officeState" prepend=",">
+  				office_state= #officeState:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="officeCity" prepend=",">
+  				office_city= #officeCity:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="officeStreet" prepend=",">
+  				office_street= #officeStreet:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="officeBasicAddress" prepend=",">
+  				office_basic_address= #officeBasicAddress:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="officeExtAddress" prepend=",">
+  				office_ext_address= #officeExtAddress:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="description" prepend=",">
+  				description= #description:VARCHAR#
+  			</isPropertyAvailable>
+  		</dynamic>
+  		WHERE 
+  			mail_user_seq=cast(#userSeq# as INT)
+  </update>
+	
+  
+</sqlMap>

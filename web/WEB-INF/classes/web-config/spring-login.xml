@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans 
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-2.5.xsd
+		http://www.directwebremoting.org/schema/spring-dwr 
+		http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd"		
+	default-autowire="byName">	
+	
+	
+	<!-- =================================================================== -->
+	<!-- DAO DEFINITIONS                                                     -->
+	<!-- =================================================================== -->
+		
+		
+	<bean id="userInfoDao"
+		class="com.terracetech.tims.webmail.mailuser.dao.UserInfoDao"
+		p:sqlMapClient-ref="sqlMapClient" />
+	
+	<bean id="mailUserDao"
+		class="com.terracetech.tims.webmail.mailuser.dao.MailUserDao"
+		p:sqlMapClient-ref="sqlMapClient" />
+		
+	<bean id="mailDomainDao"
+		class="com.terracetech.tims.webmail.mailuser.dao.MailDomainDao"
+		p:sqlMapClient-ref="sqlMapClient" />
+		
+	<bean id="systemConfigDao"
+		class="com.terracetech.tims.webmail.common.dao.SystemConfigDao"
+		p:sqlMapClient-ref="sqlMapClient" />
+	
+	
+	<!-- =================================================================== -->
+	<!-- MANAGER DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean id="mailUserManager" 
+		class="com.terracetech.tims.webmail.mailuser.manager.MailUserManager" 
+		scope="prototype">
+		<property name="mailUserDao" ref="mailUserDao"/>
+		<property name="mailDomainDao" ref="mailDomainDao"/>
+		<property name="userInfoDao" ref="userInfoDao"/>
+		<property name="systemConfigDao" ref="systemConfigDao"/>
+		<property name="etcInfoDao" ref="settingUserEtcInfoDao"/>
+	</bean>
+	
+	<bean id="userAuthManager" 
+		class="com.terracetech.tims.webmail.mailuser.manager.UserAuthManager" 
+		scope="prototype">
+		<property name="mailUserManager" ref="mailUserManager"/>
+		<property name="logoManager" ref="logoManager"/>
+		<property name="systemConfigDao"  ref="systemConfigDao"/>
+		<property name="settingSecureManager"  ref="secureManager"/>
+	</bean>
+	
+	<bean id="logManager" class="com.terracetech.tims.logging.LogManagerBean" scope="prototype">
+		<property name="formatString" value="&lt;{0}&gt;&lt;{1}&gt;&lt;{2}&gt;&lt;{3}&gt;" />
+	</bean>
+	
+	<bean id="ssoManager" 
+		class="com.terracetech.tims.webmail.mailuser.sso.SsoManager" 
+		scope="prototype">
+		<property name="userAuthManager" ref="userAuthManager"/>
+		<property name="configDao" ref="systemConfigDao"/>
+	</bean>
+	
+	<bean id="logoManager" 
+		class="com.terracetech.tims.webmail.common.manager.LogoManager" 
+		scope="prototype">
+		<property name="mailDomainDao" ref="mailDomainDao"/>
+	</bean>
+	
+	<bean id="ladminManager" 
+		class="com.terracetech.tims.webmail.common.manager.LadminManager" 
+		scope="prototype">
+	</bean>
+	
+	<bean id="systemConfigManager" 
+		class="com.terracetech.tims.webmail.common.manager.SystemConfigManager"
+		p:systemConfigDao-ref="systemConfigDao"
+		p:domainDao-ref="mailDomainDao"
+		scope="prototype">
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- ACTION DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean id="loginAction" 
+		class="com.terracetech.tims.webmail.mailuser.action.LoginAction" scope="prototype" 
+		p:userAuthManager-ref="userAuthManager"
+		p:systemManager-ref="systemConfigManager"
+		p:checkUserExistManager-ref="checkUserExistManager">
+		<constructor-arg value="false"/>
+	</bean>
+	
+	<bean id="empnoLoginAction" 
+		class="com.terracetech.tims.webmail.mailuser.action.LoginByEmpnoAction" scope="prototype" 
+		p:userAuthManager-ref="userAuthManager"
+		p:systemManager-ref="systemConfigManager">
+		<constructor-arg value="false"/>
+	</bean>
+	
+	<bean id="ssoAction" 
+		class="com.terracetech.tims.webmail.mailuser.action.SsoAction" scope="prototype" 
+		p:userAuthManager-ref="userAuthManager"
+		p:ssoManager-ref="ssoManager"
+		p:systemManager-ref="systemConfigManager"
+		p:checkUserExistManager-ref="checkUserExistManager"
+		/>
+		
+	<bean id="testSsoAction" 
+		class="com.terracetech.tims.webmail.mailuser.action.TestSsoAction" scope="prototype" 
+		p:userAuthManager-ref="userAuthManager"
+		p:ssoManager-ref="ssoManager"
+		/>
+		
+	<bean id="welcomeAction" 
+		class="com.terracetech.tims.webmail.common.action.WelcomeAction" scope="prototype"
+		p:mailUserManager-ref="mailUserManager"
+		p:userSettingManager-ref="settingManager"
+		p:systemManager-ref="systemConfigManager"
+		p:logoManager-ref="logoManager">
+		<constructor-arg value="false"/>
+	</bean>
+	
+	<bean id="logoutAction" 
+		class="com.terracetech.tims.webmail.mailuser.action.LogoutAction" scope="prototype" 
+		p:userAuthManager-ref="userAuthManager"/>
+		
+	<bean 	id="uploadAttachFileAction" 
+		class="com.terracetech.tims.webmail.common.action.UploadAttachFileAction"		
+		scope="prototype"
+		p:systemConfigManager-ref="systemConfigManager"
+		p:bigAttachManager-ref="bigattachManager">
+	</bean>
+	
+	<bean 	id="deleteAttachFileAction" 
+		class="com.terracetech.tims.webmail.common.action.DeleteAttachFileAction"		
+		scope="prototype">
+	</bean>
+	
+	<bean 	id="searchMailUserAction" 
+		class="com.terracetech.tims.webmail.mailuser.action.SearchMailUserAction"
+		p:mailUserManager-ref="mailUserManager"		
+		scope="prototype">
+	</bean>
+	
+	<bean 	id="passwordCheckAction" 
+		class="com.terracetech.tims.webmail.mailuser.action.PasswordCheckAction"
+		p:settingSecureManager-ref="secureManager"		
+		scope="prototype">
+		<constructor-arg value="false"/>
+	</bean>
+		
+	<!-- =========================== Register ============================== -->
+	<bean id="checkRegisterAction" 
+		class="com.terracetech.tims.webmail.register.action.CheckRegisterAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager">
+		<constructor-arg value="false"/>
+	</bean>
+	
+	<bean id="registerUserWinAction" 
+		class="com.terracetech.tims.webmail.register.action.RegisterUserWinAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager"
+		p:systemManager-ref="systemConfigManager">
+		<constructor-arg value="false"/>
+	</bean>
+	
+	<bean id="registerUserAction" 
+		class="com.terracetech.tims.webmail.register.action.RegisterUserAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager">
+		<constructor-arg value="false"/>
+	</bean>
+	
+	<bean id="checkDomainAction" 
+		class="com.terracetech.tims.webmail.register.action.CheckDomainAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager">
+		<constructor-arg value="false"/>
+	</bean>
+	
+	<bean id="userIdDupCheckAction" 
+		class="com.terracetech.tims.webmail.register.action.UserIdDupCheckAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager">
+		<constructor-arg value="false"/>
+	</bean>
+		
+	<bean id="saveUserInfoAction" 
+		class="com.terracetech.tims.webmail.register.action.SaveUserInfoAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager" 
+		p:settingSecureManager-ref="secureManager"
+		p:systemManager-ref="systemConfigManager"
+		>
+		<constructor-arg value="false"/>
+	</bean>
+		
+	<bean id="searchUserIdAction" 
+		class="com.terracetech.tims.webmail.register.action.SearchUserIdAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager">
+		<constructor-arg value="false"/>
+	</bean>
+	
+	<bean id="searchUserIdWinAction" 
+		class="com.terracetech.tims.webmail.register.action.SearchUserIdWinAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager"
+		p:systemManager-ref="systemConfigManager">
+		<constructor-arg value="false"/>
+	</bean>
+		
+	<bean id="searchPasswordAction" 
+		class="com.terracetech.tims.webmail.register.action.SearchPasswordAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager"
+		p:systemManager-ref="systemConfigManager">
+		<constructor-arg value="false"/>
+	</bean>
+	
+	<bean id="searchPasswordProcessAction" 
+		class="com.terracetech.tims.webmail.register.action.SearchPasswordProcessAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager">
+		<constructor-arg value="false"/>
+	</bean>
+		
+	<bean id="changePasswordAction" 
+		class="com.terracetech.tims.webmail.register.action.ChangePasswordAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager">
+		<constructor-arg value="false"/>
+	</bean>
+		
+	<bean id="changePasswordProcessAction" 
+		class="com.terracetech.tims.webmail.register.action.ChangePasswordProcessAction" scope="prototype" 
+		p:mailUserManager-ref="mailUserManager"
+		p:settingManager-ref="settingManager">
+		<constructor-arg value="false"/>
+	</bean>
+		
+	<bean id="viewImageAction" 
+		class="com.terracetech.tims.webmail.common.action.ViewImageAction" scope="prototype" 
+		/>
+		
+	<bean id="uploadAttachImageAction" 
+		class="com.terracetech.tims.webmail.common.action.UploadAttachImageAction" scope="prototype" 
+		/>
+	<bean id="uploadCkAttachImageAction" 
+		class="com.terracetech.tims.webmail.common.action.UploadCkAttachImageAction" scope="prototype" 
+		/>
+	<bean id="uploadSmartAttachImageAction" 
+		class="com.terracetech.tims.webmail.common.action.UploadSmartAttachImageAction" scope="prototype" 
+		/>
+		
+	<bean id="checkSessionTimeoutAction" 
+		class="com.terracetech.tims.webmail.common.action.CheckSessionTimeoutAction" 
+		scope="prototype">
+		<constructor-arg value="false"/>
+        <property name="checkUserExistManager" ref="checkUserExistManager"></property>
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- SSO DEFINITIONS                                                  -->
+	<!-- =================================================================== -->
+	<bean id="paramSso" class="com.terracetech.tims.webmail.mailuser.sso.ParamSsoAuth" scope="prototype"/>
+	<bean id="cookieSso" class="com.terracetech.tims.webmail.mailuser.sso.CookieSsoAuth" scope="prototype"/>
+</beans>

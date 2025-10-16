@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"		
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.directwebremoting.org/schema/spring-dwr 
+			http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd"
+		default-autowire="byName">
+			
+			
+	<!-- =================================================================== -->
+	<!-- =========================DAO DEFINITIONS=========================== -->
+	<!-- =================================================================== -->
+	
+	<!-- =================================================================== -->
+	<!-- =========================Handler DEFINITIONS======================= -->
+	<!-- =================================================================== -->
+	
+	<!-- =================================================================== -->
+	<!-- =========================MANAGER DEFINITIONS======================= -->
+	<!-- =================================================================== -->
+
+	<bean 	id="JMobileUserAuthManager" class="com.terracetech.tims.jmobile.common.manager.UserAuthManager" scope="prototype" 
+			p:mailUserManager-ref="mailUserManager"/>
+
+	<!-- =================================================================== -->
+	<!-- =========================ACTION DEFINITIONS======================== -->
+	<!-- =================================================================== -->
+	
+	<!-- ==================================COMMON================================= -->
+	
+	<bean 	id="JMobileWelcomeAction" class="com.terracetech.tims.jmobile.common.action.WelcomeAction" scope="prototype"
+			p:systemManager-ref="systemConfigManager">
+			<constructor-arg value="false"/>
+	</bean>
+	
+	<bean 	id="JMobileLoginAction" class="com.terracetech.tims.jmobile.common.action.LoginAction" scope="prototype" 
+			p:userAuthManager-ref="JMobileUserAuthManager"
+			p:systemManager-ref="systemConfigManager">
+			<constructor-arg value="false"/>
+	</bean>
+	
+	<bean 	id="JMobileLogoutAction" class="com.terracetech.tims.jmobile.common.action.LogoutAction" scope="prototype" 
+			p:userAuthManager-ref="JMobileUserAuthManager">			
+	</bean>
+
+	<!-- ===============================MAIL==================================== -->
+	
+	<bean 	id="JMobileMailReadAction" class="com.terracetech.tims.jmobile.mail.action.MailReadAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	
+	<bean 	id="JMobileMailListAction" class="com.terracetech.tims.jmobile.mail.action.MailListAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	
+	<bean 	id="JMobileMailWorkAction" class="com.terracetech.tims.jmobile.mail.action.MailWorkAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	
+	<bean 	id="JMobileMailWriteAction" class="com.terracetech.tims.jmobile.mail.action.MailWriteAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	
+	<bean 	id="JMobileMailSendAction" class="com.terracetech.tims.jmobile.mail.action.MailSendAction" scope="prototype" 
+			p:mailServiceManager-ref="mailServiceManager">
+	</bean>
+	
+	<!-- ===============================ADDRESS BOOK==================================== -->
+		
+	
+	<!-- =================================================================== -->
+	<!-- =========================SERVICE DEFINITIONS======================= -->
+	<!-- =================================================================== -->
+
+	<!-- =================================================================== -->
+	<!-- ========================TESTACTION DEFINITIONS===================== -->
+	<!-- =================================================================== -->
+</beans>

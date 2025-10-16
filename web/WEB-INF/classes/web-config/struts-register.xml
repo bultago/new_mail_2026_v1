@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="register" namespace="/register" extends="tims-default">
+    	<action name="checkRegister" class="checkRegisterAction"/>
+    	
+    	<action name="registerUser" class="registerUserAction">
+    		<result name="success">/classic/register/registerUser.jsp</result>
+    	</action>
+    	
+    	<action name="registerUserWin" class="registerUserWinAction">
+    		<result name="success">/classic/register/registerWin.jsp</result>
+    		<result name="jpSuccess">/classic/register/registerJpWin.jsp</result>
+    	</action>
+    	
+    	<action name="checkDomain" class="checkDomainAction"/>
+    	
+    	<action name="userIdDupCheck" class="userIdDupCheckAction"/>
+    	
+    	<action name="saveUserInfo" class="saveUserInfoAction"/>
+    	
+    	<action name="searchUserId" class="searchUserIdAction"/>
+    	
+    	<action name="searchUserIdWin" class="searchUserIdWinAction">
+    		<result name="success">/classic/register/searchUserId.jsp</result>
+    		<result name="jpSuccess">/classic/register/searchJpUserId.jsp</result>
+    	</action>
+    	
+    	<action name="searchPasswordWin" class="searchUserIdWinAction" method="executePart">
+    		<result name="success">/classic/register/searchPasswordWin.jsp</result>
+    		<result name="jpSuccess">/classic/register/searchJpPasswordWin.jsp</result>
+    	</action>
+    	
+    	<action name="searchPassword" class="searchPasswordAction">
+    		<result name="success">/classic/register/searchPassword.jsp</result>
+    	</action>
+    	
+    	<action name="searchPasswordProcess" class="searchPasswordProcessAction"/>
+    	
+    	<action name="changePassword" class="changePasswordAction">
+    		<result name="success">/classic/register/changePassword.jsp</result>
+    	</action>
+    	
+    	<action name="changePasswordProcess" class="changePasswordProcessAction"/>
+    	
+    </package>
+</struts>

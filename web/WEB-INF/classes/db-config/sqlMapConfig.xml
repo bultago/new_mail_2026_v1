@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+    <settings 
+        cacheModelsEnabled="true"
+        lazyLoadingEnabled="true"
+        maxRequests="256"
+        maxSessions="64"
+        maxTransactions="16" 
+        useStatementNamespaces="true"       
+    />
+
+    <typeHandler javaType="String" callback="com.terracetech.tims.webmail.common.NVarcharTypeHandler"/>
+  
+    <sqlMap resource="db-config/mailUserMap.xml" />
+    <sqlMap resource="db-config/postgresql/mailUser.xml" />
+    
+    <sqlMap resource="db-config/addrbookMap.xml" />
+    <sqlMap resource="db-config/postgresql/addrbook.xml" />
+    
+    <sqlMap resource="db-config/bbsMap.xml" />
+    <sqlMap resource="db-config/postgresql/bbs.xml" />
+
+    <sqlMap resource="db-config/webfolderMap.xml" />
+    <sqlMap resource="db-config/postgresql/webfolder.xml" />
+    
+    <sqlMap resource="db-config/settingMap.xml" />
+    <sqlMap resource="db-config/postgresql/setting.xml" />
+    
+    <sqlMap resource="db-config/signMap.xml" />
+    <sqlMap resource="db-config/postgresql/sign.xml" />
+    
+    <sqlMap resource="db-config/vcardMap.xml" />
+    <sqlMap resource="db-config/postgresql/vcard.xml" />
+    
+    <sqlMap resource="db-config/organizationMap.xml" />
+    <sqlMap resource="db-config/postgresql/organization.xml" />
+    
+    <sqlMap resource="db-config/mailDomainMap.xml" />
+    <sqlMap resource="db-config/postgresql/mailDomain.xml" />
+    
+    <sqlMap resource="db-config/mailAttachMap.xml" />
+    <sqlMap resource="db-config/postgresql/mailAttach.xml" />
+    
+    <sqlMap resource="db-config/mailHomeMap.xml" />
+    <sqlMap resource="db-config/postgresql/mailHome.xml" />
+    
+    <sqlMap resource="db-config/schedulerMap.xml" />
+    <sqlMap resource="db-config/postgresql/scheduler.xml" />
+    
+    <sqlMap resource="db-config/letterMap.xml" />
+    <sqlMap resource="db-config/postgresql/letterService.xml" />
+    
+    <sqlMap resource="db-config/mailSharedFolderMap.xml" />
+    <sqlMap resource="db-config/postgresql/mailSharedFolder.xml" />
+    
+    <sqlMap resource="db-config/systemConfigMap.xml" />
+    <sqlMap resource="db-config/postgresql/systemConfig.xml" />
+    
+    <sqlMap resource="db-config/mobileSyncMap.xml" />
+    <sqlMap resource="db-config/postgresql/mobileSync.xml" />
+    
+</sqlMapConfig>

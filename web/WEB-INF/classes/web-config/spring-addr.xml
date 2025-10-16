@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.directwebremoting.org/schema/spring-dwr 
+			http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd"
+		default-autowire="byName">
+			
+			
+	<!-- =================================================================== -->
+	<!-- DAO DEFINITIONS                                                     -->
+	<!-- =================================================================== -->
+	
+	<bean id="privateAddressBookDao"
+		class="com.terracetech.tims.webmail.addrbook.dao.PrivateAddressBookDao"
+		p:sqlMapClient-ref="sqlMapClient" />	
+
+	<bean id="sharedAddressBookDao"
+		class="com.terracetech.tims.webmail.addrbook.dao.SharedAddressBookDao"
+		p:sqlMapClient-ref="sqlMapClient" />	
+	
+	
+	<!-- =================================================================== -->
+	<!-- MANAGER DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean id="addressBookManager" 
+		class="com.terracetech.tims.webmail.addrbook.manager.AddressBookManager">
+		<property name="privateAddrDao"><ref bean="privateAddressBookDao" /></property>
+		<property name="sharedAddrDao"><ref bean="sharedAddressBookDao" /></property>
+		<property name="userDao"><ref bean="mailUserDao" /></property>
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- ACTION DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+		
+	<bean id="importAddrAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.ImportAddrAction" 
+		scope="prototype" p:manager-ref="addressBookManager"/>
+		
+	<bean id="exportAddrAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.ExportAddrAction" 
+		scope="prototype" p:manager-ref="addressBookManager"/>
+		
+	<bean id="viewAddressMemberListAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.ViewAddressMemberListAction" 
+		scope="prototype"
+		p:manager-ref="addressBookManager"/>
+	
+	<bean id="privateAddressAddAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.PrivateAddressAddAction" 
+		scope="prototype"
+		p:manager-ref="addressBookManager"/>
+	
+	<bean id="privateAddressSaveAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.PrivateAddressSaveAction" 
+		scope="prototype"
+		p:manager-ref="addressBookManager"/>
+		
+	<bean 	id="addressCommonAction" 
+			class="com.terracetech.tims.webmail.addrbook.action.AddressCommonAction" 
+			scope="prototype"/>	
+			
+	<bean id="sharedAddressBookListAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.ViewSharedAddressBookListAction" 
+		scope="prototype"
+		p:manager-ref="addressBookManager"/>
+	
+	<bean id="viewAddressMemberAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.ViewAddressMemberAction" 
+		scope="prototype"
+		p:manager-ref="addressBookManager"/>
+	
+	<bean id="viewReaderListAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.ViewReaderListAction" 
+		scope="prototype"
+		p:manager-ref="addressBookManager"/>
+	
+	<bean id="viewModeratorListAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.ViewModeratorListAction" 
+		scope="prototype"
+		p:manager-ref="addressBookManager"/>
+		
+	<bean id="addrPopupAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.AddressPopupAction" 
+		scope="prototype"
+		p:manager-ref="addressBookManager"/>
+		
+	<bean id="saveAddressAction" 
+		class="com.terracetech.tims.webmail.addrbook.action.PrivateAddressAddFromMailAction" 
+		scope="prototype"
+		p:manager-ref="addressBookManager"/>
+
+	<!-- =================================================================== -->
+	<!-- SERVICE DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean id="addressBookService" 
+			class="com.terracetech.tims.webmail.addrbook.manager.AddressBookService" 
+			scope="session" p:manager-ref="addressBookManager">
+		<aop:scoped-proxy />
+		<dwr:remote javascript="AddressBookService">
+			<dwr:convert type="bean" class="java.lang.StackTraceElement"></dwr:convert>
+			<dwr:convert type="bean" class="com.terracetech.tims.webmail.addrbook.vo.AddressBookMemberVO"></dwr:convert>
+			<dwr:convert type="bean" class="com.terracetech.tims.webmail.addrbook.vo.AddressBookReaderVO"></dwr:convert>
+			<dwr:convert type="bean" class="com.terracetech.tims.webmail.addrbook.vo.AddressBookDupMemberVO"></dwr:convert>
+		</dwr:remote>
+	</bean>
+	
+	<bean id="contactWebService" 
+			class="com.terracetech.tims.service.samsung.impl.ContactService">
+	</bean>
+	
+	<bean id="contactService" 
+			class="com.terracetech.tims.service.tms.impl.ContactService"
+			p:manager-ref="addressBookManager">
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- TESTACTION DEFINITIONS                                              -->
+	<!-- =================================================================== -->
+	
+	<bean id="viewAddressListTestAction" 
+		class="com.terracetech.tims.webmail.test.ReadAddressTestAction" 
+		scope="prototype"
+		p:manager-ref="addressBookManager">
+		<constructor-arg value="false"/>
+	</bean>	
+</beans>

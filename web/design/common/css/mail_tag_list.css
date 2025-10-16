@@ -1,0 +1,58 @@
+.tagimg_base {
+	height:12px;
+	width:11px;
+	min-height:12px;
+	min-width:11px;		
+	cursor: pointer;
+}
+
+.tagManageList {
+	margin-left:10px;
+}
+
+.timg_ff8080 {background: url(/design/common/image/icon/ic_tag_ff8080.gif) 0 0 no-repeat transparent;}
+.timg_ffff80 {background: url(/design/common/image/icon/ic_tag_ffff80.gif) 0 0 no-repeat transparent;}
+.timg_80ff80 {background: url(/design/common/image/icon/ic_tag_80ff80.gif) 0 0 no-repeat transparent;}
+.timg_00ff80 {background: url(/design/common/image/icon/ic_tag_00ff80.gif) 0 0 no-repeat transparent;}
+.timg_80ffff {background: url(/design/common/image/icon/ic_tag_80ffff.gif) 0 0 no-repeat transparent;}
+.timg_0080ff {background: url(/design/common/image/icon/ic_tag_0080ff.gif) 0 0 no-repeat transparent;}
+.timg_ff80c0 {background: url(/design/common/image/icon/ic_tag_ff80c0.gif) 0 0 no-repeat transparent;}
+.timg_ff80ff {background: url(/design/common/image/icon/ic_tag_ff80ff.gif) 0 0 no-repeat transparent;}
+.timg_ff0000 {background: url(/design/common/image/icon/ic_tag_ff0000.gif) 0 0 no-repeat transparent;}
+.timg_ffff00 {background: url(/design/common/image/icon/ic_tag_ffff00.gif) 0 0 no-repeat transparent;}
+.timg_80ff00 {background: url(/design/common/image/icon/ic_tag_80ff00.gif) 0 0 no-repeat transparent;}
+.timg_00ff40 {background: url(/design/common/image/icon/ic_tag_00ff40.gif) 0 0 no-repeat transparent;}
+.timg_00ffff {background: url(/design/common/image/icon/ic_tag_00ffff.gif) 0 0 no-repeat transparent;}
+.timg_0080c0 {background: url(/design/common/image/icon/ic_tag_0080c0.gif) 0 0 no-repeat transparent;}
+.timg_8080c0 {background: url(/design/common/image/icon/ic_tag_8080c0.gif) 0 0 no-repeat transparent;}
+.timg_ff00ff {background: url(/design/common/image/icon/ic_tag_ff00ff.gif) 0 0 no-repeat transparent;}
+.timg_804040 {background: url(/design/common/image/icon/ic_tag_804040.gif) 0 0 no-repeat transparent;}
+.timg_ff8040 {background: url(/design/common/image/icon/ic_tag_ff8040.gif) 0 0 no-repeat transparent;}
+.timg_00ff00 {background: url(/design/common/image/icon/ic_tag_00ff00.gif) 0 0 no-repeat transparent;}
+.timg_008080 {background: url(/design/common/image/icon/ic_tag_008080.gif) 0 0 no-repeat transparent;}
+.timg_004080 {background: url(/design/common/image/icon/ic_tag_004080.gif) 0 0 no-repeat transparent;}
+.timg_8080ff {background: url(/design/common/image/icon/ic_tag_8080ff.gif) 0 0 no-repeat transparent;}
+.timg_800040 {background: url(/design/common/image/icon/ic_tag_800040.gif) 0 0 no-repeat transparent;}
+.timg_ff0080 {background: url(/design/common/image/icon/ic_tag_ff0080.gif) 0 0 no-repeat transparent;}
+.timg_800000 {background: url(/design/common/image/icon/ic_tag_800000.gif) 0 0 no-repeat transparent;}
+.timg_ff8000 {background: url(/design/common/image/icon/ic_tag_ff8000.gif) 0 0 no-repeat transparent;}
+.timg_008000 {background: url(/design/common/image/icon/ic_tag_008000.gif) 0 0 no-repeat transparent;}
+.timg_008040 {background: url(/design/common/image/icon/ic_tag_008040.gif) 0 0 no-repeat transparent;}
+.timg_0000ff {background: url(/design/common/image/icon/ic_tag_0000ff.gif) 0 0 no-repeat transparent;}
+.timg_0000a0 {background: url(/design/common/image/icon/ic_tag_0000a0.gif) 0 0 no-repeat transparent;}
+.timg_800080 {background: url(/design/common/image/icon/ic_tag_800080.gif) 0 0 no-repeat transparent;}
+.timg_8000ff {background: url(/design/common/image/icon/ic_tag_8000ff.gif) 0 0 no-repeat transparent;}
+.timg_400000 {background: url(/design/common/image/icon/ic_tag_400000.gif) 0 0 no-repeat transparent;}
+.timg_804000 {background: url(/design/common/image/icon/ic_tag_804000.gif) 0 0 no-repeat transparent;}
+.timg_004000 {background: url(/design/common/image/icon/ic_tag_004000.gif) 0 0 no-repeat transparent;}
+.timg_004040 {background: url(/design/common/image/icon/ic_tag_004040.gif) 0 0 no-repeat transparent;}
+.timg_000080 {background: url(/design/common/image/icon/ic_tag_000080.gif) 0 0 no-repeat transparent;}
+.timg_000040 {background: url(/design/common/image/icon/ic_tag_000040.gif) 0 0 no-repeat transparent;}
+.timg_400040 {background: url(/design/common/image/icon/ic_tag_400040.gif) 0 0 no-repeat transparent;}
+.timg_408080 {background: url(/design/common/image/icon/ic_tag_408080.gif) 0 0 no-repeat transparent;}
+.timg_000000 {background: url(/design/common/image/icon/ic_tag_000000.gif) 0 0 no-repeat transparent;}
+.timg_808000 {background: url(/design/common/image/icon/ic_tag_808000.gif) 0 0 no-repeat transparent;}
+.timg_808040 {background: url(/design/common/image/icon/ic_tag_808040.gif) 0 0 no-repeat transparent;}
+.timg_808080 {background: url(/design/common/image/icon/ic_tag_808080.gif) 0 0 no-repeat transparent;}
+.timg_c0c0c0 {background: url(/design/common/image/icon/ic_tag_c0c0c0.gif) 0 0 no-repeat transparent;}
+.timg_ffffff {background: url(/design/common/image/icon/ic_tag_ffffff.gif) 0 0 no-repeat transparent;}

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SystemConfig">
+	<select id="readIntegrity" resultClass="String" cacheModel="mapCache">
+		select attr_value from mail_config_file 
+		where config_name = 'timsservice' and attr_name='integrity' 
+	</select>
+	
+	<select id="readCryptMethod" resultClass="String">
+		select attr_value from mail_config_file 
+		where config_name = 'encrypt' and attr_name='encrypt' 
+	</select>
+	
+	<select id="readSystemConfig" parameterClass="List" resultMap="configMap" cacheModel="mapCache">
+		select * from mail_config
+		<dynamic prepend="where config_name in">
+			<iterate open="(" close=")" conjunction=",">
+				#[]#
+			</iterate>		
+		</dynamic>
+	</select>
+	
+	<select id="readDomainSystemConfig" parameterClass="Map" resultMap="configMap" cacheModel="mapCache">
+		select * from mail_domain_config		
+		where mail_domain_seq = #domainSeq# 
+		<iterate property="configNames" prepend="and config_name in" open="(" close=")" conjunction=",">
+			#configNames[]#
+		</iterate>
+	</select>
+	
+	<select id="readDomainSystemConfigByValue" parameterClass="String" resultClass="int" cacheModel="mapCache">
+		select mail_domain_seq from mail_domain_config		
+		where config_value = #value#
+	</select>
+		
+	<select id="readMailConfig" parameterClass="String" resultMap="mailConfigResult">
+		SELECT 
+			* 
+		FROM 
+			mail_config 
+		 WHERE config_name = #value#
+	</select>
+	
+	<select id="readMailConfigWithLike" parameterClass="String" resultMap="mailConfigResult">
+		SELECT 
+			* 
+		FROM 
+			mail_config 
+		WHERE
+			config_name LIKE #value#
+	</select>
+	
+	<select id="readWebAccessConfig" resultMap="configMap" cacheModel="webAccessCache">
+		SELECT 
+			* 
+		FROM 
+			mail_config 
+		WHERE
+			config_name LIKE 'web_access_%'
+	</select>
+	
+	<select id="readDomainBanner" parameterClass="int" resultMap="bannerResult">
+		select * from mail_domain_banner where mail_domain_seq = #mailDomainSeq#
+	</select>
+	
+	<select id="readHostId" parameterClass="String" resultMap="mailConfigResult">
+		SELECT 
+			attr_name as config_name, attr_value as config_value 
+		FROM mail_config_file
+  		WHERE
+  			config_name = 'sfhosts' and group_value = #value# and attr_name in ('ip', 'virtualip' )
+	</select>
+	
+	<select id="readMaxReserved" resultClass="String">
+		SELECT attr_value 
+		FROM mail_config_file
+  		WHERE
+  			config_name = 'im4/im4reserve' and attr_name = 'reserve_limit'  
+	</select>
+	
+	
+	<select id="readBodySearch" resultClass="String">
+		SELECT attr_value 
+		FROM mail_config_file
+  		WHERE
+  			config_name = 'timsservice' and attr_name = 'bodySearch'  
+	</select>
+	
+	<select id="readAttachSearch" resultClass="String">
+		SELECT attr_value 
+		FROM mail_config_file
+  		WHERE
+  			config_name = 'timsservice' and attr_name = 'attSearch'  
+	</select>
+	
+	<select id="readSearchOption" resultMap="mailConfigResult">
+		SELECT 
+			attr_name as config_name, attr_value as config_value
+		FROM mail_config_file
+  		WHERE
+  			config_name = 'timsservice' and attr_name in ('bodySearch', 'attSearch')
+	</select>
+	
+	<select id="readDomainConfig" parameterClass="Map" resultMap="mailConfigResult">
+		SELECT 
+			* 
+		FROM 
+			mail_domain_config 
+		 WHERE
+		 	mail_domain_seq = #domainSeq# 
+		 	and config_name = #configName#
+	</select>  
+	
+	<select id="readDomainGroupConfig" parameterClass="Map" resultMap="mailConfigResult">
+		SELECT 
+			* 
+		FROM 
+			mail_domain_group_config 
+		 WHERE
+		 	mail_domain_seq = #domainSeq# 
+		 	and mail_group_seq = #groupSeq#
+		 	and config_name = #configName#
+	</select>
+	
+	<select id="readDomainSeqByConfigInfo" parameterClass="Map" resultClass="int">
+		select mail_domain_seq from mail_domain_config where config_name = #configName# and config_value = #configValue#
+	</select>
+	
+	<select id="readArchiveConfig" parameterClass="Map" resultMap="configMap">
+		SELECT 'deskey' as config_name ,config_value as config_value 
+		FROM mail_config WHERE config_name='deskey'
+		
+		union all
+		
+		SELECT 'vaultSsoUse' as config_name ,config_value as config_value 
+		FROM mail_config WHERE config_name='vault_sso_use'
+		
+		union all
+		
+		SELECT 'sslUse' as config_name ,config_value as config_value 
+		FROM mail_config WHERE config_name='ssl_use'
+		
+		union all
+		
+		SELECT 'archiveUseByGroup' as config_name, config_value as config_value 
+		FROM mail_domain_group_config 
+		WHERE config_name ='archivecenter_use' and mail_domain_seq=#domainSeq# and  mail_group_seq=#groupSeq#
+		
+		union all
+		
+		SELECT 'archiveUseBySystem' as config_name, attr_value as config_value 
+		FROM mail_config_file  WHERE config_name='vault' and attr_name='apply'
+		
+		union all
+		
+		select 
+			'vault' as config_name, a.group_value as config_value 
+		from mail_config_file a, mail_config_file b 
+		where a.config_name='vault'
+			and a.group_value=b.group_value
+			and a.attr_name='host'
+			and b.attr_name='port'
+			
+		
+	</select>
+	
+	<select id="readBayesianOption" resultClass="String">
+		SELECT 
+			attr_value
+		FROM mail_config_file
+  		WHERE
+  			config_name = 'smtp/mtaheuristic' and attr_name = 'localbayes'
+	</select>
+	
+	<select id="readIMapPort" resultClass="String" cacheModel="mapCache">
+		SELECT 
+			attr_value 
+		FROM mail_config_file 
+		WHERE 
+			config_name='port' 
+			and group_name='portclass' 
+			and group_value='t4imapd' 
+			and attr_name='preroutingport'
+	</select>
+	
+	<select id="allCacheDelete" resultClass="int">
+		SELECT count(*)
+		FROM mail_config_file
+  		WHERE
+  			config_name = 'sfhosts'
+	</select>
+	
+	<select id="readConfigFile" resultMap="configMap">
+		select attr_name as config_name, attr_value as config_value 
+		from mail_config_file where config_name = #configName#
+	</select>
+	
+	<select id="readNoteLicense" resultClass="String">
+		select config_value from mail_config where config_name = 'note'
+	</select>
+	
+	 <select id="readMdnPort" resultClass="String">
+        select attr_value from mail_config_file
+        where config_name = 'port'
+        and group_name = 'portclass'
+        and attr_name = 'port'
+        and group_value='mdn'
+    </select>
+    
+    <select id="readIpGroup" resultClass="String">
+		SELECT
+			attr_value
+		FROM mail_config_file
+		WHERE config_name = 'ipgroup'
+		and group_value = #groupValue#
+		and attr_name != 'name'
+	</select>
+	<select id="readDomainConfigDuplicateLogin" parameterClass="int" resultMap="mailConfigResult" cacheModel="duplicateLoginCache">
+        SELECT 
+            * 
+        FROM 
+            mail_domain_config 
+         WHERE
+            mail_domain_seq = #domainSeq# 
+            and config_name = 'duplicateLogin'
+    </select>  
+</sqlMap>

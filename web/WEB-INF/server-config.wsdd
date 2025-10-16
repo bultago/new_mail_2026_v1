@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment 
+	xmlns="http://xml.apache.org/axis/wsdd/" 
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" 
+	xmlns:ns1="http://xml.apache.org/xml-soap" >
+	
+	<globalConfiguration>
+		<parameter name="adminPassword" value="admin" />
+		<parameter name="sendXsiTypes" value="true" />
+		<parameter name="sendMultiRefs" value="true" />
+		<parameter name="sendXMLDeclaration" value="true" />
+		<parameter name="axis.sendMinimizedElements" value="true" />
+		<requestFlow>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="session" />
+			</handler>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="request" />
+				<parameter name="extension" value=".jwr" />
+			</handler>
+		</requestFlow>
+	</globalConfiguration>
+	
+	<handler name="Authenticate"
+		type="java:org.apache.axis.handlers.SimpleAuthenticationHandler" />
+	<handler name="LocalResponder"
+		type="java:org.apache.axis.transport.local.LocalResponder" />
+	
+	<handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper" />
+	
+	<service name="AdminService" provider="java:MSG">
+		<parameter name="allowedMethods" value="AdminService" />
+		<parameter name="enableRemoteAdmin" value="false" />
+		<parameter name="className" value="org.apache.axis.utils.Admin" />
+		<namespace>http://xml.apache.org/axis/wsdd/</namespace>
+	</service>
+	
+	<service name="contactWS" provider="java:RPC" style="wrapped" use="literal">
+		<parameter name="wsdlTargetNamespace" value="http://xml.apache.org/xml-soap"/>
+		<parameter name="wsdlServiceElement" value="ContactService"/>
+		<parameter name="schemaQualified" value="http://xml.apache.org/xml-soap"/>
+		<parameter name="wsdlServicePort" value="ContactService"/>
+		<parameter name="className" value="com.terracetech.tims.service.samsung.endpoint.ContactServiceEndpoint"/>
+		<parameter name="wsdlPortType" value="ContactServicePort"/>
+		<parameter name="typeMappingVersion" value="1.2"/>
+		<parameter name="allowedMethods" value="*"/>
+
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="testConnect" qname="operNS:testConnect" returnQName="retNS:testConnectReturn" returnType="rtns:string" soapAction="">
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addContact" qname="operNS:addContact" returnQName="retNS:addContactReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ContactWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="modContact" qname="operNS:modContact" returnQName="retNS:modContactReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ContactWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="delContact" qname="operNS:delContact" returnQName="retNS:delContactReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ContactWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap" name="getContact" qname="operNS:getContact" returnQName="retNS:getContactReturn" returnType="rtns:ContactWSVO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ContactWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addContactWithAttach" qname="operNS:addContactWithAttach" returnQName="retNS:addContactWithAttachReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ContactWSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:attach" type="tns:AttachWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap" name="getContactList" qname="operNS:getContactList" returnQName="retNS:getContactListReturn" returnType="rtns:AttachWSVO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ContactWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="modContactWithAttach" qname="operNS:modContactWithAttach" returnQName="retNS:modContactWithAttachReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ContactWSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:attach" type="tns:AttachWSVO"/>
+		</operation>
+      
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap" 
+			qname="ns1:ContactWSVO" 
+			type="java:com.terracetech.tims.service.samsung.vo.ContactWSVO" 
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" 
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap" 
+			qname="ns1:AttachWSVO" 
+			type="java:com.terracetech.tims.service.samsung.vo.AttachWSVO" 
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" 
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+			  
+		<typeMapping
+			deserializer="org.apache.axis.encoding.ser.JAFDataHandlerDeserializerFactory"
+			languageSpecificType="java:javax.activation.DataHandler" 
+			qname="ns1:DataHandler"
+			serializer="org.apache.axis.encoding.ser.JAFDataHandlerSerializerFactory"
+			encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+		/>
+	</service>	
+	
+	<service name="mailServiceForMCNC" provider="java:RPC" style="wrapped" use="literal">
+		<parameter name="wsdlTargetNamespace" value="http://xml.apache.org/xml-soap"/>
+		<parameter name="wsdlServiceElement" value="GarnetMailService" />
+		<parameter name="schemaQualified" value="http://xml.apache.org/xml-soap"/>
+		<parameter name="wsdlServicePort" value="GarnetMailService" />
+		<parameter name="className"
+			value="com.terracetech.tims.service.mcnc.endpoint.GarnetMailServiceEndpoint" />
+		<parameter name="wsdlPortType" value="GarnetMailServicePort" />
+		<parameter name="typeMappingVersion" value="1.2"/>
+		<parameter name="allowedMethods" value="*"/>		
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap"
+			name="getMailBoxes" qname="operNS:getMailBoxes" returnQName="retNS:getMailBoxesReturn"
+			returnType="rtns:MailBoxWDO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth" type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:companyID"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:attribute" type="tns:AttributeWDO" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap"
+				name="GarnetException" qname="fns:fault"
+				class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>		
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap"
+			xmlns:rtns="http://xml.apache.org/xml-soap" name="getMailList"
+			qname="operNS:getMailList" returnQName="retNS:getMailListReturn"
+			returnType="rtns:MailBriefListWDO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth"
+				type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:mailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subFolder"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:attributes"
+				type="tns:AttributeWDO" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" name="GarnetException"
+				qname="fns:fault" class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>		
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap"
+			xmlns:rtns="http://xml.apache.org/xml-soap" name="getMail"
+			qname="operNS:getMail" returnQName="retNS:getMailReturn" returnType="rtns:MailWDO"
+			soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth"
+				type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:mailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subFolder"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mailID" type="tns:string" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" name="GarnetException"
+				qname="fns:fault" class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>		
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap"
+			xmlns:rtns="http://xml.apache.org/xml-soap" name="getAttachmentList"
+			qname="operNS:getAttachmentList" returnQName="retNS:getAttachmentListReturn"
+			returnType="rtns:AttachmentInfoWDO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth"
+				type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:mailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subFolder"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mailID" type="tns:string" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" name="GarnetException"
+				qname="fns:fault" class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap"
+			xmlns:rtns="http://xml.apache.org/xml-soap" name="getAttachment"
+			qname="operNS:getAttachment" returnQName="retNS:getAttachmentReturn"
+			returnType="rtns:AttachmentWDO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth"
+				type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:mailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subFolder"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mailID" type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:attachmentID"
+				type="tns:string" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" name="GarnetException"
+				qname="fns:fault" class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>
+
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap"
+			xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="removeMail" qname="operNS:removeMail"
+			returnQName="retNS:removeMailReturn" returnType="rtns:boolean"
+			soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth"
+				type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:mailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subFolder"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mailID" type="tns:string" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" name="GarnetException"
+				qname="fns:fault" class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>
+
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap"
+			xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getUnreadMailCount"
+			qname="operNS:getUnreadMailCount" returnQName="retNS:getUnreadMailCountReturn"
+			returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth"
+				type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:mailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subFolder"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://vo.mcnc.service.tims.terracetech.com" qname="pns:attribute"
+				type="tns:AttributeWDO" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" name="GarnetException"
+				qname="fns:fault" class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>      		
+
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap"
+			xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="copyMail" qname="operNS:copyMail"
+			returnQName="retNS:copyMailReturn" returnType="rtns:boolean"
+			soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth"
+				type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:srcMailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:srcSubFolder"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:srcMailID"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://vo.mcnc.service.tims.terracetech.com" qname="pns:dstMailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:dstsubFolder"
+				type="tns:string" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" name="GarnetException"
+				qname="fns:fault" class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>
+	
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap"
+			xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="moveMail" qname="operNS:moveMail"
+			returnQName="retNS:moveMailReturn" returnType="rtns:boolean"
+			soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth"
+				type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:srcMailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:srcSubFolder"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:srcMailID"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:dstMailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:dstSubFolder"
+				type="tns:string" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" name="GarnetException"
+				qname="fns:fault" class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap"
+			xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="sendMail" qname="operNS:sendMail"
+			returnQName="retNS:sendMailReturn" returnType="rtns:boolean"
+			soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth"
+				type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:mailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subFolder"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:mail"
+				type="tns:MailWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mailType"
+				type="tns:string" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:attribute"
+				type="tns:AttributeWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:option"
+				type="tns:OptionWDO" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" name="GarnetException"
+				qname="fns:fault" class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>
+
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap"
+			xmlns:retNS="http://xml.apache.org/xml-soap"
+			xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="saveTempMail"
+			qname="operNS:saveTempMail" returnQName="retNS:saveTempMailReturn"
+			returnType="rtns:boolean" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:userAuth"
+				type="tns:UserAuthWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:mailBox"
+				type="tns:MailBoxWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:content"
+				type="tns:MailWDO" />
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:attribute"
+				type="tns:AttributeWDO" />
+			<fault xmlns:fns="http://xml.apache.org/xml-soap"
+				xmlns:tns="http://xml.apache.org/xml-soap" name="GarnetException"
+				qname="fns:fault" class="com.terracetech.tims.service.mcnc.exception.GarnetException"
+				type="tns:GarnetException" />
+		</operation>
+	
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:AttributeWDO" type="java:com.terracetech.tims.service.mcnc.vo.AttributeWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />		
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:UserAuthWDO" type="java:com.terracetech.tims.service.mcnc.vo.UserAuthWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />			
+		
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:BoxWDO" type="java:com.terracetech.tims.service.mcnc.vo.BoxWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:MailBoxWDO" type="java:com.terracetech.tims.service.mcnc.vo.MailBoxWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />
+			
+		<typeMapping qname="ns1:ArrayOf_xsd_anyType"
+			xmlns:ns="http://xml.apache.org/xml-soap"
+		    languageSpecificType="java:java.util.ArrayList"
+	    	serializer="org.apache.axis.encoding.ser.ArraySerializerFactory"
+		    deserializer="org.apache.axis.encoding.ser.ArrayDeserializerFactory"
+	    	encodingStyle=""/>
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:MailBriefListWDO" type="java:com.terracetech.tims.service.mcnc.vo.MailBriefListWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:MailBriefWDO" type="java:com.terracetech.tims.service.mcnc.vo.MailBriefWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:ContactWDO" type="java:com.terracetech.tims.service.mcnc.vo.ContactWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:PayloadWDO" type="java:com.terracetech.tims.service.mcnc.vo.PayloadWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />	
+		
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:AttachmentWDO" type="java:com.terracetech.tims.service.mcnc.vo.AttachmentWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />	
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:MailWDO" type="java:com.terracetech.tims.service.mcnc.vo.MailWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:AttachmentInfoWDO" type="java:com.terracetech.tims.service.mcnc.vo.AttachmentInfoWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:AttachmentWDO" type="java:com.terracetech.tims.service.mcnc.vo.AttachmentWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />
+			
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:BodyWDO" type="java:com.terracetech.tims.service.mcnc.vo.BodyWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />		
+		
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			qname="ns:OptionWDO" type="java:com.terracetech.tims.service.mcnc.vo.OptionWDO"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />
+			
+		<arrayMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_string"
+			type="java:java.lang.String[]" innerType="cmp-ns:string" encodingStyle="" />
+		<arrayMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			xmlns:cmp-ns="http://xml.apache.org/xml-soap" qname="ns:ArrayOf_tns1_AttachmentInfoWDO"
+			type="java:com.terracetech.tims.service.mcnc.vo.AttachmentInfoWDO[]"
+			innerType="cmp-ns:AttachmentInfoWDO" encodingStyle="" />
+		<arrayMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			xmlns:cmp-ns="http://xml.apache.org/xml-soap" qname="ns:ArrayOf_tns1_AttachmentWDO"
+			type="java:com.terracetech.tims.service.mcnc.vo.AttachmentWDO[]"
+			innerType="cmp-ns:AttachmentWDO" encodingStyle="" />
+		<arrayMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			xmlns:cmp-ns="http://xml.apache.org/xml-soap" qname="ns:ArrayOf_tns1_MailBriefWDO"
+			type="java:com.terracetech.tims.service.mcnc.vo.MailBriefWDO[]"
+			innerType="cmp-ns:MailBriefWDO" encodingStyle="" />
+		<arrayMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			xmlns:cmp-ns="http://xml.apache.org/xml-soap" qname="ns:ArrayOf_tns1_PayloadWDO"
+			type="java:com.terracetech.tims.service.mcnc.vo.PayloadWDO[]"
+			innerType="cmp-ns:PayloadWDO" encodingStyle="" />
+		<arrayMapping xmlns:ns="http://xml.apache.org/xml-soap"
+			xmlns:cmp-ns="http://xml.apache.org/xml-soap" qname="ns:ArrayOf_tns1_ContactWDO"
+			type="java:com.terracetech.tims.service.mcnc.vo.ContactWDO[]"
+			innerType="cmp-ns:ContactWDO" encodingStyle="" />
+			
+		
+	</service>
+	
+	
+	<service name="mailServiceForSDS" provider="java:RPC" style="wrapped" use="literal">
+		<parameter name="wsdlTargetNamespace" value="http://xml.apache.org/xml-soap"/>
+		<parameter name="wsdlServiceElement" value="MailService"/>
+		<parameter name="schemaQualified" value="http://xml.apache.org/xml-soap"/>
+		<parameter name="wsdlServicePort" value="MailService"/>
+		<parameter name="className" value="com.terracetech.tims.service.samsung.endpoint.MailServiceEndpoint"/>
+		<parameter name="wsdlPortType" value="MailServicePort"/>
+		<parameter name="typeMappingVersion" value="1.2"/>
+		<parameter name="allowedMethods" value="*"/>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap" name="getExtractedAttachInfo" qname="operNS:getExtractedAttachInfo" returnQName="retNS:getExtractedAttachInfoReturn" returnType="rtns:ExtractedAttachESBVO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:msgUID" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:partNos" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:exts" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:folderName" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:resourceCSVO" type="tns:ResourceCSVO"/>
+		</operation>
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getMailDetailBody" qname="operNS:getMailDetailBody" returnQName="retNS:getMailDetailBodyReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:msgUID" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:folderName" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:resourceCSVO" type="tns:ResourceCSVO"/>
+		</operation>
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap" name="getMailDetailView" qname="operNS:getMailDetailView" returnQName="retNS:getMailDetailViewReturn" returnType="rtns:DetailESBVO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:msgNo" type="tns:int"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:conditionCSVO" type="tns:ConditionCSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:resourceCSVO" type="tns:ResourceCSVO"/>
+		</operation>
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap" name="getMailDetailViewByUID" qname="operNS:getMailDetailViewByUID" returnQName="retNS:getMailDetailViewByUIDReturn" returnType="rtns:DetailESBVO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:msgUID" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:conditionCSVO" type="tns:ConditionCSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:resourceCSVO" type="tns:ResourceCSVO"/>
+		</operation>
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap" name="getMailListAfterMsgNo" qname="operNS:getMailListAfterMsgNo" returnQName="retNS:getMailListAfterMsgNoReturn" returnType="rtns:ListESBVO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:msgNo" type="tns:int"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:folderName" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:resourceCSVO" type="tns:ResourceCSVO"/>
+		</operation>
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap" name="getSimpleMailList" qname="operNS:getSimpleMailList" returnQName="retNS:getSimpleMailListReturn" returnType="rtns:ListESBVO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:listOption" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:currentTime" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:conditionCSVO" type="tns:ConditionCSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:resourceCSVO" type="tns:ResourceCSVO"/>
+		</operation>
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="sendMISMail" qname="operNS:sendMISMail" returnQName="retNS:sendMISMailReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:bodyStr" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:headerHelperCSVO" type="tns:HeaderHelperCSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:recipientEtyCSVO" type="tns:RecipientEtyCSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:attachEtyCSVO" type="tns:AttachEtyCSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:resourceCSVO" type="tns:ResourceCSVO"/>
+		</operation>
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap" name="syncMails" qname="operNS:syncMails" returnQName="retNS:syncMailsReturn" returnType="rtns:SyncListCSVO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:syncListCSVO" type="tns:SyncListCSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:resourceCSVO" type="tns:ResourceCSVO"/>
+		</operation>
+		
+		
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" qname="ns1:AttachEtyCSVO" 
+			  xmlns:ns="http://soap.mail.webmail.tims.terracetech.com"  
+			  type="java:com.terracetech.tims.service.samsung.vo.AttachEtyCSVO" 
+			  serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"/>
+			  
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" qname="ns1:HeaderHelperCSVO"  
+			  xmlns:ns="http://soap.mail.webmail.tims.terracetech.com" 
+			  type="java:com.terracetech.tims.service.samsung.vo.HeaderHelperCSVO" 
+			  serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"/>
+			  
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" xmlns:ns="http://soap.mail.webmail.tims.terracetech.com" qname="ns1:ResourceCSVO" 
+			  type="java:com.terracetech.tims.service.samsung.vo.ResourceCSVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" />
+			  
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" xmlns:ns="http://soap.mail.webmail.tims.terracetech.com" qname="ns1:DetailESBVO" 
+			  type="java:com.terracetech.tims.service.samsung.vo.DetailESBVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" />
+		
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" xmlns:ns="http://soap.mail.webmail.tims.terracetech.com" qname="ns1:ListESBVO" 
+			  type="java:com.terracetech.tims.service.samsung.vo.ListESBVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" />
+			  
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" xmlns:ns="http://soap.mail.webmail.tims.terracetech.com" qname="ns1:SyncMailESBVO" 
+			  type="java:com.terracetech.tims.service.samsung.vo.SyncMailESBVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" />
+			  
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" xmlns:ns="http://soap.mail.webmail.tims.terracetech.com" qname="ns1:SyncListCSVO" 
+			  type="java:com.terracetech.tims.service.samsung.vo.SyncListCSVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" />
+		
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" xmlns:ns="http://soap.mail.webmail.tims.terracetech.com" qname="ns1:ConditionCSVO" 
+			  type="java:com.terracetech.tims.service.samsung.vo.ConditionCSVO" 
+			  serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" />
+			  
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" xmlns:ns="http://soap.mail.webmail.tims.terracetech.com" qname="ns1:HeaderESBVO" 
+			  type="java:com.terracetech.tims.service.samsung.vo.HeaderESBVO" 
+			  serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" />
+			  
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" xmlns:ns="http://soap.mail.webmail.tims.terracetech.com" qname="ns1:RecipientEtyCSVO" 
+			  type="java:com.terracetech.tims.service.samsung.vo.RecipientEtyCSVO" 
+			  serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" />
+			  
+		<typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" 
+			  encodingStyle="" xmlns:ns="http://soap.mail.webmail.tims.terracetech.com" qname="ns1:ExtractedAttachESBVO" 
+			  type="java:com.terracetech.tims.service.samsung.vo.ExtractedAttachESBVO" 
+			  serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" />
+			  
+		<typeMapping
+			deserializer="org.apache.axis.encoding.ser.JAFDataHandlerDeserializerFactory"
+			languageSpecificType="java:javax.activation.DataHandler" 
+			qname="ns1:DataHandler"
+			serializer="org.apache.axis.encoding.ser.JAFDataHandlerSerializerFactory"
+			encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+	</service>
+	
+	<service name="scheduleWS" provider="java:RPC" style="wrapped" use="literal">
+		<parameter name="wsdlTargetNamespace" value="http://xml.apache.org/xml-soap"/>
+		<parameter name="wsdlServiceElement" value="ScheduleService"/>
+		<parameter name="schemaQualified" value="http://xml.apache.org/xml-soap"/>
+		<parameter name="wsdlServicePort" value="ScheduleService"/>
+		<parameter name="className" value="com.terracetech.tims.service.samsung.endpoint.ScheduleServiceEndpoint"/>
+		<parameter name="wsdlPortType" value="ScheduleServicePort"/>
+		<parameter name="typeMappingVersion" value="1.2"/>
+		<parameter name="allowedMethods" value="*"/>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addSchedule" qname="operNS:addSchedule" returnQName="retNS:addScheduleReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ScheduleWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addScheduleWithAttach" qname="operNS:addScheduleWithAttach" returnQName="retNS:addScheduleWithAttachReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ScheduleWSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:attach" type="tns:AttachWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="modSchedule" qname="operNS:modSchedule" returnQName="retNS:modScheduleReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ScheduleWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="modScheduleWithAttach" qname="operNS:modScheduleWithAttach" returnQName="retNS:modScheduleWithAttachReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ScheduleWSVO"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:attach" type="tns:AttachWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="delSchedule" qname="operNS:delSchedule" returnQName="retNS:delScheduleReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ScheduleWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap" name="getSchedule" qname="operNS:getSchedule" returnQName="retNS:getScheduleReturn" returnType="rtns:ScheduleWSVO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ScheduleWSVO"/>
+		</operation>
+		
+		<operation xmlns:operNS="http://xml.apache.org/xml-soap" xmlns:retNS="http://xml.apache.org/xml-soap" xmlns:rtns="http://xml.apache.org/xml-soap" name="getScheduleList" qname="operNS:getScheduleList" returnQName="retNS:getScheduleListReturn" returnType="rtns:ScheduleWSVO" soapAction="">
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:licenseKey" type="tns:string"/>
+			<parameter xmlns:pns="http://xml.apache.org/xml-soap" xmlns:tns="http://xml.apache.org/xml-soap" qname="pns:param" type="tns:ScheduleWSVO"/>
+		</operation>
+		
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap" 
+			qname="ns1:ScheduleWSVO" 
+			type="java:com.terracetech.tims.service.samsung.vo.ScheduleWSVO" 
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" 
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+		
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap" 
+			qname="ns1:AttachWSVO" 
+			type="java:com.terracetech.tims.service.samsung.vo.AttachWSVO" 
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" 
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+			  
+		<typeMapping
+			deserializer="org.apache.axis.encoding.ser.JAFDataHandlerDeserializerFactory"
+			languageSpecificType="java:javax.activation.DataHandler" 
+			qname="ns1:DataHandler"
+			serializer="org.apache.axis.encoding.ser.JAFDataHandlerSerializerFactory"
+			encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+		/>
+	</service>
+  
+	<service name="Version" provider="java:RPC">
+		<parameter name="allowedMethods" value="getVersion" />
+		<parameter name="className" value="org.apache.axis.Version" />
+	</service>
+	<transport name="http">
+		<requestFlow>
+			<handler type="URLMapper" />
+			<handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler" />
+		</requestFlow>
+	</transport>
+	<transport name="local">
+		<responseFlow>
+			<handler type="LocalResponder" />
+		</responseFlow>
+	</transport>
+</deployment>

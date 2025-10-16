@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="mobileCommon" namespace="/mobile/common" extends="tims-default">
+		<action name="home" class="mobileHomeAction">
+			<result>/mobile/basic/common/home.jsp</result>						
+		</action>
+		<action name="login" class="mobileLoginAction">
+			<result name="success" type="redirect">/common/welcome.do</result>
+			<result name="fail">/mobile/basic/common/loginWork.jsp</result>
+			<result name="noti">/mobile/basic/common/passNoti.jsp</result>
+		</action>
+		<action name="changeMailMode" class="changeMailModeAction">
+			<result name="success" type="redirect">/common/welcome.do</result>
+		</action>
+		<action name="welcome" class="mobileWelcomeAction">
+			<result name="mobileLogin">/mobile/basic/common/loginWork.jsp</result>
+            <result name="mobileIntro" type="redirect">/mobile/common/home.do</result>
+            <result name="normalWelcome" type="redirect">/common/welcome.do</result>
+		</action>
+    </package>
+    
+	<package name="mobileMail" namespace="/mobile/mail" extends="tims-default">
+		<action name="mailList" class="mobileMailListAction">
+			<result name="success">/mobile/basic/mail/mailList.jsp</result>
+		</action>
+		
+		<action name="folderList" class="mobileMailListAction" method="executeFolderList">
+			<result name="success">/mobile/basic/mail/folderList.jsp</result>
+		</action>
+		
+		<action name="mailRead" class="mobileMailReadAction">
+			<result name="success">/mobile/basic/mail/mailRead.jsp</result>
+		</action>
+		
+		<action name="mailWrite" class="mobileMailWriteAction">
+			<result name="success">/mobile/basic/mail/mailWrite.jsp</result>
+		</action>
+		
+		<action name="mailSend" class="mobileMailSendAction">
+			<result name="success">/mobile/basic/mail/mailSend.jsp</result>
+		</action>
+		
+		<action name="mailMdnList" class="mobileMailMdnAction" method="executeMdnList">
+			<result name="success">/mobile/basic/mail/mailMdnList.jsp</result>
+		</action>
+		
+		<action name="mailMdnRead" class="mobileMailMdnAction" method="executeMdnView">
+			<result name="success">/mobile/basic/mail/mailMdnRead.jsp</result>
+		</action>
+		
+		<action name="mailMdnRecall" class="mobileMailMdnAction" method="executeMdnRecall">
+			<result name="success" type="chain">
+				<param name="actionName">mailMdnRead</param>
+    			<param name="namespace">/mobile/mail</param>
+    			<param name="method">executeMdnView</param>
+			</result>
+		</action>
+		
+		<action name="mailWork" class="mobileMailWorkAction">
+			<result name="success" type="chain">
+				<param name="actionName">mailList</param>
+    			<param name="namespace">/mobile/mail</param>
+			</result>
+			<result name="folderlist" type="chain">
+				<param name="actionName">folderList</param>
+    			<param name="namespace">/mobile/mail</param>
+			</result>
+		</action>
+		
+		<action name="mailMdnWork" class="mobileMailWorkAction">
+			<result name="success" type="chain">
+				<param name="actionName">mailMdnList</param>
+    			<param name="namespace">/mobile/mail</param>
+    			<param name="method">executeMdnList</param>
+			</result>
+		</action>
+				
+		<action name="readNestedMessageMobile" class="readNestedMessageAction">
+    		<result name="success">/mobile/basic/mail/messageReadNestedPopup.jsp</result>
+        </action>        
+    </package>
+    
+    <package name="mobileAddr" namespace="/mobile/addr" extends="tims-default">
+    	<action name="writePrivateAddrList" class="mobileAddrListAction" method="executePrivate">
+    		<result name="success">/mobile/basic/addrbook/privateWriteAddrList.jsp</result>
+    	</action>
+    	<action name="writePublicAddrList" class="mobileAddrListAction" method="executePublic">
+    		<result name="success">/mobile/basic/addrbook/publicWriteAddrList.jsp</result>
+    	</action>
+    	
+    	<action name="privateAddrList" class="mobileAddrListAction" method="executePrivate">
+    		<result name="success">/mobile/basic/addrbook/privateAddrList.jsp</result>
+    	</action>
+    	<action name="publicAddrList" class="mobileAddrListAction" method="executePublic">
+    		<result name="success">/mobile/basic/addrbook/publicAddrList.jsp</result>
+    	</action>
+    	
+    	<action name="readAddrView" class="mobileAddrViewAction" method="executeViewForm">
+    		<result name="success">/mobile/basic/addrbook/viewAddrForm.jsp</result>
+    	</action>
+    	
+    	<action name="writeAddrView" class="mobileAddrViewAction" method="executeAddForm">
+    		<result name="success">/mobile/basic/addrbook/addAddrForm.jsp</result>
+    	</action>
+    	
+    	<action name="addAddrSave" class="mobileAddrWorkAction" method="executeAdd">
+    		<result name="privateAddr" type="chain">
+				<param name="actionName">privateAddrList</param>
+    			<param name="namespace">/mobile/addr</param>
+			</result>
+			<result name="publicAddr" type="chain">
+				<param name="actionName">publicAddrList</param>
+    			<param name="namespace">/mobile/addr</param>
+			</result>   
+			<result name="error">/mobile/basic/addrbook/addr_error.jsp</result> 		
+    	</action>
+    	
+    	<action name="updateAddrSave" class="mobileAddrWorkAction" method="executeMod">
+    		<result name="privateAddr" type="chain">
+				<param name="actionName">privateAddrList</param>
+    			<param name="namespace">/mobile/addr</param>
+			</result>
+			<result name="publicAddr" type="chain">
+				<param name="actionName">publicAddrList</param>
+    			<param name="namespace">/mobile/addr</param>
+			</result>
+			<result name="error">/mobile/basic/addrbook/addr_error.jsp</result> 		
+    	</action>
+    	
+    	<action name="deleteAddr" class="mobileAddrWorkAction" method="executeDel">
+    		<result name="privateAddr" type="chain">
+				<param name="actionName">privateAddrList</param>
+    			<param name="namespace">/mobile/addr</param>
+			</result>
+			<result name="publicAddr" type="chain">
+				<param name="actionName">publicAddrList</param>
+    			<param name="namespace">/mobile/addr</param>
+			</result>
+			<result name="error">/mobile/basic/addrbook/addr_error.jsp</result>
+    	</action>
+    	
+    	<action name="moveAddr" class="mobileAddrWorkAction" method="executeMove">
+    		<result name="privateAddr" type="chain">
+				<param name="actionName">privateAddrList</param>
+    			<param name="namespace">/mobile/addr</param>
+			</result>
+			<result name="publicAddr" type="chain">
+				<param name="actionName">publicAddrList</param>
+    			<param name="namespace">/mobile/addr</param>
+			</result>
+			<result name="error">/mobile/basic/addrbook/addr_error.jsp</result>		
+    	</action>
+    </package>
+    
+    <package name="mobileCalendar" namespace="/mobile/calendar" extends="tims-default">
+    	<action name="monthCalendar" class="monthCalendarAction">
+    		<result name="success">/mobile/basic/calendar/monthCalendar.jsp</result>
+    	</action>
+    	
+    	<action name="weekCalendar" class="weekCalendarAction">
+    		<result name="success">/mobile/basic/calendar/weekCalendar.jsp</result>
+    	</action>
+    	
+    	<action name="viewCalendar" class="viewCalendarAction">
+    		<result name="success">/mobile/basic/calendar/viewCalendar.jsp</result>
+    		<result name="delete" type="redirect">/mobile/calendar/monthCalendar.do</result>
+    	</action>
+    	
+    	<action name="writeCalendar" class="writeCalendarAction">
+    		<result name="success">/mobile/basic/calendar/writeCalendar.jsp</result>
+    	</action>
+    	
+    	<action name="modifyCalendarQuestion" class="deleteCalendarAction" method="question">
+    		<result name="success">/mobile/basic/calendar/modifyQuestion.jsp</result>
+    	</action>
+    	
+    	<action name="modifyCalendar" class="writeCalendarAction" method="modify">
+    		<result name="success">/mobile/basic/calendar/writeCalendar.jsp</result>
+    	</action>
+    	
+    	<action name="deleteCalendarQuestion" class="deleteCalendarAction" method="question">
+    		<result name="success">/mobile/basic/calendar/deleteQuestion.jsp</result>
+    		<result name="delete" type="redirect">/mobile/calendar/monthCalendar.do</result>
+    	</action>
+    	
+    	<action name="deleteCalendar" class="deleteCalendarAction">
+    		<result name="success" type="redirect">/mobile/calendar/monthCalendar.do</result>
+    	</action>
+    	
+    	<action name="assetCalendar" class="assetCalendarAction" method="ajax">
+    		<result name="success">/mobile/basic/calendar/assetResult.jsp</result>
+    	</action>
+    	
+    	<action name="writeAssetCalendar" class="assetCalendarAction">
+    		<result name="empty">/mobile/basic/calendar/emptyAsset.jsp</result>
+    		<result name="success">/mobile/basic/calendar/writeAsset.jsp</result>
+    	</action>
+    	
+    	<action name="saveCalendar" class="saveCalendarAction">
+    		<result name="moveMonth" type="redirect">/mobile/calendar/monthCalendar.do</result>
+    		<result name="moveWeek" type="redirect">/mobile/calendar/weekCalendar.do</result>
+    	</action>
+    </package>
+    
+     <package name="mobileBbs" namespace="/mobile/bbs" extends="tims-default">
+     	<action name="bbsList" class="bbsListAction">
+    		<result name="success">/mobile/basic/bbs/bbsList.jsp</result>
+    	</action>
+    	
+    	<action name="bbsContentList" class="bbsContentListAction">
+    		<result name="success">/mobile/basic/bbs/bbsContentList.jsp</result>
+    	</action>
+    	
+    	<action name="bbsContentWrite" class="bbsContentWriteAction"
+    		method="execute">
+    		<result name="success">/mobile/basic/bbs/bbsWrite.jsp</result>
+    	</action>
+    	    	
+    	<action name="bbsContentSave" class="bbsContentSaveAction"
+    		method="execute">
+    		<result name="success" type="redirect">/mobile/bbs/bbsContentList.do?bbsId=${bbsId}</result>
+    	</action>
+    	
+    	<action name="bbsContentUpdate" class="bbsContentSaveAction"
+    		method="executeUpdate">
+    		<result name="success" type="redirect">/mobile/bbs/bbsContentList.do?bbsId=${bbsId}</result>
+    	</action>
+    	    	
+    	<action name="bbsContentView" class="bbsContentViewAction">
+    		<result name="success">/mobile/basic/bbs/bbsView.jsp</result>
+    	</action>
+    	
+    	<action name="bbsContentModify"
+					class="bbsContentWriteAction"
+					method="executeModify">
+			<result name="success">/mobile/basic/bbs/bbsWrite.jsp</result>
+		</action>
+		
+		<action	name="bbsContentDelete"
+    				class="bbsContentDeleteAction">
+    		<result name="success" type="redirect">/mobile/bbs/bbsContentList.do?bbsId=${bbsId}</result>
+    	</action>
+    	
+    	<action	name="bbsContentViewReply"
+    				class="bbsContentViewReplyAction">
+    		<result name="success">/mobile/basic/bbs/bbsContentReply.jsp</result>
+    	</action>
+    	
+    	<action	name="bbsContentSaveReply" class="bbsContentSaveReplyAction">
+    		<result name="success">/mobile/basic/bbs/replyResult.jsp</result>
+    	</action>
+    	
+    	<action	name="bbsContentDeleteReply" class="bbsContentDeleteReplyAction">
+    		<result name="success">/mobile/basic/bbs/replyResult.jsp</result>
+    	</action>
+		
+    	
+     </package>
+     
+     
+     <package name="hybridMobile" namespace="/hybrid" extends="tims-hybrid-default">
+     	<action name="login" class="hybridLoginAction"/>
+     	<action name="sso" class="hybridSsoAction">
+     		<result name="calendar" type="redirect">/mobile/calendar/monthCalendar.do</result>
+     		<result name="todayCalendar" type="redirect">${url}</result>
+     		<result name="bbs" type="redirect">/mobile/bbs/bbsList.do</result>
+     	</action>
+     	<action name="mailHomeService" class="mailHomeServiceAction"/>
+     	<action name="mailHomeScheduleService" class="mailHomeServiceAction" method="executeSchedule"/>
+     	<action name="mailBoxListService" class="mailBoxListServiceAction"/>
+     	<action name="mailListService" class="mailListServiceAction"/>
+     	<action name="mailReadService" class="mailReadServiceAction"/>
+     	<action name="mailDownloadService" class="mailDownloadServiceAction"/>
+     	<action name="mailWriteService" class="mailWriteServiceAction"/>
+     	<action name="mailWorkService" class="mailWorkServiceAction"/>
+     	<action name="mailSignListService" class="mailSignListServiceAction"/>
+     	<action name="mailSendService" class="mailSendServiceAction"/>
+     	<action name="mailSendCheckService" class="mailSendCheckServiceAction"/>
+     	<action name="mailSearchEmailService" class="mailSearchEmailServiceAction"/>
+     	<action name="mailSearchAddrOrgService" class="mailSearchEmailServiceAction" method="searchOrgAddr"/>
+     	<action name="mailAttachService" class="mailAttachServiceAction"/>
+     	
+     	<action name="mdnListService" class="mailMdnServiceAction" method="executeMdnList"/>
+     	<action name="mdnViewService" class="mailMdnServiceAction" method="executeMdnView"/>
+     	<action name="mdnRecallService" class="mailMdnServiceAction" method="executeMdnRecall"/>
+     	<action name="mdnSendMailService" class="mailMdnServiceAction" method="executeMdnSendMail"/>
+     	
+     	<action name="addrMemberListService" class="addrMemberListServiceAction"/>
+     	<action name="addrMemberViewService" class="addrMemberViewServiceAction"/>
+     	<action name="addrMemberSaveService" class="addrMemberSaveServiceAction"/>
+     	<action name="addrMemberDeleteService" class="addrMemberDeleteServiceAction"/>
+     	<action name="addrMemberMoveService" class="addrMemberMoveServiceAction"/>
+     	<action name="addrBookListService" class="addrBookGroupServiceAction" method="executeBook"/>
+     	<action name="addrGroupListService" class="addrBookGroupServiceAction" method="executeGroup"/>
+     	
+     </package>
+</struts>

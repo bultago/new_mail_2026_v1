@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Bbs">
+
+ <insert id="saveBoard" parameterClass="board" >
+  		<selectKey resultClass="int" keyProperty="bbsId">
+			select case when max(bbs_id) is null then 1 else max(bbs_id)+1 end
+			from tbbs_board where mail_domain_seq = #mailDomainSeq#
+		</selectKey>
+		
+	  	insert into tbbs_board (
+	  	bbs_id, mail_domain_seq, mail_user_seq, bbs_type, bbs_name, 
+	  	read_auth, write_auth, page_per_cnt, att_max_cnt, att_max_size, 
+	  	aging_day, creator_seq, create_time, description
+	  	)
+	  	values
+	  	(
+	  		#bbsId#, #mailDomainSeq#, #mailUserSeq#, #bbsType#, #bbsName#,
+	  		#readAuth#, #writeAuth#, #pagePerCnt#, #attMaxCnt#, #attMaxSize#,
+	  		#agingDay#, #creatorSeq#, #createTime#, #description#
+	  	)
+  </insert>
+  
+  <insert id="saveBoardContent" parameterClass="boardContent">
+  		<selectKey resultClass="int" keyProperty="contentId">
+			select case when max(content_id) is null then 1 else max(content_id)+1 end
+			from tbbs_content where bbs_id = #bbsId# and mail_domain_seq = #mailDomainSeq#
+		</selectKey>
+		
+	  	insert into tbbs_content 
+	  	(
+	  	bbs_id, mail_domain_seq, is_notice, content_id, parent_id, depth, 
+	  	order_no, subject, att_cnt, ref_cnt, content, 
+	  	creator_seq, creator_name, create_time, ip, msg_id, content_type
+	  	)
+	  	values
+	  	(
+	  		#bbsId#, #mailDomainSeq#, #isNotice#, #contentId#, 
+	  		<dynamic>
+	  			<isNotEqual property="parentId" compareValue="0">
+	  				#parentId#
+	  			</isNotEqual>
+	  			<isEqual property="parentId" compareValue="0">
+	  				#contentId#
+	  			</isEqual>
+	  		</dynamic>
+	  		,
+	  		#depth#,
+	  		#orderNo#, #subject#, #attCnt#, #refCnt#, #content#,
+	  		#creatorSeq#, #creatorName#, #createTime#, #ip#, #msgId#, #contentType#
+	  	)
+  </insert>
+  
+  <insert id="saveBoardContentAttachFile" parameterClass="attachFile">
+  		insert into tbbs_attach
+  		( 
+  			bbs_id, mail_domain_seq, content_id, att_path, att_name, att_size 
+  		)
+  		values
+  		( 
+  			#bbsId#, #mailDomainSeq#, #contentId#, #attPath#, #attName#, #attSize# 
+  		)
+  </insert>
+  
+  <update id="modifyBoard" parameterMap="boardParameter" >
+   		update tbbs_board
+   		<dynamic prepend=" SET ">
+  			<isPropertyAvailable property="bbsName" prepend=",">
+  				bbs_name = #bbsName:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="readAuth" prepend=",">
+  				read_auth = #readAuth:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="writeAuth" prepend=",">
+  				write_auth = #writeAuth:VARCHAR#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="pagePerCnt" prepend=",">
+  				page_per_cnt = #pagePerCnt:NUMBER#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="attMaxCnt" prepend=",">
+  				att_max_cnt = #attMaxCnt:NUMBER#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="attMaxSize" prepend=",">
+  				att_max_size = #attMaxSize:NUMBER#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="agingDay" prepend=",">
+  				aging_day = #agingDay:NUMBER#
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="description" prepend=",">
+  				description = #description:VARCHAR#
+  			</isPropertyAvailable>
+  		</dynamic>
+  		WHERE 
+  			bbs_id = #bbsId# and mail_domain_seq = #mailDomainSeq#
+   </update>
+   
+   <update id="modifyBoardContent" parameterMap="boardContentParameter">
+   		update tbbs_content
+   		<dynamic prepend=" SET ">
+  			<isNotNull property="isNotice" prepend=",">
+  				is_notice = #isNotice:NUMBER#
+  			</isNotNull>
+  			<isNotNull property="subject" prepend=",">
+  				subject = #subject:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="attCnt" prepend=",">
+  				att_cnt = #attCnt:NUMBER#
+  			</isNotNull>
+  			<isNotNull property="content" prepend=",">
+  				content = #content:BLOB#
+  			</isNotNull>
+  			<isNotNull property="creatorSeq" prepend=",">
+  				creator_seq = #creatorSeq:NUMBER#
+  			</isNotNull>
+  			<isNotNull property="createTime" prepend=",">
+  				create_time = #createTime:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="ip" prepend=",">
+  				ip = #ip:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="msgId" prepend=",">
+  				msg_id = #msgId:VARCHAR#
+  			</isNotNull>
+  			<isNotNull property="contentType" prepend=",">
+  				content_type = #contentType:VARCHAR#
+  			</isNotNull>
+  		</dynamic>
+  		WHERE 
+  			content_id = #contentId# and bbs_id = #bbsId# and mail_domain_seq = #mailDomainSeq#
+   </update>
+   
+   <update id="modifyHitCount" parameterClass="map">
+  		update tbbs_content set ref_cnt=ref_cnt+1 where bbs_id=#bbsId# and content_id=#contentId# and mail_domain_seq = #mailDomainSeq#
+  </update>
+  
+  <update id="modifyBoardContentAttCnt" parameterClass="map">
+  		update tbbs_content set att_cnt = #attCnt# where bbs_id=#bbsId# and content_id=#contentId# and mail_domain_seq = #mailDomainSeq#
+  </update>
+  
+  <update id="modifyOrderNo" parameterClass="map">
+  		update tbbs_content set order_no=order_no+1 where bbs_id=#bbsId# and parent_id=#parentId# and mail_domain_seq = #mailDomainSeq# and order_no > #orderNo#
+  </update>
+  
+  
+  <delete id="deleteBoard" parameterClass="map" >
+		delete from tbbs_board where bbs_id = #bbsId# and mail_domain_seq = #domainSeq#
+  </delete>
+  
+  <delete id="deleteBoardContent" parameterClass="map" >
+		delete from tbbs_content where bbs_id = #bbsId# and mail_domain_seq = #mailDomainSeq#
+		
+		<dynamic>
+			<isNotNull property="contentIds">
+				<iterate property="contentIds"
+					prepend="and content_id"
+					open=" in ("
+					conjunction=","
+					close=")"
+				>
+					#contentIds[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+  </delete>
+  
+  <delete id="deleteBoardContentAttachFile" parameterClass="map">
+  		delete from tbbs_attach where bbs_id = #bbsId# and mail_domain_seq = #mailDomainSeq#
+		
+		<dynamic>
+			<isNotNull property="contentIds">
+				<iterate property="contentIds"
+					prepend="and content_id"
+					open=" in ("
+					conjunction=","
+					close=")"
+				>
+					#contentIds[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+
+  </delete>
+  
+  
+  <select id="readBoardList" parameterClass="int" resultMap="boardResult">
+	    select * from tbbs_board where mail_domain_seq = #domainSeq# and (bbs_type is null or bbs_type not in ('notice')) order by bbs_topid, bbs_fullid
+  </select>
+  
+  <select id="readBoard" resultMap="boardResult" parameterClass="map">
+  		select * from tbbs_board where bbs_id = #bbsId# and mail_domain_seq = #domainSeq# and (bbs_type is null or bbs_type not in ('notice'))
+  </select>
+  
+  <select id="readNoticeBoard" resultMap="boardResult" parameterClass="map">
+  		select * from tbbs_board where bbs_id = #bbsId# and mail_domain_seq = #domainSeq#
+  </select>
+
+  <select id="readBoardContentCount" resultClass="int" parameterClass="map">
+  		select count(*) from tbbs_content where bbs_id = #bbsId# and mail_domain_seq = #mailDomainSeq#
+  </select>
+  
+  <select id="readBoardContent" resultMap="boardContentResult" parameterClass="map">
+  		select * from tbbs_content where bbs_id = #bbsId# and content_id = #contentId# and mail_domain_seq = #mailDomainSeq#
+  </select>
+  
+  <select id="readBoardContentNoticeList" resultMap="boardContentResult" parameterClass="map">
+  		select * from tbbs_content where bbs_id = #bbsId# and mail_domain_seq = #mailDomainSeq# and is_notice = 1 order by content_id desc	
+  </select>
+  
+  <select id="readBoardContentNoticeListCount" resultClass="int" parameterClass="map">
+  		select count(*) from tbbs_content where bbs_id = #bbsId# and mail_domain_seq = #mailDomainSeq# and is_notice = 1
+  </select>
+  
+  <select id="readBoardContentList" resultMap="boardContentResult" parameterClass="map">
+  		select * from (
+  			select rownum numrow , bbs.* from (
+  				select * from tbbs_content where bbs_id= #bbsId# and mail_domain_seq = #mailDomainSeq#
+		  			<isGreaterThan property="creatorSeq" compareValue="0" prepend="and">
+		  				creator_seq = #creatorSeq#
+		  			</isGreaterThan>
+		  			<isNotNull property="searchType" prepend="and">
+		  				<isEqual property="searchType" compareValue="1">
+		  					subject like #keyWord#
+		  				</isEqual>
+		  				<isEqual property="searchType" compareValue="2">
+		  					creator_name like #keyWord#
+		  				</isEqual>
+		  				<isEqual property="searchType" compareValue="3">
+		  					content like #keyWord#
+		  				</isEqual>
+		  				<isEqual property="searchType" compareValue="4">
+		  					(subject like #keyWord# or creator_name like #keyWord#)
+		  				</isEqual>
+		  				<isEqual property="searchType" compareValue="5">
+		  					(subject like #keyWord# or content like #keyWord#)
+		  				</isEqual>
+		  				<isEqual property="searchType" compareValue="6">
+		  					(subject like #keyWord# or creator_name like #keyWord# or content like #keyWord#)
+		  				</isEqual>
+		  				<isEqual property="searchType" compareValue="7">
+		  					creator_seq = #keyWord#
+		  				</isEqual>
+		  			</isNotNull>
+				order by parent_id desc, order_no
+  			) bbs 
+     	) where numrow <![CDATA[ > ]]> #skipResult# and numrow <![CDATA[ <= ]]> #skipResult#+#maxResult#
+  </select>
+  
+  <select id="readBoardContentListCount" resultClass="int" parameterClass="map">
+  		select count(*) from tbbs_content where bbs_id= #bbsId# and mail_domain_seq = #mailDomainSeq#
+  			<isGreaterThan property="creatorSeq" compareValue="0" prepend="and">
+  				creator_seq = #creatorSeq#
+  			</isGreaterThan>
+  			<isNotNull property="searchType" prepend="and">
+  				<isEqual property="searchType" compareValue="1">
+  					subject like #keyWord#
+  				</isEqual>
+  				<isEqual property="searchType" compareValue="2">
+  					creator_name like #keyWord#
+  				</isEqual>
+  				<isEqual property="searchType" compareValue="3">
+  					content like #keyWord#
+  				</isEqual>
+  				<isEqual property="searchType" compareValue="4">
+  					(subject like #keyWord# or creator_name like #keyWord#)
+  				</isEqual>
+  				<isEqual property="searchType" compareValue="5">
+  					(subject like #keyWord# or content like #keyWord#)
+  				</isEqual>
+  				<isEqual property="searchType" compareValue="6">
+  					(subject like #keyWord# or creator_name like #keyWord# or content like #keyWord#)
+  				</isEqual>
+  				<isEqual property="searchType" compareValue="7">
+  					creator_seq = #keyWord#
+  				</isEqual>
+  			</isNotNull>
+  </select>
+  
+  <select id="readBoardContentListByMessageIds" resultMap="boardContentResult" parameterClass="map">
+  		select * from tbbs_content where bbs_id= #bbsId# and mail_domain_seq = #mailDomainSeq#
+  		<dynamic>
+			<isNotNull property="messageIds">
+				<iterate property="messageIds"
+					prepend="and msg_id"
+					open=" in ("
+					conjunction=","
+					close=")"
+				>
+					#messageIds[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+		order by parent_id desc, order_no
+  </select>
+  
+  <select id="readBoardContentAttachFileList" parameterClass="map" resultMap="boardContentAttachResult">
+  		select * from tbbs_attach where bbs_id = #bbsId# and content_id = #contentId# and mail_domain_seq = #mailDomainSeq#
+  </select>
+  
+  <select id="readBoardAdiminList" parameterClass="map" resultClass="int">
+  		select mail_user_seq from tbbs_admin where bbs_id = #bbsId# and mail_domain_seq = #mailDomainSeq#
+  </select>
+  
+  <select id="readBoardContentMaxOrderNo" parameterClass="map" resultClass="int">
+  		select case when max(order_no) is null then 0 else max(order_no) end from tbbs_content where bbs_id = #bbsId# and parent_id = #parentId# and mail_domain_seq = #mailDomainSeq#
+  </select>
+  
+  <select id="readPrevBoardContent" parameterClass="map" resultMap="boardContentResult">
+  		select * from (
+  			select rownum numrow , bbs.* from (
+		  		select * from tbbs_content where bbs_id=#bbsId# and mail_domain_seq = #mailDomainSeq#
+		  			<isGreaterThan property="creatorSeq" compareValue="0" prepend="and">
+		  				creator_seq = #creatorSeq#
+		  			</isGreaterThan>
+		  			<isNotNull property="searchType" prepend="and">
+		 				<isEqual property="searchType" compareValue="1">
+		 					subject like #keyWord#
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="2">
+		 					creator_name like #keyWord#
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="3">
+		 					content like #keyWord#
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="4">
+		 					(subject like #keyWord# or creator_name like #keyWord#)
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="5">
+		 					(subject like #keyWord# or content like #keyWord#)
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="6">
+		 					(subject like #keyWord# or creator_name like #keyWord# or content like #keyWord#)
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="7">
+		 					creator_name = #keyWord#
+		 				</isEqual>
+		 			</isNotNull>
+		  		
+		  		and content_id not in (#contentId#, #parentId#) and parent_id <![CDATA[ <= ]]> #parentId#
+		  		
+		  		<dynamic>
+		  			<isGreaterThan property="contentId" compareProperty="parentId" prepend="and">
+		  			
+		  				parent_id = #parentId# and order_no <![CDATA[ > ]]> #orderNo#
+		  			
+		  			</isGreaterThan>
+		  		</dynamic>
+		  		order by parent_id desc, order_no
+	  		) bbs 
+	     ) where numrow <![CDATA[ > ]]> 0 and numrow <![CDATA[ <= ]]> 1
+  </select>
+  
+  <select id="readPrevIfNullBoardContent" parameterClass="map" resultMap="boardContentResult">
+  		select * from (
+  			select rownum numrow , bbs.* from (
+		  		select * from tbbs_content where bbs_id=#bbsId# and mail_domain_seq = #mailDomainSeq#
+		  			<isGreaterThan property="creatorSeq" compareValue="0" prepend="and">
+		  				creator_seq = #creatorSeq#
+		  			</isGreaterThan>
+		  			<isNotNull property="searchType" prepend="and">
+		 				<isEqual property="searchType" compareValue="1">
+		 					subject like #keyWord#  
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="2">
+		 					creator_name like #keyWord#  
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="3">
+		 					content like #keyWord#  
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="4">
+		 					(subject like #keyWord# or creator_name like #keyWord#)
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="5">
+		 					(subject like #keyWord# or content like #keyWord#)
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="6">
+		 					(subject like #keyWord# or creator_name like #keyWord# or content like #keyWord#)
+		 				</isEqual>
+		 				<isEqual property="searchType" compareValue="7">
+		 					creator_name = #keyWord#
+		 				</isEqual>
+		 			</isNotNull>
+		  		
+		  		and content_id not in (#parentId#) and parent_id <![CDATA[ < ]]> #parentId#
+		  		
+		  		order by parent_id desc, order_no
+		  		
+		  	) bbs 
+	     ) where numrow <![CDATA[ > ]]> 0 and numrow <![CDATA[ <= ]]> 1
+  </select>
+  
+  <select id="readPrevBoardContentByMessageId" parameterClass="map" resultMap="boardContentResult">
+  		select * from (
+  			select rownum numrow , bbs.* from (
+		  		select * from tbbs_content where bbs_id=#bbsId# and mail_domain_seq = #mailDomainSeq#
+		  			<isGreaterThan property="creatorSeq" compareValue="0" prepend="and">
+		  				creator_seq = #creatorSeq#
+		  			</isGreaterThan>
+		  			<dynamic>
+						<isNotNull property="messageIds">
+							<iterate property="messageIds"
+								prepend="and msg_id"
+								open=" in ("
+								conjunction=","
+								close=")"
+							>
+								#messageIds[]#
+							</iterate>
+						</isNotNull>
+					</dynamic>
+		  		and content_id not in (#contentId#, #parentId#) and parent_id <![CDATA[ <= ]]> #parentId#
+		  		
+		  		<dynamic>
+		  			<isGreaterThan property="contentId" compareProperty="parentId" prepend="and">
+		  			
+		  				parent_id = #parentId# and order_no <![CDATA[ > ]]> #orderNo#
+		  			
+		  			</isGreaterThan>
+		  		</dynamic>
+		  		order by parent_id desc, order_no
+  		
+  			) bbs 
+	     ) where numrow <![CDATA[ > ]]> 0 and numrow <![CDATA[ <= ]]> 1
+  </select>
+  
+  <select id="readPrevIfNullBoardContentByMessageId" parameterClass="map" resultMap="boardContentResult">
+  		select * from (
+  			select rownum numrow , bbs.* from (
+		  		select * from tbbs_content where bbs_id=#bbsId# and mail_domain_seq = #mailDomainSeq#
+		  			<isGreaterThan property="creatorSeq" compareValue="0" prepend="and">
+		  				creator_seq = #creatorSeq#
+		  			</isGreaterThan>
+		  			<dynamic>
+						<isNotNull property="messageIds">
+							<iterate property="messageIds"
+								prepend="and msg_id"
+								open=" in ("
+								conjunction=","
+								close=")"
+							>
+								#messageIds[]#
+							</iterate>
+						</isNotNull>
+					</dynamic>	
+		  		
+		  		and content_id not in (#parentId#) and parent_id <![CDATA[ < ]]> #parentId#
+		  		
+		  		order by parent_id desc, order_no
+  		
+  			) bbs 
+	     ) where numrow <![CDATA[ > ]]> 0 and numrow <![CDATA[ <= ]]> 1
+  </select>
+  
+  <select id="readNextBoardContent" parameterClass="map" resultMap="boardContentResult">
+	    select * from (
+	  			select rownum numrow , bbs.* from (
+			  		select * from tbbs_content where bbs_id=#bbsId# and mail_domain_seq = #mailDomainSeq#
+			  			<isGreaterThan property="creatorSeq" compareValue="0" prepend="and">
+			  				creator_seq = #creatorSeq#
+			  			</isGreaterThan>
+			  			<isNotNull property="searchType" prepend="and">
+			 				<isEqual property="searchType" compareValue="1">
+			 					subject like #keyWord#  
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="2">
+			 					creator_name like #keyWord#  
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="3">
+			 					content like #keyWord#  
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="4">
+			 					(subject like #keyWord# or creator_name like #keyWord#)
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="5">
+			 					(subject like #keyWord# or content like  #keyWord#)
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="6">
+			 					(subject like #keyWord# or creator_name like #keyWord# or content like #keyWord#)
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="7">
+			 					creator_name = #keyWord#
+			 				</isEqual>
+			 			</isNotNull>
+			  			
+			  			and content_id not in (#contentId#, #parentId#)
+			
+			  		<dynamic>
+			  			<isEqual property="contentId" compareProperty="parentId" prepend="and">
+			  				parent_id <![CDATA[ > ]]> #parentId#
+			  			</isEqual>
+			  			<isGreaterThan property="contentId" compareProperty="parentId" prepend="and">
+			  				 parent_id = #parentId# and order_no <![CDATA[ < ]]> #orderNo#
+			  			</isGreaterThan>
+			  		</dynamic>
+			  		order by parent_id, order_no desc
+		  	) bbs 
+		) where numrow <![CDATA[ > ]]> 0 and numrow <![CDATA[ <= ]]> 1
+  </select>
+  
+  <select id="readNextIfNullBoardContent" parameterClass="map" resultMap="boardContentResult">
+  		select * from (
+	  			select rownum numrow , bbs.* from (
+			  		select * from tbbs_content where bbs_id=#bbsId# and content_id = #parentId# and mail_domain_seq = #mailDomainSeq#
+			  			<isGreaterThan property="creatorSeq" compareValue="0" prepend="and">
+			  				creator_seq = #creatorSeq#
+			  			</isGreaterThan>
+			  			<isNotNull property="searchType" prepend="and">
+			 				<isEqual property="searchType" compareValue="1">
+			 					subject like #keyWord#  
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="2">
+			 					creator_name like #keyWord#  
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="3">
+			 					content like #keyWord#  
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="4">
+			 					(subject like #keyWord# or creator_name like #keyWord#)
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="5">
+			 					(subject like #keyWord# or content like #keyWord#)
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="6">
+			 					(subject like #keyWord# or creator_name like #keyWord# or content like #keyWord#)
+			 				</isEqual>
+			 				<isEqual property="searchType" compareValue="7">
+			 					creator_name = #keyWord#
+			 				</isEqual>
+			 			</isNotNull>
+			 			
+			  		order by parent_id, order_no desc
+  			) bbs 
+		) where numrow <![CDATA[ > ]]> 0 and numrow <![CDATA[ <= ]]> 1
+  </select>
+  
+  <select id="readNextBoardContentByMessageId" parameterClass="map" resultMap="boardContentResult">
+  		select * from (
+	  			select rownum numrow , bbs.* from (
+			  		select * from tbbs_content where bbs_id=#bbsId# and mail_domain_seq = #mailDomainSeq#
+			  			<isGreaterThan property="creatorSeq" compareValue="0" prepend="and">
+			  				creator_seq = #creatorSeq#
+			  			</isGreaterThan>
+			  			<dynamic>
+							<isNotNull property="messageIds">
+								<iterate property="messageIds"
+									prepend="and msg_id"
+									open=" in ("
+									conjunction=","
+									close=")"
+								>
+									#messageIds[]#
+								</iterate>
+							</isNotNull>
+						</dynamic>
+			  		and content_id not in (#contentId#, #parentId#)
+			
+			  		<dynamic>
+			  			<isEqual property="contentId" compareProperty="parentId" prepend="and">
+			  				parent_id <![CDATA[ > ]]> #parentId#
+			  			</isEqual>
+			  			<isGreaterThan property="contentId" compareProperty="parentId" prepend="and">
+			  				 parent_id = #parentId# and order_no <![CDATA[ < ]]> #orderNo#
+			  			</isGreaterThan>
+			  		</dynamic>
+			  		order by parent_id, order_no desc
+  		
+  			) bbs 
+		) where numrow <![CDATA[ > ]]> 0 and numrow <![CDATA[ <= ]]> 1
+  </select>
+  
+  <select id="readNextIfNullBoardContentByMessageId" parameterClass="map" resultMap="boardContentResult">
+  		select * from (
+	  			select rownum numrow , bbs.* from (
+			  		select * from tbbs_content where bbs_id=#bbsId# and content_id = #parentId# and mail_domain_seq = #mailDomainSeq#
+			  			<isGreaterThan property="creatorSeq" compareValue="0" prepend="and">
+			  				creator_seq = #creatorSeq#
+			  			</isGreaterThan>
+			  			<dynamic>
+							<isNotNull property="messageIds">
+								<iterate property="messageIds"
+									prepend="and msg_id"
+									open=" in ("
+									conjunction=","
+									close=")"
+								>
+									#messageIds[]#
+								</iterate>
+							</isNotNull>
+						</dynamic>	
+			  		
+			  		order by parent_id, order_no desc
+  		
+  			) bbs 
+		) where numrow <![CDATA[ > ]]> 0 and numrow <![CDATA[ <= ]]> 1
+  </select>
+  
+  <select id="readBoardContentMsgIds" parameterClass="map" resultClass="String">
+  		select msg_id from tbbs_content where bbs_id = #bbsId# and mail_domain_seq = #mailDomainSeq#
+  		<dynamic>
+			<isNotNull property="contentIds">
+				<iterate property="contentIds"
+					prepend="and content_id"
+					open=" in ("
+					conjunction=","
+					close=")"
+				>
+					#contentIds[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+  </select>
+  
+  <select id="readNoticeBbsList" parameterClass="int" resultMap="boardResult">
+  		select * from tbbs_board where bbs_type = 'notice' and mail_domain_seq = #domainSeq#
+  </select>
+  
+  <select id="readContentReplyList" parameterClass="map" resultMap="boardContentReplyResult">
+  		select * from (
+	  		select rownum numrow , bbs.* from (
+  				select * from tbbs_content_reply where bbs_id=#bbsId# and content_id = #contentId# and mail_domain_seq = #mailDomainSeq# order by reply_id
+	  		) bbs 
+	     ) where numrow <![CDATA[ > ]]> #skipResult# and numrow <![CDATA[ <= ]]> #skipResult#+#maxResult#
+  </select>
+  
+  <select id="readContentReplyListCount" parameterClass="map" resultClass="int">
+  		select count(*) from tbbs_content_reply where bbs_id=#bbsId# and content_id = #contentId# and mail_domain_seq = #mailDomainSeq#
+  </select>
+  
+  <insert id="saveContentReply" parameterClass="boardContentReply" >
+  		<selectKey resultClass="int" keyProperty="replyId">
+			select case when max(reply_id) is null then 1 else max(reply_id)+1 end
+			from tbbs_content_reply where bbs_id=#bbsId# and content_id = #contentId# and mail_domain_seq = #mailDomainSeq#
+		</selectKey>
+		
+	  	insert into tbbs_content_reply 
+	  	(
+	  	bbs_id, mail_domain_seq, content_id, reply_id, content, 
+	  	creator_seq, creator_name, create_time, ip
+	  	)
+	  	values
+	  	(
+	  		#bbsId#, #mailDomainSeq#, #contentId#, #replyId#, 
+	  		#content#, #creatorSeq#, #creatorName#, #createTime#, #ip#
+	  	)
+  </insert>
+  
+  <delete id="deleteContentReply" parameterClass="boardContentReply">
+		delete from tbbs_content_reply 
+		where reply_id=#replyId# and bbs_id=#bbsId# and content_id = #contentId# and mail_domain_seq = #mailDomainSeq#
+  </delete>
+  <select id="existNewContentCnt" parameterClass="map" resultClass="int">
+  		select count(*) from tbbs_content where bbs_id=#bbsId# and mail_domain_seq = #doaminSeq# and create_time like #today#
+  </select>
+ </sqlMap>

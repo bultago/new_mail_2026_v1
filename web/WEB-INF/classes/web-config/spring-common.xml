@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans 
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-2.5.xsd
+		http://www.directwebremoting.org/schema/spring-dwr 
+		http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd"		
+	default-autowire="byName">	
+	
+	<bean id="baseConfiguration" 
+			class="com.terracetech.tims.config.BaseConfigurationLoaderImpl" 
+			init-method="processSettingConfig" >			
+		<constructor-arg value="tims-configuration.xml"/>
+	</bean>
+	
+	<jee:jndi-lookup id="dataSource" jndi-name="terraceDB" resource-ref="false" />
+	
+	<bean id="sqlMapClient"
+			class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
+			p:dataSource-ref="dataSource"
+			p:configLocation="/WEB-INF/classes/db-config/sqlMapConfig.xml">			
+	</bean>
+	
+	
+	<!-- =================================================================== -->
+	<!-- Advice DEFINITIONS                                                  -->
+	<!-- =================================================================== -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+	
+	<bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource">
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="import*" propagation="REQUIRED" />
+			<tx:method name="move*" propagation="REQUIRED" />
+			<tx:method name="copy*" propagation="REQUIRED" />
+			<tx:method name="import*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<bean id="txAdvisor" class="org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
+		<property name="advice" ref="txAdvice" />
+		<property name="expression" 
+			value="@annotation(com.terracetech.tims.webmail.common.advice.Transactional)" />
+	</bean>
+		 
+	<bean id="serviceAdvice" class="com.terracetech.tims.webmail.common.advice.BeforeServiceAdvice" />
+	<bean id="serviceAdvisor" class="org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
+		<property name="advice" ref="serviceAdvice" />
+		<property name="expression" 
+			value="execution(public * com.terracetech.tims.webmail..*Service.*(..))" />
+	</bean>	
+	
+	<!-- =================================================================== -->
+	<!-- DAO DEFINITIONS                                                     -->
+	<!-- =================================================================== -->
+		
+	<bean id="docTemplateDao"
+		class="com.terracetech.tims.webmail.common.dao.DocTemplateDao"
+		p:sqlMapClient-ref="sqlMapClient" />
+	
+	<!-- =================================================================== -->
+	<!-- MANAGER DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean id="docTemplateManager"
+			class="com.terracetech.tims.webmail.common.manager.DocTemplateManager"
+			scope="prototype"			
+			p:templateDao-ref="docTemplateDao"			
+			/>
+	
+	<bean id="virusManager"
+			class="com.terracetech.tims.webmail.common.manager.VirusManager"
+			scope="prototype"			
+			p:systemConfigDao-ref="systemConfigDao"			
+			/>
+	<bean id="geoIpManager"
+			class="com.terracetech.tims.webmail.common.manager.GeoIpManager"
+			scope="prototype"/>
+	<!-- =================================================================== -->
+	<!-- ACTION DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean 	id="docTemplateAction" 
+		class="com.terracetech.tims.webmail.common.action.DocTemplateAction"		
+		p:docTemplateManager-ref="docTemplateManager"
+		scope="prototype">
+	</bean>
+	
+	<bean 	id="alimInfoAction" 
+		class="com.terracetech.tims.webmail.common.action.AlimInfoAction"
+		p:userAuthManager-ref="userAuthManager"
+		p:systemManager-ref="systemConfigManager"
+		p:mailManager-ref="mailManager"
+		scope="prototype">
+	</bean>
+	
+	<bean 	id="changeUserAccountAction" 
+		class="com.terracetech.tims.webmail.common.action.ChangeUserAccountAction"		
+		p:mailUserManager-ref="mailUserManager"
+		p:userAuthManager-ref="userAuthManager"
+		p:systemManager-ref="systemConfigManager"
+		scope="prototype">
+	</bean>
+	
+	
+	<bean id="emptyMappingAction" class="com.terracetech.tims.webmail.common.action.EmptyMappingAction"/>
+	
+	<dwr:configuration>
+		<dwr:convert type="exception"  class="java.lang.Exception"></dwr:convert>
+		<dwr:convert type="bean"  class="java.lang.StackTraceElement"></dwr:convert>
+	</dwr:configuration>
+	
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">  
+            <property name="configLocation" value="classpath:ehcache.xml" />    
+     </bean> 
+     <bean id="checkUserExistManager"  class="com.terracetech.tims.webmail.common.manager.CheckUserExistManager">
+        <property name="cacheManager" ref="cacheManager"></property>
+        <property name="cacheName" value="authCache"></property>
+        <property name="userSettingManager" ref="settingManager"></property>
+      </bean>
+</beans>

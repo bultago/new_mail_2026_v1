@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+		default-autowire="byName">
+			
+			
+	<!-- =================================================================== -->
+	<!-- DAO DEFINITIONS                                                     -->
+	<!-- =================================================================== -->
+	
+	<bean id="boardDao"
+		class="com.terracetech.tims.webmail.bbs.dao.BoardDao"
+		p:sqlMapClient-ref="sqlMapClient" />
+		
+	<bean id="boardContentDao"
+		class="com.terracetech.tims.webmail.bbs.dao.BoardContentDao"
+		p:sqlMapClient-ref="sqlMapClient" />
+	
+	<!-- =================================================================== -->
+	<!-- MANAGER DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean id="bbsManager" 
+		class="com.terracetech.tims.webmail.bbs.manager.BbsManager">
+		<property name="boardDao"><ref bean="boardDao" /></property>
+		<property name="contentDao"><ref bean="boardContentDao" /></property>
+		<property name="mailUserDao"><ref bean="mailUserDao" /></property>
+		<property name="systemConfigDao" ref="systemConfigDao"/>
+		<property name="commandHandler" ref="commandHandler"/>
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- ACTION DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+		
+	<bean 	id="listContentAction" class="com.terracetech.tims.webmail.bbs.action.ListContentAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager"/>
+	<bean 	id="viewContentAction" class="com.terracetech.tims.webmail.bbs.action.ViewContentAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager"/>
+	<bean 	id="writeContentAction" class="com.terracetech.tims.webmail.bbs.action.WriteContentAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager"/>
+	<bean 	id="saveContentAction" class="com.terracetech.tims.webmail.bbs.action.SaveContentAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager" p:virusManager-ref="virusManager"/>
+	<bean 	id="downloadBbsAttachAction" class="com.terracetech.tims.webmail.bbs.action.DownloadAttachAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager"/>
+	<bean 	id="downloadBbsAllAttachAction" class="com.terracetech.tims.webmail.bbs.action.DownloadAllAttachAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager"/>
+	<bean 	id="deleteContentAction" class="com.terracetech.tims.webmail.bbs.action.DeleteContentAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager"/>
+			
+	<bean 	id="listNoticeContentAction" class="com.terracetech.tims.webmail.bbs.action.ListNoticeContentAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager" p:mailUserManager-ref="mailUserManager">
+			<constructor-arg value="false"/>
+	</bean>	
+	<bean 	id="viewNoticeContentAction" class="com.terracetech.tims.webmail.bbs.action.ViewNoticeContentAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager" p:mailUserManager-ref="mailUserManager">
+			<constructor-arg value="false"/>
+	</bean>
+	<bean 	id="downloadNoticeAttachAction" class="com.terracetech.tims.webmail.bbs.action.DownloadNoticeAttachAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager" p:mailUserManager-ref="mailUserManager">
+			<constructor-arg value="false"/>
+	</bean>
+	<bean 	id="downloadAllNoticeAttachAction" class="com.terracetech.tims.webmail.bbs.action.DownloadAllNoticeAttachAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager" p:mailUserManager-ref="mailUserManager">
+			<constructor-arg value="false"/>
+	</bean>
+	<bean 	id="viewContentReplyAction" class="com.terracetech.tims.webmail.bbs.action.ViewContentReplyAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager"/>
+	<bean 	id="saveContentReplyAction" class="com.terracetech.tims.webmail.bbs.action.SaveContentReplyAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager"/>
+	<bean 	id="deleteContentReplyAction" class="com.terracetech.tims.webmail.bbs.action.DeleteContentReplyAction" scope="prototype" 
+			p:bbsManager-ref="bbsManager"/>	
+			
+	<!-- =================================================================== -->
+	<!-- SERVICE DEFINITIONS                                                 -->
+	<!-- =================================================================== -->
+	
+	<bean id="bbsService" 
+			class="com.terracetech.tims.service.tms.impl.BbsService" 
+			scope="prototype"  p:bbsManager-ref="bbsManager"/>			
+</beans>

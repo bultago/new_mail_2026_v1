@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Org">
+
+	<typeAlias alias="dept" type="com.terracetech.tims.webmail.organization.vo.DeptVO" />
+	<typeAlias alias="orgMember" type="com.terracetech.tims.webmail.organization.vo.MemberVO" />
+	
+	<resultMap id="organizationResult" class="Dept" >
+    	<result column="MAIL_DOMAIN_SEQ" property="mailDomainSeq" jdbcType="INTEGER" />
+    	<result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+    	<result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+    	<result column="ORG_NAME_EN" property="orgEnName" jdbcType="VARCHAR" />
+    	<result column="ORG_NAME_JP" property="orgJpName" jdbcType="VARCHAR" />
+    	<result column="ORG_SORT_ORDER" property="orgSortOrder" jdbcType="INTEGER" />
+    	<result column="ORG_UPCODE" property="orgUpcode" jdbcType="VARCHAR" />
+    	<result column="ORG_FULLCODE" property="orgFullcode" jdbcType="VARCHAR" />
+    	<result column="REPRESENTATIVE_EMAIL" property="representativeEmail" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="memberResult" class="orgMember" >
+    <result column="MAIL_USER_SEQ" property="mailUserSeq" jdbcType="INTEGER" />
+    <result column="mail_uid" property="mailUid" jdbcType="VARCHAR" />
+    <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+    <result column="ORG_FULLCODE" property="orgFullCode" jdbcType="VARCHAR" />
+    <result column="TITLE_NAME" property="titleName" jdbcType="VARCHAR" />
+    <result column="CLASS_NAME" property="className"  jdbcType="VARCHAR"/>
+    <result column="SORT_ORDER" property="sortOrder" jdbcType="INTEGER" />
+    <result column="MEMBER_NAME" property="memberName" jdbcType="VARCHAR" />
+    <result column="MEMBER_EMAIL" property="memberEmail" jdbcType="VARCHAR" />
+    <result column="DEPT_NAME" property="deptName" jdbcType="VARCHAR" />
+    <result column="OFFICE_TEL" property="officeTel" jdbcType="VARCHAR" />
+    <result column="title_code" property="titleCode" jdbcType="VARCHAR" />
+    <result column="class_code" property="classCode" jdbcType="VARCHAR" />
+    <result column="grade_code" property="gradeCode" jdbcType="VARCHAR" />
+    <result column="mobile_no" property="mobileNo" jdbcType="VARCHAR" />
+    <result column="empno" property="empno" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="memberDetailResult" class="orgMember" >
+    <result column="MAIL_USER_SEQ" property="mailUserSeq"/>
+    <result column="ORG_CODE" property="orgCode"/>
+    <result column="TITLE_NAME" property="titleName"/>
+    <result column="CLASS_NAME" property="className"/>
+    <result column="SORT_ORDER" property="sortOrder"/>
+    <result column="MEMBER_NAME" property="memberName"/>
+    <result column="MEMBER_EMAIL" property="memberEmail"/>
+    <result column="DEPT_NAME" property="deptName"/>
+    <result column="MOBILE_NO" property="mobileNo"  />
+    <result column="OFFICE_TEL" property="officeTel"  />
+    <result column="EMPNO" property="empno"  />
+  </resultMap>
+  
+  <cacheModel id="orgCache" type="MEMORY" readOnly="false" serialize="true">
+	  	<flushInterval seconds="10"/>
+	  	<flushOnExecute statement="SystemConfig.allCacheDelete"/>
+		<property name="reference-type" value="SOFT"/>
+	</cacheModel>
+</sqlMap>

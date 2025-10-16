@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="dynamicOrg" namespace="/dynamic/org" extends="tims-default">
+		<action name="orgCommon"
+					class="orgCommonAction"
+					method="loadPage">
+			<result name="load">/dynamic/org/orgFrame.jsp</result>
+		</action>
+		<action 	name="orgTree"
+    				class="viewOrgTreeAction"
+    				method="executePart">
+    		<result name="success">/dynamic/org/orgTreeView.jsp</result>
+    	</action>
+    	<action 	name="memberList"
+    				class="viewMemberListAction"
+    				method="executePart">
+    		<result name="success">/dynamic/org/orgMemberList.jsp</result>
+    	</action>
+    	<action 	name="orgPopupTree"
+    				class="viewOrgTreeAction"
+    				method="executePart">
+    		<result name="success">/dynamic/org/orgPopupTree.jsp</result>
+    	</action>
+    	<action 	name="orgPopupList"
+    				class="viewMemberListAction"
+    				method="executePart">
+    		<result name="success">/dynamic/org/orgPopupList.jsp</result>
+    	</action>
+    	
+    	<action 	name="orgJsonlist" class="viewOrgListJsonAction"/>
+    	
+    	<action 	name="orgJsonTree" class="viewOrgTreeJsonAction"/>
+    	
+    </package>
+</struts>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="VCard">
+
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="vcard" type="com.terracetech.tims.webmail.setting.vo.VCardVO" />
+	<!--
+		Result maps describe the mapping between the columns returned from a
+		query, and the class properties. A result map isn't necessary if the
+		columns (or aliases) match to the properties exactly.
+	-->
+	
+	<resultMap id="vcardResult" class="vcard">
+		<result property="userSeq" column="mail_user_seq" />
+		<result property="memberName" column="member_name" />
+		<result property="memberEmail" column="member_email" />
+		<result property="firstName" column="first_name" />
+		<result property="middleName" column="MIDDLE_NAME" />
+		<result property="lastName" column="LAST_NAME" />
+		<result property="nickName" column="NICK_NAME" />
+		<result property="privateHomepage" column="PRIVATE_HOMEPAGE" />
+		<result property="officeHomepage" column="OFFICE_HOMEPAGE" />
+		<result property="birthDay" column="BIRTH_DAY" />
+		<result property="anniversaryDay" column="ANNIVERSARY_DAY" />
+		<result property="mobileNo" column="MOBILE_NO" />
+		<result property="homeTel" column="HOME_TEL" />
+		<result property="homeFax" column="HOME_FAX" />
+		<result property="homePostalCode" column="HOME_POSTAL_CODE" />
+		<result property="homeCountry" column="HOME_COUNTRY" />
+		<result property="homeState" column="HOME_STATE" />
+		<result property="homeCity" column="HOME_CITY" />
+		<result property="homeStreet" column="HOME_STREET" />
+		<result property="homeBasicAddress" column="HOME_BASIC_ADDRESS" />
+		<result property="homeExtAddress" column="HOME_EXT_ADDRESS" />
+		<result property="companyName" column="COMPANY_NAME" />
+		<result property="departmentName" column="DEPARTMENT_NAME" />
+		<result property="titleName" column="TITLE_NAME" />
+		<result property="officeTel" column="OFFICE_TEL" />
+		<result property="officeFax" column="OFFICE_FAX" />
+		<result property="officePostalCode" column="OFFICE_POSTAL_CODE" />
+		<result property="officeCountry" column="OFFICE_COUNTRY" />
+		<result property="officeState" column="OFFICE_STATE" />
+		<result property="officeCity" column="OFFICE_CITY" />
+		<result property="officeStreet" column="OFFICE_STREET" />
+		<result property="officeBasicAddress" column="OFFICE_BASIC_ADDRESS" />
+		<result property="officeExtAddress" column="OFFICE_EXT_ADDRESS" />
+		<result property="description" column="DESCRIPTION" />
+	</resultMap>
+	
+	<parameterMap id="vcardParameter" class="vcard">
+		<parameter jdbcType="NUMBER" property="userSeq" javaType="int"/>
+		<parameter jdbcType="VARCHAR" property="memberEmail" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="memberName" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="firstName" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="middleName" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="lastName" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="nickName" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="privateHomepage" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="officeHomepage" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="birthDay" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="anniversaryDay" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="mobileNo" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="homeTel" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="homeFax" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="homePostalCode" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="homeCountry" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="homeState" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="homeCity" javaType="String"/>		
+		<parameter jdbcType="VARCHAR" property="homeStreet" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="homeBasicAddress" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="homeExtAddress" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="companyName" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="departmentName" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="titleName" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="officeTel" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="officeFax" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="officePostalCode" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="officeCountry" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="officeState" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="officeCity" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="officeStreet" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="officeBasicAddress" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="officeExtAddress" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="description" javaType="String"/>
+	</parameterMap>
+	
+</sqlMap>

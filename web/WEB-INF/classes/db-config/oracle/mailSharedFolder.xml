@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MailSharedFolder">	
+	
+	<select id="readSharedFolderList" parameterClass="int" resultMap="sharedFolderResult">		
+		select sf.folder_uid, sf.folder_name, m.mail_user_seq , mi.user_name, m.mail_uid
+			from mail_user m, mail_user_info mi,mail_shared_folder sf ,mail_shared_folder_reader sr
+		where
+			 sr.mail_user_seq = #userSeq# and sr.folder_uid = sf.folder_uid 
+			 and sf.mail_user_seq = m.mail_user_seq
+			 and mi.mail_user_seq = sf.mail_user_seq
+	</select>
+	
+	<select id="readSharedFolderReaderList" parameterClass="int" resultMap="sharedFolderUserResult">		
+		select m.mail_user_seq ,m.mail_uid, i.user_name
+			from mail_user m, mail_shared_folder_reader sr, mail_user_info i
+		where
+			 sr.folder_uid = #folderUid#  
+			 and sr.mail_user_seq = m.mail_user_seq
+			 and i.mail_user_seq = m.mail_user_seq
+	</select>
+	
+	<select id="readUserSharedFolder" parameterClass="int" resultMap="sharedFolderList">
+		select folder_uid, folder_name, mail_user_seq
+		from mail_shared_folder
+		where mail_user_seq = #userSeq#
+	</select>
+	
+	<select id="readFolderUid" parameterClass="sharedFolder" resultClass="int">
+		select folder_uid
+		from mail_shared_folder
+		where mail_user_seq = #sharedUserSeq# and folder_name = #folderName#
+	</select>	
+	
+	<insert id="saveSharedFolder" parameterClass="sharedFolder">
+		<selectKey resultClass="int" keyProperty="folderUid">
+			select case when max(folder_uid) is null then 1 else max(folder_uid)+1 end
+			from mail_shared_folder
+		</selectKey>
+		insert into mail_shared_folder (folder_uid, mail_user_seq, folder_name) values (#folderUid:INTEGER#, #sharedUserSeq:INTEGER#, #folderName:VARCHAR#)	
+	</insert>
+	
+	<update id="updateSharedFolder" parameterClass="sharedFolder">
+		update mail_shared_folder set folder_name = #folderName# where folder_uid = #folderUid#
+	</update>
+	
+	<delete id="removeSharedFolder" parameterClass="int">
+		delete from mail_shared_folder where folder_uid = #folderSeq#
+	</delete>
+	
+	<insert id="saveSharedFolderReader" parameterClass="sharedUser">		
+		insert into mail_shared_folder_reader values (#folderUid:INTEGER#,#userSeq:INTEGER#)	
+	</insert>
+		
+	<delete id="removeSharedFolderReader" parameterClass="int">
+		delete from mail_shared_folder_reader where folder_uid = #folderSeq#
+	</delete>
+</sqlMap>

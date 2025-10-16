@@ -1,0 +1,34 @@
+# Build
+build/
+target/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backup
+backup/
+*.tar.gz
+
+# SVN (legacy)
+.svn/
+
+# Temporary plans (moved to docs/plans)
+plans/
+
+# Cursor
+.cursorrules
+

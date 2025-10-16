@@ -1,0 +1,279 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="ko">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>XecureExpress e Demo</title>
+<style type="text/css">
+<!--
+.text {
+	font-family: "돋움", "돋움체";
+	font-size: 11px;
+}
+
+.titletext {
+	font-family: "굴림", "굴림체";
+	font-size: 12px;
+}dksl
+-->
+</style>
+<script language="javascript" src="./expresse.js"></script>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<form name="createmail"><input type="hidden" name="passwd">
+<!-- XecureExpress-E logo -->
+<table width="800" border="0" align="center" cellpadding="0"
+	cellspacing="0" bgcolor="#FFFFFF">
+	<tr>
+		<td height="40" valign="bottom" bgcolor="#FFFFFF"><img
+			src="./logo_express01.gif" width="212" height="35"></td>
+	</tr>
+</table>
+
+<!-- Mail Form -->
+<table width="800" border="0" align="center" cellpadding="1"
+	cellspacing="1" bgcolor="#999999">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<table width="796" border="0" align="center" cellpadding="0"
+			cellspacing="0" bgcolor="#e1e1e1">
+			<tr>
+				<td height="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td height="125">
+				<table width="750" border="0" align="center" cellpadding="1"
+					cellspacing="1" bgcolor="#CCCCCC">
+					<!-- 송신자 입력창 시작 -->
+					<tr bgcolor="#FFFFFF">
+						<td width="20%" height="28" class="titletext">&nbsp;&nbsp;&nbsp;<font
+							color="#CC0000">&#8226;</font>&nbsp;<strong>송신자</strong></td>
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input name="From" type="text" class=text size="80"></font></td>
+					</tr>
+					<!-- 수신자(To) 입력창 시작 -->
+					<tr bgcolor="#FFFFFF">
+						<td width="20%" height="28" class="titletext">&nbsp;&nbsp;&nbsp;<font
+							color="#CC0000">&#8226;</font>&nbsp;<strong>수신자</strong></td>
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input name="To" type="text" class=text size="80"><br>
+						&nbsp;&nbsp;&nbsp;수신자가 여럿일 경우 [<b>,</b>]를 사용하세요.</font></td>
+					</tr>
+					<!-- 수신자 Cc 입력창 시작 -->
+					<tr bgcolor="#FFFFFF">
+						<td width="20%" height="28" class="titletext">&nbsp;&nbsp;&nbsp;<font
+							color="#CC0000">&#8226;</font>&nbsp;<strong>참조(Cc)</strong></td>
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input name="Cc" type="text" class=text size="80"><br>
+						<!--&nbsp;&nbsp;&nbsp;수신자가 여럿일 경우 [<b>,</b>]를 사용하세요.</font>--></td>
+					</tr>
+					<!-- 수신자 Bcc 입력창 시작 -->
+					<tr bgcolor="#FFFFFF">
+						<td width="20%" height="28" class="titletext">&nbsp;&nbsp;&nbsp;<font
+							color="#CC0000">&#8226;</font>&nbsp;<strong>숨은 참조(Bcc)</strong></td>
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input name="Bcc" type="text" class=text size="80"><br>
+						<!--&nbsp;&nbsp;&nbsp;수신자가 여럿일 경우 [<b>,</b>]를 사용하세요.</font>--></td>
+					</tr>
+					<!-- 제목 입력창 시작 -->
+					<tr bgcolor="#FFFFFF">
+						<td width="20%" height="28" class="titletext">&nbsp;&nbsp;&nbsp;<font
+							color="#CC0000">&#8226;</font>&nbsp;<strong>제목</strong></td>
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input name="Subject" type="text" class=text size="80"></font></td>
+					</tr>
+					<!-- 본문 입력창 시작 -->
+					<tr bgcolor="#FFFFFF">
+						<td width="20%" height="28" class="titletext">&nbsp;&nbsp;&nbsp;<font
+							color="#CC0000">&#8226;</font>&nbsp;<strong>본문</strong></td>
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<textarea name="Content" class=text cols="78" rows="10"></textarea></font></td>
+					</tr>
+					<!-- 보안 방법창 시작 -->
+					<!-- 전자 서명 시작 -->
+					<tr bgcolor="#FFFFFF">
+						<td width="20%" height="28" class="titletext" rowspan="2">&nbsp;&nbsp;&nbsp;<font
+							color="#CC0000">&#8226;</font>&nbsp;<strong>보안방법</strong></td>
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="chkSign" onClick="chkSignature();">전자서명&nbsp;&nbsp;
+						서명 알고리즘 : <select name="selSign" disabled>
+							<option selected value="SHA1WithRSA">SHA1WithRSA</option>
+							<option value="SHA1WithKCDSA">SHA1WithKCDSA</option>
+							<option value="SHA1WithDSA">SHA1WithDSA</option>
+							<option value="MD5WithRSA">MD5WithRSA</option>
+							<option value="MD2WithRSA">MD2WithRSA</option>
+						</select></font></td>
+					</tr>
+					<!-- 암호화 입력창 시작 -->
+					<tr bgcolor="#FFFFFF">
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="chkEnc" onClick="chkEncryption();">암호화<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+							type="radio" name="rdoEncWithCert" onClick="chkEncOption(this)"
+							disabled value="CERT"> 암호화(인증서 방식) - 인증서 선택 창에서 수신자의 인증서를
+						선택한다.<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+							type="radio" name="rdoEncWithPwd" onClick="chkEncOption(this)"
+							disabled value="PWD" checked> 암호화(Password 방식) - 수신자가 알고
+						있는 패스워드를 입력하면 됩니다. <br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;적절한
+						패스워드 문구를 선택 또는 입력하세요.<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+							type="radio" name="rdoEncWithIDPwd" onClick="chkEncOption(this)"
+							disabled value="IDPWD"> 암호화( ID/Password 방식) - 이메일 계정이
+						ID와 아래 입력하신 암호가 같이 사용됩니다. <br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;패스워드
+						문구는 위와 동일합니다. <br>
+						&nbsp;&nbsp;&nbsp;&nbsp;암호 :&nbsp;&nbsp;<input type="password"
+							name="encpasswd" size="10"><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;패스워드 문 구 : <select name="selPasswd_msg"
+							disabled>
+							<option selected value="송신자가 임의로 정한 암호로 암호화 되어 있습니다.">송신자가
+							임의로 정한 암호로 암호화 되어 있습니다.</option>
+							<option value="자리 전화번호 뒤 네자리로 암호화 되어 있습니다.">자리 전화번호 뒤
+							네자리로 암호화 되어 있습니다.</option>
+							<option value="주민등록번호 뒤 7자리로 암호화 되어 있습니다.">주민등록번호 뒤 7자리로
+							암호화 되어 있습니다.</option>
+							<option value="핸드폰번호로 암호화 되어 있습니다.(- 빼고)">핸드폰번호로 암호화 되어
+							있습니다.(- 빼고)</option>
+							<option value="당신의 이름으로 암호화 되어 있습니다.">당신의 이름으로 암호화 되어
+							있습니다.</option>
+							<option value="우리가 처음 만난 날은 언제일까요? 0x0A0A [년월일]을 넣으세요.">우리가
+							처음 만난 날은 언제일까요? 0x0A0A "년월일"을 넣으세요.</option>
+						</select><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;패스워드이미지:&nbsp;<input type="text"
+							name="encpasswd_img" size="55"> <br>
+						&nbsp;&nbsp;&nbsp;&nbsp;패스워드 문구를 사용하지 않고, 이미지를 사용할 경우 이미지의 경로를
+						입력합니다. <br>
+						&nbsp;&nbsp;&nbsp;&nbsp; 예)
+						http://127.0.0.1:8080/XecureMail/image/msg.bmp <br>
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;대칭키 암호 알고리즘 : <select name="selSymetric"
+							disabled>
+							<option selected value="SEED_CBC">SEED_CBC</option>
+							<option value="NEAT_CBC">NEAT_CBC</option>
+							<option value="RC2_CBC">RC2_CBC</option>
+							<option value="3DES_CBC">3DES_CBC</option>
+							<option value="DES_CBC">DES_CBC</option>
+						</select><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;공개키 암호 알고리즘 : <select name="selAsymetric"
+							disabled>
+							<option selected value="RSASEED_CBC">RSASEED_CBC</option>
+							<option value="RSA3DES_CBC">RSA3DES_CBC</option>
+							<option value="RSADES_CBC">RSADES_CBC</option>
+						</select></font></td>
+					</tr>
+					<!-- 기타 설정 입력창 시작 -->
+					<tr bgcolor="#FFFFFF">
+						<td width="20%" height="28" class="titletext" rowspan="2">&nbsp;&nbsp;&nbsp;<font
+							color="#CC0000">&#8226;</font>&nbsp;<strong>기타 설정</strong></td>
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="chkConfirm" onClick="chkConf();">수신확인
+						<select name="selConfirm" disabled>
+							<option selected value=-1>수신확인 메시지 전송하지 않음</option>
+							<option value=0>수신자의 동의 없이 수신확인 메시지 전송</option>
+							<option value=1>수신확인 메시지 전송후 수신자에게 전송사실을 알림</option>
+							<option value=2>수신자가 수신확인 메세지 전송 여부를 결정</option>
+						</select></font></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td class="text"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;<input
+							type="checkbox" name="chkTimeStamp">전자서명에 TimeStamp 추가</font></td>
+					</tr>
+
+					<!-- 첨부파일 입력창 시작 -->
+					<tr bgcolor="#FFFFFF">
+						<td width="20%" height="28" class="titletext" rowspan="10">&nbsp;&nbsp;&nbsp;<font
+							color="#CC0000">&#8226;</font>&nbsp;<strong>첨부 파일</strong></td>
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input type="file" size="50" class=text name="filename1"></font></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input type="file" size="50" class=text name="filename2"></font></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+						<input type="file" size="50" class=text name="filename3"></font></td>
+					</tr>
+					<!--
+                  <tr bgcolor="#FFFFFF">
+                    <td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+                        <input type="file" size="50" class=text name="filename4"></font></td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF">
+                    <td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+                        <input type="file" size="50" class=text name="filename5"></font></td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF">
+                    <td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+                        <input type="file" size="50" class=text name="filename6"></font></td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF">
+                    <td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+                        <input type="file" size="50" class=text name="filename7"></font></td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF">
+                    <td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+                        <input type="file" size="50" class=text name="filename8"></font></td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF">
+                    <td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+                        <input type="file" size="50" class=text name="filename9"></font></td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF">
+                    <td width="80%" height="28" class="text"><font size="2">&nbsp;&nbsp;&nbsp;
+                        <input type="file" size="50" class=text name="filename10"></font></td>
+                  </tr>
+-->
+				</table>
+				</td>
+		</table>
+		</td>
+	</tr>
+</table>
+<!-- 보내기 버튼  -->
+<table width="800" border="0" align="center" cellpadding="1"
+	cellspacing="0" bgcolor="#CCCCCC">
+	<tr>
+		<td bgcolor="#e1e1e1">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			</tr>
+			<tr>
+				<td height="35" bgcolor="#eeeeee">
+				<div align="center"><a href=""
+					onclick="createMail(document.createmail);return false;"> <img
+					src="./btn_send.gif" width="82" height="20" border="0"></a></div>
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+
+<!-- Copyright  -->
+<table width="800" border="0" align="center" cellpadding="0"
+	cellspacing="0">
+	<tr>
+		<td height="20" valign="bottom">
+		<div align="center">
+		<p class="text"><font face="Arial, Helvetica, sans-serif">Copyright
+		&copy; 2008 by Softforum. All Rright Reserved.</font></p>
+		</div>
+		</td>
+	</tr>
+</table>
+
+<input type="hidden" name="mail_msg"></form>
+
+<form name="sendmail" method="POST" action="../servlet/SendMail">
+<input type="hidden" name="from"> <input type="hidden" name="to">
+<input type="hidden" name="subject"> <input type="hidden" name="content">
+<center><textarea cols=120 rows=15 name="content_view"></textarea>
+</center>
+</form>
+</html>

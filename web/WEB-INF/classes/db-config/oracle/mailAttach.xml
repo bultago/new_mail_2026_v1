@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="MailAttach">
+
+	
+	<select id="listMailAttach" resultMap="mailAttachResult" parameterClass="Map" >
+    	select 
+    		FILE_NAME, FOLDER_PATH, MAIL_USER_SEQ, MESSAGE_UID, FILE_SIZE, 
+    		REGIST_TIME, EXPIRE_TIME, DOWNLOAD_COUNT, ATTACH_FLAG
+    	from MAIL_BIG_ATTACH
+    	where 
+      		MAIL_USER_SEQ = #mailUserSeq# AND DECODE(ATTACH_FLAG, NULL, ' ') != 'del'      		
+  	</select>
+  	
+	<select id="selectMailAttach" resultMap="mailAttachResult" parameterClass="Map" >
+    	select 
+    		FILE_NAME, FOLDER_PATH, MAIL_USER_SEQ, MESSAGE_UID, FILE_SIZE, 
+    		REGIST_TIME, EXPIRE_TIME, DOWNLOAD_COUNT, ATTACH_FLAG
+    	from MAIL_BIG_ATTACH
+    	where 
+      		MAIL_USER_SEQ = #mailUserSeq#
+      		and MESSAGE_UID = #messageUid# AND DECODE(ATTACH_FLAG, NULL, ' ') != 'del'
+  	</select>
+	
+	<insert id="insertMailAttach" parameterClass="attach" >
+    	insert into MAIL_BIG_ATTACH 
+    		(
+    		FILE_NAME, FOLDER_PATH, MAIL_USER_SEQ, MESSAGE_UID, FILE_SIZE,
+      		REGIST_TIME, EXPIRE_TIME, DOWNLOAD_COUNT, ATTACH_FLAG
+      		)
+    	values 
+    		(#fileName#, #folderPath#, #mailUserSeq#, #messageUid#, #fileSize#, 
+    		#registTime#, #expireTime#, #downloadCount#,#attachFlag#)
+	</insert>
+	
+	<update id="updateDeleteMailAttach" parameterClass="Map" >
+    	update MAIL_BIG_ATTACH
+    		set
+      			ATTACH_FLAG = 'del'
+    		where
+      			MAIL_USER_SEQ = #mailUserSeq:INTEGER#
+      			and MESSAGE_UID = #messageUid:VARCHAR#
+	</update>
+	
+	<update id="updateMailAttach" parameterClass="attach" >
+    	update MAIL_BIG_ATTACH
+    		set 
+    			FILE_SIZE = #fileSize:VARCHAR#,
+      			REGIST_TIME = #registTime:VARCHAR#,
+      			EXPIRE_TIME = #expireTime:VARCHAR#,
+      			DOWNLOAD_COUNT = #downloadCount:INTEGER#,
+      			ATTACH_FLAG = #attachFlag:VARCHAR#
+    		where 
+    			FILE_NAME = #fileName:VARCHAR#
+      			and FOLDER_PATH = #folderPath:VARCHAR#
+      			and MAIL_USER_SEQ = #mailUserSeq:INTEGER#
+      			and MESSAGE_UID = #messageUid:VARCHAR#
+	</update>  
+	  
+</sqlMap>
