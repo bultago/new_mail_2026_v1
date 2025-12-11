@@ -1,11 +1,12 @@
 package com.terracetech.tims.webmail.common.manager;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.webmail.util.StringUtils;
 
 public class InitialSoundSearcher {
-    private Logger log = Logger.getLogger(this.getClass());
+    private Logger log = LoggerFactory.getLogger(this.getClass());
     private final char HANGUL_START_UNICODE = '가'; //OxAC00
     private final char HANGUL_END_UNICODE = '힣'; //OxD7A3
     private final char[] INITIAL_SOUND = {'ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'};

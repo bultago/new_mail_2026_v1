@@ -4,12 +4,13 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.secure.crypto.SecureUtil;
 import com.terracetech.tims.hybrid.common.HybridAuth;
@@ -29,6 +30,8 @@ import com.terracetech.tims.webmail.util.StringUtils;
 import com.terracetech.tims.webmail.util.Validation;
 
 public class HybridAuthManager {
+    private static final Logger logger = LoggerFactory.getLogger(HybridAuthManager.class);
+    
     public final static String HYBRID_SSO_KEY = "TMSHYBRID";
     
     private UserAuthManager userAuthManager = null;
@@ -107,7 +110,7 @@ public class HybridAuthManager {
 	    	}
 	    	
     	} catch (Exception e) {
-    	        Logger.getLogger(UserAuthManager.class).error(e);
+    	        logger.error("Error occurred", e);
     		return false;
 		}
     	return true;
@@ -162,7 +165,7 @@ public class HybridAuthManager {
             
             user = UserAuthManager.getUserByStr(authValue);
         } catch (Exception e) {
-            Logger.getLogger(UserAuthManager.class).error(e);
+            logger.error("Error occurred", e);
         }
         
         return user;
@@ -216,7 +219,7 @@ public class HybridAuthManager {
                 }
             }
             } catch (Exception e) {
-                Logger.getLogger(UserAuthManager.class).error(e);
+                logger.error("Error occurred", e);
             }
         
         return authKey;
@@ -237,7 +240,7 @@ public class HybridAuthManager {
                 }
             }
         } catch (Exception e) {
-            Logger.getLogger(UserAuthManager.class).error(e);
+            logger.error("Error occurred", e);
         }
     }
 }

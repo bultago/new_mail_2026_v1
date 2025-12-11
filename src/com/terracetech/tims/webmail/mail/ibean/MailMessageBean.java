@@ -9,8 +9,8 @@
  */
 package com.terracetech.tims.webmail.mail.ibean;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.InternetAddress;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.InternetAddress;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

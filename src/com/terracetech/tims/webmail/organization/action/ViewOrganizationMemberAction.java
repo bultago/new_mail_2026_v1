@@ -3,7 +3,8 @@ package com.terracetech.tims.webmail.organization.action;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.common.I18nConstants;
 import com.terracetech.tims.common.PageManager;
@@ -19,7 +20,7 @@ public class ViewOrganizationMemberAction extends BaseAction {
 
 	private static final long serialVersionUID = 20081229L;
 	
-	private Logger logger = Logger.getLogger(this.getClass());
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private OrganizationManager manager = null;
 	

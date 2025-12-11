@@ -15,24 +15,26 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.struts2.dispatcher.multipart.MultiPartRequestWrapper;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.json.simple.JSONObject;
 import org.springframework.mail.MailAuthenticationException;
 
-import xecure.servlet.XecureConfig;
-import xecure.servlet.XecureServlet;
-import xecure.servlet.XecureServletConfigException;
-import xecure.servlet.XecureServletException;
+// Xecure 보안 모듈 - 더 이상 사용 안함 (2025-10-23)
+// import xecure.servlet.XecureConfig;
+// import xecure.servlet.XecureServlet;
+// import xecure.servlet.XecureServletConfigException;
+// import xecure.servlet.XecureServletException;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
@@ -69,7 +71,7 @@ public class BaseAction extends ActionSupport implements
 	
 	private static final long serialVersionUID = -7583020235241749743L;
 	
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	public HttpServletRequest request = null;
 	public ServletContext context = null;
@@ -382,20 +384,21 @@ public class BaseAction extends ActionSupport implements
 	}
 	
 	private void parseXcureWebRequest() throws Exception{
-		if(ExtPartConstants.isXecureWebUse()){
-			String qValue = request.getParameter("q");			
-			if (qValue != null && !"".equals(qValue)){
-				try {
-					XecureServlet xecure = new XecureServlet(new XecureConfig(), request, response);
-					request = xecure.request;					
-					response = xecure.response;					
-				} catch (XecureServletException e) {
-					throw new Exception("XecureServlet ERROR!!",e); 
-				} catch (XecureServletConfigException e) {
-					throw new Exception("XecureServletConfig ERROR!!",e);
-				}
-			}
-		}
+		// Xecure 보안 모듈 - 더 이상 사용 안함 (2025-10-23)
+		// if(ExtPartConstants.isXecureWebUse()){
+		// 	String qValue = request.getParameter("q");			
+		// 	if (qValue != null && !"".equals(qValue)){
+		// 		try {
+		// 			XecureServlet xecure = new XecureServlet(new XecureConfig(), request, response);
+		// 			request = xecure.request;					
+		// 			response = xecure.response;					
+		// 		} catch (XecureServletException e) {
+		// 			throw new Exception("XecureServlet ERROR!!",e); 
+		// 		} catch (XecureServletConfigException e) {
+		// 			throw new Exception("XecureServletConfig ERROR!!",e);
+		// 		}
+		// 	}
+		// }
 	}
 	
 	public HttpServletRequest getRequest(){

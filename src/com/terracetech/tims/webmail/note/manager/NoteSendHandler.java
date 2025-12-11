@@ -1,7 +1,7 @@
 package com.terracetech.tims.webmail.note.manager;
 
-import javax.mail.Session;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Session;
+import jakarta.mail.internet.MimeMessage;
 
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.webmail.mail.ibean.MailSendResultBean;

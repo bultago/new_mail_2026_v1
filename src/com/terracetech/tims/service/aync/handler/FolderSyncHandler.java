@@ -1,6 +1,7 @@
 package com.terracetech.tims.service.aync.handler;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 import com.terracetech.tims.service.aync.data.FolderSyncData;
 import com.terracetech.tims.service.aync.util.AbstractState;
@@ -9,7 +10,7 @@ import com.terracetech.tims.service.aync.util.XMLParserHandler;
 public class FolderSyncHandler extends XMLParserHandler {
 	
 	private FolderSyncData model;
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	public FolderSyncData getModel() {
 		return model;
 	}

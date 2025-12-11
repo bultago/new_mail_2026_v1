@@ -14,9 +14,10 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.crypto.Cipher;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.webmail.common.BaseAction;
@@ -32,7 +33,7 @@ import com.terracetech.tims.webmail.mailuser.manager.UserAuthManager;
 import com.terracetech.tims.webmail.plugin.pki.PKIAuthParamBean;
 
 public class LoginAction extends BaseAction {
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private static final long serialVersionUID = 3524773920732540358L;
 	

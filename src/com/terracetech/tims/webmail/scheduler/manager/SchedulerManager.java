@@ -12,18 +12,20 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Message;
+import jakarta.mail.Session;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.dao.DataAccessException;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailAddress;
-import com.terracetech.tims.webmail.common.advice.Transactional;
 import com.terracetech.tims.webmail.common.ladmin.Protocol;
 import com.terracetech.tims.webmail.common.log.LogManager;
 import com.terracetech.tims.webmail.common.manager.LadminManager;
@@ -59,6 +61,8 @@ import com.terracetech.tims.webmail.util.FileUtil;
 import com.terracetech.tims.webmail.util.FormatUtil;
 import com.terracetech.tims.webmail.util.StringUtils;
 
+@Service
+@Transactional
 public class SchedulerManager {
 
     private SchedulerDao schedulerDao;
@@ -1051,7 +1055,7 @@ public class SchedulerManager {
                 .readSchedulerShareInfo(mailDomainSeq, mailUserSeq, email);
         int[] schedulerIds = getSchedulerIds(shareScheduleList);
         List<SchedulerDataVO> searchShareScheduleList = schedulerDao.searchshareScheduleList(mailUserSeq, schedulerIds,
-                searchType, keyWord);
+                searchType, keyWord, 0, Integer.MAX_VALUE);
 
         if (schedulerDataList != null && schedulerDataList.size() > 0) {
             JSONObject beanObject = null;
@@ -1426,7 +1430,7 @@ public class SchedulerManager {
                 try {
                     if (isRead) {
                         emailData = schedulerShareExtVO.getEmail().split("@");
-                        userInfo = mailUserDao.readMailUserInfo(emailData[0], emailData[1]);
+                        userInfo = mailUserDao.readMailUserInfoByUserAndDomain(emailData[0], emailData[1]);
                         if (userInfo != null && StringUtils.isNotEmpty(userInfo.getUserName())) {
                             shareTargetArray.add(userInfo.getUserName());
                         } else {

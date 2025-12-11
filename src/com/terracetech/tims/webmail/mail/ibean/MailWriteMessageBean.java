@@ -21,7 +21,7 @@ import com.terracetech.tims.webmail.util.StringUtils;
 
 /**
  * <p><strong>MailWriteMessageBean.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
  * <li></li>
  * </ul>
@@ -164,55 +164,55 @@ public class MailWriteMessageBean {
 	}
 	
 	/**
-	 * @return to °ª ¹İÈ¯
+	 * @return to Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getTo() {
 		return (to != null)?to:"";
 	}
 	/**
-	 * @param to ÆÄ¶ó¹ÌÅÍ¸¦ to°ª¿¡ ¼³Á¤
+	 * @param to Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ toÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setTo(String to) {
 		this.to = to;
 	}
 	/**
-	 * @return cc °ª ¹İÈ¯
+	 * @return cc Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getCc() {
 		return (cc != null)?cc:"";
 	}
 	/**
-	 * @param cc ÆÄ¶ó¹ÌÅÍ¸¦ cc°ª¿¡ ¼³Á¤
+	 * @param cc Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ ccÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setCc(String cc) {
 		this.cc = cc;
 	}
 	/**
-	 * @return bcc °ª ¹İÈ¯
+	 * @return bcc Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getBcc() {
 		return (bcc != null)?bcc:"";
 	}
 	/**
-	 * @param bcc ÆÄ¶ó¹ÌÅÍ¸¦ bcc°ª¿¡ ¼³Á¤
+	 * @param bcc Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ bccÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setBcc(String bcc) {
 		this.bcc = bcc;
 	}
 	/**
-	 * @return subject °ª ¹İÈ¯
+	 * @return subject Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSubject() {
 		return (subject != null)?subject:"";
 	}
 	/**
-	 * @param subject ÆÄ¶ó¹ÌÅÍ¸¦ subject°ª¿¡ ¼³Á¤
+	 * @param subject Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ subjectÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSubject(String subject) {
 		this.subject = TMailUtility.getCRLFEscape(subject);
 	}
 	/**
-	 * @return htmlContent °ª ¹İÈ¯
+	 * @return htmlContent Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHtmlContent() {
 		return (htmlContent != null)?StringUtils.EscapeHTMLTag(htmlContent):"";
@@ -222,13 +222,13 @@ public class MailWriteMessageBean {
 		return (htmlContent != null)?htmlContent:"";
 	}
 	/**
-	 * @param htmlContent ÆÄ¶ó¹ÌÅÍ¸¦ htmlContent°ª¿¡ ¼³Á¤
+	 * @param htmlContent Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ htmlContentÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHtmlContent(String htmlContent) {
 		this.htmlContent = StringUtils.getCRLFEscape(htmlContent);
 	}
 	/**
-	 * @return textContent °ª ¹İÈ¯
+	 * @return textContent Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getTextContent() {
 		return (textContent != null)?StringUtils.EscapeHTMLTag(textContent):"";
@@ -238,79 +238,79 @@ public class MailWriteMessageBean {
 		return (textContent != null)?textContent:"";
 	}
 	/**
-	 * @param textContent ÆÄ¶ó¹ÌÅÍ¸¦ textContent°ª¿¡ ¼³Á¤
+	 * @param textContent Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ textContentÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setTextContent(String textContent) {
 		this.textContent = textContent;
 	}
 	/**
-	 * @return forwardingMode °ª ¹İÈ¯
+	 * @return forwardingMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getForwardingMode() {
 		return forwardingMode;
 	}
 	/**
-	 * @param forwardingMode ÆÄ¶ó¹ÌÅÍ¸¦ forwardingMode°ª¿¡ ¼³Á¤
+	 * @param forwardingMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ forwardingModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setForwardingMode(String forwardingMode) {
 		this.forwardingMode = forwardingMode;
 	}
 	/**
-	 * @return draftMsgId °ª ¹İÈ¯
+	 * @return draftMsgId Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDraftMsgId() {
 		return draftMsgId;
 	}
 	/**
-	 * @param draftMsgId ÆÄ¶ó¹ÌÅÍ¸¦ draftMsgId ¼³Á¤
+	 * @param draftMsgId Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ draftMsgId Â¼Â³ÃÂ¤
 	 */
 	public void setDraftMsgId(String draftMsgId) {
 		this.draftMsgId = draftMsgId;
 	}
 	/**
-	 * @return draftMsgId °ª ¹İÈ¯
+	 * @return draftMsgId Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getTrashMsgId() {
 		return trashMsgId;
 	}
 	/**
-	 * @param draftMsgId ÆÄ¶ó¹ÌÅÍ¸¦ draftMsgId ¼³Á¤
+	 * @param draftMsgId Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ draftMsgId Â¼Â³ÃÂ¤
 	 */
 	public void setTrashMsgId(String trashMsgId) {
 		this.trashMsgId = trashMsgId;
 	}
 	/**
-	 * @return attaches °ª ¹İÈ¯
+	 * @return attaches Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String[][] getAttaches() {
 		return attaches;
 	}
 	/**
-	 * @param attaches ÆÄ¶ó¹ÌÅÍ¸¦ attaches°ª¿¡ ¼³Á¤
+	 * @param attaches Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ attachesÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAttaches(String[][] attaches) {
 		this.attaches = attaches;
 	}
 	/**
-	 * @return attacheString °ª ¹İÈ¯
+	 * @return attacheString Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAttacheString() {
 		return attacheString;
 	}
 	/**
-	 * @param attacheString ÆÄ¶ó¹ÌÅÍ¸¦ attacheString°ª¿¡ ¼³Á¤
+	 * @param attacheString Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ attacheStringÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAttacheString(String attacheString) {
 		this.attacheString = attacheString;
 	}
 	/**
-	 * @return uids °ª ¹İÈ¯
+	 * @return uids Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String[] getUids() {
 		return uids;
 	}
 	/**
-	 * @param uids ÆÄ¶ó¹ÌÅÍ¸¦ uids°ª¿¡ ¼³Á¤
+	 * @param uids Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ uidsÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUids(String[] uids) {
 		this.uids = uids;
@@ -329,25 +329,25 @@ public class MailWriteMessageBean {
 		return uidList;
 	}
 	/**
-	 * @return writeType °ª ¹İÈ¯
+	 * @return writeType Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getWriteType() {
 		return writeType;
 	}
 	/**
-	 * @param writeType ÆÄ¶ó¹ÌÅÍ¸¦ writeType°ª¿¡ ¼³Á¤
+	 * @param writeType Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ writeTypeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setWriteType(String writeType) {
 		this.writeType = writeType;
 	}
 	/**
-	 * @return folderName °ª ¹İÈ¯
+	 * @return folderName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getFolderName() {
 		return folderName;
 	}
 	/**
-	 * @param folderName ÆÄ¶ó¹ÌÅÍ¸¦ folderName°ª¿¡ ¼³Á¤
+	 * @param folderName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ folderNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setFolderName(String folderName) {
 		this.folderName = folderName;
@@ -355,111 +355,111 @@ public class MailWriteMessageBean {
 	
 	
 	/**
-	 * @return sendFlag °ª ¹İÈ¯
+	 * @return sendFlag Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSendFlag() {
 		return sendFlag;
 	}
 	/**
-	 * @param sendFlag ÆÄ¶ó¹ÌÅÍ¸¦ sendFlag°ª¿¡ ¼³Á¤
+	 * @param sendFlag Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ sendFlagÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSendFlag(String sendFlag) {
 		this.sendFlag = sendFlag;
 	}
 	/**
-	 * @return receiveNoti °ª ¹İÈ¯
+	 * @return receiveNoti Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getReceiveNoti() {
 		return receiveNoti;
 	}
 	/**
-	 * @param receiveNoti ÆÄ¶ó¹ÌÅÍ¸¦ receiveNoti°ª¿¡ ¼³Á¤
+	 * @param receiveNoti Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ receiveNotiÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setReceiveNoti(String receiveNoti) {
 		this.receiveNoti = (receiveNoti != null && receiveNoti.equalsIgnoreCase("on"))?"on":"off";
 	}	
 	
 	/**
-	 * @return saveSent °ª ¹İÈ¯
+	 * @return saveSent Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSaveSent() {
 		return saveSent;
 	}
 	/**
-	 * @param saveSent ÆÄ¶ó¹ÌÅÍ¸¦ saveSent°ª¿¡ ¼³Á¤
+	 * @param saveSent Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ saveSentÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSaveSent(String sentBox) {
 		
 		this.saveSent = (sentBox != null && sentBox.equalsIgnoreCase("on"))?"on":"off";
 	}
 	/**
-	 * @return signAttach °ª ¹İÈ¯
+	 * @return signAttach Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSignAttach() {
 		return signAttach;
 	}
 	/**
-	 * @param signAttach ÆÄ¶ó¹ÌÅÍ¸¦ signAttach°ª¿¡ ¼³Á¤
+	 * @param signAttach Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ signAttachÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSignAttach(String signAttach) {
 		this.signAttach = (signAttach != null && signAttach.equalsIgnoreCase("T"))?"on":"off";
 	}
 	/**
-	 * @return vcardAttach °ª ¹İÈ¯
+	 * @return vcardAttach Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getVcardAttach() {
 		return vcardAttach;
 	}
 	/**
-	 * @param vcardAttach ÆÄ¶ó¹ÌÅÍ¸¦ vcardAttach°ª¿¡ ¼³Á¤
+	 * @param vcardAttach Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ vcardAttachÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setVcardAttach(String vcardAttach) {
 		this.vcardAttach = (vcardAttach != null && vcardAttach.equalsIgnoreCase("on"))?"on":"off";
 	}
 	/**
-	 * @return encoding °ª ¹İÈ¯
+	 * @return encoding Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getEncoding() {
 		return encoding;
 	}
 	/**
-	 * @param encoding ÆÄ¶ó¹ÌÅÍ¸¦ encoding°ª¿¡ ¼³Á¤
+	 * @param encoding Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ encodingÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setEncoding(String encoding) {
 		this.encoding = encoding;
 	}
 	/**
-	 * @return editorMode °ª ¹İÈ¯
+	 * @return editorMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getEditorMode() {
 		return editorMode;
 	}
 	/**
-	 * @param editorMode ÆÄ¶ó¹ÌÅÍ¸¦ editorMode°ª¿¡ ¼³Á¤
+	 * @param editorMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ editorModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setEditorMode(String editorMode) {
 		this.editorMode = editorMode;
 	}
 	/**
-	 * @return senderName °ª ¹İÈ¯
+	 * @return senderName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSenderName() {
 		return senderName;
 	}
 	/**
-	 * @param senderName ÆÄ¶ó¹ÌÅÍ¸¦ senderName°ª¿¡ ¼³Á¤
+	 * @param senderName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ senderNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSenderName(String senderName) {
 		this.senderName = senderName;
 	}
 	/**
-	 * @return senderEmail °ª ¹İÈ¯
+	 * @return senderEmail Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSenderEmail() {
 		return senderEmail;
 	}
 	/**
-	 * @param senderEmail ÆÄ¶ó¹ÌÅÍ¸¦ senderEmail°ª¿¡ ¼³Á¤
+	 * @param senderEmail Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ senderEmailÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSenderEmail(String senderEmail) {
 		this.senderEmail = senderEmail;
@@ -467,7 +467,7 @@ public class MailWriteMessageBean {
 
 
 	/**
-	 * @return autoSaveMode °ª ¹İÈ¯
+	 * @return autoSaveMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAutoSaveMode() {
 		return autoSaveMode;
@@ -475,7 +475,7 @@ public class MailWriteMessageBean {
 
 
 	/**
-	 * @param autoSaveMode ÆÄ¶ó¹ÌÅÍ¸¦ autoSaveMode°ª¿¡ ¼³Á¤
+	 * @param autoSaveMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ autoSaveModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAutoSaveMode(String autoSaveMode) {
 		this.autoSaveMode = autoSaveMode;
@@ -483,7 +483,7 @@ public class MailWriteMessageBean {
 
 
 	/**
-	 * @return autoSaveTerm °ª ¹İÈ¯
+	 * @return autoSaveTerm Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getAutoSaveTerm() {
 		return autoSaveTerm;
@@ -491,7 +491,7 @@ public class MailWriteMessageBean {
 
 
 	/**
-	 * @param autoSaveTerm ÆÄ¶ó¹ÌÅÍ¸¦ autoSaveTerm°ª¿¡ ¼³Á¤
+	 * @param autoSaveTerm Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ autoSaveTermÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAutoSaveTerm(int autoSaveTerm) {
 		this.autoSaveTerm = autoSaveTerm;

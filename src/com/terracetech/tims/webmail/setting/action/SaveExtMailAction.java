@@ -38,7 +38,7 @@ public class SaveExtMailAction extends BaseAction{
 	private String mbox;
 	
 	private String pop3del;
-	 //ssl üũ
+	 //ssl Ã¼Å©
     private String sslCheck;
 	
 	public void setManager(SettingManager manager) {
@@ -125,7 +125,7 @@ public class SaveExtMailAction extends BaseAction{
 			else {
 				pop3Vo.setPop3Del("0");
 			}
-			//sslüũ�Ǹ� 1 �ƴϸ� 0
+			//sslÃ¼Å©µÇ¸é 1 ¾Æ´Ï¸é 0
             if("on".equals(sslCheck)){
          	   	pop3Vo.setUsedSsl("1");
             }else{

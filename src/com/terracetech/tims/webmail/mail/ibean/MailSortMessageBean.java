@@ -13,8 +13,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeUtility;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeUtility;
 
 import org.alfresco.jlan.util.UTF8Normalizer;
 import org.json.simple.JSONObject;

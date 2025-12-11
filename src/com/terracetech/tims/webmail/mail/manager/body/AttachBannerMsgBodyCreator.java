@@ -5,11 +5,11 @@ import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.activation.DataHandler;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.NoSuchProviderException;
-import javax.mail.internet.MimeBodyPart;
+import jakarta.activation.DataHandler;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.NoSuchProviderException;
+import jakarta.mail.internet.MimeBodyPart;
 
 import com.terracetech.tims.mail.TMailUtility;
 import com.terracetech.tims.webmail.common.ByteArrayDataSource;

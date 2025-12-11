@@ -3,15 +3,16 @@ package com.terracetech.tims.webmail.common.log;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.webmail.common.EnvConstants;
 
 /**
  * <p><strong>LogManager.java</strong> Class Description</p>
  * <p>
- * ¿î¿µ¼­¹öÀÇ ·Î±× ¼³Á¤¿¡ µû¶ó¼­ debug/info ·Î±ëÀ» ÇÑ´Ù.<br>
- * °³¹ß Áß(Junit test)¿¡´Â ÀÚµ¿À¸·Î debug ¿É¼ÇÀÌ ¼³Á¤µÇ¾î µ¿ÀÛµÈ´Ù.
+ * ï¿½î¿µï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ debug/info ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.<br>
+ * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½(Junit test)ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ debug ï¿½É¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ÛµÈ´ï¿½.
  * </p>
  * <ul>
  * <li></li>
@@ -39,20 +40,20 @@ public class LogManager {
 	}
 	
 	public static void writeInfo(Object that, Object msg) {
-		Logger.getLogger(convertTarget(that)).info(msg);
+		LoggerFactory.getLogger(convertTarget(that)).info(msg);
 	}
 	
 	public static void writeDebug (Object that, Object msg) {
 		if (isDebugEnabled())
-			Logger.getLogger(convertTarget(that)).debug(msg);
+			LoggerFactory.getLogger(convertTarget(that)).debug(msg);
 	}
 	
 	public static void writeErr (Object that, Object msg) {
-		Logger.getLogger(convertTarget(that)).error(msg);
+		LoggerFactory.getLogger(convertTarget(that)).error(msg);
 	}
 	
 	public static void writeErr (Object that, Object msg, Throwable t) {		
-		Logger.getLogger(convertTarget(that)).error(msg, t);
+		LoggerFactory.getLogger(convertTarget(that)).error(msg, t);
 	}
 	
 	private static Class<?> convertTarget (Object that) {

@@ -18,7 +18,7 @@ public class Pop3VO {
 	
 	private String pop3Msgname = null;
 		
-	//ssl »ç¿ë ¿©ºÎ
+	//ssl Â»Ã§Â¿Ã« Â¿Â©ÂºÃŽ
     private String usedSsl = null;
 
 	public int getUserSeq() {

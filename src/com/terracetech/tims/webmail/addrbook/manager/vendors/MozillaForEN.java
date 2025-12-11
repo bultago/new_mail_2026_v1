@@ -18,34 +18,34 @@ public class MozillaForEN implements IEmailVendor{
 	public StringBuffer getAddrCSVDownload(List<AddressBookMemberVO> list) {
 StringBuffer sb = new StringBuffer();
 		
-		sb.append(resource.getMessage("addr.outlookExpress.004") + ",");	//0.ÀüÃ¼ ÀÌ¸§
-		sb.append(resource.getMessage("addr.outlookExpress.001") + ",");	//1.ÀÌ¸§
-		sb.append(resource.getMessage("addr.outlookExpress.002") + ",");	//2.¼º
-		sb.append(resource.getMessage("addr.outlookExpress.003") + ",");	//3.Áß°£ÀÌ¸§
-		sb.append(resource.getMessage("addr.outlookExpress.005") + ",");	//4.¾ÖÄª
-		sb.append(resource.getMessage("addr.outlookExpress.006") + ",");	//5.ÀüÀÚ ¸ŞÀÏ ÁÖ¼Ò
-		sb.append(resource.getMessage("addr.outlookExpress.014") + ",");	//6.ÈŞ´ëÆù
+		sb.append(resource.getMessage("addr.outlookExpress.004") + ",");	//0.Ã€Ã¼ÃƒÂ¼ Ã€ÃŒÂ¸Â§
+		sb.append(resource.getMessage("addr.outlookExpress.001") + ",");	//1.Ã€ÃŒÂ¸Â§
+		sb.append(resource.getMessage("addr.outlookExpress.002") + ",");	//2.Â¼Âº
+		sb.append(resource.getMessage("addr.outlookExpress.003") + ",");	//3.ÃÃŸÂ°Â£Ã€ÃŒÂ¸Â§
+		sb.append(resource.getMessage("addr.outlookExpress.005") + ",");	//4.Â¾Ã–Ã„Âª
+		sb.append(resource.getMessage("addr.outlookExpress.006") + ",");	//5.Ã€Ã¼Ã€Ãš Â¸ÃÃ€Ã ÃÃ–Â¼Ã’
+		sb.append(resource.getMessage("addr.outlookExpress.014") + ",");	//6.ÃˆÃÂ´Ã«Ã†Ã¹
 		
-		sb.append(resource.getMessage("addr.outlookExpress.007") + ",");	//7.ÁÖ¼Ò(Áı)
-		sb.append(resource.getMessage("addr.outlookExpress.008") + ",");	//8.±¸±º½Ã(Áı)
-		sb.append(resource.getMessage("addr.outlookExpress.009") + ",");	//9.¿ìÆí¹øÈ£(Áı)
-		sb.append(resource.getMessage("addr.outlookExpress.010") + ",");	//10.½Ã/µµ(Áı)
-		sb.append(resource.getMessage("addr.outlookExpress.011") + ",");	//11.±¹°¡(Áı)
-		sb.append(resource.getMessage("addr.outlookExpress.012") + ",");	//12.Áı ÀüÈ­
+		sb.append(resource.getMessage("addr.outlookExpress.007") + ",");	//7.ÃÃ–Â¼Ã’(ÃÃ½)
+		sb.append(resource.getMessage("addr.outlookExpress.008") + ",");	//8.Â±Â¸Â±ÂºÂ½Ãƒ(ÃÃ½)
+		sb.append(resource.getMessage("addr.outlookExpress.009") + ",");	//9.Â¿Ã¬Ã†Ã­Â¹Ã¸ÃˆÂ£(ÃÃ½)
+		sb.append(resource.getMessage("addr.outlookExpress.010") + ",");	//10.Â½Ãƒ/ÂµÂµ(ÃÃ½)
+		sb.append(resource.getMessage("addr.outlookExpress.011") + ",");	//11.Â±Â¹Â°Â¡(ÃÃ½)
+		sb.append(resource.getMessage("addr.outlookExpress.012") + ",");	//12.ÃÃ½ Ã€Ã¼ÃˆÂ­
 		
-		sb.append(resource.getMessage("addr.outlookExpress.015") + ",");	//13.°³ÀÎ À¥ ÆäÀÌÁö
+		sb.append(resource.getMessage("addr.outlookExpress.015") + ",");	//13.Â°Â³Ã€Ã Ã€Â¥ Ã†Ã¤Ã€ÃŒÃÃ¶
 		
-		sb.append(resource.getMessage("addr.outlookExpress.016") + ",");	//14.ÁÖ¼Ò(È¸»ç)
-		sb.append(resource.getMessage("addr.outlookExpress.017") + ",");	//15.±¸/±º/½Ã(È¸»ç)
-		sb.append(resource.getMessage("addr.outlookExpress.018") + ",");	//16.¿ìÆí ¹øÈ£(È¸»ç)
-		sb.append(resource.getMessage("addr.outlookExpress.019") + ",");	//17.½Ã/µµ(È¸»ç)
-		sb.append(resource.getMessage("addr.outlookExpress.020") + ",");	//18.±¹°¡(È¸»ç)
-		sb.append(resource.getMessage("addr.outlookExpress.022") + ",");	//19.È¸»ç ÀüÈ­
-		sb.append(resource.getMessage("addr.outlookExpress.024") + ",");	//20.È¸»ç
-		sb.append(resource.getMessage("addr.outlookExpress.025") + ",");	//21.Á÷ÇÔ
-		sb.append(resource.getMessage("addr.outlookExpress.026") + ",");	//22.ºÎ¼­
-		sb.append(resource.getMessage("addr.outlookExpress.021") + ",");	//23.È¸»ç À¥ ÆäÀÌÁö
-		sb.append(resource.getMessage("addr.outlookExpress.023"));			//24.È¸»ç ÆÑ½º
+		sb.append(resource.getMessage("addr.outlookExpress.016") + ",");	//14.ÃÃ–Â¼Ã’(ÃˆÂ¸Â»Ã§)
+		sb.append(resource.getMessage("addr.outlookExpress.017") + ",");	//15.Â±Â¸/Â±Âº/Â½Ãƒ(ÃˆÂ¸Â»Ã§)
+		sb.append(resource.getMessage("addr.outlookExpress.018") + ",");	//16.Â¿Ã¬Ã†Ã­ Â¹Ã¸ÃˆÂ£(ÃˆÂ¸Â»Ã§)
+		sb.append(resource.getMessage("addr.outlookExpress.019") + ",");	//17.Â½Ãƒ/ÂµÂµ(ÃˆÂ¸Â»Ã§)
+		sb.append(resource.getMessage("addr.outlookExpress.020") + ",");	//18.Â±Â¹Â°Â¡(ÃˆÂ¸Â»Ã§)
+		sb.append(resource.getMessage("addr.outlookExpress.022") + ",");	//19.ÃˆÂ¸Â»Ã§ Ã€Ã¼ÃˆÂ­
+		sb.append(resource.getMessage("addr.outlookExpress.024") + ",");	//20.ÃˆÂ¸Â»Ã§
+		sb.append(resource.getMessage("addr.outlookExpress.025") + ",");	//21.ÃÃ·Ã‡Ã”
+		sb.append(resource.getMessage("addr.outlookExpress.026") + ",");	//22.ÂºÃÂ¼Â­
+		sb.append(resource.getMessage("addr.outlookExpress.021") + ",");	//23.ÃˆÂ¸Â»Ã§ Ã€Â¥ Ã†Ã¤Ã€ÃŒÃÃ¶
+		sb.append(resource.getMessage("addr.outlookExpress.023"));			//24.ÃˆÂ¸Â»Ã§ Ã†Ã‘Â½Âº
 		sb.append("\r\n");
 
 		String dummy = "";

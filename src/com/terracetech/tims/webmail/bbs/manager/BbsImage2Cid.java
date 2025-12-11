@@ -59,14 +59,14 @@ public class BbsImage2Cid {
 	    if (endpos > end) {
 		newstr = text.substring(end, endpos);
 		
-		// Size ÀúÀå - by hkkim - 2007.09.22
+		// Size Ã€ÃºÃ€Ã¥ - by hkkim - 2007.09.22
 		int sizestart = newstr.indexOf("style=") + 7;
 		int sizeend   = newstr.indexOf("\"", sizestart);
 
 		if (sizeend > sizestart) {
 		    sizestr = "style=\""+newstr.substring(sizestart, sizeend)+"\"";
 		}
-		// Size ÀúÀå - by hkkim - 2007.09.22
+		// Size Ã€ÃºÃ€Ã¥ - by hkkim - 2007.09.22
 
 		int paramstart = newstr.indexOf("viewImage.do?img=") + 17;
 		int paramend   = newstr.indexOf("\"", paramstart);

@@ -70,14 +70,14 @@ public class ListMessageTestAction extends BaseAction {
 	}
 	
 	/**
-	 * @return sortBy °ª ¹İÈ¯
+	 * @return sortBy Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSortBy() {
 		return sortBy;
 	}
 
 	/**
-	 * @return sortDir °ª ¹İÈ¯
+	 * @return sortDir Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSortDir() {
 		return sortDir;

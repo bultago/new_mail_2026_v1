@@ -18,10 +18,10 @@ import com.terracetech.tims.mail.TMailFolder;
  * <strong>MailFoderSorter.java</strong> Class Description
  * </p>
  * <p>
- * ÁÖ¿ä¼³¸í
+ * ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­
  * </p>
  * <ul>
- * <li>¸ŞÀÏÇÔÀÇ ÀÌ¸§°ú ¼ø¼­¸¦ °¡Áö°í Á¤·Ä ÇØÁÖ´Â Å¬·¡½º</li>
+ * <li>Â¸ÃÃ€ÃÃ‡Ã”Ã€Ã‡ Ã€ÃŒÂ¸Â§Â°Ãº Â¼Ã¸Â¼Â­Â¸Â¦ Â°Â¡ÃÃ¶Â°Ã­ ÃÂ¤Â·Ã„ Ã‡Ã˜ÃÃ–Â´Ã‚ Ã…Â¬Â·Â¡Â½Âº</li>
  * </ul>
  * 
  * @author jpjung
@@ -31,11 +31,11 @@ import com.terracetech.tims.mail.TMailFolder;
 public class MailFolderSorter {
 
 	/**
-	 * <p>±âº»¸ŞÀÏÇÔÀ» Ã£¾Æ Á¤·ÄÇÏ¿© ÀÌ¸¦ ¹İÈ¯.</p>
+	 * <p>Â±Ã¢ÂºÂ»Â¸ÃÃ€ÃÃ‡Ã”Ã€Â» ÃƒÂ£Â¾Ã† ÃÂ¤Â·Ã„Ã‡ÃÂ¿Â© Ã€ÃŒÂ¸Â¦ Â¹ÃÃˆÂ¯.</p>
 	 *
-	 * @param folders			¸ŞÀÏÇÔ ¹è¿­
+	 * @param folders			Â¸ÃÃ€ÃÃ‡Ã” Â¹Ã¨Â¿Â­
 	 * @return
-	 * @return TMailFolder[]	Á¤·ÄµÈ ±âº»¸ŞÀÏÇÔ ¹è¿­
+	 * @return TMailFolder[]	ÃÂ¤Â·Ã„ÂµÃˆ Â±Ã¢ÂºÂ»Â¸ÃÃ€ÃÃ‡Ã” Â¹Ã¨Â¿Â­
 	 */
 	public TMailFolder[] getSortedFoldersByDefault(boolean isOverQuota, TMailFolder[] folders) {
 
@@ -61,12 +61,12 @@ public class MailFolderSorter {
 	}
 
 	/**
-	 * <p>±âº»¸ŞÀÏÇÔÀÇ ¼ø¼­ Á¤º¸¸¦ ¹İÈ¯.</p>
-	 * <p>¼ø¼­ Á¤º¸°¡ -1ÀÏ°æ¿ì ±â¤Ç¤¤¸ŞÀÏÇÔÀÌ ¾Æ´Ô.</p>
+	 * <p>Â±Ã¢ÂºÂ»Â¸ÃÃ€ÃÃ‡Ã”Ã€Ã‡ Â¼Ã¸Â¼Â­ ÃÂ¤ÂºÂ¸Â¸Â¦ Â¹ÃÃˆÂ¯.</p>
+	 * <p>Â¼Ã¸Â¼Â­ ÃÂ¤ÂºÂ¸Â°Â¡ -1Ã€ÃÂ°Ã¦Â¿Ã¬ Â±Ã¢Â¤Ã‡Â¤Â¤Â¸ÃÃ€ÃÃ‡Ã”Ã€ÃŒ Â¾Ã†Â´Ã”.</p>
 	 *
-	 * @param folderName		¸ŞÀÏÇÔ ÀÌ¸§
+	 * @param folderName		Â¸ÃÃ€ÃÃ‡Ã” Ã€ÃŒÂ¸Â§
 	 * @return
-	 * @return int					¼ø¼­ °ª.
+	 * @return int					Â¼Ã¸Â¼Â­ Â°Âª.
 	 */
 	public static int getDefaultBoxPos(String folderName) {
 		int pos = -1;

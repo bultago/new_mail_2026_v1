@@ -12,9 +12,9 @@ package com.terracetech.tims.webmail.mail.manager.body;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.NoSuchProviderException;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.NoSuchProviderException;
 
 import com.terracetech.tims.webmail.mail.ibean.SenderInfoBean;
 
@@ -24,7 +24,7 @@ import com.terracetech.tims.webmail.mail.ibean.SenderInfoBean;
  * <strong>AbstractMsgBodyCreator.java</strong> Class Description
  * </p>
  * <p>
- * ÁÖ¿ä¼³¸í
+ * ï¿½Ö¿ä¼³ï¿½ï¿½
  * </p>
  * <ul>
  * <li></li>

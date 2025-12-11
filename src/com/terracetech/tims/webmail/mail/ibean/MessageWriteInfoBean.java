@@ -13,7 +13,7 @@ import com.terracetech.tims.webmail.util.StringUtils;
 
 /**
  * <p><strong>MailWriteInfoBean.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
  * <li></li>
  * </ul>
@@ -68,25 +68,25 @@ public class MessageWriteInfoBean {
 		this.mobileMode = mobileMode;
 	}
 	/**
-	 * @return writeType °ª ¹İÈ¯
+	 * @return writeType Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getWriteType() {
 		return writeType;
 	}	
 	/**
-	 * @param writeType ÆÄ¶ó¹ÌÅÍ¸¦ writeType°ª¿¡ ¼³Á¤
+	 * @param writeType Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ writeTypeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setWriteType(String writeType) {
 		this.writeType = writeType;
 	}	
 	/**
-	 * @return editorMode °ª ¹İÈ¯
+	 * @return editorMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getEditorMode() {
 		return editorMode;
 	}
 	/**
-	 * @param editorMode ÆÄ¶ó¹ÌÅÍ¸¦ editorMode°ª¿¡ ¼³Á¤
+	 * @param editorMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ editorModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setEditorMode(String editorMode) {
 		this.editorMode = editorMode;
@@ -100,7 +100,7 @@ public class MessageWriteInfoBean {
 		return (editorMode != null)?editorMode.equals("text"):false;
 	}
 	/**
-	 * @return uid °ª ¹İÈ¯
+	 * @return uid Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String[] getUids() {
 		return uids;
@@ -110,25 +110,25 @@ public class MessageWriteInfoBean {
 		return StringUtils.getStringsToLongs(uids);
 	}
 	/**
-	 * @param uid ÆÄ¶ó¹ÌÅÍ¸¦ uid°ª¿¡ ¼³Á¤
+	 * @param uid Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ uidÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUids(String[] uids) {
 		this.uids = uids;
 	}
 	/**
-	 * @return uids °ª ¹İÈ¯
+	 * @return uids Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String[] getWuids() {
 		return wuids;
 	}
 	/**
-	 * @return uids °ª ¹İÈ¯
+	 * @return uids Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public long[] getWuidsValue() {		
 		return StringUtils.getStringsToLongs(wuids);
 	}
 	/**
-	 * @param uids ÆÄ¶ó¹ÌÅÍ¸¦ uids°ª¿¡ ¼³Á¤
+	 * @param uids Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ uidsÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setWuids(String wuid) {
 		if(wuid != null){
@@ -136,13 +136,13 @@ public class MessageWriteInfoBean {
 		}		
 	}
 	/**
-	 * @return buids °ª ¹İÈ¯
+	 * @return buids Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getBuids() {
 		return buids;
 	}
 	/**
-	 * @param buids ÆÄ¶ó¹ÌÅÍ¸¦ buids°ª¿¡ ¼³Á¤
+	 * @param buids Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ buidsÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setBuids(String buids) {
 		this.buids = buids;
@@ -154,145 +154,145 @@ public class MessageWriteInfoBean {
 		this.bmids = bmids;
 	}
 	/**
-	 * @return bbsId °ª ¹İÈ¯
+	 * @return bbsId Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getBbsId() {
 		return bbsId;
 	}
 	/**
-	 * @param bbsId ÆÄ¶ó¹ÌÅÍ¸¦ bbsId°ª¿¡ ¼³Á¤
+	 * @param bbsId Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ bbsIdÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setBbsId(String bbsId) {
 		this.bbsId = bbsId;
 	}
 	/**
-	 * @return folderName °ª ¹İÈ¯
+	 * @return folderName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getFolderName() {
 		return folderName;
 	}
 	/**
-	 * @param folderName ÆÄ¶ó¹ÌÅÍ¸¦ folderName°ª¿¡ ¼³Á¤
+	 * @param folderName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ folderNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setFolderName(String folderName) {
 		this.folderName = folderName;
 	}
 	/**
-	 * @return webfolderType °ª ¹İÈ¯
+	 * @return webfolderType Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getWebfolderType() {
 		return webfolderType;
 	}
 	/**
-	 * @param webfolderType ÆÄ¶ó¹ÌÅÍ¸¦ webfolderType°ª¿¡ ¼³Á¤
+	 * @param webfolderType Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ webfolderTypeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setWebfolderType(String webfolderType) {
 		this.webfolderType = webfolderType;
 	}
 	/**
-	 * @return webfolderShareSeq °ª ¹İÈ¯
+	 * @return webfolderShareSeq Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getWebfolderShareSeq() {
 		return webfolderShareSeq;
 	}
 	/**
-	 * @param webfolderShareSeq ÆÄ¶ó¹ÌÅÍ¸¦ webfolderShareSeq°ª¿¡ ¼³Á¤
+	 * @param webfolderShareSeq Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ webfolderShareSeqÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setWebfolderShareSeq(String webfolderShareSeq) {
 		this.webfolderShareSeq = webfolderShareSeq;
 	}
 	/**
-	 * @return place °ª ¹İÈ¯
+	 * @return place Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getPlace() {
 		return place;
 	}
 	/**
-	 * @param place ÆÄ¶ó¹ÌÅÍ¸¦ place°ª¿¡ ¼³Á¤
+	 * @param place Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ placeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setPlace(String place) {
 		this.place = place;
 	}
 	/**
-	 * @return reqTo °ª ¹İÈ¯
+	 * @return reqTo Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getReqTo() {		
 		return (reqTo != null)?reqTo:"";
 	}
 	/**
-	 * @param reqTo ÆÄ¶ó¹ÌÅÍ¸¦ reqTo°ª¿¡ ¼³Á¤
+	 * @param reqTo Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ reqToÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setReqTo(String reqTo) {
 		this.reqTo = reqTo;
 	}
 	/**
-	 * @return reqCc °ª ¹İÈ¯
+	 * @return reqCc Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getReqCc() {
 		return (reqCc != null)?reqCc:"";
 	}
 	/**
-	 * @param reqCc ÆÄ¶ó¹ÌÅÍ¸¦ reqCc°ª¿¡ ¼³Á¤
+	 * @param reqCc Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ reqCcÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setReqCc(String reqCc) {
 		this.reqCc = reqCc;
 	}
 	/**
-	 * @return reqBcc °ª ¹İÈ¯
+	 * @return reqBcc Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getReqBcc() {
 		return (reqBcc != null)?reqBcc:"";
 	}
 	/**
-	 * @param reqBcc ÆÄ¶ó¹ÌÅÍ¸¦ reqBcc°ª¿¡ ¼³Á¤
+	 * @param reqBcc Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ reqBccÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setReqBcc(String reqBcc) {
 		this.reqBcc = reqBcc;
 	}
 	/**
-	 * @return reqSubject °ª ¹İÈ¯
+	 * @return reqSubject Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getReqSubject() {
 		return (reqSubject != null)?reqSubject:"";
 	}
 	/**
-	 * @param reqSubject ÆÄ¶ó¹ÌÅÍ¸¦ reqSubject°ª¿¡ ¼³Á¤
+	 * @param reqSubject Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ reqSubjectÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setReqSubject(String reqSubject) {
 		this.reqSubject = reqSubject;
 	}
 	/**
-	 * @return reqContent °ª ¹İÈ¯
+	 * @return reqContent Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getReqContent() {
 		return (reqContent != null)?reqContent:"";
 	}
 	/**
-	 * @param reqContent ÆÄ¶ó¹ÌÅÍ¸¦ reqContent°ª¿¡ ¼³Á¤
+	 * @param reqContent Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ reqContentÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setReqContent(String reqContent) {		
 		this.reqContent = reqContent;
 	}
 	/**
-	 * @return returl °ª ¹İÈ¯
+	 * @return returl Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getReturl() {
 		return returl;
 	}
 	/**
-	 * @param returl ÆÄ¶ó¹ÌÅÍ¸¦ returl°ª¿¡ ¼³Á¤
+	 * @param returl Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ returlÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setReturl(String returl) {
 		this.returl = returl;
 	}
 	/**
-	 * @return attatachUrls °ª ¹İÈ¯
+	 * @return attatachUrls Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String[] getAttatachUrls() {
 		return attatachUrls;
 	}
 	/**
-	 * @param attatachUrls ÆÄ¶ó¹ÌÅÍ¸¦ attatachUrls°ª¿¡ ¼³Á¤
+	 * @param attatachUrls Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ attatachUrlsÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAttatachUrls(String[] attatachUrls) {
 		this.attatachUrls = attatachUrls;
@@ -304,37 +304,37 @@ public class MessageWriteInfoBean {
 		this.attatachFilenames = attatachFilenames;
 	}	
 	/**
-	 * @return attachLists °ª ¹İÈ¯
+	 * @return attachLists Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String[] getAttachLists() {
 		return attachLists;
 	}
 	/**
-	 * @param attachLists ÆÄ¶ó¹ÌÅÍ¸¦ attachLists°ª¿¡ ¼³Á¤
+	 * @param attachLists Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ attachListsÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAttachLists(String[] attachLists) {
 		this.attachLists = attachLists;
 	}
 	/**
-	 * @return autoSaveMode °ª ¹İÈ¯
+	 * @return autoSaveMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAutoSaveMode() {
 		return autoSaveMode;
 	}
 	/**
-	 * @param autoSaveMode ÆÄ¶ó¹ÌÅÍ¸¦ autoSaveMode°ª¿¡ ¼³Á¤
+	 * @param autoSaveMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ autoSaveModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAutoSaveMode(String autoSaveMode) {
 		this.autoSaveMode = autoSaveMode;
 	}
 	/**
-	 * @return forwardingMode °ª ¹İÈ¯
+	 * @return forwardingMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getForwardingMode() {
 		return forwardingMode;
 	}
 	/**
-	 * @param forwardingMode ÆÄ¶ó¹ÌÅÍ¸¦ forwardingMode°ª¿¡ ¼³Á¤
+	 * @param forwardingMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ forwardingModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setForwardingMode(String forwardingMode) {
 		this.forwardingMode = forwardingMode;
@@ -344,13 +344,13 @@ public class MessageWriteInfoBean {
 		return (forwardingMode != null)?forwardingMode.equals("parsed"):false;	
 	}
 	/**
-	 * @return isSignInside °ª ¹İÈ¯
+	 * @return isSignInside Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public boolean isSignInside() {
 		return isSignInside;
 	}
 	/**
-	 * @param isSignInside ÆÄ¶ó¹ÌÅÍ¸¦ isSignInside°ª¿¡ ¼³Á¤
+	 * @param isSignInside Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ isSignInsideÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSignInside(boolean isSignInside) {
 		this.isSignInside = isSignInside;

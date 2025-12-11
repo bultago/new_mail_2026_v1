@@ -40,10 +40,6 @@ var mailOption = {
 <script type="text/javascript" src="/js/swfupload-lib/swfupload.js"></script>
 <script type="text/javascript" src="/js/common-lib/common-form.js"></script>
 
-<script type="text/javascript" src="/dwr/interface/MailFolderService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailMessageService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailCommonService.js"></script>
-<script type="text/javascript" src="/dwr/interface/AddressBookService.js"></script>
 <script type="text/javascript" src="/js/mail-lib/mailCommon.js"></script>
 <script type="text/javascript" src="/js/mail-lib/mailAction.js"></script>
 <script type="text/javascript" src="/js/mail-lib/mailAttach.js"></script>

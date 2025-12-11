@@ -73,7 +73,7 @@ public class KerisEPKIVerifierImpl implements IPKIVerifier {
 			
 			validator.validate(CertValidator.CERT_TYPE_SIGN, clientCert);
 			
-			// ¿äÃ»ÀÚ ÀÎÁõ¼­ Á¤º¸ È¹µæ
+			// Â¿Ã¤ÃƒÂ»Ã€Ãš Ã€ÃÃÃµÂ¼Â­ ÃÂ¤ÂºÂ¸ ÃˆÂ¹ÂµÃ¦
 			String strUserDN = clientCert.getSubjectName();
 			authInfo.setAuth(true);
 			authInfo.setError(false);

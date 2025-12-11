@@ -22,18 +22,19 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-import javax.activation.DataHandler;
-import javax.mail.Flags;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.internet.MimeUtility;
+import jakarta.activation.DataHandler;
+import jakarta.mail.Flags;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Session;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
+import jakarta.mail.internet.MimeUtility;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import com.sun.mail.imap.IMAPInputStream;
@@ -116,7 +117,7 @@ public class MailServiceManager implements IMailServiceManager {
 		Security.addProvider(new BouncyCastleProvider());
 	}
 	
-	private Logger log = Logger.getLogger(this.getClass());
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private MailManager mailManager = null;	
 	private LadminManager ladminManager = null;	

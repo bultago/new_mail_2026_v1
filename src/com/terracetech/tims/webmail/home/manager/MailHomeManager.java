@@ -3,17 +3,17 @@ package com.terracetech.tims.webmail.home.manager;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.webmail.common.dao.SystemConfigDao;
 import com.terracetech.tims.webmail.common.log.LogManager;
 import com.terracetech.tims.webmail.common.vo.MailConfigVO;
-import com.terracetech.tims.webmail.home.dao.IMailHomePortletDao;
+import com.terracetech.tims.webmail.home.dao.MailHomePortletDao;
 import com.terracetech.tims.webmail.home.vo.MailHomeLayoutVO;
 import com.terracetech.tims.webmail.home.vo.MailHomePortletVO;
 import com.terracetech.tims.webmail.home.vo.MailMenuLayoutVO;
-import com.terracetech.tims.webmail.setting.dao.ISettingUserEtcInfoDao;
+import com.terracetech.tims.webmail.setting.dao.SettingUserEtcInfoDao;
 import com.terracetech.tims.webmail.setting.vo.UserEtcInfoVO;
 import com.terracetech.tims.webmail.util.StringUtils;
 
@@ -21,9 +21,9 @@ public class MailHomeManager {
 	
 	public final static String GROUP_MENU = "group_menu";
 
-	private IMailHomePortletDao dao;
+	private MailHomePortletDao dao;
 	
-	private ISettingUserEtcInfoDao etcDao = null;
+	private SettingUserEtcInfoDao etcDao = null;
 	
 	private SystemConfigDao systemConfigDao;
 	
@@ -31,12 +31,12 @@ public class MailHomeManager {
 		this.systemConfigDao = systemConfigDao;
 	}
 
-	public void setDao(IMailHomePortletDao dao) {
+	public void setDao(MailHomePortletDao dao) {
 		this.dao = dao;
 	}
 	
 	
-	public void setEtcDao(ISettingUserEtcInfoDao etcDao) {
+	public void setEtcDao(SettingUserEtcInfoDao etcDao) {
 		this.etcDao = etcDao;
 	}
 

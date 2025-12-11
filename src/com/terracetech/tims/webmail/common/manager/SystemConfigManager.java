@@ -10,7 +10,10 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.terracetech.secure.DESUtils;
 import com.terracetech.tims.webmail.common.EnvConstants;
@@ -22,9 +25,11 @@ import com.terracetech.tims.webmail.mailuser.dao.MailDomainDao;
 import com.terracetech.tims.webmail.util.StringUtils;
 
 @SuppressWarnings("unchecked")
+@Service
+@Transactional
 public class SystemConfigManager {
 	
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private SystemConfigDao systemConfigDao = null;
 	
@@ -497,7 +502,7 @@ public class SystemConfigManager {
         try {
             maxRecipient = systemConfigDao.readConfigFile("smtp/mtaadmin").get("maxrecipient");
         } catch (SQLException e) {
-            log.error(e);
+            log.error("Error occurred", e);
         }
 
 	    return maxRecipient;

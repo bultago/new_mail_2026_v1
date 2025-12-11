@@ -17,7 +17,7 @@ import com.terracetech.tims.webmail.mailuser.User;
 
 /**
  * <p><strong>DeleteAttachFileAction.java</strong> Class Description</p>
- * <p>�ֿ伳��</p>
+ * <p>ÁÖ¿ä¼³¸í</p>
  * <ul>
  * <li></li>
  * </ul>

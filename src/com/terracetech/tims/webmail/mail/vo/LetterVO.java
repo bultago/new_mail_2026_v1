@@ -147,42 +147,42 @@ public class LetterVO {
 	}
 
 	/**
-	 * @return letterHeaderUrl °ª ¹İÈ¯
+	 * @return letterHeaderUrl Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getLetterHeaderUrl() {
 		return letterHeaderUrl;
 	}
 
 	/**
-	 * @param letterHeaderUrl ÆÄ¶ó¹ÌÅÍ¸¦ letterHeaderUrl°ª¿¡ ¼³Á¤
+	 * @param letterHeaderUrl Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ letterHeaderUrlÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setLetterHeaderUrl(String letterHeaderUrl) {
 		this.letterHeaderUrl = letterHeaderUrl;
 	}
 
 	/**
-	 * @return letterBodytUrl °ª ¹İÈ¯
+	 * @return letterBodytUrl Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getLetterBodyUrl() {
 		return letterBodyUrl;
 	}
 
 	/**
-	 * @param letterBodytUrl ÆÄ¶ó¹ÌÅÍ¸¦ letterBodytUrl°ª¿¡ ¼³Á¤
+	 * @param letterBodytUrl Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ letterBodytUrlÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setLetterBodyUrl(String letterBodytUrl) {
 		this.letterBodyUrl = letterBodytUrl;
 	}
 
 	/**
-	 * @return letterTailUrl °ª ¹İÈ¯
+	 * @return letterTailUrl Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getLetterTailUrl() {
 		return letterTailUrl;
 	}
 
 	/**
-	 * @param letterTailUrl ÆÄ¶ó¹ÌÅÍ¸¦ letterTailUrl°ª¿¡ ¼³Á¤
+	 * @param letterTailUrl Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ letterTailUrlÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setLetterTailUrl(String letterTailUrl) {
 		this.letterTailUrl = letterTailUrl;
@@ -190,7 +190,7 @@ public class LetterVO {
 
 
 	/**
-	 * @return letterHeaderPath °ª ¹İÈ¯
+	 * @return letterHeaderPath Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getLetterHeaderPath() {
 		return letterHeaderPath;
@@ -198,7 +198,7 @@ public class LetterVO {
 
 
 	/**
-	 * @param letterHeaderPath ÆÄ¶ó¹ÌÅÍ¸¦ letterHeaderPath°ª¿¡ ¼³Á¤
+	 * @param letterHeaderPath Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ letterHeaderPathÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setLetterHeaderPath(String letterHeaderPath) {
 		this.letterHeaderPath = letterHeaderPath;
@@ -206,7 +206,7 @@ public class LetterVO {
 
 
 	/**
-	 * @return letterBodyPath °ª ¹İÈ¯
+	 * @return letterBodyPath Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getLetterBodyPath() {
 		return letterBodyPath;
@@ -214,7 +214,7 @@ public class LetterVO {
 
 
 	/**
-	 * @param letterBodyPath ÆÄ¶ó¹ÌÅÍ¸¦ letterBodyPath°ª¿¡ ¼³Á¤
+	 * @param letterBodyPath Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ letterBodyPathÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setLetterBodyPath(String letterBodyPath) {
 		this.letterBodyPath = letterBodyPath;
@@ -222,7 +222,7 @@ public class LetterVO {
 
 
 	/**
-	 * @return letterTailPath °ª ¹İÈ¯
+	 * @return letterTailPath Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getLetterTailPath() {
 		return letterTailPath;
@@ -230,7 +230,7 @@ public class LetterVO {
 
 
 	/**
-	 * @param letterTailPath ÆÄ¶ó¹ÌÅÍ¸¦ letterTailPath°ª¿¡ ¼³Á¤
+	 * @param letterTailPath Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ letterTailPathÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setLetterTailPath(String letterTailPath) {
 		this.letterTailPath = letterTailPath;

@@ -16,13 +16,13 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.NoSuchProviderException;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeUtility;
+import jakarta.activation.DataHandler;
+import jakarta.activation.FileDataSource;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.NoSuchProviderException;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeUtility;
 
 import com.terracetech.tims.mail.TMailMessage;
 import com.terracetech.tims.webmail.mail.ibean.SenderInfoBean;
@@ -30,7 +30,7 @@ import com.terracetech.tims.webmail.util.FileUtil;
 
 /**
  * <p><strong>AttachForwardMsgBodyCreator.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

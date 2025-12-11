@@ -1,9 +1,9 @@
 package com.terracetech.tims.webmail.note.manager;
 
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Session;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 
 import com.terracetech.tims.webmail.common.log.LogManager;
 import com.terracetech.tims.webmail.mail.ibean.SenderInfoBean;

@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 
-import org.hsqldb.lib.StringUtil;
+import com.terracetech.tims.webmail.util.StringUtils;
 
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailMessage;
@@ -194,7 +194,7 @@ public class DownloadMessagesAction extends BaseAction {
 		        
 				ZipUtil zipUtil = new ZipUtil();
 				zipUtil.setDebug("true".equalsIgnoreCase(EnvConstants.getBasicSetting("log.debug")));
-				String charset = StringUtil.isEmpty(EnvConstants.getMailSetting("default.zip.charset")) ? "EUC-KR" : EnvConstants.getMailSetting("default.zip.charset");
+				String charset = StringUtils.isEmpty(EnvConstants.getMailSetting("default.zip.charset")) ? "EUC-KR" : EnvConstants.getMailSetting("default.zip.charset");
 				zipUtil.zip(new File(zipFileDir), charset, false);
 				
 				targetFile = new File(zipFilePath);

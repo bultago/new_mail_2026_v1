@@ -56,8 +56,8 @@ public class MakeShareFolderAction extends BaseAction {
 			}			
 			
 			
-			path = path.substring(1);  // Æú´õ¾Õ¿¡'/'¾ø¾Ö°í
-			int dis = path.lastIndexOf("/"); //ÇöÀç °øÀ¯ÇÏ´Â Æú´õº¸´Ù ÇÑ´Ü°è »óÀ§·Î °¡±â À§ÇØ			
+			path = path.substring(1);  // Ã†ÃºÂ´ÃµÂ¾Ã•Â¿Â¡'/'Â¾Ã¸Â¾Ã–Â°Ã­
+			int dis = path.lastIndexOf("/"); //Ã‡Ã¶Ã€Ã§ Â°Ã¸Ã€Â¯Ã‡ÃÂ´Ã‚ Ã†ÃºÂ´ÃµÂºÂ¸Â´Ã™ Ã‡Ã‘Â´ÃœÂ°Ã¨ Â»Ã³Ã€Â§Â·Ã Â°Â¡Â±Ã¢ Ã€Â§Ã‡Ã˜			
 			writeWebfolderLog(true, "wfolder_share_create", "WEBFOLDERROOT."+folderPath.replaceAll("/","."), "", "");
 			
 			if(dis > 0){
@@ -111,8 +111,8 @@ public class MakeShareFolderAction extends BaseAction {
 			
 			writeWebfolderLog(true, "wfolder_share_create", "WEBFOLDERROOT."+folderPath.replaceAll("/","."), "", "");
 			
-			path = path.substring(1);  // Æú´õ¾Õ¿¡'/'¾ø¾Ö°í
-			int dis = path.lastIndexOf("/"); //ÇöÀç °øÀ¯ÇÏ´Â Æú´õº¸´Ù ÇÑ´Ü°è »óÀ§·Î °¡±â À§ÇØ
+			path = path.substring(1);  // Ã†ÃºÂ´ÃµÂ¾Ã•Â¿Â¡'/'Â¾Ã¸Â¾Ã–Â°Ã­
+			int dis = path.lastIndexOf("/"); //Ã‡Ã¶Ã€Ã§ Â°Ã¸Ã€Â¯Ã‡ÃÂ´Ã‚ Ã†ÃºÂ´ÃµÂºÂ¸Â´Ã™ Ã‡Ã‘Â´ÃœÂ°Ã¨ Â»Ã³Ã€Â§Â·Ã Â°Â¡Â±Ã¢ Ã€Â§Ã‡Ã˜
 			if(dis > 0){
 				path = path.substring(0,dis);
 			}else{

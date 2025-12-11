@@ -1,8 +1,8 @@
 package com.terracetech.tims.webmail.plugin.pki;
 
 
-import xecure.crypto.SignVerifier;
-import xecure.crypto.VidVerifier;
+// import xecure.crypto.SignVerifier;
+// import xecure.crypto.VidVerifier;
 import xecure.servlet.XecureConfig;
 
 public class SoftForumEPKIVerifierImpl implements IPKIVerifier {

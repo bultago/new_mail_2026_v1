@@ -5,7 +5,6 @@
 <%@ page import="org.apache.commons.lang.StringEscapeUtils"%>
 <%@ page import="java.util.Locale"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>

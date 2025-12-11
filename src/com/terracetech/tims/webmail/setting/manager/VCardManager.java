@@ -13,8 +13,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeUtility;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeUtility;
 
 import com.terracetech.secure.Base64;
 import com.terracetech.tims.webmail.setting.dao.VCardDao;

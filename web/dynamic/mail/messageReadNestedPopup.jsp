@@ -1,6 +1,5 @@
 <%@ page isELIgnored="false"%>
 <%@ page language="java"  contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>
@@ -73,7 +72,6 @@ function readNestedMessage(uid, folder, part){
 	popupReadForm.target = wname;
 	popupReadForm.submit();		
 }
-
 
 </script>
 </head>

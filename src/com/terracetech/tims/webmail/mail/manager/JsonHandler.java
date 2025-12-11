@@ -12,7 +12,7 @@ package com.terracetech.tims.webmail.mail.manager;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -30,10 +30,10 @@ import com.terracetech.tims.webmail.mail.vo.SharedFolderVO;
  * <strong>JsonFolderHandler.java</strong> Class Description
  * </p>
  * <p>
- * ÁÖ¿ä¼³¸í
+ * ï¿½Ö¿ä¼³ï¿½ï¿½
  * </p>
  * <ul>
- * <li>¸ÞÀÏÇÔ ¸®½ºÆ®¿Í ¸ÞÀÏ ¸Þ¼¼Áö ¸®½ºÆ®¸¦ JSONList  ·Î º¯È¯ ÇÏ¿© ÁÖ´Â ÇÚµé·¯ Å¬·¡½º</li>
+ * <li>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ JSONList  ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½Ï¿ï¿½ ï¿½Ö´ï¿½ ï¿½Úµé·¯ Å¬ï¿½ï¿½ï¿½ï¿½</li>
  * </ul>
  * 
  * @author sshyun
@@ -44,16 +44,16 @@ import com.terracetech.tims.webmail.mail.vo.SharedFolderVO;
 public class JsonHandler {
 
 	/**
-	 * <p>¸ÞÀÏÇÔ Æú´õ Tree ¸¦ À§ÇØ ¸ÞÀÏÇÔ Á¤º¸¸¦ JSONÀ¸·Î ÃßÃâÇÑµÚ ÀÌ¸¦ Tree ÇüÅÂÀÇ JSON ¸®½ºÆ®·Î º¯È¯</p>
+	 * <p>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Tree ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ JSONï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñµï¿½ ï¿½Ì¸ï¿½ Tree ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ JSON ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¯</p>
 	 *
-	 * @param beanArray			JSON List¸¦ À§ÇÑ Array. JSON Object¸¦ ÀúÀå.
-	 * @param folderBeans			¸ÞÀÏÇÔ ¹è¿­
-	 * @param startPos				½ÃÀÛ ÁöÁ¡ 
-	 * @param size					¹è¿­ »çÀÌÁî
-	 * @param preDepth				ÀÌÀü Depth Á¤º¸
-	 * @param parentName			ºÎ¸ð Æú´õ¸í
-	 * @param parentId				ºÎ¸ð ¾ÆÀÌµð¸í
-	 * @return int						º¯È¯ ÈÄÀÇ ÁøÇàµÈ ÁöÁ¡°ªÀ» ¹ÝÈ¯.
+	 * @param beanArray			JSON Listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Array. JSON Objectï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+	 * @param folderBeans			ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
+	 * @param startPos				ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+	 * @param size					ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param preDepth				ï¿½ï¿½ï¿½ï¿½ Depth ï¿½ï¿½ï¿½ï¿½
+	 * @param parentName			ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param parentId				ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½
+	 * @return int						ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯.
 	 */
 	public int parseFolderList(JSONArray beanArray, MailFolderBean[] folderBeans,
 			int startPos, int size, int preDepth, String parentName,
@@ -105,10 +105,10 @@ public class JsonHandler {
 	}
 
 	/**
-	 * <p>¸ÞÀÏÇÔ ¹è¿­ Á¤º¸¸¦ °¡Áö°í JSONArray¸¦ »ý¼ºÇÏ¿© ¹ÝÈ¯. Tree ÇüÅÂÀÇ ±¸Á¶ ¹ÝÈ¯.</p>
+	 * <p>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ JSONArrayï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½È¯. Tree ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯.</p>
 	 *
-	 * @param folderBeans			º¯È¯ÇÒ ¸ÞÀÏÇÔ ¹è¿­
-	 * @return JSONArray			¸ÞÀÏÇÔ¿¡ ´ëÇÑ JSONArray
+	 * @param folderBeans			ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
+	 * @return JSONArray			ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ JSONArray
 	 */
 	public JSONArray getJsonFolderList(MailFolderBean[] folderBeans){
 		JSONArray beanArray = new JSONArray();	
@@ -117,11 +117,11 @@ public class JsonHandler {
 	}	
 	
 	/**
-	 * <p>¸Þ¼¼Áö ¸®½ºÆ®¸¦ JSON À¸·Î º¯È¯ ÇÏ¿© List ¸¦ ¹ÝÈ¯</p>
+	 * <p>ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ JSON ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½Ï¿ï¿½ List ï¿½ï¿½ ï¿½ï¿½È¯</p>
 	 *
-	 * @param msgBeans				º¯È¯ ¸Þ¼¼Áö ¹è¿­
+	 * @param msgBeans				ï¿½ï¿½È¯ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½è¿­
 	 * @throws MessagingException
-	 * @return JSONArray				¸Þ¼¼Áö JSON List 
+	 * @return JSONArray				ï¿½Þ¼ï¿½ï¿½ï¿½ JSON List 
 	 */
 	public JSONArray getJsonMessageList(MailMessageBean[] msgBeans)
 			throws MessagingException {

@@ -56,28 +56,28 @@ public class MdnRcptContentVO {
 	}
 
 	/**
-	 * @return code °ª ¹İÈ¯
+	 * @return code Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getCode() {
 		return code;
 	}
 
 	/**
-	 * @param code ÆÄ¶ó¹ÌÅÍ¸¦ code°ª¿¡ ¼³Á¤
+	 * @param code Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ codeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setCode(String code) {
 		this.code = code;
 	}
 
 	/**
-	 * @return personal °ª ¹İÈ¯
+	 * @return personal Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getPersonal() {
 		return personal;
 	}
 
 	/**
-	 * @param personal ÆÄ¶ó¹ÌÅÍ¸¦ personal°ª¿¡ ¼³Á¤
+	 * @param personal Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ personalÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setPersonal(String personal) {
 		this.personal = personal;

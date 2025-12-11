@@ -4,7 +4,7 @@ import java.net.URLEncoder;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.http.Cookie;
+import jakarta.servlet.http.Cookie;
 
 import org.json.simple.JSONObject;
 

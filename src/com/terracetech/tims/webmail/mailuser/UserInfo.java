@@ -29,7 +29,7 @@ public class UserInfo implements User {
     	if (infoMap == null)
     		return;
 
-//    	µ¥ÀÌÅÍ º£ÀÌ½º¿¡ µû¶ó¼­ fieldÁ¤º¸°¡ ¼Ò¹®ÀÚ·Î ¿Ã ¼ö µµ ÀÖ±â¶§¹®¿¡ ¹®Á¶°Ç ´ë¹®ÀÚ·Î ¼¼ÆÃ
+//    	ÂµÂ¥Ã€ÃŒÃ…Ã ÂºÂ£Ã€ÃŒÂ½ÂºÂ¿Â¡ ÂµÃ»Â¶Ã³Â¼Â­ fieldÃÂ¤ÂºÂ¸Â°Â¡ Â¼Ã’Â¹Â®Ã€ÃšÂ·Ã Â¿Ãƒ Â¼Ã¶ ÂµÂµ Ã€Ã–Â±Ã¢Â¶Â§Â¹Â®Â¿Â¡ Â¹Â®ÃÂ¶Â°Ã‡ Â´Ã«Â¹Â®Ã€ÃšÂ·Ã Â¼Â¼Ã†Ãƒ
     	Iterator<String> keys = infoMap.keySet().iterator();
     	Map<String, Object> tmp = new HashMap<String, Object>();
     	while (keys.hasNext()) {

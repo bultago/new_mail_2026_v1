@@ -12,7 +12,7 @@ package com.terracetech.tims.webmail.setting.vo;
 
 /**
  * <p><strong>SignDataVO.java</strong> Class Description</p>
- * <p>»ç¿ëÀÚ°¡ ÁöÁ¤ÇÑ SignÀÇ ÀÌ¹ÌÁö¿Í ÅØ½ºÆ®¸¦ °¡Áö°í ÀÖ´Ù.</p>
+ * <p>Â»Ã§Â¿Ã«Ã€ÃšÂ°Â¡ ÃÃ¶ÃÂ¤Ã‡Ã‘ SignÃ€Ã‡ Ã€ÃŒÂ¹ÃŒÃÃ¶Â¿Ã Ã…Ã˜Â½ÂºÃ†Â®Â¸Â¦ Â°Â¡ÃÃ¶Â°Ã­ Ã€Ã–Â´Ã™.</p>
  * <ul>
  * <li></li>
  * </ul>

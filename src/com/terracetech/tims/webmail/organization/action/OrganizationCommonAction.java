@@ -33,8 +33,8 @@ public class OrganizationCommonAction extends BaseAction{
 	}
 
 	/**
-	 * class 100 ม๗ฑÞ
-	 * title 101 ม๗ภง
+	 * class 100 รรทยฑร
+	 * title 101 รรทร€ยง
 	 */
 	public String loadPage() throws Exception {
 		

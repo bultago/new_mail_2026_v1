@@ -9,15 +9,15 @@
  */
 package com.terracetech.tims.webmail.common;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
 
 import com.terracetech.tims.webmail.util.ApplicationBeanUtil;
 import com.terracetech.tims.webmail.util.StringUtils;
 
 /**
  * <p><strong>ApplicationResourceServlet.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

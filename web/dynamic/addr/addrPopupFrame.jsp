@@ -12,8 +12,6 @@
 <script type="text/javascript" src="/js/ext-lib/jquery.treeview.async.js"></script>
 <script type="text/javascript" src="/js/ext-lib/jquery.form.js"></script>
 <script type="text/javascript" src="addrPopup.js"></script>
-<script type="text/javascript" src="/dwr/interface/AddressBookService.js"></script>
-<script type="text/javascript" src="/dwr/interface/OrgService.js"></script>
 <script type="text/javascript" src="/i18n?bundle=addr&var=addrMsg&locale=<%=locale%>"></script>
 <script type="text/javascript" src="/i18n?bundle=mail&locale=<%=locale%>"></script>
 

@@ -1,7 +1,7 @@
 package com.terracetech.tims.service.tms.vo;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
 
 public class BbsViewContentCondVO {
 	

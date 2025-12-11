@@ -20,27 +20,27 @@ public class OutlookExpressForKO implements IEmailVendor {
 	public StringBuffer getAddrCSVDownload(List<AddressBookMemberVO> list) {
 		StringBuffer sb = new StringBuffer();
 		
-		sb.append(resource.getMessage("addr.outlookExpress.001") + ",");	//1.ÀüÃ¼ ÀÌ¸§
-		sb.append(resource.getMessage("addr.outlookExpress.006") + ",");	//2.ÀüÀÚ ¸ŞÀÏ ÁÖ¼Ò
+		sb.append(resource.getMessage("addr.outlookExpress.001") + ",");	//1.Ã€Ã¼ÃƒÂ¼ Ã€ÃŒÂ¸Â§
+		sb.append(resource.getMessage("addr.outlookExpress.006") + ",");	//2.Ã€Ã¼Ã€Ãš Â¸ÃÃ€Ã ÃÃ–Â¼Ã’
 		
-		sb.append(resource.getMessage("addr.outlookExpress.007") + ",");	//3.ÁÖ¼Ò(Áı)
-		sb.append(resource.getMessage("addr.outlookExpress.008") + ",");	//4.±¸±º½Ã(Áı)
-		sb.append(resource.getMessage("addr.outlookExpress.009") + ",");	//5.¿ìÆí¹øÈ£(Áı)
-		sb.append(resource.getMessage("addr.outlookExpress.010") + ",");	//6.½Ã/µµ(Áı)
-		sb.append(resource.getMessage("addr.outlookExpress.011") + ",");	//7.±¹°¡(Áı)
-		sb.append(resource.getMessage("addr.outlookExpress.012") + ",");	//8.Áı ÀüÈ­
+		sb.append(resource.getMessage("addr.outlookExpress.007") + ",");	//3.ÃÃ–Â¼Ã’(ÃÃ½)
+		sb.append(resource.getMessage("addr.outlookExpress.008") + ",");	//4.Â±Â¸Â±ÂºÂ½Ãƒ(ÃÃ½)
+		sb.append(resource.getMessage("addr.outlookExpress.009") + ",");	//5.Â¿Ã¬Ã†Ã­Â¹Ã¸ÃˆÂ£(ÃÃ½)
+		sb.append(resource.getMessage("addr.outlookExpress.010") + ",");	//6.Â½Ãƒ/ÂµÂµ(ÃÃ½)
+		sb.append(resource.getMessage("addr.outlookExpress.011") + ",");	//7.Â±Â¹Â°Â¡(ÃÃ½)
+		sb.append(resource.getMessage("addr.outlookExpress.012") + ",");	//8.ÃÃ½ Ã€Ã¼ÃˆÂ­
 		
-		sb.append(resource.getMessage("addr.outlookExpress.014") + ",");	//9.ÈŞ´ëÆù
+		sb.append(resource.getMessage("addr.outlookExpress.014") + ",");	//9.ÃˆÃÂ´Ã«Ã†Ã¹
 		
-		sb.append(resource.getMessage("addr.outlookExpress.016") + ",");	//10.ÁÖ¼Ò(È¸»ç)
-		sb.append(resource.getMessage("addr.outlookExpress.017") + ",");	//11.±¸/±º/½Ã(È¸»ç)
-		sb.append(resource.getMessage("addr.outlookExpress.018") + ",");	//12.¿ìÆí ¹øÈ£(È¸»ç)
-		sb.append(resource.getMessage("addr.outlookExpress.019") + ",");	//13.½Ã/µµ(È¸»ç)
-		sb.append(resource.getMessage("addr.outlookExpress.020") + ",");	//14.±¹°¡(È¸»ç)
-		sb.append(resource.getMessage("addr.outlookExpress.022") + ",");	//15.È¸»ç ÀüÈ­
-		sb.append(resource.getMessage("addr.outlookExpress.024") + ",");	//16.È¸»ç
-		sb.append(resource.getMessage("addr.outlookExpress.025") + ",");	//17.Á÷ÇÔ
-		sb.append(resource.getMessage("addr.outlookExpress.026"));			//18.ºÎ¼­
+		sb.append(resource.getMessage("addr.outlookExpress.016") + ",");	//10.ÃÃ–Â¼Ã’(ÃˆÂ¸Â»Ã§)
+		sb.append(resource.getMessage("addr.outlookExpress.017") + ",");	//11.Â±Â¸/Â±Âº/Â½Ãƒ(ÃˆÂ¸Â»Ã§)
+		sb.append(resource.getMessage("addr.outlookExpress.018") + ",");	//12.Â¿Ã¬Ã†Ã­ Â¹Ã¸ÃˆÂ£(ÃˆÂ¸Â»Ã§)
+		sb.append(resource.getMessage("addr.outlookExpress.019") + ",");	//13.Â½Ãƒ/ÂµÂµ(ÃˆÂ¸Â»Ã§)
+		sb.append(resource.getMessage("addr.outlookExpress.020") + ",");	//14.Â±Â¹Â°Â¡(ÃˆÂ¸Â»Ã§)
+		sb.append(resource.getMessage("addr.outlookExpress.022") + ",");	//15.ÃˆÂ¸Â»Ã§ Ã€Ã¼ÃˆÂ­
+		sb.append(resource.getMessage("addr.outlookExpress.024") + ",");	//16.ÃˆÂ¸Â»Ã§
+		sb.append(resource.getMessage("addr.outlookExpress.025") + ",");	//17.ÃÃ·Ã‡Ã”
+		sb.append(resource.getMessage("addr.outlookExpress.026"));			//18.ÂºÃÂ¼Â­
 		sb.append("\r\n");
 
 		String dummy = "";
@@ -74,22 +74,22 @@ public class OutlookExpressForKO implements IEmailVendor {
 	
 	/**
 	 * <pre>
-	 * 1. Name ÀüÃ¼ ÀÌ¸§
-	 * 2. Email	 ÀüÀÚ ¸ŞÀÏ ÁÖ¼Ò
-	 * 3. Home ExtAddress	ÁÖ¼Ò(Áı) 
-	 * 4. Home Street	±¸/±º/½Ã(Áı) 
-	 * 5. Home Post	 ¿ìÆí ¹øÈ£(Áı)
-	 * 6. Home City	½Ã/µµ(Áı) 
-	 * 7. Home Country ±¹°¡(Áı)	 
-	 * 8. Home Tel	 Mobile	 Áı ÀüÈ­
-	 * 9. Office ExtAddress	 ÁÖ¼Ò(È¸»ç)
-	 * 10. Office Street	±¸/±º/½Ã(È¸»ç) 
-	 * 11. Office Post	¿ìÆí ¹øÈ£(È¸»ç) 
-	 * 12. Office City	½Ã/µµ(È¸»ç) 
-	 * 13. Office Country	±¹°¡(È¸»ç) 
-	 * 14. Office Tel	È¸»ç ÀüÈ­ 
-	 * 15. Company	 È¸»ç
-	 * 16. Title Á÷ÇÔ	 
+	 * 1. Name Ã€Ã¼ÃƒÂ¼ Ã€ÃŒÂ¸Â§
+	 * 2. Email	 Ã€Ã¼Ã€Ãš Â¸ÃÃ€Ã ÃÃ–Â¼Ã’
+	 * 3. Home ExtAddress	ÃÃ–Â¼Ã’(ÃÃ½) 
+	 * 4. Home Street	Â±Â¸/Â±Âº/Â½Ãƒ(ÃÃ½) 
+	 * 5. Home Post	 Â¿Ã¬Ã†Ã­ Â¹Ã¸ÃˆÂ£(ÃÃ½)
+	 * 6. Home City	Â½Ãƒ/ÂµÂµ(ÃÃ½) 
+	 * 7. Home Country Â±Â¹Â°Â¡(ÃÃ½)	 
+	 * 8. Home Tel	 Mobile	 ÃÃ½ Ã€Ã¼ÃˆÂ­
+	 * 9. Office ExtAddress	 ÃÃ–Â¼Ã’(ÃˆÂ¸Â»Ã§)
+	 * 10. Office Street	Â±Â¸/Â±Âº/Â½Ãƒ(ÃˆÂ¸Â»Ã§) 
+	 * 11. Office Post	Â¿Ã¬Ã†Ã­ Â¹Ã¸ÃˆÂ£(ÃˆÂ¸Â»Ã§) 
+	 * 12. Office City	Â½Ãƒ/ÂµÂµ(ÃˆÂ¸Â»Ã§) 
+	 * 13. Office Country	Â±Â¹Â°Â¡(ÃˆÂ¸Â»Ã§) 
+	 * 14. Office Tel	ÃˆÂ¸Â»Ã§ Ã€Ã¼ÃˆÂ­ 
+	 * 15. Company	 ÃˆÂ¸Â»Ã§
+	 * 16. Title ÃÃ·Ã‡Ã”	 
 	 * 17. Deptartment	 
 	 * 18. Homepage	 	 
 	 * 20. Fax,
@@ -139,21 +139,21 @@ public class OutlookExpressForKO implements IEmailVendor {
 		
 		if (info.length > 2)
 			vo.setHomeExtAddress(info[2]);
-		if (info.length > 3) //±¸±º½Ã
+		if (info.length > 3) //Â±Â¸Â±ÂºÂ½Ãƒ
 			vo.setHomeCity(info[3]);
-		if (info.length > 4)//¿ìÆí¹øÈ£
+		if (info.length > 4)//Â¿Ã¬Ã†Ã­Â¹Ã¸ÃˆÂ£
 			vo.setHomePostalCode(info[4]);
-		if (info.length > 5)//½Ãµµ
+		if (info.length > 5)//Â½ÃƒÂµÂµ
 			vo.setHomeState(info[5]);
-		if (info.length > 6)//±¹°¡Áö¿ª
+		if (info.length > 6)//Â±Â¹Â°Â¡ÃÃ¶Â¿Âª
 			vo.setHomeCountry(info[6]);
-		if (info.length > 7)//ÀüÈ­
+		if (info.length > 7)//Ã€Ã¼ÃˆÂ­
 			vo.setHomeTel(info[7]);
 		
-		if (info.length > 8)//ÀÌµ¿ÀüÈ­
+		if (info.length > 8)//Ã€ÃŒÂµÂ¿Ã€Ã¼ÃˆÂ­
 			vo.setMobileNo(info[8]);
 		
-		if (info.length > 9)//ÁÖ¼Ò
+		if (info.length > 9)//ÃÃ–Â¼Ã’
 			vo.setOfficeExtAddress(info[9]);
 		if (info.length > 10)
 			vo.setOfficeCity(info[10]);

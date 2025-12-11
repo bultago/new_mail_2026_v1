@@ -13,10 +13,10 @@ import java.util.List;
 
 import java.util.Map;
 
-import javax.mail.Header;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.mail.Header;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -37,30 +37,30 @@ import com.terracetech.tims.webmail.util.StringUtils;
 import com.terracetech.tims.webmail.webfolder.vo.WebfolderQuotaVO;
 
 /**
- * °øÀ¯ÀÚ·á½Ç Mime, fileUpload À¯Æ¿
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ Mime, fileUpload ï¿½ï¿½Æ¿
  */
 public class WebFolderUtils {
     
-    // Upload ÆÄÀÏ °´Ã¼
+    // Upload ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
     private FileItem uploadFile = null;
     
-    // Æû ÆÄ¶ó¹ÌÅÍ Ã³¸®
+    // ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
     private HashMap ht = new HashMap();
     
-    // ÆÄÀÏ ¾÷·Îµå ±âº»°ª
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½âº»ï¿½ï¿½
     private int yourMaxMemorySize = 10 * 1024 * 1024;	    	// 10 MB
     private int yourMaxRequestSize = 30 * 1024 * 1024 * 1024;   // 30 * 1024 MB
     private String encoding = "UTF-8";
     
-    // ÀÓ½Ãµð·ºÅä¸®
+    // ï¿½Ó½Ãµï¿½ï¿½ä¸®
     private File yourTempDirectory = new File(EnvConstants.getBasicSetting("tmpdir"));
     
-    // ÆÄÀÏÁ¤º¸
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private String filename = null;
     private String filesize = null;
     private String fileext = null;
     
-    // Á¤ÇØÁø Çì´õ Å©±â°ª
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Å©ï¿½â°ª
     int FixHeaderSize = 1024;
     
     // HttpServletRequest request
@@ -75,16 +75,16 @@ public class WebFolderUtils {
     
     /**
      * Creates a new instance of FolderUtils
-     * @param request ¸ÖÆ¼ÆÄÆ®·Î ³Ñ¾î¿Â HttpServletRequest °´Ã¼
+     * @param request ï¿½ï¿½Æ¼ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ HttpServletRequest ï¿½ï¿½Ã¼
      */
     public WebFolderUtils(HttpServletRequest request) {
     	this.request=request;
     }
     
     /**
-     * Form µîÀ¸·Î Àü´Þ¹ÞÀº ParamÀ» ´ãÀº Hashmap °´Ã¼ ¸®ÅÏ
-     * @param request ¸ÖÆ¼ÆÄÆ®·Î ³Ñ¾î¿Â HttpServletRequest °´Ã¼
-     * @return Form µîÀ¸·Î Àü´Þ¹ÞÀº ParamÀ» ´ãÀº Hashmap °´Ã¼
+     * Form ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ Paramï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Hashmap ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
+     * @param request ï¿½ï¿½Æ¼ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ HttpServletRequest ï¿½ï¿½Ã¼
+     * @return Form ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ Paramï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Hashmap ï¿½ï¿½Ã¼
      */
     public void processParam(HttpServletRequest request) {
 	
@@ -108,9 +108,9 @@ public class WebFolderUtils {
     }    
     
     /**
-     * Apache Common FileUpload ¸¦ ÀÌ¿ëÇÑ ÆÄÀÏ ¾÷·ÎµåÈÄ FileItem °´Ã¼ ¸®ÅÏ
-     * @param request ¸ÖÆ¼ÆÄÆ®·Î ³Ñ¾î¿Â HttpServletRequest °´Ã¼
-     * @return ¾÷·ÎµåµÈ ÆÄÀÏÁ¤º¸¸¦ ´ã°í ÀÖ´Â FileItem °´Ã¼
+     * Apache Common FileUpload ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ FileItem ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
+     * @param request ï¿½ï¿½Æ¼ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ HttpServletRequest ï¿½ï¿½Ã¼
+     * @return ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ FileItem ï¿½ï¿½Ã¼
      */
     public FileItem uploadFile(HttpServletRequest request) {
 	
@@ -160,9 +160,9 @@ public class WebFolderUtils {
     }
     
     /**
-     * °æ·Î¿¡¼­ ÆÄÀÏ¸í¸¸ ÃßÃâ
-     * @param filePath ÀüÃ¼ ÆÄÀÏ °æ·Î (full path)
-     * @return ÆÄÀÏ¸í
+     * ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @param filePath ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (full path)
+     * @return ï¿½ï¿½ï¿½Ï¸ï¿½
      */
     public String getBaseFileName(String filePath) {
 	// First, ask the JDK for the base file name.
@@ -185,72 +185,72 @@ public class WebFolderUtils {
     }
     
     /**
-     * ÆÄ¶ó¹ÌÅÍ°ª ¸®ÅÏ
-     * @param key ¸®ÅÏÇÒ ÆÄ¶ó¹ÌÅÍ¸í
-     * @return ¸®ÅÏÇÒ ÆÄ¶ó¹ÌÅÍ°ª
+     * ï¿½Ä¶ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @param key ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½
+     * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í°ï¿½
      */
     public String getParamValue(String key) {
 	return (String)this.ht.get(key);
     }
     
     /**
-     * ÆÄÀÏ¸í ¸®ÅÏ
-     * @return ¾÷·ÎµåµÈ ÆÄÀÏ¸í
+     * ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @return ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½
      */
     public String getFilename() {
 	return this.filename;
     }
 
     /**
-     * ÆÄÀÏ¸í ¼³Á¤
+     * ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½
      */
     public void setFilename(String filename) {
 	this.filename = filename;
     }
     
     /**
-     * ÆÄÀÏÅ©±â ¸®ÅÏ
-     * @return ¾÷·ÎµåµÈ ÆÄÀÏÅ©±â
+     * ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @return ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½
      */
     public String getFilesize() {
 	return this.filesize;
     }
     
     /**
-     * ÆÄÀÏÅ©±â ¼³Á¤
+     * ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
      */
     public void setFilesize(String filesize) {
 	this.filesize=filesize;
     }
     
     /**
-     * ÆÄÀÏÈ®ÀåÀÚ ¸®ÅÏ
-     * @return ¾÷·ÎµåµÈ ÆÄÀÏ È®ÀåÀÚ
+     * ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @return ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½
      */
     public String getFileext() {
 	return this.fileext;
     }
     
     /**
-     * ÆÄÀÏÈ®ÀåÀÚ ¼³Á¤
+     * ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
      */
     public void setFileext(String fileext) {
 	this.fileext=fileext;
     }
 
     /**
-     * ÇÊ¿ä Çì´õ°ª ÀÔ·Â
-     * @param msg ÀÔ·ÂÇÒ MimeMessage
-     * @param email ¼ÒÀ¯ÀÚ ÀÌ¸ÞÀÏ
-     * @return ÀÔ·Â°ªÀÌ ÀÔ·ÂµÈ MimeMessage °´Ã¼
+     * ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+     * @param msg ï¿½Ô·ï¿½ï¿½ï¿½ MimeMessage
+     * @param email ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½
+     * @return ï¿½Ô·Â°ï¿½ï¿½ï¿½ ï¿½Ô·Âµï¿½ MimeMessage ï¿½ï¿½Ã¼
      */
     public MimeMessage makeHeaderAll(MimeMessage msg, String email) {
 	try {
-	    // ÇÊ¿ä Çì´õ°ª ¼¼ÆÃ
+	    // ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	    msg = this.makeHeader(msg, this.filename, email, this.filesize, this.fileext);
-	    // Message-ID ¸¦ ±¸ÇÏ±â (MessageID ¸¦ »ý¼ºÇÑ´Ù)
+	    // Message-ID ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ (MessageID ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½)
 	    msg.saveChanges(); // this.makeMessageID(msg, "/tmp/");
-	    // Çì´õ Å©±â¸¦ Ä«¿îÆ®ÇØ¼­ ³²Àº ºÎºÐÀ» X ·Î Ã¤¿öÁØ´Ù
+	    // ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ Ä«ï¿½ï¿½Æ®ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½ X ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½Ø´ï¿½
 	    msg = this.makeHeaderSizeFix(msg, this.getHeaderSize(msg), FixHeaderSize);
 	} catch (MessagingException ex) {
 		LogManager.writeErr(this, ex.getMessage(), ex);
@@ -259,13 +259,13 @@ public class WebFolderUtils {
     }
     
     /**
-     * ÇÊ¿ä Çì´õ°ª ÀÔ·Â
-     * @param msg ÀÔ·ÂÇÒ MimeMessage
-     * @param filename ÆÄÀÏ¸í
-     * @param email ¼ÒÀ¯ÀÚ ÀÌ¸ÞÀÏ
-     * @param filesize ÆÄÀÏ Å©±â
-     * @param fileext ÆÄÀÏ È®ÀåÀÚ
-     * @return ÀÔ·Â°ªÀÌ ÀÔ·ÂµÈ MimeMessage °´Ã¼
+     * ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+     * @param msg ï¿½Ô·ï¿½ï¿½ï¿½ MimeMessage
+     * @param filename ï¿½ï¿½ï¿½Ï¸ï¿½
+     * @param email ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½
+     * @param filesize ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½
+     * @param fileext ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½
+     * @return ï¿½Ô·Â°ï¿½ï¿½ï¿½ ï¿½Ô·Âµï¿½ MimeMessage ï¿½ï¿½Ã¼
      */
     public MimeMessage makeHeader(MimeMessage msg, String filename, String email, String filesize, String fileext) {
 	try {					
@@ -286,9 +286,9 @@ public class WebFolderUtils {
     }
     
     /**
-     * ÆÄÀÏ¸íÀÇ encode String ±¸ÇÏ±â
-     * @param msg ÀÔ·ÂÇÒ MimeMessage
-     * @return ±âº» Ä³¸¯ÅÍ°ªÀ¸·Î encoding µÈ ÆÄÀÏ¸í
+     * ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ encode String ï¿½ï¿½ï¿½Ï±ï¿½
+     * @param msg ï¿½Ô·ï¿½ï¿½ï¿½ MimeMessage
+     * @return ï¿½âº» Ä³ï¿½ï¿½ï¿½Í°ï¿½ï¿½ï¿½ï¿½ï¿½ encoding ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½
      */
     public String getEncodeFilename(MimeMessage msg) {
 	String encodeFilename = null;
@@ -301,9 +301,9 @@ public class WebFolderUtils {
     }
     
     /**
-     * MimeMessage ÀÇ Çì´õ Å©±â¸¦ ¸®ÅÏ
-     * @param msg Çì´õ Å©±â¸¦ ±¸ÇÒ MimeMessage
-     * @return MimeMessage ÀÇ Çì´õ Å©±â
+     * MimeMessage ï¿½ï¿½ ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½
+     * @param msg ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ MimeMessage
+     * @return MimeMessage ï¿½ï¿½ ï¿½ï¿½ï¿½ Å©ï¿½ï¿½
      */
     public int getHeaderSize(MimeMessage msg) {
 	Enumeration enumAllHeaders = null;
@@ -329,11 +329,11 @@ public class WebFolderUtils {
     }
     
     /**
-     * X-SIZE-DUMMAY Çì´õ¸¦ ¸¦ Ãß°¡ÇÏ¿©, ±âÁØ°ªÀ¸·Î Çì´õ Å©±â¸¦ °íÁ¤
-     * @param msg ÀÔ·ÂÇÒ MimeMessage
-     * @param headerLength ÇöÁ¦ Çì´õ Å©±â
-     * @param maxHeaderSize °íÁ¤µÈ Çì´õ Å©±â
-     * @return Çì´õ Å©±â°¡ °íÁ¤µÈ MimeMessage
+     * X-SIZE-DUMMAY ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï¿ï¿½, ï¿½ï¿½ï¿½Ø°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½
+     * @param msg ï¿½Ô·ï¿½ï¿½ï¿½ MimeMessage
+     * @param headerLength ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Å©ï¿½ï¿½
+     * @param maxHeaderSize ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Å©ï¿½ï¿½
+     * @return ï¿½ï¿½ï¿½ Å©ï¿½â°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MimeMessage
      */
     public MimeMessage makeHeaderSizeFix(MimeMessage msg, int headerLength, int maxHeaderSize) {
 	String xSizeDummyStr = "X-SIZE-DUMMY";
@@ -352,10 +352,10 @@ public class WebFolderUtils {
     }
     
     /**
-     * ÀÓ½ÃÆÄÀÏ°æ·Î¿¡ ÀÓ½Ã ÆÄÀÏÀ» »ý¼º ÈÄ MessageID ¸®ÅÏ
-     * @param msg ÀÔ·ÂÇÒ MimeMessage
-     * @param tmpPath ÀÓ½Ã ÆÄÀÏÀÌ »ý¼ºµÉ µð·ºÅä¸® °æ·Î
-     * @return ÀÔ·ÂµÈ MimeMessage ÀÇ MessageID
+     * ï¿½Ó½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½Î¿ï¿½ ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ MessageID ï¿½ï¿½ï¿½ï¿½
+     * @param msg ï¿½Ô·ï¿½ï¿½ï¿½ MimeMessage
+     * @param tmpPath ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½
+     * @return ï¿½Ô·Âµï¿½ MimeMessage ï¿½ï¿½ MessageID
      */
     public File makeMessageID(MimeMessage msg, String tmpPath) {
 	
@@ -376,9 +376,9 @@ public class WebFolderUtils {
     }
     
     /**
-     * ÁöÁ¤µÈ ÆÄÀÏ °æ·Î¿¡ »ý¼ºµÈ Mime À» »ý¼º
-     * @param msg Ãâ·ÂÇÒ MimeMessage
-     * @param filePath Mime ÆÄÀÏÀÌ »ý¼ºµÈ °æ·Î
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Mime ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @param msg ï¿½ï¿½ï¿½ï¿½ï¿½ MimeMessage
+     * @param filePath Mime ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
      */
     public void saveMime(MimeMessage msg, String filePath) {
 	File file = new File(filePath);
@@ -397,12 +397,12 @@ public class WebFolderUtils {
     
     
     
-    /////////////////////////// WebFolder °ü·Ã À¯Æ¿ ///////////////////////////
+    /////////////////////////// WebFolder ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¿ ///////////////////////////
     /**
-     * ÀÔ·Â¹ÞÀº È®ÀåÀÚ·Î ÀÌ¹ÌÁö ¹× Ãâ·Â¸í ¸®ÅÏ
-     * @param extStr ÆÄÀÏ È®ÀåÀÚ
-     * @param isName true : ÆÄÀÏÁ¾·ù¸í ¸®ÅÏ, false : ÀÌ¹ÌÁö °æ·Î ¸®ÅÏ
-     * @return ÆÄÀÏÁ¾·ù¸í or ÀÌ¹ÌÁö °æ·Î
+     * ï¿½Ô·Â¹ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @param extStr ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½
+     * @param isName true : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, false : ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ or ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
      */
     public String getWebFolderFileExtNameOrIMG(String extStr, boolean isName) {
 		if ("hwp".endsWith(extStr.toLowerCase())) {

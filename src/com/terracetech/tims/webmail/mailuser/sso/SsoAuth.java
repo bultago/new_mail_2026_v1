@@ -18,13 +18,13 @@ import java.util.Map;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.terracetech.tims.webmail.mailuser.vo.SsoInfoVO;
 
 /**
  * <p><strong>SsoAuth.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

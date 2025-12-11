@@ -1,66 +1,34 @@
-/**
- * FolderAgingDao.java 2009. 4. 29.
- * 
- * Copyright 2008-2009 Daou tech Inc.
- *
- * Tims7 Project Source File
- * Development by Terrace Dev. WEB Dev.
- * 
- */
 package com.terracetech.tims.webmail.mail.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
- * <p><strong>FolderAgingDao.java</strong> Class Description</p>
- * <p>�ֿ伳��</p>
- * <ul>
- * <li></li>
- * </ul>
- * @author sshyun
- * @since Tims7
- * @version 7.0 
+ * FolderAgingDao MyBatis Mapper Interface
+ * 
+ * 원본 클래스: FolderAgingDao extends SqlSessionDaoSupport
+ * 변환 내용: iBATIS → MyBatis Mapper 인터페이스
+ * 변환일: 2025-10-20
+ * 총 메서드 수: 5개 (원본 기준)
  */
-@SuppressWarnings("unchecked")
-public class FolderAgingDao extends SqlMapClientDaoSupport{
-	
-	public List getAgingInfo(int userSeq) {
-		return getSqlMapClientTemplate().queryForList("MailUser.readUserFolderAging", userSeq);
-	}
-	
-	public void addAgingInfo(int userSeq, int agingDay, String folderName) {
-		Map map = new HashMap();
-		map.put("mailUserSeq", userSeq);
-		map.put("agingDay", agingDay);
-		map.put("folderName", folderName);
-		
-		getSqlMapClientTemplate().insert("MailUser.insertFolderAging", map);
-	}
-	
-	public void setAgingInfo(int userSeq, int agingDay, String folderName) {
-		Map map = new HashMap();
-		map.put("mailUserSeq", userSeq);
-		map.put("agingDay", agingDay);
-		map.put("folderName", folderName);
-		getSqlMapClientTemplate().update("MailUser.changeFolderAging", map);
-	}
-	
-	public void updateAgingInfo(int userSeq, String folderName, String changeFolderName) {
-		Map map = new HashMap();
-		map.put("mailUserSeq", userSeq);
-		map.put("changeFolderName", changeFolderName);
-		map.put("folderName", folderName);
-		getSqlMapClientTemplate().update("MailUser.changeFolderName", map);
-	}
-	
-	public void deleteAgingInfo(int userSeq, String folderName) {
-		Map map = new HashMap();
-		map.put("mailUserSeq", userSeq);
-		map.put("folderName", folderName);
-		getSqlMapClientTemplate().delete("MailUser.deleteFolderAging", map);
-	}
+@Mapper
+public interface FolderAgingDao {
+
+    /** 원본: public List getAgingInfo(int userSeq) */
+    List getAgingInfo(@Param("userSeq") int userSeq);
+
+    /** 원본: public void addAgingInfo(int userSeq, int agingDay, String folderName) */
+    void addAgingInfo(@Param("userSeq") int userSeq, @Param("agingDay") int agingDay, @Param("folderName") String folderName);
+
+    /** 원본: public void setAgingInfo(int userSeq, int agingDay, String folderName) */
+    void setAgingInfo(@Param("userSeq") int userSeq, @Param("agingDay") int agingDay, @Param("folderName") String folderName);
+
+    /** 원본: public void updateAgingInfo(int userSeq, String folderName, String changeFolderName) */
+    void updateAgingInfo(@Param("userSeq") int userSeq, @Param("folderName") String folderName, 
+                        @Param("changeFolderName") String changeFolderName);
+
+    /** 원본: public void deleteAgingInfo(int userSeq, String folderName) */
+    void deleteAgingInfo(@Param("userSeq") int userSeq, @Param("folderName") String folderName);
 }

@@ -55,9 +55,9 @@ public class ViewNoticeContentAction extends BaseAction {
 		
 		boolean isNotice = false;
 		for(int i = 0; i < noticeBbsList.size(); i++){
-			BoardVO noticeBbsVO = noticeBbsList.get(i);
+			BoardVO noticeBoardVO = noticeBbsList.get(i);
 			
-			if(noticeBbsVO.getBbsId() == bbsId){
+			if(noticeBoardVO.getBbsId() == bbsId){
 				isNotice = true;
 			}
 		}

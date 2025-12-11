@@ -12,7 +12,7 @@ package com.terracetech.tims.webmail.mail.manager.write;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.mail.internet.InternetAddress;
+import jakarta.mail.internet.InternetAddress;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailAddress;
@@ -28,7 +28,7 @@ import com.terracetech.tims.webmail.mailuser.User;
 
 /**
  * <p><strong>ReplyWriteHandler.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

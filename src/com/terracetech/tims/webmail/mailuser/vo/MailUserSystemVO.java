@@ -16,12 +16,12 @@ import java.util.Map;
 /**
  * 
  * <p>
- * <strong>MailUserSystemVO</strong> Å¬·¡½º ¸í¼¼
+ * <strong>MailUserSystemVO</strong> Ã…Â¬Â·Â¡Â½Âº Â¸Ã­Â¼Â¼
  * </p>
  * <ul>
- * <li>»ç¿ëÀÚ Á¤º¸¸¦ °¡Á®¿À´Â VO. »ç¿ëÀÚÀÇ ±âº»ÀûÀÎ ½Ã½ºÅÛ Á¤º¸¸¦ °¡Á®¿Â´Ù.</li>
- * <li>Key °¡µÇ´Â Á¤º¸´Â Sequence Á¤º¸·Î¼­ Domain, Group ÀÇ Sequence Á¤º¸µµ Æ÷ÇÔ.</li>
- * <li>»ç¿ëÀÚ¿¡°Ô °³°³º°·Î ¼³Á¤µÈ Quota, Forwarding,AutoReply,delivery µî¿¡°üÇÑ Á¤º¸ Æ÷ÇÔ.</li>
+ * <li>Â»Ã§Â¿Ã«Ã€Ãš ÃÂ¤ÂºÂ¸Â¸Â¦ Â°Â¡ÃÂ®Â¿Ã€Â´Ã‚ VO. Â»Ã§Â¿Ã«Ã€ÃšÃ€Ã‡ Â±Ã¢ÂºÂ»Ã€Ã»Ã€Ã Â½ÃƒÂ½ÂºÃ…Ã› ÃÂ¤ÂºÂ¸Â¸Â¦ Â°Â¡ÃÂ®Â¿Ã‚Â´Ã™.</li>
+ * <li>Key Â°Â¡ÂµÃ‡Â´Ã‚ ÃÂ¤ÂºÂ¸Â´Ã‚ Sequence ÃÂ¤ÂºÂ¸Â·ÃÂ¼Â­ Domain, Group Ã€Ã‡ Sequence ÃÂ¤ÂºÂ¸ÂµÂµ Ã†Ã·Ã‡Ã”.</li>
+ * <li>Â»Ã§Â¿Ã«Ã€ÃšÂ¿Â¡Â°Ã” Â°Â³Â°Â³ÂºÂ°Â·Ã Â¼Â³ÃÂ¤ÂµÃˆ Quota, Forwarding,AutoReply,delivery ÂµÃ®Â¿Â¡Â°Ã¼Ã‡Ã‘ ÃÂ¤ÂºÂ¸ Ã†Ã·Ã‡Ã”.</li>
  * </ul>
  * 
  * @author sshyun
@@ -33,170 +33,170 @@ public class MailUserSystemVO {
 	
 	/**
 	 * <p>
-	 * »ç¿ëÀÚ Sequence ¹øÈ£ Á¤º¸
+	 * Â»Ã§Â¿Ã«Ã€Ãš Sequence Â¹Ã¸ÃˆÂ£ ÃÂ¤ÂºÂ¸
 	 * </p>
 	 */
 	private int seqNum = 0;
 	/**
 	 * <p>
-	 * »ç¿ëÀÚ ID Á¤º¸
+	 * Â»Ã§Â¿Ã«Ã€Ãš ID ÃÂ¤ÂºÂ¸
 	 * </p>
 	 */
 	private String uid = null;
 	/**
 	 * <p>
-	 * »ç¿ëÀÚ Domain Á¤º¸
+	 * Â»Ã§Â¿Ã«Ã€Ãš Domain ÃÂ¤ÂºÂ¸
 	 * </p>
 	 */
 	private String domain = null;
 	/**
 	 * <p>
-	 * »ç¿ëÀÚ Domain Sequence ¹øÈ£
+	 * Â»Ã§Â¿Ã«Ã€Ãš Domain Sequence Â¹Ã¸ÃˆÂ£
 	 * </p>
 	 */
 	private int domainSeqNum = 0;
 	/**
 	 * <p>
-	 * »ç¿ëÀÚ Group Á¤º¸
+	 * Â»Ã§Â¿Ã«Ã€Ãš Group ÃÂ¤ÂºÂ¸
 	 * </p>
 	 */
 	private String group = null;
 	/**
 	 * <p>
-	 * »ç¿ëÀÚ Group Sequence ¹øÈ£Á¤º¸
+	 * Â»Ã§Â¿Ã«Ã€Ãš Group Sequence Â¹Ã¸ÃˆÂ£ÃÂ¤ÂºÂ¸
 	 */
 	private int groupSeqNum = 0;
 	/**
 	 * <p>
-	 * »ç¿ëÀÚ Password Á¤º¸
+	 * Â»Ã§Â¿Ã«Ã€Ãš Password ÃÂ¤ÂºÂ¸
 	 * </p>
 	 */
 	private String password = null;
 	/**
 	 * <p>
-	 * »ç¿ëÀÚ Mail HOST Á¤º¸. µî·ÏµÇ¾îÀÖ´Â ¸ŞÀÏ ¼­¹öÀÇ È£½ºÆ® Á¤º¸.
+	 * Â»Ã§Â¿Ã«Ã€Ãš Mail HOST ÃÂ¤ÂºÂ¸. ÂµÃ®Â·ÃÂµÃ‡Â¾Ã®Ã€Ã–Â´Ã‚ Â¸ÃÃ€Ã Â¼Â­Â¹Ã¶Ã€Ã‡ ÃˆÂ£Â½ÂºÃ†Â® ÃÂ¤ÂºÂ¸.
 	 * </p>
 	 */
 	private String host = null;
 	/**
 	 * <p>
-	 * »ç¿ëÀÚ Mail Store Á¤º¸. ¸ŞÀÏ ¼­¹ö¿¡ ÀúÀå µÇ´Â ¸ŞÀÏÀÇ ½ºÅä¸®Áö À§Ä¡ Á¤º¸
+	 * Â»Ã§Â¿Ã«Ã€Ãš Mail Store ÃÂ¤ÂºÂ¸. Â¸ÃÃ€Ã Â¼Â­Â¹Ã¶Â¿Â¡ Ã€ÃºÃ€Ã¥ ÂµÃ‡Â´Ã‚ Â¸ÃÃ€ÃÃ€Ã‡ Â½ÂºÃ…Ã¤Â¸Â®ÃÃ¶ Ã€Â§Ã„Â¡ ÃÂ¤ÂºÂ¸
 	 */
 	private String store = null;	
 	/**
-	 * <p>»ç¿ëÀÚ °èÁ¤ÀÇ Expire ½Ã°£ (yyyyMMdd)</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš Â°Ã¨ÃÂ¤Ã€Ã‡ Expire Â½ÃƒÂ°Â£ (yyyyMMdd)</p>
 	 */
 	private String expireTime = null;
 	/**
-	 * <p>»ç¿ëÀÚ °èÁ¤ÀÇ »ç¿ë »óÅÂ.</p>
-	 * <p>¼Ó¼º : enabled, disabled</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš Â°Ã¨ÃÂ¤Ã€Ã‡ Â»Ã§Â¿Ã« Â»Ã³Ã…Ã‚.</p>
+	 * <p>Â¼Ã“Â¼Âº : enabled, disabled</p>
 	 */
 	private String status = null;
 	/**
-	 * <p>»ç¿ëÀÚ °èÁ¤ Á¾·ù.</p>
-	 * <p>¼Ó¼º : mailuser</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš Â°Ã¨ÃÂ¤ ÃÂ¾Â·Ã¹.</p>
+	 * <p>Â¼Ã“Â¼Âº : mailuser</p>
 	 */	
 	private String userType = null;		
 	/**
-	 * <p>»ç¿ëÀÚ°¡ »ç¿ëÇÏ´Â ¸ŞÀÏ ¼­ºñ½º Á¾·ù. ¼ıÀÚ¸¦ ÀÌ¿ëÇÏ¿© ¼³Á¤. ¼³Á¤½Ã °¢ ¼­ºñ½º ¼ıÀÚ °ªÀ» ÇÕ»êÇÏ¿© Á¤º¸¸¦ ¼³Á¤</p>
-	 * <p>¼Ó¼º : ums(1) fax(2) pop(4) imap(8) webmail(16) security(32) voice(64) virus(128) smtpauth(256)</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€ÃšÂ°Â¡ Â»Ã§Â¿Ã«Ã‡ÃÂ´Ã‚ Â¸ÃÃ€Ã Â¼Â­ÂºÃ±Â½Âº ÃÂ¾Â·Ã¹. Â¼Ã½Ã€ÃšÂ¸Â¦ Ã€ÃŒÂ¿Ã«Ã‡ÃÂ¿Â© Â¼Â³ÃÂ¤. Â¼Â³ÃÂ¤Â½Ãƒ Â°Â¢ Â¼Â­ÂºÃ±Â½Âº Â¼Ã½Ã€Ãš Â°ÂªÃ€Â» Ã‡Ã•Â»ÃªÃ‡ÃÂ¿Â© ÃÂ¤ÂºÂ¸Â¸Â¦ Â¼Â³ÃÂ¤</p>
+	 * <p>Â¼Ã“Â¼Âº : ums(1) fax(2) pop(4) imap(8) webmail(16) security(32) voice(64) virus(128) smtpauth(256)</p>
 	 * 
 	 */
 	private int mailServices = 0;
 	/**
-	 * <p>»ç¿ëÀÚ Ãß°¡ ÄõÅÍÁ¤º¸. 'ÄõÅÍ¿ë·®S, Ä«¿îÅÍ¼öC' ÇüÅÂ·Î ÀúÀå.</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš ÃƒÃŸÂ°Â¡ Ã„ÃµÃ…ÃÃÂ¤ÂºÂ¸. 'Ã„ÃµÃ…ÃÂ¿Ã«Â·Â®S, Ã„Â«Â¿Ã®Ã…ÃÂ¼Ã¶C' Ã‡Ã¼Ã…Ã‚Â·Ã Ã€ÃºÃ€Ã¥.</p>
 	 */
 	private String addQuota = null;
 	/**
-	 * <p>ÄõÅÍ ÃÊ°ú »ç¿ë ºñÀ². 1~100% »çÀÌ</p>
+	 * <p>Ã„ÃµÃ…Ã ÃƒÃŠÂ°Ãº Â»Ã§Â¿Ã« ÂºÃ±Ã€Â². 1~100% Â»Ã§Ã€ÃŒ</p>
 	 */
 	private String quotaOverlookRatio = null;
 	/**
-	 * <p>ÄõÅÍ ÃÊ°ú °æ°í ¸ğµå</p>
-	 * <p>¼Ó¼º : on/off</p>
+	 * <p>Ã„ÃµÃ…Ã ÃƒÃŠÂ°Ãº Â°Ã¦Â°Ã­ Â¸Ã°ÂµÃ¥</p>
+	 * <p>Â¼Ã“Â¼Âº : on/off</p>
 	 */
 	private String quotaWarningMode = null;
 	/**
-	 * <p>ÄõÅÍ À§Çè »ç¿ë ºñÀ². 1~100% »çÀÌ</p>
+	 * <p>Ã„ÃµÃ…Ã Ã€Â§Ã‡Ã¨ Â»Ã§Â¿Ã« ÂºÃ±Ã€Â². 1~100% Â»Ã§Ã€ÃŒ</p>
 	 */
 	private String quotaWarningRatio = null;
 	/**
-	 * <p>ÄõÅÍ ¿À·ù Ã³¸® ¹æ¹ı</p>
+	 * <p>Ã„ÃµÃ…Ã Â¿Ã€Â·Ã¹ ÃƒÂ³Â¸Â® Â¹Ã¦Â¹Ã½</p>
 	 */
 	private String quotaViolationAction = null;	
 	/**
-	 * <p>ÃÖ´ë ¸ŞÀÏ ¼Û½Å Å©±â</p>
+	 * <p>ÃƒÃ–Â´Ã« Â¸ÃÃ€Ã Â¼Ã›Â½Ã… Ã…Â©Â±Ã¢</p>
 	 */
 	private String maxSendSize = null;
 
 	/**
-	 * <p>¹ŞÀº ¸ŞÀÏÇÔ À¯È¿±â°£ </p>
+	 * <p>Â¹ÃÃ€Âº Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£ </p>
 	 */
 	private String inboxExpireDays = null;
 	/**
-	 * <p>º¸³½ ¸ŞÀÏÇÔ À¯È¿±â°£ </p>
+	 * <p>ÂºÂ¸Â³Â½ Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£ </p>
 	 */
 	private String sentExpireDays = null;
 	/**
-	 * <p>ÈŞÁöÅë ¸ŞÀÏÇÔ À¯È¿±â°£ </p>
+	 * <p>ÃˆÃÃÃ¶Ã…Ã« Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£ </p>
 	 */
 	private String trashExpireDays = null;
 	/**
-	 * <p>½ºÆÔ ¸ŞÀÏÇÔ À¯È¿±â°£ </p>
+	 * <p>Â½ÂºÃ†Ã” Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£ </p>
 	 */
 	private String spamExpireDays = null;
 	/**
-	 * <p>»ç¿ëÀÚ ¸ŞÀÏÇÔ À¯È¿±â°£ </p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£ </p>
 	 */
 	private String userExpireDays = null;
 
 	/**
-	 * <p>Àü´Ş½Ã ¾Ë¸² Á¾·ù</p>
+	 * <p>Ã€Ã¼Â´ÃÂ½Ãƒ Â¾Ã‹Â¸Â² ÃÂ¾Â·Ã¹</p>
 	 */
 	private String deliveryNotiType = null;
 	/**
-	 * <p>Àü´Ş½Ã ¾Ë¸² ¸ğµå</p>
+	 * <p>Ã€Ã¼Â´ÃÂ½Ãƒ Â¾Ã‹Â¸Â² Â¸Ã°ÂµÃ¥</p>
 	 */
 	private String deliveryNotiMode = null;
 
 	/**
-	 * <p>Àü´Ş ¼³Á¤</p>
+	 * <p>Ã€Ã¼Â´Ã Â¼Â³ÃÂ¤</p>
 	 */
 	private String forwardingMode = null;
 	/**
-	 * <p>¼û±è Àü´Ş ¼³Á¤</p>
+	 * <p>Â¼Ã»Â±Ã¨ Ã€Ã¼Â´Ã Â¼Â³ÃÂ¤</p>
 	 */
 	private String hiddenForwardingMode = null;
 
 	/**
-	 * <p>ÀÚµ¿ÀÀ´ä ¼³Á¤</p>
+	 * <p>Ã€ÃšÂµÂ¿Ã€Ã€Â´Ã¤ Â¼Â³ÃÂ¤</p>
 	 */
 	private String autoReplyMode = null;
 	/**
-	 * <p>ÀÚµ¿ ÀÀ´ä </p>
+	 * <p>Ã€ÃšÂµÂ¿ Ã€Ã€Â´Ã¤ </p>
 	 */
 	private String autoReplyInclude = null;
 	/**
-	 * <p>ÀÚµ¿ÀÀ´ä ½ÃÀÛÇÒ ³¯Â¥</p>
+	 * <p>Ã€ÃšÂµÂ¿Ã€Ã€Â´Ã¤ Â½ÃƒÃ€Ã›Ã‡Ã’ Â³Â¯Ã‚Â¥</p>
 	 */
 	private String autoReplyStartTime = null;
 	/**
-	 * <p>ÀÚµ¿ÀÀ´ä Á¾·á ³¯Â¥</p>
+	 * <p>Ã€ÃšÂµÂ¿Ã€Ã€Â´Ã¤ ÃÂ¾Â·Ã¡ Â³Â¯Ã‚Â¥</p>
 	 */
 	private String autoReplyEndTime = null;
 	/**
-	 * <p>ÀÚµ¿ÀÀ´ä ¹®±¸</p>
+	 * <p>Ã€ÃšÂµÂ¿Ã€Ã€Â´Ã¤ Â¹Â®Â±Â¸</p>
 	 */
 	private String autoReplyText = null;
 	/**
-	 * <p>ÀÚµ¿ÀÀ´ä Á¦¸ñ</p>
+	 * <p>Ã€ÃšÂµÂ¿Ã€Ã€Â´Ã¤ ÃÂ¦Â¸Ã±</p>
 	 */
 	private String autoReplySubject = null;
 
 
     
 	/**
-	 * @return seqNum °ª ¹İÈ¯
+	 * @return seqNum Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getSeqNum() {
 		return seqNum;
@@ -205,7 +205,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param seqNum ÆÄ¶ó¹ÌÅÍ¸¦ seqNum°ª¿¡ ¼³Á¤
+	 * @param seqNum Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ seqNumÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSeqNum(int seqNum) {
 		this.seqNum = seqNum;
@@ -214,7 +214,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return uid °ª ¹İÈ¯
+	 * @return uid Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getUid() {
 		return uid;
@@ -223,7 +223,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param uid ÆÄ¶ó¹ÌÅÍ¸¦ uid°ª¿¡ ¼³Á¤
+	 * @param uid Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ uidÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUid(String uid) {
 		this.uid = uid;
@@ -232,7 +232,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return domain °ª ¹İÈ¯
+	 * @return domain Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDomain() {
 		return domain;
@@ -241,7 +241,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param domain ÆÄ¶ó¹ÌÅÍ¸¦ domain°ª¿¡ ¼³Á¤
+	 * @param domain Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ domainÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDomain(String domain) {
 		this.domain = domain;
@@ -250,7 +250,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return domainSeqNum °ª ¹İÈ¯
+	 * @return domainSeqNum Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getDomainSeqNum() {
 		return domainSeqNum;
@@ -259,7 +259,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param domainSeqNum ÆÄ¶ó¹ÌÅÍ¸¦ domainSeqNum°ª¿¡ ¼³Á¤
+	 * @param domainSeqNum Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ domainSeqNumÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDomainSeqNum(int domainSeqNum) {
 		this.domainSeqNum = domainSeqNum;
@@ -268,7 +268,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return group °ª ¹İÈ¯
+	 * @return group Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getGroup() {
 		return group;
@@ -277,7 +277,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param group ÆÄ¶ó¹ÌÅÍ¸¦ group°ª¿¡ ¼³Á¤
+	 * @param group Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ groupÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setGroup(String group) {
 		this.group = group;
@@ -286,7 +286,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return groupSeqNum °ª ¹İÈ¯
+	 * @return groupSeqNum Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getGroupSeqNum() {
 		return groupSeqNum;
@@ -295,7 +295,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param groupSeqNum ÆÄ¶ó¹ÌÅÍ¸¦ groupSeqNum°ª¿¡ ¼³Á¤
+	 * @param groupSeqNum Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ groupSeqNumÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setGroupSeqNum(int groupSeqNum) {
 		this.groupSeqNum = groupSeqNum;
@@ -304,7 +304,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return password °ª ¹İÈ¯
+	 * @return password Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getPassword() {
 		return password;
@@ -313,7 +313,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param password ÆÄ¶ó¹ÌÅÍ¸¦ password°ª¿¡ ¼³Á¤
+	 * @param password Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ passwordÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -322,7 +322,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return host °ª ¹İÈ¯
+	 * @return host Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHost() {
 		return host;
@@ -331,7 +331,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param host ÆÄ¶ó¹ÌÅÍ¸¦ host°ª¿¡ ¼³Á¤
+	 * @param host Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ hostÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHost(String host) {
 		this.host = host;
@@ -340,7 +340,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return store °ª ¹İÈ¯
+	 * @return store Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getStore() {
 		return store;
@@ -349,7 +349,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param store ÆÄ¶ó¹ÌÅÍ¸¦ store°ª¿¡ ¼³Á¤
+	 * @param store Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ storeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setStore(String store) {
 		this.store = store;
@@ -358,7 +358,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return expireTime °ª ¹İÈ¯
+	 * @return expireTime Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getExpireTime() {
 		return expireTime;
@@ -367,7 +367,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param expireTime ÆÄ¶ó¹ÌÅÍ¸¦ expireTime°ª¿¡ ¼³Á¤
+	 * @param expireTime Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ expireTimeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setExpireTime(String expireTime) {
 		this.expireTime = expireTime;
@@ -376,7 +376,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return status °ª ¹İÈ¯
+	 * @return status Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getStatus() {
 		return status;
@@ -385,7 +385,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param status ÆÄ¶ó¹ÌÅÍ¸¦ status°ª¿¡ ¼³Á¤
+	 * @param status Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ statusÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setStatus(String status) {
 		this.status = status;
@@ -394,7 +394,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return userType °ª ¹İÈ¯
+	 * @return userType Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getUserType() {
 		return userType;
@@ -403,7 +403,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param userType ÆÄ¶ó¹ÌÅÍ¸¦ userType°ª¿¡ ¼³Á¤
+	 * @param userType Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ userTypeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUserType(String userType) {
 		this.userType = userType;
@@ -412,7 +412,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return mailServices °ª ¹İÈ¯
+	 * @return mailServices Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getMailServices() {
 		return mailServices;
@@ -421,7 +421,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param mailServices ÆÄ¶ó¹ÌÅÍ¸¦ mailServices°ª¿¡ ¼³Á¤
+	 * @param mailServices Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ mailServicesÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMailServices(int mailServices) {
 		this.mailServices = mailServices;
@@ -430,7 +430,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return addQuota °ª ¹İÈ¯
+	 * @return addQuota Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAddQuota() {
 		return addQuota;
@@ -439,7 +439,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param addQuota ÆÄ¶ó¹ÌÅÍ¸¦ addQuota°ª¿¡ ¼³Á¤
+	 * @param addQuota Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ addQuotaÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAddQuota(String addQuota) {
 		this.addQuota = addQuota;
@@ -448,7 +448,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return quotaOverlookRatio °ª ¹İÈ¯
+	 * @return quotaOverlookRatio Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getQuotaOverlookRatio() {
 		return quotaOverlookRatio;
@@ -457,7 +457,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param quotaOverlookRatio ÆÄ¶ó¹ÌÅÍ¸¦ quotaOverlookRatio°ª¿¡ ¼³Á¤
+	 * @param quotaOverlookRatio Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ quotaOverlookRatioÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setQuotaOverlookRatio(String quotaOverlookRatio) {
 		this.quotaOverlookRatio = quotaOverlookRatio;
@@ -466,7 +466,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return quotaWarningMode °ª ¹İÈ¯
+	 * @return quotaWarningMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getQuotaWarningMode() {
 		return quotaWarningMode;
@@ -475,7 +475,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param quotaWarningMode ÆÄ¶ó¹ÌÅÍ¸¦ quotaWarningMode°ª¿¡ ¼³Á¤
+	 * @param quotaWarningMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ quotaWarningModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setQuotaWarningMode(String quotaWarningMode) {
 		this.quotaWarningMode = quotaWarningMode;
@@ -484,7 +484,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return quotaWarningRatio °ª ¹İÈ¯
+	 * @return quotaWarningRatio Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getQuotaWarningRatio() {
 		return quotaWarningRatio;
@@ -493,7 +493,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param quotaWarningRatio ÆÄ¶ó¹ÌÅÍ¸¦ quotaWarningRatio°ª¿¡ ¼³Á¤
+	 * @param quotaWarningRatio Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ quotaWarningRatioÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setQuotaWarningRatio(String quotaWarningRatio) {
 		this.quotaWarningRatio = quotaWarningRatio;
@@ -502,7 +502,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return quotaViolationAction °ª ¹İÈ¯
+	 * @return quotaViolationAction Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getQuotaViolationAction() {
 		return quotaViolationAction;
@@ -511,7 +511,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param quotaViolationAction ÆÄ¶ó¹ÌÅÍ¸¦ quotaViolationAction°ª¿¡ ¼³Á¤
+	 * @param quotaViolationAction Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ quotaViolationActionÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setQuotaViolationAction(String quotaViolationAction) {
 		this.quotaViolationAction = quotaViolationAction;
@@ -520,7 +520,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return maxSendSize °ª ¹İÈ¯
+	 * @return maxSendSize Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getMaxSendSize() {
 		return maxSendSize;
@@ -529,7 +529,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param maxSendSize ÆÄ¶ó¹ÌÅÍ¸¦ maxSendSize°ª¿¡ ¼³Á¤
+	 * @param maxSendSize Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ maxSendSizeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMaxSendSize(String maxSendSize) {
 		this.maxSendSize = maxSendSize;
@@ -538,7 +538,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return inboxExpireDays °ª ¹İÈ¯
+	 * @return inboxExpireDays Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getInboxExpireDays() {
 		return inboxExpireDays;
@@ -547,7 +547,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param inboxExpireDays ÆÄ¶ó¹ÌÅÍ¸¦ inboxExpireDays°ª¿¡ ¼³Á¤
+	 * @param inboxExpireDays Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ inboxExpireDaysÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setInboxExpireDays(String inboxExpireDays) {
 		this.inboxExpireDays = inboxExpireDays;
@@ -556,7 +556,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return sentExpireDays °ª ¹İÈ¯
+	 * @return sentExpireDays Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSentExpireDays() {
 		return sentExpireDays;
@@ -565,7 +565,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param sentExpireDays ÆÄ¶ó¹ÌÅÍ¸¦ sentExpireDays°ª¿¡ ¼³Á¤
+	 * @param sentExpireDays Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ sentExpireDaysÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSentExpireDays(String sentExpireDays) {
 		this.sentExpireDays = sentExpireDays;
@@ -574,7 +574,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return trashExpireDays °ª ¹İÈ¯
+	 * @return trashExpireDays Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getTrashExpireDays() {
 		return trashExpireDays;
@@ -583,7 +583,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param trashExpireDays ÆÄ¶ó¹ÌÅÍ¸¦ trashExpireDays°ª¿¡ ¼³Á¤
+	 * @param trashExpireDays Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ trashExpireDaysÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setTrashExpireDays(String trashExpireDays) {
 		this.trashExpireDays = trashExpireDays;
@@ -592,7 +592,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return spamExpireDays °ª ¹İÈ¯
+	 * @return spamExpireDays Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSpamExpireDays() {
 		return spamExpireDays;
@@ -601,7 +601,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param spamExpireDays ÆÄ¶ó¹ÌÅÍ¸¦ spamExpireDays°ª¿¡ ¼³Á¤
+	 * @param spamExpireDays Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ spamExpireDaysÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSpamExpireDays(String spamExpireDays) {
 		this.spamExpireDays = spamExpireDays;
@@ -610,7 +610,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return userExpireDays °ª ¹İÈ¯
+	 * @return userExpireDays Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getUserExpireDays() {
 		return userExpireDays;
@@ -619,7 +619,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param userExpireDays ÆÄ¶ó¹ÌÅÍ¸¦ userExpireDays°ª¿¡ ¼³Á¤
+	 * @param userExpireDays Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ userExpireDaysÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUserExpireDays(String userExpireDays) {
 		this.userExpireDays = userExpireDays;
@@ -628,7 +628,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return deliveryNotiType °ª ¹İÈ¯
+	 * @return deliveryNotiType Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDeliveryNotiType() {
 		return deliveryNotiType;
@@ -637,7 +637,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param deliveryNotiType ÆÄ¶ó¹ÌÅÍ¸¦ deliveryNotiType°ª¿¡ ¼³Á¤
+	 * @param deliveryNotiType Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ deliveryNotiTypeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDeliveryNotiType(String deliveryNotiType) {
 		this.deliveryNotiType = deliveryNotiType;
@@ -646,7 +646,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return deliveryNotiMode °ª ¹İÈ¯
+	 * @return deliveryNotiMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDeliveryNotiMode() {
 		return deliveryNotiMode;
@@ -655,7 +655,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param deliveryNotiMode ÆÄ¶ó¹ÌÅÍ¸¦ deliveryNotiMode°ª¿¡ ¼³Á¤
+	 * @param deliveryNotiMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ deliveryNotiModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDeliveryNotiMode(String deliveryNotiMode) {
 		this.deliveryNotiMode = deliveryNotiMode;
@@ -664,7 +664,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return forwardingMode °ª ¹İÈ¯
+	 * @return forwardingMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getForwardingMode() {
 		return forwardingMode;
@@ -673,7 +673,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param forwardingMode ÆÄ¶ó¹ÌÅÍ¸¦ forwardingMode°ª¿¡ ¼³Á¤
+	 * @param forwardingMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ forwardingModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setForwardingMode(String forwardingMode) {
 		this.forwardingMode = forwardingMode;
@@ -682,7 +682,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return hiddenForwardingMode °ª ¹İÈ¯
+	 * @return hiddenForwardingMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHiddenForwardingMode() {
 		return hiddenForwardingMode;
@@ -691,7 +691,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param hiddenForwardingMode ÆÄ¶ó¹ÌÅÍ¸¦ hiddenForwardingMode°ª¿¡ ¼³Á¤
+	 * @param hiddenForwardingMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ hiddenForwardingModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHiddenForwardingMode(String hiddenForwardingMode) {
 		this.hiddenForwardingMode = hiddenForwardingMode;
@@ -700,7 +700,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return autoReplyMode °ª ¹İÈ¯
+	 * @return autoReplyMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAutoReplyMode() {
 		return autoReplyMode;
@@ -709,7 +709,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param autoReplyMode ÆÄ¶ó¹ÌÅÍ¸¦ autoReplyMode°ª¿¡ ¼³Á¤
+	 * @param autoReplyMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ autoReplyModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAutoReplyMode(String autoReplyMode) {
 		this.autoReplyMode = autoReplyMode;
@@ -718,7 +718,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return autoReplyInclude °ª ¹İÈ¯
+	 * @return autoReplyInclude Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAutoReplyInclude() {
 		return autoReplyInclude;
@@ -727,7 +727,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param autoReplyInclude ÆÄ¶ó¹ÌÅÍ¸¦ autoReplyInclude°ª¿¡ ¼³Á¤
+	 * @param autoReplyInclude Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ autoReplyIncludeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAutoReplyInclude(String autoReplyInclude) {
 		this.autoReplyInclude = autoReplyInclude;
@@ -736,7 +736,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return autoReplyStartTime °ª ¹İÈ¯
+	 * @return autoReplyStartTime Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAutoReplyStartTime() {
 		return autoReplyStartTime;
@@ -745,7 +745,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param autoReplyStartTime ÆÄ¶ó¹ÌÅÍ¸¦ autoReplyStartTime°ª¿¡ ¼³Á¤
+	 * @param autoReplyStartTime Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ autoReplyStartTimeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAutoReplyStartTime(String autoReplyStartTime) {
 		this.autoReplyStartTime = autoReplyStartTime;
@@ -754,7 +754,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return autoReplyEndTime °ª ¹İÈ¯
+	 * @return autoReplyEndTime Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAutoReplyEndTime() {
 		return autoReplyEndTime;
@@ -763,7 +763,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param autoReplyEndTime ÆÄ¶ó¹ÌÅÍ¸¦ autoReplyEndTime°ª¿¡ ¼³Á¤
+	 * @param autoReplyEndTime Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ autoReplyEndTimeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAutoReplyEndTime(String autoReplyEndTime) {
 		this.autoReplyEndTime = autoReplyEndTime;
@@ -772,7 +772,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @return autoReplyText °ª ¹İÈ¯
+	 * @return autoReplyText Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAutoReplyText() {		
 		return autoReplyText;
@@ -781,7 +781,7 @@ public class MailUserSystemVO {
 
 
 	/**
-	 * @param autoReplyText ÆÄ¶ó¹ÌÅÍ¸¦ autoReplyText°ª¿¡ ¼³Á¤
+	 * @param autoReplyText Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ autoReplyTextÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAutoReplyText(String autoReplyText) {
 		this.autoReplyText = autoReplyText;
@@ -790,9 +790,9 @@ public class MailUserSystemVO {
 
 	
 	/**
-	 * <p>»ç¿ëÀÚ ±âº»Á¤º¸¸¦ Map ÇüÅÂ·Î »ı¼ºÇÏ¿© ¹İÈ¯.</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš Â±Ã¢ÂºÂ»ÃÂ¤ÂºÂ¸Â¸Â¦ Map Ã‡Ã¼Ã…Ã‚Â·Ã Â»Ã½Â¼ÂºÃ‡ÃÂ¿Â© Â¹ÃÃˆÂ¯.</p>
 	 * <p>
-	 * Map Æ÷ÇÔ Á¤º¸ : id, idseq, domain, domainseq, group, groupseq, email, password, host, store,expiretime, accountstatus, usertype, maxsendsize
+	 * Map Ã†Ã·Ã‡Ã” ÃÂ¤ÂºÂ¸ : id, idseq, domain, domainseq, group, groupseq, email, password, host, store,expiretime, accountstatus, usertype, maxsendsize
 	 * 
 	 * @return Map<String,String>
 	 */

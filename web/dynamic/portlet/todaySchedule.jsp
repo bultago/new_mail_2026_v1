@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="tctl" uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c" uri="/WEB-INF/tld/c.tld"%>
 
-<script type="text/javascript" src="/dwr/interface/SchedulerService.js"></script>
 <script type="text/javascript" src="/i18n?bundle=scheduler&var=schedulerMsg"></script>
 <script language = "javascript">
 var SchedulerDataControl = Class.create({

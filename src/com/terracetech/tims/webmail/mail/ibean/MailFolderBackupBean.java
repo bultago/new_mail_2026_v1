@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 
 /**
  * <p><strong>MailFolderBackupBean.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
  * <li></li>
  * </ul>
@@ -33,73 +33,73 @@ public class MailFolderBackupBean {
 	
 
 	/**
-	 * @return backupLoad °ª ¹İÈ¯
+	 * @return backupLoad Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public boolean isBackupLoad() {
 		return backupLoad;
 	}
 	/**
-	 * @param backupLoad ÆÄ¶ó¹ÌÅÍ¸¦ backupLoad°ª¿¡ ¼³Á¤
+	 * @param backupLoad Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ backupLoadÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setBackupLoad(boolean backupLoad) {
 		this.backupLoad = backupLoad;
 	}
 	/**
-	 * @return backupComplete °ª ¹İÈ¯
+	 * @return backupComplete Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public boolean isBackupComplete() {
 		return backupComplete;
 	}
 	/**
-	 * @param backupComplete ÆÄ¶ó¹ÌÅÍ¸¦ backupComplete°ª¿¡ ¼³Á¤
+	 * @param backupComplete Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ backupCompleteÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setBackupComplete(boolean backupComplete) {
 		this.backupComplete = backupComplete;
 	}
 	/**
-	 * @return folderName °ª ¹İÈ¯
+	 * @return folderName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getFolderName() {
 		return folderName;
 	}
 	/**
-	 * @param folderName ÆÄ¶ó¹ÌÅÍ¸¦ folderName°ª¿¡ ¼³Á¤
+	 * @param folderName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ folderNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setFolderName(String folderName) {
 		this.folderName = folderName;
 	}
 	/**
-	 * @return percent °ª ¹İÈ¯
+	 * @return percent Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getPercent() {
 		return percent;
 	}
 	/**
-	 * @param percent ÆÄ¶ó¹ÌÅÍ¸¦ percent°ª¿¡ ¼³Á¤
+	 * @param percent Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ percentÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setPercent(int percent) {
 		this.percent = percent;
 	}	
 	/**
-	 * @return backupFile °ª ¹İÈ¯
+	 * @return backupFile Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getBackupFile() {
 		return backupFile;
 	}
 	/**
-	 * @param backupFile ÆÄ¶ó¹ÌÅÍ¸¦ backupFile°ª¿¡ ¼³Á¤
+	 * @param backupFile Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ backupFileÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setBackupFile(String backupFile) {
 		this.backupFile = backupFile;
 	}
 	/**
-	 * @return error °ª ¹İÈ¯
+	 * @return error Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public boolean isError() {
 		return error;
 	}
 	/**
-	 * @param error ÆÄ¶ó¹ÌÅÍ¸¦ error°ª¿¡ ¼³Á¤
+	 * @param error Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ errorÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setError(boolean error) {
 		this.error = error;

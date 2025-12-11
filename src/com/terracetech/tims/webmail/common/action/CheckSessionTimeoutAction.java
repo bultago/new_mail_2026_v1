@@ -2,7 +2,7 @@ package com.terracetech.tims.webmail.common.action;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 

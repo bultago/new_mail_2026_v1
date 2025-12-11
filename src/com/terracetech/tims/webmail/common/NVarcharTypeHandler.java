@@ -10,10 +10,14 @@ import oracle.jdbc.OraclePreparedStatement;
 
 import org.apache.commons.dbcp.DelegatingStatement;
 
-import com.ibatis.common.jdbc.logging.PreparedStatementLogProxy;
-import com.ibatis.sqlmap.engine.type.StringTypeHandler;
+// import com.ibatis.common.jdbc.logging.PreparedStatementLogProxy;
+// import com.ibatis.sqlmap.engine.type.StringTypeHandler;
 
-public class NVarcharTypeHandler extends StringTypeHandler {
+/**
+ * @deprecated iBATIS TypeHandler - MyBatis 변환으로 더 이상 사용 안함 (2025-10-23)
+ */
+@Deprecated
+public class NVarcharTypeHandler /* extends StringTypeHandler */ {
 	public void setParameter(PreparedStatement ps, int i, Object parameter,
 			String jdbcType) throws SQLException {
 		Statement delegate = ps;

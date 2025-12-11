@@ -5,8 +5,8 @@ import java.util.Locale;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.directwebremoting.WebContext;
-import org.directwebremoting.WebContextFactory;
+// import org.directwebremoting.WebContext; // DWR 제거 (2025-10-21)
+// import org.directwebremoting.WebContextFactory; // DWR 제거 (2025-10-21)
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.core.NestedRuntimeException;
 
@@ -17,6 +17,10 @@ import com.terracetech.tims.webmail.common.log.LogManager;
 import com.terracetech.tims.webmail.exception.SystemException;
 import com.terracetech.tims.webmail.exception.UserAuthException;
 
+/**
+ * @deprecated DWR 전용 Advice - Phase 3.5에서 DWR 제거됨 (2025-10-21)
+ */
+@Deprecated
 public class BeforeServiceAdvice implements MethodInterceptor, MethodBeforeAdvice{
 
 	public void before(Method arg0, Object[] arg1, Object serviceClass)
@@ -29,10 +33,10 @@ public class BeforeServiceAdvice implements MethodInterceptor, MethodBeforeAdvic
 				serviceInstance.loadHttpResource();	
 			} catch (UserAuthException e) {
 				LogManager.writeErr(this, e);
-				WebContext ctx = WebContextFactory.get();
-				Locale locale = I18nConstants.getBundleUserLocale(ctx.getHttpServletRequest());
-				I18nResources resource = new I18nResources(locale,"common");
-				throw new SystemException(resource.getMessage("auth.fail.notfound"));
+				// WebContext ctx = WebContextFactory.get(); // DWR 제거 (2025-10-21)
+				// Locale locale = I18nConstants.getBundleUserLocale(ctx.getHttpServletRequest());
+				// I18nResources resource = new I18nResources(locale,"common");
+				throw new SystemException("auth.fail.notfound");
 			}
 				
 		}
@@ -51,10 +55,10 @@ public class BeforeServiceAdvice implements MethodInterceptor, MethodBeforeAdvic
 			returnValue = invocation.proceed();
 		} catch (NestedRuntimeException e) {
 			LogManager.writeErr(this, e);
-			WebContext ctx = WebContextFactory.get();
-			Locale locale = I18nConstants.getBundleUserLocale(ctx.getHttpServletRequest());
-			I18nResources resource = new I18nResources(locale,"common");
-			throw new SystemException(resource.getMessage("error.default") ,e);
+			// WebContext ctx = WebContextFactory.get(); // DWR 제거 (2025-10-21)
+			// Locale locale = I18nConstants.getBundleUserLocale(ctx.getHttpServletRequest());
+			// I18nResources resource = new I18nResources(locale,"common");
+			throw new SystemException("error.default" ,e);
 		}finally {
 		}
 		return returnValue;

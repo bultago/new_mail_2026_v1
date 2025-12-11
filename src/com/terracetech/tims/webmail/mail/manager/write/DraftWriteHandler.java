@@ -9,9 +9,9 @@
  */
 package com.terracetech.tims.webmail.mail.manager.write;
 
-import javax.mail.Flags;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeUtility;
+import jakarta.mail.Flags;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeUtility;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailAddress;
@@ -26,7 +26,7 @@ import com.terracetech.tims.webmail.mailuser.User;
 
 /**
  * <p><strong>DraftWriteHandler.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

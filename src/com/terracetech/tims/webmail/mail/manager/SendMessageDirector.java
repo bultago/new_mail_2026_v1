@@ -9,11 +9,11 @@
  */
 package com.terracetech.tims.webmail.mail.manager;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Session;
+import jakarta.mail.internet.AddressException;
+import jakarta.mail.internet.MimeMessage;
 
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailMessage;

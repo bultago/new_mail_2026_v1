@@ -40,12 +40,6 @@
 	<script type="text/javascript" src="/js/mail-lib/folderManageScript.js"></script>
 <%}%>
 
-<script type="text/javascript" src="/dwr/interface/MailFolderService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailMessageService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailTagService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailSearchFolderService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailCommonService.js"></script>
-<script type="text/javascript" src="/dwr/interface/AddressBookService.js"></script>
 
 <script type="text/javascript" src="/js/ocx/ocx_localMail.js"></script>
 <script type="text/javascript" src="/editor/smarteditor/js/service/HuskyEZCreator.js?dummy=" charset="utf-8"></script>

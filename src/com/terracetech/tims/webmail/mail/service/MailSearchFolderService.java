@@ -21,7 +21,7 @@ import com.terracetech.tims.webmail.mail.manager.TMailStoreFactory;
 
 /**
  * <p><strong>MailSearchFolderService.java</strong> Class Description</p>
- * <p>�ֿ伳��</p>
+ * <p>ÁÖ¿ä¼³¸í</p>
  * <ul>
  * <li></li>
  * </ul>

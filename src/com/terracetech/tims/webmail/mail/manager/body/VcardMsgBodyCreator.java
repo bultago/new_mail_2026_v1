@@ -12,10 +12,10 @@ package com.terracetech.tims.webmail.mail.manager.body;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.NoSuchProviderException;
-import javax.mail.internet.MimeBodyPart;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.NoSuchProviderException;
+import jakarta.mail.internet.MimeBodyPart;
 
 import com.terracetech.tims.webmail.mail.ibean.SenderInfoBean;
 
@@ -24,7 +24,7 @@ import com.terracetech.tims.webmail.mail.ibean.SenderInfoBean;
  * <strong>VcardMsgBodyCreator.java</strong> Class Description
  * </p>
  * <p>
- * ÁÖ¿ä¼³¸í
+ * ï¿½Ö¿ä¼³ï¿½ï¿½
  * </p>
  * <ul>
  * <li></li>
@@ -74,7 +74,7 @@ public class VcardMsgBodyCreator extends AbstractMsgBodyCreator {
 	/**
 	 * <p>
 	 * </p>
-	 *ÀÓ½Ãº¸°üÇÔÀÏ¶§´Â VCard¸¦ SetÇÏ¸é ¾ÈµÈ´Ù. Àç¹ß¼Û½Ã VCard°¡ 2°³°¡ µÉ¼ö ÀÖ´Ù.
+	 *ï¿½Ó½Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½ VCardï¿½ï¿½ Setï¿½Ï¸ï¿½ ï¿½ÈµÈ´ï¿½. ï¿½ï¿½ß¼Û½ï¿½ VCardï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ ï¿½É¼ï¿½ ï¿½Ö´ï¿½.
 	 * 
 	 * @see com.terracetech.tims.webmail.mail.manager.body.AbstractMsgBodyCreator#isAcceptable()
 	 * @return

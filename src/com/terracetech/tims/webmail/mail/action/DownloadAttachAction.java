@@ -19,15 +19,15 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-import javax.mail.Session;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeUtility;
+import jakarta.mail.Session;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeUtility;
 
 import org.apache.commons.codec.binary.Base64;
 
-import com.sun.mail.imap.IMAPBodyPart;
-import com.sun.mail.imap.IMAPInputStream;
-import com.sun.mail.imap.IMAPMessage;
+import org.eclipse.angus.mail.imap.IMAPBodyPart;
+import org.eclipse.angus.mail.imap.IMAPInputStream;
+import org.eclipse.angus.mail.imap.IMAPMessage;
 import com.terracetech.secure.crypto.SecureUtil;
 import com.terracetech.secure.crypto.SymmetricCrypt;
 import com.terracetech.tims.mail.TMailFolder;

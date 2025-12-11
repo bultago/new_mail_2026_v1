@@ -14,7 +14,7 @@ package com.terracetech.tims.webmail.mail.vo;
  * <strong>MailBigAttachVO.java</strong> Class Description
  * </p>
  * <p>
- * �ֿ伳��
+ * ÁÖ¿ä¼³¸í
  * </p>
  * <ul>
  * <li></li>

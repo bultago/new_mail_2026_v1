@@ -13,9 +13,9 @@ import java.util.Locale;
 
 /**
  * <p><strong>MessageParserInfoBean.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
- * <li>¸Ş¼¼Áö¸¦ Parse ÇÏ±âÀ§ÇÑ Á¤º¸ ÀúÀå.</li>
+ * <li>Â¸ÃÂ¼Â¼ÃÃ¶Â¸Â¦ Parse Ã‡ÃÂ±Ã¢Ã€Â§Ã‡Ã‘ ÃÂ¤ÂºÂ¸ Ã€ÃºÃ€Ã¥.</li>
  * </ul>
  * @author sshyun
  * @since Tims7
@@ -37,121 +37,121 @@ public class MessageParserInfoBean {
 	private int imgResizeWidth = 0;
 	
 	/**
-	 * @return userId °ª ¹İÈ¯
+	 * @return userId Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getUserId() {
 		return userId;
 	}
 	/**
-	 * @param userId ÆÄ¶ó¹ÌÅÍ¸¦ userId°ª¿¡ ¼³Á¤
+	 * @param userId Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ userIdÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	/**
-	 * @return locale °ª ¹İÈ¯
+	 * @return locale Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public Locale getLocale() {
 		return locale;
 	}
 	/**
-	 * @param locale ÆÄ¶ó¹ÌÅÍ¸¦ locale°ª¿¡ ¼³Á¤
+	 * @param locale Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ localeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setLocale(Locale locale) {
 		this.locale = locale;
 	}
 	/**
-	 * @return defaultCharset °ª ¹İÈ¯
+	 * @return defaultCharset Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDefaultCharset() {
 		return defaultCharset;
 	}
 	/**
-	 * @param defaultCharset ÆÄ¶ó¹ÌÅÍ¸¦ defaultCharset°ª¿¡ ¼³Á¤
+	 * @param defaultCharset Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ defaultCharsetÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDefaultCharset(String defaultCharset) {
 		this.defaultCharset = defaultCharset;
 	}
 	/**
-	 * @return tmpPath °ª ¹İÈ¯
+	 * @return tmpPath Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getTmpPath() {
 		return tmpPath;
 	}
 	/**
-	 * @param tmpPath ÆÄ¶ó¹ÌÅÍ¸¦ tmpPath°ª¿¡ ¼³Á¤
+	 * @param tmpPath Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ tmpPathÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setTmpPath(String tmpPath) {
 		this.tmpPath = tmpPath;
 	}
 	/**
-	 * @return attachesDir °ª ¹İÈ¯
+	 * @return attachesDir Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAttachesDir() {
 		return attachesDir;
 	}
 	/**
-	 * @param attachesDir ÆÄ¶ó¹ÌÅÍ¸¦ attachesDir°ª¿¡ ¼³Á¤
+	 * @param attachesDir Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ attachesDirÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAttachesDir(String attachesDir) {
 		this.attachesDir = attachesDir;
 	}
 	/**
-	 * @return attachesUrl °ª ¹İÈ¯
+	 * @return attachesUrl Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAttachesUrl() {
 		return attachesUrl;
 	}
 	/**
-	 * @param attachesUrl ÆÄ¶ó¹ÌÅÍ¸¦ attachesUrl°ª¿¡ ¼³Á¤
+	 * @param attachesUrl Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ attachesUrlÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAttachesUrl(String attachesUrl) {
 		this.attachesUrl = attachesUrl;
 	}
 	/**
-	 * @return defaultImg °ª ¹İÈ¯
+	 * @return defaultImg Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDefaultImg() {
 		return defaultImg;
 	}
 	/**
-	 * @param defaultImg ÆÄ¶ó¹ÌÅÍ¸¦ defaultImg°ª¿¡ ¼³Á¤
+	 * @param defaultImg Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ defaultImgÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDefaultImg(String defaultImg) {
 		this.defaultImg = defaultImg;
 	}
 	/**
-	 * @return strLocalhost °ª ¹İÈ¯
+	 * @return strLocalhost Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getStrLocalhost() {
 		return strLocalhost;
 	}
 	/**
-	 * @param strLocalhost ÆÄ¶ó¹ÌÅÍ¸¦ strLocalhost°ª¿¡ ¼³Á¤
+	 * @param strLocalhost Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ strLocalhostÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setStrLocalhost(String strLocalhost) {
 		this.strLocalhost = strLocalhost;
 	}
 	/**
-	 * @return hiddenImg °ª ¹İÈ¯
+	 * @return hiddenImg Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public boolean isHiddenImg() {
 		return hiddenImg;
 	}
 	/**
-	 * @param hiddenImg ÆÄ¶ó¹ÌÅÍ¸¦ hiddenImg°ª¿¡ ¼³Á¤
+	 * @param hiddenImg Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ hiddenImgÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHiddenImg(boolean hiddenImg) {
 		this.hiddenImg = hiddenImg;
 	}
 	/**
-	 * @return hiddenTag °ª ¹İÈ¯
+	 * @return hiddenTag Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public boolean isHiddenTag() {
 		return hiddenTag;
 	}
 	/**
-	 * @param hiddenTag ÆÄ¶ó¹ÌÅÍ¸¦ hiddenTag°ª¿¡ ¼³Á¤
+	 * @param hiddenTag Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ hiddenTagÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHiddenTag(boolean hiddenTag) {
 		this.hiddenTag = hiddenTag;

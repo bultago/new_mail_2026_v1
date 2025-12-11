@@ -3,12 +3,12 @@ package com.terracetech.tims.mail;
 import java.io.*;
 import java.text.*;
 import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
 
 import org.alfresco.jlan.util.UTF8Normalizer;
 
-import com.sun.mail.imap.protocol.BASE64MailboxEncoder;
+import org.eclipse.angus.mail.imap.protocol.BASE64MailboxEncoder;
 
 public class TMailMessage {
     public Message message = null;

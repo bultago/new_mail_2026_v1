@@ -2,10 +2,10 @@ package com.terracetech.tims.webmail.note.manager;
 
 import java.io.UnsupportedEncodingException;
 
-import javax.mail.Flags;
-import javax.mail.MessagingException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeUtility;
+import jakarta.mail.Flags;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeUtility;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailFolder;

@@ -12,10 +12,10 @@ package com.terracetech.tims.webmail.mail.manager.builder;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.internet.MimeUtility;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
+import jakarta.mail.internet.MimeUtility;
 
 import com.terracetech.tims.mail.TMailAddress;
 import com.terracetech.tims.webmail.mail.ibean.SenderInfoBean;
@@ -29,7 +29,7 @@ import com.terracetech.tims.webmail.mail.manager.body.VcardMsgBodyCreator;
 
 /**
  * <p><strong>DraftMimeMessageBuilder.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

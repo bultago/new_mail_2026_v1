@@ -7,7 +7,6 @@
 <%@ page import="com.terracetech.tims.webmail.util.StringUtils"%>
 <%@ page import="java.util.*"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>
@@ -121,7 +120,6 @@ static boolean isMsie(String agent) {
     }
 %>
 
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Version Info : <%=version%> -->
 <title>${title}</title>
@@ -135,8 +133,13 @@ static boolean isMsie(String agent) {
 <link rel="stylesheet" type="text/css" href="/design/common/css/style1/ui.resizable.css" />
 <link rel="stylesheet" type="text/css" href="/design/common/css/style1/ui.dialog.css" />
 
-<script type="text/javascript" src="/dwr/engine.js"> </script>
-<script type="text/javascript" src="/dwr/util.js"> </script>
+<!-- REST API JavaScript 유틸리티 (2025-10-21) -->
+<script type="text/javascript" src="/resources/js/api-utils.js"></script>
+<script type="text/javascript" src="/resources/js/mail-api.js"></script>
+<script type="text/javascript" src="/resources/js/mail-folder-api.js"></script>
+<script type="text/javascript" src="/resources/js/mail-tag-api.js"></script>
+<script type="text/javascript" src="/resources/js/mail-search-folder-api.js"></script>
+<script type="text/javascript" src="/resources/js/mail-common-api.js"></script>
 
 <%if (isMinify) {%>
 	<script type="text/javascript" src="/js/core-lib/core-all.min.js"></script>
@@ -159,7 +162,6 @@ static boolean isMsie(String agent) {
 <script type="text/javascript" src="/js/ocx/ocx_load.js"></script>
 
 <script type="text/javascript" src="/i18n?bundle=common&var=comMsg&locale=<%=locale%>"></script>
-
 
 <tctl:extModuleCheck moduleName="ckkey" msie="true">
 <script type="text/javascript" src="<%=ExtPartConstants.getCkKeyProUrl()%>"></script>
@@ -227,7 +229,6 @@ dwr.engine.setPostHook(function() {
 	jQuery("#mainLoaddingMessage").hide();
 	setTimeout(function(){isDwrLoad = false;},100);
 });
-
 
 function errorHandler (errorString, exception) {
 	var msg = "";
@@ -424,7 +425,6 @@ function makeFolderInfoList(arrayList,folderList,keyList){
 		}	
 	}
 }
-
 
 function showAlrimMessage(layerId,contents){
 	jQuery("#systemNoticeContent").html(contents);

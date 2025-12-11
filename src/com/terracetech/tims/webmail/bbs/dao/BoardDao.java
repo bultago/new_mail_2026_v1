@@ -1,109 +1,47 @@
 package com.terracetech.tims.webmail.bbs.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.terracetech.tims.webmail.bbs.vo.BoardVO;
 
-@SuppressWarnings("deprecation")
-public class BoardDao extends SqlMapClientDaoSupport {
+/**
+ * BoardDao MyBatis Mapper Interface
+ * 
+ * 원본 클래스: BoardDao extends SqlSessionDaoSupport
+ * 변환 내용: iBATIS → MyBatis Mapper 인터페이스
+ * 변환일: 2025-10-20
+ * 총 메서드 수: 9개 (원본 기준)
+ */
+@Mapper
+public interface BoardDao {
 
-	/**
-	 * <p>�⺻ �Խ��� ��.</p>
-	 *
-	 * @param defaultBoardList	�⺻ �Խ��� ����Ʈ
-	 */
-	@SuppressWarnings("deprecation")
-	public void saveDefaultBoard(List<BoardVO> defaultBoardList) {
-		BoardVO boardVo = null;
-		for (int i=0; i < defaultBoardList.size(); i++) {
-			boardVo = defaultBoardList.get(i);
-			getSqlMapClientTemplate().insert("Bbs.saveBoard", boardVo);
-		}
-	}
+    /** 원본: public void saveDefaultBoard(List<BoardVO> defaultBoardList) */
+    void saveDefaultBoard(List<BoardVO> defaultBoardList);
 
-	/**
-	 * <p>�Խ��� ����Ʈ.</p>
-	 *
-	 * @param domainSeq		�������� ������
-	 * @return List
-	 */
-	public List<BoardVO> readBoardList(int domainSeq) {
-		return getSqlMapClientTemplate().queryForList("Bbs.readBoardList", domainSeq);
-	}
+    /** 원본: public List<BoardVO> readBoardList(int domainSeq) */
+    List<BoardVO> readBoardList(@Param("domainSeq") int domainSeq);
 
-	/**
-	 * <p>�Խ��� ��ȸ.</p>
-	 *
-	 * @param bbsId		�Խ��� ID
-	 * @param domainSeq		�������� ������
-	 * @return BoardVO
-	 */
-	public BoardVO readBoard(int bbsId, int domainSeq) {
-		Map<String, Integer> paramMap = new HashMap<String, Integer>();
-		paramMap.put("bbsId", bbsId);
-		paramMap.put("domainSeq", domainSeq);
-		return (BoardVO)getSqlMapClientTemplate().queryForObject("Bbs.readBoard", paramMap);
-	}
+    /** 원본: public BoardVO readBoard(int bbsId, int domainSeq) */
+    BoardVO readBoard(@Param("bbsId") int bbsId, @Param("domainSeq") int domainSeq);
 
-	public BoardVO readNoticeBoard(int bbsId, int domainSeq) {
-		Map<String, Integer> paramMap = new HashMap<String, Integer>();
-		paramMap.put("bbsId", bbsId);
-		paramMap.put("domainSeq", domainSeq);
-		return (BoardVO)getSqlMapClientTemplate().queryForObject("Bbs.readNoticeBoard", paramMap);
-	}
+    /** 원본: public BoardVO readNoticeBoard(int bbsId, int domainSeq) */
+    BoardVO readNoticeBoard(@Param("bbsId") int bbsId, @Param("domainSeq") int domainSeq);
 
-	/**
-	 * <p>�Խ��� ��.</p>
-	 *
-	 * @param boardVo
-	 * @return void
-	 */
-	public void saveBoard(BoardVO boardVo) {
-		getSqlMapClientTemplate().insert("Bbs.saveBoard", boardVo);
-	}
+    /** 원본: public void saveBoard(BoardVO boardVo) */
+    void saveBoard(BoardVO boardVo);
 
-	/**
-	 * <p>�Խ��� ���� ����.</p>
-	 *
-	 * @param boardVo
-	 * @return void
-	 */
-	public void modifyBoard(BoardVO boardVo) {
-		getSqlMapClientTemplate().insert("Bbs.modifyBoard", boardVo);
-	}
+    /** 원본: public void modifyBoard(BoardVO boardVo) */
+    void modifyBoard(BoardVO boardVo);
 
-	/**
-	 * <p>�Խ��� ����.</p>
-	 *
-	 * @param bbsId �Խ��� ID
-	 * @param domainSeq ������ ������
-	 * @return void
-	 */
-	public void deleteBoard(int bbsId, int domainSeq) {
-		Map<String, Integer> paramMap = new HashMap<String, Integer>();
-		paramMap.put("bbsId", bbsId);
-		paramMap.put("domainSeq", domainSeq);
-		getSqlMapClientTemplate().delete("Bbs.deleteBoard", paramMap);
-	}
+    /** 원본: public void deleteBoard(int bbsId, int domainSeq) */
+    void deleteBoard(@Param("bbsId") int bbsId, @Param("domainSeq") int domainSeq);
 
-	/**
-	 * <p>�Խ��� ���� ��ȸ.</p>
-	 *
-	 * @param bbsId
-	 * @return List
-	 */
-	public List<Integer> readBoardAdiminList(int bbsId, int mailDomainSeq) {
-		Map<String, Integer> paramMap = new HashMap<String, Integer>();
-		paramMap.put("bbsId", bbsId);
-		paramMap.put("mailDomainSeq", mailDomainSeq);
-		return getSqlMapClientTemplate().queryForList("Bbs.readBoardAdiminList", paramMap);
-	}
+    /** 원본: public List<Integer> readBoardAdiminList(int bbsId, int mailDomainSeq) */
+    List<Integer> readBoardAdiminList(@Param("bbsId") int bbsId, @Param("mailDomainSeq") int mailDomainSeq);
 
-	public List<BoardVO> readNoticeBbsList(int domainSeq) {
-		return getSqlMapClientTemplate().queryForList("Bbs.readNoticeBbsList", domainSeq);
-	}
+    /** 원본: public List<BoardVO> readNoticeBbsList(int domainSeq) */
+    List<BoardVO> readNoticeBbsList(@Param("domainSeq") int domainSeq);
 }

@@ -15,7 +15,7 @@ package com.terracetech.tims.webmail.bbs.vo;
  * <strong>AttatchFileVO.java</strong> Class Description
  * </p>
  * <p>
- * �ֿ伳��
+ * ÁÖ¿ä¼³¸í
  * </p>
  * <ul>
  * <li></li>

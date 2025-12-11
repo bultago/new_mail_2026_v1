@@ -4,9 +4,10 @@ import java.security.PrivateKey;
 import java.util.Map;
 
 import javax.crypto.Cipher;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.json.simple.JSONObject;
 
 import com.terracetech.secure.policy.AllowPolicy;
@@ -23,7 +24,7 @@ import com.terracetech.tims.webmail.util.StringUtils;
 
 public class PasswordCheckAction extends BaseAction {
 
-	private final Logger logger = Logger.getLogger(PasswordCheckAction.class);
+	private final Logger logger = LoggerFactory.getLogger(PasswordCheckAction.class);
 
 	private static final long serialVersionUID = 20090604L;
 

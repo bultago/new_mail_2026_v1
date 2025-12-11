@@ -11,13 +11,13 @@ package com.terracetech.tims.webmail.mail.manager.send;
 
 import java.util.Date;
 
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.StoreClosedException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Session;
+import jakarta.mail.StoreClosedException;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 
-import com.sun.mail.smtp.SMTPMessage;
+import org.eclipse.angus.mail.smtp.SMTPMessage;
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailStore;
 import com.terracetech.tims.webmail.common.log.LogManager;

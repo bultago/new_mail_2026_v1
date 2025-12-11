@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 
 import org.w3c.tidy.Tidy;
 
-import com.sun.mail.util.LineInputStream;
+import org.eclipse.angus.mail.util.LineInputStream;
 import com.terracetech.tims.webmail.common.EnvConstants;
 import com.terracetech.tims.webmail.common.log.LogManager;
 import com.terracetech.tims.webmail.mail.ibean.ImageInfoBean;

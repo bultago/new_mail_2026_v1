@@ -4,15 +4,12 @@
 		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
 		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
 		xmlns:tx="http://www.springframework.org/schema/tx"
-		xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"		
 		xsi:schemaLocation="
-			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
-			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
-			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
-			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
-			http://www.directwebremoting.org/schema/spring-dwr 
-			http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd"
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-6.1.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-6.1.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-6.1.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-6.1.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-6.1.xsd"
 		default-autowire="byName">
 			
 			
@@ -22,24 +19,19 @@
 	<!-- ===================================================================
 -->
 	<bean id="bigAttachDao"
-		class="com.terracetech.tims.webmail.mail.dao.BigAttachDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		class="com.terracetech.tims.webmail.mail.dao.BigAttachDao" />
 	
 	<bean id="cacheEmailDao"
-		class="com.terracetech.tims.webmail.mail.dao.CacheEmailDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		class="com.terracetech.tims.webmail.mail.dao.CacheEmailDao" />
 		
 	<bean id="letterDao"
-		class="com.terracetech.tims.webmail.mail.dao.LetterDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		class="com.terracetech.tims.webmail.mail.dao.LetterDao" />
 		
 	<bean id="agingDao"
-		class="com.terracetech.tims.webmail.mail.dao.FolderAgingDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		class="com.terracetech.tims.webmail.mail.dao.FolderAgingDao" />
 		
 	<bean id="sharedFolderDao"
-		class="com.terracetech.tims.webmail.mail.dao.SharedFolderDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		class="com.terracetech.tims.webmail.mail.dao.SharedFolderDao" />
 		
 		
 	<!-- ===================================================================
@@ -132,230 +124,66 @@
 	<!-- ===================================================================
 -->
 	
-	<bean 	id="mailCommonAction" 
-			class="com.terracetech.tims.webmail.mail.action.MailCommonAction"
-			p:systemConfigManager-ref="systemConfigManager"			
-			p:userAuthManager-ref="userAuthManager"
-			p:userSettingManager-ref="settingManager"			 
-			scope="prototype"/>	
-	
-	<bean 	id="writeMessageAction" 
-				class="com.terracetech.tims.webmail.mail.action.WriteMessageAction" 
-				scope="prototype"
-				p:rcptManager-ref="lastrcptManager"
-				p:bigAttachManager-ref="bigattachManager"
-				p:userSettingManager-ref="settingManager"
-				p:bbsManager-ref="bbsManager"
-				p:signManager-ref="signManager"
-				p:mailUserManager-ref="mailUserManager"
-				p:mailManager-ref="mailManager"
-				p:systemConfigManager-ref="systemConfigManager">
-	</bean>
-	
-	<bean 	id="sendMessageAction" 
-				class="com.terracetech.tims.webmail.mail.action.SendMessageAction" 
-				scope="prototype"
-				p:rcptManager-ref="lastrcptManager"
-				p:vcardManager-ref="vcardManager"
-				p:letterManager-ref="letterManager"
-				p:signManager-ref="signManager"
-				p:searchEmailManager-ref="searchEmailManager"
-				p:ladminManager-ref="ladminManager"
-				p:systemConfigManager-ref="systemConfigManager"
-				p:mailUserManager-ref="mailUserManager"
-				/>
-			
-	<bean 	id="listMessageAction" 
-			class="com.terracetech.tims.webmail.mail.action.ListMessageAction" 
-			scope="prototype"
-			p:mailManager-ref="mailManager"
-			p:ladminManager-ref="ladminManager"
-			p:userSettingManager-ref="settingManager">		
-	</bean>
-	
-	<bean 	id="allSelectMessageProcessAction" 
-			class="com.terracetech.tims.webmail.mail.action.AllSelectMessageProcessAction" 
-			scope="prototype"
-			p:mailManager-ref="mailManager"			
-			p:userSettingManager-ref="settingManager">		
-	</bean>
 	
 	
-	<bean 	id="readMessageAction" 
-		class="com.terracetech.tims.webmail.mail.action.ReadMessageAction"
-		scope="prototype"
-		p:mailManager-ref="mailManager"
-		p:userSettingManager-ref="settingManager"
-		p:ladminManager-ref="ladminManager"
-		p:systemConfigManager-ref="systemConfigManager"
-		p:geoIpManager-ref="geoIpManager">		
-	</bean>	
 	
-	<bean 	id="readNestedMessageAction" 
-		class="com.terracetech.tims.webmail.mail.action.ReadNestedMessageAction"
-		scope="prototype"
-		p:mailManager-ref="mailManager"
-		p:userSettingManager-ref="settingManager">		
-	</bean>	
 	
-	<bean 	id="downloadAttachAction" 
-		class="com.terracetech.tims.webmail.mail.action.DownloadAttachAction"
-		p:userManager-ref="mailUserManager"
-		scope="prototype">
-		<constructor-arg value="false"/>
-	</bean>
 	
-	<bean 	id="downloadAllAttachAction" 
-		class="com.terracetech.tims.webmail.mail.action.DownloadAllAttachAction"
-		scope="prototype">
-	</bean>	
 	
-	<bean 	id="downloadMessagesAction" 
-		class="com.terracetech.tims.webmail.mail.action.DownloadMessagesAction"		
-		scope="prototype">
-	</bean>
 	
-	<bean 	id="downloadBigAttachAction" 
-		class="com.terracetech.tims.webmail.mail.action.DownLoadBigAttachAction"
-		scope="prototype"
-		p:bigAttachManager-ref="bigattachManager"
-		p:userManager-ref="mailUserManager">
-		<constructor-arg value="false"/>
-	</bean>
+		
 	
-	<bean 	id="bigAttachManageAction" 
-		class="com.terracetech.tims.webmail.mail.action.BigAttachFileManageAction"
-		scope="prototype"
-		p:bigAttachManager-ref="bigattachManager">
-	</bean>
+		
 	
-	<bean 	id="uploadMessageAction" 
-		class="com.terracetech.tims.webmail.mail.action.UploadMessageAction"
-		scope="prototype">
-	</bean>
 	
-	<bean 	id="receiveMDNAction" 
-		class="com.terracetech.tims.webmail.mail.action.ReceiveMDNAction"
-		scope="prototype"
-		p:userManager-ref="mailUserManager">
-		<constructor-arg value="false"/>
-	</bean>
 	
-	<bean 	id="viewMessageSourceAction" 
-		class="com.terracetech.tims.webmail.mail.action.ViewSourceAction"
-		scope="prototype">
-	</bean>	
+		
 	
-	<bean 	id="folderManageAction" 
-		class="com.terracetech.tims.webmail.mail.action.FolderManageAction"
-		p:mailManager-ref="mailManager"
-		p:ladminManager-ref="ladminManager"
-		p:systemConfigManager-ref="systemConfigManager"
-		p:userSettingManager-ref="settingManager"
-		scope="prototype">		
-	</bean>			
 	
-	<bean 	id="homeViewAction" 
-		class="com.terracetech.tims.webmail.home.action.MailHomeViewAction"
-		scope="prototype"
-		p:manager-ref="homeManager">
-	</bean>
 	
-	<bean 	id="listMDNResponsesAction" 
-		class="com.terracetech.tims.webmail.mail.action.ListMDNResponsesAction"
-		scope="prototype">
-		<constructor-arg ref="mailManager"/>
-	</bean>
 	
-	<bean 	id="workMDNResponsesAction" 
-		class="com.terracetech.tims.webmail.mail.action.WorkMDNResponsesAction"
-		scope="prototype"
-		p:mailManager-ref="mailManager"
-		p:mailUserManager-ref="mailUserManager">
-	</bean>
+	
+	
+	
+	
+	
+	
+	
+		
+	
+				
+	
+	
+	
+	
+	
+	
 
-	<bean 	id="quotaViewAction" 
-		class="com.terracetech.tims.webmail.mail.action.ViewQuotaAction"
-		p:mailManager-ref="mailManager"
-		scope="prototype">
-	</bean>	
+		
 	
-	<bean 	id="reportSWRuleAction" 
-		class="com.terracetech.tims.webmail.mail.action.ReportSpamWhiteAction"
-		scope="prototype"
-		p:settingManager-ref="settingManager"		
-		p:ladminManager-ref="ladminManager"
-		p:mailManager-ref="mailManager">
-	</bean>	
+		
 	
-	<bean 	id="sortFilterMessageAction" 
-		class="com.terracetech.tims.webmail.mail.action.SortFilterMessageAction"
-		scope="prototype"		
-		p:mailManager-ref="mailManager">
-	</bean>
 	
-	<bean 	id="receivePopMessageAction" 
-		class="com.terracetech.tims.webmail.mail.action.ReceivePopMessageAction"
-		scope="prototype"		
-		p:pop3Manager-ref="pop3Manager" 
-		p:manager-ref="settingManager">
-	</bean>	
 	
-	<bean 	id="viewLetterImgAction" 
-		class="com.terracetech.tims.webmail.mail.action.ViewLetterImgAction"
-		scope="prototype"		
-		p:letterManager-ref="letterManager">
-	</bean>
+		
 	
-	<bean 	id="writePreviewAction" 
-		class="com.terracetech.tims.webmail.mail.action.WritePreviewAction"
-		scope="prototype"		
-		p:signManager-ref="signManager">
-	</bean>
 	
-	<bean 	id="folderInfoAction" 
-		class="com.terracetech.tims.webmail.mail.action.FolderInfoAction"
-		scope="prototype"		
-		p:mailManager-ref="mailManager"
-		p:userSettingManager-ref="settingManager">
-	</bean>
 	
-	<bean 	id="readSecureMessageAction" 
-		class="com.terracetech.tims.webmail.mail.action.ReadSecureMessageAction"
-		scope="prototype"		
-		p:mailManager-ref="mailManager"
-		p:userManager-ref="mailUserManager">
-		<constructor-arg value="false"/>
-	</bean>
 	
-	<bean 	id="LocalMailManageAction" 
-		class="com.terracetech.tims.webmail.mail.action.LocalMailManageAction"
-		scope="prototype">
-	</bean>	
 	
-	<bean 	id="registBayesianRuleAction" 
-		class="com.terracetech.tims.webmail.mail.action.RegistBayesianRuleAction"
-		p:ladminManager-ref="ladminManager"
-		scope="prototype">
-	</bean>
 	
-	<bean 	id="searchEmailByNameAction" 
-		class="com.terracetech.tims.webmail.mail.action.SearchEmailByNameAction"
-		p:mailManager-ref="mailManager"
-		p:userSettingManager-ref="settingManager"
-		scope="prototype">
-	</bean>
 	
-	<bean 	id="attachCheckAction" 
-		class="com.terracetech.tims.webmail.mail.action.AttachCheckAction"
-		scope="prototype">
-	</bean>
 	
-	<bean 	id="changeSentMessageFlagAction" 
-		class="com.terracetech.tims.webmail.mail.action.ChangeSentMessageFlagAction"
-		p:mailManager-ref="mailManager"
-		scope="prototype">
-	</bean>
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<!-- ===================================================================
 -->
@@ -368,28 +196,24 @@
 			scope="session"
 			p:mailManager-ref="mailManager">
 		<aop:scoped-proxy/>			
-		<dwr:remote javascript="MailFolderService"></dwr:remote>		
 	</bean>
 	
 	<bean id="mailMessageService" 
 			class="com.terracetech.tims.webmail.mail.service.MailMessageService" 
 			scope="session" p:mailManager-ref="mailManager">
 		<aop:scoped-proxy/>		
-		<dwr:remote javascript="MailMessageService"></dwr:remote>		
 	</bean>
 	
 	<bean id="mailTagService" 
 			class="com.terracetech.tims.webmail.mail.service.MailTagService" 
 			scope="session" p:mailManager-ref="mailManager">
 		<aop:scoped-proxy/>			
-		<dwr:remote javascript="MailTagService"></dwr:remote>		
 	</bean>
 	
 	<bean id="mailSearchFolderService" 
 			class="com.terracetech.tims.webmail.mail.service.MailSearchFolderService" 
 			scope="session" p:mailManager-ref="mailManager">
 		<aop:scoped-proxy />
-		<dwr:remote javascript="MailSearchFolderService"></dwr:remote>		
 	</bean>
 	
 	<bean id="mailCommonService" 
@@ -400,12 +224,8 @@
 			p:settingManager-ref="settingManager"
 			p:mailUserManager-ref="mailUserManager">
 		<aop:scoped-proxy />
-		<dwr:remote javascript="MailCommonService"></dwr:remote>		
 	</bean>
 	
-	<bean 	id="loadingPortlet" class="com.terracetech.tims.webmail.home.action.PortletViewAction" scope="prototype"
-		p:manager-ref="homeManager">
-	</bean>
 	
 	<bean id="mailWebService" 
 			class="com.terracetech.tims.service.tms.impl.MailService"
@@ -413,13 +233,7 @@
 			p:settingManager-ref="settingManager"
 			scope="prototype"/>	
 	
-	<bean id="mailPortletAction" 
-			class="com.terracetech.tims.webmail.mail.action.MailPortletAction"
-			p:service-ref="mailWebService"
-			p:mailUserManager-ref="mailUserManager"
-			p:settingManager-ref="settingManager"
-			scope="prototype">
-	</bean>
+	
 	
 	<bean id="garnetMailManager" 
 			class="com.terracetech.tims.service.mcnc.impl.GarnetMailManager"
@@ -427,33 +241,10 @@
 			p:settingManager-ref="settingManager"
 			scope="prototype"/>
 	
-	<!-- =================================================================== -->
-	<!-- TESTACTION DEFINITIONS                                                 -->
-	<!-- =================================================================== -->
 	
-	<bean 	id="listMessageTestAction" 
-			class="com.terracetech.tims.webmail.test.ListMessageTestAction" 
-			scope="prototype"
-			p:mailManager-ref="mailManager"
-			p:ladminManager-ref="ladminManager"
-			p:userSettingManager-ref="settingManager">
-		<constructor-arg value="false"/>
-	</bean>
 	
-	<bean 	id="readMessageTestAction" 
-		class="com.terracetech.tims.webmail.test.ReadMessageTestAction"
-		scope="prototype"
-		p:mailManager-ref="mailManager"
-		p:userSettingManager-ref="settingManager"
-		p:ladminManager-ref="ladminManager"
-		p:systemConfigManager-ref="systemConfigManager">
-		<constructor-arg value="false"/>		
-	</bean>	
 	
-	<bean 	id="readUserSearchTestAction" 
-			class="com.terracetech.tims.webmail.test.ReadUserSearchTestAction" 
-			scope="prototype"
-			p:manager-ref="mailManager">
-		<constructor-arg value="false"/>
-	</bean>
+		
+	
+	
 </beans>

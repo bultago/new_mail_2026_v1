@@ -4,7 +4,8 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.json.simple.JSONObject;
 
 import com.terracetech.tims.webmail.addrbook.manager.AddressBookManager;
@@ -18,7 +19,7 @@ public class PrivateAddressAddFromMailAction extends BaseAction {
 	
 	private static final long serialVersionUID = 20081215L;
 	
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private AddressBookManager manager;
 	

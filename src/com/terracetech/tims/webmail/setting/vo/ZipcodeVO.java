@@ -1,59 +1,63 @@
 package com.terracetech.tims.webmail.setting.vo;
 
-import java.io.Serializable;
-
-public class ZipcodeVO implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	
-	private String zipcode = null;
-	
-	private String sido = null;
-	
-	private String gugun = null;
-	
-	private String dong = null;
-	
-	private String bunji = null;
-
-	public String getZipcode() {
-		return zipcode;
-	}
-
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
-
-	public String getSido() {
-		return sido;
-	}
-
-	public void setSido(String sido) {
-		this.sido = sido;
-	}
-
-	public String getGugun() {
-		return gugun;
-	}
-
-	public void setGugun(String gugun) {
-		this.gugun = gugun;
-	}
-
-	public String getDong() {
-		return dong;
-	}
-
-	public void setDong(String dong) {
-		this.dong = dong;
-	}
-
-	public String getBunji() {
-		return bunji;
-	}
-
-	public void setBunji(String bunji) {
-		this.bunji = bunji;
-	}
-	
+/**
+ * 우편번호 VO
+ */
+public class ZipcodeVO {
+    
+    private String zipcode;
+    private String sido;
+    private String gugun;
+    private String dong;
+    private String ri;
+    private String bunji;
+    
+    // Getters and Setters
+    public String getZipcode() {
+        return zipcode;
+    }
+    
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+    
+    public String getSido() {
+        return sido;
+    }
+    
+    public void setSido(String sido) {
+        this.sido = sido;
+    }
+    
+    public String getGugun() {
+        return gugun;
+    }
+    
+    public void setGugun(String gugun) {
+        this.gugun = gugun;
+    }
+    
+    public String getDong() {
+        return dong;
+    }
+    
+    public void setDong(String dong) {
+        this.dong = dong;
+    }
+    
+    public String getRi() {
+        return ri;
+    }
+    
+    public void setRi(String ri) {
+        this.ri = ri;
+    }
+    
+    public String getBunji() {
+        return bunji;
+    }
+    
+    public void setBunji(String bunji) {
+        this.bunji = bunji;
+    }
 }

@@ -26,7 +26,7 @@ public class PortletViewAction extends BaseAction{
 		
 		MailHomePortletVO portlet = manager.readLayoutPortlet(domainSeq, ps);
 		
-		//TODO ÆÄ¶ó¹ÌÅÍ ±³Ã¼ÇÒ°Å ÀÖÀ¸¸é ¿©±â¼­ ÇØ¾ßÇÑ´Ù.
+		//TODO Ã†Ã„Â¶Ã³Â¹ÃŒÃ…Ã Â±Â³ÃƒÂ¼Ã‡Ã’Â°Ã… Ã€Ã–Ã€Â¸Â¸Ã© Â¿Â©Â±Ã¢Â¼Â­ Ã‡Ã˜Â¾ÃŸÃ‡Ã‘Â´Ã™.
 		request.setAttribute("url", portlet.getPortletUrl());
 		
 		return "success";

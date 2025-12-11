@@ -21,11 +21,11 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
-import javax.mail.Flags;
-import javax.mail.Folder;
-import javax.mail.MessagingException;
-import javax.mail.internet.ContentType;
-import javax.mail.internet.ParseException;
+import jakarta.mail.Flags;
+import jakarta.mail.Folder;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.ContentType;
+import jakarta.mail.internet.ParseException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

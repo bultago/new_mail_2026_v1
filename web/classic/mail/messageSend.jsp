@@ -22,12 +22,6 @@
 <script type="text/javascript" src="/js/common-lib/common-menuLayer.js"></script>
 <script type="text/javascript" src="/js/common-lib/common-form.js"></script>
 
-<script type="text/javascript" src="/dwr/interface/MailFolderService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailMessageService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailTagService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailSearchFolderService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailCommonService.js"></script>
-<script type="text/javascript" src="/dwr/interface/AddressBookService.js"></script>
 <script type="text/javascript" src="/i18n?bundle=addr&var=addrMsg&locale=<%=locale%>"></script>
 
 <script type="text/javascript" src="/js/mail-lib/layoutRenderer.js"></script>

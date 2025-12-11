@@ -1,6 +1,6 @@
 package com.terracetech.tims.hybrid.common.action;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.terracetech.tims.hybrid.common.HybridAuth;
 import com.terracetech.tims.hybrid.common.HybridErrorCode;

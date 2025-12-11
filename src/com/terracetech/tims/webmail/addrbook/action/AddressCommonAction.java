@@ -1,6 +1,6 @@
 package com.terracetech.tims.webmail.addrbook.action;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.terracetech.tims.webmail.common.BaseAction;
 import com.terracetech.tims.webmail.common.EnvConstants;

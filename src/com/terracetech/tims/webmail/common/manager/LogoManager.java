@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.webmail.common.vo.CommonLogoVO;
 import com.terracetech.tims.webmail.common.vo.LogoVO;
@@ -13,7 +14,7 @@ import com.terracetech.tims.webmail.mailuser.dao.MailDomainDao;
 import com.terracetech.tims.webmail.util.FileUtil;
 
 public class LogoManager {
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	private MailDomainDao mailDomainDao = null;
 
 	public void setMailDomainDao(MailDomainDao mailDomainDao) {

@@ -223,5 +223,78 @@ public class BoardContentVO {
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
-		
+	
+	// 추가 필드 (service.tms와 호환성, 2025-10-23)
+	private String bbsName;
+	private String bbsType;
+	private boolean bbsAdmin;
+	private boolean bbsCreator;
+	private boolean isReply;
+	private String email;
+	private String searchType;
+	private int currentPage;
+	
+	public String getBbsName() {
+		return bbsName;
+	}
+	
+	public void setBbsName(String bbsName) {
+		this.bbsName = bbsName;
+	}
+	
+	public String getBbsType() {
+		return bbsType;
+	}
+	
+	public void setBbsType(String bbsType) {
+		this.bbsType = bbsType;
+	}
+	
+	public boolean isBbsAdmin() {
+		return bbsAdmin;
+	}
+	
+	public void setBbsAdmin(boolean bbsAdmin) {
+		this.bbsAdmin = bbsAdmin;
+	}
+	
+	public boolean isBbsCreator() {
+		return bbsCreator;
+	}
+	
+	public void setBbsCreator(boolean bbsCreator) {
+		this.bbsCreator = bbsCreator;
+	}
+	
+	public boolean isReply() {
+		return isReply;
+	}
+	
+	public void setReply(boolean isReply) {
+		this.isReply = isReply;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	
+	public int getCurrentPage() {
+		return currentPage;
+	}
+	
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
 }

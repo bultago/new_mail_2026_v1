@@ -7,7 +7,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
 import com.terracetech.tims.service.aync.SyncKey;
@@ -34,7 +35,7 @@ import com.terracetech.tims.webmail.util.ApplicationBeanUtil;
  */
 public class GetItemEstimate extends AbstractSyncAction implements ISyncAction{
 	
-	private Logger log = Logger.getLogger(this.getClass());
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private GetItemEstimateData model = null;
 	

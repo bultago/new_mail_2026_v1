@@ -36,7 +36,7 @@ public class ContactsClientAddCommand implements ICommand{
 		
 		if(model.getAddClientDataList() != null){
 			for (Object iSyncData : model.getAddClientDataList()) {
-				//Áßº¹Ã¼Å©ÇØ¾ßÇÔ
+				//ì¤‘ë³µì²´í¬í•´ì•¼í•¨
 				if(iSyncData instanceof ContactData){
 					ContactData data = (ContactData)iSyncData;
 					
@@ -48,7 +48,7 @@ public class ContactsClientAddCommand implements ICommand{
 						
 						int serverId = service.readAddressMemberSeqByClientId(userSeq, clientId);
 						if(serverId > 0){
-							//ÀÌ¹Ì Ãß°¡µÈ µ¥ÀÌÅÍ ¼öÁ¤ÇÏ´Â °æ¿ì
+							//ì´ë¯¸ ì¶”ê°€ëœ ë°ì´í„° ìˆ˜ì •í•˜ëŠ” ê²½ìš°
 							service.modContact(Convert.convert(data));
 						}else{
 							service.addContact(Convert.convert(data));	

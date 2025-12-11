@@ -5,12 +5,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.kxml2.io.KXmlSerializer;
 import org.kxml2.wap.WbxmlParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -34,7 +35,7 @@ public class TmsSyncServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 20100513L;
 	
-	private Logger log = Logger.getLogger(this.getClass());
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private static final String USER_AGENT_HEADER = "User-Agent";
 	private static final String POLICY_KEY_HEADER = "X-MS-PolicyKey";

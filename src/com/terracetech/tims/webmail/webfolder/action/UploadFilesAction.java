@@ -3,10 +3,10 @@ package com.terracetech.tims.webmail.webfolder.action;
 import java.io.File;
 import java.util.Map;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
+import jakarta.activation.DataHandler;
+import jakarta.activation.FileDataSource;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailFolder;

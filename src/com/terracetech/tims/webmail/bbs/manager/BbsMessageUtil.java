@@ -25,16 +25,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.internet.MimeUtility;
+import jakarta.activation.DataHandler;
+import jakarta.activation.FileDataSource;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Session;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
+import jakarta.mail.internet.MimeUtility;
 
-import com.sun.mail.imap.IMAPFolder;
+import org.eclipse.angus.mail.imap.IMAPFolder;
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailMessage;
 import com.terracetech.tims.mail.TMailPart;

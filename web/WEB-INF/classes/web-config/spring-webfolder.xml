@@ -5,25 +5,15 @@
 		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
 		xmlns:tx="http://www.springframework.org/schema/tx"
 		xsi:schemaLocation="
-			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
-			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
-			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
-			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-6.1.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-6.1.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-6.1.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-6.1.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-6.1.xsd"
 		default-autowire="byName">
 			
-			
-	<!-- =================================================================== -->
-	<!-- DAO DEFINITIONS                                                     -->
-	<!-- =================================================================== -->
-	
 	<bean id="webfolderDao"
-		class="com.terracetech.tims.webmail.webfolder.dao.WebfolderDao"
-		p:sqlMapClient-ref="sqlMapClient" />
-	
-	<!-- =================================================================== -->
-	<!-- MANAGER DEFINITIONS                                                 -->
-	<!-- =================================================================== -->
+		class="com.terracetech.tims.webmail.webfolder.dao.WebfolderDao" />
 	
 	<bean id="webfolderManager" 
 		class="com.terracetech.tims.webmail.webfolder.manager.WebfolderManager">
@@ -31,42 +21,4 @@
 		<property name="mailUserDao" ref="mailUserDao"/>
 		<property name="systemConfigDao" ref="systemConfigDao"/>
 	</bean>
-	
-	<!-- =================================================================== -->
-	<!-- ACTION DEFINITIONS                                                 -->
-	<!-- =================================================================== -->
-	<bean 	id="listFoldersAction" class="com.terracetech.tims.webmail.webfolder.action.ListFoldersAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>	
-	<bean 	id="folderTreeAction" class="com.terracetech.tims.webmail.webfolder.action.FolderTreeAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>	
-	<bean	id="folderMainAction" class="com.terracetech.tims.webmail.webfolder.action.FolderMainAction" scope="prototype" />	
-	<bean 	id="uploadFilesAction" class="com.terracetech.tims.webmail.webfolder.action.UploadFilesAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager" p:virusManager-ref="virusManager"/>
-	<bean 	id="deleteFoldersAction" class="com.terracetech.tims.webmail.webfolder.action.DeleteFoldersAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="createFolderAction" class="com.terracetech.tims.webmail.webfolder.action.CreateFolderAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>		
-	<bean 	id="renameFolderAction" class="com.terracetech.tims.webmail.webfolder.action.RenameFolderAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="downloadFileAction" class="com.terracetech.tims.webmail.webfolder.action.DownloadFileAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="copyAndMoveFoldersAction" class="com.terracetech.tims.webmail.webfolder.action.CopyAndMoveFoldersAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="listFolderDataAction" class="com.terracetech.tims.webmail.webfolder.action.ListFolderDataAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="searchShareFolderAction" class="com.terracetech.tims.webmail.webfolder.action.SearchShareFolderAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="addShareFolderAction" class="com.terracetech.tims.webmail.webfolder.action.AddShareFolderAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="shareFolderAction" class="com.terracetech.tims.webmail.webfolder.action.ShareFolderAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="searchUserAction" class="com.terracetech.tims.webmail.webfolder.action.SearchUserAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="makeShareFolderAction" class="com.terracetech.tims.webmail.webfolder.action.MakeShareFolderAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="deleteShareFolderAction" class="com.terracetech.tims.webmail.webfolder.action.DeleteShareFolderAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>
-	<bean 	id="writeAttachFileAction" class="com.terracetech.tims.webmail.webfolder.action.WriteAttachFileAction" scope="prototype" 
-			p:webfolderManager-ref="webfolderManager"/>	
-	<bean 	id="webfolderPopupAction" class="com.terracetech.tims.webmail.webfolder.action.WebfolderPopupAction" scope="prototype"/>							
 </beans>

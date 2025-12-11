@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.service.tms.IContactService;
 import com.terracetech.tims.service.tms.vo.ContactBookVO;
@@ -26,7 +27,7 @@ import com.terracetech.tims.webmail.util.StringUtils;
 
 public class ContactService implements IContactService{
 	
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private AddressBookManager manager = null;
 	
@@ -213,7 +214,7 @@ public class ContactService implements IContactService{
 	}
 	
 	/**
-	 * ÆÄ¶ó¹ÌÅÍ ContactCondVO¿¡ µû¶ó ±×·ìÁ¤º¸, »ç¿ëÀÚ ¸ñ·ÏÀ» ¹ÝÈ¯ÇÑ´Ù.
+	 * ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ContactCondVOï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 	 * This Method return 
 	 */
 	public ContactInfoVO readContactMemberListByIndex(ContactCondVO cond){

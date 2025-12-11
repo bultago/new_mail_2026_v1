@@ -1,7 +1,7 @@
 package com.terracetech.tims.service.tms.portlet;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.terracetech.tims.webmail.mailuser.User;
 

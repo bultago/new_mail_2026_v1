@@ -1,212 +1,52 @@
 package com.terracetech.tims.webmail.mail.dao;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.log4j.Logger;
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.terracetech.tims.webmail.mail.ibean.MailAddressBean;
 
-public class CacheEmailDao extends SqlMapClientDaoSupport{
-	public Logger log = Logger.getLogger(this.getClass());
-	
-	@SuppressWarnings("unchecked")
-	public List<MailAddressBean> readPrivateEmailList(int domainSeq, int userSeq, String keyWord, boolean isAutoComplte){
-		
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("mailDomain", domainSeq);
-		param.put("userSeq", userSeq);
-		param.put("keyWord", keyWord);
-		param.put("staticParam", (isAutoComplte)?"T":"F");
-		
-		List<MailAddressBean> result = null;
-		try {
-			result = getSqlMapClientTemplate().queryForList("MailUser.readPrivateAddrAddressList", param);
-		} catch (Exception e) {
-			log.error(e.getMessage(), e);
-			result = new ArrayList<MailAddressBean>();
-		}
-		return result;
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<MailAddressBean> readSharedEmailList(int domainSeq, int userSeq, String keyWord, boolean isAutoComplte){
-		
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("mailDomain", domainSeq);
-		param.put("userSeq", userSeq);
-		param.put("keyWord", keyWord);
-		param.put("staticParam", (isAutoComplte)?"T":"F");
-		
-		List<MailAddressBean> result = null;
-		try {
-			result = getSqlMapClientTemplate().queryForList("MailUser.readSharedAddrAddressList", param);
-		} catch (Exception e) {
-			log.error(e.getMessage(), e);
-			result = new ArrayList<MailAddressBean>();
-		}
-		return result;
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<MailAddressBean> readOrgEmailList(int domainSeq, int userSeq, String locale, String keyWord, boolean isAutoComplte){
-		
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("mailDomain", domainSeq);
-		param.put("locale", locale);
-		param.put("keyWord", keyWord);
-		param.put("staticParam", (isAutoComplte)?"T":"F");
-		
-		List<MailAddressBean> result = null;
-		try {
-			result = getSqlMapClientTemplate().queryForList("MailUser.readOrgAddressList", param);
-		} catch (Exception e) {
-			log.error(e.getMessage(), e);
-			result = new ArrayList<MailAddressBean>();
-		}
-		return result;
-	}
-	
-	/**
-	 * "¥ŸøÏ¿Á∆“"<#000100.all.all.true>
-	 * 
-	 * @param domainSeq
-	 * @param userSeq
-	 * @param locale
-	 * @param keyWord
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public List<MailAddressBean> readDeptList(int domainSeq, String keyWord, boolean isAutoComplte){
-		
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("mailDomain", domainSeq);
-		param.put("deptName", (isAutoComplte)? keyWord + "%" : keyWord);
-		//param.put("staticParam", (isAutoComplte)?"T":"F");
-		
-		List<MailAddressBean> result = null;
-		try {
-			result = getSqlMapClientTemplate().queryForList("MailUser.readDeptAddressList", param);
-			if(result != null){
-				for (MailAddressBean dept : result) {
-					dept.setEmail("#" + dept.getDeptCode() + ".all.all.true");
-				}
-			}
-		} catch (Exception e) {
-			log.error(e.getMessage(), e);
-			result = new ArrayList<MailAddressBean>();
-		}
-		return result;
-	}
-	
-	/**
-	 * "∞≥πﬂ∆¿"<#ø¨±∏º“/∞≥πﬂ∆¿>
-	 * 
-	 * @param domainSeq
-	 * @param userSeq
-	 * @param locale
-	 * @param keyWord
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public List<MailAddressBean> readDeptFullNameList(int domainSeq, String keyWord, boolean isAutoComplte){
-		
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("mailDomain", domainSeq);
-		param.put("deptName", (isAutoComplte)? keyWord + "%" : keyWord);
-		//param.put("staticParam", (isAutoComplte)?"T":"F");
-		
-		List<MailAddressBean> result = getSqlMapClientTemplate().queryForList("MailUser.readDeptFullCodeList", param);
-		if(result != null){
-			Map<String, String> deptMap = getSqlMapClientTemplate().queryForMap("MailUser.getDeptMap", domainSeq, "key", "value");
-			
-			if(result.size()==1){
-				MailAddressBean dept = result.get(0);
-				dept.setName(result.get(0).getName());
-				dept.setEmail("#" + result.get(0).getName());
-				dept.setDeptName("");
-			}else if(result.size()>1){
-				for (MailAddressBean dept : result) {
-					String fullCode = dept.getDeptCode();
-					String[] codes = fullCode.split(":");
-					String value = "#";
-					for (int i = 1; i < codes.length; i++) {
-						String code = codes[i];
-						if(value.equals("#")){
-							value = value + deptMap.get(code);	
-						}else{
-							value = value + "/" + deptMap.get(code);
-						}
-					}
-						
-					dept.setEmail(value);
-					dept.setName(dept.getName());
-					dept.setDeptName("");
-				}
-			}
-		}
-		
-		return result;
-	}
-	
-	
-	@SuppressWarnings("unchecked")
-	public List<MailAddressBean> readRecentEmailList(int domainSeq, int userSeq, String keyWord, boolean isAutoComplte){
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("mailDomain", domainSeq);
-		param.put("userSeq", userSeq);
-		param.put("keyWord", keyWord);
-		param.put("staticParam", (isAutoComplte)?"T":"F");
-		
-		List<MailAddressBean> result = null;
-		try {
-			result = getSqlMapClientTemplate().queryForList("MailUser.readRecentRcptAddressList", param);
-		} catch (Exception e) {
-			log.error(e.getMessage(), e);
-			result = new ArrayList<MailAddressBean>();
-		}
-		return result;
-	}
+/**
+ * CacheEmailDao MyBatis Mapper Interface
+ * 
+ * ÏõêÎ≥∏ ÌÅ¥ÎûòÏä§: CacheEmailDao extends SqlSessionDaoSupport
+ * Î≥ÄÌôò ÎÇ¥Ïö©: iBATIS ‚Üí MyBatis Mapper Ïù∏ÌÑ∞ÌéòÏù¥Ïä§
+ * Î≥ÄÌôòÏùº: 2025-10-20
+ * Ï¥ù Î©îÏÑúÎìú Ïàò: 8Í∞ú (ÏõêÎ≥∏ Í∏∞Ï§Ä)
+ */
+@Mapper
+public interface CacheEmailDao {
 
-	@SuppressWarnings("unchecked")
-	public List<MailAddressBean> readDomainEmailList(int domainSeq, String keyWord, boolean isAutoComplte) {
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("mailDomain", domainSeq);
-		param.put("keyWord", keyWord);
-		param.put("staticParam", (isAutoComplte)?"T":"F");
-		
-		List<MailAddressBean> result = null;
-		try {
-			result = getSqlMapClientTemplate().queryForList("MailUser.readDomainAddressList", param);
-		} catch (Exception e) {
-			log.error(e.getMessage(), e);
-			result = new ArrayList<MailAddressBean>();
-		}
-		return result;
-	}
-	
-	public String readSearchRcptOption(int mailDomainSeq){
-		String searchRcptOption = null;
-	
-		try {
-			Object o = getSqlMapClientTemplate().queryForObject("MailUser.readRcptSearchOption", mailDomainSeq);
-			if(o != null){
-				searchRcptOption = (String)o;
-			}
-		} catch (Exception e) {
-			log.error(e.getMessage(), e);
-		}
-		
-		if(searchRcptOption != null && searchRcptOption.length() > 0){
-			searchRcptOption = searchRcptOption.toUpperCase();
-		} else {
-			searchRcptOption = "RIPUO";
-		}
-		
-		return searchRcptOption;
-	
-	}
+    /** ÏõêÎ≥∏: public List<MailAddressBean> readPrivateEmailList(int domainSeq, int userSeq, String keyWord, boolean isAutoComplte) */
+    List<MailAddressBean> readPrivateEmailList(@Param("domainSeq") int domainSeq, @Param("userSeq") int userSeq, 
+                                               @Param("keyWord") String keyWord, @Param("isAutoComplte") boolean isAutoComplte);
+
+    /** ÏõêÎ≥∏: public List<MailAddressBean> readSharedEmailList(int domainSeq, int userSeq, String keyWord, boolean isAutoComplte) */
+    List<MailAddressBean> readSharedEmailList(@Param("domainSeq") int domainSeq, @Param("userSeq") int userSeq, 
+                                              @Param("keyWord") String keyWord, @Param("isAutoComplte") boolean isAutoComplte);
+
+    /** ÏõêÎ≥∏: public List<MailAddressBean> readOrgEmailList(int domainSeq, int userSeq, String locale, String keyWord, boolean isAutoComplte) */
+    List<MailAddressBean> readOrgEmailList(@Param("domainSeq") int domainSeq, @Param("userSeq") int userSeq, 
+                                          @Param("locale") String locale, @Param("keyWord") String keyWord, 
+                                          @Param("isAutoComplte") boolean isAutoComplte);
+
+    /** ÏõêÎ≥∏: public List<MailAddressBean> readDeptList(int domainSeq, String keyWord, boolean isAutoComplte) */
+    List<MailAddressBean> readDeptList(@Param("domainSeq") int domainSeq, @Param("keyWord") String keyWord, 
+                                       @Param("isAutoComplte") boolean isAutoComplte);
+
+    /** ÏõêÎ≥∏: public List<MailAddressBean> readDeptFullNameList(int domainSeq, String keyWord, boolean isAutoComplte) */
+    List<MailAddressBean> readDeptFullNameList(@Param("domainSeq") int domainSeq, @Param("keyWord") String keyWord, 
+                                               @Param("isAutoComplte") boolean isAutoComplte);
+
+    /** ÏõêÎ≥∏: public List<MailAddressBean> readRecentEmailList(int domainSeq, int userSeq, String keyWord, boolean isAutoComplte) */
+    List<MailAddressBean> readRecentEmailList(@Param("domainSeq") int domainSeq, @Param("userSeq") int userSeq, 
+                                              @Param("keyWord") String keyWord, @Param("isAutoComplte") boolean isAutoComplte);
+
+    /** ÏõêÎ≥∏: public List<MailAddressBean> readDomainEmailList(int domainSeq, String keyWord, boolean isAutoComplte) */
+    List<MailAddressBean> readDomainEmailList(@Param("domainSeq") int domainSeq, @Param("keyWord") String keyWord, 
+                                              @Param("isAutoComplte") boolean isAutoComplte);
+
+    /** ÏõêÎ≥∏: public String readSearchRcptOption(int mailDomainSeq) */
+    String readSearchRcptOption(@Param("mailDomainSeq") int mailDomainSeq);
 }

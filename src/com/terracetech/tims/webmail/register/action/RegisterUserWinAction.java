@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import com.terracetech.tims.webmail.common.BaseAction;
 import com.terracetech.tims.webmail.common.EnvConstants;

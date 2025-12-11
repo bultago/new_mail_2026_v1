@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Stack;
 
-import javax.mail.internet.InternetAddress;
+import jakarta.mail.internet.InternetAddress;
 
 import com.terracetech.tims.mail.TMailMessage;
 import com.terracetech.tims.webmail.common.EnvConstants;
@@ -33,7 +33,7 @@ import com.terracetech.tims.webmail.setting.vo.SignDataVO;
  * <strong>SenderInfo.java</strong> Class Description
  * </p>
  * <p>
- * ÁÖ¿ä¼³¸í
+ * ï¿½Ö¿ä¼³ï¿½ï¿½
  * </p>
  * <ul>
  * <li></li>
@@ -252,28 +252,28 @@ public class SenderInfoBean {
 	}
 
 	/**
-	 * @return forwardFolder °ª ¹ÝÈ¯
+	 * @return forwardFolder ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getFolder() {
 		return folder;
 	}
 
 	/**
-	 * @param forwardFolder ÆÄ¶ó¹ÌÅÍ¸¦ forwardFolder°ª¿¡ ¼³Á¤
+	 * @param forwardFolder ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ forwardFolderï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setFolder(String folder) {
 		this.folder = folder;
 	}
 
 	/**
-	 * @return forwardUids °ª ¹ÝÈ¯
+	 * @return forwardUids ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getUids() {
 		return uids;
 	}
 
 	/**
-	 * @param forwardUids ÆÄ¶ó¹ÌÅÍ¸¦ forwardUids°ª¿¡ ¼³Á¤
+	 * @param forwardUids ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ forwardUidsï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setUids(String uids) {
 		this.uids = uids;
@@ -352,70 +352,70 @@ public class SenderInfoBean {
 	}
 
 	/**
-	 * @return reservYear °ª ¹ÝÈ¯
+	 * @return reservYear ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getReservYear() {
 		return reservYear;
 	}
 
 	/**
-	 * @param reservYear ÆÄ¶ó¹ÌÅÍ¸¦ reservYear°ª¿¡ ¼³Á¤
+	 * @param reservYear ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ reservYearï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setReservYear(String reservYear) {
 		this.reservYear = reservYear;
 	}
 
 	/**
-	 * @return reservMonth °ª ¹ÝÈ¯
+	 * @return reservMonth ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getReservMonth() {
 		return reservMonth;
 	}
 
 	/**
-	 * @param reservMonth ÆÄ¶ó¹ÌÅÍ¸¦ reservMonth°ª¿¡ ¼³Á¤
+	 * @param reservMonth ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ reservMonthï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setReservMonth(String reservMonth) {
 		this.reservMonth = reservMonth;
 	}
 
 	/**
-	 * @return reservDay °ª ¹ÝÈ¯
+	 * @return reservDay ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getReservDay() {
 		return reservDay;
 	}
 
 	/**
-	 * @param reservDay ÆÄ¶ó¹ÌÅÍ¸¦ reservDay°ª¿¡ ¼³Á¤
+	 * @param reservDay ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ reservDayï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setReservDay(String reservDay) {
 		this.reservDay = reservDay;
 	}
 
 	/**
-	 * @return reservHour °ª ¹ÝÈ¯
+	 * @return reservHour ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getReservHour() {
 		return reservHour;
 	}
 
 	/**
-	 * @param reservHour ÆÄ¶ó¹ÌÅÍ¸¦ reservHour°ª¿¡ ¼³Á¤
+	 * @param reservHour ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ reservHourï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setReservHour(String reservHour) {
 		this.reservHour = reservHour;
 	}
 
 	/**
-	 * @return reservMin °ª ¹ÝÈ¯
+	 * @return reservMin ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getReservMin() {
 		return reservMin;
 	}
 
 	/**
-	 * @param reservMin ÆÄ¶ó¹ÌÅÍ¸¦ reservMin°ª¿¡ ¼³Á¤
+	 * @param reservMin ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ reservMinï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setReservMin(String reservMin) {
 		this.reservMin = reservMin;
@@ -451,14 +451,14 @@ public class SenderInfoBean {
 	}
 
 	/**
-	 * @return tempFiles °ª ¹ÝÈ¯
+	 * @return tempFiles ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public List<File> getTempFiles() {
 		return tempFiles;
 	}
 
 	/**
-	 * @param tempFiles ÆÄ¶ó¹ÌÅÍ¸¦ tempFiles°ª¿¡ ¼³Á¤
+	 * @param tempFiles ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ tempFilesï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setTempFiles(List<File> tempFiles) {
 		this.tempFiles = tempFiles;
@@ -647,35 +647,35 @@ public class SenderInfoBean {
 	}
 	
 	/**
-	 * @return messageId °ª ¹ÝÈ¯
+	 * @return messageId ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getMessageId() {
 		return messageId;
 	}
 
 	/**
-	 * @param messageId ÆÄ¶ó¹ÌÅÍ¸¦ messageId°ª¿¡ ¼³Á¤
+	 * @param messageId ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ messageIdï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setMessageId(String messageId) {
 		this.messageId = messageId;
 	}
 
 	/**
-	 * @return replyMid °ª ¹ÝÈ¯
+	 * @return replyMid ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getReplyMid() {
 		return replyMid;
 	}
 
 	/**
-	 * @param replyMid ÆÄ¶ó¹ÌÅÍ¸¦ replyMid°ª¿¡ ¼³Á¤
+	 * @param replyMid ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ replyMidï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setReplyMid(String replyMid) {
 		this.replyMid = replyMid;
 	}
 
 	/**
-	 * @return draftMid °ª ¹ÝÈ¯
+	 * @return draftMid ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getDraftMid() {
 		if(draftMid != null){
@@ -686,7 +686,7 @@ public class SenderInfoBean {
 	}
 
 	/**
-	 * @param draftMid ÆÄ¶ó¹ÌÅÍ¸¦ draftMid°ª¿¡ ¼³Á¤
+	 * @param draftMid ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ draftMidï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setDraftMid(String draftMid) {
 		this.draftMid = draftMid;
@@ -701,28 +701,28 @@ public class SenderInfoBean {
 	}
 
 	/**
-	 * @return localUrl °ª ¹ÝÈ¯
+	 * @return localUrl ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getLocalUrl() {
 		return localUrl;
 	}
 
 	/**
-	 * @param localUrl ÆÄ¶ó¹ÌÅÍ¸¦ localUrl°ª¿¡ ¼³Á¤
+	 * @param localUrl ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ localUrlï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setLocalUrl(String localUrl) {
 		this.localUrl = localUrl;
 	}
 
 	/**
-	 * @return mdnUrl °ª ¹ÝÈ¯
+	 * @return mdnUrl ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getMdnUrl() {
 		return mdnUrl;
 	}
 
 	/**
-	 * @param mdnUrl ÆÄ¶ó¹ÌÅÍ¸¦ mdnUrl°ª¿¡ ¼³Á¤
+	 * @param mdnUrl ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ mdnUrlï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setMdnUrl(String mdnUrl) {
 		this.mdnUrl = mdnUrl;
@@ -739,7 +739,7 @@ public class SenderInfoBean {
 		stack.push(item);		
 	}
 	/**
-	 * @return partStack °ª ¹ÝÈ¯
+	 * @return partStack ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public Stack getStack() {
 		return stack;
@@ -750,56 +750,56 @@ public class SenderInfoBean {
 	}
 
 	/**
-	 * @return letterPaper °ª ¹ÝÈ¯
+	 * @return letterPaper ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public LetterVO getLetterPaper() {
 		return letterPaper;
 	}
 
 	/**
-	 * @param letterPaper ÆÄ¶ó¹ÌÅÍ¸¦ letterPaper°ª¿¡ ¼³Á¤
+	 * @param letterPaper ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ letterPaperï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setLetterPaper(LetterVO letterPaper) {
 		this.letterPaper = letterPaper;
 	}
 
 	/**
-	 * @return letterPaperMode °ª ¹ÝÈ¯
+	 * @return letterPaperMode ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public boolean isLetterPaperMode() {
 		return letterPaperMode;
 	}
 
 	/**
-	 * @param letterPaperMode ÆÄ¶ó¹ÌÅÍ¸¦ letterPaperMode°ª¿¡ ¼³Á¤
+	 * @param letterPaperMode ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ letterPaperModeï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setLetterPaperMode(String letterPaperMode) {		
 		this.letterPaperMode = (letterPaperMode != null && letterPaperMode.equals("on"))?true:false;
 	}
 
 	/**
-	 * @return isAutoSave °ª ¹ÝÈ¯
+	 * @return isAutoSave ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public boolean isAutoSave() {
 		return isAutoSave;
 	}
 
 	/**
-	 * @param isAutoSave ÆÄ¶ó¹ÌÅÍ¸¦ isAutoSave°ª¿¡ ¼³Á¤
+	 * @param isAutoSave ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ isAutoSaveï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setAutoSave(boolean isAutoSave) {
 		this.isAutoSave = isAutoSave;
 	}
 
 	/**
-	 * @return signSeq °ª ¹ÝÈ¯
+	 * @return signSeq ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public SignDataVO getSignData() {
 		return signData;
 	}
 
 	/**
-	 * @param signSeq ÆÄ¶ó¹ÌÅÍ¸¦ signSeq°ª¿¡ ¼³Á¤
+	 * @param signSeq ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ signSeqï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setSignData(SignDataVO signData) {
 		this.signData = signData;

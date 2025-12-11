@@ -14,10 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.terracetech.secure.crypto.PasswordEty;
 import com.terracetech.secure.crypto.PasswordUtil;
 import com.terracetech.tims.logging.LogManagerBean;
-import com.terracetech.tims.webmail.common.advice.Transactional;
 import com.terracetech.tims.webmail.common.dao.SystemConfigDao;
 import com.terracetech.tims.webmail.common.manager.SystemConfigManager;
 import com.terracetech.tims.webmail.common.vo.MailConfigVO;
@@ -25,10 +27,10 @@ import com.terracetech.tims.webmail.mailuser.dao.MailDomainDao;
 import com.terracetech.tims.webmail.mailuser.dao.MailUserDao;
 import com.terracetech.tims.webmail.mailuser.manager.SettingSecureManager;
 import com.terracetech.tims.webmail.mailuser.manager.UserAuthManager;
-import com.terracetech.tims.webmail.setting.dao.IAttachSettingDao;
-import com.terracetech.tims.webmail.setting.dao.ISettingFilterDao;
-import com.terracetech.tims.webmail.setting.dao.ISettingPop3Dao;
-import com.terracetech.tims.webmail.setting.dao.ISettingUserEtcInfoDao;
+import com.terracetech.tims.webmail.setting.dao.AttachSettingDao;
+import com.terracetech.tims.webmail.setting.dao.SettingFilterDao;
+import com.terracetech.tims.webmail.setting.dao.SettingPop3Dao;
+import com.terracetech.tims.webmail.setting.dao.SettingUserEtcInfoDao;
 import com.terracetech.tims.webmail.setting.dao.SettingAutoReplyDao;
 import com.terracetech.tims.webmail.setting.dao.SettingForwardDao;
 import com.terracetech.tims.webmail.setting.dao.SettingSpamDao;
@@ -67,6 +69,8 @@ import com.terracetech.tims.webmail.util.StringUtils;
  * @version 7.0
  */
 
+@Service
+@Transactional
 public class SettingManager {
 	
 	public static final String SUBJECT = "subject";
@@ -99,15 +103,15 @@ public class SettingManager {
 
 	private SettingForwardDao forwardDao = null;
 
-	private ISettingFilterDao filterDao = null;
+	private SettingFilterDao filterDao = null;
 	
-	private ISettingPop3Dao popDao = null;
+	private SettingPop3Dao popDao = null;
 	
-	private ISettingUserEtcInfoDao etcDao = null;
+	private SettingUserEtcInfoDao etcDao = null;
 	
 	private MailDomainDao mailDomainDao = null;
 	
-	private IAttachSettingDao attachDao = null;
+	private AttachSettingDao attachDao = null;
 	
 	private SystemConfigDao systemConfigDao = null;
 	
@@ -127,7 +131,7 @@ public class SettingManager {
 		this.systemConfigDao = systemConfigDao;
 	}
 
-	public void setFilterDao(ISettingFilterDao filterDao) {
+	public void setFilterDao(SettingFilterDao filterDao) {
 		this.filterDao = filterDao;
 	}
 
@@ -155,15 +159,15 @@ public class SettingManager {
 		this.spamDao = spamDao;
 	}
 	
-	public void setPopDao(ISettingPop3Dao popDao) {
+	public void setPopDao(SettingPop3Dao popDao) {
 		this.popDao = popDao;
 	}
 	
-	public void setEtcDao(ISettingUserEtcInfoDao etcDao) {
+	public void setEtcDao(SettingUserEtcInfoDao etcDao) {
 		this.etcDao = etcDao;
 	}
 	
-	public void setAttachDao(IAttachSettingDao attachDao) {
+	public void setAttachDao(AttachSettingDao attachDao) {
 		this.attachDao = attachDao;
 	}
 
@@ -179,7 +183,7 @@ public class SettingManager {
 		if (vo.getWhiteList() != null && vo.getWhiteList().length > 0) {
 			for (PSpameListItemVO item : vo.getWhiteList()) {
 				try {
-					spamDao.savePSpamWhiteList(item);	
+					spamDao.savePSpamWhiteListItem(item);	
 				} catch (Exception ignore) {
 				}
 			}
@@ -188,7 +192,7 @@ public class SettingManager {
 		if (vo.getBlackList() != null && vo.getBlackList().length > 0) {
 			for (PSpameListItemVO item : vo.getBlackList()) {
 				try {
-					spamDao.savePSpamBlackList(item);	
+					spamDao.savePSpamBlackListItem(item);	
 				} catch (Exception ignore) {
 				}
 			}
@@ -207,9 +211,9 @@ public class SettingManager {
 				try {
 					PSpameListItemVO vo = new PSpameListItemVO();
 					vo.setUserSeq(userSeq);
-					vo.setEmail(email);
-					vo.setModTime(FormatUtil.getBasicDateStr());
-					spamDao.savePSpamBlackList(vo);	
+				vo.setEmail(email);
+				vo.setModTime(FormatUtil.getBasicDateStr());
+				spamDao.savePSpamBlackListItem(vo);
 				} catch (Exception ignore) {
 				}
 			}
@@ -228,9 +232,9 @@ public class SettingManager {
 				try {
 					PSpameListItemVO vo = new PSpameListItemVO();
 					vo.setUserSeq(userSeq);
-					vo.setEmail(email);
-					vo.setModTime(FormatUtil.getBasicDateStr());
-					spamDao.savePSpamWhiteList(vo);	
+				vo.setEmail(email);
+				vo.setModTime(FormatUtil.getBasicDateStr());
+				spamDao.savePSpamWhiteListItem(vo);
 				} catch (Exception ignore) {
 				}
 			}

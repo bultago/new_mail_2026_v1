@@ -2,7 +2,7 @@ package com.terracetech.tims.webmail.util;
 
 import java.io.*;
 import java.util.*;
-import com.sun.mail.util.*;
+import org.eclipse.angus.mail.util.*;
 import com.terracetech.tims.webmail.util.Validation;
 
 public class StringReplacer {

@@ -3,11 +3,11 @@ package com.terracetech.tims.webmail.mail.manager;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.mail.Session;
-import javax.mail.Store;
-import javax.mail.URLName;
+import jakarta.mail.Session;
+import jakarta.mail.Store;
+import jakarta.mail.URLName;
 
-import com.sun.mail.pop3.POP3Store;
+import org.eclipse.angus.mail.pop3.POP3Store;
 import com.terracetech.tims.mail.TMailStore;
 import com.terracetech.tims.webmail.common.log.LogManager;
 import com.terracetech.tims.webmail.mailuser.User;

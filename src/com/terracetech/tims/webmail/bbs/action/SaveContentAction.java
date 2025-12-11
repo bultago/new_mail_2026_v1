@@ -4,8 +4,8 @@ import java.io.PrintWriter;
 import com.terracetech.tims.webmail.util.StringReplaceUtil;
 import java.util.Map;
 
-import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpSession;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.http.HttpSession;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailFolder;

@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@page import="com.terracetech.tims.common.I18nConstants"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>
@@ -89,7 +88,6 @@
 		}
 		</script>
 	</head>
-
 
 <body style="margin:10;">
 	

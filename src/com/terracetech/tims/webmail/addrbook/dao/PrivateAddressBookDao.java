@@ -1,12 +1,11 @@
 package com.terracetech.tims.webmail.addrbook.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
-import com.terracetech.tims.webmail.addrbook.manager.AddressBookUtils;
 import com.terracetech.tims.webmail.addrbook.vo.AddressBookGroupVO;
 import com.terracetech.tims.webmail.addrbook.vo.AddressBookMemberVO;
 import com.terracetech.tims.webmail.addrbook.vo.AddressEnvVO;
@@ -14,301 +13,188 @@ import com.terracetech.tims.webmail.addrbook.vo.GroupMemberRelationVO;
 import com.terracetech.tims.webmail.mail.ibean.MailAddressBean;
 import com.terracetech.tims.webmail.organization.vo.MemberVO;
 
-public class PrivateAddressBookDao extends SqlMapClientDaoSupport{
+/**
+ * PrivateAddressBookDao MyBatis Mapper Interface
+ * 
+ * 원본 클래스: PrivateAddressBookDao extends SqlMapClientDaoSupport
+ * 변환 내용: iBATIS → MyBatis Mapper 인터페이스
+ * 변환일: 2025-10-20
+ * 총 메서드 수: 31개 (원본 기준)
+ */
+@Mapper
+public interface PrivateAddressBookDao {
 
-	@SuppressWarnings("unchecked")
-	public List<AddressBookMemberVO> readAddressListByIndex(int groupSeq,
-			int userSeq, String startChar, int skipResult, int maxResult, String sortBy, String sortDir) {
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("user", String.valueOf(userSeq));
-		if (startChar != null){
-			param.put("name", startChar);
-			AddressBookUtils.setJapaneses(startChar, param);
-		}
-			
-		if (groupSeq != 0)
-			param.put("book", String.valueOf(groupSeq));
-		
-		param.put("sortBy", sortBy);
-		param.put("sortDir", sortDir);
-		
-		param.put("skipResult", skipResult);
-		param.put("maxResult", maxResult);
-		
-		AddressBookUtils.setKorean(param);
+    /**
+     * 원본: public List<AddressBookMemberVO> readAddressListByIndex(int groupSeq, int userSeq, 
+     *              String startChar, int skipResult, int maxResult, String sortBy, String sortDir)
+     */
+    List<AddressBookMemberVO> readAddressListByIndex(@Param("groupSeq") int groupSeq, @Param("userSeq") int userSeq, 
+                                                      @Param("startChar") String startChar, @Param("skipResult") int skipResult, 
+                                                      @Param("maxResult") int maxResult, @Param("sortBy") String sortBy, 
+                                                      @Param("sortDir") String sortDir);
 
-		return getSqlMapClientTemplate().queryForList("Addrbook.getPrivateAddressList", param);
-	}
+    /**
+     * 원본: public List<AddressBookMemberVO> getAddPrivateAddressListByDate(int userSeq, String fromDate, 
+     *              int skipResult, int maxResult)
+     */
+    List<AddressBookMemberVO> getAddPrivateAddressListByDate(@Param("userSeq") int userSeq, @Param("fromDate") String fromDate, 
+                                                             @Param("skipResult") int skipResult, @Param("maxResult") int maxResult);
 
+    /**
+     * 원본: public List<AddressBookMemberVO> getModPrivateAddressListByDate(int userSeq, String fromDate, 
+     *              int skipResult, int maxResult)
+     */
+    List<AddressBookMemberVO> getModPrivateAddressListByDate(@Param("userSeq") int userSeq, @Param("fromDate") String fromDate, 
+                                                             @Param("skipResult") int skipResult, @Param("maxResult") int maxResult);
 
-	@SuppressWarnings("unchecked")
-	public List<AddressBookMemberVO> getAddPrivateAddressListByDate(int userSeq, String fromDate, int skipResult, int maxResult){
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("user", userSeq);
-		param.put("fromDate", fromDate);
-		param.put("skipResult", skipResult);
-		param.put("maxResult", maxResult);
-		
-		return getSqlMapClientTemplate().queryForList("Addrbook.getAddPrivateAddressListByDate", param);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<AddressBookMemberVO> getModPrivateAddressListByDate(int userSeq, String fromDate, int skipResult, int maxResult){
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("user", userSeq);
-		param.put("fromDate", fromDate);
-		param.put("skipResult", skipResult);
-		param.put("maxResult", maxResult);
-		
-		return getSqlMapClientTemplate().queryForList("Addrbook.getModPrivateAddressListByDate", param);
-	}
+    /**
+     * 원본: public List<AddressBookMemberVO> readAddressListByGroup(int groupSeq, int userSeq, 
+     *              String startChar, int skipResult, int maxResult, String sortBy, String sortDir)
+     */
+    List<AddressBookMemberVO> readAddressListByGroup(@Param("groupSeq") int groupSeq, @Param("userSeq") int userSeq, 
+                                                     @Param("startChar") String startChar, @Param("skipResult") int skipResult, 
+                                                     @Param("maxResult") int maxResult, @Param("sortBy") String sortBy, 
+                                                     @Param("sortDir") String sortDir);
 
-	
-	@SuppressWarnings("unchecked")
-	public List<AddressBookMemberVO> readAddressListByGroup(int groupSeq,
-			int userSeq, String startChar, int skipResult, int maxResult, String sortBy, String sortDir) {
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("user", String.valueOf(userSeq));
-		if (startChar != null){
-			param.put("name", startChar);
-			AddressBookUtils.setJapaneses(startChar, param);
-		}
-		
-		param.put("groupSeq", String.valueOf(groupSeq));
-		
-		param.put("sortBy", sortBy);
-		param.put("sortDir", sortDir);
-		
-		param.put("skipResult", skipResult);
-		param.put("maxResult", maxResult);
-		
-		AddressBookUtils.setKorean(param);
-			
-		return getSqlMapClientTemplate().queryForList("Addrbook.getPrivateAddressListByGroup", param);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<AddressBookGroupVO> readPrivateGroupList(int userSeq){
+    /**
+     * 원본: public List<AddressBookGroupVO> readPrivateGroupList(int userSeq)
+     */
+    List<AddressBookGroupVO> readPrivateGroupList(@Param("userSeq") int userSeq);
 
-		return getSqlMapClientTemplate().queryForList( "Addrbook.getPrivateGroupList", userSeq);
-	}
+    /**
+     * 원본: public void saveGroup(AddressBookGroupVO group)
+     */
+    void saveGroup(AddressBookGroupVO group);
 
-	public void saveGroup(AddressBookGroupVO group) {
-		getSqlMapClientTemplate().insert("Addrbook.insertPrivateGroup", group);
-	}
+    /**
+     * 원본: public void updateGroup(AddressBookGroupVO group)
+     */
+    void updateGroup(AddressBookGroupVO group);
 
-	public void updateGroup(AddressBookGroupVO group) {
-		getSqlMapClientTemplate().update("Addrbook.updatePrivateGroup", group);
-	}
+    /**
+     * 원본: public void deleteGroup(int userSeq, int groupSeq)
+     */
+    void deleteGroup(@Param("userSeq") int userSeq, @Param("groupSeq") int groupSeq);
 
-	public void deleteGroup(int userSeq, int groupSeq) {
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("userSeq", String.valueOf(userSeq));
-		param.put("groupSeq", String.valueOf(groupSeq));
-		
-		getSqlMapClientTemplate().delete("Addrbook.deletePrivateGroup", param);
-	}
+    /**
+     * 원본: public void saveMember(AddressBookMemberVO member)
+     */
+    void saveMember(AddressBookMemberVO member);
 
-	public void saveMember(AddressBookMemberVO member) {
-		getSqlMapClientTemplate().insert("Addrbook.insertPrivateMember", member);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public int readAddressMemberSeqByClientId(int userSeq,String clientId){
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("userSeq", String.valueOf(userSeq));
-		param.put("clientId", String.valueOf(clientId));
-		
-		List<Integer> list = getSqlMapClientTemplate().queryForList("Addrbook.getPrivateMemberByClientId", param);
-		if(list ==null)
-			return 0;
-		if(list.size() >= 1)
-			return list.get(0);
-		
-		return 0;
-	}
+    /**
+     * 원본: public int readAddressMemberSeqByClientId(int userSeq, String clientId)
+     */
+    int readAddressMemberSeqByClientId(@Param("userSeq") int userSeq, @Param("clientId") String clientId);
 
-	public AddressBookMemberVO readLastInsertMember(int userSeq) {
-		
-		return (AddressBookMemberVO) getSqlMapClientTemplate().queryForObject("Addrbook.getLastInsertMember", userSeq);
-	}
+    /**
+     * 원본: public AddressBookMemberVO readLastInsertMember(int userSeq)
+     */
+    AddressBookMemberVO readLastInsertMember(@Param("userSeq") int userSeq);
 
-	public void saveGroupMemberRelation(GroupMemberRelationVO vo) {
-		getSqlMapClientTemplate().insert("Addrbook.insertPrivateGroupMemberRelation", vo);
-	}
+    /**
+     * 원본: public void saveGroupMemberRelation(GroupMemberRelationVO vo)
+     */
+    void saveGroupMemberRelation(GroupMemberRelationVO vo);
 
-	@SuppressWarnings("unchecked")
-	public List<AddressBookMemberVO> readAddressMembers(int userSeq){
-		return getSqlMapClientTemplate().queryForList("Addrbook.getPrivateMembers", userSeq);
-	}
-	
-	public AddressBookMemberVO readAddressMember(int userSeq, int memberSeq) {
-		Map<String, Integer> param = new HashMap<String, Integer>();
-		param.put("userSeq", userSeq);
-		param.put("memberSeq", memberSeq);
-		
-		return (AddressBookMemberVO) getSqlMapClientTemplate().queryForObject(
-				"Addrbook.getPrivateMember", param);
-	}
-	
-	public void deleteGroupMemberRelation(int userSeq, int memberSeq, int groupSeq) {
-		Map<String, Integer> param = new HashMap<String, Integer>();
-		param.put("userSeq", userSeq);
-		param.put("memberSeq", memberSeq);
-		param.put("groupSeq", groupSeq);
-		
-		getSqlMapClientTemplate().delete("Addrbook.deletePrivateGroupMemberRelation", param);		
-	}
+    /**
+     * 원본: public List<AddressBookMemberVO> readAddressMembers(int userSeq)
+     */
+    List<AddressBookMemberVO> readAddressMembers(@Param("userSeq") int userSeq);
 
-	public void updateMember(AddressBookMemberVO member) {
-		getSqlMapClientTemplate().update("Addrbook.updatePrivateMember", member);
-	}
+    /**
+     * 원본: public AddressBookMemberVO readAddressMember(int userSeq, int memberSeq)
+     */
+    AddressBookMemberVO readAddressMember(@Param("userSeq") int userSeq, @Param("memberSeq") int memberSeq);
 
-	public void deleteMember(int userSeq, int memberSeq, String delTime) {
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("userSeq", userSeq);
-		param.put("memberSeq", memberSeq);
-		param.put("delTime", delTime);
-		
-		getSqlMapClientTemplate().delete("Addrbook.deletePrivateGroupMemberRelationAll", param);
-		getSqlMapClientTemplate().delete("Addrbook.deletePrivateMember", param);
-	}
-	
-	public void deleteCompletlyMember(int userSeq, int memberSeq, String delTime) {
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("userSeq", userSeq);
-		param.put("memberSeq", memberSeq);
-		param.put("delTime", delTime);
-		
-		getSqlMapClientTemplate().delete("Addrbook.deletePrivateGroupMemberRelationAll", param);
-		getSqlMapClientTemplate().delete("Addrbook.deleteCompletlyPrivateMember", param);
-	}
+    /**
+     * 원본: public void deleteGroupMemberRelation(int userSeq, int memberSeq, int groupSeq)
+     */
+    void deleteGroupMemberRelation(@Param("userSeq") int userSeq, @Param("memberSeq") int memberSeq, 
+                                   @Param("groupSeq") int groupSeq);
 
-	public int readAddressListByIndexCount(int groupSeq, int userSeq, String startChar) {
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("user", String.valueOf(userSeq));
-		if (startChar != null){
-			param.put("name", startChar);
-			AddressBookUtils.setJapaneses(startChar, param);
-		}
-		
-		AddressBookUtils.setKorean(param);
+    /**
+     * 원본: public void updateMember(AddressBookMemberVO member)
+     */
+    void updateMember(AddressBookMemberVO member);
 
-		return (Integer)getSqlMapClientTemplate().queryForObject( "Addrbook.getPrivateAddressListCount", param);
-	}
+    /**
+     * 원본: public void deleteMember(int userSeq, int memberSeq, String delTime)
+     */
+    void deleteMember(@Param("userSeq") int userSeq, @Param("memberSeq") int memberSeq, @Param("delTime") String delTime);
 
-	public int readAddressListByGroupCount(int groupSeq, int userSeq, String startChar) {
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("user", String.valueOf(userSeq));
-		if (startChar != null){
-			param.put("name", startChar);
-			AddressBookUtils.setJapaneses(startChar, param);
-		}
-		
-		param.put("groupSeq", String.valueOf(groupSeq));
-		
-		AddressBookUtils.setKorean(param);
-			
-		return (Integer)getSqlMapClientTemplate().queryForObject("Addrbook.getPrivateAddressListByGroupCount", param);
-	}
+    /**
+     * 원본: public void deleteCompletlyMember(int userSeq, int memberSeq, String delTime)
+     */
+    void deleteCompletlyMember(@Param("userSeq") int userSeq, @Param("memberSeq") int memberSeq, 
+                              @Param("delTime") String delTime);
 
-	@SuppressWarnings("unchecked")
-	public List<AddressBookMemberVO> searchMember(Map<String, Object> param, int skipResult, int maxResult) {
-		param.put("skipResult", skipResult);
-		param.put("maxResult", maxResult);
-		
-		AddressBookUtils.setKorean(param);
-		
-		return getSqlMapClientTemplate().queryForList("Addrbook.getPrivateSearchMember", param);
-	}
+    /**
+     * 원본: public int readAddressListByIndexCount(int groupSeq, int userSeq, String startChar)
+     */
+    int readAddressListByIndexCount(@Param("groupSeq") int groupSeq, @Param("userSeq") int userSeq, @Param("startChar") String startChar);
 
-	public int searchMemberCount(Map<String, Object> param) {
-		
-		AddressBookUtils.setKorean(param);
-		
-		return (Integer)getSqlMapClientTemplate().queryForObject("Addrbook.getPrivateSearchMemberCount", param);
-	}
-	
-	public AddressEnvVO readAddressEnv(int domainSeq) {
-		return (AddressEnvVO) getSqlMapClientTemplate().queryForObject("Addrbook.selectAddressEnv", domainSeq);
-	}
-	
-	public int getGroupCount(int userSeq) {
-		return (Integer)getSqlMapClientTemplate().queryForObject("Addrbook.getPrivateGroupCount", userSeq);
-	}
+    /**
+     * 원본: public int readAddressListByGroupCount(int groupSeq, int userSeq, String startChar)
+     */
+    int readAddressListByGroupCount(@Param("groupSeq") int groupSeq, @Param("userSeq") int userSeq, @Param("startChar") String startChar);
 
-	@SuppressWarnings("unchecked")
-	public List<MailAddressBean> readAddressListByGroup(String groupName, int userSeq) {
-		HashMap<String, String> param = new HashMap<String, String>();
-		param.put("groupName", groupName);
-		param.put("userSeq", String.valueOf(userSeq));
-		
-		return getSqlMapClientTemplate().queryForList("Addrbook.getPrivateAddressEmailList", param);
-	}
+    /**
+     * 원본: public List<AddressBookMemberVO> searchMember(Map<String, Object> param, int skipResult, int maxResult)
+     */
+    List<AddressBookMemberVO> searchMember(Map<String, Object> param, @Param("skipResult") int skipResult, @Param("maxResult") int maxResult);
 
-	public AddressBookGroupVO findGroup(String groupName, int userSeq) {
-		HashMap<String, String> param = new HashMap<String, String>();
-		param.put("groupName", groupName);
-		param.put("userSeq", String.valueOf(userSeq));
-		AddressBookGroupVO group = (AddressBookGroupVO)getSqlMapClientTemplate().queryForObject("Addrbook.findPrivateAddressGroup", param);
-		
-		return group;
-	}
-	
-	public AddressBookGroupVO readGroupInfo(int userSeq, int groupSeq) {
-		HashMap<String, Integer> param = new HashMap<String, Integer>();
-		param.put("userSeq", userSeq);
-		param.put("groupSeq", groupSeq);
-		
-		Object result = getSqlMapClientTemplate().queryForObject("Addrbook.getPrivateGroup", param);
-		if(result != null){
-			return (AddressBookGroupVO)result;
-		}
-		return null;
-	}
+    /**
+     * 원본: public int searchMemberCount(Map<String, Object> param)
+     */
+    int searchMemberCount(Map<String, Object> param);
 
+    /**
+     * 원본: public AddressEnvVO readAddressEnv(int domainSeq)
+     */
+    AddressEnvVO readAddressEnv(@Param("mailUserSeq") int mailUserSeq);
 
-	public AddressBookMemberVO readOrgMember(String codeLocale, String orgCode, int domainSeq, int memberSeq) {
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("mailDomain", domainSeq);
-		param.put("userSeq", memberSeq);
-		param.put("orgCode", orgCode);
-		param.put("locale", codeLocale==null ? "ko" : codeLocale);
-		
-		return (AddressBookMemberVO) getSqlMapClientTemplate().queryForObject("Addrbook.getOrgMember", param);
-	}
+    /**
+     * 원본: public int getGroupCount(int userSeq)
+     */
+    int getGroupCount(@Param("userSeq") int userSeq);
 
+    /**
+     * 원본: public List<MailAddressBean> readAddressListByGroup(String groupName, int userSeq)
+     */
+    List<MailAddressBean> readAddressListByGroup(@Param("groupName") String groupName, @Param("userSeq") int userSeq);
 
-	@SuppressWarnings("unchecked")
-	public List<AddressBookMemberVO> getDelPrivateAddressListByDate( int userSeq, String fromDate, int skipResult, int maxResult) {
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("user", userSeq);
-		param.put("fromDate", fromDate);
-		param.put("skipResult", skipResult);
-		param.put("maxResult", maxResult);
-		
-		return getSqlMapClientTemplate().queryForList("Addrbook.getDelPrivateAddressListByDate", param);
-	}
-	
+    /**
+     * 원본: public AddressBookGroupVO findGroup(String groupName, int userSeq)
+     */
+    AddressBookGroupVO findGroup(@Param("groupName") String groupName, @Param("userSeq") int userSeq);
 
-    @SuppressWarnings("unchecked")
-    public List<AddressBookMemberVO> getPrivateAddressAllList(int groupSeq, int userSeq, String sortBy, String sortDir) {
-        HashMap<String, Object> param = new HashMap<String, Object>();
-        param.put("userSeq", userSeq);
-        param.put("groupSeq", groupSeq);
-        param.put("sortBy", sortBy);
-        param.put("sortDir", sortDir);
-            
-        return getSqlMapClientTemplate().queryForList("Addrbook.getPrivateAddressAllList", param);
-    }
-    
-    @SuppressWarnings("unchecked")
-	public List<AddressBookMemberVO> getExistEmail(int userSeq, String email, String name){
-   	 Map<String, Object> param = new HashMap<String, Object>();
-        param.put("userSeq", userSeq);
-        param.put("email", email);
-        param.put("name", name);
-   	return getSqlMapClientTemplate().queryForList("Addrbook.readExistEmail", param);
-   }
+    /**
+     * 원본: public AddressBookGroupVO readGroupInfo(int userSeq, int groupSeq)
+     */
+    AddressBookGroupVO readGroupInfo(@Param("userSeq") int userSeq, @Param("groupSeq") int groupSeq);
 
+    /**
+     * 원본: public AddressBookMemberVO readOrgMember(String codeLocale, String orgCode, int domainSeq, int memberSeq)
+     */
+    AddressBookMemberVO readOrgMember(@Param("codeLocale") String codeLocale, @Param("orgCode") String orgCode, 
+                                      @Param("domainSeq") int domainSeq, @Param("memberSeq") int memberSeq);
+
+    /**
+     * 원본: public List<AddressBookMemberVO> getDelPrivateAddressListByDate(int userSeq, String fromDate, 
+     *              int skipResult, int maxResult)
+     */
+    List<AddressBookMemberVO> getDelPrivateAddressListByDate(@Param("userSeq") int userSeq, @Param("fromDate") String fromDate, 
+                                                             @Param("skipResult") int skipResult, @Param("maxResult") int maxResult);
+
+    /**
+     * 원본: public List<AddressBookMemberVO> getPrivateAddressAllList(int groupSeq, int userSeq, String sortBy, String sortDir)
+     */
+    List<AddressBookMemberVO> getPrivateAddressAllList(@Param("groupSeq") int groupSeq, @Param("userSeq") int userSeq, 
+                                                       @Param("sortBy") String sortBy, @Param("sortDir") String sortDir);
+
+    /**
+     * 원본: public List<AddressBookMemberVO> getExistEmail(int userSeq, String email, String name)
+     */
+    List<AddressBookMemberVO> getExistEmail(@Param("userSeq") int userSeq, @Param("email") String email, 
+                                           @Param("name") String name);
 }

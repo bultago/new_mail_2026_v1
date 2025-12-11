@@ -18,7 +18,7 @@ import java.net.SocketException;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.hsqldb.lib.StringUtil;
+import com.terracetech.tims.webmail.util.StringUtils;
 
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailMessage;
@@ -135,7 +135,7 @@ public class DownloadAllAttachAction extends BaseAction {
 				
 				zipUtil = new ZipUtil();
 				zipUtil.setDebug("true".equalsIgnoreCase(EnvConstants.getBasicSetting("log.debug")));
-				String charset = StringUtil.isEmpty(EnvConstants.getMailSetting("default.zip.charset")) ? "EUC-KR" : EnvConstants.getMailSetting("default.zip.charset");
+				String charset = StringUtils.isEmpty(EnvConstants.getMailSetting("default.zip.charset")) ? "EUC-KR" : EnvConstants.getMailSetting("default.zip.charset");
 				zipUtil.zip(new File(zipFileDir), charset, false);
 				
 			} catch (Exception e) {

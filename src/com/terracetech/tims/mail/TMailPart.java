@@ -19,23 +19,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.MimetypesFileTypeMap;
-import javax.mail.Header;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.Part;
-import javax.mail.Session;
-import javax.mail.internet.CharsetUtility;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.InternetHeaders;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.internet.MimePart;
-import javax.mail.internet.MimeUtility;
+import jakarta.activation.DataHandler;
+import jakarta.activation.DataSource;
+import jakarta.activation.MimetypesFileTypeMap;
+import jakarta.mail.Header;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.Part;
+import jakarta.mail.Session;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.InternetHeaders;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
+import jakarta.mail.internet.MimePart;
+import jakarta.mail.internet.MimeUtility;
 
 import org.alfresco.jlan.util.UTF8Normalizer;
 import org.apache.commons.io.IOUtils;
@@ -53,7 +52,7 @@ import net.freeutils.tnef.mime.TNEFMime;
 import net.freeutils.tnef.mime.TNEFMimeBodyPart;
 import net.freeutils.tnef.mime.TNEFMimeMessage;
 
-import com.sun.mail.imap.IMAPMessage;
+import org.eclipse.angus.mail.imap.IMAPMessage;
 
 public class TMailPart {
 
@@ -180,10 +179,10 @@ public class TMailPart {
 			String subject = "";
 			boolean existsFrom = false;
 			String from = "";
-			javax.mail.Header hd = null;
-			Enumeration<javax.mail.Header> enumer = part.getAllHeaders();
+			jakarta.mail.Header hd = null;
+			Enumeration<jakarta.mail.Header> enumer = part.getAllHeaders();
 		    while (enumer.hasMoreElements()) {
-				hd = (javax.mail.Header)enumer.nextElement();
+				hd = (jakarta.mail.Header)enumer.nextElement();
 				if("Subject".equalsIgnoreCase(hd.getName())){
 					subject = hd.getValue();
 					existsSubject = true;
@@ -499,15 +498,15 @@ public class TMailPart {
 				String charset = "UTF-8";
 				boolean isOnePart = false;
 				if (obj instanceof String) {
-					Enumeration<javax.mail.Header> enumer = part.getAllHeaders();
-					javax.mail.Header hd = null;
+					Enumeration<jakarta.mail.Header> enumer = part.getAllHeaders();
+					jakarta.mail.Header hd = null;
 
 					//특정 원문은 text 파트의 헤더가 없고, 전체 원문 자체가 하나의 part라고 인식하므로,
 					//해당 part header에 Message-ID 가 있다면 하나의 part라고 인지하여,
 					//원문의 charset 디코딩을 해야함.
 
 				    while (enumer.hasMoreElements()) {
-						hd = (javax.mail.Header)enumer.nextElement();
+						hd = (jakarta.mail.Header)enumer.nextElement();
 						if(hd != null){
 							if("Message-ID".equalsIgnoreCase(hd.getName())){
 								isOnePart = true;
@@ -888,11 +887,11 @@ public class TMailPart {
 
                 //System.out.println("### name["+name+"], address["+address+"], type["+type+"] ");
 
-                javax.mail.Message.RecipientType recipientType;
+                jakarta.mail.Message.RecipientType recipientType;
                 switch (type) {
-                    case MAPIProp.MAPI_TO: recipientType = javax.mail.Message.RecipientType.TO; break;
-                    case MAPIProp.MAPI_CC: recipientType = javax.mail.Message.RecipientType.CC; break;
-                    case MAPIProp.MAPI_BCC: recipientType = javax.mail.Message.RecipientType.BCC; break;
+                    case MAPIProp.MAPI_TO: recipientType = jakarta.mail.Message.RecipientType.TO; break;
+                    case MAPIProp.MAPI_CC: recipientType = jakarta.mail.Message.RecipientType.CC; break;
+                    case MAPIProp.MAPI_BCC: recipientType = jakarta.mail.Message.RecipientType.BCC; break;
                     default: throw new IllegalArgumentException("invalid PR_RECIPIENT_TYPE: " + type);
                 }
                 mime.addRecipient(recipientType, internetAddress);

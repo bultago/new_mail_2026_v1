@@ -1,10 +1,10 @@
 package com.terracetech.tims.mobile.bbs.action;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import com.terracetech.tims.mobile.common.action.BaseAction;
 import com.terracetech.tims.service.tms.impl.BbsService;
-import com.terracetech.tims.service.tms.vo.BbsContentVO;
+import com.terracetech.tims.service.tms.vo.BoardContentVO;
 
 
 public class BbsContentDeleteAction extends BaseAction{
@@ -12,14 +12,14 @@ public class BbsContentDeleteAction extends BaseAction{
 	private BbsService bbsService = null;
 	private int bbsId = 0;
 	private int contentId = 0;
-	private BbsContentVO bbsContentVo = null;
+	private BoardContentVO bbsContentVo = null;
 	
 	public void setBbsService(BbsService bbsService) {
 		this.bbsService = bbsService;
 	}
 	
 	public String execute() throws Exception {
-		bbsContentVo = new BbsContentVO();
+		bbsContentVo = new BoardContentVO();
 		bbsContentVo.setBbsId(bbsId);
 		bbsContentVo.setContentId(contentId);
 		bbsContentVo.setRequest(request);

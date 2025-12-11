@@ -32,7 +32,7 @@ package com.terracetech.tims.webmail.util;
 import java.io.PrintWriter;
 import java.security.InvalidKeyException;
 
-import com.sun.mail.util.*;
+import org.eclipse.angus.mail.util.*;
 
 //...........................................................................
 /**

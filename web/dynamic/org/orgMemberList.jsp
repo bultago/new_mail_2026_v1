@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>
@@ -247,12 +246,9 @@ var currentPage = ${currentPage};
 var pageBase = ${pageBase};
 var totalMessage = ${total};
 
-
 function reloadListPage(){
 	movePage(currentPage);
 }
-
-
 
 jQuery().ready(function(){
 	/*menuBar.setPageNavi("p",

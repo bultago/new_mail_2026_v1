@@ -8,9 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import com.terracetech.tims.webmail.common.BaseAction;
@@ -48,7 +49,7 @@ public class WelcomeAction extends BaseAction {
 	
 	private static final long serialVersionUID = 824137111108651791L;
 	
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private MailUserManager mailUserManager = null;
 	private SettingManager userSettingManager = null;

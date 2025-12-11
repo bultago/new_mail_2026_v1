@@ -1,7 +1,7 @@
 package com.terracetech.tims.mobile.bbs.action;
 
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import com.terracetech.tims.mobile.common.action.BaseAction;
 import com.terracetech.tims.service.tms.impl.BbsService;

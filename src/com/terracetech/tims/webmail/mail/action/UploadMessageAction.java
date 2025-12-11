@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.PrintWriter;
 
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMessage;
 
 import org.apache.struts2.dispatcher.multipart.MultiPartRequestWrapper;
 import org.json.simple.JSONObject;

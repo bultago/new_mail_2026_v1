@@ -2,8 +2,8 @@ package com.terracetech.tims.webmail.webfolder.action;
 
 import java.util.Map;
 
-import javax.mail.Flags;
-import javax.mail.MessagingException;
+import jakarta.mail.Flags;
+import jakarta.mail.MessagingException;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailFolder;

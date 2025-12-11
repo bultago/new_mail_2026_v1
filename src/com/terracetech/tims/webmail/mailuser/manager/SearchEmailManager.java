@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 import com.terracetech.tims.webmail.addrbook.dao.PrivateAddressBookDao;
 import com.terracetech.tims.webmail.addrbook.dao.SharedAddressBookDao;
 import com.terracetech.tims.webmail.mail.ibean.MailAddressBean;
-import com.terracetech.tims.webmail.organization.dao.IOrganizationDao;
+import com.terracetech.tims.webmail.organization.dao.OrganizationDao;
 import com.terracetech.tims.webmail.organization.vo.DeptVO;
 import com.terracetech.tims.webmail.util.StringUtils;
 
@@ -17,7 +17,7 @@ public class SearchEmailManager {
 	
 	private SharedAddressBookDao sharedAddrDao;
 	
-	private IOrganizationDao orgDao;
+	private OrganizationDao orgDao;
 	
 	public void setPrivateAddrDao(PrivateAddressBookDao privateAddrDao) {
 		this.privateAddrDao = privateAddrDao;
@@ -27,12 +27,12 @@ public class SearchEmailManager {
 		this.sharedAddrDao = sharedAddrDao;
 	}
 	
-	public void setOrgDao(IOrganizationDao orgDao) {
+	public void setOrgDao(OrganizationDao orgDao) {
 		this.orgDao = orgDao;
 	}
 
 	/**
-	 * °³ÀÎÁÖ¼Ò·ÏÀÇ prefix : $
+	 * Â°Â³Ã€ÃÃÃ–Â¼Ã’Â·ÃÃ€Ã‡ prefix : $
 	 * $test
 	 * @param userSeq
 	 * @param searchStr
@@ -43,7 +43,7 @@ public class SearchEmailManager {
 	}
 
 	/**
-	 * °ø¿ëÁÖ¼Ò·ÏÀÇ prefix : &
+	 * Â°Ã¸Â¿Ã«ÃÃ–Â¼Ã’Â·ÃÃ€Ã‡ prefix : &
 	 * &test
 	 * @param userSeq
 	 * @param searchStr
@@ -65,17 +65,17 @@ public class SearchEmailManager {
 	}
 	
 	/**
-	 * Á¶Á÷µµÀÇ prefix : #
-	 * :00000.title.002.true Á÷À§
-	 * :00000.class.001.true Á÷±Ş
-	 * :00000.class.001.false Á÷±Ş
-	 * :00000.all.all.false ºÎ¼­
-	 * :00000.all.all.true ºÎ¼­
+	 * ÃÂ¶ÃÃ·ÂµÂµÃ€Ã‡ prefix : #
+	 * :00000.title.002.true ÃÃ·Ã€Â§
+	 * :00000.class.001.true ÃÃ·Â±Ã
+	 * :00000.class.001.false ÃÃ·Â±Ã
+	 * :00000.all.all.false ÂºÃÂ¼Â­
+	 * :00000.all.all.true ÂºÃÂ¼Â­
 	 * 
 	 * @param domainSeq
 	 * @param orgCode
 	 * @param codeType title, class, all
-	 * @param code Á÷±Ş, all
+	 * @param code ÃÃ·Â±Ã, all
 	 * @param isSearchHierarchy
 	 * @return
 	 */
@@ -116,7 +116,7 @@ public class SearchEmailManager {
 	}
 	
 	/**
-	 * Retail»ç¾÷ºÎ/°­ºÏÁö¿ªº»ºÎ
+	 * RetailÂ»Ã§Â¾Ã·ÂºÃ/Â°Â­ÂºÃÃÃ¶Â¿ÂªÂºÂ»ÂºÃ
 	 * 
 	 * @param domainSeq
 	 * @param orgFullPath

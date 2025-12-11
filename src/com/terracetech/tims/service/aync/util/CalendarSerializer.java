@@ -40,7 +40,7 @@ public class CalendarSerializer {
 				serializer.integerElement("Calendar", "Recurrence_Type", 0);
 				serializer.integerElement("Calendar", "Recurrence_Interval", Integer.parseInt(interval));
 			}else if("02".equals(type)){
-				//Recurs weekly 020603 -> 6ÁÖ¸¶´Ù È­¿äÀÏ
+				//Recurs weekly 020603 -> 6ÃÃ–Â¸Â¶Â´Ã™ ÃˆÂ­Â¿Ã¤Ã€Ã
 				String day  = DateUtil.convertDayofWeekForActiveSync(repeatTerm.substring(2, 4));
 				serializer.integerElement("Calendar", "Recurrence_Type", 1);
 				serializer.integerElement("Calendar", "Recurrence_DayOfWeek", Integer.parseInt(day));
@@ -53,14 +53,14 @@ public class CalendarSerializer {
 					String day = repeatTerm.substring(4, 6);
 					serializer.integerElement("Calendar", "Recurrence_DayOfMonth", Integer.parseInt(day));
 				}else if(repeatTerm.length()==8){
-					//03010203 -> 1°³¿ù¸¶´Ù µÑÂ°ÁÖ È­¿äÀÏ
+					//03010203 -> 1Â°Â³Â¿Ã¹Â¸Â¶Â´Ã™ ÂµÃ‘Ã‚Â°ÃÃ– ÃˆÂ­Â¿Ã¤Ã€Ã
 					String week = repeatTerm.substring(4, 6);
 					String day  = DateUtil.convertDayofWeekForActiveSync(repeatTerm.substring(6, 8));
 					serializer.integerElement("Calendar", "Recurrence_WeekOfMonth", Integer.parseInt(week));
 					serializer.integerElement("Calendar", "Recurrence_DayOfWeek", Integer.parseInt(day));
 				}
 			}else if("04".equals(type)){
-				//Recurs yearly 040501 ¸Å³â 5¿ù 1ÀÏ
+				//Recurs yearly 040501 Â¸Ã…Â³Ã¢ 5Â¿Ã¹ 1Ã€Ã
 				String month = repeatTerm.substring(2, 4);
 				String day  = repeatTerm.substring(4, 6);
 				serializer.integerElement("Calendar", "Recurrence_Type", 5);

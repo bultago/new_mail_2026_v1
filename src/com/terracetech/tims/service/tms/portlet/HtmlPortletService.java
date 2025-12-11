@@ -1,9 +1,10 @@
 package com.terracetech.tims.service.tms.portlet;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.service.tms.IMailService;
 import com.terracetech.tims.service.tms.vo.ListCondVO;
@@ -23,7 +24,7 @@ import com.terracetech.tims.webmail.util.StringUtils;
 
 public class HtmlPortletService implements IMailPortletService {
 	
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private IMailService service = null;
 

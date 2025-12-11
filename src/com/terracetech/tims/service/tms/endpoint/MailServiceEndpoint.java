@@ -2,7 +2,7 @@ package com.terracetech.tims.service.tms.endpoint;
 
 import java.io.File;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 
 import com.terracetech.tims.service.tms.IMailService;
 import com.terracetech.tims.service.tms.vo.ListCondVO;

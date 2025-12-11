@@ -20,7 +20,7 @@ import com.terracetech.tims.webmail.setting.vo.AttachInfoVO;
 public interface IMailServiceManager {
 
 	/**
-	 * Æ¯Á¤ »ç¿ëÀÚÀÇ ¸ŞÀÏÇÔÀÇ ¸ŞÀÏ ¸ñ·ÏÀ» Á¦°øÇÏ´Â ±â´ÉÀÌ´Ù.
+	 * Ã†Â¯ÃÂ¤ Â»Ã§Â¿Ã«Ã€ÃšÃ€Ã‡ Â¸ÃÃ€ÃÃ‡Ã”Ã€Ã‡ Â¸ÃÃ€Ã Â¸Ã±Â·ÃÃ€Â» ÃÂ¦Â°Ã¸Ã‡ÃÂ´Ã‚ Â±Ã¢Â´Ã‰Ã€ÃŒÂ´Ã™.
 	 * 
 	 * @param listVO
 	 * @return
@@ -30,7 +30,7 @@ public interface IMailServiceManager {
 	public ListInfoVO doSimpleMailList(ListCondVO listVO,User user);
 
 	/**
-	 * Æ¯Á¤¸ŞÀÏÇÔÀÇ ¸ŞÀÏÀÇ º»¹®À» º¸´Â ±â´ÉÀÌ´Ù.
+	 * Ã†Â¯ÃÂ¤Â¸ÃÃ€ÃÃ‡Ã”Ã€Ã‡ Â¸ÃÃ€ÃÃ€Ã‡ ÂºÂ»Â¹Â®Ã€Â» ÂºÂ¸Â´Ã‚ Â±Ã¢Â´Ã‰Ã€ÃŒÂ´Ã™.
 	 * 
 	 * @param readVO
 	 * @return
@@ -47,7 +47,7 @@ public interface IMailServiceManager {
 	
 	
 	/**
-	 * ¸ŞÀÏÀÇ ¹ß¼Û ±â´ÉÀÌ´Ù.
+	 * Â¸ÃÃ€ÃÃ€Ã‡ Â¹ÃŸÂ¼Ã› Â±Ã¢Â´Ã‰Ã€ÃŒÂ´Ã™.
 	 * 
 	 * @param sendVO
 	 * @return

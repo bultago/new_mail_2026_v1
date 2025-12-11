@@ -4,12 +4,13 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Stack;
 
-import javax.mail.MessagingException;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.mail.MessagingException;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.mail.MailAuthenticationException;
@@ -35,7 +36,7 @@ ServletRequestAware, ServletResponseAware, Preparable {
 	 */
 	private static final long serialVersionUID = -3333583830866247967L;
 
-	public Logger log = Logger.getLogger(this.getClass());
+    public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	public HttpServletRequest request = null;
 	public ServletContext context = null;

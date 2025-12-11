@@ -15,8 +15,6 @@
 <script type="text/javascript" src="/js/ext-lib/ddaccordion.js"></script>
 <script type="text/javascript" src="/js/ext-lib/menuToolBar.js"></script>
 
-<script type="text/javascript" src="/dwr/interface/OrgService.js"></script>
-<script type="text/javascript" src="/dwr/interface/AddressBookService.js"></script>
 
 <script type="text/javascript" src="orgCommon.js"></script>
 <script type="text/javascript" src="/js/common-lib/common-tree.js"></script>

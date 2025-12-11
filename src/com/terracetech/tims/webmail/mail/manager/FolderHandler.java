@@ -14,14 +14,14 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.Vector;
 
-import javax.mail.Flags;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.MessagingException;
+import jakarta.mail.Flags;
+import jakarta.mail.Folder;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
 
 import org.quartz.utils.Key;
 
-import com.sun.mail.imap.Quota;
+import jakarta.mail.Quota;
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailMessage;

@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 /**
  * <p><strong>GroupVo.java</strong> Class Description</p>
- * <p>�ֿ伳��</p>
+ * <p>ÁÖ¿ä¼³¸í</p>
  * <ul>
- * <li>�׷� ������ �������� VO. �׷������� ���� ��������  VO��ü</li>
+ * <li>±×·ì Á¤º¸¸¦ °¡Á®¿À´Â VO. ±×·ìÁ¤º¸¿¡ °üÇÑ °øÅëÀûÀÎ  VO°´Ã¼</li>
  * </ul>
  * @author jpjung
  * @since Tims7

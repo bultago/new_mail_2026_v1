@@ -2,7 +2,8 @@ package com.terracetech.tims.service.aync.command;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.mortbay.log.Log;
 
 import com.terracetech.tims.service.aync.data.ContactData;
@@ -16,7 +17,7 @@ import com.terracetech.tims.webmail.util.ApplicationBeanUtil;
 
 public class ContactsClientDelCommand implements ICommand{
 	
-	private Logger log = Logger.getLogger(this.getClass());
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private User user = null;
 	

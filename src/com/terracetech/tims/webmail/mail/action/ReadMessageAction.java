@@ -6,10 +6,11 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Stack;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -48,7 +49,7 @@ public class ReadMessageAction extends BaseAction {
 
 	private static final long serialVersionUID = 20081215L;
 	
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private MailManager mailManager = null;
 	private SettingManager userSettingManager = null;

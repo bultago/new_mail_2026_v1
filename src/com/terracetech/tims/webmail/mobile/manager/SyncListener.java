@@ -3,7 +3,8 @@ package com.terracetech.tims.webmail.mobile.manager;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.mortbay.log.Log;
 import org.mortbay.util.ajax.Continuation;
 
@@ -13,7 +14,7 @@ import com.terracetech.tims.webmail.util.StringUtils;
 
 public class SyncListener {
 	
-	private Logger log = Logger.getLogger(this.getClass());
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private static Map<String, Continuation> deviceSessionMap = new HashMap<String, Continuation>();
 	

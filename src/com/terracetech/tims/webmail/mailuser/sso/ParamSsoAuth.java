@@ -10,7 +10,7 @@ import java.util.Map;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.bouncycastle.util.encoders.Base64;
 
@@ -19,7 +19,7 @@ import com.terracetech.secure.crypto.SecureUtil;
 import com.terracetech.tims.webmail.mailuser.vo.SsoInfoVO;
 
 public class ParamSsoAuth implements SsoAuth {
-//	TODO ÆÄ¶ó¹ÌÅÍ »ó¼ö Ã³¸® 
+//	TODO ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 	public final static String SSO_PARAM_NAME = "ssoParam";
 	public final static String FIRST_DELIM = ",";
 	public final static String SECOND_DELIM = "=";

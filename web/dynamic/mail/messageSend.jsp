@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>
@@ -174,7 +173,6 @@ function goList(){
 	mailControl.reloadMessageList();
 }
 
-
 function sendResult(){
 	setWorkTitle("<span class='TM_work_title'>"+mailMsg.mail_send_title+"</span>");
 	loadSendToolBar();	
@@ -190,7 +188,6 @@ function sendResult(){
 	jQuery("#"+mailOption.mainLID).css("overflow","auto");
 	if(isMsie6)jQuery(window).trigger("resize");
 }
-
 
 function setSendAddressList(){	
 	var toAddr = jQuery.trim(jQuery("#toSendAddress").html());
@@ -216,7 +213,6 @@ function setSendAddressList(){
 	}
 	setAddressList(getEmailArray(addrStr));	
 }
-
 
 sendResult();
 </script>

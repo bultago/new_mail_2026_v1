@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.FolderNotFoundException;
+import jakarta.mail.FolderNotFoundException;
 
 import org.bouncycastle.util.encoders.Base64;
 

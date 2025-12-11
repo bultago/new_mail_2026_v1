@@ -1,73 +1,36 @@
-/**
- * SettingUserInfoDao.java 2008. 12. 3.
- * 
- * Copyright 2008-2009 Daou tech Inc.
- *
- * Tims7 Project Source File
- * Development by Terrace Dev. WEB Dev.
- * 
- */
 package com.terracetech.tims.webmail.mailuser.dao;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.terracetech.tims.webmail.mailuser.vo.MailUserInfoVO;
 
 /**
- * <p><strong>SettingUserInfoDao.java</strong> Class Description</p>
- * <p>�ֿ伳��</p>
- * <ul>
- * <li></li>
- * </ul>
- * @author ysko
- * @since Tims7
- * @version 7.0 
+ * UserInfoDao MyBatis Mapper Interface
+ * 원본: UserInfoDao extends SqlSessionDaoSupport
+ * 총 메서드 수: 7개
  */
-public class UserInfoDao extends SqlMapClientDaoSupport {
-
-	public MailUserInfoVO readUserInfo(int userSeq) {
-		Object result = getSqlMapClientTemplate().queryForObject("MailUser.readUserInfo", userSeq);
-		return result instanceof MailUserInfoVO ? (MailUserInfoVO)result : null;
-	}
-	
-	public boolean modifyUserInfo (MailUserInfoVO vo) {
-		return getSqlMapClientTemplate().update("MailUser.modifyUserInfo", vo) == 1;
-	}
-	
-	public void saveUserInfo (MailUserInfoVO vo) {
-		getSqlMapClientTemplate().insert("MailUser.saveUserInfo", vo);
-	}
-	
-	public boolean deleteUserInfo (int userSeq) {
-		return getSqlMapClientTemplate().delete("MailUser.deleteUserInfo", userSeq) == 1;
-	}
-	
-	public int readUserInfoBySsn (String domain, String ssn) {
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("domain", domain);
-		param.put("ssn", ssn);
-		
-		return (Integer)getSqlMapClientTemplate().queryForObject("MailUser.readUserInfoBySsn", param);
-	}
-	
-	public int readUserInfoByEmpno(String domain, String empno) {
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("domain", domain);
-		param.put("empno", empno);
-		
-		return (Integer)getSqlMapClientTemplate().queryForObject("MailUser.readUserInfoByEmpno", param);
-	}	
-	
-	public int readUserInfoByJpInfo(String domain, String name, String postalCode, String birthday) {
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("domain", domain);
-		param.put("name", name);
-		param.put("postalCode", postalCode);
-		param.put("birthday", birthday);
-		
-		return (Integer)getSqlMapClientTemplate().queryForObject("MailUser.readUserInfoByJpInfo", param);
-	}
+@Mapper
+public interface UserInfoDao {
+    /** 원본: public MailUserInfoVO readUserInfo(int userSeq) */
+    MailUserInfoVO readUserInfo(@Param("userSeq") int userSeq);
+    
+    /** 원본: public boolean modifyUserInfo(MailUserInfoVO vo) */
+    boolean modifyUserInfo(MailUserInfoVO vo);
+    
+    /** 원본: public void saveUserInfo(MailUserInfoVO vo) */
+    void saveUserInfo(MailUserInfoVO vo);
+    
+    /** 원본: public boolean deleteUserInfo(int userSeq) */
+    boolean deleteUserInfo(@Param("userSeq") int userSeq);
+    
+    /** 원본: public int readUserInfoBySsn(String domain, String ssn) */
+    int readUserInfoBySsn(@Param("domain") String domain, @Param("ssn") String ssn);
+    
+    /** 원본: public int readUserInfoByEmpno(String domain, String empno) */
+    int readUserInfoByEmpno(@Param("domain") String domain, @Param("empno") String empno);
+    
+    /** 원본: public int readUserInfoByJpInfo(String domain, String name, String postalCode, String birthday) */
+    int readUserInfoByJpInfo(@Param("domain") String domain, @Param("name") String name, 
+                            @Param("postalCode") String postalCode, @Param("birthday") String birthday);
 }

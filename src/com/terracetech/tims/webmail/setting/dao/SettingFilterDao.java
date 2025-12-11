@@ -1,92 +1,65 @@
 package com.terracetech.tims.webmail.setting.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.terracetech.tims.webmail.setting.vo.FilterCondVO;
 import com.terracetech.tims.webmail.setting.vo.FilterSubCondVO;
 import com.terracetech.tims.webmail.setting.vo.FilterVO;
 
-public class SettingFilterDao extends SqlMapClientDaoSupport implements ISettingFilterDao {
-	
-	@SuppressWarnings("unchecked")
-	public List<FilterSubCondVO> readFilterSubcondList (int mailUserSeq, int condSeq ) {
-		Map<String, Integer> param = new HashMap<String, Integer>();
-		param.put("mail_user_seq", mailUserSeq);
-		param.put("cond_seq", condSeq);
-		return getSqlMapClientTemplate().queryForList("Setting.readFilterSubcondList", param);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<FilterCondVO> readFilterCondList(int mailUserSeq) {
-		return getSqlMapClientTemplate().queryForList("Setting.readFilterCondList", mailUserSeq);
-	}
-	
-	public int readMaxFilterCondSeq(int mailUserSeq) {
-		return (Integer) getSqlMapClientTemplate().queryForObject("Setting.readMaxFilterCondSeq", mailUserSeq);
-	}
-	
-	public FilterVO readFilter(int mailUserSeq) {
-		Object result = getSqlMapClientTemplate().queryForObject("Setting.readFilter", mailUserSeq);
-		return result instanceof FilterVO ? (FilterVO)result : null;
-	}
-	
-	public boolean saveFilterSubcond(FilterSubCondVO vo) {
-		return getSqlMapClientTemplate().insert("Setting.saveFilterSubcond", vo) != null;
-	}
+/**
+ * SettingFilterDao MyBatis Mapper Interface
+ * 
+ * 원본 클래스: SettingFilterDao extends SqlSessionDaoSupport
+ * 변환 내용: iBATIS → MyBatis Mapper 인터페이스
+ * 변환일: 2025-10-20
+ * 총 메서드 수: 14개 (원본 기준)
+ */
+@Mapper
+public interface SettingFilterDao {
 
-	public boolean saveFilterCond(FilterCondVO vo) {
-		return getSqlMapClientTemplate().insert("Setting.saveFilterCond", vo) != null;
-	}
-	
-	public void saveFilter(FilterVO vo) {
-		getSqlMapClientTemplate().insert("Setting.saveFilter", vo);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public int deleteFilterSubcond(int mailUserSeq, int condSeq, int[] subcondSeqs) {
-		Map param = new HashMap(3);
-		param.put("mail_user_seq", mailUserSeq);
-		param.put("cond_seq", condSeq);
-		param.put("subcond_seq", subcondSeqs);
-		return getSqlMapClientTemplate().delete("Setting.deleteFilterSubcond", param);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public int deleteFilterCond (int mailUserSeq, int[] condSeqs) {
-		Map param = new HashMap(2);
-		param.put("mail_user_seq", mailUserSeq);
-		param.put("cond_seq", condSeqs);
-		return getSqlMapClientTemplate().delete("Setting.deleteFilterCond", param);
-	}
-	
-	public int deleteFilter (int mailUserSeq) {
-		return getSqlMapClientTemplate().delete("Setting.deleteFilter", mailUserSeq);
-	}
-	
-	public boolean modifyFilterSubcond (FilterSubCondVO vo) {
-		return getSqlMapClientTemplate().update("Setting.modifyFilterSubcond", vo) == 1;
-	}
-	
-	public boolean modifyFilterCond (FilterCondVO vo) {
-		return getSqlMapClientTemplate().update("Setting.modifyFilterCond", vo) == 1;
-	}
-	
-	public boolean modifyFilter (FilterVO vo) {
-		return getSqlMapClientTemplate().update("Setting.modifyFilter", vo) == 1;
-	}
-	
-	public int deleteFilterSubcond(int mailUserSeq, int condSeq) {
-		Map param = new HashMap(2);
-		param.put("mail_user_seq", mailUserSeq);
-		param.put("cond_seq", condSeq);
-		
-		return getSqlMapClientTemplate().delete("Setting.deleteAllFilterSubcond", param);
-	}
-	
-	
+    /** 원본: public List<FilterSubCondVO> readFilterSubcondList(int mailUserSeq, int condSeq) */
+    List<FilterSubCondVO> readFilterSubcondList(@Param("mailUserSeq") int mailUserSeq, @Param("condSeq") int condSeq);
 
+    /** 원본: public List<FilterCondVO> readFilterCondList(int mailUserSeq) */
+    List<FilterCondVO> readFilterCondList(@Param("mailUserSeq") int mailUserSeq);
+
+    /** 원본: public int readMaxFilterCondSeq(int mailUserSeq) */
+    int readMaxFilterCondSeq(@Param("mailUserSeq") int mailUserSeq);
+
+    /** 원본: public FilterVO readFilter(int mailUserSeq) */
+    FilterVO readFilter(@Param("mailUserSeq") int mailUserSeq);
+
+    /** 원본: public boolean saveFilterSubcond(FilterSubCondVO vo) */
+    boolean saveFilterSubcond(FilterSubCondVO vo);
+
+    /** 원본: public boolean saveFilterCond(FilterCondVO vo) */
+    boolean saveFilterCond(FilterCondVO vo);
+
+    /** 원본: public void saveFilter(FilterVO vo) */
+    void saveFilter(FilterVO vo);
+
+    /** 원본: public int deleteFilterSubcond(int mailUserSeq, int condSeq, int[] subcondSeqs) */
+    int deleteFilterSubcondByArray(@Param("mailUserSeq") int mailUserSeq, @Param("condSeq") int condSeq, 
+                                   @Param("subcondSeqs") int[] subcondSeqs);
+
+    /** 원본: public int deleteFilterCond(int mailUserSeq, int[] condSeqs) */
+    int deleteFilterCond(@Param("mailUserSeq") int mailUserSeq, @Param("condSeqs") int[] condSeqs);
+
+    /** 원본: public int deleteFilter(int mailUserSeq) */
+    int deleteFilter(@Param("mailUserSeq") int mailUserSeq);
+
+    /** 원본: public boolean modifyFilterSubcond(FilterSubCondVO vo) */
+    boolean modifyFilterSubcond(FilterSubCondVO vo);
+
+    /** 원본: public boolean modifyFilterCond(FilterCondVO vo) */
+    boolean modifyFilterCond(FilterCondVO vo);
+
+    /** 원본: public boolean modifyFilter(FilterVO vo) */
+    boolean modifyFilter(FilterVO vo);
+
+    /** 원본: public int deleteFilterSubcond(int mailUserSeq, int condSeq) */
+    int deleteFilterSubcond(@Param("mailUserSeq") int mailUserSeq, @Param("condSeq") int condSeq);
 }

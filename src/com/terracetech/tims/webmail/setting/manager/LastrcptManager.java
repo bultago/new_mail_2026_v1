@@ -13,11 +13,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.mail.internet.InternetAddress;
+import jakarta.mail.internet.InternetAddress;
 
-import com.terracetech.tims.webmail.common.advice.Transactional;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.terracetech.tims.webmail.mail.ibean.MailAddressBean;
-import com.terracetech.tims.webmail.setting.dao.ILastrcptDao;
+import com.terracetech.tims.webmail.setting.dao.LastrcptDao;
 import com.terracetech.tims.webmail.setting.vo.RcptVO;
 
 /**
@@ -32,9 +34,9 @@ import com.terracetech.tims.webmail.setting.vo.RcptVO;
  */
 public class LastrcptManager {
 
-	private ILastrcptDao dao;
-
-	public void setDao(ILastrcptDao dao) {
+	private LastrcptDao dao;
+	
+	public void setDao(LastrcptDao dao) {
 		this.dao = dao;
 	}
 	

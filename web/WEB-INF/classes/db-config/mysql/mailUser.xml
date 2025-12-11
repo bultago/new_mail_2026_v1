@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
-    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
-<sqlMap namespace="MailUser">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terracetech.tims.webmail.MailUser.mapper.MailUserMapper">
 	<sql id="userAuthInfoSql">
 		SELECT 
 			m.mail_user_seq, m.mail_uid, m.mail_domain_seq, m.mail_group_seq, 
@@ -45,19 +45,19 @@
 		<dynamic prepend=" " >
 			<isNotNull property="seqKey">
 				<isGreaterThan property="seqNumber" compareValue="0" prepend="AND">
-					$seqKey$ = #seqNumber#
+					${seqKey} = #{seqNumber}
 				</isGreaterThan>
 			</isNotNull>
 			<isNotNull property="compareValue" prepend="AND">
 				<isEqual property="likeUsed" compareValue="true"> 
-					$searchKey$ like #sqlCompareValueStr#
+					${searchKey} like #{sqlCompareValueStr}
 				</isEqual>
 				<isEqual property="likeUsed" compareValue="false">
-					$searchKey$ = #compareValue#
+					${searchKey} = #{compareValue}
 				</isEqual>
 			</isNotNull>
 			<isNotNull property="sortKey" prepend=" ">
-				 ORDER BY $sortKey$ 
+				 ORDER BY ${sortKey} 
 				<isEqual property="descending" compareValue="true">
 					DESC
 				</isEqual>
@@ -76,51 +76,51 @@
 			AND m.mail_user_seq = i.mail_user_seq
 	</sql>
 	
-	<select id="searchSimpleUserInfoList" parameterClass="searchVO" resultMap="userListResult">
+	<select id="searchSimpleUserInfoList" parameterType="searchVO" resultMap="userListResult">
 		<include refid="simpleUserInfoSql"/>
 		AND m.mail_uid not in ('tims_bbs_storage_user', 'tims_webfolder_storage_user', 'hamadm', 'spamadm', 'mailadm')
 		
 		AND
 		<include refid="searchCondSql"/>
 		
-		limit #skipResult#, #maxResult#
+		limit #{skipResult}, #{maxResult}
 	</select>
 	
-	<select id="getLastRcptCount" resultClass="int" parameterClass="Map" cacheModel="lastRcptCache">
+	<select id="getLastRcptCount" resultType="int" parameterType="Map" cacheModel="lastRcptCache">
     	SELECT
       		count(mail_user_seq)
     	FROM wcf_lastrcpt
     	WHERE 
-    		mail_user_seq=#userSeq#
-    		and lastrcpt_email = #email#
+    		mail_user_seq=#{userSeq}
+    		and lastrcpt_email = #{email}
   	</select>
 	
-	<select id="getLastRcpt" resultMap="lastRcptResult" parameterClass="int" cacheModel="lastRcptCache">
+	<select id="getLastRcpt" resultMap="lastRcptResult" parameterType="int" cacheModel="lastRcptCache">
     	SELECT
       		mail_user_seq, lastrcpt_email, lastrcpt_personnel, case when rcpt_seq is null then 0 else rcpt_seq end as rcpt_seq
     	FROM wcf_lastrcpt
     	WHERE 
-    		mail_user_seq=#value#
+    		mail_user_seq=#{value}
     	order by rcpt_seq desc
   	</select>
   	
-  	<select id="getLastRcptByMaxRcptCount" resultMap="lastRcptResult" parameterClass="Map" cacheModel="lastRcptCache">
+  	<select id="getLastRcptByMaxRcptCount" resultMap="lastRcptResult" parameterType="Map" cacheModel="lastRcptCache">
     	SELECT
       		mail_user_seq, lastrcpt_email, lastrcpt_personnel, case when rcpt_seq is null then 0 else rcpt_seq end as rcpt_seq
     	FROM wcf_lastrcpt
     	WHERE 
-    		mail_user_seq=#mailUserSeq#
+    		mail_user_seq=#{mailUserSeq}
     	order by rcpt_seq desc
-    	limit 0, #maxRcptCount#
+    	limit 0, #{maxRcptCount}
   	</select>
   	
-  	<delete id="deleteLastRcpt" parameterClass="int" >
-		delete from wcf_lastrcpt where mail_user_seq = #value#
+  	<delete id="deleteLastRcpt" parameterType="int" >
+		delete from wcf_lastrcpt where mail_user_seq = #{value}
 	</delete>
 	
-	<delete id="deleteLastRcpt2" parameterClass="Map" >
+	<delete id="deleteLastRcpt2" parameterType="Map" >
 		delete from wcf_lastrcpt where 
-			mail_user_seq = #userSeq#
+			mail_user_seq = #{userSeq}
 			<dynamic>
 				<iterate 
 					property="emails"
@@ -129,14 +129,14 @@
 					conjunction=","
 					close=")" >
 					
-					#emails[]#
+					#{emails[]}
 				</iterate>
 			</dynamic>
 	</delete>
 	
-	<delete id="deleteLastRcptSeqs" parameterClass="Map" >
+	<delete id="deleteLastRcptSeqs" parameterType="Map" >
 		delete from wcf_lastrcpt where 
-			mail_user_seq = #userSeq#
+			mail_user_seq = #{userSeq}
 			<dynamic>
 				<iterate 
 					property="rcptSeqs"
@@ -145,40 +145,40 @@
 					conjunction=","
 					close=")" >
 					
-					#rcptSeqs[]#
+					#{rcptSeqs[]}
 				</iterate>
 			</dynamic>
 			or rcpt_seq is null)
 	</delete>
 	
-	<insert id="insertLastRcpt" parameterClass="lastRcpt">
-		<selectKey resultClass="int" keyProperty="rcptSeq">
+	<insert id="insertLastRcpt" parameterType="lastRcpt">
+		<selectKey resultType="int" keyProperty="rcptSeq">
 			select case when max(rcpt_seq) is null then 1 else max(rcpt_seq)+1 end
 			from wcf_lastrcpt
 		</selectKey>
 		insert into wcf_lastrcpt 
 				(rcpt_seq, mail_user_seq, lastrcpt_email, lastrcpt_personnel ) 
 			values 
-				( #rcptSeq#, #userSeq#, #lastrcptEmail#, #lastrcptPersonnel# )
+				( #{rcptSeq}, #{userSeq}, #{lastrcptEmail}, #{lastrcptPersonnel} )
 	</insert>
 	
-	<update id="setLastLoginTime"	parameterClass="map" >
+	<update id="setLastLoginTime"	parameterType="map" >
 		update mail_user_info 
 			set 
-				webmail_login_time=#time:VARCHAR# 
+				webmail_login_time=#{time:VARCHAR} 
 			where 
-				mail_user_seq = #userSeq#
+				mail_user_seq = #{userSeq}
 	</update>
 	
-	<select id="readUserInfo" parameterClass="int" resultMap="userInfoResult">
-		select * from mail_user_info where mail_user_seq = #mail_user_seq#
+	<select id="readUserInfo" parameterType="int" resultMap="userInfoResult">
+		select * from mail_user_info where mail_user_seq = #{mail_user_seq}
 	</select>
 	
-	<delete id="deleteUserInfo" parameterClass="int">
-		delete from mail_user_info where mail_user_seq = #userSeq#
+	<delete id="deleteUserInfo" parameterType="int">
+		delete from mail_user_info where mail_user_seq = #{userSeq}
 	</delete>
 	
-	<insert id="saveUserInfo" parameterClass="userInfo">
+	<insert id="saveUserInfo" parameterType="userInfo">
 		insert into mail_user_info
 			<dynamic prepend=" " open="( " close=" )">
 				<isNotNull property="mailUserSeq" prepend=",">
@@ -337,320 +337,320 @@
 			</dynamic>
 			<dynamic prepend="values " open="( " close=" )">
 				<isNotNull property="mailUserSeq" prepend=",">
-					#mailUserSeq#
+					#{mailUserSeq}
 				</isNotNull>
 				<isNotNull property="ssn" prepend=",">
-					#ssn#
+					#{ssn}
 				</isNotNull>
 				<isNotNull property="empno" prepend=",">
-					#empno#
+					#{empno}
 				</isNotNull>
 				<isNotNull property="userName" prepend=",">
-					#userName#
+					#{userName}
 				</isNotNull>
 				<isNotNull property="firstName" prepend=",">
-					#firstName#
+					#{firstName}
 				</isNotNull>
 				<isNotNull property="middleName" prepend=",">
-					#middleName#
+					#{middleName}
 				</isNotNull>
 				<isNotNull property="lastName" prepend=",">
-					#lastName#
+					#{lastName}
 				</isNotNull>
 				<isNotNull property="userLanguage" prepend=",">
-					#userLanguage#
+					#{userLanguage}
 				</isNotNull>
 				<isNotNull property="passChgTime" prepend=",">
-					#passChgTime#
+					#{passChgTime}
 				</isNotNull>
 				<isNotNull property="passQuestionCode" prepend=",">
-					#passQuestionCode#
+					#{passQuestionCode}
 				</isNotNull>
 				<isNotNull property="passQuestion" prepend=",">
-					#passQuestion#
+					#{passQuestion}
 				</isNotNull>
 				<isNotNull property="passAnswer" prepend=",">
-					#passAnswer#
+					#{passAnswer}
 				</isNotNull>
 				<isNotNull property="webFolderQuota" prepend=",">
-					#webFolderQuota#
+					#{webFolderQuota}
 				</isNotNull>
 				<isNotNull property="bigAttachQuota" prepend=",">
-					#bigAttachQuota#
+					#{bigAttachQuota}
 				</isNotNull>
 				<isNotNull property="applyTime" prepend=",">
-					#applyTime#
+					#{applyTime}
 				</isNotNull>
 				<isNotNull property="agreeTime" prepend=",">
-					#agreeTime#
+					#{agreeTime}
 				</isNotNull>
 				<isNotNull property="deferTime" prepend=",">
-					#deferTime#
+					#{deferTime}
 				</isNotNull>
 				<isNotNull property="registerStatus" prepend=",">
-					#registerStatus#
+					#{registerStatus}
 				</isNotNull>
 				<isNotNull property="lastLoginTime" prepend=",">
-					#lastLoginTime#
+					#{lastLoginTime}
 				</isNotNull>
 				<isNotNull property="webmailLoginTime" prepend=",">
-					#webmailLoginTime#
+					#{webmailLoginTime}
 				</isNotNull>
 				<isNotNull property="popLoginTime" prepend=",">
-					#popLoginTime#
+					#{popLoginTime}
 				</isNotNull>
 				<isNotNull property="imapLoginTime" prepend=",">
-					#imapLoginTime#
+					#{imapLoginTime}
 				</isNotNull>
 				<isNotNull property="mobileNo" prepend=",">
-					#mobileNo#
+					#{mobileNo}
 				</isNotNull>
 				<isNotNull property="birthday" prepend=",">
-					#birthday#
+					#{birthday}
 				</isNotNull>
 				<isNotNull property="homeTel" prepend=",">
-					#homeTel#
+					#{homeTel}
 				</isNotNull>
 				<isNotNull property="homeFax" prepend=",">
-					#homeFax#
+					#{homeFax}
 				</isNotNull>
 				<isNotNull property="homePostalCode" prepend=",">
-					#homePostalCode#
+					#{homePostalCode}
 				</isNotNull>
 				<isNotNull property="homeCountry" prepend=",">
-					#homeCountry#
+					#{homeCountry}
 				</isNotNull>
 				<isNotNull property="homeState" prepend=",">
-					#homeState#
+					#{homeState}
 				</isNotNull>
 				<isNotNull property="homeCity" prepend=",">
-					#homeCity#
+					#{homeCity}
 				</isNotNull>
 				<isNotNull property="homeStreet" prepend=",">
-					#homeStreet#
+					#{homeStreet}
 				</isNotNull>
 				<isNotNull property="homeBasicAddress" prepend=",">
-					#homeBasicAddress#
+					#{homeBasicAddress}
 				</isNotNull>
 				<isNotNull property="homeExtAddress" prepend=",">
-					#homeExtAddress#
+					#{homeExtAddress}
 				</isNotNull>
 				<isNotNull property="privateHomepage" prepend=",">
-					#privateHomepage#
+					#{privateHomepage}
 				</isNotNull>
 				<isNotNull property="companyName" prepend=",">
-					#companyName#
+					#{companyName}
 				</isNotNull>
 				<isNotNull property="departmentName" prepend=",">
-					#departmentName#
+					#{departmentName}
 				</isNotNull>
 				<isNotNull property="officeTel" prepend=",">
-					#officeTel#
+					#{officeTel}
 				</isNotNull>
 				<isNotNull property="officeFax" prepend=",">
-					#officeFax#
+					#{officeFax}
 				</isNotNull>
 				<isNotNull property="officePostalCode" prepend=",">
-					#officePostalCode#
+					#{officePostalCode}
 				</isNotNull>
 				<isNotNull property="officeCountry" prepend=",">
-					#officeCountry#
+					#{officeCountry}
 				</isNotNull>
 				<isNotNull property="officeState" prepend=",">
-					#officeState#
+					#{officeState}
 				</isNotNull>
 				<isNotNull property="officeCity" prepend=",">
-					#officeCity#
+					#{officeCity}
 				</isNotNull>
 				<isNotNull property="officeStreet" prepend=",">
-					#officeStreet#
+					#{officeStreet}
 				</isNotNull>
 				<isNotNull property="officeBasicAddress" prepend=",">
-					#officeBasicAddress#
+					#{officeBasicAddress}
 				</isNotNull>
 				<isNotNull property="officeExtAddress" prepend=",">
-					#officeExtAddress#
+					#{officeExtAddress}
 				</isNotNull>
 				<isNotNull property="classCode" prepend=",">
-					#classCode#
+					#{classCode}
 				</isNotNull>
 				<isNotNull property="description" prepend=",">
-					#description#
+					#{description}
 				</isNotNull>
 				<isNotNull property="creatorSeq" prepend=",">
-					#creatorSeq#
+					#{creatorSeq}
 				</isNotNull>
 				<isNotNull property="createTime" prepend=",">
-					#createTime#
+					#{createTime}
 				</isNotNull>
 				<isNotNull property="modifyTime" prepend=",">
-					#modifyTime#
+					#{modifyTime}
 				</isNotNull>
 				<isNotNull property="userDN" prepend=",">
-					#userDN#
+					#{userDN}
 				</isNotNull>
 			</dynamic>
 	</insert>
 	
-	<update id="modifyUserInfo" parameterClass="userInfo">
+	<update id="modifyUserInfo" parameterType="userInfo">
 		update mail_user_info
 			<dynamic prepend="set ">
 				<isNotNull property="agreeTime" prepend=",">
-					agree_time = #agreeTime#
+					agree_time = #{agreeTime}
 				</isNotNull>
 				<isNotNull property="applyTime" prepend=",">
-					apply_time = #applyTime#
+					apply_time = #{applyTime}
 				</isNotNull>
 				<isNotNull property="bigAttachQuota" prepend=",">
-					big_attach_add_quota = #bigAttachQuota#
+					big_attach_add_quota = #{bigAttachQuota}
 				</isNotNull>
 				<isNotNull property="classCode" prepend=",">
-					class_code = #classCode#
+					class_code = #{classCode}
 				</isNotNull>
 				<isNotNull property="companyName" prepend=",">
-					company_name = #companyName#
+					company_name = #{companyName}
 				</isNotNull>
 				<isNotNull property="createTime" prepend=",">
-					create_time = #createTime#
+					create_time = #{createTime}
 				</isNotNull>
 				<isNotNull property="creatorSeq" prepend=",">
-					creator_seq = #creatorSeq#
+					creator_seq = #{creatorSeq}
 				</isNotNull>
 				<isNotNull property="deferTime" prepend=",">
-					defer_time = #deferTime#
+					defer_time = #{deferTime}
 				</isNotNull>
 				<isNotNull property="departmentName" prepend=",">
-					department_name = #departmentName#
+					department_name = #{departmentName}
 				</isNotNull>
 				<isNotNull property="description" prepend=",">
-					description = #description#
+					description = #{description}
 				</isNotNull>
 				<isNotNull property="empno" prepend=",">
-					empno = #empno#
+					empno = #{empno}
 				</isNotNull>
 				<isNotNull property="firstName" prepend=",">
-					first_name = #firstName#
+					first_name = #{firstName}
 				</isNotNull>
 				<isNotNull property="birthday" prepend=",">
-					birthday = #birthday#
+					birthday = #{birthday}
 				</isNotNull>
 				<isNotNull property="homeBasicAddress" prepend=",">
-					home_basic_address = #homeBasicAddress#
+					home_basic_address = #{homeBasicAddress}
 				</isNotNull>
 				<isNotNull property="homeCity" prepend=",">
-					home_city = #homeCity#
+					home_city = #{homeCity}
 				</isNotNull>
 				<isNotNull property="homeCountry" prepend=",">
-					home_country = #homeCountry#
+					home_country = #{homeCountry}
 				</isNotNull>
 				<isNotNull property="homeExtAddress" prepend=",">
-					home_ext_address = #homeExtAddress#
+					home_ext_address = #{homeExtAddress}
 				</isNotNull>
 				<isNotNull property="homeFax" prepend=",">
-					home_fax = #homeFax#
+					home_fax = #{homeFax}
 				</isNotNull>
 				<isNotNull property="homePostalCode" prepend=",">
-					home_postal_code = #homePostalCode#
+					home_postal_code = #{homePostalCode}
 				</isNotNull>
 				<isNotNull property="homeState" prepend=",">
-					home_state = #homeState#
+					home_state = #{homeState}
 				</isNotNull>
 				<isNotNull property="homeStreet" prepend=",">
-					home_street = #homeStreet#
+					home_street = #{homeStreet}
 				</isNotNull>
 				<isNotNull property="homeTel" prepend=",">
-					home_tel = #homeTel#
+					home_tel = #{homeTel}
 				</isNotNull>
 				<isNotNull property="imapLoginTime" prepend=",">
-					imap_login_time = #imapLoginTime#
+					imap_login_time = #{imapLoginTime}
 				</isNotNull>
 				<isNotNull property="lastLoginTime" prepend=",">
-					last_login_time = #lastLoginTime#
+					last_login_time = #{lastLoginTime}
 				</isNotNull>
 				<isNotNull property="lastName" prepend=",">
-					last_name = #lastName#
+					last_name = #{lastName}
 				</isNotNull>
 				<isNotNull property="middleName" prepend=",">
-					middle_name = #middleName#
+					middle_name = #{middleName}
 				</isNotNull>
 				<isNotNull property="mobileNo" prepend=",">
-					mobile_no = #mobileNo#
+					mobile_no = #{mobileNo}
 				</isNotNull>
 				<isNotNull property="modifyTime" prepend=",">
-					modify_time = #modifyTime#
+					modify_time = #{modifyTime}
 				</isNotNull>
 				<isNotNull property="officeBasicAddress" prepend=",">
-					office_basic_address = #officeBasicAddress#
+					office_basic_address = #{officeBasicAddress}
 				</isNotNull>
 				<isNotNull property="officeCity" prepend=",">
-					office_city = #officeCity#
+					office_city = #{officeCity}
 				</isNotNull>
 				<isNotNull property="officeCountry" prepend=",">
-					office_country = #officeCountry#
+					office_country = #{officeCountry}
 				</isNotNull>
 				<isNotNull property="officeExtAddress" prepend=",">
-					office_ext_address = #officeExtAddress#
+					office_ext_address = #{officeExtAddress}
 				</isNotNull>
 				<isNotNull property="officeFax" prepend=",">
-					office_fax = #officeFax#
+					office_fax = #{officeFax}
 				</isNotNull>
 				<isNotNull property="officePostalCode" prepend=",">
-					office_postal_code = #officePostalCode#
+					office_postal_code = #{officePostalCode}
 				</isNotNull>
 				<isNotNull property="officeState" prepend=",">
-					office_state = #officeState#
+					office_state = #{officeState}
 				</isNotNull>
 				<isNotNull property="officeStreet" prepend=",">
-					office_street = #officeStreet#
+					office_street = #{officeStreet}
 				</isNotNull>
 				<isNotNull property="officeTel" prepend=",">
-					office_tel = #officeTel#
+					office_tel = #{officeTel}
 				</isNotNull>
 				<isNotNull property="passAnswer" prepend=",">
-					pass_answer = #passAnswer#
+					pass_answer = #{passAnswer}
 				</isNotNull>
 				<isNotNull property="passChgTime" prepend=",">
-					pass_chg_time = #passChgTime#
+					pass_chg_time = #{passChgTime}
 				</isNotNull>
 				<isNotNull property="passQuestion" prepend=",">
-					pass_question = #passQuestion#
+					pass_question = #{passQuestion}
 				</isNotNull>
 				<isNotNull property="passQuestionCode" prepend=",">
-					pass_question_code = #passQuestionCode#
+					pass_question_code = #{passQuestionCode}
 				</isNotNull>
 				<isNotNull property="popLoginTime" prepend=",">
-					pop_login_time = #popLoginTime#
+					pop_login_time = #{popLoginTime}
 				</isNotNull>
 				<isNotNull property="privateHomepage" prepend=",">
-					private_homepage = #privateHomepage#
+					private_homepage = #{privateHomepage}
 				</isNotNull>
 				<isNotNull property="registerStatus" prepend=",">
-					register_status = #registerStatus#
+					register_status = #{registerStatus}
 				</isNotNull>
 				<isNotNull property="ssn" prepend=",">
-					ssn = #ssn#
+					ssn = #{ssn}
 				</isNotNull>
 				<isNotNull property="userLanguage" prepend=",">
-					user_language = #userLanguage#
+					user_language = #{userLanguage}
 				</isNotNull>
 				<isNotNull property="userName" prepend=",">
-					user_name = #userName#
+					user_name = #{userName}
 				</isNotNull>
 				<isNotNull property="webFolderQuota" prepend=",">
-					web_folder_add_quota = #webFolderQuota#
+					web_folder_add_quota = #{webFolderQuota}
 				</isNotNull>
 				<isNotNull property="webmailLoginTime" prepend=",">
-					webmail_login_time = #webmailLoginTime#
+					webmail_login_time = #{webmailLoginTime}
 				</isNotNull>
 				<isNotNull property="userDN" prepend=",">
-					pki_dn = #userDN#
+					pki_dn = #{userDN}
 				</isNotNull>
 			</dynamic>
 			where
-				mail_user_seq = #mailUserSeq#
+				mail_user_seq = #{mailUserSeq}
 	</update>
 	
-	<select id="readMailUserAuthInfo" parameterClass="map" resultClass="HashMap">
+	<select id="readMailUserAuthInfo" parameterType="map" resultType="HashMap">
 		SELECT 
 			m.mail_user_seq, m.mail_uid, m.mail_domain_seq, m.mail_group_seq, 
 			m.mail_password, m.mail_host, m.message_store, m.account_expire_date, 
@@ -665,14 +665,14 @@
 		FROM 
 			mail_user m, mail_user_info i, mail_domain d
 		WHERE 
-			m.mail_uid = #MAIL_UID# 
-			AND m.mail_domain_seq = (select mail_domain_seq from mail_domain where mail_domain = #MAIL_DOMAIN#) 
+			m.mail_uid = #{MAIL_UID} 
+			AND m.mail_domain_seq = (select mail_domain_seq from mail_domain where mail_domain = #{MAIL_DOMAIN}) 
 			AND i.mail_user_seq = m.mail_user_seq
 			AND d.mail_domain_seq = m.mail_domain_seq
 			AND m.user_type='mailUser'
 	</select>
 	
-	<select id="readMailUserAuthInfoByEmpno" parameterClass="map" resultClass="HashMap">
+	<select id="readMailUserAuthInfoByEmpno" parameterType="map" resultType="HashMap">
 		SELECT 
 			m.mail_user_seq, m.mail_uid, m.mail_domain_seq, m.mail_group_seq, 
 			m.mail_password, m.mail_host, m.message_store, m.account_expire_date, 
@@ -687,14 +687,14 @@
 		FROM 
 			mail_user m, mail_user_info i, mail_domain d
 		WHERE 
-			i.empno = #EMPNO# 
-			AND m.mail_domain_seq = (select mail_domain_seq from mail_domain where mail_domain = #MAIL_DOMAIN#) 
+			i.empno = #{EMPNO} 
+			AND m.mail_domain_seq = (select mail_domain_seq from mail_domain where mail_domain = #{MAIL_DOMAIN}) 
 			AND i.mail_user_seq = m.mail_user_seq
 			AND d.mail_domain_seq = m.mail_domain_seq
 			AND m.user_type='mailUser'
 	</select>
 	
-	<select id="readMailUserAuthInfoByDN" parameterClass="map" resultClass="HashMap">
+	<select id="readMailUserAuthInfoByDN" parameterType="map" resultType="HashMap">
 		SELECT 
 			m.mail_user_seq, m.mail_uid, m.mail_domain_seq, d.mail_domain, m.mail_group_seq, 
 			m.mail_password, m.mail_host, m.message_store, m.account_expire_date, 
@@ -709,159 +709,159 @@
 		FROM 
 			mail_user m, mail_user_info i, mail_domain d
 		WHERE 
-			i.pki_dn = #userDN#
+			i.pki_dn = #{userDN}
 			AND i.mail_user_seq = m.mail_user_seq
 			AND m.mail_domain_seq = d.mail_domain_seq
 			AND m.user_type='mailUser'
 	</select>
 	
-	<select id="readMailUid" parameterClass="int" resultClass="String">
+	<select id="readMailUid" parameterType="int" resultType="String">
 		SELECT 
 			mail_uid
 		FROM 
 			mail_user
 		WHERE 
-			mail_user_seq = #mailUserSeq#
+			mail_user_seq = #{mailUserSeq}
 	</select>
 	
-	<select id="readMailUsername" parameterClass="int" resultClass="String">
+	<select id="readMailUsername" parameterType="int" resultType="String">
 		SELECT 
 			user_name
 		FROM 
 			mail_user_info
 		WHERE 
-			mail_user_seq = #mailUserSeq#
+			mail_user_seq = #{mailUserSeq}
 	</select>
 	
-	<select id="readMailUserOtherInfo" parameterClass="map" resultClass="HashMap">
+	<select id="readMailUserOtherInfo" parameterType="map" resultType="HashMap">
 		<include refid="userAuthInfoSql" />
 		WHERE 
-			m.mail_user_seq = #userSeq# 
-			AND m.mail_domain_seq = #domainSeq# 
+			m.mail_user_seq = #{userSeq} 
+			AND m.mail_domain_seq = #{domainSeq} 
 			AND i.mail_user_seq = m.mail_user_seq
 			AND e.mail_user_seq = m.mail_user_seq
 			AND d.mail_domain_seq = m.mail_domain_seq
 	</select>
 	
-	<select id="readMailUserConnectionInfo" parameterClass="map" resultClass="HashMap">
+	<select id="readMailUserConnectionInfo" parameterType="map" resultType="HashMap">
 		<include refid="userConnectionInfoSql" />
 		WHERE 
-			m.mail_user_seq = #userSeq# 
-			AND m.mail_domain_seq = #domainSeq# 
+			m.mail_user_seq = #{userSeq} 
+			AND m.mail_domain_seq = #{domainSeq} 
 			AND i.mail_user_seq = m.mail_user_seq			
 			AND d.mail_domain_seq = m.mail_domain_seq
 	</select>
 	
-	<select id="readMailUserBySeq" parameterClass="int" resultClass="HashMap">
+	<select id="readMailUserBySeq" parameterType="int" resultType="HashMap">
 		select * 
 			from 
 				mail_user 
 			where 
-				mail_user_seq = #mail_user_seq# 
+				mail_user_seq = #{mail_user_seq} 
 	</select>
 	
-	<update id="modifyMailUser" parameterClass="mailUser">
+	<update id="modifyMailUser" parameterType="mailUser">
 		UPDATE mail_user
 		<dynamic prepend="set ">
 			<isNotNull property="mailUid" prepend=",">
-				mail_uid = #mailUid#
+				mail_uid = #{mailUid}
 			</isNotNull>
 			<isGreaterThan property="mailDomainSeq" compareValue="0" prepend=",">
-				mail_domain_seq = #mailDomainSeq#
+				mail_domain_seq = #{mailDomainSeq}
 			</isGreaterThan>
 			<isGreaterThan property="mailGroupSeq" compareValue="0" prepend=",">
-				mail_group_seq = #mailGroupSeq#
+				mail_group_seq = #{mailGroupSeq}
 			</isGreaterThan>
 			<isNotNull property="mailPassword" prepend=",">
-				mail_password = #mailPassword#
+				mail_password = #{mailPassword}
 			</isNotNull>
 			<isNotNull property="mailHost" prepend=",">
-				mail_host = #mailHost#
+				mail_host = #{mailHost}
 			</isNotNull>
 			<isNotNull property="messageStore" prepend=",">
-				message_store = #messageStore#
+				message_store = #{messageStore}
 			</isNotNull>
 			<isNotNull property="accountExpireDate" prepend=",">
-				account_expire_date = #accountExpireDate#
+				account_expire_date = #{accountExpireDate}
 			</isNotNull>
 			<isNotNull property="accountStatus" prepend=",">
-				account_status = #accountStatus#
+				account_status = #{accountStatus}
 			</isNotNull>
 			<isNotNull property="userType" prepend=",">
-				user_type = #userType#
+				user_type = #{userType}
 			</isNotNull>
 			<isGreaterThan property="mailServices" compareValue="0" prepend=",">
-				mail_services = #mailServices#
+				mail_services = #{mailServices}
 			</isGreaterThan>
 			<isNotNull property="mailAddQuota" prepend=",">
-				mail_add_quota = #mailAddQuota#
+				mail_add_quota = #{mailAddQuota}
 			</isNotNull>
 			<isNotNull property="quotaOverlookRatio" prepend=",">
-				quota_overlook_ratio = #quotaOverlookRatio#
+				quota_overlook_ratio = #{quotaOverlookRatio}
 			</isNotNull>
 			<isNotNull property="quotaWarningMode" prepend=",">
-				quota_warning_mode = #quotaWarningMode#
+				quota_warning_mode = #{quotaWarningMode}
 			</isNotNull>
 			<isNotNull property="quotaWarningRatio" prepend=",">
-				quota_warning_ratio = #quotaWarningRatio#
+				quota_warning_ratio = #{quotaWarningRatio}
 			</isNotNull>
 			<isNotNull property="quotaViolationAction" prepend=",">
-				quota_violation_action = #quotaViolationAction#
+				quota_violation_action = #{quotaViolationAction}
 			</isNotNull>
 			<isNotNull property="mailMaxSendSize" prepend=",">
-				mail_max_send_size = #mailMaxSendSize#
+				mail_max_send_size = #{mailMaxSendSize}
 			</isNotNull>
 			<isNotNull property="inboxExpireDays" prepend=",">
-				inbox_expire_days = #inboxExpireDays#
+				inbox_expire_days = #{inboxExpireDays}
 			</isNotNull>
 			<isNotNull property="sentExpireDays" prepend=",">
-				sent_expire_days = #sentExpireDays#
+				sent_expire_days = #{sentExpireDays}
 			</isNotNull>
 			<isNotNull property="trashExpireDays" prepend=",">
-				trash_expire_days = #trashExpireDays#
+				trash_expire_days = #{trashExpireDays}
 			</isNotNull>
 			<isNotNull property="spamExpireDays" prepend=",">
-				spam_expire_days = #spamExpireDays#
+				spam_expire_days = #{spamExpireDays}
 			</isNotNull>
 			<isNotNull property="userExpireDays" prepend=",">
-				user_expire_days = #userExpireDays#
+				user_expire_days = #{userExpireDays}
 			</isNotNull>
 			<isNotNull property="deliveryNotiType" prepend=",">
-				delivery_noti_type = #deliveryNotiType#
+				delivery_noti_type = #{deliveryNotiType}
 			</isNotNull>
 			<isNotNull property="deliveryNotiMode" prepend=",">
-				delivery_noti_mode = #deliveryNotiMode#
+				delivery_noti_mode = #{deliveryNotiMode}
 			</isNotNull>
 			<isNotNull property="forwardingMode" prepend=",">
-				forwarding_mode = #forwardingMode#
+				forwarding_mode = #{forwardingMode}
 			</isNotNull>
 			<isNotNull property="hiddenForwardingMode" prepend=",">
-				hidden_forwarding_mode = #hiddenForwardingMode#
+				hidden_forwarding_mode = #{hiddenForwardingMode}
 			</isNotNull>
 			<isNotNull property="autoReplyMode" prepend=",">
-				auto_reply_mode = #autoReplyMode#
+				auto_reply_mode = #{autoReplyMode}
 			</isNotNull>
 			<isNotNull property="autoReplyInclude" prepend=",">
-				auto_reply_include = #autoReplyInclude#
+				auto_reply_include = #{autoReplyInclude}
 			</isNotNull>
 			<isNotNull property="autoReplyStartTime" prepend=",">
-				auto_reply_start_time = #autoReplyStartTime#
+				auto_reply_start_time = #{autoReplyStartTime}
 			</isNotNull>
 			<isNotNull property="autoReplyEndTime" prepend=",">
-				auto_reply_end_time = #autoReplyEndTime#
+				auto_reply_end_time = #{autoReplyEndTime}
 			</isNotNull>
 			<isNotNull property="autoReplyText" prepend=",">
-				auto_reply_text = #autoReplyText#
+				auto_reply_text = #{autoReplyText}
 			</isNotNull>
 			<isNotNull property="autoReplySubject" prepend=",">
-				auto_reply_subject = #autoReplySubject#
+				auto_reply_subject = #{autoReplySubject}
 			</isNotNull>
 		</dynamic>
 		where
-			mail_user_seq = #mailUserSeq#
+			mail_user_seq = #{mailUserSeq}
 	</update>
 
-	<insert id="saveMailUser" parameterClass="mailUser">
+	<insert id="saveMailUser" parameterType="mailUser">
 		insert into mail_user
 			<dynamic prepend=" " open="( " close=" )">
 				<isNotNull property="mailUid" prepend=",">
@@ -960,165 +960,165 @@
 			</dynamic>
 			<dynamic prepend="values " open="( " close=" )">
 				<isNotNull property="mailUid" prepend=",">
-					#mailUid#
+					#{mailUid}
 				</isNotNull>
 				<isGreaterThan property="mailDomainSeq" compareValue="0" prepend=",">
-					#mailDomainSeq#
+					#{mailDomainSeq}
 				</isGreaterThan>
 				<isGreaterThan property="mailGroupSeq" compareValue="0" prepend=",">
-					#mailGroupSeq#
+					#{mailGroupSeq}
 				</isGreaterThan>
 				<isNotNull property="mailPassword" prepend=",">
-					#mailPassword#
+					#{mailPassword}
 				</isNotNull>
 				<isNotNull property="mailHost" prepend=",">
-					#mailHost#
+					#{mailHost}
 				</isNotNull>
 				<isNotNull property="messageStore" prepend=",">
-					#messageStore#
+					#{messageStore}
 				</isNotNull>
 				<isNotNull property="accountExpireDate" prepend=",">
-					#accountExpireDate#
+					#{accountExpireDate}
 				</isNotNull>
 				<isNotNull property="accountStatus" prepend=",">
-					#accountStatus#
+					#{accountStatus}
 				</isNotNull>
 				<isNotNull property="userType" prepend=",">
-					#userType#
+					#{userType}
 				</isNotNull>
 				<isGreaterThan property="mailServices" compareValue="0" prepend=",">
-					#mailServices#
+					#{mailServices}
 				</isGreaterThan>
 				<isNotNull property="mailAddQuota" prepend=",">
-					#mailAddQuota#
+					#{mailAddQuota}
 				</isNotNull>
 				<isNotNull property="quotaOverlookRatio" prepend=",">
-					#quotaOverlookRatio#
+					#{quotaOverlookRatio}
 				</isNotNull>
 				<isNotNull property="quotaWarningMode" prepend=",">
-					#quotaWarningMode#
+					#{quotaWarningMode}
 				</isNotNull>
 				<isNotNull property="quotaWarningRatio" prepend=",">
-					#quotaWarningRatio#
+					#{quotaWarningRatio}
 				</isNotNull>
 				<isNotNull property="quotaViolationAction" prepend=",">
-					#quotaViolationAction#
+					#{quotaViolationAction}
 				</isNotNull>
 				<isNotNull property="mailMaxSendSize" prepend=",">
-					#mailMaxSendSize#
+					#{mailMaxSendSize}
 				</isNotNull>
 				<isNotNull property="inboxExpireDays" prepend=",">
-					#inboxExpireDays#
+					#{inboxExpireDays}
 				</isNotNull>
 				<isNotNull property="sentExpireDays" prepend=",">
-					#sentExpireDays#
+					#{sentExpireDays}
 				</isNotNull>
 				<isNotNull property="trashExpireDays" prepend=",">
-					#trashExpireDays#
+					#{trashExpireDays}
 				</isNotNull>
 				<isNotNull property="spamExpireDays" prepend=",">
-					#spamExpireDays#
+					#{spamExpireDays}
 				</isNotNull>
 				<isNotNull property="userExpireDays" prepend=",">
-					#userExpireDays#
+					#{userExpireDays}
 				</isNotNull>
 				<isNotNull property="deliveryNotiType" prepend=",">
-					#deliveryNotiType#
+					#{deliveryNotiType}
 				</isNotNull>
 				<isNotNull property="deliveryNotiMode" prepend=",">
-					#deliveryNotiMode#
+					#{deliveryNotiMode}
 				</isNotNull>
 				<isNotNull property="forwardingMode" prepend=",">
-					#forwardingMode#
+					#{forwardingMode}
 				</isNotNull>
 				<isNotNull property="hiddenForwardingMode" prepend=",">
-					#hiddenForwardingMode#
+					#{hiddenForwardingMode}
 				</isNotNull>
 				<isNotNull property="autoReplyMode" prepend=",">
-					#autoReplyMode#
+					#{autoReplyMode}
 				</isNotNull>
 				<isNotNull property="autoReplyInclude" prepend=",">
-					#autoReplyInclude#
+					#{autoReplyInclude}
 				</isNotNull>
 				<isNotNull property="autoReplyStartTime" prepend=",">
-					#autoReplyStartTime#
+					#{autoReplyStartTime}
 				</isNotNull>
 				<isNotNull property="autoReplyEndTime" prepend=",">
-					#autoReplyEndTime#
+					#{autoReplyEndTime}
 				</isNotNull>
 				<isNotNull property="autoReplyText" prepend=",">
-					#autoReplyText#
+					#{autoReplyText}
 				</isNotNull>
 				<isNotNull property="autoReplySubject" prepend=",">
-					#autoReplySubject#
+					#{autoReplySubject}
 				</isNotNull>
 			</dynamic>
 	</insert>
 	
-	<delete id="deleteMailUser" parameterClass="int">
-		DELETE FROM mail_user where mail_user_seq = #mail_user_seq#
+	<delete id="deleteMailUser" parameterType="int">
+		DELETE FROM mail_user where mail_user_seq = #{mail_user_seq}
 	</delete>
 	
-	<select id="readMailUserInfo" parameterClass="int"	resultMap="userInfoResult">
-		select * from mail_user_info where mail_user_seq = #mail_user_seq#	
+	<select id="readMailUserInfo" parameterType="int"	resultMap="userInfoResult">
+		select * from mail_user_info where mail_user_seq = #{mail_user_seq}	
 	</select>
 	
-	<select id="readMailUserInfoByUid" parameterClass="Map" resultMap="userInfoResult">
+	<select id="readMailUserInfoByUid" parameterType="Map" resultMap="userInfoResult">
 		select c.* 
 		from 
 			mail_domain a, mail_user b, mail_user_info c
 		where 
 			a.mail_domain_seq = b.mail_domain_seq 
 			and b.mail_user_seq = c.mail_user_seq
-			and a.mail_domain_seq = #domainSeq#
-			and b.mail_uid =  #userId#
+			and a.mail_domain_seq = #{domainSeq}
+			and b.mail_uid =  #{userId}
 	</select>
 	
-	<select id="readMailUserInfoByEmail" parameterClass="Map" resultMap="userInfoResult">
+	<select id="readMailUserInfoByEmail" parameterType="Map" resultMap="userInfoResult">
 		select c.* 
 		from 
 			mail_domain a, mail_user b, mail_user_info c
 		where 
 			a.mail_domain_seq = b.mail_domain_seq 
 			and b.mail_user_seq = c.mail_user_seq
-			and a.mail_domain = #mailDomain#
-			and b.mail_uid =  #userId#
+			and a.mail_domain = #{mailDomain}
+			and b.mail_uid =  #{userId}
 	</select>
 	
-	<select id="readMailuserSsoInfoByUid" parameterClass="map" resultClass="String">
+	<select id="readMailuserSsoInfoByUid" parameterType="map" resultType="String">
 		select 
 			a.mail_uid from mail_user a, mail_domain b 
 		where
 			a.mail_domain_seq = b.mail_domain_seq
-			and b.mail_domain=#domain# 
-			and mail_uid = #mailUid#
+			and b.mail_domain=#{domain} 
+			and mail_uid = #{mailUid}
 	</select>
 	
-	<select id="readMailuserSsoInfoByEmpno" parameterClass="map" resultClass="String">
+	<select id="readMailuserSsoInfoByEmpno" parameterType="map" resultType="String">
 		select 
 			a.mail_uid from mail_user a, mail_domain b, mail_user_info c 
 		where
 			a.mail_domain_seq = b.mail_domain_seq
 			and a.mail_user_seq=c.mail_user_seq
-			and b.mail_domain=#domain# 
-			and c.empno = #empno#
+			and b.mail_domain=#{domain} 
+			and c.empno = #{empno}
 	</select>
 	
-	<select id="readMailuserSsoInfoBySsn" parameterClass="map" resultClass="String">
+	<select id="readMailuserSsoInfoBySsn" parameterType="map" resultType="String">
 		select 
 			a.mail_uid from mail_user a, mail_domain b, mail_user_info c 
 		where
 			a.mail_domain_seq = b.mail_domain_seq
 			and a.mail_user_seq=c.mail_user_seq
-			and b.mail_domain=#domain# 
-			and ssn = #ssn#
+			and b.mail_domain=#{domain} 
+			and ssn = #{ssn}
 	</select>
 	
-	<select id="readUserInfoByUid" parameterClass="int" resultClass="HashMap">
+	<select id="readUserInfoByUid" parameterType="int" resultType="HashMap">
 		select u.mail_uid, d.mail_domain 
 		from mail_user u, mail_domain d
 		where u.mail_domain_seq = d.mail_domain_seq
-		and u.mail_user_seq = #userSeq#
+		and u.mail_user_seq = #{userSeq}
 	</select>
 	
 	<sql id="getEmail_Where_Clause" >
@@ -1208,32 +1208,32 @@
    		</isEqual>
    		
    		<isGreaterThan property="keyWord" compareValue="ㅎ">
-   			member_name like '$keyWord$%' or
+   			member_name like '${keyWord}%' or
    		</isGreaterThan>
    		
    		<isLessThan property="keyWord" compareValue="ㄱ">
-   			member_name like '$keyWord$%' or
+   			member_name like '${keyWord}%' or
    		</isLessThan>
 	</sql>
 	
-	<select id="readPrivateAddrAddressList" parameterClass="Map" resultClass="address" cacheModel="privateAddressCache">
+	<select id="readPrivateAddrAddressList" parameterType="Map" resultType="address" cacheModel="privateAddressCache">
 		SELECT  zz.name,zz.email
 		FROM(
 			SELECT
 		      a.member_name as name, a.member_email as email
 		    FROM adr_private_member a
 		    WHERE 
-		    	a.mail_user_seq=#userSeq#
+		    	a.mail_user_seq=#{userSeq}
 		    	and (a.delete_flag IS NULL or a.delete_flag != 'Y')
 		    	<dynamic>
 					<isParameterPresent >
 						<isEqual property="staticParam" compareValue="T">
 				      		<include refid="getEmail_Where_Clause" />
-					   		member_email like '$keyWord$%')
+					   		member_email like '${keyWord}%')
 				      	</isEqual>
 				      	<isEqual property="staticParam" compareValue="F">
 				      		<isNotEmpty property="keyWord">
-				      			and member_name = #keyWord#
+				      			and member_name = #{keyWord}
 				      		</isNotEmpty>
 				      	</isEqual>
 				    </isParameterPresent>
@@ -1246,38 +1246,38 @@
 			  SELECT mail_uid as name,CONCAT(mail_uid,CONCAT('@',b.mail_domain)) as email
 	          FROM mail_user a,  mail_domain b
 	          where a.mail_domain_seq = b.mail_domain_seq
-	          	and a.mail_domain_seq = #mailDomain# 
+	          	and a.mail_domain_seq = #{mailDomain} 
 	          	and a.account_status = 'disabled'
 		   ) gg ON zz.email = gg.email
 		   WHERE gg.email is null;
 	</select>
 	
-	<select id="readSharedAddrAddressList" parameterClass="Map" resultClass="address" cacheModel="sharedAddressCache">
+	<select id="readSharedAddrAddressList" parameterType="Map" resultType="address" cacheModel="sharedAddressCache">
 		SELECT  zz.name,zz.email
 		FROM(
 			SELECT
 		      b.member_name as name, b.member_email as email
 		    FROM adr_shared_master a, adr_shared_member b
 		    WHERE
-		    	a.mail_domain_seq=#mailDomain#
+		    	a.mail_domain_seq=#{mailDomain}
 		    	and a.adrbook_seq=b.adrbook_seq
 		    	and b.adrbook_seq in 
 		    	(
-		    		select adrbook_seq from adr_shared_reader where mail_user_seq=#userSeq#
+		    		select adrbook_seq from adr_shared_reader where mail_user_seq=#{userSeq}
 		    		union 
-		    		select adrbook_seq from adr_shared_moderator where mail_user_seq=#userSeq#
+		    		select adrbook_seq from adr_shared_moderator where mail_user_seq=#{userSeq}
 		    		union 
-		    		select adrbook_seq from adr_shared_master where creator_seq = #userSeq# or reader_type='A'
+		    		select adrbook_seq from adr_shared_master where creator_seq = #{userSeq} or reader_type='A'
 		    	)
 		    	<dynamic>
 					<isParameterPresent >
 				      <isEqual property="staticParam" compareValue="T">
 				      		<include refid="getEmail_Where_Clause" />
-					   		member_email like '$keyWord$%')
+					   		member_email like '${keyWord}%')
 				      	</isEqual>
 				      	<isEqual property="staticParam" compareValue="F">
 				      		<isNotEmpty property="keyWord">
-				      			and member_name = #keyWord#
+				      			and member_name = #{keyWord}
 				      		</isNotEmpty>
 				      	</isEqual>
 				    </isParameterPresent>
@@ -1290,21 +1290,21 @@
 			  SELECT mail_uid as name,CONCAT(mail_uid,CONCAT('@',b.mail_domain)) as email
 	          FROM mail_user a,  mail_domain b
 	          where a.mail_domain_seq = b.mail_domain_seq
-	          	and a.mail_domain_seq = #mailDomain# 
+	          	and a.mail_domain_seq = #{mailDomain} 
 	          	and a.account_status = 'disabled'
 		   ) gg ON zz.email = gg.email
 		   WHERE gg.email is null;
 	</select>
 	
-	<select id="readDeptAddressList" parameterClass="Map" resultClass="address" cacheModel="orgCache">
+	<select id="readDeptAddressList" parameterType="Map" resultType="address" cacheModel="orgCache">
 		select
 			org_name as name, 
 			org_code as deptCode 
 		from 
 			torg_organization 
 		where 
-			mail_domain_seq=#mailDomain# 
-			and org_name like #deptName#
+			mail_domain_seq=#{mailDomain} 
+			and org_name like #{deptName}
 		
 		union
 		
@@ -1314,8 +1314,8 @@
 		from 
 			torg_organization 
 		where 
-			mail_domain_seq=#mailDomain# 
-			and org_name_en like #deptName#  
+			mail_domain_seq=#{mailDomain} 
+			and org_name_en like #{deptName}  
 			
 		union
 		
@@ -1325,19 +1325,19 @@
 		from 
 			torg_organization 
 		where 
-			mail_domain_seq=#mailDomain# 
-			and org_name_jp like #deptName#
+			mail_domain_seq=#{mailDomain} 
+			and org_name_jp like #{deptName}
 	</select>
 	
-	<select id="readDeptFullCodeList" parameterClass="Map" resultClass="address" cacheModel="orgCache">
+	<select id="readDeptFullCodeList" parameterType="Map" resultType="address" cacheModel="orgCache">
 		select
 			org_name as name, 
 			org_fullcode as deptCode 
 		from 
 			torg_organization 
 		where 
-			mail_domain_seq=#mailDomain#
-			and org_name like #deptName#
+			mail_domain_seq=#{mailDomain}
+			and org_name like #{deptName}
 			
 		union 
 		
@@ -1347,8 +1347,8 @@
 		from 
 			torg_organization 
 		where 
-			mail_domain_seq=#mailDomain#
-			and org_name_en like #deptName#
+			mail_domain_seq=#{mailDomain}
+			and org_name_en like #{deptName}
 		
 		union 
 		
@@ -1358,20 +1358,20 @@
 		from 
 			torg_organization 
 		where 
-			mail_domain_seq=#mailDomain#
-			and org_name_jp like #deptName#
+			mail_domain_seq=#{mailDomain}
+			and org_name_jp like #{deptName}
 			
 	</select>
 	
-	<select id="getDeptMap" resultMap="groupConfigResult" parameterClass="int" cacheModel="orgCache">
+	<select id="getDeptMap" resultMap="groupConfigResult" parameterType="int" cacheModel="orgCache">
     	select 
     		ORG_CODE as config_name, ORG_NAME as config_value
     	from TORG_ORGANIZATION
     	where 
-    		MAIL_DOMAIN_SEQ = #mailDomainSeq#
+    		MAIL_DOMAIN_SEQ = #{mailDomainSeq}
 	</select>
 	
-	<select id="readDomainAddressList" parameterClass="Map" resultClass="address">
+	<select id="readDomainAddressList" parameterType="Map" resultType="address">
 		select 
 			c.member_name as name,
 			CONCAT(b.mail_uid, CONCAT('@',  d.mail_domain)) as email,
@@ -1382,18 +1382,18 @@
 		where 
 	    	b.mail_user_seq=c.mail_user_seq
 	    	and b.mail_domain_seq = d.mail_domain_seq
-			and d.mail_domain_seq=#mailDomain#
+			and d.mail_domain_seq=#{mailDomain}
 			and b.mail_uid not in ('tims_bbs_storage_user', 'tims_webfolder_storage_user')
 			and b.account_status != 'disabled'
 			<dynamic>
 				<isParameterPresent >
 			      <isEqual property="staticParam" compareValue="T">
 			      		<include refid="getEmail_Where_Clause" />			      		
-				   		mail_uid like '$keyWord$%')				   		
+				   		mail_uid like '${keyWord}%')				   		
 			      	</isEqual>
 			      	<isEqual property="staticParam" compareValue="F">
 			      		<isNotEmpty property="keyWord">
-			      			and member_name = #keyWord#
+			      			and member_name = #{keyWord}
 			      		</isNotEmpty>
 			      	</isEqual>
 			    </isParameterPresent>
@@ -1403,7 +1403,7 @@
 	    </isNotEmpty>
 	</select>
 	
-	<select id="readOrgAddressList" parameterClass="Map" resultClass="address" cacheModel="orgCache">
+	<select id="readOrgAddressList" parameterType="Map" resultType="address" cacheModel="orgCache">
 		select 
 			c.member_name as name,
 			e.org_name as deptName,
@@ -1413,8 +1413,8 @@
     				cc.mail_domain_seq=dd.mail_domain_seq 	
     				and cc.code_class=dd.code_class 
     				and cc.code_class='101'
-    				and cc.code_locale=#locale# 
-    				and cc.mail_domain_seq=#mailDomain# 
+    				and cc.code_locale=#{locale} 
+    				and cc.mail_domain_seq=#{mailDomain} 
     				and cc.code= a.title_code
     			limit 0, 1
     		) as title ,
@@ -1426,17 +1426,17 @@
 	    	and b.mail_user_seq=c.mail_user_seq
 	    	and a.org_code=e.org_code
 	    	and b.mail_domain_seq = d.mail_domain_seq
-			and a.MAIL_DOMAIN_SEQ = #mailDomain#
+			and a.MAIL_DOMAIN_SEQ = #{mailDomain}
 			and b.account_status != 'disabled'
 			<dynamic>
 				<isParameterPresent >
 			      <isEqual property="staticParam" compareValue="T">
 			      		<include refid="getEmail_Where_Clause" />
-			      		b.mail_uid like '$keyWord$%')
+			      		b.mail_uid like '${keyWord}%')
 			      	</isEqual>
 			      	<isEqual property="staticParam" compareValue="F">
 			      		<isNotEmpty property="keyWord">
-			      			and member_name = #keyWord#
+			      			and member_name = #{keyWord}
 			      		</isNotEmpty>
 			      	</isEqual>
 			    </isParameterPresent>
@@ -1446,11 +1446,11 @@
 	    </isNotEmpty>
 	</select>
 	
-	<select id="readUserAddressList" parameterClass="Map" resultClass="address">
+	<select id="readUserAddressList" parameterType="Map" resultType="address">
 		SELECT
 	      a.member_name as name, a.member_email as email
 	    FROM adr_private_member a
-	    WHERE a.mail_user_seq=#userSeq#
+	    WHERE a.mail_user_seq=#{userSeq}
 	    
 	    union
 	    
@@ -1460,11 +1460,11 @@
 	    WHERE
 	    	b.adrbook_seq in 
 	    	(
-	    		select adrbook_seq from adr_shared_reader where mail_user_seq=#userSeq#
+	    		select adrbook_seq from adr_shared_reader where mail_user_seq=#{userSeq}
 	    		union 
-	    		select adrbook_seq from adr_shared_moderator where mail_user_seq=#userSeq#
+	    		select adrbook_seq from adr_shared_moderator where mail_user_seq=#{userSeq}
 	    		union 
-	    		select adrbook_seq from adr_shared_master where creator_seq = #userSeq# or reader_type='A'
+	    		select adrbook_seq from adr_shared_master where creator_seq = #{userSeq} or reader_type='A'
 	    	)
 	    	
 	    union
@@ -1477,27 +1477,27 @@
 	    	a.mail_user_seq=b.mail_user_seq
 	    	and b.mail_user_seq=c.mail_user_seq
 	    	and b.mail_domain_seq = d.mail_domain_seq
-			and a.MAIL_DOMAIN_SEQ = #mailDomain#
+			and a.MAIL_DOMAIN_SEQ = #{mailDomain}
 	</select>
 	
-	<select id="readRecentRcptAddressList" parameterClass="Map" resultClass="address" cacheModel="lastRcptCache">
+	<select id="readRecentRcptAddressList" parameterType="Map" resultType="address" cacheModel="lastRcptCache">
 	SELECT  zz.name,zz.email
 	FROM(
 		select 
 			a.member_name as name, a.lastrcpt_email as email
 		from 
-			(select mail_user_seq, lastrcpt_email, lastrcpt_personnel as member_name  from wcf_lastrcpt where mail_user_seq = #userSeq#) a
+			(select mail_user_seq, lastrcpt_email, lastrcpt_personnel as member_name  from wcf_lastrcpt where mail_user_seq = #{userSeq}) a
 		where 
-			a.mail_user_seq = #userSeq#
+			a.mail_user_seq = #{userSeq}
 			<dynamic>
 				<isParameterPresent >
 			      <isEqual property="staticParam" compareValue="T">
 			      		<include refid="getEmail_Where_Clause" />
-			      		lastrcpt_email like '$keyWord$%')				   		
+			      		lastrcpt_email like '${keyWord}%')				   		
 			      	</isEqual>
 			      	<isEqual property="staticParam" compareValue="F">
 			      		<isNotEmpty property="keyWord">
-			      			and member_name = #keyWord#
+			      			and member_name = #{keyWord}
 			      		</isNotEmpty>
 			      	</isEqual>
 			    </isParameterPresent>
@@ -1510,23 +1510,23 @@
 		  SELECT mail_uid as name,CONCAT(mail_uid,CONCAT('@',b.mail_domain)) as email
           FROM mail_user a,  mail_domain b
           where a.mail_domain_seq = b.mail_domain_seq
-          	and a.mail_domain_seq = #mailDomain# 
+          	and a.mail_domain_seq = #{mailDomain} 
           	and a.account_status = 'disabled'
 	   ) gg ON zz.email = gg.email
 	   WHERE gg.email is null;
 	</select>
 	
-	<select id="readWebfolderInfo" parameterClass="int" resultMap="webfolderInfoResult">
+	<select id="readWebfolderInfo" parameterType="int" resultMap="webfolderInfoResult">
 		select m.mail_domain_seq, m.mail_user_seq, m.mail_uid, m.mail_host, m.message_store, d.mail_domain, g.web_folder_quota, i.web_folder_add_quota
 		from mail_user m, mail_user_info i, mail_domain d, mail_domain_group g 
 		where m.mail_user_seq = i.mail_user_seq 
 		and m.mail_domain_seq = d.mail_domain_seq 
 		and m.mail_domain_seq = g.mail_domain_seq
 		and m.mail_group_seq = g.mail_group_seq
-		and m.mail_user_seq = #userSeq#
+		and m.mail_user_seq = #{userSeq}
 	</select>
 	
-	<select id="readBbsInfo" parameterClass="int" resultMap="bbsInfoResult">
+	<select id="readBbsInfo" parameterType="int" resultMap="bbsInfoResult">
 		select m.mail_domain_seq, m.mail_user_seq, m.mail_uid, m.mail_host, m.message_store, 
 				d.mail_domain, g.mail_quota, m.mail_add_quota, m.quota_warning_mode, 
 				m.quota_warning_ratio, m.quota_overlook_ratio
@@ -1535,221 +1535,221 @@
 		and m.mail_domain_seq = d.mail_domain_seq
 		and m.mail_domain_seq = g.mail_domain_seq
 		and m.mail_group_seq = g.mail_group_seq
-		and m.mail_user_seq = #userSeq#
+		and m.mail_user_seq = #{userSeq}
 	</select>
 	
-	<select id="readUserPass" parameterClass="int" resultClass="String">
-		SELECT mail_password FROM mail_user where mail_user_seq = #value#
+	<select id="readUserPass" parameterType="int" resultType="String">
+		SELECT mail_password FROM mail_user where mail_user_seq = #{value}
 	</select>
 	
-	<select id="readUserInfoBySsn" parameterClass="Map" resultClass="int">
+	<select id="readUserInfoBySsn" parameterType="Map" resultType="int">
 		select count(ssn) 
 		from 
 			mail_domain a, mail_user b, mail_user_info c 
 		where
 			a.mail_domain_seq = b.mail_domain_seq
 			and b.mail_user_seq = c.mail_user_seq
-			and c.ssn=#ssn#
-			and a.mail_domain=#domain#
+			and c.ssn=#{ssn}
+			and a.mail_domain=#{domain}
 	</select>
 	
-	<select id="readUserInfoByEmpno" parameterClass="Map" resultClass="int">
+	<select id="readUserInfoByEmpno" parameterType="Map" resultType="int">
 		select count(empno) 
 		from 
 			mail_domain a, mail_user b, mail_user_info c 
 		where
 			a.mail_domain_seq = b.mail_domain_seq
 			and b.mail_user_seq = c.mail_user_seq
-			and c.empno=#empno#
-			and a.mail_domain=#domain#
+			and c.empno=#{empno}
+			and a.mail_domain=#{domain}
 	</select>
 	
-	<select id="readUserIdDupCheck" parameterClass="map" resultClass="int">
+	<select id="readUserIdDupCheck" parameterType="map" resultType="int">
 		select count(*) from mail_user m left outer join mail_user_alternate a
 		on m.mail_user_seq = a.mail_user_seq
-		where m.mail_domain_seq = #mailDomainSeq#
-		and (mail_uid = #userId# || alternate_uid = #userId#)
+		where m.mail_domain_seq = #{mailDomainSeq}
+		and (mail_uid = #{userId} || alternate_uid = #{userId})
 	</select>
 	
-	<select id="readUserSeq" parameterClass="map" resultClass="int">
-		select mail_user_seq from mail_user where mail_domain_seq=#mailDomainSeq# and mail_uid=#userId#
+	<select id="readUserSeq" parameterType="map" resultType="int">
+		select mail_user_seq from mail_user where mail_domain_seq=#{mailDomainSeq} and mail_uid=#{userId}
 	</select>
 	
-	<select id="readUserSeq2" parameterClass="map" resultClass="int">
+	<select id="readUserSeq2" parameterType="map" resultType="int">
 		select b.mail_user_seq 
 		from 
 			mail_domain a, mail_user b 
 		where
 			a.mail_domain_seq = b.mail_domain_seq
-			and a.mail_domain=#mailDomain#
-			and b.mail_uid=#userId#
+			and a.mail_domain=#{mailDomain}
+			and b.mail_uid=#{userId}
 	</select>
 	
-	<select id="searchUserId" parameterClass="map" resultClass="String">
+	<select id="searchUserId" parameterType="map" resultType="String">
 		select mail_uid from mail_user m, mail_user_info i where
 		m.mail_user_seq = i.mail_user_seq
-		and m.mail_domain_seq = #mailDomainSeq#
-		and i.user_name = #userName#
-		and i.ssn = #ssn#
+		and m.mail_domain_seq = #{mailDomainSeq}
+		and i.user_name = #{userName}
+		and i.ssn = #{ssn}
 	</select>
 	
-	<select id="searchUserIdByEmpno" parameterClass="map" resultClass="String">
+	<select id="searchUserIdByEmpno" parameterType="map" resultType="String">
 		select mail_uid from mail_user m, mail_user_info i where
 		m.mail_user_seq = i.mail_user_seq
-		and m.mail_domain_seq = #mailDomainSeq#
-		and i.user_name = #userName#
-		and i.empno = #empno#
+		and m.mail_domain_seq = #{mailDomainSeq}
+		and i.user_name = #{userName}
+		and i.empno = #{empno}
 	</select>
 	
-	<select id="searchUserIdByJpInfo" parameterClass="map" resultClass="String">
+	<select id="searchUserIdByJpInfo" parameterType="map" resultType="String">
 		select mail_uid from mail_user m, mail_user_info i 
 		where m.mail_user_seq = i.mail_user_seq
-		and m.mail_domain_seq = #mailDomainSeq#
-		and i.user_name = #userName#
-		and i.home_postal_code = #postalCode#
-		and i.birthday = #birthday#
+		and m.mail_domain_seq = #{mailDomainSeq}
+		and i.user_name = #{userName}
+		and i.home_postal_code = #{postalCode}
+		and i.birthday = #{birthday}
 	</select>
 
-	<select id="searchMailUser" parameterClass="map" resultMap="userListResult">
+	<select id="searchMailUser" parameterType="map" resultMap="userListResult">
 		select m.mail_uid, d.mail_domain, i.user_name, m.mail_domain_seq, m.mail_user_seq 
 		from mail_user m, mail_domain d, mail_user_info i 
 		where			
-			m.mail_domain_seq = #mailDomainSeq#
+			m.mail_domain_seq = #{mailDomainSeq}
 			and m.mail_domain_seq = d.mail_domain_seq
 			and m.mail_user_seq = i.mail_user_seq
 			and m.mail_uid not in ('tims_bbs_storage_user', 'tims_webfolder_storage_user')
 			and m.user_type not in ('aliasUser')	
 			<dynamic prepend="">
 				<isNotEmpty prepend="and" property="userId">
-					m.mail_uid like '%$userId$%'
+					m.mail_uid like '%${userId}%'
 				</isNotEmpty>
 				<isNotEmpty prepend="and" property="userName">
-					i.user_name like '%$userName$%'
+					i.user_name like '%${userName}%'
 				</isNotEmpty>
 			</dynamic>		
 	</select>
 	
-	<select id="searchMailUser2" parameterClass="map" resultMap="userListResult">
+	<select id="searchMailUser2" parameterType="map" resultMap="userListResult">
 		select m.mail_uid, d.mail_domain, i.user_name, m.mail_domain_seq, m.mail_user_seq 
 		from mail_user m, mail_domain d, mail_user_info i 		
 		where			
-			m.mail_domain_seq = #mailDomainSeq#
+			m.mail_domain_seq = #{mailDomainSeq}
 			and m.mail_domain_seq = d.mail_domain_seq
 			and m.mail_user_seq = i.mail_user_seq		
 			and m.user_type not in ('aliasUser')
 			<dynamic prepend="">
 				<isNotEmpty prepend="and" property="userId">
-					m.mail_uid = #userId#
+					m.mail_uid = #{userId}
 				</isNotEmpty>
 				<isNotEmpty prepend="and" property="userName">
-					i.user_name = #userName#
+					i.user_name = #{userName}
 				</isNotEmpty>
 			</dynamic>		
 	</select>
 	
-	<select id="searchPassword" parameterClass="map" resultClass="int">
+	<select id="searchPassword" parameterType="map" resultType="int">
 		select m.mail_user_seq from mail_user m, mail_user_info i
 		where m.mail_user_seq = i.mail_user_seq
-		and m.mail_domain_seq = #mailDomainSeq#
-		and m.mail_uid = #userId#
-		and i.pass_question_code = #passCode#
-		and i.pass_answer = #passAnswer#
+		and m.mail_domain_seq = #{mailDomainSeq}
+		and m.mail_uid = #{userId}
+		and i.pass_question_code = #{passCode}
+		and i.pass_answer = #{passAnswer}
 	</select>
 	
-	<update id="changeUserPassword" parameterClass="map">
+	<update id="changeUserPassword" parameterType="map">
 		update mail_user
 		<dynamic prepend="set ">
 			<isNotNull property="mailPassword" prepend=",">
-				mail_password = #mailPassword#
+				mail_password = #{mailPassword}
 			</isNotNull>
-			where mail_user_seq = #mailUserSeq#
+			where mail_user_seq = #{mailUserSeq}
 		</dynamic>
 	</update>
 	
-	<update id="changeUserAccount" parameterClass="map">
-		update mail_user set account_status = #status# where mail_user_seq = #mailUserSeq#
+	<update id="changeUserAccount" parameterType="map">
+		update mail_user set account_status = #{status} where mail_user_seq = #{mailUserSeq}
 	</update>
 	
-	<select id="readUserFolderAging" parameterClass="int" resultMap="agingMapResult">
+	<select id="readUserFolderAging" parameterType="int" resultMap="agingMapResult">
 		select folder_name, aging_day
-		from mail_userfolder_aging where	mail_user_seq = #value#		
+		from mail_userfolder_aging where	mail_user_seq = #{value}		
 	</select>
 	
-	<insert id="insertFolderAging" parameterClass="map">
+	<insert id="insertFolderAging" parameterType="map">
 		insert into mail_userfolder_aging (mail_user_seq, folder_name, aging_day)
-		values (#mailUserSeq#,#folderName#,#agingDay#)
+		values (#{mailUserSeq},#{folderName},#{agingDay})
 	</insert>
 	
-	<update id="changeFolderAging" parameterClass="map">
+	<update id="changeFolderAging" parameterType="map">
 		update mail_userfolder_aging set
-		aging_day = #agingDay#
-		where mail_user_seq = #mailUserSeq#	
-		and folder_name = #folderName#
+		aging_day = #{agingDay}
+		where mail_user_seq = #{mailUserSeq}	
+		and folder_name = #{folderName}
 	</update>
 	
-	<update id="changeFolderName" parameterClass="map">
+	<update id="changeFolderName" parameterType="map">
 		update mail_userfolder_aging set
-		folder_name = #changeFolderName#
-		where mail_user_seq = #mailUserSeq#	
-		and folder_name = #folderName#
+		folder_name = #{changeFolderName}
+		where mail_user_seq = #{mailUserSeq}	
+		and folder_name = #{folderName}
 	</update>
 	
-	<delete id="deleteFolderAging" parameterClass="map">
+	<delete id="deleteFolderAging" parameterType="map">
 		delete from mail_userfolder_aging		
-		where mail_user_seq = #mailUserSeq# 
-		and folder_name = #folderName#		
+		where mail_user_seq = #{mailUserSeq} 
+		and folder_name = #{folderName}		
 	</delete>
 	
-	<select id="readUserPassFailCount" parameterClass="int" resultClass="int">
+	<select id="readUserPassFailCount" parameterType="int" resultType="int">
 		select 
 			
 			case when wrong_pass_count is null then 0 else wrong_pass_count end as count
-		from mail_user_info where	mail_user_seq = #value#		
+		from mail_user_info where	mail_user_seq = #{value}		
 	</select>
 	
-	<update id="updateUserPassFailCount" parameterClass="map" >
+	<update id="updateUserPassFailCount" parameterType="map" >
 		update mail_user_info 
 			set 
-				wrong_pass_count=#count# 
+				wrong_pass_count=#{count} 
 			where 
-				mail_user_seq = #userSeq#
+				mail_user_seq = #{userSeq}
 	</update>
 	
-	<update id="updateLoginInfo" parameterClass="map" >
+	<update id="updateLoginInfo" parameterType="map" >
 		update mail_user_info 
 			set 
-				webmail_login_time=#loginInfo# 
+				webmail_login_time=#{loginInfo} 
 			where 
-				mail_user_seq = #userSeq#
+				mail_user_seq = #{userSeq}
 	</update>
 	
-	<select id="readUserIdByAlternate" parameterClass="map" resultClass="String">
+	<select id="readUserIdByAlternate" parameterType="map" resultType="String">
 		select m.mail_uid
 		from mail_user m, mail_user_alternate a, mail_domain d 
-		where a.alternate_uid = #uid# 
+		where a.alternate_uid = #{uid} 
 			and a.mail_user_seq = m.mail_user_seq
 			and m.mail_domain_seq = d.mail_domain_seq
-			and d.mail_domain =  #domain# 		
+			and d.mail_domain =  #{domain} 		
 	</select>
 	
-	<select id="readMassSend" parameterClass="int" resultClass="String">
-		select mass_send from mail_user_info where mail_user_seq = #mail_user_seq#
+	<select id="readMassSend" parameterType="int" resultType="String">
+		select mass_send from mail_user_info where mail_user_seq = #{mail_user_seq}
 	</select>
 	
-	<select id="readUserDN" parameterClass="int" resultClass="String">
-		select pki_dn from mail_user_info where mail_user_seq = #mail_user_seq#
+	<select id="readUserDN" parameterType="int" resultType="String">
+		select pki_dn from mail_user_info where mail_user_seq = #{mail_user_seq}
 	</select>
 	
-	<select id="readAccountDN" parameterClass="map" resultClass="String">
+	<select id="readAccountDN" parameterType="map" resultType="String">
 		select pki_dn 
 		from mail_user_info i, mail_user m, mail_domain d  
-		where m.mail_uid = #uid#
-			and d.mail_domain =  #domain# 
+		where m.mail_uid = #{uid}
+			and d.mail_domain =  #{domain} 
 			and i.mail_user_seq = m.mail_user_seq
 			and m.mail_domain_seq = d.mail_domain_seq			  
 	</select>
 	
-	<select id="getUserSetting" resultMap="groupConfigResult" parameterClass="Map">
+	<select id="getUserSetting" resultMap="groupConfigResult" parameterType="Map">
     	select
 			config_name, attr_value as config_value
 		from mail_config_file   
@@ -1763,7 +1763,7 @@
 			'sign_apply' as config_name ,sign_apply as config_value
 		from wcf_sign
 		where 
-			mail_user_seq =  #userSeq#
+			mail_user_seq =  #{userSeq}
 			
 		union all 
 			
@@ -1771,7 +1771,7 @@
 			'sign_location' as config_name ,sign_location as config_value
 		from wcf_sign
 		where 
-			mail_user_seq =  #userSeq#
+			mail_user_seq =  #{userSeq}
 			
 		union all
 		
@@ -1795,7 +1795,7 @@
 			config_name, config_value
   		from mail_domain_config    
  		where 
- 			mail_domain_seq =  #domainSeq# /**P*/   
+ 			mail_domain_seq =  #{domainSeq} /**P*/   
    			and (config_name = 'rcpt_mode' or config_name = 'send_check')   
    			
    		union all
@@ -1803,7 +1803,7 @@
    		select
 			'mass_send' as config_name , mass_send as config_value
   		from mail_user_info
- 		where mail_user_seq =  #userSeq#
+ 		where mail_user_seq =  #{userSeq}
  		
  		union all
  		
@@ -1824,7 +1824,7 @@
 			case when sum(FILE_SIZE) is null then 0 else sum(FILE_SIZE) end as config_value 
     	from MAIL_BIG_ATTACH
     	where 
-      		MAIL_USER_SEQ = #userSeq# AND ATTACH_FLAG != 'del'
+      		MAIL_USER_SEQ = #{userSeq} AND ATTACH_FLAG != 'del'
       		
       	union all
       	
@@ -1832,7 +1832,7 @@
       		'sign_apply' as config_name, 
       		sign_apply 
       	from 
-      		wcf_sign where mail_user_seq = #userSeq#
+      		wcf_sign where mail_user_seq = #{userSeq}
       		
       	union all
       	
@@ -1840,7 +1840,7 @@
       		'sign_location' as config_name, 
       		sign_location 
       	from 
-      		wcf_sign where mail_user_seq = #userSeq#
+      		wcf_sign where mail_user_seq = #{userSeq}
       		
       	union all
       	
@@ -1848,77 +1848,77 @@
       		'doc_template_use' as config_name, 
       		doc_template_use 
       	from 
-      		mail_domain_group where mail_domain_seq =  #domainSeq# and mail_group_seq =  #groupSeq# 
+      		mail_domain_group where mail_domain_seq =  #{domainSeq} and mail_group_seq =  #{groupSeq} 
 	</select>
-	<select id="readUserInfoByJpInfo" parameterClass="map" resultClass="int">
+	<select id="readUserInfoByJpInfo" parameterType="map" resultType="int">
 		select count(*) from mail_domain a, mail_user b, mail_user_info c 
 		where
 			a.mail_domain_seq = b.mail_domain_seq
-			and a.mail_domain = #domain#
+			and a.mail_domain = #{domain}
 			and b.mail_user_seq = c.mail_user_seq
-			and c.user_name = #name#
-			and c.home_postal_code = #postalCode#
-			and c.birthday = #birthday#
+			and c.user_name = #{name}
+			and c.home_postal_code = #{postalCode}
+			and c.birthday = #{birthday}
 	</select>
 	
-	<select id="readUserIdAndName" parameterClass="int" resultMap="searchUserResult">
+	<select id="readUserIdAndName" parameterType="int" resultMap="searchUserResult">
 		select * from mail_user u, mail_user_info i
-		where u.mail_user_seq = #mailUserSeq#
+		where u.mail_user_seq = #{mailUserSeq}
 		and u.mail_user_seq = i.mail_user_seq
 	</select>
 	
-	<select id="readUserInfoMobileNo" parameterClass="int" resultClass="String">
-		select mobile_no from mail_user_info where mail_user_seq = #mailUserSeq#
+	<select id="readUserInfoMobileNo" parameterType="int" resultType="String">
+		select mobile_no from mail_user_info where mail_user_seq = #{mailUserSeq}
 	</select>
 	
-	<select id="readMailUids" parameterClass="int" resultClass="String">
-		select mail_uid from mail_user where mail_domain_seq = #mailDomainSeq#
+	<select id="readMailUids" parameterType="int" resultType="String">
+		select mail_uid from mail_user where mail_domain_seq = #{mailDomainSeq}
 		and mail_uid not in ('tims_bbs_storage_user', 'tims_webfolder_storage_user', 'hamadm', 'spamadm')
 		and user_type != 'orgAdmin'
 		and user_type not in ('aliasUser')
 	</select>
 	
-	<select id="readRcptSearchOption" parameterClass="int" resultClass="String" cacheModel="searchRcptOption">
-		select config_value from mail_domain_config where mail_domain_seq = #mailDomainSeq# and config_name='search_rcpt'
+	<select id="readRcptSearchOption" parameterType="int" resultType="String" cacheModel="searchRcptOption">
+		select config_value from mail_domain_config where mail_domain_seq = #{mailDomainSeq} and config_name='search_rcpt'
 	</select>
 	
-	<select id="readMassSenderUser" parameterClass="int" resultClass="String">
-		select config_value from mail_domain_config where mail_domain_seq = #mailDomainSeq# and config_name='mass_sender_user'
+	<select id="readMassSenderUser" parameterType="int" resultType="String">
+		select config_value from mail_domain_config where mail_domain_seq = #{mailDomainSeq} and config_name='mass_sender_user'
 	</select>
 	
-	<select id="readFileUploadUser" parameterClass="int" resultClass="String">
-		select config_value from mail_domain_config where mail_domain_seq = #mailDomainSeq# and config_name='mass_file_upload_user'
+	<select id="readFileUploadUser" parameterType="int" resultType="String">
+		select config_value from mail_domain_config where mail_domain_seq = #{mailDomainSeq} and config_name='mass_file_upload_user'
 	</select>
 	
-	<select id="readMassUpload" parameterClass="int" resultClass="String">
-		select mass_upload from mail_user_info where mail_user_seq = #mail_user_seq#
+	<select id="readMassUpload" parameterType="int" resultType="String">
+		select mass_upload from mail_user_info where mail_user_seq = #{mail_user_seq}
 	</select>
 	
-	<select id="readNoteSaveCount" parameterClass="map" resultClass="int">
+	<select id="readNoteSaveCount" parameterType="map" resultType="int">
 		select ifnull(sum(note_save_count), 0) from (
-			select note_save_count from mail_domain_group where mail_domain_seq = #mailDomainSeq# and mail_group_seq = #mailGroupSeq#
+			select note_save_count from mail_domain_group where mail_domain_seq = #{mailDomainSeq} and mail_group_seq = #{mailGroupSeq}
 			union all
-			select note_save_count from mail_user_info where mail_user_seq = #mailUserSeq#
+			select note_save_count from mail_user_info where mail_user_seq = #{mailUserSeq}
 		)a
 	</select>
 	
-	<select id="readNoteSaveDate" parameterClass="map" resultClass="int">
+	<select id="readNoteSaveDate" parameterType="map" resultType="int">
 		select ifnull(sum(note_expire_days), 0) from (
-			select note_expire_days from mail_domain_group where mail_domain_seq = #mailDomainSeq# and mail_group_seq = #mailGroupSeq#
+			select note_expire_days from mail_domain_group where mail_domain_seq = #{mailDomainSeq} and mail_group_seq = #{mailGroupSeq}
 			union all
-			select note_expire_days from mail_user_info where mail_user_seq = #mailUserSeq#
+			select note_expire_days from mail_user_info where mail_user_seq = #{mailUserSeq}
 		)a
 	</select>
-	<select id="readMailUserConfig" parameterClass="map" resultClass="String">
-        select config_value from mail_user_config where mail_user_seq = #mailUserSeq# and config_name = #configName#
+	<select id="readMailUserConfig" parameterType="map" resultType="String">
+        select config_value from mail_user_config where mail_user_seq = #{mailUserSeq} and config_name = #{configName}
     </select>
-    <insert id="saveMailUserConfig" parameterClass="map">
+    <insert id="saveMailUserConfig" parameterType="map">
         insert into mail_user_config 
             (mail_user_seq, config_name, config_value) 
         values
-            (#mailUserSeq#, #configName#, #configValue#)
+            (#{mailUserSeq}, #{configName}, #{configValue})
     </insert>
-    <delete id="deleteMailUserConfig" parameterClass="map">
-        delete from mail_user_config where mail_user_seq = #mailUserSeq# and config_name = #configName#
+    <delete id="deleteMailUserConfig" parameterType="map">
+        delete from mail_user_config where mail_user_seq = #{mailUserSeq} and config_name = #{configName}
     </delete>
-</sqlMap>
+</mapper>

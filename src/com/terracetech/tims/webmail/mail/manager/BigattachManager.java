@@ -19,10 +19,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMessage;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailMessage;
-import com.terracetech.tims.webmail.common.advice.Transactional;
 import com.terracetech.tims.webmail.mail.dao.BigAttachDao;
 import com.terracetech.tims.webmail.mail.vo.MailBigAttachVO;
 import com.terracetech.tims.webmail.mailuser.User;
@@ -31,7 +34,7 @@ import com.terracetech.tims.webmail.webfolder.manager.WebFolderUtils;
 
 /**
  * <p><strong>BigattachManager.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

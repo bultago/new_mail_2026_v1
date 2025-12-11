@@ -2,58 +2,58 @@
 
 <!DOCTYPE sqlMap      
     PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
-    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<sqlMap namespace="Setting">
+<mapper namespace="com.terracetech.tims.webmail.Setting.mapper.SettingMapper">
   
-	<select id="readFilterSubcondList" parameterClass="map" resultMap="filterSubcondResult">
+	<select id="readFilterSubcondList" parameterType="map" resultMap="filterSubcondResult">
 		select 
 				subcond_seq, subcond_field, subcond_inorex, 
 				subcond_regex, subcond_pattern, create_time, modify_time 
 			from 
 				wcf_filter_subcond 
 			where 
-				mail_user_seq = #mail_user_seq# 
-				and cond_seq = #cond_seq#
+				mail_user_seq = #{mail_user_seq} 
+				and cond_seq = #{cond_seq}
 	</select>
 	
-	<select id="readFilterCondList" parameterClass="int" resultMap="filterCondResult">
+	<select id="readFilterCondList" parameterType="int" resultMap="filterCondResult">
 		select 
 				cond_seq, cond_name, cond_apply, cond_op, cond_policy 
 			from 
 				wcf_filter_cond 
 			where 
-				mail_user_seq = #mail_user_seq# and (cond_flag is null or cond_flag != 'hidden')
+				mail_user_seq = #{mail_user_seq} and (cond_flag is null or cond_flag != 'hidden')
 			order by cond_seq
 	</select>
 	
-	<select id="readMaxFilterCondSeq" parameterClass="int" resultClass="int">
+	<select id="readMaxFilterCondSeq" parameterType="int" resultType="int">
 		select 
 				max(cond_seq) 
 			from 
 				wcf_filter_cond 
 			where 
-				mail_user_seq = #mail_user_seq#
+				mail_user_seq = #{mail_user_seq}
 	</select>
 	
-	<select id="readFilter" parameterClass="int" resultMap="filterResult">
+	<select id="readFilter" parameterType="int" resultMap="filterResult">
 		select 
 				mail_user_seq, filter_apply 
 			from 
 				wcf_filter 
 			where 
-				mail_user_seq = #mail_user_seq#
+				mail_user_seq = #{mail_user_seq}
 	</select>
 
-	<insert id="saveFilterSubcond" parameterClass="filterSubcond" >
-		<selectKey resultClass="int" keyProperty="subcondSeq">
+	<insert id="saveFilterSubcond" parameterType="filterSubcond" >
+		<selectKey resultType="int" keyProperty="subcondSeq">
 			select 
 					case when max(subcond_seq) is null  then 1 else max(subcond_seq) + 1 end 
 				from 
 					wcf_filter_subcond 
 				where 
-					mail_user_seq = #userSeq# 
-					and cond_seq = #condSeq#
+					mail_user_seq = #{userSeq} 
+					and cond_seq = #{condSeq}
 		</selectKey>
 		insert 
 			into 
@@ -61,43 +61,43 @@
 				(mail_user_seq, cond_seq, subcond_seq, subcond_field, subcond_inorex, 
 				subcond_regex, subcond_pattern, create_time, modify_time)
 			values
-				(#userSeq#, #condSeq#, #subcondSeq#, #field#, 
-				#inorex#, #regex#, #pattern#, #createTime#, #modifyTime#)
+				(#{userSeq}, #{condSeq}, #{subcondSeq}, #{field}, 
+				#{inorex}, #{regex}, #{pattern}, #{createTime}, #{modifyTime})
 	</insert>
 	
-	<insert id="saveFilterCond" parameterClass="filterCond" >
-		<selectKey resultClass="int" keyProperty="condSeq">
+	<insert id="saveFilterCond" parameterType="filterCond" >
+		<selectKey resultType="int" keyProperty="condSeq">
 			select 
 					case when max(cond_seq) is null  then 1 else max(cond_seq) + 1 end 
 				from 
 					wcf_filter_cond 
 				where 
-					mail_user_seq = #userSeq#
+					mail_user_seq = #{userSeq}
 		</selectKey>
 		insert 
 			into 
 				wcf_filter_cond 
 				(mail_user_seq, cond_seq, cond_name, cond_apply, cond_op, cond_policy)
 			VALUES
-				 (#userSeq#, #condSeq#, #condName#, #condApply#, #condOp#, #condPolicy#)
+				 (#{userSeq}, #{condSeq}, #{condName}, #{condApply}, #{condOp}, #{condPolicy})
 	</insert>
 	
-	<insert id="saveFilter" parameterClass="filter" >
+	<insert id="saveFilter" parameterType="filter" >
 		insert 
 			into 
 				wcf_filter 
 				(mail_user_seq, filter_apply)
 			VALUES
-				 (#userSeq#, #apply#)
+				 (#{userSeq}, #{apply})
 	</insert>
 	
-	<delete id="deleteFilterSubcond" parameterClass="map">
+	<delete id="deleteFilterSubcond" parameterType="map">
 		delete 
 			from 
 				wcf_filter_subcond 
 			where 
-				mail_user_seq = #mail_user_seq# 
-				and cond_seq = #cond_seq#
+				mail_user_seq = #{mail_user_seq} 
+				and cond_seq = #{cond_seq}
 		<dynamic>
 			<isNotNull property="subcond_seq">
 				<iterate property="subcond_seq"
@@ -106,24 +106,24 @@
 					conjunction=","
 					close=")"
 				>
-					#subcond_seq[]#
+					#{subcond_seq[]}
 				</iterate>
 			</isNotNull>
 		</dynamic>
 	</delete>
 	
-	<delete id="deleteAllFilterSubcond" parameterClass="map">
+	<delete id="deleteAllFilterSubcond" parameterType="map">
 		delete 
 			from 
 				wcf_filter_subcond 
 			where 
-				mail_user_seq = #mail_user_seq# 
-				and cond_seq = #cond_seq#
+				mail_user_seq = #{mail_user_seq} 
+				and cond_seq = #{cond_seq}
 		
 	</delete>
 	
-	<delete id="deleteFilterCond" parameterClass="map">
-		delete from wcf_filter_cond where mail_user_seq = #mail_user_seq#
+	<delete id="deleteFilterCond" parameterType="map">
+		delete from wcf_filter_cond where mail_user_seq = #{mail_user_seq}
 		<dynamic>
 			<isNotNull property="cond_seq">
 				<iterate property="cond_seq"
@@ -132,153 +132,153 @@
 					conjunction=","
 					close=")"
 				>
-					#cond_seq[]#
+					#{cond_seq[]}
 				</iterate>
 			</isNotNull>
 		</dynamic>
 	</delete>
 	
-	<delete id="deleteFilter" parameterClass="int">
-		delete from wcf_filter where mail_user_seq = #mail_user_seq# 
+	<delete id="deleteFilter" parameterType="int">
+		delete from wcf_filter where mail_user_seq = #{mail_user_seq} 
 	</delete>
 	
-	<update id="modifyFilterSubcond" parameterClass="filterSubcond">
+	<update id="modifyFilterSubcond" parameterType="filterSubcond">
 		update wcf_filter_subcond
 			<dynamic prepend="set ">
 				<isNotNull property="field" prepend=",">
-					subcond_field = #field#
+					subcond_field = #{field}
 				</isNotNull>
 				<isNotNull property="inorex" prepend=",">
-					subcond_inorex = #inorex#
+					subcond_inorex = #{inorex}
 				</isNotNull>
 				<isNotNull property="regex" prepend=",">
-					subcond_regex = #regex#
+					subcond_regex = #{regex}
 				</isNotNull>
 				<isNotNull property="pattern" prepend=",">
-					subcond_pattern = #pattern#
+					subcond_pattern = #{pattern}
 				</isNotNull>
 				<isNotNull property="modifyTime" prepend=",">
-					modify_time = #modifyTime#
+					modify_time = #{modifyTime}
 				</isNotNull>
 			</dynamic> 
 			where 
-				mail_user_seq = #userSeq# 
-				and cond_seq = #condSeq# 
-				and subcond_seq = #subcondSeq#
+				mail_user_seq = #{userSeq} 
+				and cond_seq = #{condSeq} 
+				and subcond_seq = #{subcondSeq}
 	</update>
 	
-	<update id="modifyFilterCond" parameterClass="filterCond">
+	<update id="modifyFilterCond" parameterType="filterCond">
 		update wcf_filter_cond 
 			<dynamic prepend="set ">
 				<isNotNull property="condName" prepend=",">
-					cond_name = #condName#
+					cond_name = #{condName}
 				</isNotNull>
 				<isNotNull property="condApply" prepend=",">
-					cond_apply = #condApply#
+					cond_apply = #{condApply}
 				</isNotNull>
 				<isNotNull property="condOp" prepend=",">
-					cond_op = #condOp#
+					cond_op = #{condOp}
 				</isNotNull>
 				<isNotNull property="condPolicy" prepend=",">
-					cond_policy = #condPolicy#
+					cond_policy = #{condPolicy}
 				</isNotNull>
 			</dynamic> 
 			where 
-				mail_user_seq = #userSeq# 
-				and cond_seq = #condSeq#
+				mail_user_seq = #{userSeq} 
+				and cond_seq = #{condSeq}
 	</update>
 	
-	<update id="modifyFilter" parameterClass="filter">
-		update wcf_filter set filter_apply = #apply# where mail_user_seq = #userSeq#
+	<update id="modifyFilter" parameterType="filter">
+		update wcf_filter set filter_apply = #{apply} where mail_user_seq = #{userSeq}
 	</update>
 	
-	<select id="readUserInfoEtc" parameterClass="int" resultMap="userEtcInfoResult" cacheModel="etcInfoCache">
-		select * from wcf_userinfoetc where mail_user_seq = #mail_user_seq#
+	<select id="readUserInfoEtc" parameterType="int" resultMap="userEtcInfoResult" cacheModel="etcInfoCache">
+		select * from wcf_userinfoetc where mail_user_seq = #{mail_user_seq}
 	</select>
 	
-	<update id="modifyUserInfoEtc" parameterClass="userEtcInfo">
+	<update id="modifyUserInfoEtc" parameterType="userEtcInfo">
 		update wcf_userinfoetc
 			<dynamic prepend="set ">
 				<isGreaterEqual property="pageLineCnt" compareValue="0" prepend=",">
-					page_line_cnt = #pageLineCnt#
+					page_line_cnt = #{pageLineCnt}
 				</isGreaterEqual>
 				<isNotNull property="senderName" prepend=",">
-					sender_name = #senderName#
+					sender_name = #{senderName}
 				</isNotNull>
 				<isNotNull property="saveSendBox" prepend=",">
-					save_send_box = #saveSendBox#
+					save_send_box = #{saveSendBox}
 				</isNotNull>
 				<isNotNull property="receiveNoti" prepend=",">
-					receive_noti = #receiveNoti#
+					receive_noti = #{receiveNoti}
 				</isNotNull>
 				<isNotNull property="vcardAttach" prepend=",">
-					vcard_attach = #vcardAttach#
+					vcard_attach = #{vcardAttach}
 				</isNotNull>
 				<isNotNull property="userLocale" prepend=",">
-					user_locale = #userLocale#
+					user_locale = #{userLocale}
 				</isNotNull>
 				<isNotNull property="writeMode" prepend=",">
-					write_mode = #writeMode#
+					write_mode = #{writeMode}
 				</isNotNull>
 				<isNotNull property="charSet" prepend=",">
-					char_set = #charSet#
+					char_set = #{charSet}
 				</isNotNull>
 				<isNotNull property="hiddenImg" prepend=",">
-					hidden_img = #hiddenImg#
+					hidden_img = #{hiddenImg}
 				</isNotNull>
 				<isNotNull property="signAttach" prepend=",">
-					sign_attach = #signAttach#
+					sign_attach = #{signAttach}
 				</isNotNull>
 				<isNotNull property="afterLogin" prepend=",">
-					after_login = #afterLogin#
+					after_login = #{afterLogin}
 				</isNotNull>
 				<isNotNull property="hiddenTag" prepend=",">
-					hidden_tag = #hiddenTag#
+					hidden_tag = #{hiddenTag}
 				</isNotNull>				
 				<isNotEqual property="notiInterval" compareValue="-1" prepend=",">
-					noti_interval = #notiInterval#
+					noti_interval = #{notiInterval}
 				</isNotEqual>
 				<isNotNull property="userSkin" prepend=",">
-					user_skin = #userSkin#
+					user_skin = #{userSkin}
 				</isNotNull>
 				<isNotNull property="forwardingMode" prepend=",">
-					forwarding_mode = #forwardingMode#
+					forwarding_mode = #{forwardingMode}
 				</isNotNull>
 				<isNotNull property="senderEmail" prepend=",">
-					sender_email = #senderEmail#
+					sender_email = #{senderEmail}
 				</isNotNull>
 				<isNotNull property="autoSaveId" prepend=",">
-					auto_save_id = #autoSaveId#
+					auto_save_id = #{autoSaveId}
 				</isNotNull>
 				<isNotNull property="autoSaveMode" prepend=",">
-					auto_save_mode = #autoSaveMode#
+					auto_save_mode = #{autoSaveMode}
 				</isNotNull>
 				<isNotNull property="encSenderName" prepend=",">
-					enc_sender_name = #encSenderName#
+					enc_sender_name = #{encSenderName}
 				</isNotNull>
 				<isNotNull property="searchAllFolder" prepend=",">
-					search_all_folder = #searchAllFolder#
+					search_all_folder = #{searchAllFolder}
 				</isNotNull>
 				<isNotNull property="composeMode" prepend=",">
-					compose_mode = #composeMode#
+					compose_mode = #{composeMode}
 				</isNotNull>
 				<isNotNull property="writeNoti" prepend=",">
-					write_noti = #writeNoti#
+					write_noti = #{writeNoti}
 				</isNotNull>
 				<isNotNull property="activeXUse" prepend=",">
-					activex_use = #activeXUse#
+					activex_use = #{activeXUse}
 				</isNotNull>
 				<isNotNull property="renderMode" prepend=",">
-					render_mode = #renderMode#
+					render_mode = #{renderMode}
 				</isNotNull>
 			</dynamic> 
 			where
-				mail_user_seq = #userSeq#
+				mail_user_seq = #{userSeq}
 	</update>
-	<update id="initAutoSaveID" parameterClass="int">
-		update wcf_userinfoetc set auto_save_id = '' where mail_user_seq = #value#
+	<update id="initAutoSaveID" parameterType="int">
+		update wcf_userinfoetc set auto_save_id = '' where mail_user_seq = #{value}
 	</update>
-	<insert id="saveUserInfoEtc" parameterClass="userEtcInfo">
+	<insert id="saveUserInfoEtc" parameterType="userEtcInfo">
 		insert 
 			into wcf_userinfoetc (
 				mail_user_seq, page_line_cnt, sender_name, 
@@ -290,88 +290,88 @@
 			 	auto_save_mode, auto_save_term, enc_sender_name, 
 			 	search_all_folder,compose_mode,write_noti,activex_use,render_mode)
 			values (
-				#userSeq#,  #pageLineCnt#, #senderName#,
-				#saveSendBox#, #receiveNoti#, #vcardAttach#, 
-				#userLocale#, #writeMode#, #charSet#, 
-				#hiddenImg#, #signAttach#, #afterLogin#, 
-				#hiddenTag#, #notiInterval#, #userSkin#, 
-				#forwardingMode#, #senderEmail#, #autoSaveId#, 
-				#autoSaveMode#, #autoSaveTerm#, #encSenderName#, 
-				#searchAllFolder#,#composeMode#,#writeNoti#,#activeXUse#,#renderMode#)
+				#{userSeq},  #{pageLineCnt}, #{senderName},
+				#{saveSendBox}, #{receiveNoti}, #{vcardAttach}, 
+				#{userLocale}, #{writeMode}, #{charSet}, 
+				#{hiddenImg}, #{signAttach}, #{afterLogin}, 
+				#{hiddenTag}, #{notiInterval}, #{userSkin}, 
+				#{forwardingMode}, #{senderEmail}, #{autoSaveId}, 
+				#{autoSaveMode}, #{autoSaveTerm}, #{encSenderName}, 
+				#{searchAllFolder},#{composeMode},#{writeNoti},#{activeXUse},#{renderMode})
 	</insert>
 	
-	<delete id="deleteUserInfoEtc" parameterClass="int">
-		delete from wcf_userinfoetc where mail_user_seq = #mail_user_seq#
+	<delete id="deleteUserInfoEtc" parameterType="int">
+		delete from wcf_userinfoetc where mail_user_seq = #{mail_user_seq}
 	</delete>
 	
-	<insert id="savePSpamRule" parameterClass="pSpamRule">
+	<insert id="savePSpamRule" parameterType="pSpamRule">
 		insert 
 			into wcf_pspam
 				(mail_user_seq, apply_allowedlist_only, addrbook_type, 
 				apply_whitelist, apply_blacklist, apply_pbaysian, 
 				apply_rulelevel, pspam_rulelevel, pspam_policy)
 			values
-				(#userSeq#, #applyAllowedlistOnly#, 'general_addrbook', 
-				#applyWhitelist#, #applyBlacklist#, #applyPbaysian#, 
-				#applyRuleLevel#, #pspamRuleLevel#, #pspamPolicy#)
+				(#{userSeq}, #{applyAllowedlistOnly}, 'general_addrbook', 
+				#{applyWhitelist}, #{applyBlacklist}, #{applyPbaysian}, 
+				#{applyRuleLevel}, #{pspamRuleLevel}, #{pspamPolicy})
 	</insert>
 	
-	<select id="readPSpamRule" parameterClass="int" resultMap="pSpamRuleResult">
-		select * from wcf_pspam where mail_user_seq = #mail_user_seq#
+	<select id="readPSpamRule" parameterType="int" resultMap="pSpamRuleResult">
+		select * from wcf_pspam where mail_user_seq = #{mail_user_seq}
 	</select>
 	
-	<update id="modifyPSpamRule" parameterClass="pSpamRule">
+	<update id="modifyPSpamRule" parameterType="pSpamRule">
 		update wcf_pspam
 			<dynamic prepend="set ">
 				<isNotNull property="applyAllowedlistOnly" prepend=",">
-					apply_allowedlist_only = #applyAllowedlistOnly#
+					apply_allowedlist_only = #{applyAllowedlistOnly}
 				</isNotNull>
 				<isNotNull property="applyWhitelist" prepend=",">
-					apply_whitelist = #applyWhitelist#
+					apply_whitelist = #{applyWhitelist}
 				</isNotNull>
 				<isNotNull property="applyBlacklist" prepend=",">
-					apply_blacklist = #applyBlacklist#
+					apply_blacklist = #{applyBlacklist}
 				</isNotNull>
 				<isNotNull property="applyPbaysian" prepend=",">
-					apply_pbaysian = #applyPbaysian#
+					apply_pbaysian = #{applyPbaysian}
 				</isNotNull>
 				<isNotNull property="applyRuleLevel" prepend=",">
-					apply_rulelevel = #applyRuleLevel#
+					apply_rulelevel = #{applyRuleLevel}
 				</isNotNull>
 				<isNotNull property="pspamRuleLevel" prepend=",">
-					pspam_rulelevel = #pspamRuleLevel#
+					pspam_rulelevel = #{pspamRuleLevel}
 				</isNotNull>
 				<isNotNull property="pspamPolicy" prepend=",">
-					pspam_policy = #pspamPolicy#
+					pspam_policy = #{pspamPolicy}
 				</isNotNull>
 			</dynamic> 
 			where
-				mail_user_seq = #userSeq#
+				mail_user_seq = #{userSeq}
 	</update>
 	
-	<delete id="deletePSpamRule" parameterClass="int">
-		delete from wcf_pspam where mail_user_seq = #userSeq#
+	<delete id="deletePSpamRule" parameterType="int">
+		delete from wcf_pspam where mail_user_seq = #{userSeq}
 	</delete>
 	
-	<select id="readPSpamWhiteList" parameterClass="int" resultMap="pSpamWhiteListResult">
-		select mail_user_seq, white_email, mod_time from wcf_pspam_white where mail_user_seq = #userSeq#
+	<select id="readPSpamWhiteList" parameterType="int" resultMap="pSpamWhiteListResult">
+		select mail_user_seq, white_email, mod_time from wcf_pspam_white where mail_user_seq = #{userSeq}
 	</select>
 	
-	<insert id="savePSpameWhite" parameterClass="pSpamItem" >
+	<insert id="savePSpameWhite" parameterType="pSpamItem" >
 		insert 
 			into wcf_pspam_white
 				(mail_user_seq, white_email, mod_time)
 			values
-				(#userSeq#, #email#, #modTime#)
+				(#{userSeq}, #{email}, #{modTime})
 	</insert>
 	
-	<delete id="deletePSpamWhiteList" parameterClass="int">
-		delete from wcf_pspam_white where mail_user_seq = #userSeq#
+	<delete id="deletePSpamWhiteList" parameterType="int">
+		delete from wcf_pspam_white where mail_user_seq = #{userSeq}
 	</delete>
 	
-	<delete id="deletePSpamWhiteList2" parameterClass="Map">
+	<delete id="deletePSpamWhiteList2" parameterType="Map">
 		delete from wcf_pspam_white 
-		where mail_user_seq = #userSeq#
+		where mail_user_seq = #{userSeq}
 		<dynamic>
 			<isNotNull property="emails">
 				<iterate property="emails"
@@ -380,31 +380,31 @@
 					conjunction=","
 					close=")"
 				>
-					#emails[]#
+					#{emails[]}
 				</iterate>
 			</isNotNull>
 		</dynamic>
 	</delete>
 	
-	<select id="readPSpamBlackList" parameterClass="int" resultMap="pSpamBlackListResult">
-		select mail_user_seq, black_email, mod_time from wcf_pspam_black where mail_user_seq = #userSeq#
+	<select id="readPSpamBlackList" parameterType="int" resultMap="pSpamBlackListResult">
+		select mail_user_seq, black_email, mod_time from wcf_pspam_black where mail_user_seq = #{userSeq}
 	</select>
 	
-	<insert id="savePSpameBlack" parameterClass="pSpamItem" >
+	<insert id="savePSpameBlack" parameterType="pSpamItem" >
 		insert 
 			into wcf_pspam_black
 				(mail_user_seq, black_email, mod_time)
 			values
-				(#userSeq#, #email#, #modTime#)
+				(#{userSeq}, #{email}, #{modTime})
 	</insert>
 	
-	<delete id="deletePSpamBlackList" parameterClass="int">
-		delete from wcf_pspam_black where mail_user_seq = #userSeq#
+	<delete id="deletePSpamBlackList" parameterType="int">
+		delete from wcf_pspam_black where mail_user_seq = #{userSeq}
 	</delete>
 	
-	<delete id="deletePSpamBlackList2" parameterClass="Map">
+	<delete id="deletePSpamBlackList2" parameterType="Map">
 		delete from wcf_pspam_black 
-		where mail_user_seq = #userSeq#
+		where mail_user_seq = #{userSeq}
 		<dynamic>
 			<isNotNull property="emails">
 				<iterate property="emails"
@@ -413,384 +413,384 @@
 					conjunction=","
 					close=")"
 				>
-					#emails[]#
+					#{emails[]}
 				</iterate>
 			</isNotNull>
 		</dynamic>
 	</delete>
 	
-	<select id="readForwardAddressList" parameterClass="int" resultClass="String">
-		select forwarding_address from mail_user_forwarding where mail_user_seq = #userSeq#
+	<select id="readForwardAddressList" parameterType="int" resultType="String">
+		select forwarding_address from mail_user_forwarding where mail_user_seq = #{userSeq}
 	</select>
 	
-	<select id="readForwardMode" parameterClass="int" resultClass="String">
-		select forwarding_mode from mail_user where mail_user_seq = #userSeq#
+	<select id="readForwardMode" parameterType="int" resultType="String">
+		select forwarding_mode from mail_user where mail_user_seq = #{userSeq}
 	</select>
 	
-	<update id="modifyForwardMode" parameterClass="forwardingInfo">
+	<update id="modifyForwardMode" parameterType="forwardingInfo">
 		update mail_user
 			set
-				forwarding_mode = #forwardingMode#
+				forwarding_mode = #{forwardingMode}
 			where 
-				mail_user_seq = #userSeq#
+				mail_user_seq = #{userSeq}
 	</update>
 	
-	<insert id="saveForwardAddress" parameterClass="map">
+	<insert id="saveForwardAddress" parameterType="map">
 		insert 
 			into mail_user_forwarding
 				(mail_user_seq, forwarding_address)
 			values
-				(#userSeq#, #forwardingAddress#)
+				(#{userSeq}, #{forwardingAddress})
 	</insert>
 	
-	<delete id="deleteForwardAddressList" parameterClass="int">
-		delete from mail_user_forwarding where mail_user_seq = #userSeq#
+	<delete id="deleteForwardAddressList" parameterType="int">
+		delete from mail_user_forwarding where mail_user_seq = #{userSeq}
 	</delete>
 	
 		
-	<select id="readAutoReply" parameterClass="int" resultMap="autoReplyResult">
-		select * from mail_user where mail_user_seq = #userSeq#
+	<select id="readAutoReply" parameterType="int" resultMap="autoReplyResult">
+		select * from mail_user where mail_user_seq = #{userSeq}
 	</select>
 	
-	<select id="readAutoReplyWhiteList" parameterClass="int" resultMap="autoReplyWhiteListResult">
-		select * from mail_user_autoreply_white where mail_user_seq = #userSeq#
+	<select id="readAutoReplyWhiteList" parameterType="int" resultMap="autoReplyWhiteListResult">
+		select * from mail_user_autoreply_white where mail_user_seq = #{userSeq}
 	</select>
 	
-	<update id="modifyAutoReply" parameterClass="autoReply">
+	<update id="modifyAutoReply" parameterType="autoReply">
 		update mail_user
 		<dynamic prepend="set ">
 			<isNotNull property="autoReplyMode" prepend=",">
-					auto_reply_mode = #autoReplyMode#
+					auto_reply_mode = #{autoReplyMode}
 			</isNotNull>
 			<isNotNull property="autoReplyInclude" prepend=",">
-					auto_reply_include = #autoReplyInclude#
+					auto_reply_include = #{autoReplyInclude}
 			</isNotNull>
 			<isNotNull property="autoReplyStartTime" prepend=",">
-					auto_reply_start_time = #autoReplyStartTime#
+					auto_reply_start_time = #{autoReplyStartTime}
 			</isNotNull>
 			<isNotNull property="autoReplyEndTime" prepend=",">
-					auto_reply_end_time = #autoReplyEndTime#
+					auto_reply_end_time = #{autoReplyEndTime}
 			</isNotNull>
 			<isNotNull property="autoReplyText" prepend=",">
-					auto_reply_text = #autoReplyText#
+					auto_reply_text = #{autoReplyText}
 			</isNotNull>
 			<isNotNull property="autoReplySubject" prepend=",">
-					auto_reply_subject = #autoReplySubject#
+					auto_reply_subject = #{autoReplySubject}
 			</isNotNull>
 		</dynamic>
-		where mail_user_seq = #userSeq#
+		where mail_user_seq = #{userSeq}
 	</update>
 	
-	<delete id="deleteAutoReplyWhiteList" parameterClass="int">
-		delete from mail_user_autoreply_white where mail_user_seq = #userSeq#
+	<delete id="deleteAutoReplyWhiteList" parameterType="int">
+		delete from mail_user_autoreply_white where mail_user_seq = #{userSeq}
 	</delete>
 	
-	<insert id="saveAutoReplyWhiteList" parameterClass="autoReplyList">
+	<insert id="saveAutoReplyWhiteList" parameterType="autoReplyList">
 		insert into mail_user_autoreply_white
 		(mail_user_seq, autoreply_white_address)
 		values
-		(#userSeq#, #replyAddress#)
+		(#{userSeq}, #{replyAddress})
 	</insert>
 	
-	<insert id="savePop3" parameterClass="pop3">
+	<insert id="savePop3" parameterType="pop3">
 		insert into wcf_pop3
         (mail_user_seq, pop3_host, pop3_port, pop3_id, pop3_passwd, pop3_boxname, pop3_del, used_ssl)
         values
-        (#userSeq#, #pop3Host#, #pop3Port#, #pop3Id#, #pop3Passwd#, #pop3Boxname#, #pop3Del#, #usedSsl#)
+        (#{userSeq}, #{pop3Host}, #{pop3Port}, #{pop3Id}, #{pop3Passwd}, #{pop3Boxname}, #{pop3Del}, #{usedSsl})
 	</insert>
 	
-	<select id="readPop3List" parameterClass="int" resultMap="pop3Result">
-		select * from wcf_pop3 where mail_user_seq = #userSeq#
+	<select id="readPop3List" parameterType="int" resultMap="pop3Result">
+		select * from wcf_pop3 where mail_user_seq = #{userSeq}
 	</select>
 	
-	<select id="readPop3" parameterClass="map" resultMap="pop3Result">
-		select * from wcf_pop3 where mail_user_seq = #userSeq# and pop3_host = #pop3Host# and pop3_id = #pop3Id#
+	<select id="readPop3" parameterType="map" resultMap="pop3Result">
+		select * from wcf_pop3 where mail_user_seq = #{userSeq} and pop3_host = #{pop3Host} and pop3_id = #{pop3Id}
 	</select>
 	
-	<delete id="deletePop3" parameterClass="map">
-		delete from wcf_pop3 where mail_user_seq = #userSeq# and pop3_host = #pop3Host# and pop3_id = #pop3Id#
+	<delete id="deletePop3" parameterType="map">
+		delete from wcf_pop3 where mail_user_seq = #{userSeq} and pop3_host = #{pop3Host} and pop3_id = #{pop3Id}
 	</delete>
 	
-	<update id="modifyPop3" parameterClass="pop3">
+	<update id="modifyPop3" parameterType="pop3">
 		update wcf_pop3 
 		<dynamic prepend="set ">
 			<isNotNull property="pop3Port" prepend=",">
-					pop3_port = #pop3Port#
+					pop3_port = #{pop3Port}
 			</isNotNull>
 			<isNotNull property="pop3Passwd" prepend=",">
-					pop3_passwd = #pop3Passwd#
+					pop3_passwd = #{pop3Passwd}
 			</isNotNull>
 			<isNotNull property="pop3Boxname" prepend=",">
-					pop3_boxname = #pop3Boxname#
+					pop3_boxname = #{pop3Boxname}
 			</isNotNull>
 			<isNotNull property="pop3Del" prepend=",">
-					pop3_del = #pop3Del#
+					pop3_del = #{pop3Del}
 			</isNotNull>
 			<isNotNull property="usedSsl" prepend=",">
-                    used_ssl = #usedSsl#
+                    used_ssl = #{usedSsl}
             </isNotNull>
 		</dynamic>
-		where mail_user_seq = #userSeq# and pop3_host = #pop3Host# and pop3_id = #pop3Id#		
+		where mail_user_seq = #{userSeq} and pop3_host = #{pop3Host} and pop3_id = #{pop3Id}		
 	</update>
 	
-	<update id="modifyPop3Msgname" parameterClass="map">
-		update wcf_pop3 set pop3_msgname = #pop3Msgname#
-		where mail_user_seq = #userSeq# and pop3_host = #pop3Host# and pop3_id = #pop3Id#
+	<update id="modifyPop3Msgname" parameterType="map">
+		update wcf_pop3 set pop3_msgname = #{pop3Msgname}
+		where mail_user_seq = #{userSeq} and pop3_host = #{pop3Host} and pop3_id = #{pop3Id}
 	</update>
 	
-	<select id="readZipcode" parameterClass="String" resultMap="zipcodeResult" cacheModel="zipCache">
-		select * from zipcode where dong like #dong#
+	<select id="readZipcode" parameterType="String" resultMap="zipcodeResult" cacheModel="zipCache">
+		select * from zipcode where dong like #{dong}
 	</select>
 	
-	<select id="readZipcodeCount" parameterClass="String" resultClass="int">
-		select count(*) from zipcode where dong like #dong#
+	<select id="readZipcodeCount" parameterType="String" resultType="int">
+		select count(*) from zipcode where dong like #{dong}
 	</select>
 	
-	<select id="readUserInfo" parameterClass="int" resultMap="userInfoResult">
+	<select id="readUserInfo" parameterType="int" resultMap="userInfoResult">
 		select * from mail_user m, mail_user_info i
 		where m.mail_user_seq = i.mail_user_seq
-		and m.mail_user_seq = #mailUserSeq#
+		and m.mail_user_seq = #{mailUserSeq}
 	</select>
 	
-	<update id="modifyUserInfo" parameterClass="settingUserInfo">
+	<update id="modifyUserInfo" parameterType="settingUserInfo">
 		update mail_user_info 
 		<dynamic prepend="set ">
 			<isPropertyAvailable property="firstName" prepend=",">
-					first_name = #firstName#
+					first_name = #{firstName}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="middleName" prepend=",">
-					middle_name = #middleName#
+					middle_name = #{middleName}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="lastName" prepend=",">
-					last_name = #lastName#
+					last_name = #{lastName}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="userName" prepend=",">
-					user_name = #userName#
+					user_name = #{userName}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="mobileNo" prepend=",">
-					mobile_no = #mobileNo#
+					mobile_no = #{mobileNo}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="passChgTime" prepend=",">
-					pass_chg_time = #passChgTime#
+					pass_chg_time = #{passChgTime}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="passQuestionCode" prepend=",">
-					pass_question_code = #passQuestionCode#
+					pass_question_code = #{passQuestionCode}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="passAnswer" prepend=",">
-					pass_answer = #passAnswer#
+					pass_answer = #{passAnswer}
 			</isPropertyAvailable>
 			
 			<isPropertyAvailable property="birthday" prepend=",">
-					birthday = #birthday#
+					birthday = #{birthday}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="homePostalCode" prepend=",">
-					home_postal_code = #homePostalCode#
+					home_postal_code = #{homePostalCode}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="homeCountry" prepend=",">
-					home_country = #homeCountry#
+					home_country = #{homeCountry}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="homeState" prepend=",">
-					home_state = #homeState#
+					home_state = #{homeState}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="homeCity" prepend=",">
-					home_city = #homeCity#
+					home_city = #{homeCity}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="homeStreet" prepend=",">
-					home_street = #homeStreet#
+					home_street = #{homeStreet}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="homeBasicAddress" prepend=",">
-					home_basic_address = #homeBasicAddress#
+					home_basic_address = #{homeBasicAddress}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="homeExtAddress" prepend=",">
-					home_ext_address = #homeExtAddress#
+					home_ext_address = #{homeExtAddress}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="homeTel" prepend=",">
-					home_tel = #homeTel#
+					home_tel = #{homeTel}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="homeFax" prepend=",">
-					home_fax = #homeFax#
+					home_fax = #{homeFax}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="privateHomepage" prepend=",">
-					private_homepage = #privateHomepage#
+					private_homepage = #{privateHomepage}
 			</isPropertyAvailable>
 			
 			<isPropertyAvailable property="companyName" prepend=",">
-					company_name = #companyName#
+					company_name = #{companyName}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="departmentName" prepend=",">
-					department_name = #departmentName#
+					department_name = #{departmentName}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="classCode" prepend=",">
-					class_code = #classCode#
+					class_code = #{classCode}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="officePostalCode" prepend=",">
-					office_postal_code = #officePostalCode#
+					office_postal_code = #{officePostalCode}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="officeCountry" prepend=",">
-					office_country = #officeCountry#
+					office_country = #{officeCountry}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="officeState" prepend=",">
-					office_state = #officeState#
+					office_state = #{officeState}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="officeCity" prepend=",">
-					office_city = #officeCity#
+					office_city = #{officeCity}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="officeStreet" prepend=",">
-					office_street = #officeStreet#
+					office_street = #{officeStreet}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="officeBasicAddress" prepend=",">
-					office_basic_address = #officeBasicAddress#
+					office_basic_address = #{officeBasicAddress}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="officeExtAddress" prepend=",">
-					office_ext_address = #officeExtAddress#
+					office_ext_address = #{officeExtAddress}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="officeTel" prepend=",">
-					office_tel = #officeTel#
+					office_tel = #{officeTel}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="officeFax" prepend=",">
-					office_fax = #officeFax#
+					office_fax = #{officeFax}
 			</isPropertyAvailable>
 			<isPropertyAvailable property="officeHomepage" prepend=",">
-					office_homepage = #officeHomepage#
+					office_homepage = #{officeHomepage}
 			</isPropertyAvailable>
 		</dynamic>
-		where mail_user_seq = #mailUserSeq#		
+		where mail_user_seq = #{mailUserSeq}		
 	</update>
 	
-	<update id="modifyMyPassword" parameterClass="map">
-		update mail_user set mail_password = #password# where mail_user_seq = #mailUserSeq#	
+	<update id="modifyMyPassword" parameterType="map">
+		update mail_user set mail_password = #{password} where mail_user_seq = #{mailUserSeq}	
 	</update>
 	
-	<update id="modifyMyPasswordChangeTime" parameterClass="map">
-		update mail_user_info set last_pass_modify_time = #currentTime# where mail_user_seq = #mailUserSeq#	
+	<update id="modifyMyPasswordChangeTime" parameterType="map">
+		update mail_user_info set last_pass_modify_time = #{currentTime} where mail_user_seq = #{mailUserSeq}	
 	</update>
 	
-	<update id="modifyAutoSaveTerm" parameterClass="map">
-		update wcf_userinfoetc set  auto_save_mode = #autoSaveMode#, auto_save_term = #autoSaveTerm#  
-		where mail_user_seq = #mailUserSeq#	
+	<update id="modifyAutoSaveTerm" parameterType="map">
+		update wcf_userinfoetc set  auto_save_mode = #{autoSaveMode}, auto_save_term = #{autoSaveTerm}  
+		where mail_user_seq = #{mailUserSeq}	
 	</update>
 	
-	<select id="readAttachInfo" resultClass="String" parameterClass="String">
+	<select id="readAttachInfo" resultType="String" parameterType="String">
 		select config_value from MAIL_CONFIG 
-		where config_name = #value# 
+		where config_name = #{value} 
 	</select>
 	
-	<select id="readUserEtcInfo" parameterClass="int" resultClass="HashMap">
+	<select id="readUserEtcInfo" parameterType="int" resultType="HashMap">
 		SELECT 
 			*
 		FROM 
 			wcf_userinfoetc e
 		WHERE 
-			e.mail_user_seq = #value# 
+			e.mail_user_seq = #{value} 
 	</select>
 	
-	<update id="modifyMailHome" parameterClass="map">
-		update wcf_userinfoetc set  after_login = #home#  
-		where mail_user_seq = #mailUserSeq#	
+	<update id="modifyMailHome" parameterType="map">
+		update wcf_userinfoetc set  after_login = #{home}  
+		where mail_user_seq = #{mailUserSeq}	
 	</update>
 	
-	<select id="readUserPhoto" resultMap="photoResult" parameterClass="int">
+	<select id="readUserPhoto" resultMap="photoResult" parameterType="int">
     	select 
     		mail_user_seq, user_photo
     	from mail_user_photo
-    	where mail_user_seq = #value#
+    	where mail_user_seq = #{value}
 	</select>
 	
-	<insert id="saveUserPhoto" parameterClass="photo" >
+	<insert id="saveUserPhoto" parameterType="photo" >
 		insert into mail_user_photo (mail_user_seq, user_photo)
-    	values (#mailUserSeq#, #userPhoto#)
+    	values (#{mailUserSeq}, #{userPhoto})
 	</insert>
 	
-	<update id="modifyUserPhoto" parameterClass="photo">
+	<update id="modifyUserPhoto" parameterType="photo">
     	update mail_user_photo 
-    		set user_photo = #userPhoto#
-    	where mail_user_seq = #mailUserSeq#
+    		set user_photo = #{userPhoto}
+    	where mail_user_seq = #{mailUserSeq}
 	</update>
 	
-	<delete id="deleteUserPhoto" parameterClass="int" >
+	<delete id="deleteUserPhoto" parameterType="int" >
 		delete from mail_user_photo
-		where mail_user_seq = #value#
+		where mail_user_seq = #{value}
 	</delete>
 	
-	<update id="modifyUserDN" parameterClass="map">
+	<update id="modifyUserDN" parameterType="map">
     	update mail_user_info 
-    		set pki_dn = #userDN#
-    	where mail_user_seq = #mailUserSeq#
+    		set pki_dn = #{userDN}
+    	where mail_user_seq = #{mailUserSeq}
 	</update>
 	
-	<delete id="deleteDefineForwardingAddress" parameterClass="int" >
+	<delete id="deleteDefineForwardingAddress" parameterType="int" >
 		delete from mail_user_define_forwarding
-		where define_forwarding_seq = #value#			
+		where define_forwarding_seq = #{value}			
 	</delete>
 	
-	<select id="selectDefineForwardSeq" resultClass="int">
+	<select id="selectDefineForwardSeq" resultType="int">
     	select case when max(define_forwarding_seq) is null then 1 else max(define_forwarding_seq)+1 end
 			from mail_user_define_forwarding
 	</select>
 	
-	<insert id="saveDefineForwardingAddress" parameterClass="map" >		
+	<insert id="saveDefineForwardingAddress" parameterType="map" >		
 		insert into mail_user_define_forwarding (mail_user_seq, define_forwarding_seq, from_address, from_domain, forwarding_address)
-    	values (#mail_user_seq#, #define_forwarding_seq#, #from_address#, #from_domain#, #forwarding_address#)
+    	values (#{mail_user_seq}, #{define_forwarding_seq}, #{from_address}, #{from_domain}, #{forwarding_address})
 	</insert>	
 	
-	<select id="selectDefineForwardingAddress" resultClass="defineForward" parameterClass="int">
+	<select id="selectDefineForwardingAddress" resultType="defineForward" parameterType="int">
     	select mail_user_seq, define_forwarding_seq, from_address, from_domain, forwarding_address
     		from mail_user_define_forwarding
-    		where mail_user_seq = #value#
+    		where mail_user_seq = #{value}
     		order by define_forwarding_seq desc
 	</select>
 	
-	<select id="selectDefineForwardingAddressForForwardSeq" resultClass="defineForward" parameterClass="int">
+	<select id="selectDefineForwardingAddressForForwardSeq" resultType="defineForward" parameterType="int">
     	select mail_user_seq, define_forwarding_seq, from_address, from_domain, forwarding_address
     		from mail_user_define_forwarding
-    		where define_forwarding_seq= #value#
+    		where define_forwarding_seq= #{value}
     		order by forwarding_address
 	</select>
 	
-	<select id="checkValidationDefineForwarding" resultClass="int" parameterClass="map">
+	<select id="checkValidationDefineForwarding" resultType="int" parameterType="map">
     	select count(*)
     		from mail_user_define_forwarding
-    		where mail_user_seq=#mail_user_seq#
-    			and (from_address=#defineValue# or from_domain=#defineValue#)
+    		where mail_user_seq=#{mail_user_seq}
+    			and (from_address=#{defineValue} or from_domain=#{defineValue})
 	</select>
 	
-	<select id="readNotePolicy" parameterClass="int" resultMap="notePolicyResult">
-		select * from mail_user_note_policy where mail_user_seq = #mailUserSeq#
+	<select id="readNotePolicy" parameterType="int" resultMap="notePolicyResult">
+		select * from mail_user_note_policy where mail_user_seq = #{mailUserSeq}
 	</select>
 	
-	<insert id="saveNotePolicy" parameterClass="notePolicy">
+	<insert id="saveNotePolicy" parameterType="notePolicy">
 		insert into mail_user_note_policy 
 		(mail_user_seq, policy_type)
 		values
-		(#mailUserSeq#, #policyType#)
+		(#{mailUserSeq}, #{policyType})
 	</insert>
 	
-	<update id="modifyNotePolicy" parameterClass="notePolicy">
+	<update id="modifyNotePolicy" parameterType="notePolicy">
 		update mail_user_note_policy 
-		set policy_type = #policyType#
-		where mail_user_seq = #mailUserSeq#
+		set policy_type = #{policyType}
+		where mail_user_seq = #{mailUserSeq}
 	</update>
 	
-	<select id="readNotePolicyCondList" parameterClass="int" resultMap="notePolicyCondResult">
+	<select id="readNotePolicyCondList" parameterType="int" resultMap="notePolicyCondResult">
 		select c.mail_user_seq, c.cond_target, m.mail_uid, i.user_name
 		from mail_user_note_policy_cond c, mail_user m, mail_user_info i
-		where c.mail_user_seq = #mailUserSeq# 
+		where c.mail_user_seq = #{mailUserSeq} 
 		and c.cond_target = m.mail_user_seq
 		and m.mail_user_seq = i.mail_user_seq
 	</select>
 	
-	<insert id="saveNotePolicyCond" parameterClass="notePolicyCond">
+	<insert id="saveNotePolicyCond" parameterType="notePolicyCond">
 		insert into mail_user_note_policy_cond
 		(mail_user_seq, cond_target)
 		values
-		(#mailUserSeq#, #condTarget#)
+		(#{mailUserSeq}, #{condTarget})
 	</insert>
 	
-	<delete id="deleteNotePolicyCond" parameterClass="int">
-		delete from mail_user_note_policy_cond where mail_user_seq = #mailUserSeq#
+	<delete id="deleteNotePolicyCond" parameterType="int">
+		delete from mail_user_note_policy_cond where mail_user_seq = #{mailUserSeq}
 	</delete>
 
-	<select id="checkNotePolicyCondMe" parameterClass="map" resultClass="int">
-		select count(*) from mail_user_note_policy_cond where mail_user_seq = #condTarget# and cond_target = #mailUserSeq# 
+	<select id="checkNotePolicyCondMe" parameterType="map" resultType="int">
+		select count(*) from mail_user_note_policy_cond where mail_user_seq = #{condTarget} and cond_target = #{mailUserSeq} 
 	</select>
-</sqlMap>
+</mapper>

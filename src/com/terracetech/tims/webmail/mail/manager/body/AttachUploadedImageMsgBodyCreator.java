@@ -16,13 +16,13 @@ import java.net.URLDecoder;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.NoSuchProviderException;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeUtility;
+import jakarta.activation.DataHandler;
+import jakarta.activation.FileDataSource;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.NoSuchProviderException;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeUtility;
 
 import com.terracetech.tims.mail.TMailUtility;
 import com.terracetech.tims.webmail.common.EnvConstants;
@@ -34,7 +34,7 @@ import com.terracetech.tims.webmail.util.Validation;
  * <strong>AttachUploadedImageMsgBodyCreator.java</strong> Class Description
  * </p>
  * <p>
- * ÁÖ¿ä¼³¸í
+ * ï¿½Ö¿ä¼³ï¿½ï¿½
  * </p>
  * <ul>
  * <li></li>
@@ -52,8 +52,8 @@ public class AttachUploadedImageMsgBodyCreator extends AbstractMsgBodyCreator {
 
 	/**
 	 * <p>
-	 * ÀÓ½Ã °æ·Î¿¡ ¸¸µé¾îÁø ÆÄÀÏ °æ·Î¸¦ ¹®ÀÚ¿­·Î ¹Þ¾Æ¼­ ÇØ´ç ¹®ÀÚ¸¦ ÆÄ½ÌÀ» ÇÑ´Ù. <br>
-	 * ÆÄ½ÌÀ» ÇÑ °á°ú¸¦ ·çÇÁ¸¦ µ¹¾Æ¼­ ÇØ´ç ÆÄÀÏÀ» ¸¶ÀÓ¿¡ ³Ö´Â´Ù.
+	 * ï¿½Ó½ï¿½ ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¼ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½. <br>
+	 * ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¼ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¿ï¿½ ï¿½Ö´Â´ï¿½.
 	 * </p>
 	 * 
 	 * @see com.terracetech.tims.webmail.mail.manager.body.AbstractMsgBodyCreator#execute(java.lang.String,

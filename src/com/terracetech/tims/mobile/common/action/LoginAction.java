@@ -6,9 +6,10 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
+import jakarta.servlet.http.Cookie;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.secure.Base64;
 import com.terracetech.secure.crypto.SecureUtil;
@@ -28,7 +29,7 @@ public class LoginAction extends BaseAction {
 
 	private static final long serialVersionUID = 201002181450L;
 
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private UserAuthManager userAuthManager = null;
 	private SystemConfigManager systemManager = null;

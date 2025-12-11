@@ -10,66 +10,40 @@
 package com.terracetech.tims.webmail.mail.dao;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.terracetech.tims.webmail.mail.vo.MailBigAttachVO;
 
 /**
- * <p>
- * <strong>BigAttachDao.java</strong> Class Description
- * </p>
- * <p>
- * �ֿ伳��
- * </p>
- * <ul>
- * <li></li>
- * </ul>
+ * <p><strong>BigAttachDao.java</strong> MyBatis Mapper Interface</p>
+ * 
+ * 원본 클래스: BigAttachDao extends SqlSessionDaoSupport implements IBigAttachDao
+ * 변환 내용: iBATIS → MyBatis Mapper 인터페이스
+ * 변환일: 2025-10-20
+ * 총 메서드 수: 5개 (원본 기준)
  * 
  * @author jpjung
  * @since Tims7
  * @version 7.0
  */
-@SuppressWarnings("unchecked")
-public class BigAttachDao extends SqlMapClientDaoSupport implements
-		IBigAttachDao {
+@Mapper
+public interface BigAttachDao {
 
-	public List<MailBigAttachVO> getListMailBigAttach(int userSeq)
-			throws SQLException {
-		Map map = new HashMap();
-		map.put("mailUserSeq", userSeq);
+    /** 원본: public List<MailBigAttachVO> getListMailBigAttach(int userSeq) throws SQLException */
+    List<MailBigAttachVO> getListMailBigAttach(@Param("userSeq") int userSeq) throws SQLException;
 
-		return getSqlMapClientTemplate().queryForList(
-				"MailAttach.listMailAttach", map);
-	}
-	
-	public MailBigAttachVO getMailBigAttach(int userSeq, String messageId) throws SQLException{
-		
-		Map map = new HashMap();
-		map.put("mailUserSeq", userSeq);
-		map.put("messageUid", messageId);
+    /** 원본: public MailBigAttachVO getMailBigAttach(int userSeq, String messageId) throws SQLException */
+    MailBigAttachVO getMailBigAttach(@Param("userSeq") int userSeq, @Param("messageId") String messageId) throws SQLException;
 
-		return (MailBigAttachVO)getSqlMapClientTemplate().queryForObject(
-				"MailAttach.selectMailAttach", map);
-	}
-	
-	public void saveMailBigAttach(MailBigAttachVO vo) throws SQLException{		
-		getSqlMapClientTemplate().insert("MailAttach.insertMailAttach", vo);		
-	}
-	
-	public void updateMailBigAttach(MailBigAttachVO vo) throws SQLException {
-		getSqlMapClientTemplate().insert("MailAttach.updateMailAttach", vo);
-	}
-	
-	public void updateDeleteMailBigAttach(int userSeq, String messageId) throws SQLException{
-		Map map = new HashMap();
-		map.put("mailUserSeq", userSeq);
-		map.put("messageUid", messageId);		
-		getSqlMapClientTemplate().update("MailAttach.updateDeleteMailAttach", map);		
-	}
-	
-	
+    /** 원본: public void saveMailBigAttach(MailBigAttachVO vo) throws SQLException */
+    void saveMailBigAttach(MailBigAttachVO vo) throws SQLException;
+
+    /** 원본: public void updateMailBigAttach(MailBigAttachVO vo) throws SQLException */
+    void updateMailBigAttach(MailBigAttachVO vo) throws SQLException;
+
+    /** 원본: public void updateDeleteMailBigAttach(int userSeq, String messageId) throws SQLException */
+    void updateDeleteMailBigAttach(@Param("userSeq") int userSeq, @Param("messageId") String messageId) throws SQLException;
 }

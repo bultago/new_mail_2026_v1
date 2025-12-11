@@ -4,8 +4,8 @@ import java.net.URLEncoder;
 import java.security.PrivateKey;
 
 import javax.crypto.Cipher;
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 
 import com.terracetech.secure.crypto.SecureUtil;
 import com.terracetech.secure.crypto.SymmetricCrypt;

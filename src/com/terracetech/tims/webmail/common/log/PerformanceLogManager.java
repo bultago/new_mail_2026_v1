@@ -1,6 +1,7 @@
 package com.terracetech.tims.webmail.common.log;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class PerformanceLogManager {
@@ -31,7 +32,7 @@ public class PerformanceLogManager {
 		logString.append(action);
 		logString.append(",");
 		logString.append(time);
-		Logger.getLogger(PerformanceLogManager.class).info(logString.toString());
+		LoggerFactory.getLogger(PerformanceLogManager.class).info(logString.toString());
 	}
 	
 }

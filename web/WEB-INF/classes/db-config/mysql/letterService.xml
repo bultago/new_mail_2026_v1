@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
-    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<sqlMap namespace="Letter">	
+<mapper namespace="com.terracetech.tims.webmail.Letter.mapper.LetterMapper">	
 	
-	<select id="readLetterList" parameterClass="int" resultMap="letterResult">
-		select * from mail_letter where mail_domain_seq = #mailDomainSeq# or  mail_domain_seq is null
+	<select id="readLetterList" parameterType="int" resultMap="letterResult">
+		select * from mail_letter where mail_domain_seq = #{mailDomainSeq} or  mail_domain_seq is null
 	</select>	
 		
-	<select id="readLetter" parameterClass="int" resultMap="letterResult">
-		select * from mail_letter where letter_seq = #letterSeq#
+	<select id="readLetter" parameterType="int" resultMap="letterResult">
+		select * from mail_letter where letter_seq = #{letterSeq}
 	</select>
 	
-	<select id="totalLetterCount" parameterClass="int" resultClass="int">
-		select count(letter_seq) from mail_letter where mail_domain_seq = #mailDomainSeq# or  mail_domain_seq is null
+	<select id="totalLetterCount" parameterType="int" resultType="int">
+		select count(letter_seq) from mail_letter where mail_domain_seq = #{mailDomainSeq} or  mail_domain_seq is null
 	</select>
-</sqlMap>
+</mapper>

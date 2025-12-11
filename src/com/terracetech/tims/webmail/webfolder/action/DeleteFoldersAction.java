@@ -2,7 +2,7 @@ package com.terracetech.tims.webmail.webfolder.action;
 
 import java.util.Map;
 
-import javax.mail.Flags;
+import jakarta.mail.Flags;
 
 import org.bouncycastle.util.encoders.Base64;
 

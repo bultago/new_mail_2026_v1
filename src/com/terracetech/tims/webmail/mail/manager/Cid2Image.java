@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 import com.terracetech.tims.mail.TMailPart;
 import com.terracetech.tims.webmail.util.StringReplaceUtil;

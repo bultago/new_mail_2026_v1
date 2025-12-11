@@ -40,13 +40,13 @@ public class AddressBookMemberVO {
 
 	private String homeCountry = null;
 	
-	//½Ãµµ
+	//Â½ÃƒÂµÂµ
 	private String homeState = null;
 
-	//±¸/±º/½Ã
+	//Â±Â¸/Â±Âº/Â½Ãƒ
 	private String homeCity = null;
 
-	//À¾¸éµ¿
+	//Ã€Â¾Â¸Ã©ÂµÂ¿
 	private String homeStreet = null;
 
 	private String homeBasicAddress = null;

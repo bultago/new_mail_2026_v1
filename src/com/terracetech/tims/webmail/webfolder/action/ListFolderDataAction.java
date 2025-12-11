@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

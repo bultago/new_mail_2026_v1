@@ -51,7 +51,7 @@ public class ContactsServerAddCommand implements ICommand{
 		if(StringUtils.isNotEmpty(member.getAddTime())){
 			syncManager.updateContactsInsertSyncDate(user, deviceId, member.getAddTime());	
 		}else{
-			//»ç¿ëÀÚ¸¦ °¡Á®°¬´Âµ¥, Ãß°¡ÇÑ ³¯Â¥°¡ ¾ø´Â °æ¿ì
+			//ì‚¬ìš©ìë¥¼ ê°€ì ¸ê°”ëŠ”ë°, ì¶”ê°€í•œ ë‚ ì§œê°€ ì—†ëŠ” ê²½ìš°
 			syncManager.updateContactsInsertSyncDate(user, deviceId, DateUtil.getFullDateStr());
 		}
 	}

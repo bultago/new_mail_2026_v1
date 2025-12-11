@@ -4,7 +4,6 @@
 <%@ page import="com.terracetech.tims.webmail.common.ExtPartConstants"%>
 <%@ page import="java.util.*"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>
@@ -61,8 +60,13 @@
 <link rel="stylesheet" type="text/css" href="/design/common/css/style1/ui.resizable.css" />
 <link rel="stylesheet" type="text/css" href="/design/common/css/style1/ui.dialog.css" />
 
-<script type="text/javascript" src="/dwr/engine.js"> </script>
-<script type="text/javascript" src="/dwr/util.js"> </script>
+<!-- REST API JavaScript 유틸리티 (2025-10-21) -->
+<script type="text/javascript" src="/resources/js/api-utils.js"></script>
+<script type="text/javascript" src="/resources/js/mail-api.js"></script>
+<script type="text/javascript" src="/resources/js/mail-folder-api.js"></script>
+<script type="text/javascript" src="/resources/js/mail-tag-api.js"></script>
+<script type="text/javascript" src="/resources/js/mail-search-folder-api.js"></script>
+<script type="text/javascript" src="/resources/js/mail-common-api.js"></script>
 
 <script type="text/javascript" src="/js/core-lib/prototype.js"></script>
 <script type="text/javascript" src="/js/core-lib/jquery-1.3.2.js"></script>

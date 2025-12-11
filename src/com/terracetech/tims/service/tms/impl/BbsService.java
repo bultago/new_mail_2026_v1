@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailFolder;
@@ -19,7 +19,6 @@ import com.terracetech.tims.service.tms.vo.BbsContentCondVO;
 import com.terracetech.tims.service.tms.vo.BbsContentInfoVO;
 import com.terracetech.tims.service.tms.vo.BbsContentListVO;
 import com.terracetech.tims.service.tms.vo.BbsContentReplyVO;
-import com.terracetech.tims.service.tms.vo.BbsContentVO;
 import com.terracetech.tims.service.tms.vo.BbsInfoVO;
 import com.terracetech.tims.service.tms.vo.BbsSaveCondVO;
 import com.terracetech.tims.service.tms.vo.BbsViewContentCondVO;
@@ -28,7 +27,7 @@ import com.terracetech.tims.service.tms.vo.BbsWriteInfoVO;
 import com.terracetech.tims.webmail.bbs.exception.BoardContentNotFoundException;
 import com.terracetech.tims.webmail.bbs.manager.BbsManager;
 import com.terracetech.tims.webmail.bbs.vo.BoardContentReplyVO;
-import com.terracetech.tims.webmail.bbs.vo.BoardContentVO;
+import com.terracetech.tims.service.tms.vo.BoardContentVO;
 import com.terracetech.tims.webmail.bbs.vo.BoardVO;
 import com.terracetech.tims.webmail.common.EnvConstants;
 import com.terracetech.tims.webmail.common.log.LogManager;
@@ -206,7 +205,7 @@ public class BbsService implements IBbsService {
 		return bbsContentInfoVo;
 	}
 	
-	public BbsContentVO writeBbsContent(BbsContentVO bbsWriteCondVO, User user) {
+	public BoardContentVO writeBbsContent(BoardContentVO bbsWriteCondVO, User user) {
 		String email = bbsWriteCondVO.getEmail();
 		User authUser = getAuthUser(email, user);
 		email = authUser.get(User.EMAIL);
@@ -227,7 +226,7 @@ public class BbsService implements IBbsService {
 
 		BoardVO boardVo = bbsManager.readBoard(bbsId, mailDomainSeq);
 		
-		BbsContentVO bbsContentVo = new BbsContentVO();
+		BoardContentVO bbsContentVo = new BoardContentVO();
 		bbsContentVo.setBbsId(boardVo.getBbsId());
 		bbsContentVo.setBbsName(boardVo.getBbsName());
 		bbsContentVo.setContentId(contentId);
@@ -406,7 +405,7 @@ public class BbsService implements IBbsService {
 		}
 		
 	}
-	public BbsContentVO readBoardContent(BbsViewContentCondVO bbsViewContentCondVo, User user){
+	public BoardContentVO readBoardContent(BbsViewContentCondVO bbsViewContentCondVo, User user){
 		
 		String email = bbsViewContentCondVo.getEmail();
 		User authUser = getAuthUser(email, user);
@@ -578,7 +577,7 @@ public class BbsService implements IBbsService {
 		}
 		
 		bbsManager.modifyHitCount(bbsId, contentId, mailDomainSeq);
-		BbsContentVO bbsContentVo = new BbsContentVO();
+		BoardContentVO bbsContentVo = new BoardContentVO();
 		bbsContentVo.setMailDomainSeq(mailDomainSeq);
 		bbsContentVo.setIsNotice(boardContentVo.getIsNotice());
 		bbsContentVo.setContentId(contentId);
@@ -604,17 +603,17 @@ public class BbsService implements IBbsService {
 		bbsContentVo.setCreator(boardContentVo.isCreator());
 		bbsContentVo.setBbsName(boardVo.getBbsName());
 		
-		BbsContentVO[] prevContentArray = null;
+		BoardContentVO[] prevContentArray = null;
 		if (prevContent != null && prevContent.size() > 0) {
-			prevContentArray = new BbsContentVO[prevContent.size()];
+			prevContentArray = new BoardContentVO[prevContent.size()];
 			for (int i=0; i<prevContent.size(); i++) {
 				prevContentArray[i] = convertPrevNextBbsContentVo(prevContent.get(i));
 			}
 		}
 		
-		BbsContentVO[] nextContentArray = null;
+		BoardContentVO[] nextContentArray = null;
 		if (nextContent != null && nextContent.size() > 0) {
-			nextContentArray = new BbsContentVO[nextContent.size()];
+			nextContentArray = new BoardContentVO[nextContent.size()];
 			for (int i=0; i<nextContent.size(); i++) {
 				nextContentArray[i] = convertPrevNextBbsContentVo(nextContent.get(i));
 			}
@@ -625,8 +624,8 @@ public class BbsService implements IBbsService {
 			
 		return bbsContentVo;
 	}
-	private BbsContentVO convertPrevNextBbsContentVo(BoardContentVO boardContentVo) {
-		BbsContentVO bbsContentVo = new BbsContentVO();
+	private BoardContentVO convertPrevNextBbsContentVo(BoardContentVO boardContentVo) {
+		BoardContentVO bbsContentVo = new BoardContentVO();
 		bbsContentVo.setBbsId(boardContentVo.getBbsId());
 		bbsContentVo.setContentId(boardContentVo.getContentId());
 		bbsContentVo.setSubject(boardContentVo.getSubject());
@@ -640,7 +639,7 @@ public class BbsService implements IBbsService {
 		return bbsContentVo;
 	}
 	
-	public BbsContentVO writeBbsModifyContent(BbsContentVO bbsContentVo, User user){
+	public BoardContentVO writeBbsModifyContent(BoardContentVO bbsContentVo, User user){
 		
 		String email = bbsContentVo.getEmail();
 		User authUser = getAuthUser(email, user);
@@ -724,7 +723,7 @@ public class BbsService implements IBbsService {
 		}
 	
 		
-		BbsContentVO ContentVo = new BbsContentVO();
+		BoardContentVO ContentVo = new BoardContentVO();
 		ContentVo.setBbsId(boardVo.getBbsId());
 		ContentVo.setSubject(contentVo.getSubject());
 		ContentVo.setContentId(contentId);
@@ -742,7 +741,7 @@ public class BbsService implements IBbsService {
 		return ContentVo;
 	}
 	
-	public void deleteBbsModifyContent(BbsContentVO contentVo, User user){
+	public void deleteBbsModifyContent(BoardContentVO contentVo, User user){
 		
 		String email = contentVo.getEmail();
 		User authUser = getAuthUser(email, user);
@@ -788,7 +787,7 @@ public class BbsService implements IBbsService {
 		
 	}
 	
-	public int readContentReplyCount(BbsContentVO bbsContentVo, User user){
+	public int readContentReplyCount(BoardContentVO bbsContentVo, User user){
 		String email = bbsContentVo.getEmail();
 		User authUser = getAuthUser(email, user);
 		email = authUser.get(User.EMAIL);
@@ -800,7 +799,7 @@ public class BbsService implements IBbsService {
 		return  bbsManager.getContentReplyListCount(bbsId, contentId, isNotice, mailDomainSeq);
 	}
 	
-	public BbsContentReplyVO[] readContentReply(BbsContentVO bbsContentVo,User user,int skipResult,int pbase){
+	public BbsContentReplyVO[] readContentReply(BoardContentVO bbsContentVo,User user,int skipResult,int pbase){
 		
 		String email = bbsContentVo.getEmail();
 		User authUser = getAuthUser(email, user);

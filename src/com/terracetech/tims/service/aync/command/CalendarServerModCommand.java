@@ -38,7 +38,7 @@ public class CalendarServerModCommand implements ICommand{
 		
 		SchedulerManager service = (SchedulerManager) ApplicationBeanUtil.getApplicationBean("schedulerManager");
 		String syncTime = syncVo.getCalendarUpdateSyncTime();
-		//syncTimeÀÌ ¾ø´Â °æ¿ì 3ÀÏ ÀÌÀüºÎÅÍ
+		//syncTimeì´ ì—†ëŠ” ê²½ìš° 3ì¼ ì´ì „ë¶€í„°
 		if(StringUtils.isEmpty(syncTime)){
 			try {
 				syncTime = DateUtil.findDateStr(-3);

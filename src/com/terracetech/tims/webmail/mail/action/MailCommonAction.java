@@ -13,7 +13,7 @@ import java.util.Iterator;
 import com.terracetech.tims.webmail.common.log.LogManager;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import com.terracetech.tims.mail.TMailStore;

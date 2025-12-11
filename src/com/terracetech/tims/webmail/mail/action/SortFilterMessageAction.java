@@ -24,7 +24,7 @@ import com.terracetech.tims.webmail.mail.manager.TMailStoreFactory;
 
 /**
  * <p><strong>SortFilterMessageAction.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
  * <li></li>
  * </ul>
@@ -38,7 +38,7 @@ public class SortFilterMessageAction extends BaseAction {
 	
 	
 	/**
-	 * @param mailManager ÆÄ¶ó¹ÌÅÍ¸¦ mailManager°ª¿¡ ¼³Á¤
+	 * @param mailManager Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ mailManagerÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMailManager(MailManager mailManager) {
 		this.mailManager = mailManager;

@@ -24,20 +24,24 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
-import org.directwebremoting.WebContext;
-import org.directwebremoting.WebContextFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import xecure.servlet.XecureConfig;
-import xecure.servlet.XecureServlet;
-import xecure.servlet.XecureServletConfigException;
-import xecure.servlet.XecureServletException;
+// DWR 제거로 인해 주석 처리 (2025-10-21)
+// import org.directwebremoting.WebContext;
+// import org.directwebremoting.WebContextFactory;
+
+// Xecure 보안 모듈 (선택적)
+// import xecure.servlet.XecureConfig;
+// import xecure.servlet.XecureServlet;
+// import xecure.servlet.XecureServletConfigException;
+// import xecure.servlet.XecureServletException;
 
 import com.terracetech.tims.common.I18nConstants;
 import com.terracetech.tims.common.I18nResources;
@@ -57,7 +61,7 @@ public class BaseService {
 	public ServletContext context = null;	
 	public User user = null;
 	public String remoteIp = null;
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	public TMailStore getStore(TMailStoreFactory factory,String remodeAddr)throws Exception{
 		 TMailStore store= factory.connect(remodeAddr, user);
@@ -67,24 +71,27 @@ public class BaseService {
 	
 
 	public void loadHttpResource() throws UserAuthException{
-		WebContext ctx = WebContextFactory.get();
+		// DWR 제거로 인해 주석 처리 (2025-10-21)
+		// DWR Service는 더 이상 사용하지 않음
+		// WebContext ctx = WebContextFactory.get();
 				
 		this.user = null;
 		try {
 			parseXcureWebRequest();
-			this.user = UserAuthManager.getUser(ctx.getHttpServletRequest());
+			// DWR Service는 사용하지 않으므로 이 메서드는 호출되지 않음
+			// this.user = UserAuthManager.getUser(ctx.getHttpServletRequest());
 			
-			if(this.user != null){
-				// TCUSTOM-2063 2016-10-31 - session-timeout : 0 에서 Heap 에서 session clear 가 되지 않아 수정됨
-				UserAuthManager.setSessionTime(ctx.getHttpServletResponse());
-			}			
+			// if(this.user != null){
+			// 	// TCUSTOM-2063 2016-10-31 - session-timeout : 0 에서 Heap 에서 session clear 가 되지 않아 수정됨
+			// 	UserAuthManager.setSessionTime(ctx.getHttpServletResponse());
+			// }			
 		} catch (Exception e) {
 			throw new UserAuthException(e);
 		}
 		
-		context = ctx.getServletContext();
-		request = ctx.getHttpServletRequest();
-		response = ctx.getHttpServletResponse();
+		// context = ctx.getServletContext();
+		// request = ctx.getHttpServletRequest();
+		// response = ctx.getHttpServletResponse();
 		
 		this.remoteIp = request.getRemoteAddr();
 		
@@ -169,6 +176,9 @@ public class BaseService {
 	}
 	
 	private void parseXcureWebRequest() throws Exception{
+		// Xecure 보안 모듈 제거 (2025-10-21)
+		// XecureWeb 사용 안 함
+		/*
 		if(ExtPartConstants.isXecureWebUse()){
 			String qValue = request.getParameter("q");		
 			if (qValue != null && !"".equals(qValue)){
@@ -183,5 +193,6 @@ public class BaseService {
 				}
 			}
 		}
+		*/
 	}
 }

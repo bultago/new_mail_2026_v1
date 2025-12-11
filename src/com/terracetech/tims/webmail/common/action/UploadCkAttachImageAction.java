@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.struts2.dispatcher.multipart.MultiPartRequestWrapper;
 

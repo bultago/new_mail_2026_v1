@@ -21,12 +21,9 @@
 <script type="text/javascript" src="/js/ext-lib/jquery.swfupload.js"></script>
 <script type="text/javascript" src="/js/swfupload-lib/swfupload.js"></script>
 
-<script type="text/javascript" src="/dwr/interface/MailFolderService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailMessageService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailTagService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailSearchFolderService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailCommonService.js"></script>
-<script type="text/javascript" src="/dwr/interface/AddressBookService.js"></script>
+<!-- DWR 제거 및 REST API로 전환 (2025-10-21) -->
+<script type="text/javascript" src="/resources/js/api-utils.js"></script>
+<script type="text/javascript" src="/resources/js/mail-api.js"></script>
 
 <script type="text/javascript" src="/i18n?bundle=mail&locale=<%=locale%>"></script>
 <script type="text/javascript" src="/i18n?bundle=setting&locale=<%=locale%>"></script>

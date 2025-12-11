@@ -7,13 +7,13 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import org.aopalliance.intercept.MethodInvocation;
 import com.terracetech.tims.webmail.common.log.LogManager;
 
 /**
  * <p><strong>AdviceUtil.java</strong> Class Description</p>
- * <p>Advice ¿¡¼­ °øÅëÀûÀ¸·Î »ç¿ëÇÏ´Â À¯Æ¿¸®Æ¼ ¸Þ¼­µå</p>
+ * <p>Advice ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Æ¿ï¿½ï¿½Æ¼ ï¿½Þ¼ï¿½ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>
@@ -48,8 +48,8 @@ public class AdviceUtil {
 	
 	/**
 	 * <p>
-	 * µð¹ö±× ¸ðµåÀÏ¶§ ¸Þ¼­µå°¡ È£ÃâµÇ¸é Àü´ÞµÇ´Â ÀÎÀÚµéÀ» ·Î±ëÇÑ´Ù.<br>
-	 * Ãâ·ÂµÇ´Â ÀÎÀÚµéÀº ´ÙÀ½°ú °°´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ ï¿½Þ¼ï¿½ï¿½å°¡ È£ï¿½ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ÞµÇ´ï¿½ ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½Ñ´ï¿½.<br>
+	 * ï¿½ï¿½ÂµÇ´ï¿½ ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	 * 	<li>HttpServletRequest Info<br>
 	 * 			Host address,
 	 * 			User address
@@ -115,8 +115,8 @@ public class AdviceUtil {
 	
 	/**
 	 * <p>
-	 * 	¸ðµç Å¸ÀÔÀÇ ¿¹¿Ü¿¡ ´ëÇØ ·Î±ëÃ³¸® ÇÑ´Ù.<br>
-	 * 	±âº»ÀûÀ¸·Î com.terracetech ÇÏÀ§¸¸ Stack Trace ÇÑ´Ù.
+	 * 	ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½Ã³ï¿½ï¿½ ï¿½Ñ´ï¿½.<br>
+	 * 	ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ com.terracetech ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Stack Trace ï¿½Ñ´ï¿½.
 	 * </p>
 	 *
 	 * @param e

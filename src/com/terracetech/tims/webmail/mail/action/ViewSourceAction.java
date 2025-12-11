@@ -12,7 +12,7 @@ package com.terracetech.tims.webmail.mail.action;
 import java.io.InputStream;
 import java.util.Enumeration;
 
-import javax.mail.internet.MimeUtility;
+import jakarta.mail.internet.MimeUtility;
 
 import com.initech.util.BufferedOutputStream;
 import com.terracetech.tims.mail.TMailFolder;
@@ -24,7 +24,7 @@ import com.terracetech.tims.webmail.mail.manager.TMailStoreFactory;
 
 /**
  * <p><strong>ViewSourceAction.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

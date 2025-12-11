@@ -2,7 +2,7 @@ package com.terracetech.tims.mobile.bbs.action;
 
 import com.terracetech.tims.mobile.common.action.BaseAction;
 import com.terracetech.tims.service.tms.impl.BbsService;
-import com.terracetech.tims.service.tms.vo.BbsContentVO;
+import com.terracetech.tims.service.tms.vo.BoardContentVO;
 import com.terracetech.tims.service.tms.vo.BbsInfoVO;
 import com.terracetech.tims.service.tms.vo.BbsWriteCondVO;
 import com.terracetech.tims.service.tms.vo.BbsWriteInfoVO;
@@ -25,7 +25,7 @@ public class BbsContentWriteAction extends BaseAction {
 	private BbsWriteInfoVO bbsWriteInfo = null;
 	private BbsService bbsService = null;
 	private BbsWriteCondVO bbsWriteCondVo = null;
-	private BbsContentVO bbsContentVo = null;
+	private BoardContentVO bbsContentVo = null;
 	private String isModify = "false";
 	
 	public void setBbsService(BbsService bbsService) {
@@ -36,7 +36,7 @@ public class BbsContentWriteAction extends BaseAction {
 		
 		bbsInfoList = bbsService.readBbsList(null, user);
 		
-		bbsContentVo = new BbsContentVO();
+		bbsContentVo = new BoardContentVO();
 		bbsContentVo.setBbsId(bbsId);
 		bbsContentVo.setContentId(contentId);
 		bbsContentVo.setParentId(parentId);
@@ -53,7 +53,7 @@ public class BbsContentWriteAction extends BaseAction {
 		
 		bbsInfoList = bbsService.readBbsList(null, user);
 		
-		bbsContentVo = new BbsContentVO();
+		bbsContentVo = new BoardContentVO();
 		bbsContentVo.setBbsId(bbsId);
 		bbsContentVo.setContentId(contentId);
 		bbsContentVo.setRequest(request);
@@ -89,7 +89,7 @@ public class BbsContentWriteAction extends BaseAction {
 		return bbsService;
 	}
 
-	public BbsContentVO getBbsContentVo() {
+	public BoardContentVO getBbsContentVo() {
 		return bbsContentVo;
 	}
 
@@ -109,7 +109,7 @@ public class BbsContentWriteAction extends BaseAction {
 		return bbsId;
 	}
 
-	public void setBbsContentVo(BbsContentVO bbsContentVo) {
+	public void setBbsContentVo(BoardContentVO bbsContentVo) {
 		this.bbsContentVo = bbsContentVo;
 	}
 

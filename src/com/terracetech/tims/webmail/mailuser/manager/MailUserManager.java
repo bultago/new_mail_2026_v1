@@ -23,12 +23,14 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.terracetech.secure.crypto.SecureUtil;
 import com.terracetech.secure.crypto.SymmetricCrypt;
 import com.terracetech.tims.webmail.common.EnvConstants;
-import com.terracetech.tims.webmail.common.advice.Transactional;
 import com.terracetech.tims.webmail.common.dao.SystemConfigDao;
 import com.terracetech.tims.webmail.common.log.LogManager;
 import com.terracetech.tims.webmail.common.vo.SearchVO;
@@ -43,7 +45,7 @@ import com.terracetech.tims.webmail.mailuser.vo.MailDomainVO;
 import com.terracetech.tims.webmail.mailuser.vo.MailUserInfoVO;
 import com.terracetech.tims.webmail.mailuser.vo.MailUserVO;
 import com.terracetech.tims.webmail.mailuser.vo.SearchUserVO;
-import com.terracetech.tims.webmail.setting.dao.ISettingUserEtcInfoDao;
+import com.terracetech.tims.webmail.setting.dao.SettingUserEtcInfoDao;
 import com.terracetech.tims.webmail.setting.vo.UserEtcInfoVO;
 import com.terracetech.tims.webmail.util.QuotaUtil;
 import com.terracetech.tims.webmail.util.StringUtils;
@@ -60,16 +62,18 @@ import com.terracetech.tims.webmail.util.StringUtils;
  * @since Tims7
  * @version 7.0 
  */
+@Service
+@Transactional
 public class MailUserManager {
-	Logger log = Logger.getLogger(MailUserManager.class);
+	Logger log = LoggerFactory.getLogger(MailUserManager.class);
 	
 	private MailUserDao mailUserDao = null;
 	private MailDomainDao mailDomainDao = null;
 	private UserInfoDao userInfoDao = null;
 	private SystemConfigDao systemConfigDao = null;
-	private ISettingUserEtcInfoDao etcInfoDao = null;
+	private SettingUserEtcInfoDao etcInfoDao = null;
 	
-	public void setEtcInfoDao(ISettingUserEtcInfoDao etcInfoDao) {
+	public void setEtcInfoDao(SettingUserEtcInfoDao etcInfoDao) {
 		this.etcInfoDao = etcInfoDao;
 	}
 
@@ -383,7 +387,7 @@ public class MailUserManager {
 	}
 	
 	public int readUserSeq(String userId, int mailDomainSeq) {
-		return mailUserDao.readUserSeq(userId, mailDomainSeq);
+		return mailUserDao.readUserSeqByUserIdAndDomain(userId, mailDomainSeq);
 	}
 	
 	public int readUserSeq(String userId, String mailDomain) {

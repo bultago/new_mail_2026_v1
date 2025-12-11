@@ -5,23 +5,23 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Store;
+import jakarta.mail.Folder;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Store;
 
-import com.sun.mail.pop3.POP3Folder;
-import com.sun.mail.pop3.POP3Message;
+import org.eclipse.angus.mail.pop3.POP3Folder;
+import org.eclipse.angus.mail.pop3.POP3Message;
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailStore;
 import com.terracetech.tims.webmail.common.EnvConstants;
-import com.terracetech.tims.webmail.setting.dao.ISettingPop3Dao;
+import com.terracetech.tims.webmail.setting.dao.SettingPop3Dao;
 import com.terracetech.tims.webmail.setting.vo.Pop3VO;
 import com.terracetech.tims.webmail.util.StringUtils;
 
 public class Pop3Manager {
  
-	private ISettingPop3Dao popDao = null;
+	private SettingPop3Dao popDao = null;
 	private final static String POP3_PROTOCOL = "pop3";
 	 //pops protocol ����
     private final static String POP3S_PROTOCOL = "pop3s";
@@ -29,7 +29,7 @@ public class Pop3Manager {
     private final static String POP3_SSL_ON="1";
 	private Pop3VO pop3 = null;
 	
-	public void setPopDao(ISettingPop3Dao popDao) {
+	public void setPopDao(SettingPop3Dao popDao) {
 		this.popDao = popDao;
 	}
 

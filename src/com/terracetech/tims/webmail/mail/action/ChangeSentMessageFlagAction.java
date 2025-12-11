@@ -2,7 +2,7 @@ package com.terracetech.tims.webmail.mail.action;
 
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 

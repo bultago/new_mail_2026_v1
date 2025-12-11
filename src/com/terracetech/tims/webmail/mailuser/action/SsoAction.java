@@ -3,12 +3,13 @@ package com.terracetech.tims.webmail.mailuser.action;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
@@ -35,7 +36,7 @@ public class SsoAction extends ActionSupport implements ServletRequestAware,Serv
 
 	private static final long serialVersionUID = 3524773920732540358L;
 	
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private final static String DEFAULT_RETURN_PATH = "/welcome.do";
 	private String returnPath = DEFAULT_RETURN_PATH;

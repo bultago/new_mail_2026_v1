@@ -27,7 +27,7 @@ import com.terracetech.tims.webmail.setting.manager.SettingManager;
 
 /**
  * <p><strong>MailLetterPaperService.java</strong> Class Description</p>
- * <p>�ֿ伳��</p>
+ * <p>ÁÖ¿ä¼³¸í</p>
  * <ul>
  * <li></li>
  * </ul>

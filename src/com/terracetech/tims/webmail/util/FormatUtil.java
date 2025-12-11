@@ -16,7 +16,7 @@ import java.util.Date;
 
 /**
  * <p><strong>FormatUtil.java</strong> Class Description</p>
- * <p>�ֿ伳��</p>
+ * <p>ÁÖ¿ä¼³¸í</p>
  * <ul>
  * <li></li>
  * </ul>
@@ -123,15 +123,15 @@ public class FormatUtil {
 	
 	/**
 	 * <p>
-	 * �ӽ� ���丮���� ��ȯ�Ѵ�.<br>
+	 * ÀÓ½Ã µð·ºÅä¸®¸íÀ» ¹ÝÈ¯ÇÑ´Ù.<br>
 	 * 
-	 * <li>�ӽ� ���丮 ������ "20081211121"���� �������� 10�� ������ ��¥ ǥ�����̴�.</li>
-	 * <li>�Ϸ� �ִ� 144���� �ӽ� ���丮�� ���� �� �� �ִ�.</li>
-	 * <li>���� ����� ���ؼ� ���� �ð��� üũ�ؼ� ������ üũ �ð����� 10���̻� ����Ǿ��� ���
-	 * 	���� �ð��� �����ؼ� dir���� ����� 10���� �ʰ� ���� �ʾ��� ��쿡�� ������ ������ dir���� ��ȯ�Ѵ�.
+	 * <li>ÀÓ½Ã µð·ºÅä¸® Æ÷¸äÀº "20081211121"°°Àº Çü½ÄÀ¸·Î 10ºÐ ´ÜÀ§ÀÇ ³¯Â¥ Ç¥Çö½ÄÀÌ´Ù.</li>
+	 * <li>ÇÏ·ç ÃÖ´ë 144°³ÀÇ ÀÓ½Ã µð·ºÅä¸®°¡ »ý¼º µÉ ¼ö ÀÖ´Ù.</li>
+	 * <li>¼º´É Çâ»óÀ» À§ÇØ¼­ ÇöÀç ½Ã°£À» Ã¼Å©ÇØ¼­ ¸¶Áö¸· Ã¼Å© ½Ã°£º¸´Ù 10ºÐÀÌ»ó °æ°úµÇ¾úÀ» °æ¿ì
+	 * 	»õ·Î ½Ã°£À» ¼³Á¤ÇØ¼­ dir¸íÀ» ¸¸µé°í 10ºÐÀÌ ÃÊ°ú ÇÏÁö ¾Ê¾ÒÀ» °æ¿ì¿¡´Â ±âÁ¸¿¡ »ý¼ºÇÑ dir¸íÀ» ¹ÝÈ¯ÇÑ´Ù.
 	 * </li>
 	 * <p> 
-	 * @return lastChekTimeStr �ӽõ��丮 ��;
+	 * @return lastChekTimeStr ÀÓ½Ãµð·ºÅä¸® ¸í;
 	 */
 	public static String getTempDirStr(){
 		int now = (int)(System.currentTimeMillis() / TEN_MIN );

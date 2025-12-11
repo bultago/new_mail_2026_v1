@@ -1,5 +1,4 @@
 <%@ page language="java"  contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>
@@ -9,7 +8,6 @@
 <c:if test="${empty mode}">
 <c:set var="mode" value="copy"/>
 </c:if>
-
 
 <script type="text/javascript">
 

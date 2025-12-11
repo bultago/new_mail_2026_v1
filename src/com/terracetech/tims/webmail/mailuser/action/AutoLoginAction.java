@@ -3,11 +3,12 @@ package com.terracetech.tims.webmail.mailuser.action;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.webmail.common.EnvConstants;
 import com.terracetech.tims.webmail.common.log.LogManager;
@@ -21,7 +22,7 @@ import com.terracetech.tims.webmail.util.ApplicationBeanUtil;
 import com.terracetech.tims.webmail.util.StringUtils;
 
 public class AutoLoginAction {
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public String execute(HttpServletRequest request, HttpServletResponse response, String id, String pass, String domain) throws Exception {
 		
@@ -56,7 +57,7 @@ public class AutoLoginAction {
 			String timestamp = checkUserExistManager.dupCheckProcess(allowUser.get(User.EMAIL),mailDomainSeq);
 			allowUser.put(User.LOGIN_TIMESTAMP, timestamp);
 			userAuthManager.doLoginProcess(request, response, allowUser,paramMap);
-			request.setAttribute("user", allowUser);//º¯¼ö »ó¼öÈ­
+			request.setAttribute("user", allowUser);//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È­
 			log.debug("AutoLoginAction.allowUser : "+ allowUser);
 			
 			LogManager.writeMailLogMsg(true,log, allowUser.get(User.EMAIL), 

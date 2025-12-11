@@ -16,32 +16,32 @@ public class MdnContentVO {
 	private long nextUid = -1;
 
 	/**
-	 * ÀüÃ¼ ¼ö½ÅÀÚ ¼ö
+	 * Ã€Ã¼ÃƒÂ¼ Â¼Ã¶Â½Ã…Ã€Ãš Â¼Ã¶
 	 */
 	private int countTotal;
 
 	/**
-	 * ÀĞÀº »ç¶÷
+	 * Ã€ÃÃ€Âº Â»Ã§Â¶Ã·
 	 */
 	private int countRead = 0;
 	
 	/**
-	 * ¾ÈÀĞÀº »ç¶÷
+	 * Â¾ÃˆÃ€ÃÃ€Âº Â»Ã§Â¶Ã·
 	 */
 	private int countUnseen = 0;
 	
 	/**
-	 * ¹ß¼Û½ÇÆĞ
+	 * Â¹ÃŸÂ¼Ã›Â½Ã‡Ã†Ã
 	 */
 	private int countFail = 0;
 	
 	/**
-	 * ¹ß¼ÛÃë¼Ò
+	 * Â¹ÃŸÂ¼Ã›ÃƒÃ«Â¼Ã’
 	 */
 	private int countRecall = 0;
 	
 	/**
-	 * ±âÅ¸
+	 * Â±Ã¢Ã…Â¸
 	 */
 	private int countEtc = 0;
 	

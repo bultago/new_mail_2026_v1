@@ -21,7 +21,7 @@ import com.terracetech.tims.webmail.util.FileUtil;
 
 /**
  * <p><strong>LetterManager.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
  * <li></li>
  * </ul>
@@ -34,7 +34,7 @@ public class LetterManager {
 	private LetterDao letterDao = null;
 
 	/**
-	 * @param letterDao ÆÄ¶ó¹ÌÅÍ¸¦ letterDao°ª¿¡ ¼³Á¤
+	 * @param letterDao Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ letterDaoÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setLetterDao(LetterDao letterDao) {
 		this.letterDao = letterDao;

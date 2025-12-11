@@ -14,11 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Session;
+import jakarta.mail.internet.MimeMessage;
 
 import org.json.simple.JSONArray;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailFolder;
@@ -29,7 +31,6 @@ import com.terracetech.tims.mail.search.TMailSearchQuery;
 import com.terracetech.tims.mail.sort.SortMessage;
 import com.terracetech.tims.mail.tag.TMailTag;
 import com.terracetech.tims.webmail.common.EnvConstants;
-import com.terracetech.tims.webmail.common.advice.Transactional;
 import com.terracetech.tims.webmail.exception.MailNotFoundException;
 import com.terracetech.tims.webmail.mail.dao.CacheEmailDao;
 import com.terracetech.tims.webmail.mail.dao.FolderAgingDao;
@@ -73,6 +74,8 @@ import com.terracetech.tims.webmail.util.StringUtils;
  * @version 7.0
  */
 @SuppressWarnings("unchecked")
+@Service
+@Transactional
 public class MailManager {
 	private TMailStore store;
 	private I18nResources msgResource = null;

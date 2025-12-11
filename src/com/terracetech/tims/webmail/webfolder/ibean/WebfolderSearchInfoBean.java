@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.mail.Message;
-import javax.mail.search.AndTerm;
-import javax.mail.search.ReceivedDateTerm;
-import javax.mail.search.RecipientStringTerm;
-import javax.mail.search.SearchTerm;
-import javax.mail.search.SubjectTerm;
+import jakarta.mail.Message;
+import jakarta.mail.search.AndTerm;
+import jakarta.mail.search.ReceivedDateTerm;
+import jakarta.mail.search.RecipientStringTerm;
+import jakarta.mail.search.SearchTerm;
+import jakarta.mail.search.SubjectTerm;
 
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.webmail.util.FormatUtil;
@@ -26,10 +26,10 @@ import com.terracetech.tims.webmail.util.Validation;
 
 /**
  * <p><strong>WebfolderSortInfoBean.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
- * <li>À¥Æú´õ ¸®½ºÆ®¸¦ SortÇÒ Á¤º¸ ÀúÀå Å¬·¡½º</li>
- * <li>°¢ Á¶°ÇÀ» °¡Áö°í Sort ÇÏ±âÀ§ÇÑ SearchTerm °´Ã¼ ¹ÝÈ¯</li>
+ * <li>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Sortï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½</li>
+ * <li>ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Sort ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½ SearchTerm ï¿½ï¿½Ã¼ ï¿½ï¿½È¯</li>
  * </ul>
  * @author jhlee
  * @since Tims7
@@ -49,19 +49,19 @@ public class WebfolderSearchInfoBean {
 	}
 		
 		/**
-	 * @return pattern °ª ¹ÝÈ¯
+	 * @return pattern ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getPattern() {
 		return pattern;
 	}
 	/**
-	 * @param pattern ÆÄ¶ó¹ÌÅÍ¸¦ pattern°ª¿¡ ¼³Á¤
+	 * @param pattern ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ patternï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setPattern(String pattern) {
 		this.pattern = pattern;
 	}
 	/**
-	 * @return searchTerm °ª ¹ÝÈ¯
+	 * @return searchTerm ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public SearchTerm getSearchTerm() {
 		parseSortInfo();
@@ -69,7 +69,7 @@ public class WebfolderSearchInfoBean {
 	}
 	
 	/**
-	 * <p>SearchTerm À» »ý¼º</p>
+	 * <p>SearchTerm ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</p>
 	 *
 	 * @return void
 	 */

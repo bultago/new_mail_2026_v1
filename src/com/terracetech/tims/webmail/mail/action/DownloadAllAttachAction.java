@@ -19,9 +19,9 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
 import org.apache.commons.codec.binary.Base64;
-import org.hsqldb.lib.StringUtil;
+import com.terracetech.tims.webmail.util.StringUtils;
 
-import com.sun.mail.imap.IMAPMessage;
+import org.eclipse.angus.mail.imap.IMAPMessage;
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailMessage;
 import com.terracetech.tims.mail.TMailPart;
@@ -103,7 +103,7 @@ public class DownloadAllAttachAction extends BaseAction {
 				isSuccess = getMakeZipFile(zipFilePath,message,part);
 				ZipUtil zipUtil = new ZipUtil();
 				zipUtil.setDebug("true".equalsIgnoreCase(EnvConstants.getBasicSetting("log.debug")));
-				String charset = StringUtil.isEmpty(EnvConstants.getMailSetting("default.zip.charset")) ? "EUC-KR" : EnvConstants.getMailSetting("default.zip.charset");
+				String charset = StringUtils.isEmpty(EnvConstants.getMailSetting("default.zip.charset")) ? "EUC-KR" : EnvConstants.getMailSetting("default.zip.charset");
 				zipUtil.zip(new File(zipFilePath), charset, false);
 			}else{
 				zipFileName = user.get(User.EMAIL) + "_" + System.currentTimeMillis() + ".zip";

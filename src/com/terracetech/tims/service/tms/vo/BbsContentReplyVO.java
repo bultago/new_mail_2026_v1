@@ -1,6 +1,6 @@
 package com.terracetech.tims.service.tms.vo;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 public class BbsContentReplyVO {
 	private int bbsId = 0;

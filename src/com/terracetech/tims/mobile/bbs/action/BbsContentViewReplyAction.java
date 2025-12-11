@@ -6,7 +6,7 @@ import com.terracetech.tims.common.PageManager;
 import com.terracetech.tims.mobile.common.action.BaseAction;
 import com.terracetech.tims.service.tms.impl.BbsService;
 import com.terracetech.tims.service.tms.vo.BbsContentReplyVO;
-import com.terracetech.tims.service.tms.vo.BbsContentVO;
+import com.terracetech.tims.service.tms.vo.BoardContentVO;
 import com.terracetech.tims.service.tms.vo.BbsViewContentCondVO;
 import com.terracetech.tims.webmail.bbs.vo.BoardContentReplyVO;
 import com.terracetech.tims.webmail.mailuser.User;
@@ -39,7 +39,7 @@ public class BbsContentViewReplyAction extends BaseAction{
 		page = (page == 0) ? 1 : page;
 		skipResult = (page - 1) * pageBase;
 		
-		BbsContentVO bbsContentCondVo = new BbsContentVO();
+		BoardContentVO bbsContentCondVo = new BoardContentVO();
 		
 		bbsContentCondVo.setBbsId(bbsId);
 		bbsContentCondVo.setContentId(contentId);

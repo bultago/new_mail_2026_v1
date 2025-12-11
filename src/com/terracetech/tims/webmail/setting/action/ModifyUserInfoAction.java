@@ -3,8 +3,8 @@ package com.terracetech.tims.webmail.setting.action;
 import java.security.PrivateKey;
 
 import javax.crypto.Cipher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpSession;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.webmail.common.BaseAction;

@@ -1,7 +1,7 @@
 package com.terracetech.tims.webmail.mail.manager.write;
 
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeUtility;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeUtility;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailAddress;

@@ -7,9 +7,10 @@ import java.io.FileInputStream;
 import com.terracetech.tims.webmail.common.EnvConstants;
 import java.io.BufferedOutputStream;
 import java.io.InputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.Logger;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
@@ -19,7 +20,7 @@ public class AttachCheckAction extends ActionSupport implements ServletRequestAw
 	private static final long serialVersionUID = -7899408186307574274L;
 	public HttpServletRequest request = null;
 	public HttpServletResponse response = null;
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public String execute() throws Exception {
 

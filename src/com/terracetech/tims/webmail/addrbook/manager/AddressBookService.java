@@ -429,26 +429,26 @@ public class AddressBookService extends BaseService{
 	        	List<AddressBookMemberVO> addrMember;
 				int[] memberSeq = new int[1];	
 				
-				String addrAddType = ""; // Áßº¹ÁÖ¼Ò¿¡ ´ëÇÑ ¼±ÅÃ
-				String orgCode = "";     // ÇØ´çÁ¶Á÷ ÄÚµå
-				int orgUserSeq = 0;      // Á¶Á÷µµ¿¡¼­ ¼±ÅÃÇÑ »ç¿ëÀÚ userSeq
-				int groupSeq = 0;        // Ãß°¡ÇÒ ÁÖ¼Ò·ÏÀÇ groupSeq
+				String addrAddType = ""; // ÃÃŸÂºÂ¹ÃÃ–Â¼Ã’Â¿Â¡ Â´Ã«Ã‡Ã‘ Â¼Â±Ã…Ãƒ
+				String orgCode = "";     // Ã‡Ã˜Â´Ã§ÃÂ¶ÃÃ· Ã„ÃšÂµÃ¥
+				int orgUserSeq = 0;      // ÃÂ¶ÃÃ·ÂµÂµÂ¿Â¡Â¼Â­ Â¼Â±Ã…ÃƒÃ‡Ã‘ Â»Ã§Â¿Ã«Ã€Ãš userSeq
+				int groupSeq = 0;        // ÃƒÃŸÂ°Â¡Ã‡Ã’ ÃÃ–Â¼Ã’Â·ÃÃ€Ã‡ groupSeq
 				
 	            for (int i=0 ; i < dupMember.length ; i++) {
 	            	
-	            	addrAddType = dupMember[i].getAddrAddType();  //Áßº¹ÁÖ¼Ò¿¡ ´ëÇÑ ¼±ÅÃ(Áßº¹Ãß°¡,µ¤¾î¾²±â,Ãß°¡¾ÈÇÏ±â,Ãë¼Ò)
+	            	addrAddType = dupMember[i].getAddrAddType();  //ÃÃŸÂºÂ¹ÃÃ–Â¼Ã’Â¿Â¡ Â´Ã«Ã‡Ã‘ Â¼Â±Ã…Ãƒ(ÃÃŸÂºÂ¹ÃƒÃŸÂ°Â¡,ÂµÂ¤Â¾Ã®Â¾Â²Â±Ã¢,ÃƒÃŸÂ°Â¡Â¾ÃˆÃ‡ÃÂ±Ã¢,ÃƒÃ«Â¼Ã’)
 	            	orgCode = dupMember[i].getOrgCode();
 	            	orgUserSeq = dupMember[i].getUserSeq();
 	            	groupSeq = dupMember[i].getGroupSeq();
 	            	
-	            	if(!("noWrite".equalsIgnoreCase(addrAddType) || "cancel".equalsIgnoreCase(addrAddType))){ // Áßº¹Ãß°¡,µ¤¾î¾²±â
+	            	if(!("noWrite".equalsIgnoreCase(addrAddType) || "cancel".equalsIgnoreCase(addrAddType))){ // ÃÃŸÂºÂ¹ÃƒÃŸÂ°Â¡,ÂµÂ¤Â¾Ã®Â¾Â²Â±Ã¢
 	            	
 		            	AddressBookMemberVO member = manager.readOrgMember(orgLocale, orgCode, domainSeq, orgUserSeq);
 		            	 
 		            	if (member == null)
 			                continue;
 		            	
-		            	if("overWrite".equalsIgnoreCase(addrAddType)){  //µ¤¾î¾²±â½Ã ±âÁ¸ ÁÖ¼Ò »èÁ¦
+		            	if("overWrite".equalsIgnoreCase(addrAddType)){  //ÂµÂ¤Â¾Ã®Â¾Â²Â±Ã¢Â½Ãƒ Â±Ã¢ÃÂ¸ ÃÃ–Â¼Ã’ Â»Ã¨ÃÂ¦
 		            		addrMember = manager.getExistEmail(userSeq,member.getMemberEmail(),member.getMemberName());
 		            		memberSeq[0] = addrMember.get(0).getMemberSeq();
 		            		manager.deletePrivateMember(userSeq, memberSeq);

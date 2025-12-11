@@ -13,7 +13,8 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.webmail.common.BaseAction;
 import com.terracetech.tims.webmail.common.EnvConstants;
@@ -33,7 +34,7 @@ public class ViewImageAction extends BaseAction {
 	
 	private static final long serialVersionUID = -4634296753604224595L;
 	
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public String execute() throws Exception{
 		String imageFile = request.getParameter("img");

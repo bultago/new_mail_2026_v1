@@ -3,11 +3,12 @@ package com.terracetech.tims.webmail.mailuser.action;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.webmail.common.EnvConstants;
 import com.terracetech.tims.webmail.mailuser.manager.MailUserManager;
@@ -16,7 +17,7 @@ import com.terracetech.tims.webmail.util.ApplicationBeanUtil;
 import com.terracetech.tims.webmail.util.StringUtils;
 
 public class AutoLogoutAction {
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public String execute(HttpServletRequest request, HttpServletResponse response, String id, String pass, String domain) throws Exception {
 		UserAuthManager userAuthManager = (UserAuthManager) ApplicationBeanUtil.getApplicationBean("userAuthManager");

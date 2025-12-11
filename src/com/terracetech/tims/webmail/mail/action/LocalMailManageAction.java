@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMessage;
 
 import org.apache.struts2.dispatcher.multipart.MultiPartRequestWrapper;
 

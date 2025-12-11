@@ -7,13 +7,13 @@ import java.util.Locale;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-import javax.mail.Session;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Session;
+import jakarta.mail.internet.MimeMessage;
 
 import org.apache.commons.codec.binary.Base64;
 
-import com.sun.mail.imap.IMAPInputStream;
-import com.sun.mail.imap.IMAPMessage;
+import org.eclipse.angus.mail.imap.IMAPInputStream;
+import org.eclipse.angus.mail.imap.IMAPMessage;
 import com.terracetech.tims.common.I18nConstants;
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailMessage;

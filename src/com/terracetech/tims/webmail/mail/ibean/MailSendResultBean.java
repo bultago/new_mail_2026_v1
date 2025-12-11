@@ -11,13 +11,13 @@ package com.terracetech.tims.webmail.mail.ibean;
 
 import java.util.Map;
 
-import javax.mail.internet.InternetAddress;
+import jakarta.mail.internet.InternetAddress;
 
 import com.terracetech.tims.mail.TMailAddress;
 
 /**
  * <p><strong>MailSendResultBean.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>
@@ -52,26 +52,26 @@ public class MailSendResultBean {
 	
 	String errorMessage = null;
 	/**
-	 * @return to °ª ¹ÝÈ¯
+	 * @return to ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getTo() {
 		return to;
 	}
 	
 	/**
-	 * @return to °ª ¹ÝÈ¯
+	 * @return to ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getValidTo() {		
 		return getValidAddress(to);		
 	}
 	/**
-	 * @param to ÆÄ¶ó¹ÌÅÍ¸¦ to°ª¿¡ ¼³Á¤
+	 * @param to ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ toï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setTo(String to) {
 		this.to = to;
 	}
 	/**
-	 * @return cc °ª ¹ÝÈ¯
+	 * @return cc ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getValidCc() {
 		return getValidAddress(cc);				
@@ -81,13 +81,13 @@ public class MailSendResultBean {
 		return cc;
 	}
 	/**
-	 * @param cc ÆÄ¶ó¹ÌÅÍ¸¦ cc°ª¿¡ ¼³Á¤
+	 * @param cc ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ ccï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setCc(String cc) {
 		this.cc = cc;
 	}
 	/**
-	 * @return bcc °ª ¹ÝÈ¯
+	 * @return bcc ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getBcc() {
 		return bcc;
@@ -97,55 +97,55 @@ public class MailSendResultBean {
 		return getValidAddress(bcc);			
 	}
 	/**
-	 * @param bcc ÆÄ¶ó¹ÌÅÍ¸¦ bcc°ª¿¡ ¼³Á¤
+	 * @param bcc ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ bccï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setBcc(String bcc) {
 		this.bcc = bcc;
 	}
 	/**
-	 * @return returnUrl °ª ¹ÝÈ¯
+	 * @return returnUrl ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getReturnUrl() {
 		return returnUrl;
 	}
 	/**
-	 * @param returnUrl ÆÄ¶ó¹ÌÅÍ¸¦ returnUrl°ª¿¡ ¼³Á¤
+	 * @param returnUrl ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ returnUrlï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setReturnUrl(String returnUrl) {
 		this.returnUrl = returnUrl;
 	}
 	/**
-	 * @return sendAddress °ª ¹ÝÈ¯
+	 * @return sendAddress ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getSendAddress() {
 		return sendAddress;
 	}
 	/**
-	 * @param sendAddress ÆÄ¶ó¹ÌÅÍ¸¦ sendAddress°ª¿¡ ¼³Á¤
+	 * @param sendAddress ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ sendAddressï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setSendAddress(String sendAddress) {
 		this.sendAddress = sendAddress;
 	}	
 	/**
-	 * @return invalidAddress °ª ¹ÝÈ¯
+	 * @return invalidAddress ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getInvalidAddress() {
 		return invalidAddress;
 	}
 	/**
-	 * @param invalidAddress ÆÄ¶ó¹ÌÅÍ¸¦ invalidAddress°ª¿¡ ¼³Á¤
+	 * @param invalidAddress ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ invalidAddressï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setInvalidAddress(String invalidAddress) {
 		this.invalidAddress = invalidAddress;
 	}
 	/**
-	 * @return errorOccur °ª ¹ÝÈ¯
+	 * @return errorOccur ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public boolean isErrorOccur() {
 		return errorOccur;
 	}
 	/**
-	 * @param errorOccur ÆÄ¶ó¹ÌÅÍ¸¦ errorOccur°ª¿¡ ¼³Á¤
+	 * @param errorOccur ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ errorOccurï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setErrorOccur(boolean errorOccur) {
 		this.errorOccur = errorOccur;
@@ -160,19 +160,19 @@ public class MailSendResultBean {
 	}
 
 	/**
-	 * @return errorMessage °ª ¹ÝÈ¯
+	 * @return errorMessage ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getErrorMessage() {
 		return errorMessage;
 	}
 	/**
-	 * @param errorMessage ÆÄ¶ó¹ÌÅÍ¸¦ errorMessage°ª¿¡ ¼³Á¤
+	 * @param errorMessage ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ errorMessageï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
 	/**
-	 * @return saveMid °ª ¹ÝÈ¯
+	 * @return saveMid ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getSaveMid() {
 		if(saveMid != null){
@@ -182,55 +182,55 @@ public class MailSendResultBean {
 		return saveMid;
 	}
 	/**
-	 * @param saveMid ÆÄ¶ó¹ÌÅÍ¸¦ saveMid°ª¿¡ ¼³Á¤
+	 * @param saveMid ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ saveMidï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setSaveMid(String saveMid) {
 		this.saveMid = saveMid;
 	}
 	/**
-	 * @return sendAddressList °ª ¹ÝÈ¯
+	 * @return sendAddressList ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public InternetAddress[] getSendAddressList() {
 		return sendAddressList;
 	}
 	/**
-	 * @param sendAddressList ÆÄ¶ó¹ÌÅÍ¸¦ sendAddressList°ª¿¡ ¼³Á¤
+	 * @param sendAddressList ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ sendAddressListï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setSendAddressList(InternetAddress[] sendAddressList) {
 		this.sendAddressList = sendAddressList;
 	}
 	/**
-	 * @return invalidAddressList °ª ¹ÝÈ¯
+	 * @return invalidAddressList ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public InternetAddress[] getInvalidAddressList() {
 		return invalidAddressList;
 	}
 	/**
-	 * @param invalidAddressList ÆÄ¶ó¹ÌÅÍ¸¦ invalidAddressList°ª¿¡ ¼³Á¤
+	 * @param invalidAddressList ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ invalidAddressListï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setInvalidAddressList(InternetAddress[] invalidAddressList) {
 		this.invalidAddressList = invalidAddressList;
 	}
 	/**
-	 * @return sendType °ª ¹ÝÈ¯
+	 * @return sendType ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getSendType() {
 		return sendType;
 	}
 	/**
-	 * @param sendType ÆÄ¶ó¹ÌÅÍ¸¦ sendType°ª¿¡ ¼³Á¤
+	 * @param sendType ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ sendTypeï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setSendType(String sendType) {
 		this.sendType = sendType;
 	}
 	/**
-	 * @return sendFolderName °ª ¹ÝÈ¯
+	 * @return sendFolderName ï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String getSendFolderName() {
 		return sendFolderName;
 	}
 	/**
-	 * @param sendFolderName ÆÄ¶ó¹ÌÅÍ¸¦ sendFolderName°ª¿¡ ¼³Á¤
+	 * @param sendFolderName ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ sendFolderNameï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setSendFolderName(String sendFolderName) {
 		this.sendFolderName = sendFolderName;

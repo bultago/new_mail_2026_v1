@@ -1,46 +1,27 @@
-/**
- * VCardDao.java 2008. 11. 27.
- * 
- * Copyright 2008-2009 Daou tech Inc.
- *
- * Tims7 Project Source File
- * Development by Terrace Dev. WEB Dev.
- * 
- */
 package com.terracetech.tims.webmail.setting.dao;
 
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.terracetech.tims.webmail.setting.vo.VCardVO;
 
 /**
- * <p>
- * <strong>VCardDao.java</strong> Class Description
- * </p>
- * <p>
- * �ֿ伳��
- * </p>
- * <ul>
- * <li></li>
- * </ul>
+ * VCardDao MyBatis Mapper Interface
  * 
- * @author jpjung
- * @since Tims7
- * @version 7.0
+ * 원본 클래스: VCardDao extends SqlSessionDaoSupport
+ * 변환 내용: iBATIS → MyBatis Mapper 인터페이스
+ * 변환일: 2025-10-20
+ * 총 메서드 수: 3개 (원본 기준)
  */
-public class VCardDao extends SqlMapClientDaoSupport implements IVCardDao {
+@Mapper
+public interface VCardDao {
 
-	public VCardVO readVcard(int userSeq) throws Exception {
-		return (VCardVO) getSqlMapClientTemplate().queryForObject(
-				"VCard.getVCard", userSeq);
-	}
+    /** 원본: public VCardVO readVcard(int userSeq) throws Exception */
+    VCardVO readVcard(@Param("userSeq") int userSeq) throws Exception;
 
-	public void saveVcard(VCardVO vcard) throws Exception {
-		getSqlMapClientTemplate().insert("VCard.insertVCard", vcard);
-	}
-	
-	public void modifyVcard(VCardVO vcard) throws Exception {
-		getSqlMapClientTemplate().update("VCard.updateVCard", vcard);
-	}
-	
+    /** 원본: public void saveVcard(VCardVO vcard) throws Exception */
+    void saveVcard(VCardVO vcard) throws Exception;
+
+    /** 원본: public void modifyVcard(VCardVO vcard) throws Exception */
+    void modifyVcard(VCardVO vcard) throws Exception;
 }

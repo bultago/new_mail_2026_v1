@@ -5,68 +5,62 @@
 		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
 		xmlns:tx="http://www.springframework.org/schema/tx"
 		xsi:schemaLocation="
-			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
-			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
-			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
-			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-6.1.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-6.1.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-6.1.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-6.1.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-6.1.xsd"
 		default-autowire="byName">
 			
 			
-	<!-- =================================================================== -->
-	<!-- DAO DEFINITIONS                                                     -->
-	<!-- =================================================================== -->
 	
 	<bean id="settingFilterDao"
 		class="com.terracetech.tims.webmail.setting.dao.SettingFilterDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 		
 	<bean id="sgnImageDao"
 		class="com.terracetech.tims.webmail.setting.dao.SignDataDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 		
 	<bean id="vcardDao"
 		class="com.terracetech.tims.webmail.setting.dao.VCardDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 	
 	<bean id="settingUserEtcInfoDao"
 		class="com.terracetech.tims.webmail.setting.dao.SettingUserEtcInfoDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 		
 	<bean id="settingSpamDao"
 		class="com.terracetech.tims.webmail.setting.dao.SettingSpamDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 		
 	<bean id="settingForwardDao"
 		class="com.terracetech.tims.webmail.setting.dao.SettingForwardDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 		
 	<bean id="settingAutoReplyDao"
 		class="com.terracetech.tims.webmail.setting.dao.SettingAutoReplyDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 	
 	<bean id="lastrcptDao"
 		class="com.terracetech.tims.webmail.setting.dao.LastrcptDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 		
 	<bean id="settingPop3Dao"
 		class="com.terracetech.tims.webmail.setting.dao.SettingPop3Dao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 	
 	<bean id="mailHomePortletDao"
 		class="com.terracetech.tims.webmail.home.dao.MailHomePortletDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 		
 	<bean id="attachSettingDao"
 		class="com.terracetech.tims.webmail.setting.dao.AttachSettingDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		 />
 	
 	<bean id="settingSecureDao"
 		class="com.terracetech.tims.webmail.mailuser.dao.SettingSecureDao"
-		p:sqlMapClient-ref="sqlMapClient" />
-	<!-- =================================================================== -->
-	<!-- MANAGER DEFINITIONS                                                 -->
-	<!-- =================================================================== -->
+		 />
 	
 	<bean id="lastrcptManager" 
 		class="com.terracetech.tims.webmail.setting.manager.LastrcptManager">
@@ -113,185 +107,40 @@
 		<property name="mailUserDao"><ref bean="mailUserDao" /></property>
 	</bean>
 	
-	<!-- =================================================================== -->
-	<!-- ACTION DEFINITIONS                                                 -->
-	<!-- =================================================================== -->
 	
-	<bean id="viewSpamRuleAction" class="com.terracetech.tims.webmail.setting.action.ViewSpamRuleAction" scope="prototype" 
-			p:manager-ref="settingManager"/>	
 	
-	<bean id="saveSpamRuleAction" class="com.terracetech.tims.webmail.setting.action.SaveSpamRuleAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
 			
-	<bean id="viewAutoReplyAction" class="com.terracetech.tims.webmail.setting.action.ViewAutoReplyAction" scope="prototype" 
-			p:manager-ref="settingManager"/>	
 	
-	<bean id="saveAutoReplyAction" class="com.terracetech.tims.webmail.setting.action.SaveAutoReplyAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
 			
-	<bean id="viewForwardAction" class="com.terracetech.tims.webmail.setting.action.ViewForwardAction" scope="prototype" 
-			p:manager-ref="settingManager"/>	
 	
-	<bean id="saveForwardAction" class="com.terracetech.tims.webmail.setting.action.SaveForwardAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
-			
-	<bean id="deleteDefineForwardAction" class="com.terracetech.tims.webmail.setting.action.DeleteDefineForwardAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
 	
-	<bean id="viewFilterAction" class="com.terracetech.tims.webmail.setting.action.ViewFilterAction" scope="prototype" 
-			p:manager-ref="settingManager" p:mailManager-ref="mailManager"/>
 	
-	<bean id="saveFilterAction" class="com.terracetech.tims.webmail.setting.action.SaveFilterAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
-			
-	<bean id="modifyFilterAction" class="com.terracetech.tims.webmail.setting.action.ModifyFilterAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
 	
-	<bean id="deleteFilterAction" class="com.terracetech.tims.webmail.setting.action.DeleteFilterAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
 	
-	<bean id="viewExtMailAction" class="com.terracetech.tims.webmail.setting.action.ViewExtMailAction" scope="prototype" 
-			p:manager-ref="settingManager" p:mailManager-ref="mailManager"/>
 	
-	<bean id="saveExtMailAction" class="com.terracetech.tims.webmail.setting.action.SaveExtMailAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
 	
-	<bean id="deleteExtMailAction" class="com.terracetech.tims.webmail.setting.action.DeleteExtMailAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
 	
-	<bean id="modifyExtMailAction" class="com.terracetech.tims.webmail.setting.action.ModifyExtMailAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
-			
-	<bean id="viewSelectedExtMailAction" class="com.terracetech.tims.webmail.setting.action.ViewSelectedExtMailAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
 	
-	<bean id="viewSignAction" class="com.terracetech.tims.webmail.setting.action.ViewSignAction" scope="prototype" 
-			p:signManager-ref="signManager"/>
 	
-	<bean id="writeSignDataAction" class="com.terracetech.tims.webmail.setting.action.WriteSignDataAction" scope="prototype" 
-			p:signManager-ref="signManager"/>
-			
-	<bean id="uploadSignImageAction" class="com.terracetech.tims.webmail.setting.action.UploadSignImageAction" scope="prototype" 
-			p:signManager-ref="signManager"/>
 	
-	<bean id="saveSignDataAction" class="com.terracetech.tims.webmail.setting.action.SaveSignDataAction" scope="prototype" 
-			p:signManager-ref="signManager"/>
 	
-	<bean id="modifySignDataAction" class="com.terracetech.tims.webmail.setting.action.ModifySignDataAction" scope="prototype" 
-			p:signManager-ref="signManager"/>
-			
-	<bean id="updateSignDataAction" class="com.terracetech.tims.webmail.setting.action.SaveSignDataAction" scope="prototype" 
-			p:signManager-ref="signManager"/>
 	
-	<bean id="deleteSignDataAction" class="com.terracetech.tims.webmail.setting.action.DeleteSignDataAction" scope="prototype" 
-			p:signManager-ref="signManager"/>
 	
-	<bean id="modifySignAction" class="com.terracetech.tims.webmail.setting.action.ModifySignAction" scope="prototype" 
-			p:signManager-ref="signManager"/>	
-			
-	<bean id="viewUserSettingAction" class="com.terracetech.tims.webmail.setting.action.ViewUserEtcInfoAction" scope="prototype" 
-			p:manager-ref="settingManager"/>
 	
-	<bean id="modifyUserSettingAction" class="com.terracetech.tims.webmail.setting.action.ModifyUserEtcInfoAction" scope="prototype" 
-			p:settingManager-ref="settingManager"
-			p:userAuthManager-ref="userAuthManager"
-			p:systemManager-ref="systemConfigManager"/>
-			
-	<bean id="passwordChangeActionAction" class="com.terracetech.tims.webmail.mailuser.action.PasswordChangeAction" scope="prototype" 
-			p:settingManager-ref="settingManager"
-			p:userAuthManager-ref="userAuthManager">
-			
-			<constructor-arg value="false"/>
-	</bean>
-			
-	<bean id="checkUserInfoAuthAction" class="com.terracetech.tims.webmail.setting.action.CheckUserInfoAuthAction" scope="prototype" 
-			p:settingManager-ref="settingManager"/>
-			
-	<bean id="viewUserInfoAuthAction" class="com.terracetech.tims.webmail.setting.action.ViewUserInfoAuthAction" scope="prototype" 
-			p:settingManager-ref="settingManager"/>	
-			
-	<bean id="viewUserInfoAction" class="com.terracetech.tims.webmail.setting.action.ViewUserInfoAction" scope="prototype" 
-			p:settingManager-ref="settingManager"
-			p:systemManager-ref="systemConfigManager"
-			p:settingSecureManager-ref="secureManager"			
-			p:mailUserManager-ref="mailUserManager"/>
-			
-	<bean id="viewZipcodeAction" class="com.terracetech.tims.webmail.setting.action.ViewZipcodeAction" scope="prototype" 
-			p:settingManager-ref="settingManager">
-			<constructor-arg value="false"/>
-	</bean>
-			
-	<bean id="modifyUserInfoAction" class="com.terracetech.tims.webmail.setting.action.ModifyUserInfoAction" scope="prototype" 
-			p:settingManager-ref="settingManager" 
-			p:userAuthManager-ref="userAuthManager"
-			p:systemManager-ref="systemConfigManager" />
 	
-	<bean 	id="viewVcardAction" class="com.terracetech.tims.webmail.setting.action.ViewVcardAction" scope="prototype"
-		p:vcardManager-ref="vcardManager" p:settingManager-ref="settingManager">
-	</bean>
 	
-	<bean 	id="modifyVcardAction" class="com.terracetech.tims.webmail.setting.action.ModifyVcardAction" scope="prototype"
-		p:vcardManager-ref="vcardManager">
-	</bean>
 	
-	<bean 	id="viewHomeLayoutAction" class="com.terracetech.tims.webmail.home.action.ViewMailHomeLayoutAction" scope="prototype"
-		p:manager-ref="homeManager">
-	</bean>
 	
-	<bean 	id="saveHomeLayoutAction" class="com.terracetech.tims.webmail.home.action.SaveMailHomeLayoutAction" scope="prototype"
-		p:manager-ref="homeManager">
-	</bean>
 	
-	<bean 	id="updateUserInfoAction" class="com.terracetech.tims.webmail.setting.action.UpdateUserInfoAction" scope="prototype"
-		p:settingManager-ref="settingManager"
-		p:systemManager-ref="systemConfigManager">
-	</bean>
 	
-	<bean id="viewSchedulerAction" class="com.terracetech.tims.webmail.setting.action.ViewSchedulerAction" scope="prototype"
-		p:schedulerManager-ref="schedulerManager">
-	</bean>
 	
-	<bean id="saveSchedulerAction" class="com.terracetech.tims.webmail.setting.action.SaveSchedulerAction" scope="prototype"
-		p:schedulerManager-ref="schedulerManager">
-	</bean>
 	
-	<bean id="viewSchedulerShareJsonAction" class="com.terracetech.tims.webmail.setting.action.ViewSchedulerShareJsonAction" scope="prototype"
-		p:schedulerManager-ref="schedulerManager">
-	</bean>
 	
-	<bean id="deleteSchedulerAction" class="com.terracetech.tims.webmail.setting.action.DeleteSchedulerAction" scope="prototype"
-		p:schedulerManager-ref="schedulerManager">
-	</bean>
 	
-	<bean id="uploadPictureAction" class="com.terracetech.tims.webmail.setting.action.UploadPictureAction" scope="prototype" />
 	
-	<bean id="savePictureAction" class="com.terracetech.tims.webmail.setting.action.SavePictureAction" scope="prototype"
-		p:settingManager-ref="settingManager">
-	</bean>
 	
-	<bean id="viewPictureAction" class="com.terracetech.tims.webmail.setting.action.ViewPictureAction" scope="prototype"
-		p:settingManager-ref="settingManager">
-	</bean>
 	
-	<bean id="deletePictureAction" class="com.terracetech.tims.webmail.setting.action.DeletePictureAction" scope="prototype"
-		p:settingManager-ref="settingManager">
-	</bean>
+		
 	
-	<bean id="viewLastrcptAction" class="com.terracetech.tims.webmail.setting.action.ViewLastrcptAction" scope="prototype"
-		p:rcptManager-ref="lastrcptManager">
-	</bean>
 	
-	<bean id="deleteLastrcptAction" class="com.terracetech.tims.webmail.setting.action.DeleteLastrcptAction" scope="prototype" 
-		p:rcptManager-ref="lastrcptManager">
-	</bean>
-	
-	<bean id="viewPKISignUpdateAction" class="com.terracetech.tims.webmail.setting.action.ViewPKISignUpdateAction" scope="prototype"/>
-	
-	<bean id="updatePKISignAction" class="com.terracetech.tims.webmail.setting.action.UpdatePKISignAction" scope="prototype" 
-		p:settingManager-ref="settingManager">
-	</bean>	
-	
-	<bean 	id="cacheDeleteAction" class="com.terracetech.tims.webmail.setting.action.CacheDeleteAction" scope="prototype"
-		p:systemManager-ref="systemConfigManager">
-	</bean>
-</beans>
+</beans></beans>

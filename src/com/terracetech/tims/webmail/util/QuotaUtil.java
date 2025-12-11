@@ -1,6 +1,6 @@
 package com.terracetech.tims.webmail.util;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import com.terracetech.tims.webmail.common.EnvConstants;
 import com.terracetech.tims.webmail.mailuser.User;

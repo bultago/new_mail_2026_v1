@@ -20,28 +20,28 @@ public class OutlookForJP implements IEmailVendor {
 	public StringBuffer getAddrCSVDownload(List<AddressBookMemberVO> list) {
 		StringBuffer sb = new StringBuffer();
 		
-		sb.append(resource.getMessage("addr.outlook.001") + ",");	//0.ÀÌ¸§
-		sb.append(resource.getMessage("addr.outlook.002") + ",");	//1.¼º
-		sb.append(resource.getMessage("addr.outlook.004") + ",");	//2.ÀüÀÚ ¸ŞÀÏ ÁÖ¼Ò
+		sb.append(resource.getMessage("addr.outlook.001") + ",");	//0.Ã€ÃŒÂ¸Â§
+		sb.append(resource.getMessage("addr.outlook.002") + ",");	//1.Â¼Âº
+		sb.append(resource.getMessage("addr.outlook.004") + ",");	//2.Ã€Ã¼Ã€Ãš Â¸ÃÃ€Ã ÃÃ–Â¼Ã’
 		
-		sb.append(resource.getMessage("addr.outlook.005") + ",");	//3.Áı ¹øÁö
-		sb.append(resource.getMessage("addr.outlook.006") + ",");	//4.Áı ÁÖ¼Ò ±¸/±º/½Ã
-		sb.append(resource.getMessage("addr.outlook.007") + ",");	//5.Áı ÁÖ¼Ò ¿ìÆí ¹øÈ£
-		sb.append(resource.getMessage("addr.outlook.008") + ",");	//6.Áı ÁÖ¼Ò ½Ã/µµ
-		sb.append(resource.getMessage("addr.outlook.009") + ",");	//7.Áı ÁÖ¼Ò ±¹°¡/Áö¿ª
-		sb.append(resource.getMessage("addr.outlook.010") + ",");	//8.Áı ÀüÈ­ ¹øÈ£
+		sb.append(resource.getMessage("addr.outlook.005") + ",");	//3.ÃÃ½ Â¹Ã¸ÃÃ¶
+		sb.append(resource.getMessage("addr.outlook.006") + ",");	//4.ÃÃ½ ÃÃ–Â¼Ã’ Â±Â¸/Â±Âº/Â½Ãƒ
+		sb.append(resource.getMessage("addr.outlook.007") + ",");	//5.ÃÃ½ ÃÃ–Â¼Ã’ Â¿Ã¬Ã†Ã­ Â¹Ã¸ÃˆÂ£
+		sb.append(resource.getMessage("addr.outlook.008") + ",");	//6.ÃÃ½ ÃÃ–Â¼Ã’ Â½Ãƒ/ÂµÂµ
+		sb.append(resource.getMessage("addr.outlook.009") + ",");	//7.ÃÃ½ ÃÃ–Â¼Ã’ Â±Â¹Â°Â¡/ÃÃ¶Â¿Âª
+		sb.append(resource.getMessage("addr.outlook.010") + ",");	//8.ÃÃ½ Ã€Ã¼ÃˆÂ­ Â¹Ã¸ÃˆÂ£
 		
-		sb.append(resource.getMessage("addr.outlook.012") + ",");	//9.ÈŞ´ëÆù
+		sb.append(resource.getMessage("addr.outlook.012") + ",");	//9.ÃˆÃÂ´Ã«Ã†Ã¹
 		
-		sb.append(resource.getMessage("addr.outlook.013") + ",");	//10.±Ù¹«Áö ÁÖ¼Ò ¹øÁö
-		sb.append(resource.getMessage("addr.outlook.014") + ",");	//11.±Ù¹«Áö ±¸/±º/½Ã
-		sb.append(resource.getMessage("addr.outlook.015") + ",");	//12.±Ù¹«Áö ¿ìÆí ¹øÈ£
-		sb.append(resource.getMessage("addr.outlook.016") + ",");	//13.±Ù¹«Áö ½Ã/µµ
-		sb.append(resource.getMessage("addr.outlook.017") + ",");	//14.±Ù¹«Áö ±¹°¡/Áö¿ª
-		sb.append(resource.getMessage("addr.outlook.018") + ",");	//15.±Ù¹«Ã³ ÀüÈ­
-		sb.append(resource.getMessage("addr.outlook.020") + ",");	//16.È¸»ç
-		sb.append(resource.getMessage("addr.outlook.021") + ",");	//17.Á÷ÇÔ
-		sb.append(resource.getMessage("addr.outlook.022"));			//18.ºÎ¼­
+		sb.append(resource.getMessage("addr.outlook.013") + ",");	//10.Â±Ã™Â¹Â«ÃÃ¶ ÃÃ–Â¼Ã’ Â¹Ã¸ÃÃ¶
+		sb.append(resource.getMessage("addr.outlook.014") + ",");	//11.Â±Ã™Â¹Â«ÃÃ¶ Â±Â¸/Â±Âº/Â½Ãƒ
+		sb.append(resource.getMessage("addr.outlook.015") + ",");	//12.Â±Ã™Â¹Â«ÃÃ¶ Â¿Ã¬Ã†Ã­ Â¹Ã¸ÃˆÂ£
+		sb.append(resource.getMessage("addr.outlook.016") + ",");	//13.Â±Ã™Â¹Â«ÃÃ¶ Â½Ãƒ/ÂµÂµ
+		sb.append(resource.getMessage("addr.outlook.017") + ",");	//14.Â±Ã™Â¹Â«ÃÃ¶ Â±Â¹Â°Â¡/ÃÃ¶Â¿Âª
+		sb.append(resource.getMessage("addr.outlook.018") + ",");	//15.Â±Ã™Â¹Â«ÃƒÂ³ Ã€Ã¼ÃˆÂ­
+		sb.append(resource.getMessage("addr.outlook.020") + ",");	//16.ÃˆÂ¸Â»Ã§
+		sb.append(resource.getMessage("addr.outlook.021") + ",");	//17.ÃÃ·Ã‡Ã”
+		sb.append(resource.getMessage("addr.outlook.022"));			//18.ÂºÃÂ¼Â­
 		sb.append("\r\n");
 
 		String dummy = "";
@@ -120,9 +120,9 @@ public class OutlookForJP implements IEmailVendor {
 			info = tempInfo;
 		}
 		
-		vo.setFirstName(info[0]);	//0.ÀÌ¸§
-		vo.setLastName(info[1]);	//1.¼º
-		vo.setMemberName(info[0]);	//2.ÀÌ¸§
+		vo.setFirstName(info[0]);	//0.Ã€ÃŒÂ¸Â§
+		vo.setLastName(info[1]);	//1.Â¼Âº
+		vo.setMemberName(info[0]);	//2.Ã€ÃŒÂ¸Â§
 		if(StringUtils.isNotEmpty(info[1])){
 			vo.setMemberName(info[1] + " " +vo.getMemberName());
 		}

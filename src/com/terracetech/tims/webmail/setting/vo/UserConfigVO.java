@@ -11,10 +11,10 @@ package com.terracetech.tims.webmail.setting.vo;
 
 /**
  * <p><strong>UserConfigVO.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
- * <li>»ç¿ëÀÚ È¯°æ ¼³Á¤ Á¤º¸¸¦ °¡Á®¿À±â À§ÇÑ VO. ¸ŞÀÏ ¼­ºñ½º¸¦ »ç¿ëÇÏ±â À§ÇÑ ¼³Á¤ Á¤º¸¸¦ Ç¥Çö.</li>
- * <li>ÆäÀÌÁö °¹¼ö, ¾ğ¾î ¼Û½ÅÀÌ¸§µîÀÇ ¼­ºñ½º »ç¿ë½ÃÀÇ ¼³Á¤ Á¤º¸Æ÷ÇÔ.</li>
+ * <li>Â»Ã§Â¿Ã«Ã€Ãš ÃˆÂ¯Â°Ã¦ Â¼Â³ÃÂ¤ ÃÂ¤ÂºÂ¸Â¸Â¦ Â°Â¡ÃÂ®Â¿Ã€Â±Ã¢ Ã€Â§Ã‡Ã‘ VO. Â¸ÃÃ€Ã Â¼Â­ÂºÃ±Â½ÂºÂ¸Â¦ Â»Ã§Â¿Ã«Ã‡ÃÂ±Ã¢ Ã€Â§Ã‡Ã‘ Â¼Â³ÃÂ¤ ÃÂ¤ÂºÂ¸Â¸Â¦ Ã‡Â¥Ã‡Ã¶.</li>
+ * <li>Ã†Ã¤Ã€ÃŒÃÃ¶ Â°Â¹Â¼Ã¶, Â¾Ã°Â¾Ã® Â¼Ã›Â½Ã…Ã€ÃŒÂ¸Â§ÂµÃ®Ã€Ã‡ Â¼Â­ÂºÃ±Â½Âº Â»Ã§Â¿Ã«Â½ÃƒÃ€Ã‡ Â¼Â³ÃÂ¤ ÃÂ¤ÂºÂ¸Ã†Ã·Ã‡Ã”.</li>
  * </ul>
  * @author sshyun
  * @since Tims7
@@ -23,262 +23,262 @@ package com.terracetech.tims.webmail.setting.vo;
 public class UserConfigVO {
 	
 	/**
-	 * <p>ÆäÀÌÂ¡ ´ÜÀ§ °¹¼ö</p>
+	 * <p>Ã†Ã¤Ã€ÃŒÃ‚Â¡ Â´ÃœÃ€Â§ Â°Â¹Â¼Ã¶</p>
 	 */
 	private int pageLineCnt = 0;
 	/**
-	 * <p>¸ŞÀÏ ¼Û½Å½Ã º¸³»´Â ÀÌ¸§</p>
+	 * <p>Â¸ÃÃ€Ã Â¼Ã›Â½Ã…Â½Ãƒ ÂºÂ¸Â³Â»Â´Ã‚ Ã€ÃŒÂ¸Â§</p>
 	 */
 	private String senderName = null;
 	/**
-	 * <p>¼ö½ÅÈ®ÀÎ ÇÔ ÀúÀå</p>
+	 * <p>Â¼Ã¶Â½Ã…ÃˆÂ®Ã€Ã Ã‡Ã” Ã€ÃºÃ€Ã¥</p>
 	 */
 	private String saveSendBox = null;
 	/**
-	 * <p>¼ö½ÅÈ®ÀÎ ±â´É ¼³Á¤</p>
-	 * <p>¼Ó¼º : on/off</p>
+	 * <p>Â¼Ã¶Â½Ã…ÃˆÂ®Ã€Ã Â±Ã¢Â´Ã‰ Â¼Â³ÃÂ¤</p>
+	 * <p>Â¼Ã“Â¼Âº : on/off</p>
 	 */
 	private String receiveNoti = null;
 	/**
-	 * <p>Vcard »ç¿ë¿©ºÎ</p>
+	 * <p>Vcard Â»Ã§Â¿Ã«Â¿Â©ÂºÃ</p>
 	 */
 	private String vcardAttach = null;
 	/**
-	 * <p>»ç¿ëÀÚ ÆäÀÌÁö ¾ğ¾î ¼³Á¤</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš Ã†Ã¤Ã€ÃŒÃÃ¶ Â¾Ã°Â¾Ã® Â¼Â³ÃÂ¤</p>
 	 */
 	private String userLocale = null;
 	/**
-	 * <p>¾²±â ¸ğµå ¼³Á¤</p>
-	 * <p>¼Ó¼º : text/html</p>
+	 * <p>Â¾Â²Â±Ã¢ Â¸Ã°ÂµÃ¥ Â¼Â³ÃÂ¤</p>
+	 * <p>Â¼Ã“Â¼Âº : text/html</p>
 	 */
 	private String writeMode = null;
 	/**
-	 * <p>¸ŞÀÏ ÀÛ¼º½Ã ¾ğ¾î¼Â</p>
+	 * <p>Â¸ÃÃ€Ã Ã€Ã›Â¼ÂºÂ½Ãƒ Â¾Ã°Â¾Ã®Â¼Ã‚</p>
 	 */
 	private String charSet = null;
 	/**
-	 * <p>¸ŞÀÏ ÀĞ±â½Ã ÀÌ¹ÌÁö º¸±â ¼³Á¤</p>
-	 * <p>¼Ó¼º : on/off</p>
+	 * <p>Â¸ÃÃ€Ã Ã€ÃÂ±Ã¢Â½Ãƒ Ã€ÃŒÂ¹ÃŒÃÃ¶ ÂºÂ¸Â±Ã¢ Â¼Â³ÃÂ¤</p>
+	 * <p>Â¼Ã“Â¼Âº : on/off</p>
 	 */
 	private String hiddenImg = null;
 	/**
-	 * <p>¼­¸í Ã·ºÎ ¿©ºÎ</p>
-	 * <p>¼Ó¼º : on/off</p>
+	 * <p>Â¼Â­Â¸Ã­ ÃƒÂ·ÂºÃ Â¿Â©ÂºÃ</p>
+	 * <p>Â¼Ã“Â¼Âº : on/off</p>
 	 */
 	private String signAttach = null;
 	/**
-	 * <p>·Î±×ÀÎÈÄ ÀÌµ¿ ÆäÀÌÁö ¼³Á¤</p>
+	 * <p>Â·ÃÂ±Ã—Ã€ÃÃˆÃ„ Ã€ÃŒÂµÂ¿ Ã†Ã¤Ã€ÃŒÃÃ¶ Â¼Â³ÃÂ¤</p>
 	 */
 	private String afterLogin = null;
 	/**
-	 * <p>¸ŞÀÏ ÀĞ±â½Ã ÅÂ±× º¸±â ¼³Á¤</p>
-	 * <p>¼Ó¼º : on/off</p>
+	 * <p>Â¸ÃÃ€Ã Ã€ÃÂ±Ã¢Â½Ãƒ Ã…Ã‚Â±Ã— ÂºÂ¸Â±Ã¢ Â¼Â³ÃÂ¤</p>
+	 * <p>Â¼Ã“Â¼Âº : on/off</p>
 	 */
 	private String hiddenTag = null;
 	/**
-	 * <p>»õ¸ŞÀÏ ¾Ë¸² ÁÖ±â ¼³Á¤</p>
+	 * <p>Â»ÃµÂ¸ÃÃ€Ã Â¾Ã‹Â¸Â² ÃÃ–Â±Ã¢ Â¼Â³ÃÂ¤</p>
 	 */
 	private int notiInterval = 0;
 	/**
-	 * <p>»ç¿ëÀÚ ½ºÅ² ¼³Á¤. Left ¸Ş´º¸¸ Àû¿ë</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš Â½ÂºÃ…Â² Â¼Â³ÃÂ¤. Left Â¸ÃÂ´ÂºÂ¸Â¸ Ã€Ã»Â¿Ã«</p>
 	 */
 	private String userSkin = null;
 	/**
-	 * <p>Àü´Ş ¸ğµå ¼³Á¤.</p>
+	 * <p>Ã€Ã¼Â´Ã Â¸Ã°ÂµÃ¥ Â¼Â³ÃÂ¤.</p>
 	 */
 	private String forwardingMode = null;
 	/**
-	 * <p>¼ÛÁøÀÚ Email  ÁÖ¼Ò ¼³Á¤.</p>
+	 * <p>Â¼Ã›ÃÃ¸Ã€Ãš Email  ÃÃ–Â¼Ã’ Â¼Â³ÃÂ¤.</p>
 	 */
 	private String senderEmail = null;
 	/**
-	 * @return pageLineCnt °ª ¹İÈ¯
+	 * @return pageLineCnt Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getPageLineCnt() {
 		return pageLineCnt;
 	}
 	/**
-	 * @param pageLineCnt ÆÄ¶ó¹ÌÅÍ¸¦ pageLineCnt°ª¿¡ ¼³Á¤
+	 * @param pageLineCnt Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ pageLineCntÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setPageLineCnt(int pageLineCnt) {
 		this.pageLineCnt = pageLineCnt;
 	}
 	/**
-	 * @return senderName °ª ¹İÈ¯
+	 * @return senderName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSenderName() {
 		return senderName;
 	}
 	/**
-	 * @param senderName ÆÄ¶ó¹ÌÅÍ¸¦ senderName°ª¿¡ ¼³Á¤
+	 * @param senderName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ senderNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSenderName(String senderName) {
 		this.senderName = senderName;
 	}
 	/**
-	 * @return saveSendBox °ª ¹İÈ¯
+	 * @return saveSendBox Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSaveSendBox() {
 		return saveSendBox;
 	}
 	/**
-	 * @param saveSendBox ÆÄ¶ó¹ÌÅÍ¸¦ saveSendBox°ª¿¡ ¼³Á¤
+	 * @param saveSendBox Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ saveSendBoxÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSaveSendBox(String saveSendBox) {
 		this.saveSendBox = saveSendBox;
 	}
 	/**
-	 * @return receiveNoti °ª ¹İÈ¯
+	 * @return receiveNoti Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getReceiveNoti() {
 		return receiveNoti;
 	}
 	/**
-	 * @param receiveNoti ÆÄ¶ó¹ÌÅÍ¸¦ receiveNoti°ª¿¡ ¼³Á¤
+	 * @param receiveNoti Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ receiveNotiÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setReceiveNoti(String receiveNoti) {
 		this.receiveNoti = receiveNoti;
 	}
 	/**
-	 * @return vcardAttach °ª ¹İÈ¯
+	 * @return vcardAttach Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getVcardAttach() {
 		return vcardAttach;
 	}
 	/**
-	 * @param vcardAttach ÆÄ¶ó¹ÌÅÍ¸¦ vcardAttach°ª¿¡ ¼³Á¤
+	 * @param vcardAttach Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ vcardAttachÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setVcardAttach(String vcardAttach) {
 		this.vcardAttach = vcardAttach;
 	}
 	/**
-	 * @return userLocale °ª ¹İÈ¯
+	 * @return userLocale Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getUserLocale() {
 		return userLocale;
 	}
 	/**
-	 * @param userLocale ÆÄ¶ó¹ÌÅÍ¸¦ userLocale°ª¿¡ ¼³Á¤
+	 * @param userLocale Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ userLocaleÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUserLocale(String userLocale) {
 		this.userLocale = userLocale;
 	}
 	/**
-	 * @return writeMode °ª ¹İÈ¯
+	 * @return writeMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getWriteMode() {
 		return writeMode;
 	}
 	/**
-	 * @param writeMode ÆÄ¶ó¹ÌÅÍ¸¦ writeMode°ª¿¡ ¼³Á¤
+	 * @param writeMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ writeModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setWriteMode(String writeMode) {
 		this.writeMode = writeMode;
 	}
 	/**
-	 * @return charSet °ª ¹İÈ¯
+	 * @return charSet Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getCharSet() {
 		return charSet;
 	}
 	/**
-	 * @param charSet ÆÄ¶ó¹ÌÅÍ¸¦ charSet°ª¿¡ ¼³Á¤
+	 * @param charSet Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ charSetÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setCharSet(String charSet) {
 		this.charSet = charSet;
 	}
 	/**
-	 * @return hiddenImg °ª ¹İÈ¯
+	 * @return hiddenImg Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHiddenImg() {
 		return hiddenImg;
 	}
 	/**
-	 * @param hiddenImg ÆÄ¶ó¹ÌÅÍ¸¦ hiddenImg°ª¿¡ ¼³Á¤
+	 * @param hiddenImg Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ hiddenImgÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHiddenImg(String hiddenImg) {
 		this.hiddenImg = hiddenImg;
 	}
 	/**
-	 * @return signAttach °ª ¹İÈ¯
+	 * @return signAttach Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSignAttach() {
 		return signAttach;
 	}
 	/**
-	 * @param signAttach ÆÄ¶ó¹ÌÅÍ¸¦ signAttach°ª¿¡ ¼³Á¤
+	 * @param signAttach Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ signAttachÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSignAttach(String signAttach) {
 		this.signAttach = signAttach;
 	}
 	/**
-	 * @return afterLogin °ª ¹İÈ¯
+	 * @return afterLogin Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getAfterLogin() {
 		return afterLogin;
 	}
 	/**
-	 * @param afterLogin ÆÄ¶ó¹ÌÅÍ¸¦ afterLogin°ª¿¡ ¼³Á¤
+	 * @param afterLogin Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ afterLoginÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAfterLogin(String afterLogin) {
 		this.afterLogin = afterLogin;
 	}
 	/**
-	 * @return hiddenTag °ª ¹İÈ¯
+	 * @return hiddenTag Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHiddenTag() {
 		return hiddenTag;
 	}
 	/**
-	 * @param hiddenTag ÆÄ¶ó¹ÌÅÍ¸¦ hiddenTag°ª¿¡ ¼³Á¤
+	 * @param hiddenTag Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ hiddenTagÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHiddenTag(String hiddenTag) {
 		this.hiddenTag = hiddenTag;
 	}
 	/**
-	 * @return notiInterval °ª ¹İÈ¯
+	 * @return notiInterval Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getNotiInterval() {
 		return notiInterval;
 	}
 	/**
-	 * @param notiInterval ÆÄ¶ó¹ÌÅÍ¸¦ notiInterval°ª¿¡ ¼³Á¤
+	 * @param notiInterval Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ notiIntervalÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setNotiInterval(int notiInterval) {
 		this.notiInterval = notiInterval;
 	}
 	/**
-	 * @return userSkin °ª ¹İÈ¯
+	 * @return userSkin Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getUserSkin() {
 		return userSkin;
 	}
 	/**
-	 * @param userSkin ÆÄ¶ó¹ÌÅÍ¸¦ userSkin°ª¿¡ ¼³Á¤
+	 * @param userSkin Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ userSkinÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUserSkin(String userSkin) {
 		this.userSkin = userSkin;
 	}
 	/**
-	 * @return forwardingMode °ª ¹İÈ¯
+	 * @return forwardingMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getForwardingMode() {
 		return forwardingMode;
 	}
 	/**
-	 * @param forwardingMode ÆÄ¶ó¹ÌÅÍ¸¦ forwardingMode°ª¿¡ ¼³Á¤
+	 * @param forwardingMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ forwardingModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setForwardingMode(String forwardingMode) {
 		this.forwardingMode = forwardingMode;
 	}
 	/**
-	 * @return senderEmail °ª ¹İÈ¯
+	 * @return senderEmail Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSenderEmail() {
 		return senderEmail;
 	}
 	/**
-	 * @param senderEmail ÆÄ¶ó¹ÌÅÍ¸¦ senderEmail°ª¿¡ ¼³Á¤
+	 * @param senderEmail Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ senderEmailÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSenderEmail(String senderEmail) {
 		this.senderEmail = senderEmail;

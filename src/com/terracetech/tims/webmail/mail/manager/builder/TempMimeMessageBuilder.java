@@ -13,12 +13,12 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Stack;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
 
 import com.terracetech.tims.mail.TMailAddress;
 import com.terracetech.tims.webmail.mail.ibean.SenderInfoBean;
@@ -27,7 +27,7 @@ import com.terracetech.tims.webmail.mail.manager.body.TextMultipartMsgBodyCreato
 
 /**
  * <p><strong>TempMimeMessageBuilder.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

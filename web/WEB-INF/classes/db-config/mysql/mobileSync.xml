@@ -1,169 +1,169 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
-    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
-<sqlMap namespace="mobile">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terracetech.tims.webmail.mobile.mapper.mobileMapper">
 
-	<delete id="deleteMobileSync" parameterClass="int" >
+	<delete id="deleteMobileSync" parameterType="int" >
     	delete from mail_user_mobile_sync
-    	where mail_user_seq = #value#
+    	where mail_user_seq = #{value}
 	</delete>
 	
-	<delete id="deleteMobileSync2" parameterClass="mobileSync" >
+	<delete id="deleteMobileSync2" parameterType="mobileSync" >
     	delete from mail_user_mobile_sync
     	where 
-    		mail_user_seq = #mailUserSeq#
-    		and device_id = #deviceId#
+    		mail_user_seq = #{mailUserSeq}
+    		and device_id = #{deviceId}
 	</delete>
 	
-	<insert id="insertMobileSync" parameterClass="mobileSync" >
+	<insert id="insertMobileSync" parameterType="mobileSync" >
 		insert into mail_user_mobile_sync (mail_user_seq, device_id, device_type,  sync_key, ping_check)
-		values (#mailUserSeq#, #deviceId#, #deviceType#, #syncKey#, 'off')
+		values (#{mailUserSeq}, #{deviceId}, #{deviceType}, #{syncKey}, 'off')
 	</insert>
 	
-	<select id="countMobileSync" parameterClass="mobileSync" resultClass="int" >
+	<select id="countMobileSync" parameterType="mobileSync" resultType="int" >
     	select count(*) 
     	from mail_user_mobile_sync
     	where 
-    		mail_user_seq = #mailUserSeq#
-    		and device_id = #deviceId#
+    		mail_user_seq = #{mailUserSeq}
+    		and device_id = #{deviceId}
 	</select>
 	
-	<select id="countMobileSync2" parameterClass="int" resultClass="int" >
+	<select id="countMobileSync2" parameterType="int" resultType="int" >
     	select count(*) 
     	from mail_user_mobile_sync
     	where 
-    		mail_user_seq = #mailUserSeq#
+    		mail_user_seq = #{mailUserSeq}
 	</select>
 	
-	<select id="selectMobileSyncList" parameterClass="int" resultMap="mobileSyncResult" >
-    	select * from mail_user_mobile_sync where mail_user_seq = #value#
+	<select id="selectMobileSyncList" parameterType="int" resultMap="mobileSyncResult" >
+    	select * from mail_user_mobile_sync where mail_user_seq = #{value}
 	</select>
 	
-	<select id="selectMobileSyncAllList" parameterClass="int" resultMap="mobileSyncResult" >
+	<select id="selectMobileSyncAllList" parameterType="int" resultMap="mobileSyncResult" >
     	select * from mail_user_mobile_sync where ping_check='on'
 	</select>
 	
-	<select id="selectMobileSyncBySynckey" parameterClass="Map" resultMap="mobileSyncResult" >
+	<select id="selectMobileSyncBySynckey" parameterType="Map" resultMap="mobileSyncResult" >
     	select * 
     	from 
     		mail_user_mobile_sync 
     	where 
-    		mail_user_seq = #mailUserSeq#
-    		and sync_key = #syncKey#
+    		mail_user_seq = #{mailUserSeq}
+    		and sync_key = #{syncKey}
 	</select>
 	
-	<select id="selectMobileSyncByDeviceId" parameterClass="Map" resultMap="mobileSyncResult" >
+	<select id="selectMobileSyncByDeviceId" parameterType="Map" resultMap="mobileSyncResult" >
     	select * 
     	from 
     		mail_user_mobile_sync 
     	where 
-    		mail_user_seq = #mailUserSeq#
-    		and device_id = #deviceId#
+    		mail_user_seq = #{mailUserSeq}
+    		and device_id = #{deviceId}
 	</select>
 	
-	<update id="updateMobileSync" parameterClass="mobileSync">
+	<update id="updateMobileSync" parameterType="mobileSync">
 		update mail_user_mobile_sync
 		<dynamic prepend="set" >
 			<isNotNull prepend="," property="deviceType" >
-				device_type = #deviceType#
+				device_type = #{deviceType}
 			</isNotNull>
 			<isNotNull prepend="," property="syncKey" >
-				sync_key = #syncKey#
+				sync_key = #{syncKey}
 			</isNotNull>
 			<isNotNull prepend="," property="pingUpdateTime" >
-        		ping_update_time = #pingUpdateTime#
+        		ping_update_time = #{pingUpdateTime}
       		</isNotNull>
       		<isNotNull prepend="," property="emailUpdateTime" >
-        		email_update_time = #emailUpdateTime#
+        		email_update_time = #{emailUpdateTime}
       		</isNotNull>
       		<isNotNull prepend="," property="contactsInsertSyncTime" >
-        		contacts_insert_sync_time = #contactsInsertSyncTime#
+        		contacts_insert_sync_time = #{contactsInsertSyncTime}
       		</isNotNull>
       		<isNotNull prepend="," property="contactsUpdateSyncTime" >
-        		contacts_update_sync_time = #contactsUpdateSyncTime#
+        		contacts_update_sync_time = #{contactsUpdateSyncTime}
       		</isNotNull>
       		<isNotNull prepend="," property="contactsDeleteSyncTime" >
-        		contacts_delete_sync_time = #contactsDeleteSyncTime#
+        		contacts_delete_sync_time = #{contactsDeleteSyncTime}
       		</isNotNull>
       		<isNotNull prepend="," property="calendarInsertSyncTime" >
-        		calendar_insert_sync_time = #calendarInsertSyncTime#
+        		calendar_insert_sync_time = #{calendarInsertSyncTime}
       		</isNotNull>
       		<isNotNull prepend="," property="calendarUpdateSyncTime" >
-        		calendar_update_sync_time = #calendarUpdateSyncTime#
+        		calendar_update_sync_time = #{calendarUpdateSyncTime}
       		</isNotNull>
       		<isNotNull prepend="," property="calendarDeleteSyncTime" >
-        		calendar_delete_sync_time = #calendarDeleteSyncTime#
+        		calendar_delete_sync_time = #{calendarDeleteSyncTime}
       		</isNotNull>
       		<isNotNull prepend="," property="pingCheck" >
-        		ping_check = #pingCheck#
+        		ping_check = #{pingCheck}
       		</isNotNull>
 		</dynamic>
     	where 
-    		mail_user_seq = #mailUserSeq#
-    		and device_id = #deviceId#
+    		mail_user_seq = #{mailUserSeq}
+    		and device_id = #{deviceId}
 	</update>
 	
-	<select id="selectMobileSyncLogList" resultMap="mobileSyncLogResult" parameterClass="Map" >
+	<select id="selectMobileSyncLogList" resultMap="mobileSyncLogResult" parameterType="Map" >
 		select log_seq, mail_user_seq, event_type, target, target_value, update_time
 		from mail_user_mobile_sync_log
 		where 
-			mail_user_seq = #mailUserSeq#
-			and update_time <![CDATA[ > ]]> #fromDate#
+			mail_user_seq = #{mailUserSeq}
+			and update_time <![CDATA[ > ]]> #{fromDate}
 	</select>
 	
-	<select id="selectMobileSyncLogListByDate" resultMap="mobileSyncLogResult" parameterClass="Map" >
+	<select id="selectMobileSyncLogListByDate" resultMap="mobileSyncLogResult" parameterType="Map" >
 		select log_seq, mail_user_seq, event_type, target, target_value, update_time
 		from mail_user_mobile_sync_log
 		where 
-			mail_user_seq = #mailUserSeq#
-			and update_time <![CDATA[ > ]]> #fromDate#
+			mail_user_seq = #{mailUserSeq}
+			and update_time <![CDATA[ > ]]> #{fromDate}
 		group by mail_user_seq
 	</select>
 	
-	<delete id="deleteMobileSyncLog" parameterClass="int" >
+	<delete id="deleteMobileSyncLog" parameterType="int" >
 		delete from mail_user_mobile_sync_log
 		where 
-			mail_user_seq = #mailUserSeq#
+			mail_user_seq = #{mailUserSeq}
 	</delete>
 	
-	<insert id="insertMobileSyncLog" parameterClass="mobileSyncLog" >
-		<selectKey resultClass="int" keyProperty="logSeq">
+	<insert id="insertMobileSyncLog" parameterType="mobileSyncLog" >
+		<selectKey resultType="int" keyProperty="logSeq">
 			select case when max(log_seq) is null then 1 else max(log_seq)+1 end
-			from mail_user_mobile_sync_log where mail_user_seq = #mailUserSeq#
+			from mail_user_mobile_sync_log where mail_user_seq = #{mailUserSeq}
 		</selectKey>
 		
 		insert into mail_user_mobile_sync_log 
 			(log_seq, mail_user_seq, event_type, target, target_value, update_time)
 		values 
-			(#logSeq#, #mailUserSeq#, #eventType#, #target#, #targetValue#, #updateTime#)
+			(#{logSeq}, #{mailUserSeq}, #{eventType}, #{target}, #{targetValue}, #{updateTime})
 	</insert>
 	
-	<select id="selectCountContactsEvent" parameterClass="Map" resultClass="int" >
+	<select id="selectCountContactsEvent" parameterType="Map" resultType="int" >
     	select sum(a.cnt) 
     	from
 			(
 			select count(*) as cnt 
 			from adr_private_member 
-			where mail_user_seq = #mailUserSeq#
+			where mail_user_seq = #{mailUserSeq}
 				and delete_flag='Y'
-				and  del_time <![CDATA[ > ]]> #deleteDate#
+				and  del_time <![CDATA[ > ]]> #{deleteDate}
 			
 			union
 			
 			select count(*) as cnt 
 			from adr_private_member 
-			where mail_user_seq=#mailUserSeq# and add_time <![CDATA[ > ]]> #insertDate#
+			where mail_user_seq=#{mailUserSeq} and add_time <![CDATA[ > ]]> #{insertDate}
 			
 			union
 			
 			select count(*) as cnt 
 			from adr_private_member 
-			where mail_user_seq=#mailUserSeq# and mod_time <![CDATA[ > ]]> #updateDate#
+			where mail_user_seq=#{mailUserSeq} and mod_time <![CDATA[ > ]]> #{updateDate}
 		) a
 	</select>
 	
-	<select id="selectCountSchedulerEvent" parameterClass="Map" resultClass="int" >
+	<select id="selectCountSchedulerEvent" parameterType="Map" resultType="int" >
     	select sum(a.cnt) 
     	from
 			(
@@ -171,9 +171,9 @@
 				<isNotEmpty prepend="" property="deleteDate" >
 					select count(*) as cnt 
 					from tscheduler 
-					where mail_user_seq = #mailUserSeq#
+					where mail_user_seq = #{mailUserSeq}
 						and outlook_sync = 'delete'
-						and  modify_time <![CDATA[ > ]]> #deleteDate#
+						and  modify_time <![CDATA[ > ]]> #{deleteDate}
 					
 					union
 				</isNotEmpty>
@@ -182,9 +182,9 @@
 					select count(*) as cnt 
 					from tscheduler 
 					where 
-						mail_user_seq=#mailUserSeq#
+						mail_user_seq=#{mailUserSeq}
 						and outlook_sync != 'delete' 
-						and modify_time <![CDATA[ > ]]> #updateDate#
+						and modify_time <![CDATA[ > ]]> #{updateDate}
 					
 					union
 				</isNotEmpty>
@@ -193,9 +193,9 @@
 			select count(*) as cnt 
 			from tscheduler 
 			where 
-				mail_user_seq=#mailUserSeq#
+				mail_user_seq=#{mailUserSeq}
 				and outlook_sync != 'delete' 
-				and create_time <![CDATA[ > ]]> #insertDate#
+				and create_time <![CDATA[ > ]]> #{insertDate}
 			
 		) a
 	</select>
@@ -203,24 +203,24 @@
 	
 	
 	<!-- Hybrid Mobile -->
-	<insert id="insertHybridAuth" parameterClass="map">
+	<insert id="insertHybridAuth" parameterType="map">
 		insert into hybrid_auth (auth_key, auth_value) 
-		values (#authKey#, #authValue#)
+		values (#{authKey}, #{authValue})
 	</insert>
 	
-	<delete id="deleteHybridAuth" parameterClass="String">
-		delete from hybrid_auth where auth_key = #authKey#
+	<delete id="deleteHybridAuth" parameterType="String">
+		delete from hybrid_auth where auth_key = #{authKey}
 	</delete>
 	
-	<select id="readHybridAuth" parameterClass="String" resultClass="String" >
-		select auth_value from hybrid_auth where auth_key = #authKey#
+	<select id="readHybridAuth" parameterType="String" resultType="String" >
+		select auth_value from hybrid_auth where auth_key = #{authKey}
 	</select>
 	
-	<select id="readMobileAccessConfig" parameterClass="int" resultClass="String" cacheModel="webAccessCache">
-		select config_value from mail_domain_config where config_name='mobile_access' and mail_domain_seq = #mailDomainSeq#
+	<select id="readMobileAccessConfig" parameterType="int" resultType="String" cacheModel="webAccessCache">
+		select config_value from mail_domain_config where config_name='mobile_access' and mail_domain_seq = #{mailDomainSeq}
 	</select>
 	
-	<select id="readUserMobileAccessKey" parameterClass="int" resultMap="mobileKeyMap" cacheModel="webAccessCache">
-		select unique_id from hybrid_unique_id where mail_user_seq = #mailUserSeq#
+	<select id="readUserMobileAccessKey" parameterType="int" resultMap="mobileKeyMap" cacheModel="webAccessCache">
+		select unique_id from hybrid_unique_id where mail_user_seq = #{mailUserSeq}
 	</select>
-</sqlMap>
+</mapper>

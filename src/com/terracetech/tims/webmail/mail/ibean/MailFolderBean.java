@@ -15,9 +15,9 @@ import com.terracetech.tims.mail.TMailFolder;
 
 /**
  * <p><strong>MailFolderBean.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
- * <li>¸ŞÀÏÇÔ Á¤º¸ Å¬·¡½º. °¢ ¸ŞÀÏÇÔÀÇ ÁÖ¿äÁ¤º¸ ÇÊµå¸¦ °¡Áö¸ç ÇØ´ç Æú´õ Á¤º¸µµ Æ÷ÇÔ ½ÃÅ²´Ù.</li>
+ * <li>Â¸ÃÃ€ÃÃ‡Ã” ÃÂ¤ÂºÂ¸ Ã…Â¬Â·Â¡Â½Âº. Â°Â¢ Â¸ÃÃ€ÃÃ‡Ã”Ã€Ã‡ ÃÃ–Â¿Ã¤ÃÂ¤ÂºÂ¸ Ã‡ÃŠÂµÃ¥Â¸Â¦ Â°Â¡ÃÃ¶Â¸Ã§ Ã‡Ã˜Â´Ã§ Ã†ÃºÂ´Ãµ ÃÂ¤ÂºÂ¸ÂµÂµ Ã†Ã·Ã‡Ã” Â½ÃƒÃ…Â²Â´Ã™.</li>
  * </ul>
  * @author sshyun
  * @since Tims7
@@ -45,19 +45,19 @@ public class MailFolderBean {
 	
 	
 	/**
-	 * <p>»ı¼ºÀÚ. Æú´õ¸¦ ¹Ş¾Æ »ı¼º</p>
+	 * <p>Â»Ã½Â¼ÂºÃ€Ãš. Ã†ÃºÂ´ÃµÂ¸Â¦ Â¹ÃÂ¾Ã† Â»Ã½Â¼Âº</p>
 	 *
-	 * @param folder		Æú´õ°´Ã¼
+	 * @param folder		Ã†ÃºÂ´ÃµÂ°Â´ÃƒÂ¼
 	 */
 	public MailFolderBean(TMailFolder folder) {
 		initrBean(null, folder);
 	}
 	
 	/**
-	 * <p>»ı¼ºÀÚ Æú´õ¿Í  id¸¦ ¹Ş¾Æ »ı¼º</p>
+	 * <p>Â»Ã½Â¼ÂºÃ€Ãš Ã†ÃºÂ´ÃµÂ¿Ã  idÂ¸Â¦ Â¹ÃÂ¾Ã† Â»Ã½Â¼Âº</p>
 	 *
-	 * @param id			Æú´õ ¾ÆÀÌµğ
-	 * @param folder		Æú´õ °´Ã¼
+	 * @param id			Ã†ÃºÂ´Ãµ Â¾Ã†Ã€ÃŒÂµÃ°
+	 * @param folder		Ã†ÃºÂ´Ãµ Â°Â´ÃƒÂ¼
 	 */
 	public MailFolderBean(String id, TMailFolder folder) {
 		initrBean(id, folder);
@@ -65,10 +65,10 @@ public class MailFolderBean {
 	
 	
 	/**
-	 * <p>Æú´õ Á¤º¸¸¦ ÃÊ±â¿¡ ÀúÀå</p>
+	 * <p>Ã†ÃºÂ´Ãµ ÃÂ¤ÂºÂ¸Â¸Â¦ ÃƒÃŠÂ±Ã¢Â¿Â¡ Ã€ÃºÃ€Ã¥</p>
 	 *
-	 * @param id			Æú´õ ¾ÆÀÌµğ
-	 * @param folder		Æú´õ °´Ã¼
+	 * @param id			Ã†ÃºÂ´Ãµ Â¾Ã†Ã€ÃŒÂµÃ°
+	 * @param folder		Ã†ÃºÂ´Ãµ Â°Â´ÃƒÂ¼
 	 * @return void
 	 */
 	private void initrBean(String id, TMailFolder folder) {
@@ -83,84 +83,84 @@ public class MailFolderBean {
 
 
 	/**
-	 * @return folder °ª ¹İÈ¯
+	 * @return folder Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public TMailFolder getFolder() {
 		return folder;
 	}
 
 	/**
-	 * @param folder ÆÄ¶ó¹ÌÅÍ¸¦ folder°ª¿¡ ¼³Á¤
+	 * @param folder Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ folderÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setFolder(TMailFolder folder) {
 		this.folder = folder;
 	}
 
 	/**
-	 * @return id °ª ¹İÈ¯
+	 * @return id Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getId() {
 		return id;
 	}
 
 	/**
-	 * @param id ÆÄ¶ó¹ÌÅÍ¸¦ id°ª¿¡ ¼³Á¤
+	 * @param id Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ idÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 
 	/**
-	 * @return name °ª ¹İÈ¯
+	 * @return name Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * @param name ÆÄ¶ó¹ÌÅÍ¸¦ name°ª¿¡ ¼³Á¤
+	 * @param name Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ nameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * @return fullName °ª ¹İÈ¯
+	 * @return fullName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getFullName() {
 		return fullName;
 	}
 
 	/**
-	 * @param fullName ÆÄ¶ó¹ÌÅÍ¸¦ fullName°ª¿¡ ¼³Á¤
+	 * @param fullName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ fullNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
 
 	/**
-	 * @return encName °ª ¹İÈ¯
+	 * @return encName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getEncName() {
 		return encName;
 	}
 
 	/**
-	 * @param encName ÆÄ¶ó¹ÌÅÍ¸¦ encName°ª¿¡ ¼³Á¤
+	 * @param encName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ encNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setEncName(String encName) {
 		this.encName = encName;
 	}
 
 	/**
-	 * @return share °ª ¹İÈ¯
+	 * @return share Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public boolean isShare() {
 		return share;
 	}
 
 	/**
-	 * @param share ÆÄ¶ó¹ÌÅÍ¸¦ share°ª¿¡ ¼³Á¤
+	 * @param share Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ shareÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setShare(boolean share) {
 		this.share = share;
@@ -175,107 +175,107 @@ public class MailFolderBean {
 	}
 
 	/**
-	 * @return depth °ª ¹İÈ¯
+	 * @return depth Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getDepth() {
 		return depth;
 	}
 
 	/**
-	 * @param depth ÆÄ¶ó¹ÌÅÍ¸¦ depth°ª¿¡ ¼³Á¤
+	 * @param depth Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ depthÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDepth(int depth) {
 		this.depth = depth;
 	}
 
 	/**
-	 * @return parentFullName °ª ¹İÈ¯
+	 * @return parentFullName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getParentFullName() {
 		return parentFullName;
 	}
 
 	/**
-	 * @param parentFullName ÆÄ¶ó¹ÌÅÍ¸¦ parentFullName°ª¿¡ ¼³Á¤
+	 * @param parentFullName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ parentFullNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setParentFullName(String parentFullName) {
 		this.parentFullName = parentFullName;
 	}
 
 	/**
-	 * @return parentId °ª ¹İÈ¯
+	 * @return parentId Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getParentId() {
 		return parentId;
 	}
 
 	/**
-	 * @param parentId ÆÄ¶ó¹ÌÅÍ¸¦ parentId°ª¿¡ ¼³Á¤
+	 * @param parentId Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ parentIdÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setParentId(String parentId) {
 		this.parentId = parentId;
 	}
 
 	/**
-	 * @return newCnt °ª ¹İÈ¯
+	 * @return newCnt Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public long getNewCnt() {
 		return newCnt;
 	}
 
 	/**
-	 * @param newCnt ÆÄ¶ó¹ÌÅÍ¸¦ newCnt°ª¿¡ ¼³Á¤
+	 * @param newCnt Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ newCntÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setNewCnt(long newCnt) {
 		this.newCnt = newCnt;
 	}
 
 	/**
-	 * @return unseenCnt °ª ¹İÈ¯
+	 * @return unseenCnt Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public long getUnseenCnt() {
 		return unseenCnt;
 	}
 
 	/**
-	 * @param unseenCnt ÆÄ¶ó¹ÌÅÍ¸¦ unseenCnt°ª¿¡ ¼³Á¤
+	 * @param unseenCnt Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ unseenCntÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUnseenCnt(long unseenCnt) {
 		this.unseenCnt = unseenCnt;
 	}
 
 	/**
-	 * @return againg °ª ¹İÈ¯
+	 * @return againg Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public long getAgaing() {
 		return againg;
 	}
 
 	/**
-	 * @param againg ÆÄ¶ó¹ÌÅÍ¸¦ againg°ª¿¡ ¼³Á¤
+	 * @param againg Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ againgÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setAgaing(long againg) {
 		this.againg = againg;
 	}
 
 	/**
-	 * @return totalCnt °ª ¹İÈ¯
+	 * @return totalCnt Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public long getTotalCnt() {
 		return totalCnt;
 	}
 
 	/**
-	 * @param totalCnt ÆÄ¶ó¹ÌÅÍ¸¦ totalCnt°ª¿¡ ¼³Á¤
+	 * @param totalCnt Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ totalCntÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setTotalCnt(long totalCnt) {
 		this.totalCnt = totalCnt;
 	}
 
 	/**
-	 * <p>Æú´õÀÇ Á¤º¸¸¦  JSON OBJECT ·Î ±¸¼º ÇÏ¿© ¹İÈ¯</p>	
+	 * <p>Ã†ÃºÂ´ÃµÃ€Ã‡ ÃÂ¤ÂºÂ¸Â¸Â¦  JSON OBJECT Â·Ã Â±Â¸Â¼Âº Ã‡ÃÂ¿Â© Â¹ÃÃˆÂ¯</p>	
 	 * 
-	 * @return JSONObject			Æú´õ Á¤º¸ JSONObject
+	 * @return JSONObject			Ã†ÃºÂ´Ãµ ÃÂ¤ÂºÂ¸ JSONObject
 	 */
 	@SuppressWarnings("all")
 	public JSONObject toJson(){
@@ -296,7 +296,7 @@ public class MailFolderBean {
 	}
 	
 	/**
-	 * <p>ÇöÀç Æú´õÀÇ »óÀ§ Æú´õÀÌ¸§À» ¼³Á¤</p>
+	 * <p>Ã‡Ã¶Ã€Ã§ Ã†ÃºÂ´ÃµÃ€Ã‡ Â»Ã³Ã€Â§ Ã†ÃºÂ´ÃµÃ€ÃŒÂ¸Â§Ã€Â» Â¼Â³ÃÂ¤</p>
 	 *
 	 * @return void
 	 */
@@ -311,14 +311,14 @@ public class MailFolderBean {
 	}
 
 	/**
-	 * @return quota °ª ¹İÈ¯
+	 * @return quota Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public MailQuotaBean getQuota() {
 		return quota;
 	}
 
 	/**
-	 * @param quota ÆÄ¶ó¹ÌÅÍ¸¦ quota°ª¿¡ ¼³Á¤
+	 * @param quota Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ quotaÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setQuota(MailQuotaBean quota) {
 		this.quota = quota;

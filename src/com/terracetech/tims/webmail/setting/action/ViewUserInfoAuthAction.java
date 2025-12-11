@@ -7,8 +7,8 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.RSAPublicKeySpec;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpSession;
 
 import com.terracetech.tims.webmail.common.BaseAction;
 import com.terracetech.tims.webmail.common.EnvConstants;

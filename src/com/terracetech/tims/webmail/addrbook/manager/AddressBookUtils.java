@@ -12,21 +12,21 @@ public class AddressBookUtils {
 	private static I18nResources resource = null;
 
 	public static void setKorean(Map<String, Object> param) {
-		param.put("°¡", "°¡");
-		param.put("³ª", "³ª");
-		param.put("´Ù", "´Ù");
-		param.put("¶ó", "¶ó");
-		param.put("¸¶", "¸¶");
-		param.put("¹Ù", "¹Ù");
-		param.put("»ç", "»ç");
-		param.put("¾Æ", "¾Æ");
-		param.put("ÀÚ", "ÀÚ");
-		param.put("Â÷", "Â÷");
-		param.put("Ä«", "Ä«");
-		param.put("ÆÄ", "ÆÄ");
-		param.put("Å¸", "Å¸");
-		param.put("ÇÏ", "ÇÏ");
-		param.put("Èş", "Èş");
+		param.put("Â°Â¡", "Â°Â¡");
+		param.put("Â³Âª", "Â³Âª");
+		param.put("Â´Ã™", "Â´Ã™");
+		param.put("Â¶Ã³", "Â¶Ã³");
+		param.put("Â¸Â¶", "Â¸Â¶");
+		param.put("Â¹Ã™", "Â¹Ã™");
+		param.put("Â»Ã§", "Â»Ã§");
+		param.put("Â¾Ã†", "Â¾Ã†");
+		param.put("Ã€Ãš", "Ã€Ãš");
+		param.put("Ã‚Ã·", "Ã‚Ã·");
+		param.put("Ã„Â«", "Ã„Â«");
+		param.put("Ã†Ã„", "Ã†Ã„");
+		param.put("Ã…Â¸", "Ã…Â¸");
+		param.put("Ã‡Ã", "Ã‡Ã");
+		param.put("ÃˆÃ¾", "ÃˆÃ¾");
 	}
 	
 	public static void setJapaneses(String startChar, HashMap<String, Object> param) {

@@ -2,7 +2,8 @@ package com.terracetech.tims.webmail.mobile.manager;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.mortbay.log.Log;
 
 import com.terracetech.tims.webmail.mobile.vo.MobileSyncVO;
@@ -17,7 +18,7 @@ import com.terracetech.tims.webmail.util.StringUtils;
  * @version 7.1.3 
  */
 public class SyncCheckThread extends Thread {
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private int periodTime = 10;
 	private boolean stopFlag = false;	

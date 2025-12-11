@@ -2,7 +2,8 @@ package com.terracetech.tims.service.aync;
 
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.webmail.exception.InvalidSyncKeyException;
 import com.terracetech.tims.webmail.mobile.vo.MobileSyncVO;
@@ -10,7 +11,7 @@ import com.terracetech.tims.webmail.util.FormatUtil;
 
 public class SyncKey {
 	
-	private Logger log = Logger.getLogger(this.getClass());
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private String digestSource;
 	private String clientToken;

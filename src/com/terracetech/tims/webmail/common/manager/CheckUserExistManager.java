@@ -88,7 +88,7 @@ public class CheckUserExistManager {
 		return returnMap;
 	}
 	
-	// Áßº¹·Î±×ÀÎ ¹æÁö - ·Î±×ÀÎ½Ã ¹«Á¶°Ç »õ·Î¿î timestamp »ı¼º
+	// ÃÃŸÂºÂ¹Â·ÃÂ±Ã—Ã€Ã Â¹Ã¦ÃÃ¶ - Â·ÃÂ±Ã—Ã€ÃÂ½Ãƒ Â¹Â«ÃÂ¶Â°Ã‡ Â»ÃµÂ·ÃÂ¿Ã® timestamp Â»Ã½Â¼Âº
 	public String dupCheckProcess(String id, int mailDomainSeq) {
 		if (isUserExist(id,mailDomainSeq)) {
 			deleteExistUser(id,mailDomainSeq);

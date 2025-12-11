@@ -37,7 +37,7 @@ public class CalendarClientAddCommand implements ICommand{
 		
 		if(model.getAddClientDataList() != null){
 			for (Object iSyncData : model.getAddClientDataList()) {
-				//Áßº¹Ã¼Å©ÇØ¾ßÇÔ
+				//ì¤‘ë³µì²´í¬í•´ì•¼í•¨
 				if(iSyncData instanceof CalendarData){
 					CalendarData data = (CalendarData)iSyncData;
 					

@@ -11,10 +11,10 @@ package com.terracetech.tims.webmail.mailuser.vo;
 
 /**
  * <p><strong>MailUserAddressVO.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
- * <li>»ç¿ëÀÚ ÁÖ¼Ò Á¤º¸¸¦ °¡Á®¿À´Â VO. ÁÖ¼ÒÁ¤º¸¿¡ °üÇÑ °øÅëÀûÀÎ  VO°´Ã¼</li>
- * <li>ÁÖ¼ÒÁ¤º¸¿¡°üÇÑ Á¤º¸ Æ÷ÇÔ. outlook ±âÁØÀÇ Á¤º¸ ÇÊµå Æ÷ÇÔ.</li>
+ * <li>Â»Ã§Â¿Ã«Ã€Ãš ÃÃ–Â¼Ã’ ÃÂ¤ÂºÂ¸Â¸Â¦ Â°Â¡ÃÂ®Â¿Ã€Â´Ã‚ VO. ÃÃ–Â¼Ã’ÃÂ¤ÂºÂ¸Â¿Â¡ Â°Ã¼Ã‡Ã‘ Â°Ã¸Ã…Ã«Ã€Ã»Ã€Ã  VOÂ°Â´ÃƒÂ¼</li>
+ * <li>ÃÃ–Â¼Ã’ÃÂ¤ÂºÂ¸Â¿Â¡Â°Ã¼Ã‡Ã‘ ÃÂ¤ÂºÂ¸ Ã†Ã·Ã‡Ã”. outlook Â±Ã¢ÃÃ˜Ã€Ã‡ ÃÂ¤ÂºÂ¸ Ã‡ÃŠÂµÃ¥ Ã†Ã·Ã‡Ã”.</li>
  * </ul>
  * @author sshyun
  * @since Tims7
@@ -23,354 +23,354 @@ package com.terracetech.tims.webmail.mailuser.vo;
 public class MailUserAddressVO {
 
 	/**
-	 * <p>ÇÚµåÆù ¹øÈ£ Á¤º¸</p>
+	 * <p>Ã‡ÃšÂµÃ¥Ã†Ã¹ Â¹Ã¸ÃˆÂ£ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String mobileNo = null;
 	/**
-	 * <p>Áı ÀüÈ­¹øÈ£ Á¤º¸</p>
+	 * <p>ÃÃ½ Ã€Ã¼ÃˆÂ­Â¹Ã¸ÃˆÂ£ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String homeTel = null;
 	/**
-	 * <p>Áı ÆÑ½º¹øÈ£ Á¤º¸</p>
+	 * <p>ÃÃ½ Ã†Ã‘Â½ÂºÂ¹Ã¸ÃˆÂ£ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String homeFax = null;
 	/**
-	 * <p>Áı ¿ìÆí¹øÈ£</p>
+	 * <p>ÃÃ½ Â¿Ã¬Ã†Ã­Â¹Ã¸ÃˆÂ£</p>
 	 */
 	private String homePostalCode = null;
 	/**
-	 * <p>»ç¿ëÀÚ ±¹°¡ Á¤º¸</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš Â±Â¹Â°Â¡ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String homeCountry = null;
 	/**
-	 * <p>»ç¿ëÀÚÀÇ °ÅÁÖ ÁÖ Á¤º¸</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€ÃšÃ€Ã‡ Â°Ã…ÃÃ– ÃÃ– ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String homeState = null;
 	/**
-	 * <p>»ç¿ëÀÚ µµ½Ã Á¤º¸</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš ÂµÂµÂ½Ãƒ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String homeCity = null;
 	/**
-	 * <p>»ç¿ëÀÚÀÇ ÁÖ¼Ò Street Á¤º¸</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€ÃšÃ€Ã‡ ÃÃ–Â¼Ã’ Street ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String homeStreet = null;
 	/**
-	 * <p>±âº» ÁÖ¼Ò Á¤º¸</p>
+	 * <p>Â±Ã¢ÂºÂ» ÃÃ–Â¼Ã’ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String homeBasicAddress = null;
 	/**
-	 * <p>È®Àå ÁÖ¼Ò Á¤º¸</p>
+	 * <p>ÃˆÂ®Ã€Ã¥ ÃÃ–Â¼Ã’ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String homepage = null;
 	/**
-	 * <p>È¸»ç¸í Á¤º¸</p>
+	 * <p>ÃˆÂ¸Â»Ã§Â¸Ã­ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String companyName = null;
 	/**
-	 * <p>ºÎ¼­ Á¤º¸</p>
+	 * <p>ÂºÃÂ¼Â­ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String departmentName = null;
 	/**
-	 * <p>»ç¹«½Ç ÀüÈ­ ¹øÈ£ Á¤º¸</p>
+	 * <p>Â»Ã§Â¹Â«Â½Ã‡ Ã€Ã¼ÃˆÂ­ Â¹Ã¸ÃˆÂ£ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String officeTel = null;
 	/**
-	 * <p>»ç¹«½Ç ÆÑ½º¹øÈ£ Á¤º¸</p>
+	 * <p>Â»Ã§Â¹Â«Â½Ã‡ Ã†Ã‘Â½ÂºÂ¹Ã¸ÃˆÂ£ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String officeFax = null;
 	/**
-	 * <p>»ç¹«½Ç ¿ìÆí ¹øÈ£ Á¤º¸</p>
+	 * <p>Â»Ã§Â¹Â«Â½Ã‡ Â¿Ã¬Ã†Ã­ Â¹Ã¸ÃˆÂ£ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String officePostalCode = null;
 	/**
-	 * <p>»ç¹«½Ç ÀÌ À§Ä¡ÇÑ ±¹°¡ Á¤º¸</p>
+	 * <p>Â»Ã§Â¹Â«Â½Ã‡ Ã€ÃŒ Ã€Â§Ã„Â¡Ã‡Ã‘ Â±Â¹Â°Â¡ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String officeCountry = null;
 	/**
-	 * <p>»ç¹«½Ç Áö¿ª ÁÖ Á¤º¸</p>
+	 * <p>Â»Ã§Â¹Â«Â½Ã‡ ÃÃ¶Â¿Âª ÃÃ– ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String officeState = null;
 	/**
-	 * <p>»ç¹«½Ç À§Ä¡ µµ½Ã Á¤º¸</p>
+	 * <p>Â»Ã§Â¹Â«Â½Ã‡ Ã€Â§Ã„Â¡ ÂµÂµÂ½Ãƒ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String officeCity = null;
 	/**
-	 * <p>»ç¹«½Ç Street Á¤º¸</p>
+	 * <p>Â»Ã§Â¹Â«Â½Ã‡ Street ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String officeStreet = null;
 	/**
-	 * <p>»ç¹«½Ç ±âº» ÁÖ¼Ò Á¤º¸</p>
+	 * <p>Â»Ã§Â¹Â«Â½Ã‡ Â±Ã¢ÂºÂ» ÃÃ–Â¼Ã’ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String officeBasicAddress = null;
 	/**
-	 * <p>»ç¹«½Ç È®Àå ÁÖ¼Ò Á¤º¸</p>
+	 * <p>Â»Ã§Â¹Â«Â½Ã‡ ÃˆÂ®Ã€Ã¥ ÃÃ–Â¼Ã’ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String officeExtAddress = null;
 	/**
-	 * <p>±âÅ¸ ¼³¸í Á¤º¸</p>
+	 * <p>Â±Ã¢Ã…Â¸ Â¼Â³Â¸Ã­ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String description = null;
 	
 	/**
-	 * @return mobileNo °ª ¹İÈ¯
+	 * @return mobileNo Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getMobileNo() {
 		return mobileNo;
 	}
 	/**
-	 * @param mobileNo ÆÄ¶ó¹ÌÅÍ¸¦ mobileNo°ª¿¡ ¼³Á¤
+	 * @param mobileNo Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ mobileNoÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 	/**
-	 * @return homeTel °ª ¹İÈ¯
+	 * @return homeTel Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHomeTel() {
 		return homeTel;
 	}
 	/**
-	 * @param homeTel ÆÄ¶ó¹ÌÅÍ¸¦ homeTel°ª¿¡ ¼³Á¤
+	 * @param homeTel Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ homeTelÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHomeTel(String homeTel) {
 		this.homeTel = homeTel;
 	}
 	/**
-	 * @return homeFax °ª ¹İÈ¯
+	 * @return homeFax Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHomeFax() {
 		return homeFax;
 	}
 	/**
-	 * @param homeFax ÆÄ¶ó¹ÌÅÍ¸¦ homeFax°ª¿¡ ¼³Á¤
+	 * @param homeFax Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ homeFaxÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHomeFax(String homeFax) {
 		this.homeFax = homeFax;
 	}
 	/**
-	 * @return homePostalCode °ª ¹İÈ¯
+	 * @return homePostalCode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHomePostalCode() {
 		return homePostalCode;
 	}
 	/**
-	 * @param homePostalCode ÆÄ¶ó¹ÌÅÍ¸¦ homePostalCode°ª¿¡ ¼³Á¤
+	 * @param homePostalCode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ homePostalCodeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHomePostalCode(String homePostalCode) {
 		this.homePostalCode = homePostalCode;
 	}
 	/**
-	 * @return homeCountry °ª ¹İÈ¯
+	 * @return homeCountry Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHomeCountry() {
 		return homeCountry;
 	}
 	/**
-	 * @param homeCountry ÆÄ¶ó¹ÌÅÍ¸¦ homeCountry°ª¿¡ ¼³Á¤
+	 * @param homeCountry Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ homeCountryÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHomeCountry(String homeCountry) {
 		this.homeCountry = homeCountry;
 	}
 	/**
-	 * @return homeState °ª ¹İÈ¯
+	 * @return homeState Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHomeState() {
 		return homeState;
 	}
 	/**
-	 * @param homeState ÆÄ¶ó¹ÌÅÍ¸¦ homeState°ª¿¡ ¼³Á¤
+	 * @param homeState Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ homeStateÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHomeState(String homeState) {
 		this.homeState = homeState;
 	}
 	/**
-	 * @return homeCity °ª ¹İÈ¯
+	 * @return homeCity Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHomeCity() {
 		return homeCity;
 	}
 	/**
-	 * @param homeCity ÆÄ¶ó¹ÌÅÍ¸¦ homeCity°ª¿¡ ¼³Á¤
+	 * @param homeCity Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ homeCityÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHomeCity(String homeCity) {
 		this.homeCity = homeCity;
 	}
 	/**
-	 * @return homeStreet °ª ¹İÈ¯
+	 * @return homeStreet Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHomeStreet() {
 		return homeStreet;
 	}
 	/**
-	 * @param homeStreet ÆÄ¶ó¹ÌÅÍ¸¦ homeStreet°ª¿¡ ¼³Á¤
+	 * @param homeStreet Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ homeStreetÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHomeStreet(String homeStreet) {
 		this.homeStreet = homeStreet;
 	}
 	/**
-	 * @return homeBasicAddress °ª ¹İÈ¯
+	 * @return homeBasicAddress Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHomeBasicAddress() {
 		return homeBasicAddress;
 	}
 	/**
-	 * @param homeBasicAddress ÆÄ¶ó¹ÌÅÍ¸¦ homeBasicAddress°ª¿¡ ¼³Á¤
+	 * @param homeBasicAddress Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ homeBasicAddressÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHomeBasicAddress(String homeBasicAddress) {
 		this.homeBasicAddress = homeBasicAddress;
 	}
 	/**
-	 * @return homepage °ª ¹İÈ¯
+	 * @return homepage Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getHomepage() {
 		return homepage;
 	}
 	/**
-	 * @param homepage ÆÄ¶ó¹ÌÅÍ¸¦ homepage°ª¿¡ ¼³Á¤
+	 * @param homepage Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ homepageÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setHomepage(String homepage) {
 		this.homepage = homepage;
 	}
 	/**
-	 * @return companyName °ª ¹İÈ¯
+	 * @return companyName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getCompanyName() {
 		return companyName;
 	}
 	/**
-	 * @param companyName ÆÄ¶ó¹ÌÅÍ¸¦ companyName°ª¿¡ ¼³Á¤
+	 * @param companyName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ companyNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
 	/**
-	 * @return departmentName °ª ¹İÈ¯
+	 * @return departmentName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDepartmentName() {
 		return departmentName;
 	}
 	/**
-	 * @param departmentName ÆÄ¶ó¹ÌÅÍ¸¦ departmentName°ª¿¡ ¼³Á¤
+	 * @param departmentName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ departmentNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
 	/**
-	 * @return officeTel °ª ¹İÈ¯
+	 * @return officeTel Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getOfficeTel() {
 		return officeTel;
 	}
 	/**
-	 * @param officeTel ÆÄ¶ó¹ÌÅÍ¸¦ officeTel°ª¿¡ ¼³Á¤
+	 * @param officeTel Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ officeTelÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setOfficeTel(String officeTel) {
 		this.officeTel = officeTel;
 	}
 	/**
-	 * @return officeFax °ª ¹İÈ¯
+	 * @return officeFax Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getOfficeFax() {
 		return officeFax;
 	}
 	/**
-	 * @param officeFax ÆÄ¶ó¹ÌÅÍ¸¦ officeFax°ª¿¡ ¼³Á¤
+	 * @param officeFax Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ officeFaxÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setOfficeFax(String officeFax) {
 		this.officeFax = officeFax;
 	}
 	/**
-	 * @return officePostalCode °ª ¹İÈ¯
+	 * @return officePostalCode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getOfficePostalCode() {
 		return officePostalCode;
 	}
 	/**
-	 * @param officePostalCode ÆÄ¶ó¹ÌÅÍ¸¦ officePostalCode°ª¿¡ ¼³Á¤
+	 * @param officePostalCode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ officePostalCodeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setOfficePostalCode(String officePostalCode) {
 		this.officePostalCode = officePostalCode;
 	}
 	/**
-	 * @return officeCountry °ª ¹İÈ¯
+	 * @return officeCountry Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getOfficeCountry() {
 		return officeCountry;
 	}
 	/**
-	 * @param officeCountry ÆÄ¶ó¹ÌÅÍ¸¦ officeCountry°ª¿¡ ¼³Á¤
+	 * @param officeCountry Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ officeCountryÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setOfficeCountry(String officeCountry) {
 		this.officeCountry = officeCountry;
 	}
 	/**
-	 * @return officeState °ª ¹İÈ¯
+	 * @return officeState Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getOfficeState() {
 		return officeState;
 	}
 	/**
-	 * @param officeState ÆÄ¶ó¹ÌÅÍ¸¦ officeState°ª¿¡ ¼³Á¤
+	 * @param officeState Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ officeStateÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setOfficeState(String officeState) {
 		this.officeState = officeState;
 	}
 	/**
-	 * @return officeCity °ª ¹İÈ¯
+	 * @return officeCity Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getOfficeCity() {
 		return officeCity;
 	}
 	/**
-	 * @param officeCity ÆÄ¶ó¹ÌÅÍ¸¦ officeCity°ª¿¡ ¼³Á¤
+	 * @param officeCity Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ officeCityÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setOfficeCity(String officeCity) {
 		this.officeCity = officeCity;
 	}
 	/**
-	 * @return officeStreet °ª ¹İÈ¯
+	 * @return officeStreet Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getOfficeStreet() {
 		return officeStreet;
 	}
 	/**
-	 * @param officeStreet ÆÄ¶ó¹ÌÅÍ¸¦ officeStreet°ª¿¡ ¼³Á¤
+	 * @param officeStreet Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ officeStreetÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setOfficeStreet(String officeStreet) {
 		this.officeStreet = officeStreet;
 	}
 	/**
-	 * @return officeBasicAddress °ª ¹İÈ¯
+	 * @return officeBasicAddress Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getOfficeBasicAddress() {
 		return officeBasicAddress;
 	}
 	/**
-	 * @param officeBasicAddress ÆÄ¶ó¹ÌÅÍ¸¦ officeBasicAddress°ª¿¡ ¼³Á¤
+	 * @param officeBasicAddress Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ officeBasicAddressÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setOfficeBasicAddress(String officeBasicAddress) {
 		this.officeBasicAddress = officeBasicAddress;
 	}
 	/**
-	 * @return officeExtAddress °ª ¹İÈ¯
+	 * @return officeExtAddress Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getOfficeExtAddress() {
 		return officeExtAddress;
 	}
 	/**
-	 * @param officeExtAddress ÆÄ¶ó¹ÌÅÍ¸¦ officeExtAddress°ª¿¡ ¼³Á¤
+	 * @param officeExtAddress Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ officeExtAddressÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setOfficeExtAddress(String officeExtAddress) {
 		this.officeExtAddress = officeExtAddress;
 	}
 	/**
-	 * @return description °ª ¹İÈ¯
+	 * @return description Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDescription() {
 		return description;
 	}
 	/**
-	 * @param description ÆÄ¶ó¹ÌÅÍ¸¦ description°ª¿¡ ¼³Á¤
+	 * @param description Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ descriptionÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDescription(String description) {
 		this.description = description;

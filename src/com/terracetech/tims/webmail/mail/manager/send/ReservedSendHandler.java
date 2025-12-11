@@ -9,9 +9,9 @@
  */
 package com.terracetech.tims.webmail.mail.manager.send;
 
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Session;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailStore;
@@ -22,7 +22,7 @@ import com.terracetech.tims.webmail.mail.manager.builder.TempMimeMessageBuilder;
 
 /**
  * <p><strong>ReservedSendHandler.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

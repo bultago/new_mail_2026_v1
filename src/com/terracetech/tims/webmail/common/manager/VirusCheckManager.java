@@ -14,8 +14,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.StringTokenizer;
 
-import com.sun.mail.util.TraceInputStream;
-import com.sun.mail.util.TraceOutputStream;
+import org.eclipse.angus.mail.util.TraceInputStream;
+import org.eclipse.angus.mail.util.TraceOutputStream;
 import com.terracetech.tims.webmail.common.log.LogManager;
 
 public class VirusCheckManager {

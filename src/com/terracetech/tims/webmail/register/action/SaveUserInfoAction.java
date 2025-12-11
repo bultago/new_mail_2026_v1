@@ -13,8 +13,8 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.mail.internet.MimeUtility;
-import javax.servlet.ServletException;
+import jakarta.mail.internet.MimeUtility;
+import jakarta.servlet.ServletException;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 

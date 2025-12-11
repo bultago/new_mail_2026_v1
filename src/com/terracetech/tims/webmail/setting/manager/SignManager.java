@@ -20,7 +20,7 @@ import com.terracetech.tims.webmail.setting.vo.SignVO;
  * <strong>SignManager.java</strong> Class Description
  * </p>
  * <p>
- * �ֿ伳��
+ * ÁÖ¿ä¼³¸í
  * </p>
  * <ul>
  * <li></li>

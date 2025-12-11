@@ -11,10 +11,10 @@ package com.terracetech.tims.webmail.mailuser.vo;
 
 /**
  * <p><strong>MailUserDomainVO.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
- * <li>»ç¿ëÀÚÀÇ µµ¸ŞÀÎ Á¤º¸ ¸¦ °¡Á®¿À´ÂVO. µµ¸ŞÀÎ¿¡ °üÇÑ ±âº» Á¤º¸¸¦ Ç¥Çö</li>
- * <li>µµ¸ŞÀÎ¸í, ¼­ºñ½º ½ÃÀÛ ½Ã°£, ÆĞ½º¿öµå ¾ÏÈ£È­ ¹æ½Ä, ÇöÀç »ç¿ëÀÚ¼ö ¸ŞÀÏ¼­ºñ½º µîÀÇ ¿É¼Ç Ç×¸ñ Æ÷ÇÔ</li>
+ * <li>Â»Ã§Â¿Ã«Ã€ÃšÃ€Ã‡ ÂµÂµÂ¸ÃÃ€Ã ÃÂ¤ÂºÂ¸ Â¸Â¦ Â°Â¡ÃÂ®Â¿Ã€Â´Ã‚VO. ÂµÂµÂ¸ÃÃ€ÃÂ¿Â¡ Â°Ã¼Ã‡Ã‘ Â±Ã¢ÂºÂ» ÃÂ¤ÂºÂ¸Â¸Â¦ Ã‡Â¥Ã‡Ã¶</li>
+ * <li>ÂµÂµÂ¸ÃÃ€ÃÂ¸Ã­, Â¼Â­ÂºÃ±Â½Âº Â½ÃƒÃ€Ã› Â½ÃƒÂ°Â£, Ã†ÃÂ½ÂºÂ¿Ã¶ÂµÃ¥ Â¾ÃÃˆÂ£ÃˆÂ­ Â¹Ã¦Â½Ã„, Ã‡Ã¶Ã€Ã§ Â»Ã§Â¿Ã«Ã€ÃšÂ¼Ã¶ Â¸ÃÃ€ÃÂ¼Â­ÂºÃ±Â½Âº ÂµÃ®Ã€Ã‡ Â¿Ã‰Â¼Ã‡ Ã‡Ã—Â¸Ã± Ã†Ã·Ã‡Ã”</li>
  * </ul>
  * @author sshyun
  * @since Tims7
@@ -22,179 +22,179 @@ package com.terracetech.tims.webmail.mailuser.vo;
  */
 public class MailUserDomainVO {
 	/**
-	 * <p>¸ŞÀÏ µµ¸ŞÀÎ ¸í</p>
+	 * <p>Â¸ÃÃ€Ã ÂµÂµÂ¸ÃÃ€Ã Â¸Ã­</p>
 	 */
 	private String mailDomain = null;
 	/**
-	 * <p>¸ŞÀÏ µµ¸ŞÀÎ º°Äª</p>
+	 * <p>Â¸ÃÃ€Ã ÂµÂµÂ¸ÃÃ€Ã ÂºÂ°Ã„Âª</p>
 	 */
 	private String mailDomainName = null;
 	/**
-	 * <p>¼­ºñ½º ½ÃÀÛ ³¯Â¥</p>
+	 * <p>Â¼Â­ÂºÃ±Â½Âº Â½ÃƒÃ€Ã› Â³Â¯Ã‚Â¥</p>
 	 */
 	private String serviceStartTime = null;
 	/**
-	 * <p>¼­ºñ½º Á¾·á ³¯Â¥</p>
+	 * <p>Â¼Â­ÂºÃ±Â½Âº ÃÂ¾Â·Ã¡ Â³Â¯Ã‚Â¥</p>
 	 */
 	private String serviceEndTime = null;
 	/**
-	 * <p>µµ¸ŞÀÎ »ç¿ë ¿©ºÎ</p>
-	 * <p>¼Ó¼º : enabled / disabled</p>
+	 * <p>ÂµÂµÂ¸ÃÃ€Ã Â»Ã§Â¿Ã« Â¿Â©ÂºÃ</p>
+	 * <p>Â¼Ã“Â¼Âº : enabled / disabled</p>
 	 */
 	private String domainStatus = null;
 	/**
-	 * <p>ÃÖ´ë »ç¿ëÀÚ¼ö</p>
+	 * <p>ÃƒÃ–Â´Ã« Â»Ã§Â¿Ã«Ã€ÃšÂ¼Ã¶</p>
 	 */
 	private String maxUserCount = null;
 	/**
-	 * <p>ÇöÀç »ç¿ëÀÚ¼ö</p>
+	 * <p>Ã‡Ã¶Ã€Ã§ Â»Ã§Â¿Ã«Ã€ÃšÂ¼Ã¶</p>
 	 */
 	private String currentUserCount = null;
 	/**
-	 * <p>ºñ¹Ğ¹øÈ£ ¾ÏÈ£È­ ¹æ½Ä</p>
+	 * <p>ÂºÃ±Â¹ÃÂ¹Ã¸ÃˆÂ£ Â¾ÃÃˆÂ£ÃˆÂ­ Â¹Ã¦Â½Ã„</p>
 	 */	
 	private String passwordMethod = null;
 	/**
-	 * <p>»ç¿ëÀÚ°¡ »ç¿ëÇÏ´Â ¸ŞÀÏ ¼­ºñ½º Á¾·ù. ¼ıÀÚ¸¦ ÀÌ¿ëÇÏ¿© ¼³Á¤. ¼³Á¤½Ã °¢ ¼­ºñ½º ¼ıÀÚ °ªÀ» ÇÕ»êÇÏ¿© Á¤º¸¸¦ ¼³Á¤</p>
-	 * <p>¼Ó¼º : ums(1) fax(2) pop(4) imap(8) webmail(16) security(32) voice(64) virus(128) smtpauth(256)</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€ÃšÂ°Â¡ Â»Ã§Â¿Ã«Ã‡ÃÂ´Ã‚ Â¸ÃÃ€Ã Â¼Â­ÂºÃ±Â½Âº ÃÂ¾Â·Ã¹. Â¼Ã½Ã€ÃšÂ¸Â¦ Ã€ÃŒÂ¿Ã«Ã‡ÃÂ¿Â© Â¼Â³ÃÂ¤. Â¼Â³ÃÂ¤Â½Ãƒ Â°Â¢ Â¼Â­ÂºÃ±Â½Âº Â¼Ã½Ã€Ãš Â°ÂªÃ€Â» Ã‡Ã•Â»ÃªÃ‡ÃÂ¿Â© ÃÂ¤ÂºÂ¸Â¸Â¦ Â¼Â³ÃÂ¤</p>
+	 * <p>Â¼Ã“Â¼Âº : ums(1) fax(2) pop(4) imap(8) webmail(16) security(32) voice(64) virus(128) smtpauth(256)</p>
 	 */
 	private String mailServices = null;
 	/**
-	 * <p>½ºÆÔ ¸ŞÀÏ Á¤Ã¥ ¼³Á¤</p>
+	 * <p>Â½ÂºÃ†Ã” Â¸ÃÃ€Ã ÃÂ¤ÃƒÂ¥ Â¼Â³ÃÂ¤</p>
 	 */
 	private String defaultPspam = null;
 	/**
-	 * <p>µµ¸ŞÀÎ ÇÊÅÍ »ç¿ë.</p>
+	 * <p>ÂµÂµÂ¸ÃÃ€Ã Ã‡ÃŠÃ…Ã Â»Ã§Â¿Ã«.</p>
 	 */
 	private String filterApply = null;
 	/**
-	 * @return mailDomain °ª ¹İÈ¯
+	 * @return mailDomain Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getMailDomain() {
 		return mailDomain;
 	}
 	/**
-	 * @param mailDomain ÆÄ¶ó¹ÌÅÍ¸¦ mailDomain°ª¿¡ ¼³Á¤
+	 * @param mailDomain Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ mailDomainÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMailDomain(String mailDomain) {
 		this.mailDomain = mailDomain;
 	}
 	/**
-	 * @return mailDomainName °ª ¹İÈ¯
+	 * @return mailDomainName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getMailDomainName() {
 		return mailDomainName;
 	}
 	/**
-	 * @param mailDomainName ÆÄ¶ó¹ÌÅÍ¸¦ mailDomainName°ª¿¡ ¼³Á¤
+	 * @param mailDomainName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ mailDomainNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMailDomainName(String mailDomainName) {
 		this.mailDomainName = mailDomainName;
 	}
 	/**
-	 * @return serviceStartTime °ª ¹İÈ¯
+	 * @return serviceStartTime Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getServiceStartTime() {
 		return serviceStartTime;
 	}
 	/**
-	 * @param serviceStartTime ÆÄ¶ó¹ÌÅÍ¸¦ serviceStartTime°ª¿¡ ¼³Á¤
+	 * @param serviceStartTime Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ serviceStartTimeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setServiceStartTime(String serviceStartTime) {
 		this.serviceStartTime = serviceStartTime;
 	}
 	/**
-	 * @return serviceEndTime °ª ¹İÈ¯
+	 * @return serviceEndTime Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getServiceEndTime() {
 		return serviceEndTime;
 	}
 	/**
-	 * @param serviceEndTime ÆÄ¶ó¹ÌÅÍ¸¦ serviceEndTime°ª¿¡ ¼³Á¤
+	 * @param serviceEndTime Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ serviceEndTimeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setServiceEndTime(String serviceEndTime) {
 		this.serviceEndTime = serviceEndTime;
 	}
 	/**
-	 * @return domainStatus °ª ¹İÈ¯
+	 * @return domainStatus Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDomainStatus() {
 		return domainStatus;
 	}
 	/**
-	 * @param domainStatus ÆÄ¶ó¹ÌÅÍ¸¦ domainStatus°ª¿¡ ¼³Á¤
+	 * @param domainStatus Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ domainStatusÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDomainStatus(String domainStatus) {
 		this.domainStatus = domainStatus;
 	}
 	/**
-	 * @return maxUserCount °ª ¹İÈ¯
+	 * @return maxUserCount Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getMaxUserCount() {
 		return maxUserCount;
 	}
 	/**
-	 * @param maxUserCount ÆÄ¶ó¹ÌÅÍ¸¦ maxUserCount°ª¿¡ ¼³Á¤
+	 * @param maxUserCount Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ maxUserCountÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMaxUserCount(String maxUserCount) {
 		this.maxUserCount = maxUserCount;
 	}
 	/**
-	 * @return currentUserCount °ª ¹İÈ¯
+	 * @return currentUserCount Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getCurrentUserCount() {
 		return currentUserCount;
 	}
 	/**
-	 * @param currentUserCount ÆÄ¶ó¹ÌÅÍ¸¦ currentUserCount°ª¿¡ ¼³Á¤
+	 * @param currentUserCount Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ currentUserCountÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setCurrentUserCount(String currentUserCount) {
 		this.currentUserCount = currentUserCount;
 	}
 	/**
-	 * @return passwordMethod °ª ¹İÈ¯
+	 * @return passwordMethod Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getPasswordMethod() {
 		return passwordMethod;
 	}
 	/**
-	 * @param passwordMethod ÆÄ¶ó¹ÌÅÍ¸¦ passwordMethod°ª¿¡ ¼³Á¤
+	 * @param passwordMethod Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ passwordMethodÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setPasswordMethod(String passwordMethod) {
 		this.passwordMethod = passwordMethod;
 	}
 	/**
-	 * @return mailServices °ª ¹İÈ¯
+	 * @return mailServices Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getMailServices() {
 		return mailServices;
 	}
 	/**
-	 * @param mailServices ÆÄ¶ó¹ÌÅÍ¸¦ mailServices°ª¿¡ ¼³Á¤
+	 * @param mailServices Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ mailServicesÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMailServices(String mailServices) {
 		this.mailServices = mailServices;
 	}
 	/**
-	 * @return defaultPspam °ª ¹İÈ¯
+	 * @return defaultPspam Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDefaultPspam() {
 		return defaultPspam;
 	}
 	/**
-	 * @param defaultPspam ÆÄ¶ó¹ÌÅÍ¸¦ defaultPspam°ª¿¡ ¼³Á¤
+	 * @param defaultPspam Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ defaultPspamÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDefaultPspam(String defaultPspam) {
 		this.defaultPspam = defaultPspam;
 	}
 	/**
-	 * @return filterApply °ª ¹İÈ¯
+	 * @return filterApply Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getFilterApply() {
 		return filterApply;
 	}
 	/**
-	 * @param filterApply ÆÄ¶ó¹ÌÅÍ¸¦ filterApply°ª¿¡ ¼³Á¤
+	 * @param filterApply Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ filterApplyÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setFilterApply(String filterApply) {
 		this.filterApply = filterApply;

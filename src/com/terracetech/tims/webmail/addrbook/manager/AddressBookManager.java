@@ -9,6 +9,8 @@ import java.util.StringTokenizer;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.webmail.addrbook.dao.PrivateAddressBookDao;
@@ -27,7 +29,6 @@ import com.terracetech.tims.webmail.addrbook.vo.AddressBookReaderVO;
 import com.terracetech.tims.webmail.addrbook.vo.AddressBookVO;
 import com.terracetech.tims.webmail.addrbook.vo.AddressEnvVO;
 import com.terracetech.tims.webmail.addrbook.vo.GroupMemberRelationVO;
-import com.terracetech.tims.webmail.common.advice.Transactional;
 import com.terracetech.tims.webmail.common.log.LogManager;
 import com.terracetech.tims.webmail.common.manager.InitialSoundSearcher;
 import com.terracetech.tims.webmail.exception.InvalidFileException;
@@ -42,6 +43,8 @@ import com.terracetech.tims.webmail.util.FormatUtil;
 import com.terracetech.tims.webmail.util.StringUtils;
 
 
+@Service
+@Transactional
 public class AddressBookManager{
 	
 	private I18nResources resource;
@@ -586,9 +589,9 @@ public class AddressBookManager{
 		if(email.indexOf("@") > 1){
 			StringTokenizer st = new StringTokenizer(email, "@");
 			mailUid = st.nextToken();
-			user = userDao.readMailUserInfo(mailUid, st.nextToken());	
+			user = userDao.readMailUserInfoByUserAndDomain(mailUid, st.nextToken());	
 		}else{
-			user = userDao.readMailUserInfo(domainSeq, email);
+			user = userDao.readMailUserInfoByDomainAndUser(domainSeq, email);
 			mailUid = email;
 		}
 		
@@ -617,9 +620,9 @@ public class AddressBookManager{
 		MailUserInfoVO user = null;
 		if(email.indexOf("@") > 1){
 			StringTokenizer st = new StringTokenizer(email, "@");
-			user = userDao.readMailUserInfo(st.nextToken(), st.nextToken());	
+			user = userDao.readMailUserInfoByUserAndDomain(st.nextToken(), st.nextToken());	
 		}else{
-			user = userDao.readMailUserInfo(domainSeq, email);	
+			user = userDao.readMailUserInfoByDomainAndUser(domainSeq, email);	
 		}
 		
 		if(user == null)

@@ -863,9 +863,17 @@ function confirmIntegrity(folder,uid){
 	jQuery("#integrityMsg").text(mailMsg.mail_integrity_check);
 	jQuery("#integrityBtn").hide();
 	var resultFunc = updateIntegrity;
-	MailMessageService.getMessageIntegrity(folder, uid, function(resultObj){		
-		resultFunc(resultObj);
-	});
+	
+	// DWR → REST API 전환 (2025-10-21)
+	// 원본: MailMessageService.getMessageIntegrity()
+	MailAPI.getMessageIntegrity(folder, uid)
+		.then(function(resultObj) {
+			resultFunc(resultObj);
+		})
+		.catch(function(error) {
+			console.error('메일 무결성 검사 실패:', error);
+			updateIntegrity({result: "error", integrity: "error"});
+		});
 }
 
 function updateIntegrity(resultObj){

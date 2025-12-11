@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
+import jakarta.servlet.http.Cookie;
 
 import com.terracetech.tims.common.I18nConstants;
 import com.terracetech.tims.webmail.common.BaseAction;

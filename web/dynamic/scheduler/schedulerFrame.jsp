@@ -14,9 +14,6 @@
 <script type="text/javascript" src="/js/ext-lib/jquery.popup.js"></script>
 <script type="text/javascript" src="/js/ext-lib/jquery.dftree.js"></script>
 <script type="text/javascript" src="/js/common-lib/common-form.js"></script>
-<script type="text/javascript" src="/dwr/interface/SchedulerService.js"></script>
-<script type="text/javascript" src="/dwr/interface/SchedulerShareService.js"></script>
-<script type="text/javascript" src="/dwr/interface/SchedulerAssetService.js"></script>
 <script type="text/javascript" src="/i18n?bundle=scheduler&var=schedulerMsg&locale=<%=locale%>"></script>
 <script type="text/javascript" src="schedulerCommon.js"></script>
 <script type="text/javascript" src="schedulerShare.js"></script>

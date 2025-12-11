@@ -11,7 +11,7 @@ package com.terracetech.tims.webmail.mail.manager;
 
 import java.util.Locale;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailUtility;
@@ -29,7 +29,7 @@ import com.terracetech.tims.webmail.mail.ibean.MessageSortInfoBean;
 
 /**
  * <p><strong>XCommandHandler.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ï¿½Ö¿ä¼³ï¿½ï¿½</p>
  * <ul>
  * <li></li>
  * </ul>

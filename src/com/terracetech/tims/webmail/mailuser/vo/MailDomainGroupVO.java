@@ -11,7 +11,7 @@ package com.terracetech.tims.webmail.mailuser.vo;
 
 /**
  * <p><strong>MailDomainGroup.java</strong> Class Description</p>
- * <p>�ֿ伳��</p>
+ * <p>ÁÖ¿ä¼³¸í</p>
  * <ul>
  * <li></li>
  * </ul>

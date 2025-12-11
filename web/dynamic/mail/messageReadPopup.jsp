@@ -1,6 +1,5 @@
 <%@ page isELIgnored="false"%>
 <%@ page language="java"  contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>
@@ -48,11 +47,6 @@ var mailOption = {
 <script type="text/javascript" src="/js/ext-lib/jquery.swfupload.js"></script>
 <script type="text/javascript" src="/js/swfupload-lib/swfupload.js"></script>
 <script type="text/javascript" src="/js/common-lib/common-menuLayer.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailFolderService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailMessageService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailCommonService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailTagService.js"></script>
-<script type="text/javascript" src="/dwr/interface/AddressBookService.js"></script>
 <script type="text/javascript" src="/js/mail-lib/mailCommon.js"></script>
 <script type="text/javascript" src="/js/mail-lib/mailDynamicCommon.js"></script>
 <script type="text/javascript" src="/js/mail-lib/mailAction.js"></script>

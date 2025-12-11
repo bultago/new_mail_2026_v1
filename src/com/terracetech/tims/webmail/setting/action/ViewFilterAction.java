@@ -3,7 +3,7 @@ package com.terracetech.tims.webmail.setting.action;
 import java.util.Locale;
 import java.util.Vector;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 import com.terracetech.tims.common.I18nConstants;
 import com.terracetech.tims.common.I18nResources;

@@ -15,7 +15,7 @@ import com.terracetech.tims.webmail.util.FormatUtil;
 
 /**
  * <p><strong>MailQuotaBean.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
  * <li></li>
  * </ul>
@@ -37,7 +37,7 @@ public class MailQuotaBean {
 	
 	
 	/**
-	 * @return usage °ª ¹İÈ¯
+	 * @return usage Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public long getUsage() {
 		return usage;
@@ -47,13 +47,13 @@ public class MailQuotaBean {
 		return FormatUtil.toUnitString(usage, 2);
 	}
 	/**
-	 * @param usage ÆÄ¶ó¹ÌÅÍ¸¦ usage°ª¿¡ ¼³Á¤
+	 * @param usage Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ usageÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUsage(long usage) {
 		this.usage = usage;
 	}
 	/**
-	 * @return limit °ª ¹İÈ¯
+	 * @return limit Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public long getLimit() {
 		return limit;
@@ -63,13 +63,13 @@ public class MailQuotaBean {
 		return FormatUtil.toUnitString(limit, 2);
 	}
 	/**
-	 * @param limit ÆÄ¶ó¹ÌÅÍ¸¦ limit°ª¿¡ ¼³Á¤
+	 * @param limit Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ limitÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setLimit(long limit) {
 		this.limit = limit;
 	}
 	/**
-	 * @return percent °ª ¹İÈ¯
+	 * @return percent Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getPercent() {
 		if(percent <= 0){
@@ -82,7 +82,7 @@ public class MailQuotaBean {
 		return percent;
 	}	
 	/**
-	 * @param percent ÆÄ¶ó¹ÌÅÍ¸¦ percent°ª¿¡ ¼³Á¤
+	 * @param percent Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ percentÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setPercent(int percent) {
 		this.percent = percent;

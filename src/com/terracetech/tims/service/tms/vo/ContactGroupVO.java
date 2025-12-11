@@ -2,9 +2,9 @@ package com.terracetech.tims.service.tms.vo;
 
 /**
  * <p><strong>GroupVo.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
- * <li>±×·ì Á¤º¸¸¦ °¡Á®¿À´Â VO. ±×·ìÁ¤º¸¿¡ °üÇÑ °øÅëÀûÀÎ  VO°´Ã¼</li>
+ * <li>Â±Ã—Â·Ã¬ ÃÂ¤ÂºÂ¸Â¸Â¦ Â°Â¡ÃÂ®Â¿Ã€Â´Ã‚ VO. Â±Ã—Â·Ã¬ÃÂ¤ÂºÂ¸Â¿Â¡ Â°Ã¼Ã‡Ã‘ Â°Ã¸Ã…Ã«Ã€Ã»Ã€Ã  VOÂ°Â´ÃƒÂ¼</li>
  * </ul>
  * @author jpjung
  * @since Tims7
@@ -15,12 +15,12 @@ public class ContactGroupVO {
 	private int domainSeq;
 	
 	/**
-	 * <p>Group °íÀ¯ Á¤º¸</p>
+	 * <p>Group Â°Ã­Ã€Â¯ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private int groupSeq;
 	
 	/**
-	 * <p>Group¸í</p>
+	 * <p>GroupÂ¸Ã­</p>
 	 */
 	private String groupName;
 	

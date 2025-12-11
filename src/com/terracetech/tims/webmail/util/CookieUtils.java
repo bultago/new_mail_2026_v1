@@ -3,9 +3,9 @@ package com.terracetech.tims.webmail.util;
 import java.util.*;
 
 import java.net.URLDecoder;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class CookieUtils {
 	private HttpServletRequest request		= null;

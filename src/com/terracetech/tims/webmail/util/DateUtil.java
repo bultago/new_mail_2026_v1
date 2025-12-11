@@ -126,42 +126,42 @@ public class DateUtil {
 	}
 	
 	/**
-	 * TMS Æ÷¸äÀ» AciveSync Æ÷¸äÀ¸·Î
+	 * TMS Ã†Ã·Â¸Ã¤Ã€Â» AciveSync Ã†Ã·Â¸Ã¤Ã€Â¸Â·Ã
 	 * @return
 	 */
 	public static String convertDayofWeekForActiveSync(String val){
 		if("01".equals(val)){
-			//ÀÏ¿äÀÏ
+			//Ã€ÃÂ¿Ã¤Ã€Ã
 			return "1";
 		}
 		
 		if("02".equals(val)){
-			//¿ù¿äÀÏ
+			//Â¿Ã¹Â¿Ã¤Ã€Ã
 			return "2";
 		}
 		
 		if("03".equals(val)){
-			//È­¿äÀÏ
+			//ÃˆÂ­Â¿Ã¤Ã€Ã
 			return "4";
 		}
 		
 		if("04".equals(val)){
-			//¼ö¿äÀÏ
+			//Â¼Ã¶Â¿Ã¤Ã€Ã
 			return "8";
 		}
 		
 		if("05".equals(val)){
-			//¸ñ¿äÀÏ
+			//Â¸Ã±Â¿Ã¤Ã€Ã
 			return "16";
 		}
 		
 		if("06".equals(val)){
-			//±İ¿äÀÏ
+			//Â±ÃÂ¿Ã¤Ã€Ã
 			return "32";
 		}
 		
 		if("07".equals(val)){
-			//Åä¿äÀÏ
+			//Ã…Ã¤Â¿Ã¤Ã€Ã
 			return "64";
 		}
 		
@@ -170,37 +170,37 @@ public class DateUtil {
 	
 	public static String convertDayofWeekForTms(String val){
 		if("1".equals(val)){
-			//ÀÏ¿äÀÏ
+			//Ã€ÃÂ¿Ã¤Ã€Ã
 			return "01";
 		}
 		
 		if("2".equals(val)){
-			//¿ù¿äÀÏ
+			//Â¿Ã¹Â¿Ã¤Ã€Ã
 			return "02";
 		}
 		
 		if("4".equals(val)){
-			//È­¿äÀÏ
+			//ÃˆÂ­Â¿Ã¤Ã€Ã
 			return "03";
 		}
 		
 		if("8".equals(val)){
-			//¼ö¿äÀÏ
+			//Â¼Ã¶Â¿Ã¤Ã€Ã
 			return "04";
 		}
 		
 		if("16".equals(val)){
-			//¸ñ¿äÀÏ
+			//Â¸Ã±Â¿Ã¤Ã€Ã
 			return "05";
 		}
 		
 		if("32".equals(val)){
-			//±İ¿äÀÏ
+			//Â±ÃÂ¿Ã¤Ã€Ã
 			return "06";
 		}
 		
 		if("64".equals(val)){
-			//Åä¿äÀÏ
+			//Ã…Ã¤Â¿Ã¤Ã€Ã
 			return "07";
 		}
 		

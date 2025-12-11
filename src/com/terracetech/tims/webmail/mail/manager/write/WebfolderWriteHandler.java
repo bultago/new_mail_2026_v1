@@ -25,7 +25,7 @@ import com.terracetech.tims.webmail.webfolder.manager.WebFolderUtils;
 
 /**
  * <p><strong>WebfolderWriteHandler.java</strong> Class Description</p>
- * <p>�ֿ伳��</p>
+ * <p>ÁÖ¿ä¼³¸í</p>
  * <ul>
  * <li></li>
  * </ul>

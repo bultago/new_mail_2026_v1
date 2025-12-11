@@ -13,7 +13,7 @@ import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.StringTokenizer;
 
-import com.sun.mail.imap.protocol.*;
+import org.eclipse.angus.mail.imap.protocol.*;
 import com.terracetech.secure.SecureManager;
 import com.terracetech.tims.webmail.common.EnvConstants;
 

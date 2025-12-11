@@ -12,8 +12,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailMessage;
@@ -34,6 +37,8 @@ import com.terracetech.tims.webmail.webfolder.vo.WebfolderDataVO;
 import com.terracetech.tims.webmail.webfolder.vo.WebfolderQuotaVO;
 import com.terracetech.tims.webmail.webfolder.vo.WebfolderShareVO;
 
+@Service
+@Transactional
 public class WebfolderManager {
 	
 	private WebfolderDao webfolderDao = null;

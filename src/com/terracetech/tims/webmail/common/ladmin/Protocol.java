@@ -4,12 +4,13 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
 
-import com.sun.mail.iap.*;
+import org.eclipse.angus.mail.iap.*;
+import org.eclipse.angus.mail.iap.Response;
 import com.terracetech.tims.webmail.common.EnvConstants;
 import com.terracetech.tims.webmail.common.log.LogManager;
 
 @SuppressWarnings("unchecked")
-public class Protocol extends com.sun.mail.iap.Protocol{
+public class Protocol extends org.eclipse.angus.mail.iap.Protocol{
 	private static int adminPort = Integer.parseInt(EnvConstants.getLadminSetting("ladmin.port"));
 	private static boolean adminDebug = Boolean.parseBoolean(EnvConstants.getLadminSetting("ladmin.debug"));
 

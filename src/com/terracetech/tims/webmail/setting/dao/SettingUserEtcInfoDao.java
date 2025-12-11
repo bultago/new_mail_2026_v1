@@ -1,114 +1,67 @@
 package com.terracetech.tims.webmail.setting.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.terracetech.tims.webmail.setting.vo.UserEtcInfoVO;
-import com.terracetech.tims.webmail.setting.vo.UserInfoVO;
-import com.terracetech.tims.webmail.setting.vo.UserPhotoVO;
-import com.terracetech.tims.webmail.setting.vo.ZipcodeVO;
 
-public class SettingUserEtcInfoDao extends SqlMapClientDaoSupport implements ISettingUserEtcInfoDao {
-	
-	public UserEtcInfoVO readUserEtcInfo (int mailUserSeq) {
-		Object result = getSqlMapClientTemplate().queryForObject("Setting.readUserInfoEtc", mailUserSeq);
-		return result instanceof UserEtcInfoVO ? (UserEtcInfoVO) result : null; 
-	}
+/**
+ * SettingUserEtcInfoDao MyBatis Mapper Interface
+ * 원본: SettingUserEtcInfoDao extends SqlSessionDaoSupport
+ * 총 메서드 수: 19개
+ */
+@Mapper
+public interface SettingUserEtcInfoDao {
+    /** 원본: public UserEtcInfoVO readUserEtcInfo(int mailUserSeq) */
+    UserEtcInfoVO readUserEtcInfo(@Param("mailUserSeq") int mailUserSeq);
+    
+    /** 원본: public boolean modifyUserEtcInfo(UserEtcInfoVO vo) */
+    boolean modifyUserEtcInfo(UserEtcInfoVO vo);
+    
+    /** 원본: public boolean saveUserEtcInfo(UserEtcInfoVO vo) */
+    boolean saveUserEtcInfo(UserEtcInfoVO vo);
+    
+    /** 원본: public boolean deleteUserEtcInfo(int userSeq) */
+    boolean deleteUserEtcInfo(@Param("userSeq") int userSeq);
+    
+    /** 원본: public void initAutoSaveID(int userSeq) */
+    void initAutoSaveID(@Param("userSeq") int userSeq);
+    
+    String readAutoSaveFolder(@Param("userSeq") int userSeq);
+    String readSendedItemFolder(@Param("userSeq") int userSeq);
+    String readDisplayLang(@Param("userSeq") int userSeq);
+    String readMessageReadType(@Param("userSeq") int userSeq);
+    String readDefaultHtmlEditor(@Param("userSeq") int userSeq);
+    String readFontSize(@Param("userSeq") int userSeq);
+    String readReturnUrl(@Param("userSeq") int userSeq);
+    String readMailListDisplay(@Param("userSeq") int userSeq);
+    String readTimeZone(@Param("userSeq") int userSeq);
+    String readDeletedItemFolder(@Param("userSeq") int userSeq);
+    String readPageBase(@Param("userSeq") int userSeq);
+    String readMailSendPossible(@Param("userSeq") int userSeq);
+    String readArrivalAlarm(@Param("userSeq") int userSeq);
+    String readSkinType(@Param("userSeq") int userSeq);
+    
+    // 추가 메서드 (원본 DAO에서 누락됨, 2025-10-23)
+    com.terracetech.tims.webmail.setting.vo.UserInfoVO readUserInfo(@Param("userSeq") int userSeq);
+    void modifyUserInfo(com.terracetech.tims.webmail.setting.vo.UserInfoVO vo);
+    void modifyMyPassword(@Param("userSeq") int userSeq, @Param("password") String password);
+    void modifyMyPasswordChangeTime(@Param("userSeq") int userSeq, @Param("changeTime") String changeTime);
+    void modifyPKIUserDN(@Param("userSeq") int userSeq, @Param("pkiUserDN") String pkiUserDN);
+    void modifyAutoSaveInfo(@Param("userSeq") int userSeq, @Param("autoSaveID") int autoSaveID, @Param("autoSaveFolder") String autoSaveFolder);
+    
+    com.terracetech.tims.webmail.setting.vo.UserPhotoVO readUserPhoto(@Param("userSeq") int userSeq);
+    void modifyUserPhoto(com.terracetech.tims.webmail.setting.vo.UserPhotoVO vo);
+    void deleteUserPhoto(@Param("userSeq") int userSeq);
+    void saveUserPhoto(com.terracetech.tims.webmail.setting.vo.UserPhotoVO vo);
+    
+    List<com.terracetech.tims.webmail.setting.vo.ZipcodeVO> readZipcodeList(@Param("dong") String dong, @Param("skipResult") int skipResult, @Param("maxResult") int maxResult);
+    int readZipcodeListCount(@Param("dong") String dong);
+    
+    java.util.Map<String, Object> readUserEtcInfoMap(@Param("userSeq") int userSeq);
 
-	public boolean modifyUserEtcInfo (UserEtcInfoVO vo) {
-		return getSqlMapClientTemplate().update("Setting.modifyUserInfoEtc", vo) == 1;
-	}
-	
-	public boolean saveUserEtcInfo (UserEtcInfoVO vo) {
-		return getSqlMapClientTemplate().insert("Setting.saveUserInfoEtc", vo) == null;
-	}
-	
-	public boolean deleteUserEtcInfo (int userSeq) {
-		return getSqlMapClientTemplate().delete("Setting.deleteUserInfoEtc", userSeq) == 1;
-	}
-	
-	public void initAutoSaveID(int userSeq){
-		getSqlMapClientTemplate().update("Setting.initAutoSaveID");
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<ZipcodeVO> readZipcodeList(String dong, int skipResult, int pageBase) {
-		dong = "%"+dong+"%";
-		return getSqlMapClientTemplate().queryForList("Setting.readZipcode", dong, skipResult, pageBase);
-	}
-	
-	public int readZipcodeListCount(String dong) {
-		dong = "%"+dong+"%";
-		return (Integer)getSqlMapClientTemplate().queryForObject("Setting.readZipcodeCount", dong);
-	}
-	
-	public UserInfoVO readUserInfo (int mailUserSeq) {
-		return (UserInfoVO)getSqlMapClientTemplate().queryForObject("Setting.readUserInfo", mailUserSeq);
-	}
-	
-	public void modifyUserInfo(UserInfoVO userInfoVo) {
-		getSqlMapClientTemplate().update("Setting.modifyUserInfo", userInfoVo);
-	}
-	
-	public void modifyPKIUserDN(int mailUserSeq, String userDN) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("mailUserSeq", mailUserSeq);
-		paramMap.put("userDN", userDN);
-		getSqlMapClientTemplate().update("Setting.modifyUserDN", paramMap);
-	}
-	
-	public void modifyMyPassword(int mailUserSeq, String password) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("mailUserSeq", mailUserSeq);
-		paramMap.put("password", password);
-		getSqlMapClientTemplate().update("Setting.modifyMyPassword", paramMap);
-	}
-	
-	public void modifyMyPasswordChangeTime(int mailUserSeq, String currentTime) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("mailUserSeq", mailUserSeq);
-		paramMap.put("currentTime", currentTime);
-		getSqlMapClientTemplate().update("Setting.modifyMyPasswordChangeTime", paramMap);
-	}
-	
-	public void modifyAutoSaveInfo(int mailUserSeq, int term, String mode){
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("mailUserSeq", mailUserSeq);
-		paramMap.put("autoSaveMode", mode);
-		paramMap.put("autoSaveTerm", term);		
-		getSqlMapClientTemplate().update("Setting.modifyAutoSaveTerm", paramMap);
-	}	
-	
-	@SuppressWarnings("unchecked")
-	public Map<String, Object> readUserEtcInfoMap (int mailUserSeq) {
-		Object result = getSqlMapClientTemplate().queryForObject("Setting.readUserEtcInfo", mailUserSeq);
-		return result instanceof Map ? (Map)result : null;
-	}
-	
-	public void updateMailHome(String mailUserSeq, String homeSet){
-		Map<String, String> paramMap = new HashMap<String, String>();
-		paramMap.put("mailUserSeq", mailUserSeq);
-		paramMap.put("home", homeSet);
-		getSqlMapClientTemplate().update("Setting.modifyMailHome", paramMap);	
-	}
-	
-	public void saveUserPhoto(UserPhotoVO photo) {
-		getSqlMapClientTemplate().insert("Setting.saveUserPhoto", photo);
-    }
-	
-	public void deleteUserPhoto(int userSeq) {
-		getSqlMapClientTemplate().delete("Setting.deleteUserPhoto", userSeq);
-	}
-
-	public void modifyUserPhoto(UserPhotoVO photo) {
-		getSqlMapClientTemplate().update("Setting.modifyUserPhoto", photo);
-	}
-	
-	public UserPhotoVO readUserPhoto(int userSeq) {
-		return (UserPhotoVO)getSqlMapClientTemplate().queryForObject("Setting.readUserPhoto", userSeq);
-	}
-	
+    /** 원본: public void updateMailHome(String userSeq, String setMailHome) */
+    void updateMailHome(@Param("userSeq") String userSeq, @Param("setMailHome") String setMailHome);
 }

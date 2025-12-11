@@ -2,8 +2,9 @@ package com.terracetech.tims.webmail.util;
 
 import java.security.MessageDigest;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import com.terracetech.tims.webmail.mailuser.User;
 
 public class SessionUtil {
 
@@ -40,6 +41,14 @@ public class SessionUtil {
 		
 		return buf.toString();
 		
+	}
+	
+	public static User getUser(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			return (User) session.getAttribute("user");
+		}
+		return null;
 	}
 	
 }

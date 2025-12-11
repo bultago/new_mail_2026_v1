@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Store;
+import jakarta.mail.Folder;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Store;
 
-import com.sun.mail.pop3.POP3Folder;
+import org.eclipse.angus.mail.pop3.POP3Folder;
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.mail.TMailFolder;
 import com.terracetech.tims.mail.TMailStore;

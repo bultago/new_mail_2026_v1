@@ -11,10 +11,10 @@ package com.terracetech.tims.webmail.mailuser.vo;
 
 /**
  * <p><strong>MailUserGroupVO.java</strong> Class Description</p>
- * <p>ÁÖ¿ä¼³¸í</p>
+ * <p>ÃÃ–Â¿Ã¤Â¼Â³Â¸Ã­</p>
  * <ul>
- * <li>»ç¿ëÀÚ°¡ ¼ÓÇÑ ±×·ìÀÇ Á¤º¸¸¦ °¡Á®¿À±â À§ÇÑ VO. ±×·ì´ÜÀ§ÀÇ ¼³Á¤ºÎºĞÀ» °¡Á®¿Â´Ù.</li>
- * <li>±×·ì¸í, ÄõÅÍ °ü·Ã ¼Ó¼º, ¸ŞÀÏÇÔ À¯È¿±â°£ ¼³Á¤, ±âÅ¸ »ç¿ëÀÚ default ¼³Á¤ Á¤º¸¸¦ Æ÷ÇÔ.</li>
+ * <li>Â»Ã§Â¿Ã«Ã€ÃšÂ°Â¡ Â¼Ã“Ã‡Ã‘ Â±Ã—Â·Ã¬Ã€Ã‡ ÃÂ¤ÂºÂ¸Â¸Â¦ Â°Â¡ÃÂ®Â¿Ã€Â±Ã¢ Ã€Â§Ã‡Ã‘ VO. Â±Ã—Â·Ã¬Â´ÃœÃ€Â§Ã€Ã‡ Â¼Â³ÃÂ¤ÂºÃÂºÃÃ€Â» Â°Â¡ÃÂ®Â¿Ã‚Â´Ã™.</li>
+ * <li>Â±Ã—Â·Ã¬Â¸Ã­, Ã„ÃµÃ…Ã Â°Ã¼Â·Ãƒ Â¼Ã“Â¼Âº, Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£ Â¼Â³ÃÂ¤, Â±Ã¢Ã…Â¸ Â»Ã§Â¿Ã«Ã€Ãš default Â¼Â³ÃÂ¤ ÃÂ¤ÂºÂ¸Â¸Â¦ Ã†Ã·Ã‡Ã”.</li>
  * </ul>
  * @author sshyun
  * @since Tims7
@@ -23,277 +23,277 @@ package com.terracetech.tims.webmail.mailuser.vo;
 public class MailUserGroupVO {
 	
 	/**
-	 * <p>±×·ì¸í Á¤º¸</p>
+	 * <p>Â±Ã—Â·Ã¬Â¸Ã­ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String mailGroup = null;
 	/**
-	 * <p>±×·ì º°Äª</p>
+	 * <p>Â±Ã—Â·Ã¬ ÂºÂ°Ã„Âª</p>
 	 */
 	private String mailGroupName = null;
 	/**
-	 * <p>±×·ì ±âº» ÄõÅÍ ¿ë·®. 'ÄõÅÍ¿ë·®S, Ä«¿îÅÍ¼öC' ÇüÅÂ·Î ÀúÀå.</p>
+	 * <p>Â±Ã—Â·Ã¬ Â±Ã¢ÂºÂ» Ã„ÃµÃ…Ã Â¿Ã«Â·Â®. 'Ã„ÃµÃ…ÃÂ¿Ã«Â·Â®S, Ã„Â«Â¿Ã®Ã…ÃÂ¼Ã¶C' Ã‡Ã¼Ã…Ã‚Â·Ã Ã€ÃºÃ€Ã¥.</p>
 	 */
 	private String quota = null;
 	/**
-	 * <p>±×·ì À¥Æú´õ ÄõÅÍ Á¤º¸</p>
+	 * <p>Â±Ã—Â·Ã¬ Ã€Â¥Ã†ÃºÂ´Ãµ Ã„ÃµÃ…Ã ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String webfolderQuota = null;
 	/**
-	 * <p>ÃÖ´ë Æ÷¿öµù °¹¼ö</p>
+	 * <p>ÃƒÃ–Â´Ã« Ã†Ã·Â¿Ã¶ÂµÃ¹ Â°Â¹Â¼Ã¶</p>
 	 */
 	private String maxForwarding = null;
 	/**
-	 * <p>ÄõÅÍ ÃÊ°ú »ç¿ë ºñÀ². 1~100% »çÀÌ</p>
+	 * <p>Ã„ÃµÃ…Ã ÃƒÃŠÂ°Ãº Â»Ã§Â¿Ã« ÂºÃ±Ã€Â². 1~100% Â»Ã§Ã€ÃŒ</p>
 	 */
 	private String quotaOverlookRatio = null;
 	/**
-	 * <p>ÄõÅÍ ÃÊ°ú °æ°í ¸ğµå</p>
-	 * <p>¼Ó¼º : on/off</p>
+	 * <p>Ã„ÃµÃ…Ã ÃƒÃŠÂ°Ãº Â°Ã¦Â°Ã­ Â¸Ã°ÂµÃ¥</p>
+	 * <p>Â¼Ã“Â¼Âº : on/off</p>
 	 */
 	private String quotaWarningMode = null;
 	/**
-	 * <p>ÄõÅÍ À§Çè »ç¿ë ºñÀ². 1~100% »çÀÌ</p>
+	 * <p>Ã„ÃµÃ…Ã Ã€Â§Ã‡Ã¨ Â»Ã§Â¿Ã« ÂºÃ±Ã€Â². 1~100% Â»Ã§Ã€ÃŒ</p>
 	 */
 	private String quotaWarningRatio = null;
 	/**
-	 * <p>ÄõÅÍ ¿À·ù Ã³¸® ¹æ¹ı</p>
+	 * <p>Ã„ÃµÃ…Ã Â¿Ã€Â·Ã¹ ÃƒÂ³Â¸Â® Â¹Ã¦Â¹Ã½</p>
 	 */
 	private String quotaViolationAction = null;
 	/**
-	 * <p>»ç¿ëÀÚ°¡ »ç¿ëÇÏ´Â ¸ŞÀÏ ¼­ºñ½º Á¾·ù. ¼ıÀÚ¸¦ ÀÌ¿ëÇÏ¿© ¼³Á¤. ¼³Á¤½Ã °¢ ¼­ºñ½º ¼ıÀÚ °ªÀ» ÇÕ»êÇÏ¿© Á¤º¸¸¦ ¼³Á¤</p>
-	 * <p>¼Ó¼º : ums(1) fax(2) pop(4) imap(8) webmail(16) security(32) voice(64) virus(128) smtpauth(256)</p>
+	 * <p>Â»Ã§Â¿Ã«Ã€ÃšÂ°Â¡ Â»Ã§Â¿Ã«Ã‡ÃÂ´Ã‚ Â¸ÃÃ€Ã Â¼Â­ÂºÃ±Â½Âº ÃÂ¾Â·Ã¹. Â¼Ã½Ã€ÃšÂ¸Â¦ Ã€ÃŒÂ¿Ã«Ã‡ÃÂ¿Â© Â¼Â³ÃÂ¤. Â¼Â³ÃÂ¤Â½Ãƒ Â°Â¢ Â¼Â­ÂºÃ±Â½Âº Â¼Ã½Ã€Ãš Â°ÂªÃ€Â» Ã‡Ã•Â»ÃªÃ‡ÃÂ¿Â© ÃÂ¤ÂºÂ¸Â¸Â¦ Â¼Â³ÃÂ¤</p>
+	 * <p>Â¼Ã“Â¼Âº : ums(1) fax(2) pop(4) imap(8) webmail(16) security(32) voice(64) virus(128) smtpauth(256)</p>
 	 * 
 	 */
 	private int mailServices = 0;
 	/**
-	 * <p>ÃÖ´ë ¸ŞÀÏ ¼Û½Å Å©±â</p>
+	 * <p>ÃƒÃ–Â´Ã« Â¸ÃÃ€Ã Â¼Ã›Â½Ã… Ã…Â©Â±Ã¢</p>
 	 */
 	private String maxSendSize = null;
 	/**
-	 * <p>¹ŞÀº ¸ŞÀÏÇÔ À¯È¿±â°£ </p>
+	 * <p>Â¹ÃÃ€Âº Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£ </p>
 	 */
 	private String inboxExpireDays = null;
 	/**
-	 * <p>º¸³½ ¸ŞÀÏÇÔ À¯È¿±â°£ </p>
+	 * <p>ÂºÂ¸Â³Â½ Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£ </p>
 	 */
 	private String sentExpireDays = null;
 	/**
-	 * <p>ÈŞÁöÅë ¸ŞÀÏÇÔ À¯È¿±â°£</p>
+	 * <p>ÃˆÃÃÃ¶Ã…Ã« Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£</p>
 	 */
 	private String trashExpireDays = null;
 	/**
-	 * <p>½ºÆÔ ¸ŞÀÏÇÔ À¯È¿±â°£</p>
+	 * <p>Â½ÂºÃ†Ã” Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£</p>
 	 */
 	private String spamExpireDays = null;
 	/**
-	 * <p>»ç¿ëÀÚ ¸ŞÀÏÇÔ À¯È¿±â°£ </p>
+	 * <p>Â»Ã§Â¿Ã«Ã€Ãš Â¸ÃÃ€ÃÃ‡Ã” Ã€Â¯ÃˆÂ¿Â±Ã¢Â°Â£ </p>
 	 */
 	private String userExpireDays = null;
 	/**
-	 * <p>±×·ì ¿¡ ´ëÇÑ ¼³¸í Á¤º¸</p>
+	 * <p>Â±Ã—Â·Ã¬ Â¿Â¡ Â´Ã«Ã‡Ã‘ Â¼Â³Â¸Ã­ ÃÂ¤ÂºÂ¸</p>
 	 */
 	private String description = null;
 	
 	/**
-	 * @return mailGroup °ª ¹İÈ¯
+	 * @return mailGroup Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getMailGroup() {
 		return mailGroup;
 	}
 	/**
-	 * @param mailGroup ÆÄ¶ó¹ÌÅÍ¸¦ mailGroup°ª¿¡ ¼³Á¤
+	 * @param mailGroup Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ mailGroupÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMailGroup(String mailGroup) {
 		this.mailGroup = mailGroup;
 	}
 	/**
-	 * @return mailGroupName °ª ¹İÈ¯
+	 * @return mailGroupName Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getMailGroupName() {
 		return mailGroupName;
 	}
 	/**
-	 * @param mailGroupName ÆÄ¶ó¹ÌÅÍ¸¦ mailGroupName°ª¿¡ ¼³Á¤
+	 * @param mailGroupName Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ mailGroupNameÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMailGroupName(String mailGroupName) {
 		this.mailGroupName = mailGroupName;
 	}
 	/**
-	 * @return quota °ª ¹İÈ¯
+	 * @return quota Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getQuota() {
 		return quota;
 	}
 	/**
-	 * @param quota ÆÄ¶ó¹ÌÅÍ¸¦ quota°ª¿¡ ¼³Á¤
+	 * @param quota Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ quotaÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setQuota(String quota) {
 		this.quota = quota;
 	}
 	/**
-	 * @return webfolderQuota °ª ¹İÈ¯
+	 * @return webfolderQuota Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getWebfolderQuota() {
 		return webfolderQuota;
 	}
 	/**
-	 * @param webfolderQuota ÆÄ¶ó¹ÌÅÍ¸¦ webfolderQuota°ª¿¡ ¼³Á¤
+	 * @param webfolderQuota Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ webfolderQuotaÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setWebfolderQuota(String webfolderQuota) {
 		this.webfolderQuota = webfolderQuota;
 	}
 	/**
-	 * @return maxForwarding °ª ¹İÈ¯
+	 * @return maxForwarding Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getMaxForwarding() {
 		return maxForwarding;
 	}
 	/**
-	 * @param maxForwarding ÆÄ¶ó¹ÌÅÍ¸¦ maxForwarding°ª¿¡ ¼³Á¤
+	 * @param maxForwarding Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ maxForwardingÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMaxForwarding(String maxForwarding) {
 		this.maxForwarding = maxForwarding;
 	}
 	/**
-	 * @return quotaOverlookRatio °ª ¹İÈ¯
+	 * @return quotaOverlookRatio Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getQuotaOverlookRatio() {
 		return quotaOverlookRatio;
 	}
 	/**
-	 * @param quotaOverlookRatio ÆÄ¶ó¹ÌÅÍ¸¦ quotaOverlookRatio°ª¿¡ ¼³Á¤
+	 * @param quotaOverlookRatio Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ quotaOverlookRatioÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setQuotaOverlookRatio(String quotaOverlookRatio) {
 		this.quotaOverlookRatio = quotaOverlookRatio;
 	}
 	/**
-	 * @return quotaWarningMode °ª ¹İÈ¯
+	 * @return quotaWarningMode Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getQuotaWarningMode() {
 		return quotaWarningMode;
 	}
 	/**
-	 * @param quotaWarningMode ÆÄ¶ó¹ÌÅÍ¸¦ quotaWarningMode°ª¿¡ ¼³Á¤
+	 * @param quotaWarningMode Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ quotaWarningModeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setQuotaWarningMode(String quotaWarningMode) {
 		this.quotaWarningMode = quotaWarningMode;
 	}
 	/**
-	 * @return quotaWarningRatio °ª ¹İÈ¯
+	 * @return quotaWarningRatio Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getQuotaWarningRatio() {
 		return quotaWarningRatio;
 	}
 	/**
-	 * @param quotaWarningRatio ÆÄ¶ó¹ÌÅÍ¸¦ quotaWarningRatio°ª¿¡ ¼³Á¤
+	 * @param quotaWarningRatio Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ quotaWarningRatioÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setQuotaWarningRatio(String quotaWarningRatio) {
 		this.quotaWarningRatio = quotaWarningRatio;
 	}
 	/**
-	 * @return quotaViolationAction °ª ¹İÈ¯
+	 * @return quotaViolationAction Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getQuotaViolationAction() {
 		return quotaViolationAction;
 	}
 	/**
-	 * @param quotaViolationAction ÆÄ¶ó¹ÌÅÍ¸¦ quotaViolationAction°ª¿¡ ¼³Á¤
+	 * @param quotaViolationAction Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ quotaViolationActionÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setQuotaViolationAction(String quotaViolationAction) {
 		this.quotaViolationAction = quotaViolationAction;
 	}
 	/**
-	 * @return mailServices °ª ¹İÈ¯
+	 * @return mailServices Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public int getMailServices() {
 		return mailServices;
 	}
 	/**
-	 * @param mailServices ÆÄ¶ó¹ÌÅÍ¸¦ mailServices°ª¿¡ ¼³Á¤
+	 * @param mailServices Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ mailServicesÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMailServices(int mailServices) {
 		this.mailServices = mailServices;
 	}
 	/**
-	 * @return maxSendSize °ª ¹İÈ¯
+	 * @return maxSendSize Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getMaxSendSize() {
 		return maxSendSize;
 	}
 	/**
-	 * @param maxSendSize ÆÄ¶ó¹ÌÅÍ¸¦ maxSendSize°ª¿¡ ¼³Á¤
+	 * @param maxSendSize Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ maxSendSizeÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setMaxSendSize(String maxSendSize) {
 		this.maxSendSize = maxSendSize;
 	}
 	/**
-	 * @return inboxExpireDays °ª ¹İÈ¯
+	 * @return inboxExpireDays Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getInboxExpireDays() {
 		return inboxExpireDays;
 	}
 	/**
-	 * @param inboxExpireDays ÆÄ¶ó¹ÌÅÍ¸¦ inboxExpireDays°ª¿¡ ¼³Á¤
+	 * @param inboxExpireDays Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ inboxExpireDaysÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setInboxExpireDays(String inboxExpireDays) {
 		this.inboxExpireDays = inboxExpireDays;
 	}
 	/**
-	 * @return sentExpireDays °ª ¹İÈ¯
+	 * @return sentExpireDays Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSentExpireDays() {
 		return sentExpireDays;
 	}
 	/**
-	 * @param sentExpireDays ÆÄ¶ó¹ÌÅÍ¸¦ sentExpireDays°ª¿¡ ¼³Á¤
+	 * @param sentExpireDays Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ sentExpireDaysÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSentExpireDays(String sentExpireDays) {
 		this.sentExpireDays = sentExpireDays;
 	}
 	/**
-	 * @return trashExpireDays °ª ¹İÈ¯
+	 * @return trashExpireDays Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getTrashExpireDays() {
 		return trashExpireDays;
 	}
 	/**
-	 * @param trashExpireDays ÆÄ¶ó¹ÌÅÍ¸¦ trashExpireDays°ª¿¡ ¼³Á¤
+	 * @param trashExpireDays Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ trashExpireDaysÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setTrashExpireDays(String trashExpireDays) {
 		this.trashExpireDays = trashExpireDays;
 	}
 	/**
-	 * @return spamExpireDays °ª ¹İÈ¯
+	 * @return spamExpireDays Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getSpamExpireDays() {
 		return spamExpireDays;
 	}
 	/**
-	 * @param spamExpireDays ÆÄ¶ó¹ÌÅÍ¸¦ spamExpireDays°ª¿¡ ¼³Á¤
+	 * @param spamExpireDays Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ spamExpireDaysÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setSpamExpireDays(String spamExpireDays) {
 		this.spamExpireDays = spamExpireDays;
 	}
 	/**
-	 * @return userExpireDays °ª ¹İÈ¯
+	 * @return userExpireDays Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getUserExpireDays() {
 		return userExpireDays;
 	}
 	/**
-	 * @param userExpireDays ÆÄ¶ó¹ÌÅÍ¸¦ userExpireDays°ª¿¡ ¼³Á¤
+	 * @param userExpireDays Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ userExpireDaysÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setUserExpireDays(String userExpireDays) {
 		this.userExpireDays = userExpireDays;
 	}
 	/**
-	 * @return description °ª ¹İÈ¯
+	 * @return description Â°Âª Â¹ÃÃˆÂ¯
 	 */
 	public String getDescription() {
 		return description;
 	}
 	/**
-	 * @param description ÆÄ¶ó¹ÌÅÍ¸¦ description°ª¿¡ ¼³Á¤
+	 * @param description Ã†Ã„Â¶Ã³Â¹ÃŒÃ…ÃÂ¸Â¦ descriptionÂ°ÂªÂ¿Â¡ Â¼Â³ÃÂ¤
 	 */
 	public void setDescription(String description) {
 		this.description = description;

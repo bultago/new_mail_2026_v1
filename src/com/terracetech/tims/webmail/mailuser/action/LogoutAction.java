@@ -3,7 +3,7 @@ package com.terracetech.tims.webmail.mailuser.action;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 
 

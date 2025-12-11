@@ -3,7 +3,8 @@ package com.terracetech.tims.webmail.organization.manager;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.json.simple.JSONObject;
 
 import com.terracetech.tims.common.I18nResources;
@@ -18,7 +19,7 @@ import com.terracetech.tims.webmail.util.StringUtils;
 
 public class OrganizationService extends BaseService{
 	
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private OrganizationManager manager = null;
 	

@@ -412,7 +412,7 @@ public class CalendarData implements ISyncData {
 			setRepeatTerm("03" + interval + dayOfMonth);
 		}else if("3".equals(repeatTerm)){
 			/*
-			 * 03010203 -> 1°³¿ù¸¶´Ù µÑÂ°ÁÖ È­¿äÀÏ
+			 * 03010203 -> 1ê°œì›”ë§ˆë‹¤ ë‘˜ì§¸ì£¼ í™”ìš”ì¼
 			 */
 			if(interval.length()==1)
 				interval = "0" + interval;
@@ -434,7 +434,7 @@ public class CalendarData implements ISyncData {
 			if(dayOfMonth.length()==1)
 				dayOfMonth = "0" + dayOfMonth;
 			
-			//¸Å³â ¹İº¹Àº ÇÏ·ç¸¸ ÀÖ¾î¾ßÇÏ´Âµ¥, ¸ğ¹ÙÀÏ±â±â¿¡¼­ 2Æ²¿¡ °ÅÃÄ¼­ µ¥ÀÌÅ¸°¡ ¿Â´Ù.
+			//ë§¤ë…„ ë°˜ë³µì€ í•˜ë£¨ë§Œ ìˆì–´ì•¼í•˜ëŠ”ë°, ëª¨ë°”ì¼ê¸°ê¸°ì—ì„œ 2í‹€ì— ê±°ì³ì„œ ë°ì´íƒ€ê°€ ì˜¨ë‹¤.
 			setEndDate(getStartDate());
 		
 			setRepeatTerm("04" + month+ dayOfMonth);

@@ -7,7 +7,8 @@ import java.io.SequenceInputStream;
 import java.io.StringWriter;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
 import org.xml.sax.SAXException;
@@ -16,7 +17,7 @@ import com.terracetech.tims.service.aync.Wbxml;
 
 public abstract class BinarySerializer
 {
-	private Logger log = Logger.getLogger(this.getClass());
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
     public static final boolean isValidCodepage(int codepage)
     {

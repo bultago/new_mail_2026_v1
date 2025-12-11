@@ -7,10 +7,10 @@ import com.terracetech.tims.webmail.common.log.LogManager;
 
 /**
  * <p><strong>BasicAdvice.java</strong> Class Description</p>
- * <p>�α� �� ���� �б⸦ ó���ϴ� �����̽�</p>
+ * <p>·Î±ë ¹× ¿¹¿Ü ºÐ±â¸¦ Ã³¸®ÇÏ´Â ¾îµå¹ÙÀÌ½º</p>
  * <ul>
- * <li>�α� ó��</li>
- * <li>Ư�� ���ܿ� ���� �б� ó��</li>
+ * <li>·Î±ë Ã³¸®</li>
+ * <li>Æ¯Á¤ ¿¹¿Ü¿¡ ´ëÇÑ ºÐ±â Ã³¸®</li>
  * </ul>
  * @author ysko
  * @since Tims7
@@ -20,9 +20,9 @@ public class BasicAdvice implements MethodInterceptor{
 	
 	/**
 	 * <p>
-	 * 	aspectJ ������ ���Ͽ� ��Ī �Ǵ� �޼��� ȣ��� ���� ������ �α� ó���� �Ѵ�.<br>
-	 * 	<li>ȣ��Ǵ� �޼����� Ǯ ���� �α�</li>
-	 * 	<li>�޼��� ���� �ҿ�ð� �α�</li>
+	 * 	aspectJ Çü½ÄÀÇ ÆÐÅÏ¿¡ ¸ÅÄª µÇ´Â ¸Þ¼­µå È£Ãâ½Ã ½ÇÇà ÀüÈÄÀÇ ·Î±ë Ã³¸®¸¦ ÇÑ´Ù.<br>
+	 * 	<li>È£ÃâµÇ´Â ¸Þ¼­µåÀÇ Ç® ³×ÀÓ ·Î±ë</li>
+	 * 	<li>¸Þ¼­µå ¼öÇà ¼Ò¿ä½Ã°£ ·Î±ë</li>
 	 * </p>
 	 *
 	 * @see org.aopalliance.intercept.MethodInterceptor#invoke(org.aopalliance.intercept.MethodInvocation)
@@ -48,10 +48,10 @@ public class BasicAdvice implements MethodInterceptor{
 
 	/**
 	 * <p>
-	 * 	���� �����ؾ��� �޼��带 ���� ��Ų��.<br>
-	 * 	<li>����� ���������� �Ķ���� �α�</li>
-	 * 	<li>���� �߻��� ���� �α�</li>
-	 * 	<li>������ ���ܿ� ���� �ϰ� ó��</li>
+	 * 	½ÇÁ¦ ½ÇÇàÇØ¾ßÇÒ ¸Þ¼­µå¸¦ ¼öÇà ½ÃÅ²´Ù.<br>
+	 * 	<li>µð¹ö±× ·¹º§¿¡¼­ÀÇ ÆÄ¶ó¹ÌÅÍ ·Î±ë</li>
+	 * 	<li>¿¹¿Ü ¹ß»ý½Ã ¿¹¿Ü ·Î±ë</li>
+	 * 	<li>Á¤ÀÇÇÑ ¿¹¿Ü¿¡ ´ëÇÑ ÀÏ°ý Ã³¸®</li>
 	 * </p>
 	 *
 	 * @param invocation
@@ -66,12 +66,12 @@ public class BasicAdvice implements MethodInterceptor{
 		} catch (Throwable e) {
 			String className = invocation.getMethod().getDeclaringClass().getName();
 			String methodName = invocation.getMethod().getName();
-			//�α� ó�� �޼��� ����
+			//·Î±ë Ã³¸® ¸Þ¼­µå µµÃâ
 			AdviceUtil.printError(e, className, methodName);
-			//TODO ��Ÿ ó�� �޼��� ����
+			//TODO ±âÅ¸ Ã³¸® ¸Þ¼­µå µµÃâ
 			
 		} finally {
-			//TODO �ʼ� ó��
+			//TODO ÇÊ¼ö Ã³¸®
 		}
 		return returnValue;
 	}

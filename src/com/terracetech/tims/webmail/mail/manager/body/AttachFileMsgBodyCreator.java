@@ -14,13 +14,13 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.StringTokenizer;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.NoSuchProviderException;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeUtility;
+import jakarta.activation.DataHandler;
+import jakarta.activation.FileDataSource;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.NoSuchProviderException;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeUtility;
 
 import com.terracetech.tims.mail.TMailUtility;
 import com.terracetech.tims.webmail.common.EnvConstants;
@@ -34,7 +34,7 @@ import com.terracetech.tims.webmail.util.StringUtils;
  * <strong>SimpleMultipartMsgBodyCreator.java</strong> Class Description
  * </p>
  * <p>
- * ÁÖ¿ä¼³¸í
+ * ï¿½Ö¿ä¼³ï¿½ï¿½
  * </p>
  * <ul>
  * <li></li>
@@ -98,13 +98,13 @@ public class AttachFileMsgBodyCreator extends AbstractMsgBodyCreator {
 	
 				File file_src = new File(tmpDir + EnvConstants.DIR_SEPARATOR + strFile);
 
-				//2012.05.17 - Ã·ºÎÆÄÀÏÀÌ ´Ù¸¥ Àåºñ·Î ¿Ã¶ó°¬À» °æ¿ì check - SS
+				//2012.05.17 - Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ check - SS
 				if (!file_src.exists()) {
 					if (FileUtil.checkUploadFiles(strFile)) {
 						file_src = new File(tmpDir + EnvConstants.DIR_SEPARATOR + strFile);
 					}
 				}
-				//2012.05.17 - Ã·ºÎÆÄÀÏÀÌ ´Ù¸¥ Àåºñ·Î ¿Ã¶ó°¬À» °æ¿ì check - EE
+				//2012.05.17 - Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ check - EE
 				info.addTempFile(file_src);
 	
 				MimeBodyPart mbp = new MimeBodyPart();

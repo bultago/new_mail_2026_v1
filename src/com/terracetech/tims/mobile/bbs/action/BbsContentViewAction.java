@@ -3,7 +3,7 @@ package com.terracetech.tims.mobile.bbs.action;
 import com.terracetech.tims.mail.TMailUtility;
 import com.terracetech.tims.mobile.common.action.BaseAction;
 import com.terracetech.tims.service.tms.impl.BbsService;
-import com.terracetech.tims.service.tms.vo.BbsContentVO;
+import com.terracetech.tims.service.tms.vo.BoardContentVO;
 import com.terracetech.tims.service.tms.vo.BbsInfoVO;
 import com.terracetech.tims.service.tms.vo.BbsViewContentCondVO;
 import com.terracetech.tims.webmail.util.StringUtils;
@@ -26,7 +26,7 @@ public class BbsContentViewAction extends BaseAction{
 	private int page = 0;
 	
 	private BbsInfoVO[] bbsInfoList = null;
-	private BbsContentVO contentVo = null;
+	private BoardContentVO contentVo = null;
 	
 	public void setBbsService(BbsService bbsService) {
 		this.bbsService = bbsService;
@@ -85,10 +85,10 @@ public class BbsContentViewAction extends BaseAction{
 	public void setPage(int page) {
 		this.page = page;
 	}
-	public BbsContentVO getContentVo() {
+	public BoardContentVO getContentVo() {
 		return contentVo;
 	}
-	public void setContentVo(BbsContentVO contentVo) {
+	public void setContentVo(BoardContentVO contentVo) {
 		this.contentVo = contentVo;
 	}
 	public String getKeyWord() {

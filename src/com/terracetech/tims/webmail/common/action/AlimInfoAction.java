@@ -190,7 +190,7 @@ public class AlimInfoAction extends BaseAction {
 		userAuthManager.doLoginProcess(request, response, auth.getUser(),authParamMap);
 		
 		request.getSession().setAttribute(EnvConstants.COOKIE_ALGORITHM_METHOD, systemManager.getCryptMethod());
-		request.setAttribute("user", auth.getUser());//º¯¼ö »ó¼öÈ­		
+		request.setAttribute("user", auth.getUser());//ÂºÂ¯Â¼Ã¶ Â»Ã³Â¼Ã¶ÃˆÂ­		
 		request.setAttribute("url", "/dynamic/mail/mailCommon.do?workName=golist&folder=Inbox");		
 		return "success";
 	}	

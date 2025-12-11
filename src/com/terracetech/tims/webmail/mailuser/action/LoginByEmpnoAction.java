@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.terracetech.tims.common.I18nConstants;
 import com.terracetech.tims.common.I18nResources;
 import com.terracetech.tims.webmail.common.BaseAction;
@@ -18,7 +19,7 @@ import com.terracetech.tims.webmail.mailuser.User;
 import com.terracetech.tims.webmail.mailuser.manager.UserAuthManager;
 
 public class LoginByEmpnoAction extends BaseAction {
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private static final long serialVersionUID = 3524773920732540358L;
 	
@@ -37,7 +38,7 @@ public class LoginByEmpnoAction extends BaseAction {
 	
 	public String execute() throws Exception {		
 		I18nResources resource = getMessageResource("common");
-		// TODO ÃßÈÄ ¸®ÆåÅä¸µ
+		// TODO ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ä¸µ
 		String empno = request.getParameter("empno");
 		String pass = request.getParameter("pass");
 		String domain = request.getParameter("domain");
@@ -59,11 +60,11 @@ public class LoginByEmpnoAction extends BaseAction {
 			allowUser.put(User.SESSION_CHECK_TIME, sessionTime);
 			userAuthManager.doLoginProcess(request, response, allowUser,paramMap);
 			
-			request.setAttribute("user", allowUser);//º¯¼ö »ó¼öÈ­
+			request.setAttribute("user", allowUser);//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È­
 			
 			LogManager.writeMailLogMsg(true,log, allowUser.get(User.EMAIL), 
 					request.getRemoteAddr(), "login");
-			// TODO ·Î±× ±¸Çö
+			// TODO ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½
 		} else {
 			if(auth.getAuthResult()==UserAuthManager.PASSWORD_CHANGE){
 				User allowUser = auth.getUser();
@@ -83,7 +84,7 @@ public class LoginByEmpnoAction extends BaseAction {
 		    
 		    return null;
 			
-			// TODO ·Î±× ±¸Çö
+			// TODO ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 		System.out.println(auth);
 		result = returnMessage;

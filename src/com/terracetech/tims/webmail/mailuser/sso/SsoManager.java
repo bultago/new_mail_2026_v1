@@ -10,7 +10,7 @@ import java.util.Map;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.terracetech.secure.crypto.SecureUtil;
 import com.terracetech.secure.crypto.SecureWebUtil;
@@ -100,14 +100,14 @@ public class SsoManager {
 			if(StringUtils.isEmpty(param.get("empno"))){
 				throw new UserNotFoundException();
 			}
-			//»ç¹ø
+			//ï¿½ï¿½ï¿½
 			mailUid = mailUserDao.readMailUserSsoInfoByEmpno(param);
 		}else if("ssn".equals(infoVo.getSsoKey())){
 			if(StringUtils.isEmpty(param.get("ssn"))){
 				throw new UserNotFoundException();
 			}
 			
-			//ÁÖ¹Îµî·Ï¹øÈ£
+			//ï¿½Ö¹Îµï¿½Ï¹ï¿½È£
 			param.put("ssn", getEncryptedSSN(param.get("ssn")));
 			mailUid = mailUserDao.readMailUserSsoInfoBySsn(param);
 		}

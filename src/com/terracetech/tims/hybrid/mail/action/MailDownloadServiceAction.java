@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.Stack;
 
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMessage;
 
 import com.sun.mail.imap.IMAPMessage;
 import com.terracetech.tims.hybrid.common.action.BaseAction;

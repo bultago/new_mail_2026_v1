@@ -55,7 +55,7 @@ public class VirusManager {
 						}
 						
 						virusManager = new VirusCheckManager(host, port, false);			
-						if(!virusManager.makeConnection() || !virusManager.checkVirus(path)){//°Ë»ç ½ÇÆĞ
+						if(!virusManager.makeConnection() || !virusManager.checkVirus(path)){//Â°Ã‹Â»Ã§ Â½Ã‡Ã†Ã
 							if(failPolicy.startsWith("tag")){
 								checkVO.setSuccess(false);
 								msgBuffer.append(msgResource.getMessage("virus.check.fail", new Object[]{fileName}));

@@ -3,8 +3,8 @@ package com.terracetech.tims.mobile.common.action;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpSession;
 
 import com.terracetech.tims.webmail.common.EnvConstants;
 import com.terracetech.tims.webmail.mailuser.manager.UserAuthManager;

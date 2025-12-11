@@ -1,6 +1,7 @@
 package com.terracetech.tims.mobile.mail.action;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.terracetech.tims.mail.TMailUtility;
 import com.terracetech.tims.mobile.common.action.BaseAction;
@@ -29,7 +30,7 @@ public class MailReadAction extends BaseAction{
 	private String advancedSearch = null;
 	private String category = null;
 
-	public Logger log = Logger.getLogger(this.getClass());
+	public Logger log = LoggerFactory.getLogger(this.getClass());
 
 
 	public void setMailServiceManager(MailServiceManager mailServiceManager) {

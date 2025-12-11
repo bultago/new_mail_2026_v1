@@ -9,16 +9,13 @@
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:lang="http://www.springframework.org/schema/lang"
-	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
 	xsi:schemaLocation="
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
-		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
-		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-2.5.xsd
-		http://www.directwebremoting.org/schema/spring-dwr 
-		http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd"		
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-6.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-6.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-6.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-6.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-6.1.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-6.1.xsd
 	default-autowire="byName">	
 	
 	<bean id="baseConfiguration" 
@@ -29,16 +26,29 @@
 	
 	<jee:jndi-lookup id="dataSource" jndi-name="terraceDB" resource-ref="false" />
 	
-	<bean id="sqlMapClient"
-			class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
+	<bean id="sqlSessionFactory"
+			class="org.mybatis.spring.SqlSessionFactoryBean"
 			p:dataSource-ref="dataSource"
-			p:configLocation="/WEB-INF/classes/db-config/sqlMapConfig.xml">			
+			p:configLocation="classpath:mybatis-config.xml"
+			p:mapperLocations="classpath*:**/mapper/*.xml">			
 	</bean>
 	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.terracetech.tims.webmail.**.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
 	
-	<!-- =================================================================== -->
-	<!-- Advice DEFINITIONS                                                  -->
-	<!-- =================================================================== -->
+	<!-- Transaction Management -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- Component Scan -->
+	<context:component-scan base-package="com.terracetech.tims.webmail" 
+		use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+	</context:component-scan>
+	
 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
 	
 	<bean id="transactionManager" 
@@ -71,17 +81,10 @@
 			value="execution(public * com.terracetech.tims.webmail..*Service.*(..))" />
 	</bean>	
 	
-	<!-- =================================================================== -->
-	<!-- DAO DEFINITIONS                                                     -->
-	<!-- =================================================================== -->
 		
 	<bean id="docTemplateDao"
-		class="com.terracetech.tims.webmail.common.dao.DocTemplateDao"
-		p:sqlMapClient-ref="sqlMapClient" />
+		class="com.terracetech.tims.webmail.common.dao.DocTemplateDao" />
 	
-	<!-- =================================================================== -->
-	<!-- MANAGER DEFINITIONS                                                 -->
-	<!-- =================================================================== -->
 	
 	<bean id="docTemplateManager"
 			class="com.terracetech.tims.webmail.common.manager.DocTemplateManager"
@@ -97,43 +100,15 @@
 	<bean id="geoIpManager"
 			class="com.terracetech.tims.webmail.common.manager.GeoIpManager"
 			scope="prototype"/>
-	<!-- =================================================================== -->
-	<!-- ACTION DEFINITIONS                                                 -->
-	<!-- =================================================================== -->
-	
-	<bean 	id="docTemplateAction" 
-		class="com.terracetech.tims.webmail.common.action.DocTemplateAction"		
-		p:docTemplateManager-ref="docTemplateManager"
-		scope="prototype">
-	</bean>
-	
-	<bean 	id="alimInfoAction" 
-		class="com.terracetech.tims.webmail.common.action.AlimInfoAction"
-		p:userAuthManager-ref="userAuthManager"
-		p:systemManager-ref="systemConfigManager"
-		p:mailManager-ref="mailManager"
-		scope="prototype">
-	</bean>
-	
-	<bean 	id="changeUserAccountAction" 
-		class="com.terracetech.tims.webmail.common.action.ChangeUserAccountAction"		
-		p:mailUserManager-ref="mailUserManager"
-		p:userAuthManager-ref="userAuthManager"
-		p:systemManager-ref="systemConfigManager"
-		scope="prototype">
-	</bean>
 	
 	
-	<bean id="emptyMappingAction" class="com.terracetech.tims.webmail.common.action.EmptyMappingAction"/>
 	
-	<dwr:configuration>
-		<dwr:convert type="exception"  class="java.lang.Exception"></dwr:convert>
-		<dwr:convert type="bean"  class="java.lang.StackTraceElement"></dwr:convert>
-	</dwr:configuration>
 	
-	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">  
-            <property name="configLocation" value="classpath:ehcache.xml" />    
-     </bean> 
+	
+	
+	
+	
+	 
      <bean id="checkUserExistManager"  class="com.terracetech.tims.webmail.common.manager.CheckUserExistManager">
         <property name="cacheManager" ref="cacheManager"></property>
         <property name="cacheName" value="authCache"></property>

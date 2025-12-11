@@ -21,11 +21,6 @@
 <script type="text/javascript" src="/js/ext-lib/menuToolBar.js"></script>
 <script type="text/javascript" src="/js/common-lib/common-menuLayer.js"></script>
 
-<script type="text/javascript" src="/dwr/interface/MailFolderService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailMessageService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailTagService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailSearchFolderService.js"></script>
-<script type="text/javascript" src="/dwr/interface/MailCommonService.js"></script>
 
 <script type="text/javascript" src="/js/mail-lib/folderManageScript.js"></script>
 

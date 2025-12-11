@@ -1,0 +1,153 @@
+package com.terracetech.tims.webmail.scheduler.controller;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.terracetech.tims.common.I18nResources;
+import com.terracetech.tims.webmail.util.SessionUtil;
+import com.terracetech.tims.webmail.mailuser.User;
+import com.terracetech.tims.webmail.scheduler.manager.SchedulerManager;
+import com.terracetech.tims.webmail.scheduler.vo.SchedulerVO;
+
+/**
+ * 월간 스케줄러 Controller
+ * 
+ * 주요 기능:
+ * 1. 월간 스케줄 조회
+ * 2. 오늘 날짜 정보 제공
+ * 3. 오늘 음력 날짜 계산
+ * 4. 월간 스케줄 데이터 처리
+ * 
+ * Struts2 Action: MonthSchedulerAction
+ * 변환 일시: 2025-10-20
+ */
+@Controller("monthSchedulerController")
+public class MonthSchedulerController {
+
+	@Autowired
+	private SchedulerManager schedulerManager;
+
+	/**
+	 * 월간 스케줄러 조회
+	 * 
+	 * @param year 연도
+	 * @param month 월
+	 * @param request HttpServletRequest
+	 * @param model Model
+	 * @return "success"
+	 * @throws Exception
+	 */
+	public String execute(
+			@RequestParam(value = "year", defaultValue = "0") int year,
+			@RequestParam(value = "month", defaultValue = "0") int month,
+			HttpServletRequest request,
+			Model model) throws Exception {
+		
+		// 사용자 정보 조회
+		User user = SessionUtil.getUser(request);
+		I18nResources resource = getMessageResource(user, "scheduler");
+		
+		// 날짜 정보 설정
+		DateInfo dateInfo = getDateInfo(year, month);
+		
+		// 월간 스케줄 정보 조회
+		SchedulerVO schedulerVo = getMonthScheduler(dateInfo.getYear(), dateInfo.getMonth());
+		
+		// 오늘 음력 정보 계산
+		int lunar = calculateTodayLunar(schedulerVo);
+		
+		// Model에 데이터 추가
+		model.addAttribute("schedulerVo", schedulerVo);
+		model.addAttribute("lunar", lunar);
+		model.addAttribute("year", dateInfo.getYear());
+		model.addAttribute("month", dateInfo.getMonth());
+		
+		return "success";
+	}
+
+	/**
+	 * 날짜 정보 설정
+	 * 
+	 * @param year 연도
+	 * @param month 월
+	 * @return DateInfo
+	 */
+	private DateInfo getDateInfo(int year, int month) {
+		DateInfo dateInfo = new DateInfo();
+		
+		// 기본값 설정 (현재 날짜)
+		java.util.Date now = new java.util.Date();
+		if (year == 0) {
+			year = now.getYear() + 1900;
+		}
+		if (month == 0) {
+			month = now.getMonth() + 1;
+		}
+		
+		dateInfo.setYear(year);
+		dateInfo.setMonth(month);
+		
+		return dateInfo;
+	}
+
+	/**
+	 * 월간 스케줄 조회
+	 * 
+	 * @param year 연도
+	 * @param month 월
+	 * @return SchedulerVO
+	 * @throws Exception
+	 */
+	private SchedulerVO getMonthScheduler(int year, int month) throws Exception {
+		// 월간 스케줄 조회
+		SchedulerVO schedulerVo = schedulerManager.getMonthScheduler(year, month);
+		
+		// 오늘 날짜 정보 설정
+		schedulerVo = schedulerManager.getTodayDate(schedulerVo);
+		
+		return schedulerVo;
+	}
+
+	/**
+	 * 오늘 음력 날짜 계산
+	 * 
+	 * @param schedulerVo 스케줄 VO
+	 * @return 음력 날짜
+	 * @throws Exception
+	 */
+	private int calculateTodayLunar(SchedulerVO schedulerVo) throws Exception {
+		return schedulerManager.getLunar(
+			schedulerVo.getTodayYear(), 
+			schedulerVo.getTodayMonth(),
+			schedulerVo.getTodayDay()
+		);
+	}
+
+	/**
+	 * I18n 리소스 조회
+	 * 
+	 * @param user User
+	 * @param module 모듈명
+	 * @return I18nResources
+	 */
+	private I18nResources getMessageResource(User user, String module) {
+		return new I18nResources(user.get(User.LOCALE), module);
+	}
+
+	/**
+	 * 날짜 정보 VO
+	 */
+	private static class DateInfo {
+		private int year;
+		private int month;
+
+		public int getYear() { return year; }
+		public void setYear(int year) { this.year = year; }
+		public int getMonth() { return month; }
+		public void setMonth(int month) { this.month = month; }
+	}
+}

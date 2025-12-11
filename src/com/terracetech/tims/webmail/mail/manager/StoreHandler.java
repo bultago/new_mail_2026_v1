@@ -11,7 +11,7 @@ package com.terracetech.tims.webmail.mail.manager;
 
 import java.util.Properties;
 
-import javax.mail.Session;
+import jakarta.mail.Session;
 import com.terracetech.tims.mail.TMailStore;
 import com.terracetech.tims.webmail.mailuser.User;
 

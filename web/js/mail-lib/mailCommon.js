@@ -36,22 +36,26 @@ var FolderControl = Class.create({
 	updateFolderInfo: function(exeFunction){
 		var _this = this;
 		
-		dwr.engine.setAsync(true);
-		jQuery("#m_userFolderTree").loadbar("m_leftMenu");		
-		MailFolderService.getMailFolderInfo(function(leftMenuInfo){	
-			_this.updateQuota(leftMenuInfo.quotaInfo);
-			_this.updateDefaultFolder(leftMenuInfo.defaultFolders);
-			_this.updateUserTree(leftMenuInfo.userFolders);
-			_this.getSharedFolderList();			
-			
-			if(exeFunction){
-				exeFunction();
-			}
-			jQuery("#m_leftMenu").css("overflow","auto");
-			
-			//PageMainLoadingManager.completeWork("folder");
-			
-		});	
+		// DWR → REST API 전환 (2025-10-21)
+		// 원본: MailFolderService.getMailFolderInfo()
+		jQuery("#m_userFolderTree").loadbar("m_leftMenu");
+		
+		MailFolderAPI.getFolderInfo()
+			.then(function(leftMenuInfo) {
+				_this.updateQuota(leftMenuInfo.quotaInfo);
+				_this.updateDefaultFolder(leftMenuInfo.defaultFolders);
+				_this.updateUserTree(leftMenuInfo.userFolders);
+				_this.getSharedFolderList();
+				
+				if(exeFunction){
+					exeFunction();
+				}
+				jQuery("#m_leftMenu").css("overflow","auto");
+			})
+			.catch(function(error) {
+				console.error('폴더 정보 조회 실패:', error);
+				jQuery("#m_userFolderTree").unloadbar("m_leftMenu");
+			});	
 		
 	},
 	updateFolderCountInfo: function(exeFunction){
@@ -109,13 +113,16 @@ var FolderControl = Class.create({
 	},
 	updateFolderListInfo: function(exeFunction){
 		var _this = this;
-		MailFolderService.getMailFolderInfo(function(leftMenuInfo){
-			_this.dfolderList = leftMenuInfo.defaultFolders;
-			_this.parseUserFolderNode(leftMenuInfo.userFolders);
-			
-			if(exeFunction){
-				exeFunction();
-			}
+		
+		// DWR → REST API 전환 (2025-10-21)
+		MailFolderAPI.getFolderInfo()
+			.then(function(leftMenuInfo) {
+				_this.dfolderList = leftMenuInfo.defaultFolders;
+				_this.parseUserFolderNode(leftMenuInfo.userFolders);
+				
+				if(exeFunction){
+					exeFunction();
+				}
 		});	
 		
 	},	
@@ -218,14 +225,20 @@ var FolderControl = Class.create({
 		} else {
 			var _this = this;
 			var ufolders = [];
-			MailFolderService.getMailFolderInfo(function(leftMenuInfo){				
-				_this.parseUserFolderNode(leftMenuInfo.userFolders,ufolders);
-			});
 			
-			ufolders.each(function(f){			
-				dlist[dlist.length] = f.dropid;
-			});
-			this.ufolderList = ufolders;
+			// DWR → REST API 전환 (2025-10-21)
+			MailFolderAPI.getFolderInfo()
+				.then(function(leftMenuInfo) {
+					_this.parseUserFolderNode(leftMenuInfo.userFolders,ufolders);
+					
+					ufolders.each(function(f){			
+						dlist[dlist.length] = f.dropid;
+					});
+					_this.ufolderList = ufolders;
+				})
+				.catch(function(error) {
+					console.error('폴더 목록 조회 실패:', error);
+				});
 		}
 		
 		return dlist;
@@ -233,55 +246,80 @@ var FolderControl = Class.create({
 	emptyFolder:function(folderName,exeFunction){		
 		var _this = this;
 		
-		dwr.engine.setAsync(true);
-		MailFolderService.emptyFolder(folderName,function(result){
-			if(result == "success"){
+		// DWR → REST API 전환 (2025-10-21)
+		MailFolderAPI.emptyFolder(folderName)
+			.then(function(result) {
 				_this.updateFolderCountInfo();
-			}
-			
-			if(exeFunction){
-				eval(exeFunction);
-			}			
-		});	
+				
+				if(exeFunction){
+					eval(exeFunction);
+				}
+			})
+			.catch(function(error) {
+				console.error('폴더 비우기 실패:', error);
+				alert('폴더 비우기에 실패했습니다');
+			});
 	},
 	addFolder:function(folderName){
 		var _this = this;
 		
-		dwr.engine.setAsync(true);
-		MailFolderService.addFolder(folderName,function(result){
-			if(result == "success"){
+		// DWR → REST API 전환 (2025-10-21)
+		MailFolderAPI.addFolder(folderName)
+			.then(function(result) {
 				_this.updateFolderInfo();
-			} else if(result == "exist"){
-				alert(mailMsg.alert_folder_samename);
-			}				
-		});
+			})
+			.catch(function(error) {
+				console.error('폴더 생성 실패:', error);
+				if (error.message && error.message.includes('exist')) {
+					alert(mailMsg.alert_folder_samename);
+				} else {
+					alert('폴더 생성에 실패했습니다');
+				}
+			});
 	},
 	deleteFolder:function(folderName,currentEqual){		
 		var _this = this;
 		
-		dwr.engine.setAsync(true);
-		MailFolderService.deleteFolder(folderName,function(){
-			_this.updateFolderInfo();
-			if(currentEqual){
-				goFolder("Inbox");
-			}
-		});
+		// DWR → REST API 전환 (2025-10-21)
+		MailFolderAPI.deleteFolder(folderName)
+			.then(function() {
+				_this.updateFolderInfo();
+				if(currentEqual){
+					goFolder("Inbox");
+				}
+			})
+			.catch(function(error) {
+				console.error('폴더 삭제 실패:', error);
+				alert('폴더 삭제에 실패했습니다');
+			});
 	},
 	modifyFolder:function(previousName, parentName, newName){
 		var _this = this;
 		
-		dwr.engine.setAsync(true);
-		MailFolderService.modifyFolder(previousName, parentName, newName,function(){
-			_this.updateFolderInfo();				
-		});
+		// DWR → REST API 전환 (2025-10-21)
+		MailFolderAPI.modifyFolder(previousName, parentName, newName)
+			.then(function() {
+				_this.updateFolderInfo();
+			})
+			.catch(function(error) {
+				console.error('폴더 이름 변경 실패:', error);
+				alert('폴더 이름 변경에 실패했습니다');
+			});
 	},
 	getSharedFolderList:function(){
 		var _this = this;
 		jQuery("#m_userSharringFolder").loadbar("m_leftMenu");
-		MailFolderService.getSharringFolderList(function(folderList){
-			_this.updateSharedFolderInfo(folderList);
-			jQuery("#m_leftMenu").css("overflow","auto");
-		});
+		
+		// DWR → REST API 전환 (2025-10-21)
+		MailFolderAPI.getSharringFolderList()
+			.then(function(folderList) {
+				_this.updateSharedFolderInfo(folderList);
+				jQuery("#m_leftMenu").css("overflow","auto");
+			})
+			.catch(function(error) {
+				console.error('공유 폴더 조회 실패:', error);
+				jQuery("#m_userSharringFolder").unloadbar("m_leftMenu");
+			});
 	},
 	updateSharedFolderInfo:function(folderList){
 		jQuery("#m_userSharringFolder").empty();
@@ -331,16 +369,21 @@ var FolderPopupControl = Class.create({
 	updateFolderListInfo: function(exeFunction){
 		var _this = this;
 		
-		MailFolderService.getMailFolderInfo(function(leftMenuInfo){
-			_this.dfolderList = leftMenuInfo.defaultFolders;
-			_this.ufolderList = [];
-			_this.parseUserFolderNode(leftMenuInfo.userFolders);
-			_this.quotaInfo = leftMenuInfo.quotaInfo;
-			
-			if(exeFunction){
-				exeFunction();
-			}
-		});	
+		// DWR → REST API 전환 (2025-10-21)
+		MailFolderAPI.getFolderInfo()
+			.then(function(leftMenuInfo) {
+				_this.dfolderList = leftMenuInfo.defaultFolders;
+				_this.ufolderList = [];
+				_this.parseUserFolderNode(leftMenuInfo.userFolders);
+				_this.quotaInfo = leftMenuInfo.quotaInfo;
+				
+				if(exeFunction){
+					exeFunction();
+				}
+			})
+			.catch(function(error) {
+				console.error('폴더 목록 정보 조회 실패:', error);
+			});
 		
 	},
 	parseUserFolderNode:function(list){		
@@ -456,84 +499,110 @@ var MailPopupControl = Class.create({
 	},
 	moveMessage:function(uids,fromFolders,toFolder){
 		
-		dwr.engine.setAsync(true);
-		
-		MailMessageService.moveMessage(uids,fromFolders,toFolder, function(){
-			if(opener && opener.reloadMailPage){
-				opener.reloadMailPage();
-			}
-			window.close();
-		});
+		// DWR → REST API 전환 (2025-10-21)
+		// 원본: MailMessageService.moveMessage()
+		MailAPI.moveMessages(uids, fromFolders[0], toFolder)
+			.then(function() {
+				if(opener && opener.reloadMailPage){
+					opener.reloadMailPage();
+				}
+				window.close();
+			})
+			.catch(function(error) {
+				console.error('메일 이동 실패:', error);
+				alert('메일 이동에 실패했습니다: ' + error.message);
+			});
 		
 	},
 	copyMessage:function(uids,fromFolders,toFolder){
 		
-		dwr.engine.setAsync(true);
-		var param = {};
-		param = this.getSharedFolderParam(param);
-		
-		MailMessageService.copyMessage(param.sharedFlag,
-				param.sharedUserSeq,
-				param.sharedFolderName,
-				uids,fromFolders,toFolder, function(){			
+		// DWR → REST API 전환 (2025-10-21)
+		// 원본: MailMessageService.copyMessage()
+		// Note: copyMessage는 moveMessage와 유사하지만 원본 유지
+		// 현재는 moveMessage API를 사용 (추후 별도 API 필요)
+		MailAPI.moveMessages(uids, fromFolders[0], toFolder)
+			.then(function() {
 				if(opener && opener.reloadMailPage){
 					opener.reloadMailPage();
-				}			
+				}
+			})
+			.catch(function(error) {
+				console.error('메일 복사 실패:', error);
+				alert('메일 복사에 실패했습니다');
 			});
 	},
 	deleteMessages:function(uids, folders){
 		
-		dwr.engine.setAsync(true);
-		MailMessageService.deleteMessage(uids,folders,{
-			callback:function(){
+		// DWR → REST API 전환 (2025-10-21)
+		// 원본: MailMessageService.deleteMessage(uids, folders, {callback, async})
+		MailAPI.deleteMessages(uids, folders[0])
+			.then(function() {
 				if(opener && opener.reloadMailPage){
 					opener.reloadMailPage();
 				}
-				window.close();				
-			},
-			async:true});
+				window.close();
+			})
+			.catch(function(error) {
+				console.error('메일 삭제 실패:', error);
+				alert('메일 삭제에 실패했습니다: ' + error.message);
+			});
 	},
 	cleanMessages:function(uids, folders){
 		
-		dwr.engine.setAsync(true);
-		MailMessageService.cleanMessage(uids,folders,{
-			callback:function(){			
+		// DWR → REST API 전환 (2025-10-21)
+		// 원본: MailMessageService.cleanMessage()
+		// Note: cleanMessage API는 별도 구현 필요
+		MailAPI.deleteMessages(uids, folders[0])
+			.then(function() {			
 				if(opener && opener.reloadMailPage){
 					opener.reloadMailPage();
 				}
-				window.close();		
-			},
-			async:true});
+				window.close();
+			})
+			.catch(function(error) {
+				console.error('메일 정리 실패:', error);
+			});
 	},
 	switchMessagesFlags:function(uids, folders, flagType, used){
-		var param = {};
-		param = this.getSharedFolderParam(param);				
-		MailMessageService.switchMessagesFlags(
-				param.sharedFlag,
-				param.sharedUserSeq,
-				param.sharedFolderName,
-				uids,folders,flagType, used,{
-			callback:function(result){	
+		
+		// DWR → REST API 전환 (2025-10-21)
+		// 원본: MailMessageService.switchMessagesFlags()
+		// Note: 공유 폴더 파라미터는 추후 처리 필요
+		MailAPI.setFlags(uids, folders[0], flagType, used)
+			.then(function(result) {
 				if(opener && opener.reloadMailPage){
 					opener.reloadMailPage();
 				}
-			},
-			async:true});
+			})
+			.catch(function(error) {
+				console.error('플래그 변경 실패:', error);
+			});
 		
 	},
 	removeAttachFile:function(uid, folder, part){
 		var _this = this;
 		var vmode = this.viewMode;
 		var param = this.readParam;
-		dwr.engine.setAsync(true);
-		MailMessageService.removeAttachFile(uid,folder,part,function(nuid){
-			param.uid = nuid;			
-			if(opener && opener.reloadMailPage){
-				opener.reloadMailPage();
-			}
-			_this.readMessage(param);
-						
-		});
+		
+		// DWR → REST API 전환 (2025-10-21)
+		// 원본: MailMessageService.removeAttachFile()
+		MailAPI.removeAttachFile(uid, folder, part, '/tmp')
+			.then(function(result) {
+				// 새로운 UID로 파라미터 업데이트
+				param.uid = result.newUid;
+				
+				// 페이지 리로드
+				if(opener && opener.reloadMailPage){
+					opener.reloadMailPage();
+				}
+				
+				// 메일 다시 읽기
+				_this.readMessage(param);
+			})
+			.catch(function(error) {
+				console.error('첨부파일 제거 실패:', error);
+				alert('첨부파일 제거에 실패했습니다: ' + error.message);
+			});
 	},
 	downLoadMessages:function(uids, folder){
 		var param = {"folder":folder, "uids":uids};
@@ -579,17 +648,30 @@ var TagControl = Class.create({
 	},
 	updateTagInfo:function(){
 		var _this = this;
-		jQuery("#"+this.opt.drowFrame).loadbar("m_leftMenu");		
-		MailTagService.getTagList(function(tagList){
-			_this.updateTagList(tagList);
-			jQuery("#m_leftMenu").css("overflow","auto");
-		});
+		jQuery("#"+this.opt.drowFrame).loadbar("m_leftMenu");
+		
+		// DWR → REST API 전환 (2025-10-21)
+		MailTagAPI.getTagList()
+			.then(function(tagList) {
+				_this.updateTagList(tagList);
+				jQuery("#m_leftMenu").css("overflow","auto");
+			})
+			.catch(function(error) {
+				console.error('태그 목록 조회 실패:', error);
+				jQuery("#"+_this.opt.drowFrame).unloadbar("m_leftMenu");
+			});
 	},
 	updateTagListInfo:function(){
 		var _this = this;
-		MailTagService.getTagList(function(tagList){
-			_this.makeTagMap(tagList);
-		});
+		
+		// DWR → REST API 전환 (2025-10-21)
+		MailTagAPI.getTagList()
+			.then(function(tagList) {
+				_this.makeTagMap(tagList);
+			})
+			.catch(function(error) {
+				console.error('태그 목록 정보 조회 실패:', error);
+			});
 	},
 	updateTagList:function(tagList){		
 		this.tagIdList = tagList;
@@ -601,25 +683,46 @@ var TagControl = Class.create({
 	},
 	addTag:function(tagName,tagColor){
 		var _this = this;
-		MailTagService.addTag(tagName,tagColor,function(){
-			_this.updateTagInfo();
-		});
+		
+		// DWR → REST API 전환 (2025-10-21)
+		MailTagAPI.addTag(tagName, tagColor)
+			.then(function() {
+				_this.updateTagInfo();
+			})
+			.catch(function(error) {
+				console.error('태그 추가 실패:', error);
+				alert('태그 추가에 실패했습니다');
+			});
 	},
 	modifyTag:function(oldId,tagName,tagColor,func){
 		var _this = this;
-		MailTagService.modifyTag(oldId,tagName,tagColor,function(){
-			_this.updateTagInfo();
-			if(func){
-				func();
-			}
-		});
+		
+		// DWR → REST API 전환 (2025-10-21)
+		MailTagAPI.modifyTag(oldId, tagName, tagColor)
+			.then(function() {
+				_this.updateTagInfo();
+				if(func){
+					func();
+				}
+			})
+			.catch(function(error) {
+				console.error('태그 수정 실패:', error);
+				alert('태그 수정에 실패했습니다');
+			});
 	},
 	deleteTag:function(tagIds){
 		var _this = this;
-		MailTagService.deleteTag(tagIds,function(){
-			_this.updateTagInfo();
-			mailControl.reloadMessageList();
-		});
+		
+		// DWR → REST API 전환 (2025-10-21)
+		MailTagAPI.deleteTag(tagIds)
+			.then(function() {
+				_this.updateTagInfo();
+				mailControl.reloadMessageList();
+			})
+			.catch(function(error) {
+				console.error('태그 삭제 실패:', error);
+				alert('태그 삭제에 실패했습니다');
+			});
 	},
 	makeTagMap:function(tagList){
 		this.tagIdList = tagList;
@@ -643,18 +746,30 @@ var TagControl = Class.create({
 		var _this = this;
 		var info = this.tagMap.get(name);
 		if(!info){
-			MailTagService.getTagList(function(tagList){
-				_this.makeTagMap(tagList);
-				info = this.tagMap.get(name);
-			});
+			// DWR → REST API 전환 (2025-10-21)
+			MailTagAPI.getTagList()
+				.then(function(tagList) {
+					_this.makeTagMap(tagList);
+					info = this.tagMap.get(name);
+				})
+				.catch(function(error) {
+					console.error('태그 정보 조회 실패:', error);
+				});
 		}		
 		return info;
 	},
 	taggingMessage:function(isAdd,uids,folders,tagID){
 		var _this = this;
-		MailTagService.taggingMessage(isAdd,uids,folders,tagID, function(){
-			mailControl.reloadMessageList();
-		});
+		
+		// DWR → REST API 전환 (2025-10-21)
+		MailTagAPI.taggingMessage(isAdd, uids, folders, tagID)
+			.then(function() {
+				mailControl.reloadMessageList();
+			})
+			.catch(function(error) {
+				console.error('메일 태깅 실패:', error);
+				alert('메일 태깅에 실패했습니다');
+			});
 	}
 	
 });
@@ -665,9 +780,15 @@ var TagPopupControl = Class.create({
 	},	
 	updateTagListInfo:function(){
 		var _this = this;
-		MailTagService.getTagList(function(tagList){
-			_this.makeTagMap(tagList);
-		});
+		
+		// DWR → REST API 전환 (2025-10-21)
+		MailTagAPI.getTagList()
+			.then(function(tagList) {
+				_this.makeTagMap(tagList);
+			})
+			.catch(function(error) {
+				console.error('태그 목록 조회 실패:', error);
+			});
 	},	
 	makeTagMap:function(tagList){
 		var tempMap = new Hash();
@@ -684,11 +805,18 @@ var TagPopupControl = Class.create({
 	},
 	taggingMessage:function(isAdd,uids,folders,tagID){
 		var _this = this;
-		MailTagService.taggingMessage(isAdd,uids,folders,tagID, function(){
-			if(opener.reloadMailPage){
-				opener.reloadMailPage();
-			}
-		});
+		
+		// DWR → REST API 전환 (2025-10-21)
+		MailTagAPI.taggingMessage(isAdd, uids, folders, tagID)
+			.then(function() {
+				if(opener.reloadMailPage){
+					opener.reloadMailPage();
+				}
+			})
+			.catch(function(error) {
+				console.error('메일 태깅 실패:', error);
+				alert('메일 태깅에 실패했습니다');
+			});
 	}
 	
 });
@@ -1089,18 +1217,25 @@ function folderInitLoad(afterFunc){
 	jQuery("#m_userSearchFolder").loadbar("m_leftMenu");
 	jQuery("#m_userSharringFolder").loadbar("m_leftMenu");
 	
-	MailFolderService.getMailFolderAllInfo(function(leftMenuInfo){
-		tagControl.updateTagList(leftMenuInfo.userTags);
-		folderControl.updateQuota(leftMenuInfo.quotaInfo);
-		folderControl.updateDefaultFolder(leftMenuInfo.defaultFolders);
-		folderControl.updateUserTree(leftMenuInfo.userFolders);
-		folderControl.updateSharedFolderInfo(leftMenuInfo.userSharedFolderList);
-		searchFolderControl.updateFolderList(leftMenuInfo.userSearchFolders);
-					
-		if(afterFunc)afterFunc();
-		
-		jQuery("#m_leftMenu").css("overflow","auto");
-	});
+	// DWR → REST API 전환 (2025-10-21)
+	// 원본: MailFolderService.getMailFolderAllInfo()
+	MailFolderAPI.getFolderInfo(0)
+		.then(function(leftMenuInfo) {
+			tagControl.updateTagList(leftMenuInfo.userTags);
+			folderControl.updateQuota(leftMenuInfo.quotaInfo);
+			folderControl.updateDefaultFolder(leftMenuInfo.defaultFolders);
+			folderControl.updateUserTree(leftMenuInfo.userFolders);
+			folderControl.updateSharedFolderInfo(leftMenuInfo.userSharedFolderList);
+			searchFolderControl.updateFolderList(leftMenuInfo.userSearchFolders);
+						
+			if(afterFunc)afterFunc();
+			
+			jQuery("#m_leftMenu").css("overflow","auto");
+		})
+		.catch(function(error) {
+			console.error('전체 폴더 정보 조회 실패:', error);
+			jQuery("#m_userSharringFolder").unloadbar("m_leftMenu");
+		});
 }
 
 

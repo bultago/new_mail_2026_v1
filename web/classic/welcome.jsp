@@ -1,6 +1,5 @@
 <%@ page language="java"  contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ page import="com.terracetech.tims.common.I18nConstants" %>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 
 <%
@@ -16,12 +15,11 @@ session.setAttribute(I18nConstants.LOCALE_KEY, request.getLocale());
 </head>
 <body>
 
-
 <h1>WelcomePage!!!</h1>
 <br>
-path : <s:property value="info.path"/> <br>
-path : <s:property value="info.locale"/> <br>
-path : <s:property value="info.encoding"/> <br>
+path : ${info.path} <br>
+path : ${info.locale} <br>
+path : ${info.encoding} <br>
 
 <tctl:msg key="mail.001"/>
 

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.terracetech.tims.webmail.common.dao.SystemConfigDao;
 import com.terracetech.tims.webmail.mail.dao.CacheEmailDao;
 import com.terracetech.tims.webmail.mail.ibean.MailAddressBean;
@@ -13,6 +16,8 @@ import com.terracetech.tims.webmail.organization.vo.DeptVO;
 import com.terracetech.tims.webmail.organization.vo.MemberVO;
 import com.terracetech.tims.webmail.util.StringUtils;
 
+@Service
+@Transactional
 public class OrganizationManager {
 
 	private OrganizationDao dao;
@@ -55,7 +60,7 @@ public class OrganizationManager {
 	}
 	
 	/**
-	 * ºÎ¸ð ÀÚ½Ä°ü°è°¡ ¼º¸³ÀÌ µÇ¸é ¸ñ·Ï¿¡¼­ Á¦°Å¸¦ ÇÔÀ¸·Î½á ÇÊ¿ä¾ø´Â ·çÇÁ¸¦ µ¹Áö ¾Ê´Â´Ù.
+	 * ÂºÃŽÂ¸Ã° Ã€ÃšÂ½Ã„Â°Ã¼Â°Ã¨Â°Â¡ Â¼ÂºÂ¸Â³Ã€ÃŒ ÂµÃ‡Â¸Ã© Â¸Ã±Â·ÃÂ¿Â¡Â¼Â­ ÃÂ¦Â°Ã…Â¸Â¦ Ã‡Ã”Ã€Â¸Â·ÃŽÂ½Ã¡ Ã‡ÃŠÂ¿Ã¤Â¾Ã¸Â´Ã‚ Â·Ã§Ã‡ÃÂ¸Â¦ ÂµÂ¹ÃÃ¶ Â¾ÃŠÂ´Ã‚Â´Ã™.
 	 * @param deptList
 	 * @param parent
 	 */
@@ -63,9 +68,9 @@ public class OrganizationManager {
 		DeptVO[] list = deptList.toArray(new DeptVO[deptList.size()]);
 		for (DeptVO dept : list){
 			if(dept.getOrgCode().equals(parent.getOrgCode())){
-				//ÀÚ±âÀÚ½ÅÀÌ¸é Skip
+				//Ã€ÃšÂ±Ã¢Ã€ÃšÂ½Ã…Ã€ÃŒÂ¸Ã© Skip
 			}else if(parent.getOrgFullcode().length() >= dept.getOrgFullcode().length()){
-				//ÀÚ±âº¸´Ù »óÀ§³ëµåÀÌ¸é Skip
+				//Ã€ÃšÂ±Ã¢ÂºÂ¸Â´Ã™ Â»Ã³Ã€Â§Â³Ã«ÂµÃ¥Ã€ÃŒÂ¸Ã© Skip
 			}else{
 				if(dept.getOrgUpcode().equals(parent.getOrgCode()))
 				{
@@ -123,7 +128,7 @@ public class OrganizationManager {
 			paramMap = getDeptOrder(map.get("org_dept_order"));
 		}
 		
-		List<MemberVO> list = dao.readMemberList(codeLocale, orgCode, orgFullCode, hasSubDept, domainSeq, skipResult, maxResult, searchType, keyWord, sortBy, sortDir, paramMap);
+		List<MemberVO> list = dao.readMemberList(codeLocale, orgCode, orgFullCode, hasSubDept ? "Y" : "N", domainSeq, skipResult, maxResult, searchType, keyWord, sortBy, sortDir, paramMap);
 		
 		return list.toArray(new MemberVO[list.size()]);
 	}
@@ -179,7 +184,7 @@ public class OrganizationManager {
 	
 	public int readMemberCount(String codeLocale, String orgCode, String orgFullCode, boolean hasSubDept, int domainSeq,
 			String searchType, String keyWord) {
-		return dao.readMemberCount(codeLocale, orgCode, orgFullCode, hasSubDept, domainSeq, searchType, keyWord);
+		return dao.readMemberCount(codeLocale, orgCode, orgFullCode, hasSubDept ? "Y" : "N", domainSeq, searchType, keyWord);
 	}
 
 	public MemberVO readMember(String codeLocale,String orgCode, int domainSeq, int memberSeq){

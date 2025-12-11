@@ -1,6 +1,5 @@
 <%@ page isELIgnored="false"%>
 <%@ page language="java"  contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>
@@ -36,7 +35,6 @@ if(parent)
 </script>
 </head>
 <body class="popupBody" style="background:none;">
-
 
 <div class="popup_style2" style="border:0px;">
 	<div class="title" style="display:none;">

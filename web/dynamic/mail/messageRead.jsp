@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="s"  uri="/struts-tags"%>
 <%@ taglib prefix="tctl"  uri="/terrace-tag.tld"%>
 <%@ taglib prefix="c"  uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn"  uri="/WEB-INF/tld/fn.tld"%>
@@ -255,7 +254,6 @@
 </form>
 </div>
 
-
 <script type="text/javascript">
 var toAddrList = [];
 var ccAddrList = [];
@@ -315,7 +313,6 @@ bccAddrList.push(addrTempBuffer.toString());
 addrTempBuffer.destroy();
 </c:forEach>
 addrTempBuffer = null;
-
 
 readMsgData = {
 		folderFullName:'${message.folderFullName}',

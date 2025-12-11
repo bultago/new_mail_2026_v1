@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMessage;
 
-import com.sun.mail.imap.IMAPBodyPart;
+import org.eclipse.angus.mail.imap.IMAPBodyPart;
 import com.terracetech.secure.crypto.SecureUtil;
 import com.terracetech.secure.crypto.SymmetricCrypt;
 import com.terracetech.tims.common.I18nConstants;
@@ -47,7 +47,7 @@ public class ReadSecureMessageAction extends BaseAction {
 	}
 	
 	/**
-	 * @param userManager ÆÄ¶ó¹ÌÅÍ¸¦ userManager°ª¿¡ ¼³Á¤
+	 * @param userManager ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ userManagerï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setUserManager(MailUserManager userManager) {
 		this.userManager = userManager;
