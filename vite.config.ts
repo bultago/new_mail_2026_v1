@@ -5,6 +5,7 @@ import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 
 // https://vite.dev/config/
+// Force restart - touched by agent
 export default defineConfig({
   css: {
     postcss: {

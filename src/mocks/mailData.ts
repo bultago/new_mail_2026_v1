@@ -18,6 +18,7 @@ export interface MailMessage {
     read: boolean;
     flagged: boolean;
     hasAttachment: boolean;
+    isUrgent?: boolean; // New field
     tags?: string[];
     preview?: string;
 }
@@ -53,6 +54,7 @@ export const mockMessages: MailMessage[] = [
         read: false,
         flagged: true,
         hasAttachment: true,
+        isUrgent: true,
         preview: 'Hi everyone, looking forward to our meeting tomorrow...',
     },
     {
@@ -79,6 +81,7 @@ export const mockMessages: MailMessage[] = [
         read: false,
         flagged: true,
         hasAttachment: false,
+        isUrgent: true,
         preview: 'We are experiencing some downtime on server 3...',
     },
     {

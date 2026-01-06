@@ -33,11 +33,85 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    /* --- Theme: Style B (Corporate Blue / Default) --- */
+    --header-bg-start: #005fb0;
+    /* Flat Corporate Blue */
+    --header-bg-end: #005fb0;
+    /* Flat Corporate Blue */
+    /* legacy-blue-light */
+    --header-text: #ffffff;
+    --sidebar-bg: #ffffff;
+    --content-bg: #f7f7f7;
+    --row-hover: #fff9c4;
+    --sidebar-item-hover: #fff9c4;
+    --border-legacy: #d1d5db;
+    /* Neutral Gray 300 */
+    --border-sidebar: #3d83c1;
+    /* Keep Sidebar Blue */
+    --toolbar-bg: #F0F4F7;
+    --table-header-start: #eaeaea;
+    --table-header-end: #d6d6d6;
+
+    /* Dynamic Text Colors (Light Mode) */
+    --text-default: #333333;
+    --text-body: #333333;
+    --text-muted: #666666;
+  }
+
+  /* --- Theme: Style A (Modern Minimal) --- */
+  .theme-modern {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --header-bg-start: #ffffff;
+    --header-bg-end: #ffffff;
+    --header-text: #333333;
+    --sidebar-bg: #f8fafc;
+    /* Slate-50 */
+    --content-bg: #ffffff;
+    --row-hover: #f1f5f9;
+    --row-hover: #f1f5f9;
+    --sidebar-item-hover: #f1f5f9;
+    --border-legacy: #e2e8f0;
+    /* Modern Gray Border */
+    --toolbar-bg: #ffffff;
+    --table-header-start: #FAFAFA;
+    --table-header-end: #F4F4F5;
+
+    /* Modern Text Colors */
+    --text-default: #1e293b;
+    --text-body: #334155;
+    --text-muted: #64748b;
+
+    /* Override shadcn defaults for softer look */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
+
+    --header-bg-start: #1e1e1e;
+    --header-bg-end: #1e1e1e;
+    --header-text: #e0e0e0;
+    --sidebar-bg: #252526;
+    --content-bg: #1e1e1e;
+    /* VS Code dark style */
+    --row-hover: #2a2d2e;
+    --row-hover: #2a2d2e;
+    --sidebar-item-hover: #374151;
+    --border-legacy: #3e3e42;
+    /* Dark Gray Border */
+    --toolbar-bg: #2d2d2d;
+    --table-header-start: #252526;
+    --table-header-end: #1e1e1e;
+
+    /* Dark Mode Text Colors */
+    --text-default: #e0e0e0;
+    --text-body: #d4d4d4;
+    --text-muted: #a3a3a3;
 
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;

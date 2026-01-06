@@ -2,6 +2,9 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import AppSidebar from '@/components/layout/AppSidebar.vue'
 import AppHeader from '@/components/layout/AppHeader.vue'
+import { useTheme } from '@/composables/useTheme'
+
+const { initTheme } = useTheme()
 
 const sidebarWidth = ref(230)
 const isResizing = ref(false)
@@ -47,6 +50,7 @@ const checkMobile = () => {
 onMounted(() => {
     checkMobile()
     window.addEventListener('resize', checkMobile)
+    initTheme()
 })
 
 onUnmounted(() => {
@@ -88,7 +92,7 @@ onUnmounted(() => {
 
         <!-- Content -->
         <div class="flex flex-col flex-1 min-w-0 transition-all duration-300">
-           <main class="flex-1 overflow-auto p-2 text-foreground bg-[#F7F7F7]">
+           <main class="flex-1 overflow-auto p-2 text-foreground bg-[#F7F7F7] dark:bg-zinc-900">
               <router-view />
            </main>
         </div>

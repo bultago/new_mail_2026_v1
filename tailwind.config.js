@@ -55,32 +55,38 @@ export default {
 				},
 				legacy: {
 					blue: {
-						DEFAULT: '#005fb0',
+						DEFAULT: 'var(--header-bg-end)',
 						hover: '#006ecf',
-						dark: '#2c609c' // Header main color
+						dark: 'var(--header-bg-start)' // Header main color
 					},
 					bg: {
-						DEFAULT: '#F7F7F7',
+						DEFAULT: 'var(--content-bg)',
 						hover: '#F0F0F2',
-						sidebar: '#EEFDFF',
-						header_gradient_start: '#F0F4F7',
-						header_gradient_end: '#D9E1E8',
-						row_hover: '#FFF9C4'
+						sidebar: 'var(--sidebar-bg)',
+						sidebar_hover: 'var(--sidebar-item-hover)',
+						header_gradient_start: 'var(--header-bg-start)',
+						header_gradient_end: 'var(--header-bg-end)',
+						row_hover: 'var(--row-hover)',
+						toolbar: 'var(--toolbar-bg)',
+						table_header_start: 'var(--table-header-start)',
+						table_header_end: 'var(--table-header-end)'
 					},
 					border: {
-						DEFAULT: '#DDDDDD', // Benchmarked border
+						DEFAULT: 'var(--border-legacy)', // Benchmarked border
+						sidebar: 'var(--border-sidebar)',
 						light: '#E6E6E6'
 					},
 					text: {
-						DEFAULT: '#333333',
-						body: '#555555',
-						muted: '#696969'
+						DEFAULT: 'var(--text-default)',
+						body: 'var(--text-body)',
+						muted: 'var(--text-muted)',
+						header: 'var(--header-text)'
 					},
 					orange: '#ff8000'
 				}
 			},
 			fontFamily: {
-				dotum: ['"맑은 고딕"', 'Malgun Gothic', '"돋움"', 'Dotum', '"굴림"', 'Gulim', 'sans-serif'],
+				dotum: ['"돋움"', 'Dotum', '"굴림"', 'Gulim', '"맑은 고딕"', 'Malgun Gothic', 'sans-serif'],
 			}
 		}
 	},
