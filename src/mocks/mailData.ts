@@ -33,8 +33,19 @@ export const systemFolders: MailFolder[] = [
 ];
 
 export const userFolders: MailFolder[] = [
-    { id: 'project-a', name: 'Project A', type: 'user', unreadCount: 2 },
+    {
+        id: 'project-a', name: 'Project A', type: 'user', unreadCount: 2, children: [
+            { id: 'project-a-design', name: 'Design', type: 'user' },
+            {
+                id: 'project-a-dev', name: 'Development', type: 'user', children: [
+                    { id: 'project-a-dev-frontend', name: 'Frontend', type: 'user' },
+                    { id: 'project-a-dev-backend', name: 'Backend', type: 'user' }
+                ]
+            }
+        ]
+    },
     { id: 'finance', name: 'Finance', type: 'user' },
+    { id: 'marketing', name: 'Marketing', type: 'user' }
 ];
 
 export const tags: MailFolder[] = [

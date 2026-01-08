@@ -1,0 +1,292 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e7]:
+      - img [ref=e9]
+      - heading "Terrace Mail" [level=1] [ref=e12]
+    - navigation [ref=e13]:
+      - link "메일" [ref=e14] [cursor=pointer]:
+        - /url: /mail/list
+        - img [ref=e15]
+        - generic [ref=e18]: 메일
+      - link "주소록" [ref=e19] [cursor=pointer]:
+        - /url: /addr/list
+        - img [ref=e20]
+        - generic [ref=e24]: 주소록
+      - link "일정관리" [ref=e25] [cursor=pointer]:
+        - /url: /schedule
+        - img [ref=e26]
+        - generic [ref=e28]: 일정관리
+      - link "게시판" [ref=e29] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=e30]
+        - generic [ref=e33]: 게시판
+      - link "자료실" [ref=e34] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=e35]
+        - generic [ref=e37]: 자료실
+      - link "환경설정" [ref=e38] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=e39]
+        - generic [ref=e42]: 환경설정
+    - generic [ref=e43]:
+      - button "언어 설정" [ref=e44] [cursor=pointer]:
+        - img [ref=e45]
+      - button [ref=e48] [cursor=pointer]:
+        - img [ref=e49]
+      - generic [ref=e56]:
+        - generic [ref=e57]: mail administrator
+        - generic [ref=e58]: (mailadm@sogang.ac.kr)
+      - button "로그아웃" [ref=e59] [cursor=pointer]
+  - main [ref=e64]:
+    - generic [ref=e66]:
+      - generic [ref=e68]:
+        - button "일정등록" [ref=e69] [cursor=pointer]:
+          - img [ref=e70]
+          - generic [ref=e71]: 일정등록
+        - generic [ref=e72]:
+          - img [ref=e73]
+          - textbox "일정 검색..." [ref=e76]
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - button [ref=e79] [cursor=pointer]:
+              - img [ref=e80]
+            - button "2026.01" [ref=e84] [cursor=pointer]
+            - button [ref=e85] [cursor=pointer]:
+              - img [ref=e86]
+          - generic [ref=e88]:
+            - generic [ref=e89]: 일
+            - generic [ref=e90]: 월
+            - generic [ref=e91]: 화
+            - generic [ref=e92]: 수
+            - generic [ref=e93]: 목
+            - generic [ref=e94]: 금
+            - generic [ref=e95]: 토
+          - generic [ref=e96]:
+            - button "28" [ref=e97] [cursor=pointer]
+            - button "29" [ref=e98] [cursor=pointer]
+            - button "30" [ref=e99] [cursor=pointer]
+            - button "31" [ref=e100] [cursor=pointer]
+            - button "1" [ref=e101] [cursor=pointer]
+            - button "2" [ref=e102] [cursor=pointer]
+            - button "3" [ref=e103] [cursor=pointer]
+            - button "4" [ref=e104] [cursor=pointer]
+            - button "5" [ref=e105] [cursor=pointer]
+            - button "6" [ref=e106] [cursor=pointer]
+            - button "7" [ref=e107] [cursor=pointer]
+            - button "8" [ref=e108] [cursor=pointer]
+            - button "9" [ref=e109] [cursor=pointer]
+            - button "10" [ref=e110] [cursor=pointer]
+            - button "11" [ref=e111] [cursor=pointer]
+            - button "12" [ref=e112] [cursor=pointer]
+            - button "13" [ref=e113] [cursor=pointer]
+            - button "14" [ref=e114] [cursor=pointer]
+            - button "15" [ref=e115] [cursor=pointer]
+            - button "16" [ref=e116] [cursor=pointer]
+            - button "17" [ref=e117] [cursor=pointer]
+            - button "18" [ref=e118] [cursor=pointer]
+            - button "19" [ref=e119] [cursor=pointer]
+            - button "20" [ref=e120] [cursor=pointer]
+            - button "21" [ref=e121] [cursor=pointer]
+            - button "22" [ref=e122] [cursor=pointer]
+            - button "23" [ref=e123] [cursor=pointer]
+            - button "24" [ref=e124] [cursor=pointer]
+            - button "25" [ref=e125] [cursor=pointer]
+            - button "26" [ref=e126] [cursor=pointer]
+            - button "27" [ref=e127] [cursor=pointer]
+            - button "28" [ref=e128] [cursor=pointer]
+            - button "29" [ref=e129] [cursor=pointer]
+            - button "30" [ref=e130] [cursor=pointer]
+            - button "31" [ref=e131] [cursor=pointer]
+            - button "1" [ref=e132] [cursor=pointer]
+            - button "2" [ref=e133] [cursor=pointer]
+            - button "3" [ref=e134] [cursor=pointer]
+            - button "4" [ref=e135] [cursor=pointer]
+            - button "5" [ref=e136] [cursor=pointer]
+            - button "6" [ref=e137] [cursor=pointer]
+            - button "7" [ref=e138] [cursor=pointer]
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - button "내 캘린더" [ref=e141] [cursor=pointer]:
+              - img [ref=e142]
+              - text: 내 캘린더
+            - generic [ref=e144]:
+              - generic [ref=e145]:
+                - checkbox "기본 캘린더" [checked] [ref=e146]
+                - generic [ref=e147] [cursor=pointer]: 기본 캘린더
+              - generic [ref=e148]:
+                - checkbox "업무" [ref=e149]
+                - generic [ref=e150] [cursor=pointer]: 업무
+          - generic [ref=e151]:
+            - button "공유 캘린더" [ref=e152] [cursor=pointer]:
+              - img [ref=e153]
+              - text: 공유 캘린더
+            - generic [ref=e156]:
+              - checkbox "팀 공유 일정" [ref=e157]
+              - generic [ref=e158] [cursor=pointer]: 팀 공유 일정
+      - generic [ref=e160]:
+        - generic [ref=e161]:
+          - generic [ref=e162]:
+            - heading "2026.01" [level=2] [ref=e163]:
+              - button [ref=e164] [cursor=pointer]:
+                - img [ref=e165]
+              - button "2026.01" [ref=e168] [cursor=pointer]
+              - button [ref=e169] [cursor=pointer]:
+                - img [ref=e170]
+            - button "오늘" [ref=e172] [cursor=pointer]
+          - generic [ref=e173]:
+            - button "월간" [active] [ref=e174] [cursor=pointer]
+            - button "주간" [ref=e175] [cursor=pointer]
+            - button "일간" [ref=e176] [cursor=pointer]
+        - generic [ref=e177]:
+          - generic [ref=e178]:
+            - generic [ref=e179]: 일
+            - generic [ref=e180]: 월
+            - generic [ref=e181]: 화
+            - generic [ref=e182]: 수
+            - generic [ref=e183]: 목
+            - generic [ref=e184]: 금
+            - generic [ref=e185]: 토
+          - generic [ref=e186]:
+            - generic [ref=e187]:
+              - generic [ref=e188] [cursor=pointer]:
+                - generic:
+                  - generic: "28"
+              - generic [ref=e189] [cursor=pointer]:
+                - generic:
+                  - generic: "29"
+              - generic [ref=e190] [cursor=pointer]:
+                - generic:
+                  - generic: "30"
+              - generic [ref=e191] [cursor=pointer]:
+                - generic:
+                  - generic: "31"
+              - generic [ref=e192] [cursor=pointer]:
+                - generic:
+                  - generic: "1"
+                  - generic: 신정
+              - generic [ref=e193] [cursor=pointer]:
+                - generic:
+                  - generic: "2"
+              - generic [ref=e194] [cursor=pointer]:
+                - generic:
+                  - generic: "3"
+            - generic [ref=e195]:
+              - generic [ref=e196] [cursor=pointer]:
+                - generic:
+                  - generic: "4"
+              - generic [ref=e197] [cursor=pointer]:
+                - generic:
+                  - generic: "5"
+              - generic [ref=e198] [cursor=pointer]:
+                - generic:
+                  - generic: "6"
+              - generic [ref=e199] [cursor=pointer]:
+                - generic:
+                  - generic: "7"
+              - generic [ref=e200] [cursor=pointer]:
+                - generic:
+                  - generic: "8"
+              - generic [ref=e201] [cursor=pointer]:
+                - generic:
+                  - generic: "9"
+              - generic [ref=e202] [cursor=pointer]:
+                - generic:
+                  - generic: "10"
+              - generic [ref=e203]: 주간회의
+              - generic [ref=e204]: 점심 약속
+              - generic [ref=e205]: 프로젝트 마감
+              - generic [ref=e206]: 팀 회식
+            - generic [ref=e207]:
+              - generic [ref=e208] [cursor=pointer]:
+                - generic:
+                  - generic: "11"
+              - generic [ref=e209] [cursor=pointer]:
+                - generic:
+                  - generic: "12"
+              - generic [ref=e210] [cursor=pointer]:
+                - generic:
+                  - generic: "13"
+              - generic [ref=e211] [cursor=pointer]:
+                - generic:
+                  - generic: "14"
+              - generic [ref=e212] [cursor=pointer]:
+                - generic:
+                  - generic: "15"
+              - generic [ref=e213] [cursor=pointer]:
+                - generic:
+                  - generic: "16"
+              - generic [ref=e214] [cursor=pointer]:
+                - generic:
+                  - generic: "17"
+            - generic [ref=e215]:
+              - generic [ref=e216] [cursor=pointer]:
+                - generic:
+                  - generic: "18"
+              - generic [ref=e217] [cursor=pointer]:
+                - generic:
+                  - generic: "19"
+              - generic [ref=e218] [cursor=pointer]:
+                - generic:
+                  - generic: "20"
+              - generic [ref=e219] [cursor=pointer]:
+                - generic:
+                  - generic: "21"
+              - generic [ref=e220] [cursor=pointer]:
+                - generic:
+                  - generic: "22"
+              - generic [ref=e221] [cursor=pointer]:
+                - generic:
+                  - generic: "23"
+              - generic [ref=e222] [cursor=pointer]:
+                - generic:
+                  - generic: "24"
+              - generic [ref=e223]: 가족 여행
+            - generic [ref=e224]:
+              - generic [ref=e225] [cursor=pointer]:
+                - generic:
+                  - generic: "25"
+              - generic [ref=e226] [cursor=pointer]:
+                - generic:
+                  - generic: "26"
+              - generic [ref=e227] [cursor=pointer]:
+                - generic:
+                  - generic: "27"
+              - generic [ref=e228] [cursor=pointer]:
+                - generic:
+                  - generic: "28"
+              - generic [ref=e229] [cursor=pointer]:
+                - generic:
+                  - generic: "29"
+              - generic [ref=e230] [cursor=pointer]:
+                - generic:
+                  - generic: "30"
+              - generic [ref=e231] [cursor=pointer]:
+                - generic:
+                  - generic: "31"
+              - generic [ref=e232]: 가족 여행
+            - generic [ref=e233]:
+              - generic [ref=e234] [cursor=pointer]:
+                - generic:
+                  - generic: "1"
+              - generic [ref=e235] [cursor=pointer]:
+                - generic:
+                  - generic: "2"
+              - generic [ref=e236] [cursor=pointer]:
+                - generic:
+                  - generic: "3"
+              - generic [ref=e237] [cursor=pointer]:
+                - generic:
+                  - generic: "4"
+              - generic [ref=e238] [cursor=pointer]:
+                - generic:
+                  - generic: "5"
+              - generic [ref=e239] [cursor=pointer]:
+                - generic:
+                  - generic: "6"
+              - generic [ref=e240] [cursor=pointer]:
+                - generic:
+                  - generic: "7"
+```

@@ -1,14 +1,19 @@
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
 export type Theme = 'default' | 'modern' | 'dark'
 
 const currentTheme = ref<Theme>('default')
 
 export function useTheme() {
-    const setTheme = (theme: Theme) => {
+    // Internal setter that updates state and DOM but doesn't trigger loop
+    const setThemeInternal = (theme: Theme) => {
         currentTheme.value = theme
-        localStorage.setItem('theme', theme)
         applyTheme(theme)
+    }
+
+    const setTheme = (theme: Theme) => {
+        localStorage.setItem('theme', theme)
+        setThemeInternal(theme)
     }
 
     const applyTheme = (theme: Theme) => {
@@ -27,10 +32,17 @@ export function useTheme() {
     const initTheme = () => {
         const savedTheme = localStorage.getItem('theme') as Theme | null
         if (savedTheme) {
-            setTheme(savedTheme)
+            setThemeInternal(savedTheme)
         } else {
-            setTheme('default')
+            setThemeInternal('default')
         }
+
+        // Listen for changes in other windows
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'theme' && e.newValue) {
+                setThemeInternal(e.newValue as Theme)
+            }
+        })
     }
 
     return {

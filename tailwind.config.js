@@ -86,7 +86,8 @@ export default {
 				}
 			},
 			fontFamily: {
-				dotum: ['"돋움"', 'Dotum', '"굴림"', 'Gulim', '"맑은 고딕"', 'Malgun Gothic', 'sans-serif'],
+				sans: ['"Pretendard"', 'sans-serif'],
+				dotum: ['"Pretendard"', 'sans-serif'], // Redirect legacy dotum usage to modern font
 			}
 		}
 	},

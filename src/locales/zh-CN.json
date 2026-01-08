@@ -1,0 +1,330 @@
+{
+    "common": {
+        "confirm": "确认",
+        "cancel": "取消",
+        "delete": "删除",
+        "save": "保存",
+        "close": "关闭",
+        "search": "搜索",
+        "edit": "编辑",
+        "ok": "确认",
+        "preview": "预览",
+        "address_book": "通讯录",
+        "count": "个",
+        "select": "选择",
+        "required": "是必填项。"
+    },
+    "sidebar": {
+        "compose": "撰写邮件",
+        "popup_compose": "弹出撰写",
+        "receipt": "收信确认",
+        "quota": "容量",
+        "personal_folders": "个人文件夹",
+        "tags": "标签",
+        "system": {
+            "inbox": "收件箱",
+            "sent": "发件箱",
+            "drafts": "草稿箱",
+            "reserved": "预约邮件",
+            "spam": "垃圾邮件",
+            "trash": "回收站"
+        }
+    },
+    "context_menu": {
+        "add_folder": "新建文件夹",
+        "rename": "重命名",
+        "empty": "清空",
+        "share": "共享",
+        "delete": "删除"
+    },
+    "mail": {
+        "list": {
+            "total": "共",
+            "unread": "未读",
+            "selected": "已选",
+            "search_placeholder": "搜索邮件",
+            "search_detail": "详细",
+            "headers": {
+                "from": "发件人",
+                "subject": "主题",
+                "date": "日期",
+                "size": "大小"
+            },
+            "toolbar": {
+                "delete": "删除",
+                "perm_delete": "彻底删除",
+                "reply": "回复",
+                "reply_all": "回复全部",
+                "forward": "转发",
+                "move": "移动",
+                "copy": "复制",
+                "print": "打印",
+                "spam": "举报垃圾邮件",
+                "block": "拒收",
+                "mark_read": "标记已读",
+                "tag": "标记",
+                "auto_sort": "自动分类",
+                "pc_save": "保存到PC",
+                "resend": "再次发送",
+                "not_spam": "这不是垃圾邮件",
+                "restore": "恢复"
+            },
+            "tabs": {
+                "basic": "基本功能",
+                "advanced": "高级功能"
+            }
+        },
+        "write": {
+            "title": "撰写邮件",
+            "to": "收件人",
+            "cc": "抄送",
+            "bcc": "密送",
+            "subject": "主题",
+            "send": "发送",
+            "save": "保存",
+            "attach": "附件",
+            "to_me": "发给自己",
+            "options": {
+                "reservation": "预约发送",
+                "secure": "加密邮件",
+                "receipt": "收信确认",
+                "individual": "分别发送",
+                "save_sent": "保存到发件箱",
+                "read_receipt": "已读回执"
+            },
+            "reservation_dt": "预约时间",
+            "secure_pw": "密码",
+            "secure_hint": "提示",
+            "reservation_warn": "※ 预约发送无法取消。",
+            "subject_placeholder": "输入主题",
+            "file_find": "选择文件",
+            "file_big": "大容量附件",
+            "file_limit": "一般 10MB / 大容量 2GB",
+            "file_drop": "请拖拽文件到此处。",
+            "content": "正文",
+            "content_placeholder": "输入正文...",
+            "urgent": "重要!",
+            "sign_attach": "附加签名",
+            "time_hour": "时",
+            "time_min": "分",
+            "recent": {
+                "default": "最近发送的邮件"
+            },
+            "autosave": {
+                "off": "不自动保存",
+                "30s": "30秒",
+                "1m": "1分钟",
+                "3m": "3分钟"
+            },
+            "signature": {
+                "default": "默认签名",
+                "company": "公司签名"
+            },
+            "encoding": {
+                "utf8": "Unicode (UTF-8)",
+                "euckr": "韩语 (EUC-KR)"
+            }
+        },
+        "read": {
+            "back": "返回列表",
+            "received_mail": "收到的邮件",
+            "date": "发送日期",
+            "add_address": "添加到通讯录",
+            "attachments": "附件",
+            "save_all": "全部保存"
+        },
+        "result": {
+            "success": "邮件发送成功。",
+            "batch_success": "批量邮件已注册。",
+            "fail": "邮件发送失败。",
+            "fail_reason": "失败原因",
+            "failed_recipients": "发送失败的收件人",
+            "rewrite": "重写",
+            "go_inbox": "转到收件箱",
+            "go_home": "转到邮件主页"
+        }
+    },
+    "login": {
+        "title": "WebMail 登录",
+        "desc": "请登录以查看邮件。",
+        "user_id": "用户名",
+        "password": "密码",
+        "domain": "域名",
+        "save_id": "保存用户名",
+        "secure_login": "安全登录",
+        "sign_in": "登录",
+        "placeholder_id": "请输入用户名",
+        "placeholder_pw": "请输入密码",
+        "select_domain": "选择域名"
+    },
+    "address_popup": {
+        "title": "通讯录",
+        "tabs": {
+            "personal": "个人",
+            "shared": "公共通讯录",
+            "org": "组织结构"
+        },
+        "info": {
+            "label": {
+                "001": "名字",
+                "002": "中间名",
+                "003": "姓氏",
+                "004": "姓名",
+                "005": "昵称",
+                "006": "电子邮件",
+                "007": "生日",
+                "008": "纪念日",
+                "009": "手机",
+                "011": "邮政编码",
+                "012": "国家",
+                "013": "省/州",
+                "014": "城市",
+                "015": "地址",
+                "016": "地址2",
+                "017": "住宅电话",
+                "018": "住宅传真",
+                "019": "主页",
+                "020": "http://",
+                "021": "邮政编码",
+                "022": "国家",
+                "023": "省/州",
+                "024": "城市",
+                "025": "地址",
+                "026": "地址2",
+                "027": "公司电话",
+                "028": "公司传真",
+                "029": "主页",
+                "030": "http://",
+                "031": "公司",
+                "032": "部门",
+                "033": "职位"
+            },
+            "msg": {
+                "052": "请输入必填项。"
+            }
+        },
+        "headers": {
+            "personal_group": "个人组",
+            "shared_group": "共享组",
+            "department": "部门列表"
+        },
+        "actions": {
+            "add_group": "添加组",
+            "add_member": "添加地址",
+            "mod_member": "修改地址",
+            "del_member": "删除地址",
+            "copy_member": "复制地址",
+            "move_member": "移动地址",
+            "send_mail": "发送邮件",
+            "send_all_mail": "发送所有邮件",
+            "import": "导入",
+            "export": "导出",
+            "print": "打印",
+            "to": "收件人",
+            "cc": "抄送",
+            "bcc": "密送",
+            "apply": "应用",
+            "cancel": "取消",
+            "reset": "重置",
+            "search": "搜索",
+            "detail_search": "详细搜索",
+            "add_group_tooltip": "添加组"
+        },
+        "filters": {
+            "include_title": "包含职位",
+            "search_position": "职位",
+            "search_duty": "职务",
+            "search_level": "职级",
+            "include_concurrent": "包含兼职用户",
+            "include_class": "包含职级",
+            "include_sub": "包含下级部门",
+            "current_all": "当前所有成员",
+            "name": "姓名",
+            "id": "ID"
+        },
+        "columns": {
+            "name": "姓名",
+            "pos": "职位",
+            "email": "邮箱"
+        },
+        "people": "人",
+        "prompt": {
+            "new_group": "请输入新组名："
+        },
+        "alert": {
+            "no_group_org": "无法向组织结构添加组。"
+        },
+        "filter": {
+            "team_leader": "组长",
+            "part_leader": "主管",
+            "director": "部长",
+            "manager": "科长",
+            "assistant": "代理",
+            "staff": "职员"
+        }
+    },
+    "header": {
+        "nav": {
+            "mail": "邮件",
+            "address_book": "通讯录",
+            "calendar": "日程管理",
+            "board": "公告栏",
+            "resources": "资料库",
+            "settings": "环境设置"
+        },
+        "theme": {
+            "title": "主题设置",
+            "default": "默认 (Blue)",
+            "modern": "现代 (Light)",
+            "dark": "深色模式"
+        },
+        "language": {
+            "title": "语言设置"
+        },
+        "logout": "退出"
+    },
+    "calendar": {
+        "title": "日程管理",
+        "add_schedule": "添加日程",
+        "search_placeholder": "搜索日程...",
+        "my_calendar": "我的日历",
+        "shared_calendar": "共享日历",
+        "default": "默认日历",
+        "work": "工作",
+        "team": "团队共享",
+        "view": {
+            "month": "月",
+            "week": "周",
+            "day": "日",
+            "today": "今天"
+        },
+        "days": {
+            "sun": "日",
+            "mon": "一",
+            "tue": "二",
+            "wed": "三",
+            "thu": "四",
+            "fri": "五",
+            "sat": "六"
+        },
+        "popup": {
+            "add_title": "添加日程",
+            "edit_title": "编辑日程",
+            "title": "标题",
+            "start": "开始",
+            "end": "结束",
+            "all_day": "全天",
+            "repeat": "重复",
+            "share": "共享",
+            "location": "地点",
+            "content": "内容",
+            "cancel": "取消",
+            "save": "保存",
+            "edit": "编辑"
+        },
+        "search_result": "搜索结果",
+        "back_to_calendar": "返回日历",
+        "no_result": "没有查询结果。",
+        "locale": "zh-CN"
+    }
+}

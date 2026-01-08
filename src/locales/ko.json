@@ -1,0 +1,352 @@
+{
+    "common": {
+        "confirm": "확인",
+        "cancel": "취소",
+        "delete": "삭제",
+        "save": "저장",
+        "close": "닫기",
+        "search": "검색",
+        "edit": "편집",
+        "ok": "확인",
+        "preview": "미리보기",
+        "address_book": "주소록",
+        "count": "개",
+        "select": "선택",
+        "required": "은(는) 필수입니다."
+    },
+    "sidebar": {
+        "compose": "메일쓰기",
+        "popup_compose": "팝업 메일쓰기",
+        "receipt": "수신확인",
+        "quota": "용량",
+        "personal_folders": "개인메일함",
+        "tags": "태그",
+        "system": {
+            "inbox": "받은편지함",
+            "sent": "보낸편지함",
+            "drafts": "임시보관함",
+            "reserved": "예약메일함",
+            "spam": "스팸메일함",
+            "trash": "휴지통"
+        }
+    },
+    "context_menu": {
+        "add_folder": "폴더 추가",
+        "rename": "이름 변경",
+        "empty": "비우기",
+        "share": "공유",
+        "delete": "삭제"
+    },
+    "mail": {
+        "list": {
+            "total": "전체",
+            "unread": "안읽음",
+            "selected": "선택",
+            "search_placeholder": "메일 검색",
+            "search_detail": "상세",
+            "headers": {
+                "from": "보낸사람",
+                "subject": "제목",
+                "date": "날짜",
+                "size": "크기"
+            },
+            "toolbar": {
+                "delete": "삭제",
+                "perm_delete": "완전삭제",
+                "reply": "답장",
+                "reply_all": "전체답장",
+                "forward": "전달",
+                "move": "이동",
+                "copy": "복사",
+                "print": "인쇄",
+                "spam": "스팸신고",
+                "block": "수신거부",
+                "mark_read": "읽음",
+                "tag": "태그지정",
+                "auto_sort": "자동분류",
+                "pc_save": "PC저장",
+                "resend": "다시보내기",
+                "not_spam": "정상신고",
+                "restore": "복원"
+            },
+            "tabs": {
+                "basic": "기본기능",
+                "advanced": "부가기능"
+            }
+        },
+        "write": {
+            "title": "메일쓰기",
+            "to": "받는사람",
+            "cc": "참조",
+            "bcc": "숨은참조",
+            "subject": "제목",
+            "send": "보내기",
+            "save": "저장",
+            "attach": "파일첨부",
+            "to_me": "나에게",
+            "options": {
+                "reservation": "예약발송",
+                "secure": "보안메일",
+                "receipt": "수신확인",
+                "individual": "개별발송",
+                "save_sent": "보낸메일함 저장",
+                "read_receipt": "읽음확인요청"
+            },
+            "reservation_dt": "예약일시",
+            "secure_pw": "보안비밀번호",
+            "secure_hint": "힌트",
+            "reservation_warn": "※ 예약발송은 취소할 수 없습니다.",
+            "subject_placeholder": "제목을 입력하세요",
+            "file_find": "파일찾기",
+            "file_big": "대용량첨부",
+            "file_limit": "일반 10MB / 대용량 2GB",
+            "file_drop": "파일을 마우스로 끌어 놓으세요.",
+            "content": "내용",
+            "content_placeholder": "내용을 입력하세요...",
+            "urgent": "중요!",
+            "sign_attach": "서명첨부",
+            "time_hour": "시",
+            "time_min": "분",
+            "recent": {
+                "default": "최근보낸메일"
+            },
+            "autosave": {
+                "off": "자동저장안함",
+                "30s": "30초",
+                "1m": "1분",
+                "3m": "3분"
+            },
+            "signature": {
+                "default": "기본서명",
+                "company": "회사서명"
+            },
+            "encoding": {
+                "utf8": "유니코드(UTF-8)",
+                "euckr": "한국어(EUC-KR)"
+            }
+        },
+        "read": {
+            "back": "목록",
+            "received_mail": "받은메일",
+            "date": "보낸날짜",
+            "add_address": "주소록추가",
+            "attachments": "첨부파일",
+            "save_all": "모두저장"
+        },
+        "result": {
+            "success": "메일이 성공적으로 발송되었습니다.",
+            "batch_success": "배치 메일 발송이 접수되었습니다.",
+            "fail": "메일 발송에 실패했습니다.",
+            "fail_reason": "실패 사유",
+            "failed_recipients": "발송 실패 수신자",
+            "rewrite": "다시 쓰기",
+            "go_inbox": "받은편지함으로 이동",
+            "go_home": "메일 홈으로 이동"
+        }
+    },
+    "login": {
+        "title": "웹메일 로그인",
+        "desc": "메일을 확인하려면 로그인하세요.",
+        "user_id": "아이디",
+        "password": "비밀번호",
+        "domain": "도메인",
+        "save_id": "아이디 저장",
+        "secure_login": "보안 로그인",
+        "sign_in": "로그인",
+        "placeholder_id": "아이디를 입력하세요",
+        "placeholder_pw": "비밀번호를 입력하세요",
+        "select_domain": "도메인 선택"
+    },
+    "address_popup": {
+        "title": "주소찾기",
+        "dialog": {
+            "title": {
+                "001": "그룹 추가",
+                "002": "그룹 관리",
+                "004": "주소 추가",
+                "006": "구독자 관리",
+                "007": "관리자 관리",
+                "008": "주소록 가져오기",
+                "009": "주소록 내보내기"
+            },
+            "header": {
+                "tab1": {
+                    "title": "기본 정보"
+                },
+                "tab2": {
+                    "title": "자택 정보"
+                },
+                "tab3": {
+                    "title": "직장 정보"
+                }
+            }
+        },
+        "tabs": {
+            "personal": "개인주소록",
+            "shared": "공용주소록",
+            "org": "조직도"
+        },
+        "info": {
+            "label": {
+                "001": "이름",
+                "002": "중간 이름",
+                "003": "성",
+                "004": "전체 이름",
+                "005": "별명",
+                "006": "이메일",
+                "007": "생일",
+                "008": "기념일",
+                "009": "휴대폰",
+                "011": "우편번호",
+                "012": "국가",
+                "013": "주",
+                "014": "시",
+                "015": "주소",
+                "016": "나머지 주소",
+                "017": "자택 전화",
+                "018": "자택 팩스",
+                "019": "홈페이지",
+                "020": "http://",
+                "021": "우편번호",
+                "022": "국가",
+                "023": "주",
+                "024": "시",
+                "025": "주소",
+                "026": "나머지 주소",
+                "027": "직장 전화",
+                "028": "직장 팩스",
+                "029": "홈페이지",
+                "030": "http://",
+                "031": "회사",
+                "032": "부서",
+                "033": "직위"
+            },
+            "msg": {
+                "052": "필수 항목을 입력해주세요."
+            }
+        },
+        "headers": {
+            "personal_group": "개인 그룹",
+            "shared_group": "공용 그룹",
+            "department": "부서 목록"
+        },
+        "actions": {
+            "add_group": "그룹 추가",
+            "add_member": "주소 추가",
+            "mod_member": "주소 수정",
+            "del_member": "주소 삭제",
+            "copy_member": "주소 복사",
+            "move_member": "주소 이동",
+            "send_mail": "메일 전송",
+            "send_all_mail": "전체 메일 전송",
+            "import": "가져오기",
+            "export": "내보내기",
+            "print": "인쇄",
+            "to": "받는사람",
+            "cc": "참조",
+            "bcc": "숨은참조",
+            "apply": "적용",
+            "cancel": "취소",
+            "reset": "초기화",
+            "search": "검색",
+            "detail_search": "상세검색",
+            "add_group_tooltip": "그룹 추가"
+        },
+        "filters": {
+            "include_title": "직책포함",
+            "search_position": "직위",
+            "search_duty": "직책",
+            "search_level": "직급",
+            "include_concurrent": "겸직 사용자 포함",
+            "include_class": "직급포함",
+            "include_sub": "하위부서포함",
+            "current_all": "현재구성원전체",
+            "name": "이름",
+            "id": "아이디"
+        },
+        "columns": {
+            "name": "이름",
+            "pos": "직위",
+            "email": "이메일"
+        },
+        "people": "명",
+        "prompt": {
+            "new_group": "새 그룹 이름을 입력하세요:"
+        },
+        "alert": {
+            "no_group_org": "조직도에는 그룹을 추가할 수 없습니다."
+        },
+        "filter": {
+            "team_leader": "팀장",
+            "part_leader": "파트장",
+            "director": "부장",
+            "manager": "과장",
+            "assistant": "대리",
+            "staff": "사원"
+        }
+    },
+    "header": {
+        "nav": {
+            "mail": "메일",
+            "address_book": "주소록",
+            "calendar": "일정관리",
+            "board": "게시판",
+            "resources": "자료실",
+            "settings": "환경설정"
+        },
+        "theme": {
+            "title": "테마 설정",
+            "default": "기본 (Blue)",
+            "modern": "모던 (Light)",
+            "dark": "다크 모드"
+        },
+        "language": {
+            "title": "언어 설정"
+        },
+        "logout": "로그아웃"
+    },
+    "calendar": {
+        "title": "일정관리",
+        "add_schedule": "일정등록",
+        "search_placeholder": "일정 검색...",
+        "my_calendar": "내 캘린더",
+        "shared_calendar": "공유 캘린더",
+        "default": "기본 캘린더",
+        "work": "업무",
+        "team": "팀 공유 일정",
+        "view": {
+            "month": "월간",
+            "week": "주간",
+            "day": "일간",
+            "today": "오늘"
+        },
+        "days": {
+            "sun": "일",
+            "mon": "월",
+            "tue": "화",
+            "wed": "수",
+            "thu": "목",
+            "fri": "금",
+            "sat": "토"
+        },
+        "popup": {
+            "add_title": "일정 등록",
+            "edit_title": "일정 수정",
+            "title": "제목",
+            "start": "시작",
+            "end": "종료",
+            "all_day": "종일 일정",
+            "repeat": "반복 일정",
+            "share": "일정 공유",
+            "location": "장소",
+            "content": "내용",
+            "cancel": "취소",
+            "save": "저장",
+            "edit": "수정"
+        },
+        "search_result": "검색 결과",
+        "back_to_calendar": "달력으로 돌아가기",
+        "no_result": "검색 결과가 없습니다.",
+        "locale": "ko-KR"
+    }
+}

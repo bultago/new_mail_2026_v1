@@ -23,7 +23,12 @@ const router = createRouter({
                 {
                     path: 'write',
                     name: 'mail-write',
-                    component: () => import('../views/mail/MailWriteView.vue')
+                    component: () => import('@/views/mail/MailWriteForm.vue')
+                },
+                {
+                    path: 'result',
+                    name: 'mail-result',
+                    component: () => import('@/views/mail/MailSendResultView.vue')
                 },
                 {
                     path: 'read/:id',
@@ -37,8 +42,73 @@ const router = createRouter({
             ]
         },
         {
+            path: '/addr',
+            component: MainLayout,
+            children: [
+                {
+                    path: 'list',
+                    name: 'addr-list',
+                    component: () => import('../views/addr/AddressBookView.vue')
+                }
+            ]
+        },
+        {
+            path: '/schedule',
+            component: MainLayout,
+            children: [
+                {
+                    path: '',
+                    name: 'schedule-main',
+                    component: () => import('../views/calendar/CalendarView.vue'),
+                    children: [
+                        {
+                            path: '',
+                            name: 'schedule-month',
+                            component: () => import('../components/calendar/CalendarMonth.vue')
+                        },
+                        {
+                            path: 'week',
+                            name: 'schedule-week',
+                            component: () => import('../components/calendar/CalendarWeek.vue')
+                        },
+                        {
+                            path: 'day',
+                            name: 'schedule-day',
+                            component: () => import('../components/calendar/CalendarDay.vue')
+                        },
+                        {
+                            path: 'search',
+                            name: 'schedule-search',
+                            component: () => import('../components/calendar/CalendarSearch.vue')
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             path: '/',
             redirect: '/login'
+        },
+        {
+            path: '/popup',
+            component: () => import('../layouts/BlankLayout.vue'),
+            children: [
+                {
+                    path: 'read/:id',
+                    name: 'popup-read',
+                    component: () => import('../views/mail/MailPopupView.vue')
+                },
+                {
+                    path: 'write',
+                    name: 'popup-write',
+                    component: () => import('../views/mail/MailPopupWriteView.vue')
+                },
+                {
+                    path: 'address',
+                    name: 'popup-address',
+                    component: () => import('../views/mail/MailPopupAddressView.vue')
+                }
+            ]
         }
     ]
 })

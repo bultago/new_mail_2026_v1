@@ -35,7 +35,7 @@ export default defineConfig({
       '/mail': {
         target: 'http://localhost:8080',
         changeOrigin: true,
-        bypass: (req, res, options) => {
+        bypass: (req, _res, _options) => {
           if (req.headers.accept && req.headers.accept.includes('text/html')) {
             return req.url
           }

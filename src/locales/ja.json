@@ -1,0 +1,332 @@
+{
+    "common": {
+        "confirm": "確認",
+        "cancel": "キャンセル",
+        "delete": "削除",
+        "save": "保存",
+        "close": "閉じる",
+        "search": "検索",
+        "edit": "編集",
+        "ok": "確認",
+        "preview": "プレビュー",
+        "address_book": "アドレス帳",
+        "count": "個",
+        "select": "選択",
+        "required": "は必須です。"
+    },
+    "sidebar": {
+        "compose": "メール作成",
+        "popup_compose": "ポップアップ作成",
+        "receipt": "受信確認",
+        "quota": "容量",
+        "personal_folders": "個人フォルダ",
+        "tags": "タグ",
+        "system": {
+            "inbox": "受信トレイ",
+            "sent": "送信済み",
+            "drafts": "下書き",
+            "reserved": "予約済み",
+            "spam": "迷惑メール",
+            "trash": "ゴミ箱"
+        }
+    },
+    "context_menu": {
+        "add_folder": "フォルダ追加",
+        "rename": "名前変更",
+        "empty": "空にする",
+        "share": "共有",
+        "delete": "削除"
+    },
+    "mail": {
+        "list": {
+            "total": "全体",
+            "unread": "未読",
+            "selected": "選択",
+            "search_placeholder": "メール検索",
+            "search_detail": "詳細",
+            "headers": {
+                "from": "差出人",
+                "subject": "件名",
+                "date": "日付",
+                "size": "サイズ"
+            },
+            "toolbar": {
+                "delete": "削除",
+                "perm_delete": "完全削除",
+                "reply": "返信",
+                "reply_all": "全員に返信",
+                "forward": "転送",
+                "move": "移動",
+                "copy": "コピー",
+                "print": "印刷",
+                "spam": "迷惑メール報告",
+                "block": "受信拒否",
+                "mark_read": "既読にする",
+                "tag": "タグ付け",
+                "auto_sort": "自動振り分け",
+                "pc_save": "PC保存",
+                "resend": "再送",
+                "not_spam": "非スパム報告",
+                "restore": "復元"
+            },
+            "tabs": {
+                "basic": "基本機能",
+                "advanced": "付加機能"
+            }
+        },
+        "write": {
+            "title": "メール作成",
+            "to": "宛先",
+            "cc": "Cc",
+            "bcc": "Bcc",
+            "subject": "件名",
+            "send": "送信",
+            "save": "保存",
+            "attach": "添付",
+            "to_me": "自分に",
+            "options": {
+                "reservation": "予約送信",
+                "secure": "セキュリティ",
+                "receipt": "受信確認",
+                "individual": "個別送信",
+                "save_sent": "送信済み保存",
+                "read_receipt": "開封確認要求"
+            },
+            "reservation_dt": "予約日時",
+            "secure_pw": "パスワード",
+            "secure_hint": "ヒント",
+            "reservation_warn": "※ 予約送信は取り消せません。",
+            "subject_placeholder": "件名を入力",
+            "file_find": "ファイル選択",
+            "file_big": "大容量添付",
+            "file_limit": "一般 10MB / 大容量 2GB",
+            "file_drop": "ファイルをドラッグ＆ドロップしてください。",
+            "content": "本文",
+            "content_placeholder": "本文を入力...",
+            "urgent": "重要!",
+            "sign_attach": "署名添付",
+            "time_hour": "時",
+            "time_min": "分",
+            "recent": {
+                "default": "最近送信したメール"
+            },
+            "autosave": {
+                "off": "自動保存なし",
+                "30s": "30秒",
+                "1m": "1分",
+                "3m": "3分"
+            },
+            "signature": {
+                "default": "基本署名",
+                "company": "会社署名"
+            },
+            "encoding": {
+                "utf8": "Unicode (UTF-8)",
+                "euckr": "韓国語 (EUC-KR)"
+            }
+        },
+        "read": {
+            "back": "一覧",
+            "received_mail": "受信メール",
+            "date": "送信日時",
+            "add_address": "アドレス追加",
+            "attachments": "添付ファイル",
+            "save_all": "すべて保存"
+        },
+        "result": {
+            "success": "メールが正常に送信されました。",
+            "batch_success": "一括メールの送信が受け付けられました。",
+            "fail": "メールの送信に失敗しました。",
+            "fail_reason": "失敗の理由",
+            "failed_recipients": "送信失敗受信者",
+            "rewrite": "書き直し",
+            "go_inbox": "受信トレイへ",
+            "go_home": "メールホームへ"
+        }
+    },
+    "login": {
+        "title": "ウェブメールログイン",
+        "desc": "メールを確認するにはログインしてください。",
+        "user_id": "ユーザーID",
+        "password": "パスワード",
+        "domain": "ドメイン",
+        "save_id": "IDを保存",
+        "secure_login": "セキュリティログイン",
+        "sign_in": "ログイン",
+        "placeholder_id": "IDを入力",
+        "placeholder_pw": "パスワードを入力",
+        "select_domain": "ドメイン選択"
+    },
+    "address_popup": {
+        "title": "アドレス帳",
+        "tabs": {
+            "personal": "個人",
+            "shared": "共有アドレス帳",
+            "org": "組織図"
+        },
+        "info": {
+            "label": {
+                "001": "名前",
+                "002": "ミドルネーム",
+                "003": "姓",
+                "004": "名前",
+                "005": "ニックネーム",
+                "006": "メール",
+                "007": "誕生日",
+                "008": "記念日",
+                "009": "携帯電話",
+                "011": "郵便番号",
+                "012": "国",
+                "013": "州",
+                "014": "市",
+                "015": "住所",
+                "016": "住所2",
+                "017": "自宅電話",
+                "018": "自宅FAX",
+                "019": "ホームページ",
+                "020": "http://",
+                "021": "郵便番号",
+                "022": "国",
+                "023": "州",
+                "024": "市",
+                "025": "住所",
+                "026": "住所2",
+                "027": "勤務先電話",
+                "028": "勤務先FAX",
+                "029": "ホームページ",
+                "030": "http://",
+                "031": "会社",
+                "032": "部署",
+                "033": "役職"
+            },
+            "msg": {
+                "052": "必須項目を入力してください。"
+            }
+        },
+        "headers": {
+            "personal_group": "個人グループ",
+            "shared_group": "共有グループ",
+            "department": "部署一覧"
+        },
+        "actions": {
+            "add_group": "グループ追加",
+            "add_member": "アドレス追加",
+            "mod_member": "アドレス修正",
+            "del_member": "アドレス削除",
+            "copy_member": "アドレスコピー",
+            "move_member": "アドレス移動",
+            "send_mail": "メール送信",
+            "send_all_mail": "全メール送信",
+            "import": "インポート",
+            "export": "エクスポート",
+            "print": "印刷",
+            "to": "受信者",
+            "cc": "参照",
+            "bcc": "密送",
+            "apply": "適用",
+            "cancel": "キャンセル",
+            "reset": "リセット",
+            "search": "検索",
+            "detail_search": "詳細検索",
+            "add_group_tooltip": "グループ追加"
+        },
+        "filters": {
+            "include_title": "役職を含む",
+            "include_class": "職位含む",
+            "include_sub": "下位部署含む",
+            "current_all": "現在構成員全体",
+            "name": "名前",
+            "id": "ID",
+            "search_position": "役職",
+            "search_duty": "職責",
+            "search_level": "職級",
+            "include_concurrent": "兼職ユーザーを含む"
+        },
+        "columns": {
+            "name": "名前",
+            "pos": "役職",
+            "email": "メール"
+        },
+        "counts": {
+            "to": "宛先",
+            "cc": "参照",
+            "bcc": "密送",
+            "people": "名"
+        },
+        "prompt": {
+            "new_group": "新しいグループ名を入力:"
+        },
+        "alert": {
+            "no_group_org": "組織図にはグループを追加できません。"
+        },
+        "filter": {
+            "team_leader": "チーム長",
+            "part_leader": "パート長",
+            "director": "部長",
+            "manager": "課長",
+            "assistant": "代理",
+            "staff": "社員"
+        }
+    },
+    "header": {
+        "nav": {
+            "mail": "メール",
+            "address_book": "アドレス帳",
+            "calendar": "カレンダー",
+            "board": "掲示板",
+            "resources": "資料室",
+            "settings": "環境設定"
+        },
+        "theme": {
+            "title": "テーマ設定",
+            "default": "基本 (Blue)",
+            "modern": "モダン (Light)",
+            "dark": "ダークモード"
+        },
+        "logout": "ログアウト"
+    },
+    "calendar": {
+        "title": "スケジュール",
+        "add_schedule": "予定登録",
+        "search_placeholder": "予定検索...",
+        "my_calendar": "マイカレンダー",
+        "shared_calendar": "共有カレンダー",
+        "default": "基本カレンダー",
+        "work": "業務",
+        "team": "チーム共有",
+        "view": {
+            "month": "月",
+            "week": "週",
+            "day": "日",
+            "today": "今日"
+        },
+        "days": {
+            "sun": "日",
+            "mon": "月",
+            "tue": "火",
+            "wed": "水",
+            "thu": "木",
+            "fri": "金",
+            "sat": "土"
+        },
+        "popup": {
+            "add_title": "予定登録",
+            "edit_title": "予定編集",
+            "title": "件名",
+            "start": "開始",
+            "end": "終了",
+            "all_day": "終日",
+            "repeat": "繰り返し",
+            "share": "共有",
+            "location": "場所",
+            "content": "内容",
+            "cancel": "キャンセル",
+            "save": "保存",
+            "edit": "編集"
+        },
+        "search_result": "検索結果",
+        "back_to_calendar": "カレンダーに戻る",
+        "no_result": "検索結果がありません。",
+        "locale": "ja-JP"
+    }
+}

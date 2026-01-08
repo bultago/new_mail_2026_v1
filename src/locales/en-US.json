@@ -1,0 +1,339 @@
+{
+    "common": {
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "save": "Save",
+        "close": "Close",
+        "search": "Search",
+        "edit": "Edit",
+        "ok": "OK",
+        "preview": "Preview",
+        "address_book": "Address Book",
+        "count": "",
+        "select": "Select",
+        "required": " is required."
+    },
+    "sidebar": {
+        "compose": "Compose",
+        "popup_compose": "Popup Compose",
+        "receipt": "Receipt",
+        "quota": "Quota",
+        "personal_folders": "Personal Folders",
+        "tags": "Tags",
+        "system": {
+            "inbox": "Inbox",
+            "sent": "Sent",
+            "drafts": "Drafts",
+            "reserved": "Reserved",
+            "spam": "Spam",
+            "trash": "Trash"
+        }
+    },
+    "context_menu": {
+        "add_folder": "Add Folder",
+        "rename": "Rename",
+        "empty": "Empty",
+        "share": "Share",
+        "delete": "Delete"
+    },
+    "mail": {
+        "list": {
+            "total": "Total",
+            "unread": "Unread",
+            "selected": "Selected",
+            "search_placeholder": "Search Mail",
+            "search_detail": "Detail",
+            "headers": {
+                "from": "From",
+                "subject": "Subject",
+                "date": "Date",
+                "size": "Size"
+            },
+            "toolbar": {
+                "delete": "Delete",
+                "perm_delete": "Delete Forever",
+                "reply": "Reply",
+                "reply_all": "Reply All",
+                "forward": "Forward",
+                "move": "Move",
+                "copy": "Copy",
+                "print": "Print",
+                "spam": "Report Spam",
+                "block": "Block",
+                "mark_read": "Mark Read",
+                "tag": "Tag",
+                "auto_sort": "Auto Sort",
+                "pc_save": "Save to PC",
+                "resend": "Resend",
+                "not_spam": "Not Spam",
+                "restore": "Restore"
+            },
+            "tabs": {
+                "basic": "Basic",
+                "advanced": "Advanced"
+            }
+        },
+        "write": {
+            "title": "Compose Mail",
+            "to": "To",
+            "cc": "Cc",
+            "bcc": "Bcc",
+            "subject": "Subject",
+            "send": "Send",
+            "save": "Save",
+            "attach": "Attach",
+            "to_me": "To Me",
+            "options": {
+                "reservation": "Schedule",
+                "secure": "Secure",
+                "receipt": "Receipt",
+                "individual": "Individual",
+                "save_sent": "Save Sent",
+                "read_receipt": "Read Receipt"
+            },
+            "reservation_dt": "Schedule Time",
+            "secure_pw": "Password",
+            "secure_hint": "Hint",
+            "reservation_warn": "* Scheduled mail cannot be cancelled.",
+            "subject_placeholder": "Enter subject",
+            "file_find": "Browse",
+            "file_big": "Large File",
+            "file_limit": "Normal 10MB / Large 2GB",
+            "file_drop": "Drag and drop files here.",
+            "content": "Content",
+            "content_placeholder": "Enter content...",
+            "urgent": "Urgent!",
+            "sign_attach": "Attach Signature",
+            "time_hour": "h",
+            "time_min": "m",
+            "recent": {
+                "default": "Recent Mails"
+            },
+            "autosave": {
+                "off": "Auto-save Off",
+                "30s": "30 sec",
+                "1m": "1 min",
+                "3m": "3 min"
+            },
+            "signature": {
+                "default": "Default Signature",
+                "company": "Company Signature"
+            },
+            "encoding": {
+                "utf8": "Unicode (UTF-8)",
+                "euckr": "Korean (EUC-KR)"
+            }
+        },
+        "read": {
+            "back": "Back to List",
+            "received_mail": "Received",
+            "date": "Date Sent",
+            "add_address": "Add to Contacts",
+            "attachments": "Attachments",
+            "save_all": "Save All"
+        },
+        "result": {
+            "success": "Mail sent successfully.",
+            "batch_success": "Batch mail registered.",
+            "fail": "Mail send failed.",
+            "fail_reason": "Failure Reason",
+            "failed_recipients": "Failed Recipients",
+            "rewrite": "Write Again",
+            "go_inbox": "Go to Inbox",
+            "go_home": "Go to Mail Home"
+        }
+    },
+    "login": {
+        "title": "WebMail Login",
+        "desc": "Enter your credentials to access your mail.",
+        "user_id": "User ID",
+        "password": "Password",
+        "domain": "Domain",
+        "save_id": "Save ID",
+        "secure_login": "Secure Login",
+        "sign_in": "Sign in",
+        "placeholder_id": "Enter your ID",
+        "placeholder_pw": "Enter your password",
+        "select_domain": "Select a domain"
+    },
+    "address_popup": {
+        "title": "Address Book",
+        "tabs": {
+            "personal": "Personal",
+            "shared": "Shared Address Book",
+            "org": "Organization Chart"
+        },
+        "info": {
+            "label": {
+                "001": "Name",
+                "002": "Middle Name",
+                "003": "Last Name",
+                "004": "Name",
+                "005": "Nickname",
+                "006": "Email",
+                "007": "Birthday",
+                "008": "Anniversary",
+                "009": "Mobile",
+                "011": "Zip Code",
+                "012": "Country",
+                "013": "State",
+                "014": "City",
+                "015": "Address",
+                "016": "Address 2",
+                "017": "Home Phone",
+                "018": "Home Fax",
+                "019": "Homepage",
+                "020": "http://",
+                "021": "Zip Code",
+                "022": "Country",
+                "023": "State",
+                "024": "City",
+                "025": "Address",
+                "026": "Address 2",
+                "027": "Work Phone",
+                "028": "Work Fax",
+                "029": "Homepage",
+                "030": "http://",
+                "031": "Company",
+                "032": "Department",
+                "033": "Position"
+            },
+            "msg": {
+                "052": "Please enter required fields."
+            }
+        },
+        "headers": {
+            "personal_group": "Personal Groups",
+            "shared_group": "Shared Groups",
+            "department": "Departments"
+        },
+        "actions": {
+            "add_group": "Add Group",
+            "add_member": "Add Address",
+            "mod_member": "Edit Address",
+            "del_member": "Delete Address",
+            "copy_member": "Copy Address",
+            "move_member": "Move Address",
+            "send_mail": "Send Mail",
+            "send_all_mail": "Send All Mail",
+            "import": "Import",
+            "export": "Export",
+            "print": "Print",
+            "to": "To",
+            "cc": "Cc",
+            "bcc": "Bcc",
+            "apply": "Apply",
+            "cancel": "Cancel",
+            "reset": "Reset",
+            "search": "Search",
+            "detail_search": "Detail Search",
+            "add_group_tooltip": "Add Group"
+        },
+        "filters": {
+            "include_title": "Inc. Position",
+            "search_position": "Position",
+            "search_duty": "Duty",
+            "search_level": "Level",
+            "include_concurrent": "Include Concurrent Position",
+            "name": "Name",
+            "id": "ID"
+        },
+        "columns": {
+            "name": "Name",
+            "pos": "Position",
+            "email": "Email"
+        },
+        "counts": {
+            "to": "To",
+            "cc": "Cc",
+            "bcc": "Bcc",
+            "people": ""
+        },
+        "prompt": {
+            "new_group": "Enter new group name:"
+        },
+        "alert": {
+            "no_group_org": "Cannot add group to Organization."
+        },
+        "tree": {
+            "sogang": "Sogang University",
+            "pres": "President's Office",
+            "admin": "Administration",
+            "it": "IT Center",
+            "gen": "General Affairs"
+        },
+        "filter": {
+            "team_leader": "Team Leader",
+            "part_leader": "Part Leader",
+            "director": "Director",
+            "manager": "Manager",
+            "assistant": "Assistant",
+            "staff": "Staff"
+        }
+    },
+    "header": {
+        "nav": {
+            "mail": "Mail",
+            "address_book": "Contacts",
+            "calendar": "Calendar",
+            "board": "Board",
+            "resources": "Resources",
+            "settings": "Settings"
+        },
+        "theme": {
+            "title": "Theme Settings",
+            "default": "Default (Blue)",
+            "modern": "Modern (Light)",
+            "dark": "Dark Mode"
+        },
+        "language": {
+            "title": "Language"
+        },
+        "logout": "Logout"
+    },
+    "calendar": {
+        "title": "Schedule",
+        "add_schedule": "Add Event",
+        "search_placeholder": "Search schedule...",
+        "my_calendar": "My Calendar",
+        "shared_calendar": "Shared Calendar",
+        "default": "Default Calendar",
+        "work": "Work",
+        "team": "Team Shared",
+        "view": {
+            "month": "Month",
+            "week": "Week",
+            "day": "Day",
+            "today": "Today"
+        },
+        "days": {
+            "sun": "Sun",
+            "mon": "Mon",
+            "tue": "Tue",
+            "wed": "Wed",
+            "thu": "Thu",
+            "fri": "Fri",
+            "sat": "Sat"
+        },
+        "popup": {
+            "add_title": "Add Schedule",
+            "edit_title": "Edit Schedule",
+            "title": "Title",
+            "start": "Start",
+            "end": "End",
+            "all_day": "All Day",
+            "repeat": "Repeat",
+            "share": "Share",
+            "location": "Location",
+            "content": "Description",
+            "cancel": "Cancel",
+            "save": "Save",
+            "edit": "Edit"
+        },
+        "search_result": "Search Results",
+        "back_to_calendar": "Back to Calendar",
+        "no_result": "No results found.",
+        "locale": "en-US"
+    }
+}

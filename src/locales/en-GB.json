@@ -1,0 +1,131 @@
+{
+    "common": {
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "save": "Save",
+        "close": "Close",
+        "search": "Search",
+        "edit": "Edit",
+        "ok": "OK",
+        "required": " is required."
+    },
+    "sidebar": {
+        "compose": "Compose",
+        "popup_compose": "Popup Compose",
+        "receipt": "Receipt",
+        "quota": "Quota",
+        "personal_folders": "Personal Folders",
+        "tags": "Tags",
+        "system": {
+            "inbox": "Inbox",
+            "sent": "Sent",
+            "drafts": "Drafts",
+            "spam": "Spam",
+            "trash": "Bin"
+        }
+    },
+    "context_menu": {
+        "add_folder": "Add Folder",
+        "rename": "Rename",
+        "empty": "Empty",
+        "share": "Share",
+        "delete": "Delete"
+    },
+    "mail": {
+        "list": {
+            "total": "Total",
+            "unread": "Unread",
+            "selected": "Selected",
+            "search_placeholder": "Search Mail",
+            "headers": {
+                "from": "From",
+                "subject": "Subject",
+                "date": "Date",
+                "size": "Size"
+            },
+            "toolbar": {
+                "delete": "Delete",
+                "perm_delete": "Delete Forever",
+                "reply": "Reply",
+                "reply_all": "Reply All",
+                "forward": "Forward",
+                "move": "Move",
+                "copy": "Copy",
+                "print": "Print",
+                "spam": "Report Spam",
+                "block": "Block",
+                "mark_read": "Mark Read",
+                "tag": "Tag",
+                "auto_sort": "Auto Sort",
+                "pc_save": "Save to PC",
+                "resend": "Resend",
+                "not_spam": "Not Spam",
+                "restore": "Restore"
+            },
+            "tabs": {
+                "basic": "Basic",
+                "advanced": "Advanced"
+            }
+        },
+        "write": {
+            "to": "To",
+            "cc": "Cc",
+            "bcc": "Bcc",
+            "subject": "Subject",
+            "send": "Send",
+            "save": "Save",
+            "attach": "Attach",
+            "to_me": "To Me",
+            "options": {
+                "reservation": "Schedule",
+                "secure": "Secure",
+                "receipt": "Receipt"
+            }
+        }
+    },
+    "calendar": {
+        "title": "Schedule",
+        "add_schedule": "Add Event",
+        "search_placeholder": "Search schedule...",
+        "my_calendar": "My Calendar",
+        "shared_calendar": "Shared Calendar",
+        "default": "Default Calendar",
+        "work": "Work",
+        "team": "Team Shared",
+        "view": {
+            "month": "Month",
+            "week": "Week",
+            "day": "Day",
+            "today": "Today"
+        },
+        "days": {
+            "sun": "Sun",
+            "mon": "Mon",
+            "tue": "Tue",
+            "wed": "Wed",
+            "thu": "Thu",
+            "fri": "Fri",
+            "sat": "Sat"
+        },
+        "popup": {
+            "add_title": "Add Schedule",
+            "edit_title": "Edit Schedule",
+            "title": "Title",
+            "start": "Start",
+            "end": "End",
+            "all_day": "All Day",
+            "repeat": "Repeat",
+            "share": "Share",
+            "location": "Location",
+            "content": "Description",
+            "cancel": "Cancel",
+            "save": "Save",
+            "edit": "Edit"
+        },
+        "search_result": "Search Results",
+        "back_to_calendar": "Back to Calendar",
+        "no_result": "No results found.",
+        "locale": "en-GB"
+    }
+}
