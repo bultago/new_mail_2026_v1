@@ -4,12 +4,14 @@
 1.  **모든 응답은 한국어로**: 사용자와의 대화, 설명, 완료 보고는 반드시 **한국어**로 작성하십시오. (내부 사고 및 변수명은 영어 허용)
 2.  **백엔드 현대화 (TDD/DDD)**: `plan/` 폴더의 계획을 따르며, **테스트 코드 없이 구현하지 마십시오.**
 3.  **도구 사용**: 브라우저 에러(429) 발생 시 즉시 Playwright로 전환하십시오.
+4.  **권한 없는 작업 금지**: 지시하지 않은 내용은 수행하지 마십시오. 의문이 있다면 즉시 작업을 중단하고 지시를 기다리십시오.
 
 ---
 
 ## 1. Integrated Language Policy
 - **Primary Rule**: All user-facing responses, explanations, and dialogues MUST be in **Korean**.
 - **Exception**: Technical terms, variable names, file paths, and log messages should remain in English.
+- **Explicit Instruction Only**: Do NOT execute any tasks that were not explicitly instructed. If in doubt, STOP working immediately and ask for clarification.
 
 ## 2. Project & Backend Policies
 - **Project Rules**: Adhere to `PROJECT_RULES.md`.
