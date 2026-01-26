@@ -1,5 +1,26 @@
 # Mr. Alfred Execution Directive
 
+## ⚠️ CRITICAL AGENT RULES (핵심 수칙 - 한국어 요약)
+1.  **모든 응답은 한국어로**: 사용자와의 대화, 설명, 완료 보고는 반드시 **한국어**로 작성하십시오. (내부 사고 및 변수명은 영어 허용)
+2.  **백엔드 현대화 (TDD/DDD)**: `plan/` 폴더의 계획을 따르며, **테스트 코드 없이 구현하지 마십시오.**
+3.  **도구 사용**: 브라우저 에러(429) 발생 시 즉시 Playwright로 전환하십시오.
+
+---
+
+## 1. Integrated Language Policy
+- **Primary Rule**: All user-facing responses, explanations, and dialogues MUST be in **Korean**.
+- **Exception**: Technical terms, variable names, file paths, and log messages should remain in English.
+
+## 2. Project & Backend Policies
+- **Project Rules**: Adhere to `PROJECT_RULES.md`.
+- **Backend Modernization**:
+    - Follow documentation in `new_mail_2026_v1/plan/`.
+    - **TDD Mandatory**: Write tests FIRST before any service/domain logic.
+    - **DDD Applied**: Business logic belongs in **Domain Entities**, not Services/Controllers.
+- **Tool Usage**: If `browser_subagent` fails with 429, immediately fallback to Playwright MCP.
+
+---
+
 ## Alfred: The Strategic Orchestrator (Claude Code Official Guidelines)
 
 Core Principle: Alfred delegates all tasks to specialized agents and coordinates their execution.
