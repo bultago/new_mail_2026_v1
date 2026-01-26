@@ -1,0 +1,84 @@
+/*calendar_list */
+ul.calendar_list li a.last {border-bottom:0}
+ul.schedule_list li a {display:block; position:relative; padding:10px 8px; border-bottom:1px solid #ebebeb}
+ul.schedule_list li a span.list_title {display:block; background:url(../image/icon_calendar.gif) no-repeat left 0; padding:0 30px 0 22px; margin-bottom:3px}
+ul.schedule_list li a span.list_title_sub {padding-left:22px; color:#888; font-size:14px}
+ul.schedule_list li.schedule_add {text-align:center;text-decoration:underline;font-weight:bold;}
+p.schedule_none {padding:15px 8px;}
+ul.schedule_list li a strong.link_arrow {margin-top:8px}
+.hol		{color:#ea2e2e}
+.hol a		{color:#ea2e2e}
+.dim a		{color:#aeaeae}
+.hol_dim a	{color:#ff9494}
+table.tb_date, table.tb_direct_mail {width:100%}
+table.tb_date tr td, table.tb_direct_mail tr td {padding:0}
+table.tb_date tr td.btn_calendar_wrap {padding-left:10px; width:30px}
+table.tb_direct_mail tr td.tb_blank {width:15px; padding-left:8px}
+
+/* calendar week */
+ul.week li h4.date {position:relative; padding:0 8px; height:36px; background:#F8F8F8; border-top:1px solid #DFDFDF; border-bottom:1px solid #DFDFDF}
+ul.week li h4.border_none {border-top:0}
+ul.week li h4.date em {display:inline-block; margin-top:10px; vertical-align:top; color:#333 }
+ul.week li h4.date em.hol {color:#ea2e2e}
+ul.week li h4.date a.btn2 {position:absolute; top:5px; right:8px; display:inline-block; font-weight:normal}
+ul.week li h4.today {background:#9ed2ef;border:1px solid #78a0d1;}
+
+/* calendar month */
+table.month {width:100%; background:#fff}
+table.month th {background:#f8f8f8; border-left:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5; padding:5px 0}
+table.month td {border-bottom:1px solid #e5e5e5; border-left:1px solid #e5e5e5; height:38px}
+table.month td a {position:relative; display:block; height:27px; padding-top:11px; font-weight:bold; text-align:center}
+table.month td a span.clip {display:block; position:absolute; top:-1px; left:-1px; background:url(../image/icon_clip.gif) no-repeat left 0; width:10px; height:10px}
+table.month td a span.plus {display:block; position:absolute; bottom:0; right:2px; color:#1f87df; font-size:12px; font-weight:normal; letter-spacing:0}
+table.month td.today a {background:#9ed2ef; border:1px solid #78a0d1; height:27px; margin:-1px}
+table.month td.cho a {background:#eeeeee; border:1px solid #c9c9c9; height:27px; margin:-1px}
+th.none {border-left:1px solid #f8f8f8}
+h3.calender_evet {background:#f8f8f8; border-bottom:1px solid #dfdfdf; padding:8px 0 8px 3px; color:#000}
+div.date_num {padding-top:5px; text-align:center}
+span.date {font-weight:bold; margin:0 5px; vertical-align:top; margin-top:3px; display:inline-block;}
+h3.calender_evet span.date {margin-top:1px}
+span.date_lunar {color:#888; font-size:12px; letter-spacing:0; font-weight:normal}
+select.times {height:23px; vertical-align:top; margin-top:1px; *margin-top:2px; letter-spacing:0}
+
+/* schedule view */
+div.schedule_view {padding:20px 8px}
+div.schedule_view p.date {color:#666; margin-bottom:8px}
+div.schedule_view p.repeat {color:#ff0000; margin-bottom:8px; font-size:11px;}
+dl.reserv_info {background:#F8F8F8; border:1px solid #DFDFDF; padding:8px}
+dl.reserv_info dt {color:#1A446F;}
+dl.reserv_info dd {font-weight: normal !important;}
+dl.reserv_info dd.boxL {background:#ffffcd; border:1px solid #dcdc41;padding:5px;}
+dl.reserv_info dt.fl {float:left;}
+dl.reserv_info dt, dl.reserv_info dd {margin-bottom:4px}
+
+table.reserv_info {width:100%;}
+table.reserv_info th {padding:11px 0 0 8px; width:80px; font-weight:normal; background:#F8F8F8; border-right:1px solid #DFDFDF; text-align:left; vertical-align:top}
+table.reserv_info td {padding:8px 10px 0 10px}
+table.reserv_info td.last {padding-bottom:12px}
+table.reserv_info td p.allright {margin-top:4px}
+table.reserv_info td ul.direct_list {border:1px solid #DFDFDF; border-bottom:0; margin-top:7px}
+table.reserv_info td ul.direct_list li {position:relative; *display:inline-block; padding:8px; background:#F8F8F8; border-bottom:1px solid #DFDFDF}
+table.reserv_info td ul.direct_list li a {position:absolute; top:4px; right:5px; display:block}
+table.reserv_info tr td a.reserv_search {text-align:center}
+span.share_email {white-space:nowrap; width:75%; overflow:hidden; text-overflow:ellipsis;display:inline-block;}
+
+a.selDate {display:inline-block;width:88px;border:1px solid #999999;padding:3px;}
+a.selTime {display:inline-block;width:88px;border:1px solid #999999;padding:3px;margin-left:3px;}
+
+p.warn {background:#ffffcd; border:1px solid #dcdc41; padding:5px; line-height:130%}
+p.warn strong {color:#333}
+/* popup */
+div.pop_calendar_wrap {position:absolute;z-index:9999;display:none;width:100%;height:100%;top:0px;}
+
+div.pop_calendar {width:300px; border:3px solid #0f4a7b}
+div.pop_calendar div.popup_date {background:url(../image/skin/blue/search_bg.gif) repeat-x left top; border-bottom:1px solid #ADC6EC; text-align:center; height:36px; line-height:36px}
+
+div.pop_time {width:300px; border:3px solid #0f4a7b;margin:50px auto;position:relative;display:none;}
+div.pop_time div.menu {background:#E9F0F9 url(../image/line.gif) repeat-x left bottom; height:34px;}
+div.pop_time div.menu ul {padding:4px 6px 0 6px}
+div.pop_time div.menu ul li {float:left; width:50%; text-align:center;}
+div.pop_time div.menu ul li a {display:block; height:28px; line-height:2em}
+div.pop_time div.menu ul li a.on {background:#fff; border:1px solid #a8a9ab; border-bottom:1px solid #fff; line-height:2.1em; font-weight:bold}
+div.pop_time ul.list {height:100%; overflow:hidden;}
+div.pop_time ul.list li {display:inline-block; float:left; width:25%; background:#fff}
+div.pop_time ul.list li a {display:block; background:url(../image/bg_time.gif) repeat-x left bottom; padding:10px 0; text-align:center; letter-spacing:0; border-bottom:1px solid #cbcbcb}

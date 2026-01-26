@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-6.1.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-6.1.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-6.1.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-6.1.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-6.1.xsd"
+		default-autowire="byName">
+			
+			
+	<!-- ===================================================================
+-->
+	<!-- DAO DEFINITIONS                                                     -->
+	<!-- ===================================================================
+-->
+	<bean id="bigAttachDao"
+		class="com.terracetech.tims.webmail.mail.dao.BigAttachDao" />
+	
+	<bean id="cacheEmailDao"
+		class="com.terracetech.tims.webmail.mail.dao.CacheEmailDao" />
+		
+	<bean id="letterDao"
+		class="com.terracetech.tims.webmail.mail.dao.LetterDao" />
+		
+	<bean id="agingDao"
+		class="com.terracetech.tims.webmail.mail.dao.FolderAgingDao" />
+		
+	<bean id="sharedFolderDao"
+		class="com.terracetech.tims.webmail.mail.dao.SharedFolderDao" />
+		
+		
+	<!-- ===================================================================
+-->
+	<!-- Handler DEFINITIONS                                                 -->
+	<!-- ===================================================================
+-->
+	
+	<bean id="storeHandler"
+			class="com.terracetech.tims.webmail.mail.manager.StoreHandler"
+			scope="prototype"/>	
+	<bean id="folderHandler"
+			class="com.terracetech.tims.webmail.mail.manager.FolderHandler"			
+			scope="prototype"/>
+	<bean id="messageHandler"
+			class="com.terracetech.tims.webmail.mail.manager.MessageHandler"
+			scope="prototype"/>
+	<bean id="jsonHandler"
+			class="com.terracetech.tims.webmail.mail.manager.JsonHandler"
+			scope="prototype"/>			
+	<bean id="commandHandler"
+			class="com.terracetech.tims.webmail.mail.manager.XCommandHandler"
+			scope="prototype"/>
+	<bean id="sharedFolderHandler"
+			class="com.terracetech.tims.webmail.mail.manager.SharedFolderHandler"
+			p:dao-ref="sharedFolderDao"
+			scope="prototype"/>
+	
+	
+	
+	<!-- ===================================================================
+-->
+	<!-- MANAGER DEFINITIONS                                                 -->
+	<!-- ===================================================================
+-->	
+	
+	<bean id="mailManager"
+			class="com.terracetech.tims.webmail.mail.manager.MailManager"
+			scope="prototype"			
+			p:folderHandler-ref="folderHandler"
+			p:jsonHandler-ref="jsonHandler"
+			p:messageHandler-ref="messageHandler"
+			p:commandHandler-ref="commandHandler"
+			p:emailDAO-ref="cacheEmailDao" 
+			p:agingDAO-ref="agingDao"
+			p:sharedFolderHandler-ref="sharedFolderHandler"
+			/>
+			
+	<bean id="bigattachManager"
+			class="com.terracetech.tims.webmail.mail.manager.BigattachManager"
+			scope="prototype"			
+			p:bigAttachDao-ref="bigAttachDao"			
+			/>		
+	
+	<bean id="pop3Manager" 
+		class="com.terracetech.tims.webmail.mail.manager.Pop3Manager">
+		<property name="popDao"  ref="settingPop3Dao"/>
+	</bean>
+	
+	<bean id="letterManager"
+			class="com.terracetech.tims.webmail.mail.manager.LetterManager"
+			scope="prototype"			
+			p:letterDao-ref="letterDao"			
+			/>
+			
+	<bean id="searchEmailManager"
+			class="com.terracetech.tims.webmail.mailuser.manager.SearchEmailManager"
+			scope="prototype"			
+			p:privateAddrDao-ref="privateAddressBookDao"
+			p:sharedAddrDao-ref="sharedAddressBookDao"
+			p:orgDao-ref="orgDao"			
+			/>
+			
+	<bean id="mailServiceManager"
+			class="com.terracetech.tims.service.manager.MailServiceManager"
+			scope="prototype"			
+			p:mailManager-ref="mailManager"
+			p:ladminManager-ref="ladminManager"
+			p:rcptManager-ref="lastrcptManager"
+			p:signManager-ref="signManager"
+			p:userSettingManager-ref="settingManager"
+			p:vcardManager-ref="vcardManager"
+			p:mailUserManager-ref="mailUserManager"
+			p:bigAttachManager-ref="bigattachManager"
+			p:systemConfigManager-ref="systemConfigManager"/>
+	
+	<!-- ===================================================================
+-->
+	<!-- ACTION DEFINITIONS                                                 -->
+	<!-- ===================================================================
+-->
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+		
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+				
+	
+	
+	
+	
+	
+	
+
+		
+	
+		
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<!-- ===================================================================
+-->
+	<!-- SERVICE DEFINITIONS                                                 -->
+	<!-- ===================================================================
+-->
+	
+	<bean id="mailFolderService" 
+			class="com.terracetech.tims.webmail.mail.service.MailFolderService" 
+			scope="session"
+			p:mailManager-ref="mailManager">
+		<aop:scoped-proxy/>			
+	</bean>
+	
+	<bean id="mailMessageService" 
+			class="com.terracetech.tims.webmail.mail.service.MailMessageService" 
+			scope="session" p:mailManager-ref="mailManager">
+		<aop:scoped-proxy/>		
+	</bean>
+	
+	<bean id="mailTagService" 
+			class="com.terracetech.tims.webmail.mail.service.MailTagService" 
+			scope="session" p:mailManager-ref="mailManager">
+		<aop:scoped-proxy/>			
+	</bean>
+	
+	<bean id="mailSearchFolderService" 
+			class="com.terracetech.tims.webmail.mail.service.MailSearchFolderService" 
+			scope="session" p:mailManager-ref="mailManager">
+		<aop:scoped-proxy />
+	</bean>
+	
+	<bean id="mailCommonService" 
+			class="com.terracetech.tims.webmail.mail.service.MailCommonService" 
+			scope="session" 
+			p:mailManager-ref="mailManager"
+			p:letterManager-ref="letterManager"
+			p:settingManager-ref="settingManager"
+			p:mailUserManager-ref="mailUserManager">
+		<aop:scoped-proxy />
+	</bean>
+	
+	
+	<bean id="mailWebService" 
+			class="com.terracetech.tims.service.tms.impl.MailService"
+			p:mailServiceManager-ref="mailServiceManager"
+			p:settingManager-ref="settingManager"
+			scope="prototype"/>	
+	
+	
+	
+	<bean id="garnetMailManager" 
+			class="com.terracetech.tims.service.mcnc.impl.GarnetMailManager"
+			p:mailServiceManager-ref="mailServiceManager"
+			p:settingManager-ref="settingManager"
+			scope="prototype"/>
+	
+	
+	
+	
+		
+	
+	
+</beans>

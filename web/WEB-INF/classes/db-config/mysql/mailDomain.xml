@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.terracetech.tims.webmail.MailDomain.mapper.MailDomainMapper">
+  	
+  	
+  	
+	<select id="searchDomainSeq" parameterType="String" resultType="Integer">
+		select mail_domain_seq from mail_domain where mail_domain = #{mailDomain}
+	</select>
+	
+	<select id="readMailDomain" parameterType="int" resultMap="mailDomainHashResult">
+		select * from mail_domain where mail_domain_seq = #{mail_domain_seq}
+	</select>
+	
+	<select id="readMailDomainName" parameterType="int" resultType="String">
+		select mail_domain from mail_domain where mail_domain_seq = #{mail_domain_seq}
+	</select>
+	
+	<select id="readMailDomainList" resultMap="mailDomainResult">
+		select * from mail_domain order by mail_domain desc
+	</select>
+	
+	<select id="readMailDomainListCount" resultType="int">
+		select count(*) from mail_domain
+	</select>
+	
+	<insert id="saveMailDomain" parameterType="mailDomain">
+		INSERT INTO mail_domain
+			<dynamic prepend=" " open="( " close=" )">
+				<isGreaterThan property="mailDomainSeq" compareValue="0" prepend=",">
+					mail_domain_seq
+				</isGreaterThan>
+				<isNotNull property="mailDomain" prepend=",">
+					mail_domain
+				</isNotNull>
+				<isNotNull property="mailDomainName" prepend=",">
+					mail_domain_name
+				</isNotNull>
+				<isNotNull property="serviceStartTime" prepend=",">
+					service_start_time
+				</isNotNull>
+				<isNotNull property="serviceEndTime" prepend=",">
+					service_end_time
+				</isNotNull>
+				<isNotNull property="domainStatus" prepend=",">
+					domain_status
+				</isNotNull>
+				<isNotNull property="maxUserCount" prepend=",">
+					max_user_count
+				</isNotNull>
+				<isNotNull property="currentUserCount" prepend=",">
+					current_user_count
+				</isNotNull>
+				<isNotNull property="passwordMethod" prepend=",">
+					password_method
+				</isNotNull>
+				<isGreaterThan property="mailServices" compareValue="0" prepend=",">
+					mail_services
+				</isGreaterThan>
+				<isNotNull property="defaultPspam" prepend=",">
+					default_pspam
+				</isNotNull>
+				<isNotNull property="filterApply" prepend=",">
+					filter_apply
+				</isNotNull>
+			</dynamic>
+			<dynamic prepend="values " open="( " close=" )">
+				<isGreaterThan property="mailDomainSeq" compareValue="0" prepend=",">
+					#{mail_domain_seq}
+				</isGreaterThan>
+				<isNotNull property="mailDomain" prepend=",">
+					#{mailDomain}
+				</isNotNull>
+				<isNotNull property="mailDomainName" prepend=",">
+					#{mailDomainName}
+				</isNotNull>
+				<isNotNull property="serviceStartTime" prepend=",">
+					#{serviceStartTime}
+				</isNotNull>
+				<isNotNull property="serviceEndTime" prepend=",">
+					#{serviceEndTime}
+				</isNotNull>
+				<isNotNull property="domainStatus" prepend=",">
+					#{domainStatus}
+				</isNotNull>
+				<isNotNull property="maxUserCount" prepend=",">
+					#{maxUserCount}
+				</isNotNull>
+				<isNotNull property="currentUserCount" prepend=",">
+					#{currentUserCount}
+				</isNotNull>
+				<isNotNull property="passwordMethod" prepend=",">
+					#{passwordMethod}
+				</isNotNull>
+				<isGreaterThan property="mailServices" compareValue="0" prepend=",">
+					#{mail_services}
+				</isGreaterThan>
+				<isNotNull property="defaultPspam" prepend=",">
+					#{defaultPspam}
+				</isNotNull>
+				<isNotNull property="filterApply" prepend=",">
+					#{filterApply}
+				</isNotNull>
+			</dynamic>
+	</insert>
+
+	<update id="modifyMailDomain" parameterType="mailDomain">
+		UPDATE mail_domain
+		<dynamic prepend="set ">
+			<isNotNull property="mailDomain" prepend=",">
+				mail_domain = #{mailDomain}
+			</isNotNull>
+			<isNotNull property="mailDomainName" prepend=",">
+				mail_domain_name = #{mailDomainName}
+			</isNotNull>
+			<isNotNull property="serviceStartTime" prepend=",">
+				service_start_time = #{serviceStartTime}
+			</isNotNull>
+			<isNotNull property="serviceEndTime" prepend=",">
+				service_end_time = #{serviceEndTime}
+			</isNotNull>
+			<isNotNull property="domainStatus" prepend=",">
+				domain_status = #{domainStatus}
+			</isNotNull>
+			<isNotNull property="maxUserCount" prepend=",">
+				max_user_count = #{maxUserCount}
+			</isNotNull>
+			<isNotNull property="currentUserCount" prepend=",">
+				current_user_count = #{currentUserCount}
+			</isNotNull>
+			<isNotNull property="passwordMethod" prepend=",">
+				password_method = #{passwordMethod}
+			</isNotNull>
+			<isGreaterThan property="mailServices" compareValue="0" prepend=",">
+				mail_services = #{mailServices}
+			</isGreaterThan>
+			<isNotNull property="defaultPspam" prepend=",">
+				default_pspam = #{defaultPspam}
+			</isNotNull>
+			<isNotNull property="filterApply" prepend=",">
+				filter_apply = #{filterApply}
+			</isNotNull>
+		</dynamic>
+		WHERE
+			mail_domain_seq = #{mailDomainSeq}
+	</update>
+	
+	<delete id="deleteMailDomain" parameterType="int">
+		delete from mail_domain where mail_domain_seq = #{mail_domain_seq} 
+	</delete>
+	
+	<select id="readMailDomainGroup" parameterType="map" resultMap="mailDomainGroupHashResult">
+		select * from mail_domain_group where mail_domain_seq = #{mail_domain_seq} and mail_group_seq = #{mail_group_seq}
+	</select>
+	
+	<insert id="saveMailDomainGroup" parameterType="mailDomainGroup">
+		INSERT INTO mail_domain_group
+			<dynamic prepend=" " open="( " close=" )">
+				<isGreaterThan property="mailDomainSeq" compareValue="0" prepend=",">
+					mail_domain_seq
+				</isGreaterThan>
+				<isGreaterThan property="mailGroupSeq" compareValue="0" prepend=",">
+					mail_group_seq
+				</isGreaterThan>
+				<isNotNull property="mailGroup" prepend=",">
+					mail_group
+				</isNotNull>
+				<isNotNull property="mailGroupName" prepend=",">
+					mail_group_name
+				</isNotNull>
+				<isNotNull property="mailQuota" prepend=",">
+					mail_quota
+				</isNotNull>
+				<isNotNull property="webFolderQuota" prepend=",">
+					web_folder_quota
+				</isNotNull>
+				<isNotNull property="maxForwarding" prepend=",">
+					max_forwarding
+				</isNotNull>
+				<isNotNull property="quotaOverlookRatio" prepend=",">
+					quota_overlook_ratio
+				</isNotNull>
+				<isNotNull property="quotaWarningMode" prepend=",">
+					quota_warning_mode
+				</isNotNull>
+				<isNotNull property="quotaWarningRatio" prepend=",">
+					quota_warning_ratio
+				</isNotNull>
+				<isNotNull property="quotaViolationAction" prepend=",">
+					quota_violation_action
+				</isNotNull>
+				<isGreaterThan property="mailServices" compareValue="0" prepend=",">
+					mail_services
+				</isGreaterThan>
+				<isNotNull property="mailMaxSendSize" prepend=",">
+					mail_max_send_size
+				</isNotNull>
+				<isNotNull property="inboxExpireDays" prepend=",">
+					inbox_expire_days
+				</isNotNull>
+				<isNotNull property="sentExpireDays" prepend=",">
+					sent_expire_days
+				</isNotNull>
+				<isNotNull property="trashExpireDays" prepend=",">
+					trash_expire_days
+				</isNotNull>
+				<isNotNull property="userExpireDays" prepend=",">
+					user_expire_days
+				</isNotNull>
+				<isNotNull property="spamExpireDays" prepend=",">
+					spam_expire_days
+				</isNotNull>
+				<isNotNull property="description" prepend=",">
+					description
+				</isNotNull>
+			</dynamic>
+			<dynamic prepend="values " open="( " close=" )">
+				<isGreaterThan property="mailDomainSeq" compareValue="0" prepend=",">
+					#{mailDomainSeq}
+				</isGreaterThan>
+				<isGreaterThan property="mailGroupSeq" compareValue="0" prepend=",">
+					#{mailGroupSeq}
+				</isGreaterThan>
+				<isNotNull property="mailGroup" prepend=",">
+					#{mailGroup}
+				</isNotNull>
+				<isNotNull property="mailGroupName" prepend=",">
+					#{mailGroupName}
+				</isNotNull>
+				<isNotNull property="mailQuota" prepend=",">
+					#{mailQuota}
+				</isNotNull>
+				<isNotNull property="webFolderQuota" prepend=",">
+					#{webFolderQuota}
+				</isNotNull>
+				<isNotNull property="maxForwarding" prepend=",">
+					#{maxForwarding}
+				</isNotNull>
+				<isNotNull property="quotaOverlookRatio" prepend=",">
+					#{quotaOverlookRatio}
+				</isNotNull>
+				<isNotNull property="quotaWarningMode" prepend=",">
+					#{quotaWarningMode}
+				</isNotNull>
+				<isNotNull property="quotaWarningRatio" prepend=",">
+					#{quotaWarningRatio}
+				</isNotNull>
+				<isNotNull property="quotaViolationAction" prepend=",">
+					#{quotaViolationAction}
+				</isNotNull>
+				<isGreaterThan property="mailServices" compareValue="0" prepend=",">
+					#{mailServices}
+				</isGreaterThan>
+				<isNotNull property="mailMaxSendSize" prepend=",">
+					#{mailMaxSendSize}
+				</isNotNull>
+				<isNotNull property="inboxExpireDays" prepend=",">
+					#{inboxExpireDays}
+				</isNotNull>
+				<isNotNull property="sentExpireDays" prepend=",">
+					#{sentExpireDays}
+				</isNotNull>
+				<isNotNull property="trashExpireDays" prepend=",">
+					#{trashExpireDays}
+				</isNotNull>
+				<isNotNull property="userExpireDays" prepend=",">
+					#{userExpireDays}
+				</isNotNull>
+				<isNotNull property="spamExpireDays" prepend=",">
+					#{spamExpireDays}
+				</isNotNull>
+				<isNotNull property="description" prepend=",">
+					#{description}
+				</isNotNull>
+			</dynamic>
+	</insert>
+
+	<update id="modifyMailDomainGroup" parameterType="mailDomainGroup">
+		UPDATE mail_domain_group
+		<dynamic prepend="set ">
+			<isGreaterThan property="mailDomainSeq" compareValue="0" prepend=",">
+				mail_domain_seq = #{mailDomainSeq}
+			</isGreaterThan>
+			<isNotNull property="mailGroup" prepend=",">
+				mail_group = #{mailGroup}
+			</isNotNull>
+			<isNotNull property="mailGroupName" prepend=",">
+				mail_group_name = #{mailGroupName}
+			</isNotNull>
+			<isNotNull property="mailQuota" prepend=",">
+				mail_quota = #{mailQuota}
+			</isNotNull>
+			<isNotNull property="webFolderQuota" prepend=",">
+				web_folder_quota = #{webFolderQuota}
+			</isNotNull>
+			<isNotNull property="maxForwarding" prepend=",">
+				max_forwarding = #{maxForwarding}
+			</isNotNull>
+			<isNotNull property="quotaOverlookRatio" prepend=",">
+				quota_overlook_ratio = #{quotaOverlookRatio}
+			</isNotNull>
+			<isNotNull property="quotaWarningMode" prepend=",">
+				quota_warning_mode = #{quotaWarningMode}
+			</isNotNull>
+			<isNotNull property="quotaWarningRatio" prepend=",">
+				quota_warning_ratio = #{quotaWarningRatio}
+			</isNotNull>
+			<isNotNull property="quotaViolationAction" prepend=",">
+				quota_violation_action = #{quotaViolationAction}
+			</isNotNull>
+			<isGreaterThan property="mailServices" compareValue="0" prepend=",">
+				mail_services = #{mailServices}
+			</isGreaterThan>
+			<isNotNull property="mailMaxSendSize" prepend=",">
+				mail_max_send_size = #{mailMaxSendSize}
+			</isNotNull>
+			<isNotNull property="inboxExpireDays" prepend=",">
+				inbox_expire_days = #{inboxExpireDays}
+			</isNotNull>
+			<isNotNull property="sentExpireDays" prepend=",">
+				sent_expire_days = #{sentExpireDays}
+			</isNotNull>
+			<isNotNull property="trashExpireDays" prepend=",">
+				trash_expire_days = #{trashExpireDays}
+			</isNotNull>
+			<isNotNull property="userExpireDays" prepend=",">
+				user_expire_days = #{userExpireDays}
+			</isNotNull>
+			<isNotNull property="spamExpireDays" prepend=",">
+				spam_expire_days = #{spamExpireDays}
+			</isNotNull>
+			<isNotNull property="description" prepend=",">
+				description = #{description}
+			</isNotNull>
+		</dynamic>
+		WHERE
+			mail_group_seq = #{mailGroupSeq}
+	</update>
+	
+	<delete id="deleteMailDomainGroup" parameterType="int">
+		delete from mail_domain_group where mail_group_seq = #{mailGroupSeq}
+	</delete>
+	
+	<select id="readMailServiesFromDomain" parameterType="int" resultType="Integer">
+		SELECT mail_services from mail_domain where mail_domain_seq = #{MAIL_DOMAIN_SEQ}
+	</select>
+	
+	<select id="readDomainCode" parameterType="map" resultMap="domainCodeResult">
+		select * from tdomain_code where mail_domain_seq = #{mailDomainSeq} 
+			and code_class = #{codeClass} and code_locale = #{codeLocale}	
+	</select>
+	
+	<select id="readLocalDomain"  resultMap="localDomainResult">
+		select mail_domain as dname, mail_domain_seq from mail_domain
+		union
+		select virtual_domain as dname, mail_domain_seq from mail_domain_virtualdomain
+	</select>
+	
+	<select id="readDomainGroupSeq" parameterType="map" resultType="int">
+		select mail_group_seq from mail_domain_group where mail_domain_seq = #{mailDomainSeq} and mail_group = #{mailGroup}
+	</select>
+	
+	<select id="readLogoInfo" parameterType="int" resultMap="logoResult">
+		select * from mail_domain_logo where mail_domain_seq = #{mailDomainSeq}
+	</select>
+	
+	<select id="readMobileLogoInfo" parameterType="int" resultMap="logoResult">
+		select * from mobile_domain_logo where mail_domain_seq = #{mailDomainSeq}
+	</select>
+	
+	<select id="readDefaultDomain" resultType="String">
+		select attr_value from mail_config_file 
+		where config_name = 'defaultdomain' 
+		and attr_name = 'defaultdomain'
+	</select>
+	
+	<select id="readNoticeContent" parameterType="int" resultType="String">
+		select notice_content from mail_domain_info where mail_domain_seq = #{mailDomainSeq}
+	</select>
+	
+	<select id="readCommonLogo" resultMap="commonLogoResult">
+		select * from mail_common_logo
+	</select>
+	
+	<select id="readMobileCommonLogo" resultMap="commonLogoResult">
+		select * from mobile_common_logo
+	</select>
+	
+	<select id="readDocTemplateList" parameterType="map" resultMap="docTemplateResult">
+		select * from mail_doc_template where mail_domain_seq = #{mailDomainSeq}
+    	limit #{skipResult}, #{pageBase}
+	</select>	
+		
+	<select id="readDocTemplate" parameterType="int" resultMap="docTemplateResult">
+		select * from mail_doc_template where doc_template_seq = #{templateSeq}
+	</select>
+	
+	<select id="totalDocTemplateCount" parameterType="int" resultType="int">
+		select count(*) from mail_doc_template where mail_domain_seq = #{mailDomainSeq}
+	</select>
+	
+	<select id="readDormantMonth" parameterType="int" resultMap="mailDomainDormantMonth">
+		select long_term_manage, long_term_month, long_term_change_month from mail_domain_info where mail_domain_seq = #{mailDomainSeq}
+	</select>
+	
+	<select id="readNoteUse" parameterType="map" resultType="String">
+		select note_use from mail_domain_group 
+		where mail_domain_seq = #{mailDomainSeq} and mail_group_seq = #{mailGroupSeq}
+	</select>
+</mapper>

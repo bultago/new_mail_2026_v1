@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Webfolder">
+
+  <insert id="saveShareAllFolder" parameterClass="webfoldershare">
+  		<selectKey resultClass="int" keyProperty="fuid">
+			select case when max(folder_uid) is null then 1 else max(folder_uid)+1 end
+			from shf_master
+		</selectKey>
+  		insert into shf_master (
+  		folder_uid, mail_user_seq, folder_dir, folder_comment, share_type, share_auth, create_time
+  		)
+  		values
+  		(
+  			#fuid#, #mailUserSeq#, #folderPath#, #comment#, #shareType#, #auth#, #curTime#
+  		)
+  </insert>
+  
+  <insert id="saveShareFolder" parameterClass="map">
+  		insert into shf_shr_folder (mail_user_seq, folder_uid)
+  		values (#userSeq#, #fUid#)
+  </insert>
+  
+  <insert id="saveShareTarget" parameterClass="webfoldershare">
+  		insert into shf_shr_target (
+  		folder_uid, share_type, share_value, share_auth, share_name, create_time
+  		)
+  		values
+  		(
+  			#fuid#, #shareType#, #email#, #auth#, #name#, #curTime#
+  		)
+  </insert>
+  
+   <update id="modifyShareAllFolder" parameterClass="webfoldershare">
+  		update shf_master set folder_comment = #comment#, share_type = #shareType#, share_auth = #auth#, mod_time = #curTime#
+  		where folder_uid = #fuid#
+  </update>
+  
+  <update id="modifyAuthShareTargetFolder" parameterClass="webfoldershare">
+  		update shf_shr_target set share_auth = #auth#, modify_time = #curTime# 
+  		where folder_uid = #fuid# and share_value = #email#
+  </update>
+  
+  <delete id="deleteShareTargetFolder" parameterClass="int">
+  		delete from shf_shr_target where folder_uid = #value#
+  </delete>
+  
+  <delete id="deleteShareAllFolder" parameterClass="map">
+  		delete from shf_master where mail_user_seq = #userSeq# and folder_dir = #path#
+  </delete>
+  
+  <delete id="deleteShareFolder" parameterClass="map">
+  		delete from shf_shr_folder where folder_uid = #fuid#
+  		<dynamic prepend="and">
+  			<isGreaterThan property="userSeq" compareValue="0">
+  				mail_user_seq = #userSeq#
+  			</isGreaterThan>
+  		</dynamic>
+  </delete>
+  
+  <delete id="deleteNotInShareFolders" parameterClass="map">
+  		delete from shf_shr_folder where folder_uid = #fuid#
+  		<dynamic>
+  			<isNotNull property="userSeqs">
+				<iterate property="userSeqs"
+					prepend="and mail_user_seq not in "
+					open=" (" close=")"
+					conjunction=",">
+					#userSeqs[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+  </delete>
+  
+  <select id="readMemberList" parameterClass="map" resultMap="readMemberListResult">
+	    select m.mail_user_seq, m.mail_uid, u.user_name, d.mail_domain 
+	    from mail_user m, mail_domain d, mail_user_info u 
+	    where m.mail_domain_seq = d.mail_domain_seq
+	    and m.mail_user_seq = u.mail_user_seq
+	    and m.mail_uid != #uid# and m.mail_domain_seq = #domain#
+	    and m.mail_uid not in ('tims_bbs_storage_user', 'tims_webfolder_storage_user')	
+	    <dynamic prepend=" AND ">
+	    	<isEqual compareValue="name" property="type">
+	    		u.user_name like #pattern#  
+	    	</isEqual>
+	    	<isEqual compareValue="uid" property="type">
+	    		m.mail_uid like #pattern#  
+	    	</isEqual>
+	    </dynamic>
+  </select>
+  
+  <select id="readShareMemberList" parameterClass="map" resultMap="readShareMemberListResult">
+  		select t.share_value, t.share_name, t.share_type, t.share_auth, m.folder_comment
+        from shf_shr_target t, shf_master m
+        where t.folder_uid = m.folder_uid
+        and t.folder_uid in (select folder_uid from shf_master where mail_user_seq = #userSeq# and folder_dir = #path#) 
+  </select>
+  
+  <select id="readShareAllFolderMaxCount" resultClass="int">
+  		select max(folder_uid) from shf_master
+  </select>
+  
+  <select id="readShareAllFolder" parameterClass="int" resultMap="readShareAllResult">
+  		select * from shf_master where folder_uid = #value#
+  </select>
+  
+   <select id="readShareAllFolderCount" resultClass="int">
+  		select count(*) from shf_master
+  </select>
+  
+  <select id="readShareAllFolderData" parameterClass="map" resultMap="readShareAllFolderDataResult">
+  		select s.folder_uid, s.mail_user_seq, s.folder_dir, t.share_auth, t.share_type as target_type, t.share_value as target_value, u.mail_uid
+		from shf_master s, shf_shr_target t, mail_user u 
+		where s.folder_uid = t.folder_uid and s.mail_user_seq = u.mail_user_seq
+		and ((t.share_type = 1 and t.share_value = #myUserSeq#) or (t.share_type = 0 and s.mail_user_seq != #myUserSeq#))
+		and s.folder_dir = #path#
+		and s.mail_user_seq = #userSeq#
+  </select>
+  
+  <select id="readShareAllFolder1" parameterClass="map" resultMap="readShareAllResult">
+  		select * from shf_master where mail_user_seq = #userSeq# and folder_dir = #path#
+  </select>
+  
+  <select id="readShareTargetFolder" parameterClass="map"  resultMap="readShareTargetFolderResult">
+  		select * from shf_shr_target where folder_uid = #fuid# and share_value = #email#
+  </select>
+  
+  <select id="readShareTargetFolderCount" parameterClass="int" resultClass="int">
+  		select count(*) from shf_shr_target where folder_uid = #value#
+  </select>
+  
+  <select id="readShareFolderCount" parameterClass="int" resultClass="int">
+  		select count(*) from shf_shr_folder where folder_uid = #value#
+  </select>
+  
+  <select id="readMyShareFolderCount" parameterClass="map" resultClass="int">
+  		select count(*) from shf_shr_folder where mail_user_seq = #userSeq# and folder_uid = #fUid#  
+  </select>
+  
+  <select id="readSearchShareFolder" parameterClass="map" resultMap="readSearchShareFolderResult">
+  		select a.mail_uid, b.user_name, c.mail_user_seq, c.folder_uid, c.folder_dir, c.folder_comment, c.share_type, c.share_auth
+ 		from mail_user a, mail_user_info b,
+		 (
+		 	select folder_uid, mail_user_seq, folder_dir, folder_comment, share_type, share_auth 
+		 	from shf_master
+		 	where share_type = 0 and mail_user_seq != #userSeq# 
+		 	union all
+		 	select a.folder_uid, a.mail_user_seq, a.folder_dir, a.folder_comment, b.share_type, b.share_auth 
+			from shf_master a, shf_shr_target b 
+			where a.folder_uid = b.folder_uid and b.share_type = 1 and b.share_value = #mailUid# and a.mail_user_seq != #userSeq#
+		 ) c
+ 		where c.mail_user_seq = b.mail_user_seq and a.mail_user_seq = b.mail_user_seq
+ 		<dynamic prepend=" AND ">
+	    	<isEqual compareValue="name" property="type">
+	    		b.user_name like #pattern#  
+	    	</isEqual>
+	    	<isEqual compareValue="uid" property="type">
+	    		a.mail_uid like #pattern#  
+	    	</isEqual>
+	    </dynamic>
+	    
+  </select>
+  
+  <select id="readSearchShareFolderCount" parameterClass="map" resultClass="int">
+  		select count(*)
+ 		from mail_user a, mail_user_info b,
+		 (
+		 	select folder_uid, mail_user_seq, folder_dir, folder_comment, share_type, share_auth 
+		 	from shf_master
+		 	where share_type = 0 and mail_user_seq != #userSeq# 
+		 	union all
+		 	select a.folder_uid, a.mail_user_seq, a.folder_dir, a.folder_comment, b.share_type, b.share_auth 
+			from shf_master a, shf_shr_target b 
+			where a.folder_uid = b.folder_uid and b.share_type = 1 and b.share_value = #mailUid# and a.mail_user_seq != #userSeq#
+		 ) c
+ 		where c.mail_user_seq = b.mail_user_seq and a.mail_user_seq = b.mail_user_seq
+ 		<dynamic prepend=" AND ">
+	    	<isEqual compareValue="name" property="type">
+	    		b.user_name like #pattern#  
+	    	</isEqual>
+	    	<isEqual compareValue="uid" property="type">
+	    		a.mail_uid like #pattern#  
+	    	</isEqual>
+	    </dynamic>
+  </select>
+  
+  <select id="readShareFolder" parameterClass="map"  resultMap="readShareAllFolderDataResult">
+		select s.folder_uid, s.mail_user_seq, s.folder_dir, t.share_auth, t.share_type as target_type, t.share_value as target_value, u.mail_uid
+		from shf_master s, shf_shr_target t, mail_user u 
+		where s.folder_uid = t.folder_uid and s.mail_user_seq = u.mail_user_seq
+		and u.mail_domain_seq = #mailDomainSeq#
+		and ((t.share_type = 1 and t.share_value = #mailUserSeq#) or (t.share_type = 0 and s.mail_user_seq != #mailUserSeq#))
+  </select>
+  
+  <select id="readAllShareFolderList" parameterClass="map" resultMap="readAllShareFolderResult">
+  		select s.*, m.MAIL_UID from shf_master s, mail_user m 
+		where s.MAIL_USER_SEQ = m.MAIL_USER_SEQ
+		and m.mail_domain_seq = #mailDomainSeq#
+		and s.share_type = 0 and s.mail_user_seq != #mailUserSeq#
+  </select>
+  
+  <select id="readAllShareFolder" parameterClass="map" resultMap="readAllShareFolderResult">
+  		select s.*, m.MAIL_UID from shf_master s, mail_user m 
+		where s.MAIL_USER_SEQ = m.MAIL_USER_SEQ
+		and s.share_type = 0 and s.mail_user_seq = #mailUserSeq# and folder_dir = #path#
+  </select>
+  
+  <select id="readSubOrgFullCodeCount" parameterClass="map" resultClass="int">
+  	select count(*) from torg_organization
+  	where mail_domain_seq = #mailDomainSeq#
+  	and org_code in (select org_code from torg_member where mail_user_seq = #mailUserSeq#) 
+  	and org_fullcode in (select org_fullcode from torg_organization where org_fullcode like #orgFullCode#)
+  </select>
+  
+  <select id="readOrgFullCodeCount" parameterClass="map" resultClass="int">
+  	select count(*) from torg_organization 
+	where mail_domain_seq = #mailDomainSeq#
+	and org_fullcode = #orgFullCode#
+	and org_fullcode in (select org_fullcode from torg_organization where org_code in (select org_code from torg_member where mail_user_seq = #mailUserSeq#))
+  </select>
+  
+  <select id="readShareFolderCountByUid" parameterClass="map" resultClass="int">
+  		select count(*) from shf_shr_folder where folder_uid = #fuid# and mail_user_seq = #userSeq#
+  </select>
+  
+  <select id="readPublicFolderAuth" parameterClass="int" resultClass="int">
+  		select count(*) from shf_shr_admin where mail_user_seq = #value#
+  </select>
+  
+  <select id="readPublicFolderAdminAuth" parameterClass="map" resultClass="int">
+  		select count(*) from mail_admin where (mail_user_seq = #mailUserSeq# and adm_type='SYSTEM') or (mail_user_seq = #mailUserSeq# and mail_domain_seq=#mailDomainSeq#)
+  </select>
+  
+  <select id="readWebFolderAttachMaxSize" parameterClass="int" resultClass="int">
+  		select case when web_folder_upload_max_size is null then 52428800 else web_folder_upload_max_size end
+		from mail_domain_info where mail_domain_seq = #mailDomainSeq#
+  </select>
+  
+  <select id="readMyShareFolderUid" parameterClass="map" resultClass="int">
+  		select folder_uid from shf_master where mail_user_seq = #mailUserSeq# and folder_dir = #folderDir#
+  </select>
+ </sqlMap>

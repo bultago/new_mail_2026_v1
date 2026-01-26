@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>blank page</title>
+<script type="text/javascript">
+	function parsePageNumFromSearch()
+	{
+		var num = /\d+/.exec( window.location.search );
+		if( num )
+			return parseInt( num );
+		return 0;
+	}
+	function onLoad()
+	{
+		if(parent){
+			var num = parsePageNumFromSearch();
+			if(parent.PageNum != num){
+				parent.updateByHistory( num );
+			}
+		}
+	}
+</script>
+</head>
+<body onload="onLoad();">
+</body>
+</html>

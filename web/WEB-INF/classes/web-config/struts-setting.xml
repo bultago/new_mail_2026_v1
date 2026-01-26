@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="setting" namespace="/setting" extends="tims-default">
+		<action 	name="viewSpamRule"
+    				class="viewSpamRuleAction">
+    		<result name="success">/classic/setting/viewSpamSetting.jsp</result>
+    	</action>
+    	
+    	<action 	name="saveSpamRule"
+    				class="saveSpamRuleAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewSpamRule.do</result>
+    	</action>
+    	
+    	<action 	name="viewAutoReply"
+    				class="viewAutoReplyAction">
+    		<result name="success">/classic/setting/viewAutoReplySetting.jsp</result>
+    	</action>
+    	
+    	<action 	name="saveAutoReply"
+    				class="saveAutoReplyAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewAutoReply.do</result>
+    	</action>
+    	
+    	<action 	name="viewForward"
+    				class="viewForwardAction">
+    		<result name="success">/classic/setting/viewForwardSetting.jsp</result>
+    	</action>
+    	
+    	<action 	name="saveForward"
+    				class="saveForwardAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewForward.do</result>
+    	</action>
+    	
+    	<action 	name="deleteDefineForward"
+    				class="deleteDefineForwardAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewForward.do</result>
+    	</action>
+    	
+    	<action 	name="viewFilter"
+    				class="viewFilterAction">
+    		<result name="success">/classic/setting/viewFilterSetting.jsp</result>
+    	</action>
+    	
+    	<action 	name="saveFilter"
+    				class="saveFilterAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewFilter.do</result>
+    	</action>
+    	
+    	<action 	name="saveMailFilter"
+    				class="saveFilterAction"
+    				method="executeAjax">
+    	</action>
+    	
+    	<action 	name="modifyFilter"
+    				class="modifyFilterAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewFilter.do</result>
+    	</action>
+    	
+    	<action 	name="saveFilterApply"
+    				class="saveFilterAction" method="executeApply">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewFilter.do</result>
+    	</action>
+    	
+    	<action 	name="deleteFilter"
+    				class="deleteFilterAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewFilter.do</result>
+    	</action>
+    	
+    	<action 	name="viewExtMail"
+    				class="viewExtMailAction">
+    		<result name="success">/classic/setting/viewExtMailSetting.jsp</result>
+    	</action>
+    	
+    	<action 	name="viewExtMailPopup"
+    				class="viewExtMailAction">
+    		<result name="success">/classic/setting/viewExtMailPopup.jsp</result>
+    	</action>
+    	
+    	<action 	name="viewSelectedExtMail"
+    				class="viewSelectedExtMailAction">
+    		<result name="success">/classic/setting/getExtMail.jsp</result>
+    	</action>
+    	
+    	<action 	name="saveExtMail"
+    				class="saveExtMailAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewExtMail.do</result>
+    	</action>
+    	
+    	<action 	name="deleteExtMail"
+    				class="deleteExtMailAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewExtMail.do</result>
+    	</action>
+    	
+    	<action 	name="modifyExtMail"
+    				class="modifyExtMailAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewExtMail.do</result>
+    	</action>
+    	
+    	<action 	name="viewSign"
+    				class="viewSignAction">
+    		<result name="success">/classic/setting/viewSignSetting.jsp</result>
+    	</action>
+    	
+    	<action 	name="jsonSignList"
+    				class="viewSignAction" method="executeAjax"/>
+
+    	<action 	name="writeSignData"
+    				class="writeSignDataAction">
+    		<result name="success">/classic/setting/writeSign.jsp</result>
+    	</action>
+    	
+    	<action 	name="uploadSignImage"
+    				class="uploadSignImageAction">
+    		<result name="success">/classic/setting/uploadSignImage.jsp</result>
+    	</action>
+
+    	<action 	name="saveSignData"
+    				class="saveSignDataAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewSign.do</result>
+    	</action>
+    	
+    	<action 	name="modifySignData"
+    				class="modifySignDataAction">
+    		<result name="success">/classic/setting/writeSign.jsp</result>
+    	</action>
+    	
+    	<action 	name="updateSignData"
+    				class="updateSignDataAction" method="executeUpdate">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewSign.do</result>
+    	</action>
+    	
+    	<action 	name="deleteSignData"
+    				class="deleteSignDataAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewSign.do</result>
+    	</action>
+    	
+    	<action 	name="modifySign"
+    				class="modifySignAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewSign.do</result>
+    	</action>
+    	
+    	<action 	name="viewSetting" class="viewUserSettingAction">
+    		<result name="success">/classic/setting/viewUserSetting.jsp</result>
+    	</action>   	
+    	
+    	<action 	name="modifySetting" class="modifyUserSettingAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewSetting.do</result>
+    	</action>
+    	
+    	<action 	name="checkUserInfoAuth" class="checkUserInfoAuthAction">
+    		<result name="fail">/common/alertRedirect.jsp?url=/setting/viewUserInfoAuth.do</result>
+    		<result name="success" type="redirect">/setting/viewUserInfo.do</result>
+    	</action>
+    	
+    	<action 	name="viewUserInfoAuth" class="viewUserInfoAuthAction">
+    		<result name="success">/classic/setting/viewUserInfoCheckAuth.jsp</result>
+    	</action>
+    	
+    	<action 	name="viewZipcode" class="viewZipcodeAction">
+    		<result name="success">/classic/setting/viewZipcode.jsp</result>
+    	</action>
+    	
+    	<action 	name="viewUserInfo" class="viewUserInfoAction">
+    		<result name="success">/classic/setting/viewUserInfoSetting.jsp</result>
+    		<result name="fail">/common/alertRedirect.jsp?url=/setting/viewUserInfoAuth.do</result>
+    	</action>     	
+    	
+    	<action 	name="modifyUserInfo" class="modifyUserInfoAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewUserInfoAuth.do</result>
+    	</action>
+    	
+    	<action 	name="viewVcardInfo" class="viewVcardAction">
+    		<result name="success">/classic/setting/viewVcardSetting.jsp</result>
+    	</action> 
+    	
+    	<action 	name="modifyVcardInfo" class="modifyVcardAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewVcardInfo.do</result>
+    	</action>
+    	
+    	<action 	name="viewLayout"
+    				class="viewHomeLayoutAction">
+    		<result name="success">/classic/setting/viewLayoutSetting.jsp</result>
+    	</action>
+    	
+    	<action 	name="saveLayout" class="saveHomeLayoutAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewLayout.do</result>
+    	</action>
+    	
+    	<action		name="updateUserInfo" class="updateUserInfoAction"/>    				
+    	
+    	<action 	name="passwordChange" class="passwordChangeActionAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/</result>
+    	</action>
+    	
+    	<action 	name="viewSchedulerSetting" class="viewSchedulerAction">
+    		<result name="success">/classic/setting/viewSchedulerSetting.jsp</result>
+    	</action>
+    	
+    	<action 	name="saveSchedulerSetting" class="saveSchedulerAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewSchedulerSetting.do</result>
+    	</action>
+    	
+    	<action 	name="getJsonSchedulerShare" class="viewSchedulerShareJsonAction"></action>
+    	
+    	<action 	name="deleteSchedulerSetting" class="deleteSchedulerAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewSchedulerSetting.do</result>
+    	</action>
+    	
+    	<action 	name="uploadPicture"
+    				class="uploadPictureAction">
+    		<result name="success">/classic/setting/uploadPicture.jsp</result>
+    	</action>
+    	
+    	<action 	name="savePicture" class="savePictureAction"/>
+    	
+    	<action 	name="viewPicture" class="viewPictureAction"/>
+    	
+    	<action 	name="deletePicture" class="deletePictureAction"/>
+
+    	<action 	name="viewLastrcpt" class="viewLastrcptAction">
+    		<result name="success">/classic/setting/viewLastrcptSetting.jsp</result>
+    	</action>
+    	
+    	<action 	name="jsonLastrcpt" class="viewLastrcptAction" method="executeAjax"/>    
+    	
+    	<action 	name="deleteLastrcpt"
+    				class="deleteLastrcptAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewLastrcpt.do</result>
+    	</action>
+    	
+    	<action 	name="viewPKIUpdate" class="viewPKISignUpdateAction">
+    		<result name="success">/classic/setting/viewSignupdate.jsp</result>
+    	</action>
+    	
+    	<action 	name="updatePKISign" class="updatePKISignAction">
+    		<result name="success">/common/alertRedirect.jsp?url=/setting/viewPKIUpdate.do</result>
+    	</action>
+    	
+    	<action 	name="deleteCache" class="cacheDeleteAction"/>
+	</package>
+</struts>

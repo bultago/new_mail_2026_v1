@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terracetech.tims.webmail.Sign.mapper.SignMapper">
+
+	<select id="getSign" resultMap="signResult" parameterType="int" cacheModel="signCache">
+    	select mail_user_seq, sign_apply, sign_location from wcf_sign where mail_user_seq = #{value}
+  	</select>
+	
+	<insert id="insertSign" parameterType="sign" >
+		insert into wcf_sign (mail_user_seq, sign_apply, sign_location)
+		values (#{mailUserSeq}, #{signApply}, #{signLocation})
+	</insert>
+	
+	<update id="updateSign" parameterType="sign" >
+    	update wcf_sign
+    	<dynamic prepend=" SET ">
+    		<isNotNull property="signApply" prepend=",">
+   				sign_apply = #{signApply}
+   			</isNotNull>
+   			<isNotNull property="signLocation" prepend=",">
+   			sign_location = #{signLocation}
+   			</isNotNull>
+    	</dynamic>
+    	where mail_user_seq = #{mailUserSeq}
+  	</update>
+	
+	<delete id="deleteSign" parameterType="sign" >
+    	delete from wcf_sign where mail_user_seq = #{mailUserSeq}
+  	</delete>
+  		
+	<insert id="insertSignData" parameterType="signData">
+		<selectKey resultType="int" keyProperty="signSeq">
+			select case when max(sign_seq) is null then 1 else max(sign_seq)+1 end
+			from wcf_sign_data where mail_user_seq = #{userSeq}
+		</selectKey>
+		insert into wcf_sign_data ( sign_seq, mail_user_seq, default_sign, sign_name, sign_text, sign_img, sign_mode, sign_img_name) 
+		values ( #{signSeq}, #{userSeq}, #{defaultSign}, #{signName}, #{signText}, #{signImage:BLOB}, #{signMode}, #{signImageName})
+	</insert>
+	
+	<select id="getSignDataList" resultMap="signDataResult" parameterType="int">
+    	SELECT
+      		sign_seq, mail_user_seq, default_sign, sign_name, sign_text, sign_img, sign_mode, sign_img_name
+    	FROM wcf_sign_data
+    	WHERE 
+    		mail_user_seq=#{value}
+  	</select>
+  	
+  	<select id="getSignSimpleDataList" resultMap="signSimpleDataResult" parameterType="int">
+    	SELECT
+      		sign_seq, default_sign, sign_name
+    	FROM wcf_sign_data
+    	WHERE 
+    		mail_user_seq=#{value}
+  	</select>
+  	
+  	<select id="readSignData" parameterType="map" resultMap="signDataResult">
+  		SELECT
+      		sign_seq, mail_user_seq, default_sign, sign_name, sign_text, sign_img, sign_mode, sign_img_name
+    	FROM wcf_sign_data
+    	WHERE 
+    		mail_user_seq=#{userSeq} and sign_seq=#{signSeq}
+  	</select>
+	
+	<delete id="deleteSignData" parameterType="map" >
+		DELETE FROM wcf_sign_data WHERE mail_user_seq = #{userSeq}
+		
+		<dynamic>
+			<isNotNull property="signSeqs">
+				<iterate property="signSeqs"
+					prepend="and sign_seq"
+					open=" in ("
+					conjunction=","
+					close=")"
+				>
+					#{signSeqs[]}
+				</iterate>
+			</isNotNull>
+		</dynamic>
+	</delete>
+	
+	<update id="updateSignData" parameterType="signData" >
+		UPDATE wcf_sign_data
+  		<dynamic prepend=" SET ">
+  			<isPropertyAvailable property="signName" prepend=",">
+  				sign_name= #{signName:VARCHAR}
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="signText" prepend=",">
+  				default_sign= #{defaultSign:CHAR}
+  			</isPropertyAvailable>
+  			<isPropertyAvailable property="signText" prepend=",">
+  				sign_text= #{signText:LONG}
+  			</isPropertyAvailable>
+  			<isNotNull property="signImage" prepend=",">
+  				sign_img= #{signImage:BLOB}
+  			</isNotNull>
+  			<isPropertyAvailable property="signMode" prepend=",">
+  				sign_mode= #{signMode:VARCHAR}
+  			</isPropertyAvailable>
+  			<isNotNull property="signImageName" prepend=",">
+  				sign_img_name= #{signImageName:VARCHAR}
+  			</isNotNull>
+  		</dynamic>
+  		WHERE 
+  			mail_user_seq=#{userSeq} and sign_seq=#{signSeq}
+	</update>
+	
+	<select id="getDefaultSignData" resultMap="signDataResult" parameterType="int">
+    	SELECT
+      		sign_seq, mail_user_seq, default_sign, sign_name, sign_text, sign_img, sign_mode, sign_img_name
+    	FROM wcf_sign_data
+    	WHERE 
+    		mail_user_seq=#{value}
+    		AND default_sign='T'
+  	</select>
+  	
+  	<update id="updateCheckAllNotDefault" parameterType="int">
+  		update wcf_sign_data set default_sign = 'F' where mail_user_seq = #{value}
+  	</update>
+  
+</mapper>

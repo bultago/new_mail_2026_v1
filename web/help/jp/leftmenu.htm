@@ -1,0 +1,410 @@
+<html>
+
+<head>
+<!-- left.htm-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>::: Webmail Help :::</title>
+<style type="text/css"> 
+<!-- 
+* {font-family: "MS PGothic","Osaka", "Sans-serif"}    
+a:link  { text-decoration: none; color:#000000;}
+a:visited {  text-decoration: none; color:#000000;}
+a:active {  text-decoration: none; color:#FF4705;}     
+a:hover { text-decoration:none; color: #6699ff}	  
+.copy {color:#FFFFFF;}  
+.list{color: #222222}
+.more {color: #FF6633}
+td{color: #333333;font-size : 13px;width:100%}
+-->
+</style>
+
+
+<script language=javascript>
+function view_menu(menu)
+{
+	for( var i=1; i< 9; i++ )
+	{
+		document.getElementById('menu0'+i).style.display="none";
+	}
+
+	obj = document.getElementById(menu);
+	if (obj.style.display == "none") {
+		obj.style.display = "";
+	} else {
+		obj.style.display = "none";
+	}
+}
+</script>
+
+</head>
+
+<body text="black" link="blue" vlink="purple" alink="red">
+	<table border="0" width="150" height="100%" cellpadding="0" cellspacing="0" style="margin:0 0 0 0px;" bgcolor="#f0f0f0">
+	<tr>
+		<td valign="top" style="padding:0 0 0 2;">
+			<table border="0" width="170" cellpadding="0">
+				<tr>
+					<td>
+
+					</td>
+				</tr>
+
+			 <tr>
+				<td>
+					<table width="98%" border=0 bgcolor='#ffffff' cellspacing=1 cellpadding=2 style="margin-top:5px;">
+							<tr>
+								<td width="101" height="25">
+								  <p><img src="images/cm_arrow.gif" border="0" style="margin:0 5 0 0;"><b><a href="javascript:view_menu('menu01')">メール</a></b></p>
+								</td>
+						   </tr>
+						   <tr id="menu01" style="display:run-in ">
+							  <td width="101" height="20" align=left>
+								   <table border=0 bgcolor="#ffffff">										
+										 <tr>
+											 <td>
+												 <img src="images/cm_tree.gif" align=absmiddle><a href="m_read.htm" target="main">メールの確認</a>
+											 </td>
+										</tr>
+									   <tr>
+										   <td>
+											  <img src="images/cm_tree.gif" align=absmiddle><a href="m_write.htm" target="main">メールの作成</a>
+										   </td>
+									   </tr>
+									   <tr>
+										   <td>
+											   <img src="images/cm_tree.gif" align=absmiddle><a href="m_boxmag.htm" target="main">フォルダ管理</a>
+										   </td>
+										</tr>
+									   <tr>
+										   <td>
+											   <img src="images/cm_tree.gif" align=absmiddle><a href="m_search.htm" target="main">メールの検索</a>
+										   </td>
+										</tr>
+									   	<tr>
+											<td>
+											  <img src="images/cm_tree.gif" align=absmiddle><a href="m_tag.htm" target="main">メールのタグ</a>
+											</td>
+									   </tr>
+									   									   <tr>
+											<td>
+											  <img src="images/cm_tree1.gif" align=absmiddle><a href="m_sorting.htm" target="main">メールの自動分類</a>
+											</td>
+									   </tr>
+							</td> 
+								</table>
+							 </td>
+							</tr>
+					 </table>
+				 </td>
+			</tr>
+
+				<tr>
+					<td>
+						<table width="98%" border=0 bgcolor='#ffffff' cellspacing=1 cellpadding=2 style="margin-top:5px;">
+							<tr>
+							   <td width="101" height="25">
+									<p><img src="images/cm_arrow.gif" border="0" style="margin:0 5 0 0;"><b><a href="javascript:view_menu('menu02')">アドレス帳</a></b></p>
+								</td>
+						   </tr>
+							<tr id="menu02" style="display:none;">
+								<td width="101" height="20" align=left>
+								<table border=0 bgcolor="#ffffff">
+									<tr>
+										<td>
+										<img src="images/cm_tree.gif" align=absmiddle><a href="a_main.htm" target="main">アドレス帳</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+										<img src="images/cm_tree.gif" align=absmiddle><a href="a_group.htm" target="main">グループ管理</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+										<img src="images/cm_tree1.gif" align=absmiddle><a href="a_user.htm" target="main">メンバー管理</a>
+										</td>
+									</tr>
+									
+								</td>
+								</table>
+							</td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table width="98%" border=0 bgcolor='#ffffff' cellspacing=1 cellpadding=2 style="margin-top:5px;">
+							<tr>
+							 <td width="101" height="25">
+								  <p><img src="images/cm_arrow.gif" border="0" style="margin:0 5 0 0;"><b><a href="javascript:view_menu('menu03')">スケジューラ</a></b></p>
+							</td>
+							</tr>
+							<tr id="menu03" style="display:none;">
+							<td width="101" height="20" align=left>
+								<table border=0 bgcolor="#ffffff">
+									<tr>
+										<td>
+											<img src="images/cm_tree.gif" align=absmiddle><a href="s_mag.htm" target="main">スケジューラ管理</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img src="images/cm_tree.gif" align=absmiddle><a href="s_share.htm" target="main">予定の共有</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img src="images/cm_tree.gif" align=absmiddle><a href="s_search.htm" target="main">予定の検索</a>
+										</td>
+									</tr>
+									<!--  
+									<tr>
+										<td>
+											<img src="images/cm_tree1.gif" align=absmiddle><a href="s_outlook_sync.htm" target="main">Outlook同期化</a>
+										</td>
+									</tr>
+									 -->
+									<tr>
+										<td>
+											<img src="images/cm_tree1.gif" align=absmiddle><a href="s_reserve.htm" target="main">予約</a>
+										</td>
+									</tr>									 
+								</table>
+								
+							</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+				<td>
+					<table width="98%" border=0 bgcolor='#ffffff' cellspacing=1 cellpadding=2 style="margin-top:5px;">
+					<tr>
+					  <td width="101" height="25">
+					   <p><img src="images/cm_arrow.gif" border="0" style="margin:0 5 0 0;"><b><a href="javascript:view_menu('menu04')">ウェブフォルダ </a></b></p>
+						</td>
+					</tr>
+					<tr id="menu04" style="display:none;">
+					 <td width="101" height="20" align=left>
+					 <table border=0 bgcolor="#ffffff">
+						<tr>
+						<td>
+						<img src="images/cm_tree.gif" align=absmiddle><a href="w_user.htm" target="main">ウェブフォルダ</a>
+						</td>
+						</tr>
+						<tr>
+							<td>
+									<img src="images/cm_tree1.gif" align=absmiddle><a href="w_common.htm" target="main">パブリックフォルダ</a>
+							</td> 
+						</tr>
+					</table>
+								</td>
+				</tr>
+				</table>
+				</td>
+			</tr>
+				
+					<tr>
+				<td>
+					<table width="98%" border=0 bgcolor='#ffffff' cellspacing=1 cellpadding=2 style="margin-top:5px;">
+					<tr>
+					  <td width="101" height="25">
+					   <p><img src="images/cm_arrow.gif" border="0" style="margin:0 5 0 0;"><b><a href="javascript:view_menu('menu05')">組織図 </a></b></p>
+						</td>
+					</tr>
+					<tr id="menu05" style="display:none;">
+					 <td width="101" height="20" align=left>
+					 <table border=0 bgcolor="#ffffff">
+						<tr>
+						<td>
+						<img src="images/cm_tree.gif" align=absmiddle><a href="o_basic.htm" target="main">組織図</a>
+						</td>
+						</tr>
+						<tr>
+							<td>
+									<img src="images/cm_tree.gif" align=absmiddle><a href="o_mail.htm" target="main">メールの作成</a>
+							</td> 
+						</tr>
+						<tr>
+							<td>
+								<img src="images/cm_tree1.gif" align=absmiddle><a href="o_copytocontact.htm" target="main">アドレス帳にコピーする</a>
+							</td>
+						</tr>						
+					</table>
+								</td>
+				</tr>
+				</table>
+				</td>
+			</tr>
+				<tr>
+					<td>
+					
+						<table width="98%" border=0 bgcolor='#ffffff' cellspacing=1 cellpadding=2 style="margin-top:5px;">
+					<tr>
+					  <td width="101" height="25">
+					   <p><img src="images/cm_arrow.gif" border="0" style="margin:0 5 0 0;"><b><a href="javascript:view_menu('menu06')">環境設定 </a></b></p>
+						</td>
+					</tr>
+					<tr id="menu06" style="display:none;">
+					 <td width="101" height="20" align=left>
+					 <table border=0 bgcolor="#ffffff">
+						<tr>
+						<td>
+						<img src="images/cm_tree.gif" align=absmiddle><a href="c_basic.htm" target="main">基本環境</a>
+						</td>
+						</tr>
+						<tr>
+							<td>
+									<img src="images/cm_tree.gif" align=absmiddle><a href="c_user.htm" target="main">アカウント情報</a>
+							</td> 
+						</tr>
+						<tr>
+							<td>
+								<img src="images/cm_tree.gif" align=absmiddle><a href="c_sign.htm" target="main">署名管理</a>
+							</td> 
+						</tr>
+						<tr>
+							<td>
+								<img src="images/cm_tree.gif" align=absmiddle><a href="m_boxmag.htm" target="main">メールフォルダ管理</a>
+							</td> 
+						</tr>
+												<tr>
+							<td>
+								<img src="images/cm_tree.gif" align=absmiddle><a href="c_mailhome.htm" target="main">マイメールホーム管理</a>
+							</td> 
+						</tr>
+						<tr>
+							<td>
+									<img src="images/cm_tree.gif" align=absmiddle><a href="c_spam.htm" target="main">スパムメール管理</a>
+							</td> 
+						</tr>
+						<tr>
+							<td>
+									<img src="images/cm_tree.gif" align=absmiddle><a href="c_autocategory.htm" target="main">自動仕分け</a>
+							</td> 
+						</tr>
+						<tr>
+							<td>
+									<img src="images/cm_tree.gif" align=absmiddle><a href="c_autoforward.htm" target="main">自動転送</a>
+							</td> 
+						</tr>
+						<tr>
+							<td>
+									<img src="images/cm_tree.gif" align=absmiddle><a href="c_absent.htm" target="main">不在通知</a>
+							</td> 
+						</tr>
+						<tr>
+							<td>
+									<img src="images/cm_tree.gif" align=absmiddle><a href="c_outsidemail.htm" target="main">外部メール設定</a>
+							</td> 
+						</tr>
+						<tr>
+							<td>
+									<img src="images/cm_tree.gif" align=absmiddle><a href="c_schedule.htm" target="main">スケジューラ設定</a>
+							</td> 
+						</tr>
+						<tr>
+							<td>
+									<img src="images/cm_tree1.gif" align=absmiddle><a href="c_recently.htm" target="main">送信メールアドレス管理</a>
+							</td> 
+						</tr>
+					</table>
+								</td>
+				</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table width="98%" border=0 bgcolor='#ffffff' cellspacing=1 cellpadding=2 style="margin-top:5px;">
+						<tr>
+							<td width="101" height="25">
+								<p><img src="images/cm_arrow.gif" border="0" style="margin:0 5 0 0;"><b><a href="javascript:view_menu('menu07')">掲示板</a></b></p>
+							</td>
+						</tr>
+						<tr id="menu07" style="display:none;">
+						 <td width="101" height="20" align=left>
+										 <table border=0 bgcolor="#ffffff">
+											<tr>
+												<td>
+													<img src="images/cm_tree.gif" align=absmiddle><a href="b_read.htm" target="main">掲示物の確認</a>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													 <img src="images/cm_tree.gif" align=absmiddle><a href="b_write.htm" target="main">掲示物の作成</a>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													 <img src="images/cm_tree1.gif" align=absmiddle><a href="b_search.htm" target="main">掲示物の検索</a>
+												</td>
+											</tr>
+										</table>								
+							</td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table width="98%" border=0 bgcolor='#ffffff' cellspacing=1 cellpadding=2 style="margin-top:5px;">
+						<tr>
+							<td width="101" height="25">
+								<p><img src="images/cm_arrow.gif" border="0" style="margin:0 5 0 0;"><b><a href="javascript:view_menu('menu08')">付箋</a></b></p>
+							</td>
+						</tr>
+						<tr id="menu08" style="display:none;">
+						 <td width="101" height="20" align=left>
+										 <table border=0 bgcolor="#ffffff">
+											<tr>
+												<td>
+													<img src="images/cm_tree.gif" align=absmiddle><a href="n_read.htm" target="main">付箋確認</a>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													 <img src="images/cm_tree.gif" align=absmiddle><a href="n_write.htm" target="main">付箋作成</a>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													 <img src="images/cm_tree.gif" align=absmiddle><a href="n_etc.htm" target="main">その他の機能</a>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													 <img src="images/cm_tree1.gif" align=absmiddle><a href="n_setting.htm" target="main">付箋環境設定</a>
+												</td>
+											</tr>											
+										</table>								
+							</td>
+						</tr>
+						</table>
+					</td>
+				</tr>					
+				<tr>
+					<td>
+						<table width="98%" border=0 bgcolor='#ffffff' cellspacing=0 cellpadding=2 style="margin-top:5px;">
+						<tr id="menu08" style="display:none;">
+							 <td width="101" height="20" align=left>
+
+								</td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+
+					<td width="101" height="203">
+						<p>&nbsp;</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</body>
+
+</html>

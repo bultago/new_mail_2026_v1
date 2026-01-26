@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-6.1.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-6.1.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-6.1.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-6.1.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-6.1.xsd"
+		default-autowire="byName">
+			
+			
+	
+	<bean id="settingFilterDao"
+		class="com.terracetech.tims.webmail.setting.dao.SettingFilterDao"
+		 />
+		
+	<bean id="sgnImageDao"
+		class="com.terracetech.tims.webmail.setting.dao.SignDataDao"
+		 />
+		
+	<bean id="vcardDao"
+		class="com.terracetech.tims.webmail.setting.dao.VCardDao"
+		 />
+	
+	<bean id="settingUserEtcInfoDao"
+		class="com.terracetech.tims.webmail.setting.dao.SettingUserEtcInfoDao"
+		 />
+		
+	<bean id="settingSpamDao"
+		class="com.terracetech.tims.webmail.setting.dao.SettingSpamDao"
+		 />
+		
+	<bean id="settingForwardDao"
+		class="com.terracetech.tims.webmail.setting.dao.SettingForwardDao"
+		 />
+		
+	<bean id="settingAutoReplyDao"
+		class="com.terracetech.tims.webmail.setting.dao.SettingAutoReplyDao"
+		 />
+	
+	<bean id="lastrcptDao"
+		class="com.terracetech.tims.webmail.setting.dao.LastrcptDao"
+		 />
+		
+	<bean id="settingPop3Dao"
+		class="com.terracetech.tims.webmail.setting.dao.SettingPop3Dao"
+		 />
+	
+	<bean id="mailHomePortletDao"
+		class="com.terracetech.tims.webmail.home.dao.MailHomePortletDao"
+		 />
+		
+	<bean id="attachSettingDao"
+		class="com.terracetech.tims.webmail.setting.dao.AttachSettingDao"
+		 />
+	
+	<bean id="settingSecureDao"
+		class="com.terracetech.tims.webmail.mailuser.dao.SettingSecureDao"
+		 />
+	
+	<bean id="lastrcptManager" 
+		class="com.terracetech.tims.webmail.setting.manager.LastrcptManager">
+		<property name="dao"><ref bean="lastrcptDao" /></property>
+	</bean>
+	
+	<bean id="vcardManager" 
+		class="com.terracetech.tims.webmail.setting.manager.VCardManager">
+		<property name="dao"><ref bean="vcardDao" /></property>
+	</bean>
+	
+	<bean id="homeManager" 
+		class="com.terracetech.tims.webmail.home.manager.MailHomeManager">
+		<property name="dao"><ref bean="mailHomePortletDao" /></property>
+		<property name="etcDao"><ref bean="settingUserEtcInfoDao" /></property>
+	</bean>
+	
+	<bean id="settingManager" 
+		class="com.terracetech.tims.webmail.setting.manager.SettingManager" 
+		scope="prototype">
+		<property name="mailDomainDao"  ref="mailDomainDao"/>
+		<property name="mailUserDao"  ref="mailUserDao"/>			
+		<property name="logManager"  ref="logManager"/>
+		<property name="spamDao"  ref="settingSpamDao"/>		
+		<property name="replyDao"  ref="settingAutoReplyDao"/>				
+		<property name="forwardDao"  ref="settingForwardDao"/>
+		<property name="filterDao"  ref="settingFilterDao"/>
+		<property name="popDao"  ref="settingPop3Dao"/>
+		<property name="etcDao"  ref="settingUserEtcInfoDao"/>
+		<property name="attachDao"  ref="attachSettingDao"/>
+		<property name="systemConfigDao"  ref="systemConfigDao"/>
+		<property name="settingSecureManager"  ref="secureManager"/>
+		<property name="systemManager"  ref="systemConfigManager"/>
+	</bean>
+	
+	<bean id="signManager" 
+		class="com.terracetech.tims.webmail.setting.manager.SignManager">
+		<property name="signDao"  ref="sgnImageDao"/>
+	</bean>
+	
+	<bean id="secureManager" 
+		class="com.terracetech.tims.webmail.mailuser.manager.SettingSecureManager">
+		<property name="settingSecureDao"><ref bean="settingSecureDao" /></property>
+		<property name="mailUserDao"><ref bean="mailUserDao" /></property>
+	</bean>
+	
+	
+	
+			
+	
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+</beans></beans>

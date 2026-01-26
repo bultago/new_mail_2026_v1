@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terracetech.tims.webmail.MailAttach.mapper.MailAttachMapper">
+
+	
+	<select id="listMailAttach" resultMap="mailAttachResult" parameterType="Map" >
+    	select 
+    		FILE_NAME, FOLDER_PATH, MAIL_USER_SEQ, MESSAGE_UID, FILE_SIZE, 
+    		REGIST_TIME, EXPIRE_TIME, DOWNLOAD_COUNT, ATTACH_FLAG
+    	from MAIL_BIG_ATTACH
+    	where 
+      		MAIL_USER_SEQ = #{mailUserSeq} AND ATTACH_FLAG != 'del'      		
+  	</select>
+  	
+	<select id="selectMailAttach" resultMap="mailAttachResult" parameterType="Map" >
+    	select 
+    		FILE_NAME, FOLDER_PATH, MAIL_USER_SEQ, MESSAGE_UID, FILE_SIZE, 
+    		REGIST_TIME, EXPIRE_TIME, DOWNLOAD_COUNT, ATTACH_FLAG
+    	from MAIL_BIG_ATTACH
+    	where 
+      		MAIL_USER_SEQ = #{mailUserSeq}
+      		and MESSAGE_UID = #{messageUid} AND ATTACH_FLAG != 'del'
+  	</select>
+	
+	<insert id="insertMailAttach" parameterType="attach" >
+    	insert into MAIL_BIG_ATTACH 
+    		(
+    		FILE_NAME, FOLDER_PATH, MAIL_USER_SEQ, MESSAGE_UID, FILE_SIZE,
+      		REGIST_TIME, EXPIRE_TIME, DOWNLOAD_COUNT, ATTACH_FLAG
+      		)
+    	values 
+    		(#{fileName}, #{folderPath}, #{mailUserSeq}, #{messageUid}, #{fileSize}, 
+    		#{registTime}, #{expireTime}, #{downloadCount},#{attachFlag})
+	</insert>
+	
+	<update id="updateDeleteMailAttach" parameterType="Map" >
+    	update MAIL_BIG_ATTACH
+    		set
+      			ATTACH_FLAG = 'del'
+    		where
+      			MAIL_USER_SEQ = #{mailUserSeq:INTEGER}
+      			and MESSAGE_UID = #{messageUid:VARCHAR}
+	</update>
+	
+	<update id="updateMailAttach" parameterType="attach" >
+    	update MAIL_BIG_ATTACH
+    		set 
+    			FILE_SIZE = #{fileSize:VARCHAR},
+      			REGIST_TIME = #{registTime:VARCHAR},
+      			EXPIRE_TIME = #{expireTime:VARCHAR},
+      			DOWNLOAD_COUNT = #{downloadCount:INTEGER},
+      			ATTACH_FLAG = #{attachFlag:VARCHAR}
+    		where 
+    			FILE_NAME = #{fileName:VARCHAR}
+      			and FOLDER_PATH = #{folderPath:VARCHAR}
+      			and MAIL_USER_SEQ = #{mailUserSeq:INTEGER}
+      			and MESSAGE_UID = #{messageUid:VARCHAR}
+	</update>  
+	  
+</mapper>

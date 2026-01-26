@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans-6.1.xsd">
+
+    <!-- ============================================================ -->
+    <!-- Home Module - Spring MVC Configuration                       -->
+    <!-- Struts2 struts-mail.xml의 home 액션 변환                     -->
+    <!-- ============================================================ -->
+
+    <!-- URL Mapping: /home/*.do → Controller -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <!-- /home/view.do → mailHomeViewController -->
+                <prop key="/home/view.do">mailHomeViewController</prop>
+            </props>
+        </property>
+        <property name="order" value="100"/>
+    </bean>
+
+    <!-- View Definitions: result 이름 → JSP 경로 (Struts2 result 방식) -->
+    
+    <!-- home result → /classic/mail/home.jsp -->
+    <bean id="home" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/classic/mail/home.jsp"/>
+    </bean>
+    
+    <!-- intro result → /classic/mail/intro.jsp -->
+    <bean id="intro" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/classic/mail/intro.jsp"/>
+    </bean>
+
+</beans>
+

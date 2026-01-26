@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans-6.1.xsd">
+
+    <!-- ============================================================ -->
+    <!-- Address Module - Spring MVC Configuration                    -->
+    <!-- Struts2 struts-addr.xml 변환                                 -->
+    <!-- ============================================================ -->
+
+    <!-- URL Mapping: /addr/*.do → Controller -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <!-- Classic Address Book -->
+                <prop key="/addr/downloadAddr.do">exportAddrController</prop>
+                <prop key="/addr/uploadAddr.do">importAddrController</prop>
+                <prop key="/addr/pAddrlist.do">viewAddressMemberController</prop>
+                <prop key="/addr/pAddrAdd.do">privateAddressAddController</prop>
+                <prop key="/addr/pAddrSave.do">privateAddressSaveController</prop>
+                
+                <!-- Dynamic Address Book -->
+                <prop key="/dynamic/addr/addrCommon.do">addressCommonController</prop>
+                <prop key="/dynamic/addr/listAddress.do">viewAddressMemberListController</prop>
+                <prop key="/dynamic/addr/addAddress.do">privateAddressAddController</prop>
+                <prop key="/dynamic/addr/sharedBookList.do">viewSharedAddressBookListController</prop>
+                <prop key="/dynamic/addr/viewAddress.do">viewAddressMemberController</prop>
+                <prop key="/dynamic/addr/readerList.do">viewReaderListController</prop>
+                <prop key="/dynamic/addr/moderatorList.do">viewModeratorListController</prop>
+                
+                <!-- Address Book Popup -->
+                <prop key="/dynamic/addr/addrPopup.do">addressPopupController</prop>
+                <prop key="/dynamic/addr/addrPopupList.do">viewAddressMemberListController</prop>
+                <prop key="/dynamic/addr/sharePopupTree.do">viewSharedAddressBookListController</prop>
+                
+                <!-- Add from Mail -->
+                <prop key="/dynamic/addr/addPrivateFromMail.do">privateAddressAddFromMailController</prop>
+            </props>
+        </property>
+        <property name="order" value="102"/>
+    </bean>
+
+    <!-- View Definitions: result 이름 → JSP 경로 -->
+    
+    <!-- Classic Address Book Views -->
+    <bean id="addrUploadSuccess" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/classic/addrbook/uploadResult.jsp"/>
+    </bean>
+    <bean id="addrListClassic" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/classic/addrbook/list.jsp"/>
+    </bean>
+    <bean id="addrWriteClassic" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/classic/addrbook/write.jsp"/>
+    </bean>
+    
+    <!-- Dynamic Address Book Views -->
+    <bean id="load" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrFrame.jsp"/>
+    </bean>
+    <bean id="japan" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrList_forJP.jsp"/>
+    </bean>
+    <bean id="tab" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrListWithTab.jsp"/>
+    </bean>
+    <bean id="print" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrPrintList.jsp"/>
+    </bean>
+    <bean id="addrList" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrList.jsp"/>
+    </bean>
+    <bean id="addrWrite" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrWrite.jsp"/>
+    </bean>
+    <bean id="sharedBookList" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/sharedBookList.jsp"/>
+    </bean>
+    <bean id="addrView" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrView.jsp"/>
+    </bean>
+    <bean id="addrViewTab" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrViewWithTab.jsp"/>
+    </bean>
+    <bean id="addrReader" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrReader.jsp"/>
+    </bean>
+    <bean id="addrModerator" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrModerator.jsp"/>
+    </bean>
+    
+    <!-- Address Popup Views -->
+    <bean id="addrPopupFrame" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrPopupFrame.jsp"/>
+    </bean>
+    <bean id="addrPopupList" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/addrPopupList.jsp"/>
+    </bean>
+    <bean id="sharePopupTree" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/dynamic/addr/sharePopupTree.jsp"/>
+    </bean>
+    
+    <!-- Common Result Views -->
+    <bean id="paidError" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/common/paidError.jsp"/>
+    </bean>
+
+</beans>
+

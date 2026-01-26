@@ -1,0 +1,944 @@
+﻿<html>
+<head>
+<!-- main.htm -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>::: Webmail Help :::</title>
+<link href="css/onlinehelpstyle.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+body {
+ 	scrollbar-face-color:#f6f6f6;
+	scrollbar-shadow-color:#aeaeae;
+	scrollbar-highlight-color:#aeaeae;
+	scrollbar-3dlight-color:#f6f6f6;
+	scrollbar-darkshadow-color:#f6f6f6;
+	scrollbar-track-color:#f6f6f6;
+	scrollbar-arrow-color:#aeaeae;
+}
+</style>
+</head>
+
+<body class="body"><a name="top"></a>
+<table width="544">
+<tr>
+	<td class="TABLE_TITLE1" height="30">&nbsp;<img src="images/cm_arrow1.gif" align="absmiddle" border="0"> 주소록 </td>
+</tr>
+<tr>
+	<td class="TABLE_TITLE2"><img src="images/cm_arrow3.gif" width="3" height="5" align="absmiddle"><a href="a_main.htm#a_main_1" class="link1"> 주소록 사용 권한</a></td>
+</tr>
+<tr>
+	<td class="TABLE_TITLE2"><img src="images/cm_arrow3.gif" width="3" height="5" align="absmiddle"> <a href="a_main.htm#a_main_2" class="link1">주소록 검색</a> </td>
+</tr>
+<tr>
+	<td class="TABLE_TITLE2"><img src="images/cm_arrow3.gif" width="3" height="5" align="absmiddle"> <a href="a_main.htm#a_main_3" class="link1">주소록에서 메일 보내기</a></td>
+</tr>
+<tr>
+	<td class="TABLE_TITLE2"><img src="images/cm_arrow3.gif" width="3" height="5" align="absmiddle"> <a href="a_main.htm#a_main_4" class="link1">주소록 가져오기/내보내기</a></td>
+</tr>
+<tr>
+	<td>
+		<p>&nbsp;</p>
+	</td>
+</tr>
+</table>
+<table width="537" class="TABLE_TEXT1">
+<tr>
+	<td><div align="justify">
+		<p>주소록에서는 사용자의 메일 주소 및 부가 정보를 개인 또는 회사공용으로 관리할 수 있습니다. 주소록은 다음과 같이 구성되어 있습니다.</p>
+		<ul>
+			<li>개인 주소록 - 사용자가 개인적으로 주소를 관리하는 주소록입니다. </li>
+			<li>공용 주소록 - 여러 사람이 공유하여 사용하는 주소록입니다. 공용 주소록은 사용권한에 따라 주소록을 관리하거나 조회할 수 있습니다. </li>
+		</ul>
+	</div></td>
+</tr>
+<tr>
+	<td><p>&nbsp;</p></td>
+</tr>
+</table>
+
+<table width="534" height="31" cellpadding="0" cellspacing="0" style="background:url(images/cm_title3.gif) no-repeat; margin:0 0 0 5;">
+<tr><a name="a_main_1"></a>
+	<td class="TABLE_TITLE3">주소록 사용 권한</td>
+	<td class="TABLE_PRINT" align="right"><a href="javascript:this.print();"><img src="images/cm_print.gif" align="absmiddle" border="0"></a></td>
+</tr>
+</table>
+
+<table width="537" class="TABLE_TEXT1">
+<tr>
+	<td valign="top"><div align="justify">
+		<p>공용주소록은 권한에 따라 공용 주소록을 관리하고, 조정자 또는 조회자를 지정할 수 있습니다.</p>
+		<p>다음은 각 권한에 따라 수행할 수 있는 기능에 대해 설명합니다. </p>
+		<table width="520" border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" class="TABLE_TEXT1">
+			<tr class="TABLE_ROW">
+				<td width="13%"> 권 한 </td>
+				<td width="74%"> 설 명 </td>
+			</tr>
+			<tr>
+				<td class="TABLE_COLUMN">생성자</td>
+				<td>
+					<ul class="TABLE_LIST">
+						<li>공용주소록의 주소록을 생성할 수 있으며,  자신이 추가한 주소록을 수정 및 삭제할 수 있습니다. </li>
+						<li>주소록의 그룹 및 구성원을 추가, 수정, 삭제할 수 있습니다. </li>
+						<li>공용 주소록의 조정자와 조회자를 지정할 수 있습니다. </li>
+					</ul>
+					<p class="BODY_NOTICE"><b>[참고]</b><br>
+					생성자 권한 추가는 웹 어드민의<b> [서비스관리 &gt; 도메인 목록]</b>에서 <b>[해당 도메인 클릭 &gt; 주소록관리 &gt; 생성자관리]</b>에서 추가합니다.</p></td>
+				</tr>
+				<tr>
+				<td class="TABLE_COLUMN"> 조정자 </td>
+				<td>
+					<ul class="TABLE_LIST">
+						<li> 권한이 부여된 주소록의 그룹과 구성원을 추가, 수정, 삭제할 수 있습니다.</li>
+						<li>권한이 부여된 주소록의 조정자와 조회자를 지정할 수 있습니다. </li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td class="TABLE_COLUMN"> 조회자 </td>
+				<td>
+					<ul class="TABLE_LIST">
+						<li>권한이 부여된 주소록을 조회할 수 있습니다. </li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<p>&nbsp;</p>
+	</div></td>
+</tr>
+<tr>
+	<td height="50" valign="top">
+		<p align="right"><a href="a_main.htm#top" class="LINK"><img src="images/cm_totop.gif" width="50" height="21" border="0" align="top"></a>&nbsp;</p>
+	</td>
+</tr>
+</table>
+<table width="534" height="31" cellpadding="0" cellspacing="0" style="background:url(images/cm_title3.gif) no-repeat; margin:0 0 0 5;">
+<tr><a name="a_main_2"></a>
+	<td class="TABLE_TITLE3">주소록 검색</td>
+	<td class="TABLE_PRINT" align="right"><a href="javascript:this.print();"><img src="images/cm_print.gif" align="absmiddle" border="0"></a></td>
+</tr>
+</table>
+<table width="540" class="TABLE_TEXT1">
+<tr>
+	<td valign="top"><div align="justify">
+		<p>개인 주소록과 공용 주소록에 있는 구성원을 검색할 수 있습니다. </p>
+		<ol>
+			<li><b>[주소록]</b>메뉴 화면의 우측 상단에서 검색란에 <b>검색조건</b>을 선택합니다.
+				<ul>
+					<li> 이름, 이메일, 이동전화, 회사명, 전화 </li>
+				</ul>
+			</li>
+			<li>검색어를 입력한 후, <b>검색</b>버튼을 클릭합니다.</li>
+		</ol>
+	</div></td>
+</tr>
+<tr>
+	<td height="50" valign="top">
+		<p align="right"><a href="a_main.htm#top" class="LINK"><img src="images/cm_totop.gif" width="50" height="21" border="0" align="top"></a>&nbsp;</p>
+	</td>
+</tr>
+</table>
+<table width="534" height="31" cellpadding="0" cellspacing="0" style="background:url(images/cm_title3.gif) no-repeat; margin:0 0 0 5;">
+	<tr><a name="a_main_3"></a>
+		<td class="TABLE_TITLE3">주소록에서 메일 보내기</td>
+		<td class="TABLE_PRINT" align="right"><a href="javascript:this.print();"><img src="images/cm_print.gif" align="absmiddle" border="0"></a></td>
+	</tr>
+</table>
+<table width="540" class="TABLE_TEXT1">
+<tr>
+	<td valign="top"><div align="justify">
+		<p>주소록에 있는 구성원에게 개인 또는 그룹 전체로 메일을 발송할 수 있습니다.</p>
+		<ol>
+			<li><b>[주소록]</b>메뉴에서 해당 주소록으로 이동합니다.</li>
+			<li>구성원 목록에서 메일을 전송할 구성원 또는 그룹을 클릭합니다.</li>
+			<li>툴바의 <b>기본기능</b> 탭에서 <b>메일전송</b> 또는 <b>전체 메일전송</b>을 클릭합니다.</li>
+			<li>메일 쓰기 화면이 나타납니다.</li>
+			<li>메일 작성 후, <b>보내기</b>버튼을 클릭하여 메일을 전송합니다.</li>
+		</ol>
+	</div></td>
+</tr>
+<tr>
+	<td height="50" valign="top">
+		<p align="right"><a href="a_main.htm#top" class="LINK"><img src="images/cm_totop.gif" width="50" height="21" border="0" align="top"></a>&nbsp;</p>
+	</td>
+</tr>
+</table>
+<table width="534" height="31" cellpadding="0" cellspacing="0" style="background:url(images/cm_title3.gif) no-repeat; margin:0 0 0 5;">
+	<tr><a name="a_main_4"></a>
+		<td class="TABLE_TITLE3">주소록 가져오기 / 내보내기 </td>
+		<td class="TABLE_PRINT" align="right"><a href="javascript:this.print();"><img src="images/cm_print.gif" align="absmiddle" border="0"></a></td>
+	</tr>
+</table>
+<table width="540" class="TABLE_TEXT1">
+<tr>
+	<td valign="top"><div align="justify">
+		<p>외부에 있는 주소록을 Terrace Mail Suite 웹메일 주소록에 가져오거나 웹메일 주소록에 있는 주소 정보를 CSV파일로 다운로드할 수 있습니다.</p>
+		<p class="BODY_TITLE4">주소록 가져오기</p>
+		<p class="BODY_TEXT1">사용자의 로컬 PC에 있는 주소록 파일을 가져옵니다. 웹메일의 주소록에 가져올 수 있는 파일은 MS Outlook Express 또는 MS Outlook에서 지원하는 CSV 파일만 가능합니다.</p>
+		<p class="BODY_NOTICE">
+			<b>[참고]</b><br>주소록 목록을 CSV 파일로 작성하는 방법은 
+			<a href="a_main.htm#csv_contacts">CSV파일작성방법_주소록</a> 부분을 참조하십시오.</p><br>
+		
+		<p class="BODY_TEXT1">외부 주소록을 가져오는 방법은 다음과 같습니다.</p>
+		<ol>
+			<li><b>[주소록]</b> 메뉴의 그룹 목록에서 주소록을 업로드할 그룹을 클릭합니다.</li>
+			<li>툴바의 <b>부가기능</b>탭에서 <b>가져오기</b>를 클릭합니다.</li>
+			<li><b>주소록 가져오기</b> 창이 나타납니다.
+				<ul>
+					<li>CSV - <b>찾아보기</b>를 클릭하여 로컬 PC에 있는 CSV 주소록 파일을 선택합니다. </li>
+					<li>Client - 주소록을 저장한 메일 클라이언트를 선택합니다. 메일 클라이언트에 따라 주소록 필드 매핑 순서가 결정됩니다.
+						<ul type="circle" style="margin-top:0;margin-bottom:0">
+							<li>TMS, Outlook Express, Outlook</li>
+						</ul>
+					</li>
+					<li>인코딩 - 인코딩 방식을 선택합니다.
+						<ul type="circle" style="margin-top:0;margin-bottom:0">
+							<li>euc-kr, shift-jis, utf-8</li>
+						</ul>
+					</li>
+					<li>현재그룹 - 주소록을 업로드할 주소록의 그룹을 선택합니다.</li>
+				</ul>
+			</li>
+			<li>저장하려는 로컬 PC 경로를 지정한 후,<b> 확인</b>버튼을 클릭합니다. </li>
+		</ol>
+		<p class="BODY_TITLE4">주소록 내보내기</p>
+		<p class="BODY_TEXT1">웹메일에 있는 주소록을 사용자 로컬 PC로 다운로드하는 방법은 다음과 같습니다.</p>
+		<ol>
+			<li><b>[주소록]</b> 메뉴에서 주소록을 내보낼 그룹을 선택합니다.</li>
+			<li>툴바의 <b>부가기능</b>탭에서 <b>내보내기</b>를 클릭합니다.
+				<ul>
+					<li>Client - 주소록을 저장할 메일 클라이언트를 선택합니다. 메일 클라이언트에 따라 주소록 포맷이 결정됩니다.
+						<ul type="circle" style="margin-top:0;margin-bottom:0">
+							<li>TMS, Outlook Express, Outlook</li>
+						</ul>
+					</li>
+					<li>인코딩 - 인코딩 방식을 선택합니다.
+						<ul type="circle" style="margin-top:0;margin-bottom:0">
+							<li>euc-kr, shift-jis, utf-8</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<p class="BODY_NOTICE">
+			<b>[참조]</b><br>
+			주소록 포맷은 <a href="a_main.htm#csv_format">메일 클라이언트 별 주소록 포맷</a> 부분을 참조하십시오.</p><br>
+			<li><b>확인</b>을 클릭합니다. </li>
+			<li>다운로드 할 로컬 PC의 경로를 선택한 후, <b>저장</b>을 클릭합니다. </li>
+		</ol>
+		<p>&nbsp;</p>
+	</div></td>
+</tr>
+<tr>
+	<td height="50" valign="top">
+		<p align="right"><a href="a_main.htm#top" class="LINK"><img src="images/cm_totop.gif" width="50" height="21" border="0" align="top"></a>&nbsp;</p>
+	</td>
+</tr>
+</table>
+<table width="534" height="31" cellpadding="0" cellspacing="0" style="background:url(images/cm_title3.gif) no-repeat; margin:0 0 0 5;">
+	<tr><a name="csv_contacts"></a>
+		<td class="TABLE_TITLE3">CSV파일 작성 방법 - 주소록 </td>
+		<td class="TABLE_PRINT" align="right"><a href="javascript:this.print();"><img src="images/cm_print.gif" align="absmiddle" border="0"></a></td>
+	</tr>
+</table>
+<table width="555" class="TABLE_TEXT1">
+<tr>
+	<td width="540" valign="top"><div align="justify">
+		<p>주소록 정보를 CSV파일로 업로드하기 위해서는 다음과 같이 주소록 CSV파일을 작성합니다. </p>
+		<p><b>[CSV파일 작성 예]</b></p>
+		<table width="300" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" class="TABLE_TEXT1">
+			<tr bgcolor="#EEF1FF">
+				<td><div align="center">항목</div></td>
+				<td><div align="center">예시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">표시*</div></td>
+				<td><div align="center">김다우</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">이름</div></td>
+				<td><div align="center">다우</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">성</div></td>
+				<td><div align="center">김</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">중간 이름</div></td>
+				<td><div align="center">&nbsp;</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">애칭</div></td>
+				<td><div align="center">Daou</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">이메일*</div></td>
+				<td><div align="center">test@daou.co.kr</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">이동전화</div></td>
+				<td><div align="center">010…</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">나머지 주소(집)</div></td>
+				<td><div align="center">23-7</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">구/군/시(집)</div></td>
+				<td><div align="center">수지구 죽전동</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">우편번호(집)</div></td>
+				<td><div align="center">448-160</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">시/도(집)</div></td>
+				<td><div align="center">경기도 용인시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">국가/지역(집)</div></td>
+				<td><div align="center">한국</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">전화(집)</div></td>
+				<td><div align="center">100</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">홈페이지 (집)</div></td>
+				<td><div align="center">www.daou.co.kr</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">나머지 주소(회사)</div></td>
+				<td><div align="center">23-7</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">구/군/시(회사)</div></td>
+				<td><div align="center">수지구 죽전동</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">우편번호(회사)</div></td>
+				<td><div align="center">448-160</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">시/도(회사)</div></td>
+				<td><div align="center">경기도 용인시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">국가/지역(회사)</div></td>
+				<td><div align="center">한국</div></td>
+			</tr>	
+			<tr>
+				<td><div align="center">전화(회사)</div></td>
+				<td><div align="center">200</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">회사명</div></td>
+				<td><div align="center">㈜다우기술</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">직위</div></td>
+				<td><div align="center">대리</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">부서명</div></td>
+				<td><div align="center">기획부</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">홈페이지(회사)</div></td>
+				<td><div align="center">www.daou.com</div></td>
+			</tr>	
+			<tr>
+				<td><div align="center">팩스(회사)</div></td>
+				<td><div align="center">300</div></td>
+			</tr>																																
+		</table>
+		<ul>
+			<li><b>표시</b>와 <b>이메일은</b>은 필수 입력 항목입니다.</li>
+		</ul>
+		<p><b>- MS Outlook 주소록 사용</b>
+		<br>MS Outlook에서 주소록을 내보내기 하여 웹 메일에서 사용할 수 있습니다. MS Outlook에서 주소록을 내보내기 하는 방법은 다음과 같습니다. </p>
+		<ol style="margin-top:0;margin-bottom:0">
+			<li>MS Outlook을 실행합니다.</li>
+			<li><b>[파일 > 가져오기/내보내기]</b> 메뉴를 클릭합니다.</li>
+			<li><b>가져오기/내보내기 마법사</b>에서 <b>내보내기 – 파일</b>을 선택한 후, <b>다음</b>을 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_outlook_ex_1.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>쉼표로 구분된 값</b>을 선택한 후, <b>다음</b>을 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_outlook_ex_2.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>연락처</b>를 선택한 후, <b>다음</b>을 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_outlook_ex_3.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>찾아보기</b>를 클릭하여 파일 저장위치를 선택한 후 <b>다음</b>을 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_outlook_ex_4.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>사용자 지정 필드 매핑</b>을 클릭합니다. <b>사용자 지정 필드 매핑</b>창이 팝업으로 나타납니다. <br><img align="center" width="320" height="200" src="images/contact/mail_outlook_ex_5.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>사용자 지정 필드 매핑</b>창에서 내보내기에 포함하려는 필드를 드래그 앤 드롭(Drag&Drop)하여 왼쪽에서 오른쪽으로 이동합니다. 필드 매핑에서 항목을 제거하려면 오른쪽에서 왼쪽으로 드래그 앤 드롭합니다. <br><img align="center" width="320" height="200" src="images/contact/mail_outlook_ex_6.gif" align="absmiddle" border="0"><br>
+				<br></br><b>사용자 지정 필드 매핑</b>창에서 오른쪽 대상에 있는 필드를 아래에 있는 순서대로 구성합니다. 
+				<ul style="margin-top:0">
+					<li>이름, 성, 전자 메일 주소, 집 번지, 집 주소 구/군/시, 집 주소 우편 번호, 집 주소 시/도, 집 주소 국가/지역, 집 전화 번호, 휴대폰, 근무지 주소 번지, 근무지 구/군/시, 근무지 우편 번호, 근무지 시/도, 근무지 국가/지역, 근무처 전화, 회사, 직함, 부서</li>
+				</ul>
+				<br></br>
+				MS Outlook에서 가져온 주소록은 아래와 같이 매핑되어 웹 메일의 주소록에 입력됩니다.
+				<table width="320" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" class="TABLE_TEXT1">
+					<tr bgcolor="#EEF1FF">
+						<td width="50%"><div align="center">MS Outlook</div></td>
+						<td><div align="center">TMS 웹 메일</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">표시*</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">이름</div></td>
+						<td><div align="center">이름</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">성</div></td>
+						<td><div align="center">성</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">중간 이름</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">애칭</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">전자 메일 주소</div></td>
+						<td><div align="center">이메일*</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">휴대폰</div></td>
+						<td><div align="center">이동전화</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">집 번지</div></td>
+						<td><div align="center">나머지 주소(집)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">집 주소 구/군/시</div></td>
+						<td><div align="center">구/군/시(집)</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">집 주소 우편 번호</div></td>
+						<td><div align="center">우편번호(집)</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">집 주소 시/도</div></td>
+						<td><div align="center">시/도(집)</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">집 주소 국가/지역</div></td>
+						<td><div align="center">국가/지역(집)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">집 전화 번호</div></td>
+						<td><div align="center">전화(집)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">홈페이지(집)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">근무지 주소 번지</div></td>
+						<td><div align="center">나머지 주소(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">근무지 구/군/시</div></td>
+						<td><div align="center">구/군/시(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">근무지 우편 번호</div></td>
+						<td><div align="center">우편번호(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">근무지 시/도</div></td>
+						<td><div align="center">시/도(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">근무지 국가/지역</div></td>
+						<td><div align="center">국가/지역(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">근무처 전화</div></td>
+						<td><div align="center">전화(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">회사</div></td>
+						<td><div align="center">회사명</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">직함</div></td>
+						<td><div align="center">직위</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">부서</div></td>
+						<td><div align="center">부서명</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">홈페이지(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">팩스(회사)</div></td>
+					</tr>																												
+				</table>
+				<ul>
+					<li>MS Outlook의 주소록을 가져오기 할 경우 <b>이름</b>과 <b>성</b>이 조합되어 웹 메일의 <b>표시명</b>으로 자동 입력됩니다. </li>
+				</ul>
+				<br></br>					
+			</li>
+			<li>필드 지정이 완료되면 <b>확인</b>을 클릭합니다.</li>
+			<li><b>마침</b>을 클릭합니다.</li>
+		</ol>
+		
+		<p><b>- MS Outlook Express 주소록 사용</b>
+		<br>MS Outlook Express에서 주소록을 내보내기 하여 웹 메일에서 사용할 수 있습니다. MS Outlook Express에서 주소록을 내보내기 하는 방법은 다음과 같습니다.</p>
+		<ol style="margin-top:0;margin-bottom:0">
+			<li>MS Outlook Express를 실행합니다.</li>
+			<li><b>[파일 > 내보내기 > 주소록]</b> 메뉴를 클릭합니다.</li>
+			<li><b>주소록 내보내기 도구</b>에서 내보낼 파일 형식을 Text File로 선택한 후 <b>내보내기</b>를 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_express_ex_1.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>찾아보기</b>를 클릭하여 파일 저장위치를 선택한 후 <b>다음</b>을 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_express_ex_2.gif" align="absmiddle" border="0"><br></br></li>
+			<li>내보내기에 포함하려는 필드를 체크합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_express_ex_3.gif" align="absmiddle" border="0"><br>
+				<br></br>
+				<b>내보낼 필드 선택</b>창에서 <b>필드</b>를 아래에 있는 순서대로 체크합니다. 
+				<ul style="margin-top:0">
+					<li>전체 이름, 전자 메일 주소, 주소(집), 구/군/시(집), 우편 번호(집), 시/도(집), 국가(집), 집 전화, 휴대폰, 주소(회사), 구/군/시(회사), 우편번호(회사), 시/도(회사), 국가(회사), 회사 전화, 회사, 직함, 부서</li>
+				</ul>
+				<br></br>
+				MS Outlook Express에서 가져온 주소록은 아래와 같이 매핑되어 웹 메일의 주소록에 입력됩니다.
+				<table width="300" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" class="TABLE_TEXT1">
+					<tr bgcolor="#EEF1FF">
+						<td width="50%"><div align="center">MS Outlook Express</div></td>
+						<td><div align="center">TMS 웹 메일</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">전체 이름</div></td>
+						<td><div align="center">표시*</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">이름</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">성</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">중간 이름</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">애칭</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">전자 메일 주소</div></td>
+						<td><div align="center">이메일*</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">휴대폰</div></td>
+						<td><div align="center">이동전화</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">주소(집)</div></td>
+						<td><div align="center">나머지 주소(집)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">구/군/시(집)</div></td>
+						<td><div align="center">구/군/시(집)</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">우편번호(집)</div></td>
+						<td><div align="center">우편번호(집)</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">시/도(집)</div></td>
+						<td><div align="center">시/도(집)</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">국가(집)</div></td>
+						<td><div align="center">국가/지역(집)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">집 전화</div></td>
+						<td><div align="center">전화(집)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">홈페이지(집)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">주소(회사)</div></td>
+						<td><div align="center">나머지 주소(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">구/군/시(회사)</div></td>
+						<td><div align="center">구/군/시(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">우편번호(회사)</div></td>
+						<td><div align="center">우편번호(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">시/도(회사)</div></td>
+						<td><div align="center">시/도(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">국가(회사)</div></td>
+						<td><div align="center">국가/지역(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">회사 전화</div></td>
+						<td><div align="center">전화(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">회사</div></td>
+						<td><div align="center">회사명</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">직함</div></td>
+						<td><div align="center">직위</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">부서</div></td>
+						<td><div align="center">부서명</div></td>
+					</tr>	
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">홈페이지(회사)</div></td>
+					</tr>
+					<tr>
+						<td><div align="center">&nbsp;</div></td>
+						<td><div align="center">팩스(회사)</div></td>
+					</tr>																												
+				</table>
+				<br></br>				
+			</li>
+			<li>필드 지정이 완료되면 <b>마침</b>을 클릭합니다.</li>
+		</ol>
+	</div></td>
+</tr>
+<tr>
+	<td height="50" valign="top">
+		<p align="right"><a href="s_organ.htm#top" class="LINK"><img src="images/cm_totop.gif" width="50" height="21" border="0" align="top"></a>&nbsp;</p>
+	</td>
+</tr>
+</table>
+<table width="534" height="31" cellpadding="0" cellspacing="0" style="background:url(images/cm_title3.gif) no-repeat; margin:0 0 0 5;">
+	<tr><a name="csv_format"></a>
+		<td class="TABLE_TITLE3">메일 클라이언트 별 주소록 포맷 </td>
+		<td class="TABLE_PRINT" align="right"><a href="javascript:this.print();"><img src="images/cm_print.gif" align="absmiddle" border="0"></a></td>
+	</tr>
+</table>
+<table width="555" class="TABLE_TEXT1">
+<tr>
+	<td width="540" valign="top"><div align="justify">
+		<p>웹 메일에 있는 주소록을 내보낼 때 메일 클라이언트를 선택합니다. 해당 메일 클라이언트의 주소록 형식에 맞게 CSV 파일이 생성됩니다. 아래는 메일 클라이언트 별 CSV 파일 포맷입니다. </p>
+		<p><b>[TMS 형식]</b></p>
+		<table width="300" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" class="TABLE_TEXT1">
+			<tr bgcolor="#EEF1FF">
+				<td><div align="center">항목</div></td>
+				<td><div align="center">예시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">표시명</div></td>
+				<td><div align="center">김다우</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">전체 이름</div></td>
+				<td><div align="center">다우</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">성</div></td>
+				<td><div align="center">김</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">중간 이름</div></td>
+				<td><div align="center">&nbsp;</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">애칭</div></td>
+				<td><div align="center">Daou</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">전자 메일 주소</div></td>
+				<td><div align="center">test@daou.co.kr</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">휴대폰</div></td>
+				<td><div align="center">010…</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">주소(집)</div></td>
+				<td><div align="center">23-7</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">구군시(집)</div></td>
+				<td><div align="center">수지구 죽전동</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">우편번호(집)</div></td>
+				<td><div align="center">448-160</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">시/도(집)</div></td>
+				<td><div align="center">경기도 용인시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">국가(집)</div></td>
+				<td><div align="center">한국</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">집 전화</div></td>
+				<td><div align="center">100</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">개인 웹 페이지</div></td>
+				<td><div align="center">www.daou.co.kr</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">주소(회사)</div></td>
+				<td><div align="center">23-7</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">구/군/시(회사)</div></td>
+				<td><div align="center">수지구 죽전동</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">우편 번호(회사)</div></td>
+				<td><div align="center">448-160</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">시/도(회사)</div></td>
+				<td><div align="center">경기도 용인시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">국가(회사)</div></td>
+				<td><div align="center">한국</div></td>
+			</tr>	
+			<tr>
+				<td><div align="center">회사 전화</div></td>
+				<td><div align="center">200</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">회사</div></td>
+				<td><div align="center">㈜다우기술</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">직함</div></td>
+				<td><div align="center">대리</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">부서</div></td>
+				<td><div align="center">기획부</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">회사 웹 페이지</div></td>
+				<td><div align="center">www.daou.com</div></td>
+			</tr>	
+			<tr>
+				<td><div align="center">회사 팩스</div></td>
+				<td><div align="center">300</div></td>
+			</tr>																																
+		</table>
+
+		<p><b>[MS Outlook 형식]</b></p>
+		<table width="300" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" class="TABLE_TEXT1">
+			<tr bgcolor="#EEF1FF">
+				<td><div align="center">항목</div></td>
+				<td><div align="center">예시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">이름</div></td>
+				<td><div align="center">다우</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">성</div></td>
+				<td><div align="center">김</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">전자 메일 주소</div></td>
+				<td><div align="center">test@daou.co.kr</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">집 번지</div></td>
+				<td><div align="center">23-7</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">집 주소 구/군/시</div></td>
+				<td><div align="center">수지구 죽전동</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">집 주소 우편 번호</div></td>
+				<td><div align="center">448-160</div></td>
+			</tr>		
+			<tr>
+				<td><div align="center">집 주소 시/도</div></td>
+				<td><div align="center">경기도 용인시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">집 주소 국가/지역</div></td>
+				<td><div align="center">한국</div></td>
+			</tr>			
+			<tr>
+				<td><div align="center">집 전화 번호</div></td>
+				<td><div align="center">100</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">휴대폰</div></td>
+				<td><div align="center">010…</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">근무지 주소 번지</div></td>
+				<td><div align="center">23-7</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">근무지 구/군/시</div></td>
+				<td><div align="center">수지구 죽전동</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">근무지 우편 번호</div></td>
+				<td><div align="center">448-160</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">근무지 시/도</div></td>
+				<td><div align="center">경기도 용인시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">근무지 국가/지역</div></td>
+				<td><div align="center">한국</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">근무처 전화</div></td>
+				<td><div align="center">200</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">회사</div></td>
+				<td><div align="center">㈜다우기술</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">직함</div></td>
+				<td><div align="center">대리</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">부서</div></td>
+				<td><div align="center">기획부</div></td>
+			</tr>																															
+		</table>
+
+		<p><b>[MS Outlook Express형식]</b></p>
+		<table width="300" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" class="TABLE_TEXT1">
+			<tr bgcolor="#EEF1FF">
+				<td><div align="center">항목</div></td>
+				<td><div align="center">예시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">전체 이름</div></td>
+				<td><div align="center">김다우</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">전자 메일 주소</div></td>
+				<td><div align="center">test@daou.co.kr</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">주소(집)</div></td>
+				<td><div align="center">23-7</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">구군시(집)</div></td>
+				<td><div align="center">수지구 죽전동</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">우편번호(집)</div></td>
+				<td><div align="center">448-160</div></td>
+			</tr>		
+			<tr>
+				<td><div align="center">시/도(집)</div></td>
+				<td><div align="center">경기도 용인시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">국가(집)</div></td>
+				<td><div align="center">한국</div></td>
+			</tr>			
+			<tr>
+				<td><div align="center">집 전화</div></td>
+				<td><div align="center">100</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">휴대폰</div></td>
+				<td><div align="center">010…</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">주소(회사)</div></td>
+				<td><div align="center">23-7</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">구/군/시(회사)</div></td>
+				<td><div align="center">수지구 죽전동</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">우편번호(회사)</div></td>
+				<td><div align="center">448-160</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">시/도(회사)</div></td>
+				<td><div align="center">경기도 용인시</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">국가(회사)</div></td>
+				<td><div align="center">한국</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">회사 전화</div></td>
+				<td><div align="center">200</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">회사</div></td>
+				<td><div align="center">㈜다우기술</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">직함</div></td>
+				<td><div align="center">대리</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">부서</div></td>
+				<td><div align="center">기획부</div></td>
+			</tr>																															
+		</table>		
+		<ul>
+			<li>선택한 메일 클라이언트 주소록 형식에 없는 필드는 내보내기 되지 않습니다.<br>
+			(예) 웹메일 주소록에서 <b>개인 웹 페이지</b>를 입력해도, 주소록 내보내기 시에 메일 클라이언트를 MS Outlook을 선택할 경우 <b>개인 웹 페이지</b> 필드는 CSV 파일에 출력되지 않습니다.
+			</li>
+		</ul>
+		
+		<p><b>- MS Outlook에 주소록 가져오기</b>
+		<br>웹 메일에 있는 주소록을 내보내기 하여 MS Outlook에서 사용할 수 있습니다. MS Outlook에서 주소록을 가져오기 하는 방법은 다음과 같습니다.</p>
+		<ol style="margin-top:0;margin-bottom:0">
+			<li>웹 메일의 주소록을 내보내기 합니다. 주소록 내보내기시 Client를 Outlook으로 선택합니다.</li>
+			<li>MS Outlook을 실행합니다.</li>
+			<li><b>[파일 > 가져오기/내보내기]</b> 메뉴를 클릭합니다.</li>
+			<li><b>가져오기/내보내기 마법사</b>에서 <b>가져오기 – 다른 프로그램이나 파일</b>을 선택한 후, <b>다음</b>을 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_outlook_im_1.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>쉼표로 구분된 값</b>을 선택한 후, <b>다음</b>을 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_outlook_im_2.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>찾아보기</b>를 클릭하여 웹 메일에서 내보내기 한 주소록 파일을 선택한 후, <b>다음</b>을 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_outlook_im_3.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>연락처</b>를 선택한 후, <b>다음</b>을 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_outlook_im_4.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>사용자 지정 필드 매핑</b>을 클릭합니다. <b>사용자 지정 필드 매핑</b>창이 팝업으로 나타납니다. <br><img align="center" width="320" height="200" src="images/contact/mail_outlook_im_5.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>사용자 지정 필드 매핑</b>매핑창에서 가져온 항목이 맞게 매핑되었는 지 확인합니다. 웹 메일에서 내보내기 한 주소록 항목은 MS Outlook에서 자동으로 읽습니다. 매핑이 맞지 않는 경우 변경하려는 필드을 드래그 앤 드롭(Drag&Drop)하여 이동합니다. <br><img align="center" width="320" height="200" src="images/contact/mail_outlook_im_6.gif" align="absmiddle" border="0"><br></br></li>
+			<li>필드 지정이 완료되면 <b>확인</b>을 클릭합니다.</li>
+			<li><b>마침</b>을 클릭합니다.</li>
+		</ol>
+		
+		<p><b>- MS Outlook Express에 주소록 가져오기</b>
+		<br>웹 메일에 있는 주소록을 내보내기 하여 MS Outlook Express에서 사용할 수 있습니다. MS Outlook Express에서 주소록을 가져오기 하는 방법은 다음과 같습니다.</p>
+		<ol style="margin-top:0;margin-bottom:0">
+			<li>웹 메일의 주소록을 내보내기 합니다. 주소록 내보내기시 Client를 Outlook Express로 선택합니다.</li>
+			<li>MS Outlook Express를 실행합니다.</li>
+			<li><b>[파일 > 가져오기 > 다른 주소록]</b> 메뉴를 클릭합니다.</li>
+			<li><b>주소록 내보내기 도구</b>에서 가져올 파일 형식을 <b>Text File</b>로 선택한 후 <b>가져오기</b>를 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_express_im_1.gif" align="absmiddle" border="0"><br></br></li>
+			<li><b>찾아보기</b>를 클릭하여 웹 메일에서 내보내기 한 주소록 파일을 선택한 후, <b>다음</b>을 클릭합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_express_im_2.gif" align="absmiddle" border="0"><br></br></li>
+			<li>가져오기에 포함하려는 필드를 체크합니다.<br><img align="center" width="320" height="200" src="images/contact/mail_express_im_3.gif" align="absmiddle" border="0"><br></br></li>
+			<li>필드 지정이 완료되면 <b>마침</b>을 클릭합니다.</li>
+		</ol>		
+	</div></td>
+</tr>
+<tr>
+	<td height="50" valign="top">
+		<p align="right"><a href="s_organ.htm#top" class="LINK"><img src="images/cm_totop.gif" width="50" height="21" border="0" align="top"></a>&nbsp;</p>
+	</td>
+</tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

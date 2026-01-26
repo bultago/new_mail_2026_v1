@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans-6.1.xsd">
+
+    <!-- ============================================================ -->
+    <!-- Common Module - Spring MVC Configuration                     -->
+    <!-- Struts2 struts-common.xml 변환                               -->
+    <!-- ============================================================ -->
+
+    <!-- URL Mapping: /common/*.do → Controller -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <!-- 로그인 -->
+                <prop key="/common/login.do">loginController</prop>
+                <prop key="/common/loginPki.do">loginController</prop>
+                
+                <!-- 로그아웃 -->
+                <prop key="/common/logout.do">logoutController</prop>
+                <prop key="/logout.do">logoutController</prop>
+                
+                <!-- 웰컴 -->
+                <prop key="/common/welcome.do">welcomeController</prop>
+                
+                <!-- SSO -->
+                <prop key="/common/sso.do">ssoController</prop>
+                
+                <!-- 기타 -->
+                <prop key="/common/passwordCheck.do">passwordCheckController</prop>
+                <prop key="/common/checkSessionTimeout.do">checkSessionTimeoutController</prop>
+                <prop key="/common/sessionHealthCheck.do">checkSessionTimeoutController</prop>
+                <prop key="/common/empnoLogin.do">empnoLoginController</prop>
+                <prop key="/common/searchMailUserJson.do">searchMailUserController</prop>
+                <prop key="/common/listDocTemplate.do">docTemplateController</prop>
+                <prop key="/common/loadDocTemplate.do">docTemplateController</prop>
+                <prop key="/common/changeUserAccount.do">changeUserAccountController</prop>
+            </props>
+        </property>
+        <property name="order" value="90"/>
+    </bean>
+
+    <!-- ============================================================ -->
+    <!-- View Definitions: result 이름 → JSP 경로                     -->
+    <!-- ============================================================ -->
+    
+    <!-- Login Action Results -->
+    <bean id="loginSuccess" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/common/welcome.do"/>
+    </bean>
+    
+    <bean id="change" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/common/pwChange.jsp"/>
+    </bean>
+    
+    <bean id="dormant" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/common/dormantAccount.jsp"/>
+    </bean>
+    
+    <!-- Logout Action Results -->
+    <bean id="logoutSuccess" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/common/logout.jsp"/>
+    </bean>
+    
+    <!-- Welcome Action Results -->
+    <bean id="domain" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/dynamic/mail/mailCommon.do?vmode=domain"/>
+    </bean>
+    
+    <bean id="mail" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/dynamic/mail/mailCommon.do"/>
+    </bean>
+    
+    <bean id="manage" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/dynamic/mail/viewFolderManage.do"/>
+    </bean>
+    
+    <bean id="login" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/common/loginWork.jsp"/>
+    </bean>
+    
+    <bean id="redirect" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/common/redirect.jsp"/>
+    </bean>
+    
+    <bean id="multiLogin" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/common/multiLogin.jsp"/>
+    </bean>
+    
+    <bean id="mobileLogin" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/mobile/basic/common/loginWork.jsp"/>
+    </bean>
+    
+    <bean id="mobileIntro" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/mobile/common/home.do"/>
+    </bean>
+    
+    <bean id="smail" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/mail/mailCommon.do"/>
+    </bean>
+    
+    <bean id="sdomain" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/mail/mailCommon.do?vmode=domain"/>
+    </bean>
+    
+    <bean id="sintro" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/mail/mailCommon.do?vmode=intro"/>
+    </bean>
+    
+    <bean id="shome" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/mail/mailCommon.do?vmode=mhome"/>
+    </bean>
+    
+    <bean id="smanage" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/dynamic/mail/viewFolderManage.do"/>
+    </bean>
+    
+    <!-- Welcome Action Additional Results -->
+    <bean id="aspLogin" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/common/aspLogin.jsp"/>
+    </bean>
+    
+    <bean id="forward" class="org.springframework.web.servlet.view.InternalResourceView">
+        <property name="url" value="/common/redirect.jsp"/>
+    </bean>
+    
+    <!-- Login Result: success (redirect to welcome) -->
+    <bean id="success" class="org.springframework.web.servlet.view.RedirectView">
+        <property name="url" value="/common/welcome.do"/>
+    </bean>
+
+</beans>
+

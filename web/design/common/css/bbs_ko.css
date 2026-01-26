@@ -1,0 +1,9 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: "µ¸¿ò", Dotum, "±¼¸²", Gulim, "MS PGothic", "Osaka", Arial,
+		AppleGothic, Sans-serif;
+	font-size: 12px;
+	overflow-y: hidden;
+	overflow-x: auto;
+}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.terracetech.tims.webmail.Webfolder.mapper.WebfolderMapper">
+
+	<typeAlias alias="webfolder" type="com.terracetech.tims.webmail.webfolder.vo.WebfolderVO" />
+	<typeAlias alias="webfoldershare" type="com.terracetech.tims.webmail.webfolder.vo.WebfolderShareVO" />
+	<typeAlias alias="webfolderdata" type="com.terracetech.tims.webmail.webfolder.vo.WebfolderDataVO" />
+  	
+  	<resultMap id="readMemberListResult" class="webfoldershare">
+  		<result property="mailUserSeq" column="mail_user_seq" />
+		<result property="uid" column="mail_uid" />
+		<result property="name" column="user_name" />
+		<result property="domain" column="mail_domain" />
+	</resultMap>
+	
+	<resultMap id="readShareMemberListResult" class="webfoldershare">
+		<result property="type" column="share_type" />
+		<result property="name" column="share_name" />
+		<result property="email" column="share_value" />
+		<result property="auth" column="share_auth" />
+		<result property="comment" column="folder_comment" />
+	</resultMap>
+	
+	<resultMap id="readShareAllResult" class="webfoldershare">
+		<result property="fuid" column="folder_uid" />
+		<result property="mailUserSeq" column="mail_user_seq" />
+		<result property="folderPath" column="folder_dir" />
+		<result property="shareType" column="share_type" />
+		<result property="auth" column="share_auth" />
+		<result property="comment" column="folder_comment" />
+		<result property="createTime" column="create_time" />
+		<result property="modTime" column="mod_time" />
+	</resultMap>
+	
+	<resultMap id="readSearchShareFolderResult" class="webfoldershare">
+		<result property="fuid" column="folder_uid" />
+		<result property="mailUserSeq" column="mail_user_seq" />
+		<result property="uid" column="mail_uid" />
+		<result property="name" column="user_name" />
+		<result property="folderPath" column="folder_dir" />
+		<result property="shareType" column="share_type" />
+		<result property="auth" column="share_auth" />
+		<result property="comment" column="folder_comment" />
+	</resultMap>
+	
+	<resultMap id="readShareAllFolderDataResult" class="webfolderdata" >
+		<result property="fuid" column="folder_uid" />
+		<result property="mailUserSeq" column="mail_user_seq" />
+		<result property="mailUid" column="mail_uid" />
+		<result property="realPath" column="folder_dir" />
+		<result property="privil" column="share_auth" />
+		<result property="targetType" column="target_type"/>
+		<result property="targetValue" column="target_value"/>
+	</resultMap>
+	
+	<resultMap id="readAllShareFolderResult" class="webfolderdata" >
+		<result property="fuid" column="folder_uid" />
+		<result property="mailUserSeq" column="mail_user_seq" />
+		<result property="mailUid" column="mail_uid" />
+		<result property="realPath" column="folder_dir" />
+		<result property="privil" column="share_auth" />
+	</resultMap>
+	
+	<resultMap id="readShareTargetFolderResult" class="webfoldershare">
+		<result property="fuid" column="folder_uid"/>
+		<result property="shareType" column="share_type"/>
+		<result property="auth" column="share_auth"/>
+		<result property="email" column="share_value"/>
+										
+	</resultMap>
+	
+	<parameterMap id="shareAllParameter" class="webfoldershare">
+		<parameter jdbcType="NUMBER" property="fuid" javaType="int"/>
+		<parameter jdbcType="NUMBER" property="mailUserSeq" javaType="int"/>
+		<parameter jdbcType="VARCHAR" property="folderPath" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="comment" javaType="String"/>
+		<parameter jdbcType="NUMBER" property="shareType" javaType="int"/>
+		<parameter jdbcType="CHAR" property="auth" javaType="String"/>
+		<parameter jdbcType="VARCHAR" property="curTime" javaType="String"/>
+	</parameterMap>
+
+</mapper>

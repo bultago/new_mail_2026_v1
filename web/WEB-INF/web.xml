@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>TIMS7 WEBMAIL - Spring MVC</display-name>
+    
+    <description>
+        TIMS7 Webmail System - Migrated to Spring MVC 6.1.x
+        Phase 4: Struts2 to Spring MVC Conversion
+    </description>
+
+    <!-- Application Version -->
+    <context-param>  
+        <param-name>version</param-name> 
+        <param-value>7.4.6S-Spring6</param-value> 
+    </context-param>
+    
+    <!-- ============================================================ -->
+    <!-- Spring Context Configuration                                 -->
+    <!-- ============================================================ -->
+    
+    <!-- Spring Root Application Context -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/classes/web-config/spring-common.xml,
+            /WEB-INF/classes/web-config/spring-login.xml,
+            /WEB-INF/classes/web-config/spring-mail.xml,
+            /WEB-INF/classes/web-config/spring-addr.xml,
+            /WEB-INF/classes/web-config/spring-calendar.xml,
+            /WEB-INF/classes/web-config/spring-setting.xml,
+            /WEB-INF/classes/web-config/spring-bbs.xml,
+            /WEB-INF/classes/web-config/spring-webfolder.xml,
+            /WEB-INF/classes/web-config/spring-organization.xml,
+            /WEB-INF/classes/web-config/spring-mobile.xml,
+            /WEB-INF/classes/web-config/spring-jmobile.xml,
+            /WEB-INF/classes/web-config/spring-note.xml
+        </param-value>
+    </context-param>
+    
+    <!-- Spring Context Loader Listener -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <!-- Request Context Listener -->
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
+    <!-- ============================================================ -->
+    <!-- Filters                                                      -->
+    <!-- ============================================================ -->
+    
+    <!-- Character Encoding Filter (첫 번째로 실행되어야 함) -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- Webmail Access Filter -->
+    <filter>
+        <filter-name>WebmailAccessFilter</filter-name>
+        <filter-class>com.terracetech.tims.webmail.common.WebmailAccessFilter</filter-class>
+    </filter>
+     
+    <filter-mapping>
+        <filter-name>WebmailAccessFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- Response Header Filter -->
+    <filter>
+        <filter-name>ResponseHeaderFilter</filter-name>
+        <filter-class>com.terracetech.tims.webmail.common.ResponseHeaderFilter</filter-class>
+        <init-param>
+            <param-name>Cache-Control</param-name>
+            <param-value>max-age=86400</param-value>
+        </init-param>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>ResponseHeaderFilter</filter-name>
+        <url-pattern>/design/*</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>ResponseHeaderFilter</filter-name>
+        <url-pattern>/editor/*</url-pattern>
+    </filter-mapping>
+        
+    <filter-mapping>
+        <filter-name>ResponseHeaderFilter</filter-name>
+        <url-pattern>/i18n</url-pattern>
+    </filter-mapping>
+    
+    <!-- ============================================================ -->
+    <!-- Spring MVC DispatcherServlet                                 -->
+    <!-- ============================================================ -->
+    
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring-mvc-config.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <multipart-config>
+            <max-file-size>52428800</max-file-size>
+            <max-request-size>52428800</max-request-size>
+            <file-size-threshold>0</file-size-threshold>
+        </multipart-config>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <!-- ============================================================ -->
+    <!-- Other Servlets                                               -->
+    <!-- ============================================================ -->
+    
+    <!-- I18n Resource Servlet -->
+    <servlet>
+        <servlet-name>I18nResourceServlet</servlet-name>
+        <servlet-class>com.terracetech.tims.common.I18nMessageServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>I18nResourceServlet</servlet-name>
+        <url-pattern>/i18n</url-pattern>
+    </servlet-mapping>
+
+    <!-- Application Resource Servlet -->
+    <servlet>
+        <servlet-name>ApplicationResourceServlet</servlet-name>
+        <servlet-class>com.terracetech.tims.webmail.common.ApplicationResourceServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- Command Receiver (Secure Sync) -->
+    <servlet>
+        <servlet-name>CommandReceiver</servlet-name>
+        <servlet-class>com.terracetech.secure.sync.CommandReceiver</servlet-class>
+        <load-on-startup>20</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CommandReceiver</servlet-name>
+        <url-pattern>/CommandReceiver</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Spring Remoting Servlet -->
+    <servlet>
+        <servlet-name>remoting</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>remoting</servlet-name>
+        <url-pattern>/remoting/*</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Axis Servlet (Phase 4 이후 제거 예정) -->
+    <servlet>
+        <servlet-name>axis</servlet-name>
+        <servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
+        <load-on-startup>5</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>axis</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Performance Debug Servlet -->
+    <servlet>
+        <servlet-name>PerformanceDebugServlet</servlet-name>
+        <servlet-class>com.terracetech.tims.webmail.common.PerformanceDebugServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>PerformanceDebugServlet</servlet-name>
+        <url-pattern>/pdebug</url-pattern>
+    </servlet-mapping>
+
+    <!-- ============================================================ -->
+    <!-- JSP Configuration                                            -->
+    <!-- ============================================================ -->
+    
+    <!-- Application Tag Library -->
+    <jsp-config>
+        <taglib>
+            <taglib-uri>/terrace-tag.tld</taglib-uri>
+            <taglib-location>/WEB-INF/tld/terrace-tag.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
+    <!-- ============================================================ -->
+    <!-- Welcome Files                                                -->
+    <!-- ============================================================ -->
+    
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <!-- ============================================================ -->
+    <!-- Error Pages                                                  -->
+    <!-- ============================================================ -->
+    
+    <error-page>
+        <error-code>401</error-code>
+        <location>/common/error/error401.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/common/error/error403.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/common/error/error404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/common/error/error500.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>501</error-code>
+        <location>/common/error/error500.jsp</location>
+    </error-page>
+    
+    <!-- ============================================================ -->
+    <!-- Security Constraints                                         -->
+    <!-- ============================================================ -->
+    
+    <security-role>
+        <description>Nobody should be in this role so JSP files are protected from direct access.</description>
+        <role-name>nobody</role-name>
+    </security-role>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Forbidden</web-resource-name>
+            <url-pattern>/*</url-pattern>
+            <http-method>PUT</http-method>
+            <http-method>DELETE</http-method>
+            <http-method>HEAD</http-method> 
+            <http-method>TRACE</http-method>
+            <http-method>OPTIONS</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>nobody</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <!-- HTTPS 강제 (필요시 활성화) -->
+    <!--
+    <security-constraint>
+      <web-resource-collection>
+       <web-resource-name>Restricted URLs</web-resource-name>
+       <url-pattern>/*</url-pattern>
+      </web-resource-collection>
+      <user-data-constraint>
+       <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+      </user-data-constraint>
+     </security-constraint>
+    -->
+    
+    <!-- Session Timeout (분 단위, 필요시 활성화) -->
+    <!--
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    -->
+    
+</web-app>
+

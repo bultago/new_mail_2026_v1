@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>	
+	<bundle name="common" resource="messageResources.CommonMessage"/>
+	<bundle name="mail"  default="true" resource="messageResources.MailMessage"/>
+	<bundle name="bbs"  resource="messageResources.BbsMessage"/>
+	<bundle name="scheduler" resource="messageResources.SchedulerMessage"/>
+	<bundle name="webfolder" resource="messageResources.WebfolderMessage"/>
+	<bundle name="addr" resource="messageResources.AddrApplicationResources"/>
+	<bundle name="setting" resource="messageResources.SettingMessage"/>
+	<bundle name="jmail" resource="messageResources.JMailMobile"/>
+</resources>

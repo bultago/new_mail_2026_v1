@@ -1,0 +1,1 @@
+var EDITOR_DEFAULT_FONT_SIZE = "font-size:12px";
