@@ -43,6 +43,8 @@ const props = defineProps<{
 const router = useRouter()
 const { t } = useI18n()
 const isOpen = ref(true) // Default open
+const isMenuOpen = ref(false)
+
 
 const toggleOpen = (e: MouseEvent) => {
     if (props.folder.children?.length) {
@@ -168,14 +170,17 @@ const getIconColor = (folder: MailFolder) => {
                     </div>
 
                     <!-- Actions (Dropdown Menu Trigger for Click) -->
-                    <DropdownMenu>
+                    <DropdownMenu v-model:open="isMenuOpen">
                         <DropdownMenuTrigger as-child>
-                            <div class="hidden group-hover:flex items-center justify-center h-full px-1 cursor-pointer"
-                                :class="isSelected ? 'text-white hover:bg-white/20' : 'text-gray-400 hover:text-gray-700 hover:bg-gray-200 dark:hover:bg-zinc-700'">
+                            <div class="flex items-center justify-center h-full px-1 cursor-pointer transition-opacity duration-200"
+                                :class="[
+                                    isSelected ? 'text-white hover:bg-white/20' : 'text-gray-400 hover:text-gray-700 hover:bg-gray-200 dark:hover:bg-zinc-700',
+                                    isMenuOpen ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                                ]">
                                 <MoreHorizontal class="h-3.5 w-3.5" />
                             </div>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent class="w-40" align="start">
+                        <DropdownMenuContent class="w-40 z-[9999]" align="start" side="right" :side-offset="5">
                             <DropdownMenuItem @click="handleAction('add')" :disabled="isSystemFolder">
                                 <Plus class="mr-2 h-3.5 w-3.5" />
                                 <span>{{ t('context_menu.add_folder') }}</span>

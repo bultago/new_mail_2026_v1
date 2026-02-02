@@ -1,0 +1,4 @@
+gretty {
+    contextPath = "/"
+    httpPort = 8080
+}

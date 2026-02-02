@@ -12,7 +12,9 @@
         "address_book": "通讯录",
         "count": "个",
         "select": "选择",
-        "required": "是必填项。"
+        "required": "是必填项。",
+        "refresh": "刷新",
+        "confirm_cancel_sending": "确定要取消发送吗？（邮件将从服务器删除）"
     },
     "sidebar": {
         "compose": "撰写邮件",
@@ -44,6 +46,7 @@
             "selected": "已选",
             "search_placeholder": "搜索邮件",
             "search_detail": "详细",
+            "search_subject_content": "主题+正文",
             "headers": {
                 "from": "发件人",
                 "subject": "主题",
@@ -132,6 +135,17 @@
             "add_address": "添加到通讯录",
             "attachments": "附件",
             "save_all": "全部保存"
+        },
+        "receipt": {
+            "go_sent": "已发送信箱",
+            "send_date": "发送时间",
+            "read_date": "确认时间",
+            "read_status": "接收确认",
+            "total_recipients": "全部收件人",
+            "view_original": "查看原邮件",
+            "cancel_sending": "取消发送",
+            "cancel_confirm": "确定要取消发送给此收件人吗？",
+            "unread": "未读"
         },
         "result": {
             "success": "邮件发送成功。",

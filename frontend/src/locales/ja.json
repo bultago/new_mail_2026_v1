@@ -12,7 +12,9 @@
         "address_book": "アドレス帳",
         "count": "個",
         "select": "選択",
-        "required": "は必須です。"
+        "required": "は必須です。",
+        "refresh": "更新",
+        "confirm_cancel_sending": "送信を取り消しますか？（サーバーからメールが削除されます）"
     },
     "sidebar": {
         "compose": "メール作成",
@@ -44,6 +46,7 @@
             "selected": "選択",
             "search_placeholder": "メール検索",
             "search_detail": "詳細",
+            "search_subject_content": "件名+本文",
             "headers": {
                 "from": "差出人",
                 "subject": "件名",
@@ -132,6 +135,17 @@
             "add_address": "アドレス追加",
             "attachments": "添付ファイル",
             "save_all": "すべて保存"
+        },
+        "receipt": {
+            "go_sent": "送信済みトレイ",
+            "send_date": "送信日時",
+            "read_date": "確認日時",
+            "read_status": "受信確認",
+            "total_recipients": "全受信者",
+            "view_original": "元メールを表示",
+            "cancel_sending": "送信取消",
+            "cancel_confirm": "この受信者への送信を取り消しますか？",
+            "unread": "未読"
         },
         "result": {
             "success": "メールが正常に送信されました。",

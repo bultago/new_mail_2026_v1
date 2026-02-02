@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nugenmail.domain.mail.mapper.FolderPolicyMapper">
+
+    <resultMap id="folderPolicyResult" type="com.nugenmail.domain.mail.model.FolderPolicy">
+        <result property="folderName" column="folderName"/>
+        <result property="keepDays" column="keepDays"/>
+    </resultMap>
+
+    <select id="findPolicy" resultMap="folderPolicyResult">
+        SELECT f.folder_name as folderName, f.aging_day as keepDays 
+        FROM mail_userfolder_aging f 
+        JOIN mail_user u ON f.mail_user_seq = u.mail_user_seq 
+        JOIN mail_domain d ON u.mail_domain_seq = d.mail_domain_seq 
+        WHERE u.mail_uid = #{userId} 
+        AND d.mail_domain = #{domain} 
+        AND f.folder_name = #{folderName}
+    </select>
+
+    <insert id="insertPolicy">
+        INSERT INTO mail_userfolder_aging (mail_user_seq, folder_name, aging_day) 
+        VALUES (
+          (SELECT u.mail_user_seq FROM mail_user u 
+           JOIN mail_domain d ON u.mail_domain_seq = d.mail_domain_seq 
+           WHERE u.mail_uid = #{userId} AND d.mail_domain = #{domain}), 
+          #{folderName}, 
+          #{keepDays}
+        )
+    </insert>
+
+    <update id="updatePolicy">
+        UPDATE mail_userfolder_aging 
+        SET aging_day = #{keepDays} 
+        WHERE folder_name = #{folderName} 
+        AND mail_user_seq = (
+          SELECT u.mail_user_seq FROM mail_user u 
+          JOIN mail_domain d ON u.mail_domain_seq = d.mail_domain_seq 
+          WHERE u.mail_uid = #{userId} AND d.mail_domain = #{domain} 
+        )
+    </update>
+
+    <update id="updateSystemPolicy">
+        UPDATE mail_user_info SET ${columnName} = #{keepDays} 
+        WHERE mail_user_seq = (
+          SELECT u.mail_user_seq FROM mail_user u 
+          JOIN mail_domain d ON u.mail_domain_seq = d.mail_domain_seq 
+          WHERE u.mail_uid = #{userId} AND d.mail_domain = #{domain} 
+        )
+    </update>
+
+    <delete id="deletePolicy">
+        DELETE FROM mail_userfolder_aging 
+        WHERE folder_name = #{folderName} 
+        AND mail_user_seq = (
+          SELECT u.mail_user_seq FROM mail_user u 
+          JOIN mail_domain d ON u.mail_domain_seq = d.mail_domain_seq 
+          WHERE u.mail_uid = #{userId} AND d.mail_domain = #{domain} 
+        )
+    </delete>
+
+</mapper>

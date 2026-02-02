@@ -283,7 +283,7 @@ onUnmounted(() => {
         <!-- Legacy Toolbar -->
         <div
             class="px-4 py-2 border-b border-legacy-border bg-[#F7F7F7] dark:bg-zinc-900 flex flex-col gap-2 shadow-sm">
-            <div class="flex items-center gap-1">
+            <div class="flex flex-wrap items-center gap-1">
                 <Button variant="outline" size="sm" @click="handleSend"
                     class="h-[28px] bg-white text-[#444] text-[11px] font-bold border-legacy-border hover:bg-gray-50 dark:bg-zinc-800 dark:text-gray-200 dark:border-zinc-700">
                     <Send class="h-3.5 w-3.5 mr-1.5 text-blue-600 dark:text-blue-400" /> {{ t('mail.write.send') }}
@@ -298,39 +298,47 @@ onUnmounted(() => {
                     }}
                 </Button>
 
-                <div class="h-4 w-[1px] bg-[#CCC] mx-2"></div>
+                <div class="h-4 w-[1px] bg-[#CCC] mx-2 hidden sm:block"></div>
 
                 <!-- Options Column -->
-                <div class="flex items-center gap-4">
+                <div class="flex flex-wrap items-center gap-4">
                     <!-- Group 1 -->
-                    <div class="flex items-center gap-3 text-[12px] text-gray-700 dark:text-gray-300 select-none">
-                        <label class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white">
+                    <div
+                        class="flex flex-wrap items-center gap-3 text-[12px] text-gray-700 dark:text-gray-300 select-none">
+                        <label
+                            class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white whitespace-nowrap">
                             <input type="checkbox" class="accent-blue-600" checked /> {{ t('mail.write.options.receipt')
                             }}
                         </label>
-                        <label class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white">
+                        <label
+                            class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white whitespace-nowrap">
                             <input type="checkbox" class="accent-blue-600" /> {{ t('mail.write.options.individual') }}
                         </label>
-                        <label class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white">
+                        <label
+                            class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white whitespace-nowrap">
                             <input type="checkbox" class="accent-blue-600" checked /> {{
                                 t('mail.write.options.save_sent') }}
                         </label>
                     </div>
 
                     <!-- Divider -->
-                    <div class="w-[1px] h-[14px] bg-gray-300 dark:bg-zinc-600"></div>
+                    <div class="w-[1px] h-[14px] bg-gray-300 dark:bg-zinc-600 hidden sm:block"></div>
 
                     <!-- Group 2 -->
-                    <div class="flex items-center gap-3 text-[12px] text-gray-700 dark:text-gray-300 select-none">
-                        <label class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white">
+                    <div
+                        class="flex flex-wrap items-center gap-3 text-[12px] text-gray-700 dark:text-gray-300 select-none">
+                        <label
+                            class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white whitespace-nowrap">
                             <input type="checkbox" class="accent-blue-600" v-model="isReservation"
                                 @change="toggleReservation" /> {{ t('mail.write.options.reservation') }}
                         </label>
-                        <label class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white">
+                        <label
+                            class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white whitespace-nowrap">
                             <input type="checkbox" class="accent-blue-600" v-model="isSecure" @change="toggleSecure" />
                             {{ t('mail.write.options.secure') }}
                         </label>
-                        <label class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white">
+                        <label
+                            class="flex items-center gap-1 cursor-pointer hover:text-black dark:hover:text-white whitespace-nowrap">
                             <input type="checkbox" class="accent-blue-600" /> {{ t('mail.write.options.read_receipt') }}
                         </label>
                     </div>
@@ -374,7 +382,7 @@ onUnmounted(() => {
                     <input type="password" v-model="securePassword"
                         class="h-[22px] w-[80px] border border-gray-300 px-1 dark:bg-zinc-700 dark:border-zinc-600" />
                     <span class="font-bold text-[#444] dark:text-gray-300 ml-2">{{ t('mail.write.secure_hint')
-                        }}:</span>
+                    }}:</span>
                     <input type="text" v-model="secureHint"
                         class="h-[22px] w-[100px] border border-gray-300 px-1 dark:bg-zinc-700 dark:border-zinc-600" />
                 </div>
@@ -388,10 +396,10 @@ onUnmounted(() => {
                 class="flex-1 flex flex-col w-full border border-legacy-border bg-white dark:bg-zinc-800 shadow-sm p-4">
 
                 <!-- Fields Grid - Auto Height Content -->
-                <div class="grid grid-cols-[150px_1fr] gap-y-2 items-center mb-4 flex-shrink-0">
+                <div class="grid grid-cols-[90px_1fr] gap-y-2 items-center mb-4 flex-shrink-0">
 
                     <!-- To -->
-                    <div class="text-right pr-4 font-bold text-[12px] text-[#555] dark:text-gray-400">
+                    <div class="text-left pl-1 font-bold text-[12px] text-[#555] dark:text-gray-400">
                         {{ t('mail.write.to') }}
                     </div>
                     <div class="flex gap-2 items-center">
@@ -430,7 +438,7 @@ onUnmounted(() => {
                     </div>
 
                     <!-- Cc -->
-                    <div class="text-right pr-4 font-bold text-[12px] text-[#555] dark:text-gray-400">{{
+                    <div class="text-left pl-1 font-bold text-[12px] text-[#555] dark:text-gray-400">{{
                         t('mail.write.cc') }}</div>
                     <div class="flex gap-2 items-center">
                         <div class="flex-1 relative">
@@ -459,7 +467,7 @@ onUnmounted(() => {
 
                     <!-- Bcc (Conditional) -->
                     <template v-if="showBcc">
-                        <div class="text-right pr-4 font-bold text-[12px] text-[#555] dark:text-gray-400">{{
+                        <div class="text-left pl-1 font-bold text-[12px] text-[#555] dark:text-gray-400">{{
                             t('mail.write.bcc') }}</div>
                         <div class="relative">
                             <input type="text" v-model="bcc" @focus="activeField = 'bcc'; showAutoComplete = true"
@@ -480,7 +488,7 @@ onUnmounted(() => {
                     </template>
 
                     <!-- Subject -->
-                    <div class="text-right pr-4 font-bold text-[12px] text-[#555] dark:text-gray-400">{{
+                    <div class="text-left pl-1 font-bold text-[12px] text-[#555] dark:text-gray-400">{{
                         t('mail.write.subject') }}</div>
                     <div class="flex items-center gap-2">
                         <input type="text" v-model="subject"
@@ -489,7 +497,7 @@ onUnmounted(() => {
                     </div>
 
                     <!-- File Upload -->
-                    <div class="text-right pr-4 font-bold text-[12px] text-[#555] dark:text-gray-400 self-start pt-1.5">
+                    <div class="text-left pl-1 font-bold text-[12px] text-[#555] dark:text-gray-400 self-start pt-1.5">
                         {{ t('mail.write.attach') }}</div>
                     <div
                         class="border border-legacy-border bg-[#F9F9F9] dark:bg-zinc-700/50 p-2 min-h-[60px] dark:border-zinc-600">
@@ -515,8 +523,8 @@ onUnmounted(() => {
 
                 <!-- Editor Mock - Flex Grow to fill remaining space -->
                 <div class="flex-1 flex flex-col min-h-[200px]">
-                    <div class="grid grid-cols-[100px_1fr] h-full">
-                        <div class="text-right pr-4 font-bold text-[12px] text-[#555] dark:text-gray-400 pt-1.5">{{
+                    <div class="grid grid-cols-[90px_1fr] h-full">
+                        <div class="text-left pl-1 font-bold text-[12px] text-[#555] dark:text-gray-400 pt-1.5">{{
                             t('mail.write.content') }}
                         </div>
                         <div class="border border-legacy-border flex flex-col dark:border-zinc-600 h-full">

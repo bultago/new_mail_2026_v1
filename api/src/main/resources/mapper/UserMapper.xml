@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nugenmail.domain.auth.mapper.UserMapper">
+
+    <resultMap id="userResult" type="com.nugenmail.domain.auth.model.User">
+        <result property="userId" column="mail_uid"/>
+        <result property="password" column="mail_password"/>
+        <result property="name" column="user_name"/>
+        <result property="domain" column="mail_domain"/>
+        <result property="status" column="account_status"/>
+        <result property="initialPage" column="init_menu"/>
+    </resultMap>
+
+    <select id="findByUserIdAndDomain" resultMap="userResult">
+        SELECT 
+			m.mail_user_seq, m.mail_uid, m.mail_domain_seq, m.mail_group_seq, 
+			m.mail_password, m.mail_host, m.message_store, m.account_expire_date, 
+			m.account_status, m.user_type, m.mail_services, m.mail_add_quota, 
+			m.quota_overlook_ratio, m.quota_warning_mode, m.quota_warning_ratio, m.quota_violation_action, 
+			
+			i.user_name, i.user_language, i.web_folder_add_quota, i.big_attach_add_quota, 
+			i.last_login_time, i.webmail_login_time, i.pop_login_time, i.imap_login_time,
+			i.register_status, i.last_pass_modify_time,i.create_time,
+			
+            (SELECT config_value FROM mail_user_config WHERE mail_user_seq = m.mail_user_seq AND config_name = 'INIT_MENU') as init_menu,
+
+			d.mail_domain
+		FROM 
+			mail_user m, mail_user_info i, mail_domain d
+		WHERE 
+			m.mail_uid = #{userId} 
+			AND m.mail_domain_seq = (select mail_domain_seq from mail_domain where mail_domain = #{domain}) 
+			AND i.mail_user_seq = m.mail_user_seq
+			AND d.mail_domain_seq = m.mail_domain_seq
+			AND m.user_type='mailUser'
+    </select>
+
+</mapper>

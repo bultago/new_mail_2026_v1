@@ -7,8 +7,14 @@ import {
     X, Users, Folder, ChevronDown, Plus, ArrowRight
 } from 'lucide-vue-next'
 
+import { useRoute } from 'vue-router'
+
 const { t } = useI18n()
 const { initTheme, currentTheme } = useTheme()
+const route = useRoute()
+
+const mode = computed(() => (route.query.mode as string) || 'mail') // 'mail' | 'single'
+const callbackName = computed(() => (route.query.callback as string) || 'setAddress')
 
 onMounted(() => {
     initTheme()
@@ -222,15 +228,30 @@ const applySelection = () => {
         }).join(', ')
     }
 
-    const t = formatList(toList.value)
-    const c = formatList(ccList.value)
-    const b = formatList(bccList.value)
+    const t_str = formatList(toList.value)
 
-    if (window.opener && window.opener.setAddress) {
-        window.opener.setAddress(t, c, b)
+    if (mode.value === 'single') {
+        const openerFunc = (window.opener as any)?.[callbackName.value]
+        if (openerFunc) {
+            // Pass the raw list or formatted string depending on legacy need
+            // Legacy likely expects string if it's an input field, but maybe object list if it's a table
+            // For now, pass formatted string to be safe, or just the list?
+            // Let's pass the string to match setAddress signature style
+            openerFunc(t_str)
+        } else {
+            console.warn(`Opener function ${callbackName.value} not found`)
+        }
     } else {
-        console.warn('Opener window not found or setAddress not defined')
+        const c_str = formatList(ccList.value)
+        const b_str = formatList(bccList.value)
+
+        if (window.opener && window.opener.setAddress) {
+            window.opener.setAddress(t_str, c_str, b_str)
+        } else {
+            console.warn('Opener window not found or setAddress not defined')
+        }
     }
+
     window.close()
 }
 </script>
@@ -454,37 +475,40 @@ const applySelection = () => {
                 <button @click="addToLegacy('to')"
                     class="w-[30px] h-[30px] flex items-center justify-center bg-white border border-gray-300 rounded hover:bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white"
                     :title="t('address_popup.actions.to') + ' ' + t('common.add')">
-                    <span class="text-[10px] font-bold">To</span>
-                    <ArrowRight class="w-3 h-3 ml-0.5" />
+                    <span v-if="mode === 'mail'" class="text-[10px] font-bold">To</span>
+                    <ArrowRight v-else class="w-3 h-3 ml-0.5" />
+                    <ArrowRight v-if="mode === 'mail'" class="w-3 h-3 ml-0.5" />
                 </button>
 
-                <div class="h-2"></div>
+                <template v-if="mode === 'mail'">
+                    <div class="h-2"></div>
 
-                <button v-if="activeTab !== 'org'" @click="addLegacyGroup('cc')"
-                    class="w-[30px] h-[30px] flex items-center justify-center bg-white border border-gray-300 rounded hover:bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white"
-                    :title="t('address_popup.actions.add_group_tooltip')">
-                    <Folder class="w-3.5 h-3.5 text-yellow-600" />
-                </button>
-                <button @click="addToLegacy('cc')"
-                    class="w-[30px] h-[30px] flex items-center justify-center bg-white border border-gray-300 rounded hover:bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white"
-                    :title="t('address_popup.actions.cc') + ' ' + t('common.add')">
-                    <span class="text-[10px] font-bold">Cc</span>
-                    <ArrowRight class="w-3 h-3 ml-0.5" />
-                </button>
+                    <button v-if="activeTab !== 'org'" @click="addLegacyGroup('cc')"
+                        class="w-[30px] h-[30px] flex items-center justify-center bg-white border border-gray-300 rounded hover:bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white"
+                        :title="t('address_popup.actions.add_group_tooltip')">
+                        <Folder class="w-3.5 h-3.5 text-yellow-600" />
+                    </button>
+                    <button @click="addToLegacy('cc')"
+                        class="w-[30px] h-[30px] flex items-center justify-center bg-white border border-gray-300 rounded hover:bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white"
+                        :title="t('address_popup.actions.cc') + ' ' + t('common.add')">
+                        <span class="text-[10px] font-bold">Cc</span>
+                        <ArrowRight class="w-3 h-3 ml-0.5" />
+                    </button>
 
-                <div class="h-2"></div>
+                    <div class="h-2"></div>
 
-                <button v-if="activeTab !== 'org'" @click="addLegacyGroup('bcc')"
-                    class="w-[30px] h-[30px] flex items-center justify-center bg-white border border-gray-300 rounded hover:bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white"
-                    :title="t('address_popup.actions.add_group_tooltip')">
-                    <Folder class="w-3.5 h-3.5 text-yellow-600" />
-                </button>
-                <button @click="addToLegacy('bcc')"
-                    class="w-[30px] h-[30px] flex items-center justify-center bg-white border border-gray-300 rounded hover:bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white"
-                    :title="t('address_popup.actions.bcc') + ' ' + t('common.add')">
-                    <span class="text-[10px] font-bold">Bcc</span>
-                    <ArrowRight class="w-3 h-3 ml-0.5" />
-                </button>
+                    <button v-if="activeTab !== 'org'" @click="addLegacyGroup('bcc')"
+                        class="w-[30px] h-[30px] flex items-center justify-center bg-white border border-gray-300 rounded hover:bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white"
+                        :title="t('address_popup.actions.add_group_tooltip')">
+                        <Folder class="w-3.5 h-3.5 text-yellow-600" />
+                    </button>
+                    <button @click="addToLegacy('bcc')"
+                        class="w-[30px] h-[30px] flex items-center justify-center bg-white border border-gray-300 rounded hover:bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white"
+                        :title="t('address_popup.actions.bcc') + ' ' + t('common.add')">
+                        <span class="text-[10px] font-bold">Bcc</span>
+                        <ArrowRight class="w-3 h-3 ml-0.5" />
+                    </button>
+                </template>
             </div>
 
             <!-- Right: Selected Targets -->
@@ -494,7 +518,7 @@ const applySelection = () => {
                 <div class="flex-1 flex flex-col border border-gray-300 dark:border-zinc-700">
                     <div
                         class="bg-gray-100 px-2 py-1 text-[11px] font-bold border-b border-gray-300 text-gray-700 flex justify-between items-center dark:bg-zinc-800 dark:border-zinc-700 dark:text-gray-300">
-                        <span>{{ t('address_popup.counts.to') }}</span>
+                        <span>{{ mode === 'single' ? t('common.select') : t('address_popup.counts.to') }}</span>
                         <span>{{ toList.length }}{{ t('address_popup.counts.people') }}</span>
                     </div>
                     <div class="flex-1 overflow-auto bg-white dark:bg-zinc-900 p-1 space-y-1">
@@ -508,7 +532,7 @@ const applySelection = () => {
                 </div>
 
                 <!-- Cc Box -->
-                <div class="flex-1 flex flex-col border border-gray-300 dark:border-zinc-700">
+                <div v-if="mode === 'mail'" class="flex-1 flex flex-col border border-gray-300 dark:border-zinc-700">
                     <div
                         class="bg-gray-100 px-2 py-1 text-[11px] font-bold border-b border-gray-300 text-gray-700 flex justify-between items-center dark:bg-zinc-800 dark:border-zinc-700 dark:text-gray-300">
                         <span>{{ t('address_popup.counts.cc') }}</span>
@@ -525,7 +549,7 @@ const applySelection = () => {
                 </div>
 
                 <!-- Bcc Box -->
-                <div class="h-[80px] flex flex-col border border-gray-300 dark:border-zinc-700">
+                <div v-if="mode === 'mail'" class="h-[80px] flex flex-col border border-gray-300 dark:border-zinc-700">
                     <div
                         class="bg-gray-100 px-2 py-1 text-[11px] font-bold border-b border-gray-300 text-gray-700 flex justify-between items-center dark:bg-zinc-800 dark:border-zinc-700 dark:text-gray-300">
                         <span>{{ t('address_popup.counts.bcc') }}</span>
@@ -549,7 +573,8 @@ const applySelection = () => {
         <div
             class="h-[45px] bg-[#F7F7F7] border-t border-gray-300 flex items-center justify-center gap-2 dark:bg-zinc-900 dark:border-zinc-800">
             <Button class="h-[28px] bg-legacy-blue hover:bg-blue-700 text-white text-[12px] w-[80px]"
-                @click="applySelection">{{ t('address_popup.actions.apply') }}</Button>
+                @click="applySelection">{{
+                    t('address_popup.actions.apply') }}</Button>
             <Button variant="outline"
                 class="h-[28px] border-gray-300 bg-white hover:bg-gray-50 text-[12px] w-[80px] dark:bg-zinc-800 dark:border-zinc-700 dark:text-gray-200"
                 @click="handleClose">{{ t('address_popup.actions.cancel') }}</Button>

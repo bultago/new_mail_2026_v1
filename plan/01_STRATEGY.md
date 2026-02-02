@@ -35,10 +35,15 @@ This document outlines the high-level strategy for migrating the legacy `TMS_WEB
 4.  **Expose**: Create a new `MailController` (`/api/v1/mail/send`).
 5.  **Clean**: Verify the old `struts-mail.xml` entry can be deprecated.
 
-### Phase 3: Frontend Modernization
-1.  **Setup**: Vue.js + Vite + Shadcn/UI (Already planned).
-2.  **Implement**: Build UI components for the new APIs created in Phase 2.
-3.  **Integrate**: Connect Vue App to `/api/v1/...`.
+### Phase 3: Hybrid IMAP Web Client Construction
+> **Pivot**: Not just a UI rewrite, but a **Thick-Client Architecture** (Outlook-like).
+
+1.  **Architecture**: `Vue.js` + `IndexedDB` (Local Store) + `Sync Engine`.
+2.  **Dual Mode**:
+    - **Terrace Mode**: Supports Webfolder, BigFile, Read Receipt (Proprietary).
+    - **Standard Mode**: Compatible with 3rd party IMAP standards.
+3.  **Backend Role**: Acts as Sync Provider & Feature Handler (BigFile Upload, MDN).
+4.  **Reference**: See `plan/10_IMAP_WEB_CLIENT_ARCH.md`.
 
 ### Phase 4: Expansion
 - Repeat Phase 2 & 3 for **Scheduler**, **AddressBook**, **Organization**, **Webfolder**.

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nugenmail.domain.auth.mapper.AuthMapper">
+
+    <insert id="insertSession">
+        INSERT INTO MAIL_LOGIN_SESSION (JTI, USER_ID, DOMAIN, CLIENT_IP, USER_AGENT, LOGIN_TIME, LAST_ACCESS)
+        VALUES (#{jti}, #{userId}, #{domain}, #{clientIp}, #{userAgent}, NOW(), NOW())
+    </insert>
+
+    <select id="countActiveJti" resultType="int">
+        SELECT COUNT(*) FROM MAIL_LOGIN_SESSION WHERE JTI = #{jti}
+    </select>
+
+    <delete id="deleteAllSessions">
+        DELETE FROM MAIL_LOGIN_SESSION 
+        WHERE USER_ID = #{userId} AND DOMAIN = #{domain}
+    </delete>
+    
+    <delete id="deleteSessionByJti">
+        DELETE FROM MAIL_LOGIN_SESSION WHERE JTI = #{jti}
+    </delete>
+    
+    <select id="getSessions" resultType="map">
+        SELECT JTI, CLIENT_IP, USER_AGENT, LOGIN_TIME, LAST_ACCESS, DEVICE_NAME
+        FROM MAIL_LOGIN_SESSION
+        WHERE USER_ID = #{userId} AND DOMAIN = #{domain}
+        ORDER BY LOGIN_TIME DESC
+    </select>
+
+    <insert id="registerDevice">
+        INSERT INTO MAIL_USER_DEVICE (USER_ID, DOMAIN, DEVICE_NAME, USER_AGENT, IS_ALLOWED)
+        VALUES (#{userId}, #{domain}, #{deviceName}, #{userAgent}, TRUE)
+    </insert>
+
+    <insert id="insertHistory">
+        INSERT INTO MAIL_LOGIN_HISTORY (USER_ID, DOMAIN, JTI, CLIENT_IP, USER_AGENT, LOGIN_TIME, ACTION)
+        VALUES (#{userId}, #{domain}, #{jti}, #{clientIp}, #{userAgent}, NOW(), #{action})
+    </insert>
+
+    <select id="isDeviceAllowed" resultType="boolean">
+        SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+        FROM MAIL_USER_DEVICE
+        WHERE USER_ID = #{userId} 
+          AND DOMAIN = #{domain} 
+          AND USER_AGENT = #{userAgent}
+          AND IS_ALLOWED = TRUE
+    </select>
+
+</mapper>

@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { useRouter } from 'vue-router'
 import { useTheme } from '@/composables/useTheme'
-import { Palette, Moon, Sun, Monitor, Menu, Mail, BookUser, Calendar, ClipboardList, HardDrive, Settings, Globe } from 'lucide-vue-next'
+import { Palette, Moon, Sun, Monitor, Menu, Mail, BookUser, Calendar, ClipboardList, HardDrive, Settings, Globe, Bell } from 'lucide-vue-next'
 import { useI18n } from 'vue-i18n'
 
 import { watch } from 'vue'
@@ -82,28 +82,40 @@ const handleLogout = () => {
                 <Calendar class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" />
                 <span class="text-[11px] font-medium">{{ t('header.nav.calendar') }}</span>
             </router-link>
-            <a href="#"
+            <router-link to="/board"
                 class="flex flex-col items-center justify-center w-[60px] h-[50px] rounded-md transition-all group hover:bg-white/10"
-                :class="currentTheme === 'modern' ? 'text-slate-700 hover:text-slate-900 hover:bg-slate-100' : 'text-white/80 hover:text-white'">
+                :class="currentTheme === 'modern' ? 'text-slate-700 hover:text-slate-900 hover:bg-slate-100' : 'text-white/80 hover:text-white'"
+                active-class="bg-white/10 text-white font-bold">
                 <ClipboardList class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" />
                 <span class="text-[11px] font-medium">{{ t('header.nav.board') }}</span>
-            </a>
+            </router-link>
             <a href="#"
                 class="flex flex-col items-center justify-center w-[60px] h-[50px] rounded-md transition-all group hover:bg-white/10"
                 :class="currentTheme === 'modern' ? 'text-slate-700 hover:text-slate-900 hover:bg-slate-100' : 'text-white/80 hover:text-white'">
                 <HardDrive class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" />
                 <span class="text-[11px] font-medium">{{ t('header.nav.resources') }}</span>
             </a>
-            <a href="#"
+            <router-link to="/settings"
                 class="flex flex-col items-center justify-center w-[60px] h-[50px] rounded-md transition-all group hover:bg-white/10"
-                :class="currentTheme === 'modern' ? 'text-slate-700 hover:text-slate-900 hover:bg-slate-100' : 'text-white/80 hover:text-white'">
+                :class="currentTheme === 'modern' ? 'text-slate-700 hover:text-slate-900 hover:bg-slate-100' : 'text-white/80 hover:text-white'"
+                active-class="bg-white/10 text-white font-bold">
                 <Settings class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" />
                 <span class="text-[11px] font-medium">{{ t('header.nav.settings') }}</span>
-            </a>
+            </router-link>
         </nav>
 
         <!-- User Info & Theme -->
         <div class="flex items-center gap-2 w-full md:w-auto justify-end">
+            <!-- Notification Bell -->
+            <button @click="router.push('/notification')"
+                class="w-8 h-8 flex items-center justify-center rounded hover:bg-white/10 text-legacy-text-header transition-colors mr-1"
+                :title="t('menu_conf.group.notification')">
+                <div class="relative">
+                    <Bell class="w-4 h-4" />
+                    <span class="absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full"></span>
+                </div>
+            </button>
+
             <!-- Language Toggle -->
             <DropdownMenu>
                 <DropdownMenuTrigger as-child>

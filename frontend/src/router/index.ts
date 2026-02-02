@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import MainLayout from '../layouts/MainLayout.vue'
 import MailListView from '../views/mail/MailListView.vue'
+import { useAuthStore } from '@/stores/auth'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +35,16 @@ const router = createRouter({
                     path: 'read/:id',
                     name: 'mail-read',
                     component: () => import('../views/mail/MailReadView.vue')
+                },
+                {
+                    path: 'receipt',
+                    name: 'mail-receipt',
+                    component: () => import('../views/mail/MailReceiptView.vue')
+                },
+                {
+                    path: 'receipt/:id',
+                    name: 'mail-receipt-detail',
+                    component: () => import('../views/mail/MailReceiptDetailView.vue')
                 },
                 {
                     path: '',
@@ -85,6 +96,42 @@ const router = createRouter({
                 }
             ]
         },
+        // Board
+        {
+            path: '/board',
+            component: () => import('../layouts/BlankLayout.vue'),
+            children: [
+                {
+                    path: '',
+                    name: 'board-list',
+                    component: () => import('../views/board/BoardView.vue')
+                }
+            ]
+        },
+        // Settings
+        {
+            path: '/settings',
+            component: MainLayout,
+            children: [
+                {
+                    path: '',
+                    name: 'settings',
+                    component: () => import('../views/SettingsView.vue')
+                }
+            ]
+        },
+        // Notification
+        {
+            path: '/notification',
+            component: MainLayout,
+            children: [
+                {
+                    path: '',
+                    name: 'notification',
+                    component: () => import('@/views/notification/NotificationView.vue')
+                }
+            ]
+        },
         {
             path: '/',
             redirect: '/login'
@@ -111,6 +158,21 @@ const router = createRouter({
             ]
         }
     ]
+})
+
+// Navigation Guard
+router.beforeEach((to, from, next) => {
+    const authStore = useAuthStore()
+
+    // Public pages that don't need auth
+    const publicPages = ['/login']
+    const authRequired = !publicPages.includes(to.path)
+
+    if (authRequired && !authStore.isAuthenticated) {
+        next('/login')
+    } else {
+        next()
+    }
 })
 
 export default router

@@ -5,6 +5,7 @@
 2.  **백엔드 현대화 (TDD/DDD)**: `plan/` 폴더의 계획을 따르며, **테스트 코드 없이 구현하지 마십시오.**
 3.  **도구 사용**: 브라우저 에러(429) 발생 시 즉시 Playwright로 전환하십시오.
 4.  **권한 없는 작업 금지**: 지시하지 않은 내용은 수행하지 마십시오. 의문이 있다면 즉시 작업을 중단하고 지시를 기다리십시오.
+5.  **추측 금지 및 근거 기반 처리**: 패키지명, 파일 경로, 설정 값 등을 추측하여 시도하지 마십시오. 반드시 CLI 명령어실행(`help`, `doctor`), 파일 검색, 공식 문서를 통해 **확실한 근거**를 확보한 후 작업을 수행하십시오.
 
 ---
 
@@ -568,3 +569,9 @@ Language: Dynamic setting (language.conversation_language)
 Critical: Alfred must delegate all tasks to specialized agents
 Required: All tasks use "Use the [subagent] subagent to..." format for specialized agent delegation
 Added: Web search hallucination prevention protocol with source verification requirements
+
+## Project Credentials (사용자 저장)
+- Domain: sogang.ac.kr
+- ID: mailadm
+- Password: tims
+

@@ -15,7 +15,11 @@ const props = defineProps<{
 
 const route = useRoute()
 
-const currentFolder = computed(() => (route.params.folder as string) || 'inbox')
+const currentFolder = computed(() => {
+  if (route.query.folder) return route.query.folder as string
+  if (route.path.includes('/mail/receipt')) return 'receipt'
+  return (route.params.folder as string) || 'inbox'
+})
 
 // Mock tree data structure for Personal Folders
 const isPersonalOpen = ref(true)
@@ -79,14 +83,18 @@ const sections = ref([
       <!-- Receipt Confirmation Button -->
       <Button
         class="h-[36px] p-0 bg-white hover:bg-gray-50 border border-legacy-border shadow-sm rounded-md flex items-center justify-center text-legacy-text transition-colors dark:bg-zinc-800 dark:border-zinc-700 dark:text-gray-200"
-        :title="t('sidebar.receipt')">
-        <div class="relative w-4 h-3 flex items-center justify-center">
-          <div class="absolute inset-0 bg-blue-500 rounded-[1px]"></div>
-          <div
-            class="absolute top-0 w-full h-1.5 border-t border-l border-r border-white transform origin-top rotate-0">
+        :title="t('sidebar.receipt')" as-child>
+        <router-link to="/mail/receipt" class="flex items-center justify-center w-full h-full"
+          :class="{ 'bg-blue-50 dark:bg-zinc-700 ring-1 ring-blue-200 dark:ring-blue-800': currentFolder === 'receipt' }">
+          <div class="relative w-4 h-3 flex items-center justify-center">
+            <div class="absolute inset-0 bg-blue-500 rounded-[1px]"></div>
+            <div
+              class="absolute top-0 w-full h-1.5 border-t border-l border-r border-white transform origin-top rotate-0">
+            </div>
+            <div class="absolute bottom-[-2px] right-[-2px] w-2 h-2 bg-green-500 rounded-full border border-white">
+            </div>
           </div>
-          <div class="absolute bottom-[-2px] right-[-2px] w-2 h-2 bg-green-500 rounded-full border border-white"></div>
-        </div>
+        </router-link>
       </Button>
     </div>
 

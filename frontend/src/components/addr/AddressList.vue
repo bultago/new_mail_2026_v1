@@ -15,7 +15,7 @@
 
         <!-- Toolbar -->
         <div
-            class="px-4 py-2 border-b border-gray-200 dark:border-zinc-700 flex items-center justify-between bg-gray-50 dark:bg-zinc-900/50">
+            class="px-4 py-2 border-b border-gray-200 dark:border-zinc-700 flex flex-wrap items-center justify-between bg-gray-50 dark:bg-zinc-900/50 gap-y-2">
             <div class="flex items-center gap-1">
                 <!-- Group 1: Member Management (Hidden in Org Chart) -->
                 <div v-if="selectedGroup.type !== 'org'" class="flex items-center gap-0.5 mr-2">
@@ -140,20 +140,20 @@
             <div v-if="selectedGroup.type === 'org'" class="grid grid-cols-4 gap-4 mt-2">
                 <div class="flex flex-col gap-1">
                     <label class="text-xs font-medium text-gray-500">{{ t('address_popup.filters.search_position')
-                    }}</label>
+                        }}</label>
                     <input type="text" v-model="searchParams.position"
                         class="px-2 py-1.5 text-xs border border-gray-300 dark:border-zinc-600 rounded bg-white dark:bg-zinc-800 focus:outline-none focus:border-blue-500">
                 </div>
                 <!-- Duty (Skipping for now as per minimal req, or can add if defined) - 'Level' and 'Duty' keys added to json -->
                 <div class="flex flex-col gap-1">
                     <label class="text-xs font-medium text-gray-500">{{ t('address_popup.filters.search_duty')
-                    }}</label>
+                        }}</label>
                     <input type="text" v-model="searchParams.duty"
                         class="px-2 py-1.5 text-xs border border-gray-300 dark:border-zinc-600 rounded bg-white dark:bg-zinc-800 focus:outline-none focus:border-blue-500">
                 </div>
                 <div class="flex flex-col gap-1">
                     <label class="text-xs font-medium text-gray-500">{{ t('address_popup.filters.search_level')
-                    }}</label>
+                        }}</label>
                     <input type="text" v-model="searchParams.level"
                         class="px-2 py-1.5 text-xs border border-gray-300 dark:border-zinc-600 rounded bg-white dark:bg-zinc-800 focus:outline-none focus:border-blue-500">
                 </div>

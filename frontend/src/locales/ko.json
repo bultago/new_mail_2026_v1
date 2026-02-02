@@ -12,7 +12,43 @@
         "address_book": "주소록",
         "count": "개",
         "select": "선택",
-        "required": "은(는) 필수입니다."
+        "required": "은(는) 필수입니다.",
+        "refresh": "새로고침",
+        "confirm_cancel_sending": "발송을 취소하시겠습니까? (서버에서 메일이 삭제됩니다)",
+        "people": "명",
+        "characters": "자",
+        "back": "목록",
+        "write": "글쓰기"
+    },
+    "menu_conf": {
+        "group": {
+            "basic": "기본 설정",
+            "mail": "메일 관리",
+            "security": "보안 설정",
+            "schedule": "일정 관리",
+            "notification": "알림 센터"
+        },
+        "profile": "기본 정보",
+        "sign": "서명 관리",
+        "spam": "스팸 차단",
+        "filter": "자동 분류",
+        "reply": "자동 응답",
+        "external": "외부메일",
+        "home": "홈 설정",
+        "scheduler": "일정 설정",
+        "general": "환경설정",
+        "mailbox": "메일함 관리"
+    },
+    "conf": {
+        "spamrule": {
+            "33": "스팸 관리"
+        },
+        "lastrcpt": {
+            "menu": "최근 수신자"
+        },
+        "signupdate": {
+            "menu": "보안 설정"
+        }
     },
     "sidebar": {
         "compose": "메일쓰기",
@@ -44,6 +80,7 @@
             "selected": "선택",
             "search_placeholder": "메일 검색",
             "search_detail": "상세",
+            "search_subject_content": "제목+내용",
             "headers": {
                 "from": "보낸사람",
                 "subject": "제목",
@@ -131,7 +168,20 @@
             "date": "보낸날짜",
             "add_address": "주소록추가",
             "attachments": "첨부파일",
+            "attachments": "첨부파일",
             "save_all": "모두저장"
+        },
+        "receipt": {
+            "go_sent": "보낸편지함",
+            "send_date": "발송일시",
+            "read_date": "확인일시",
+            "read_status": "수신확인",
+            "total_recipients": "전체수신자",
+            "view_original": "원본메일보기",
+            "cancel_sending": "발송취소",
+            "cancel_confirm": "이 수신자에 대한 발송을 취소하시겠습니까?",
+            "unread": "읽지않음",
+            "read": "읽음"
         },
         "result": {
             "success": "메일이 성공적으로 발송되었습니다.",
@@ -284,6 +334,40 @@
             "assistant": "대리",
             "staff": "사원"
         }
+    },
+    "board": {
+        "write": {
+            "title": "게시글 작성"
+        },
+        "subject": "제목",
+        "content": "내용",
+        "attach": "첨부파일",
+        "file_browse": "파일 찾기",
+        "file_limit": "일반 10MB",
+        "drag_drop_hint": "파일을 마우스로 끌어 놓으세요.",
+        "subject_placeholder": "제목을 입력하세요",
+        "content_placeholder": "내용을 입력하세요",
+        "characters": "자",
+        "format_applied": "포맷 적용",
+        "toolbar": {
+            "bold": "굵게",
+            "italic": "기울임",
+            "underline": "밑줄",
+            "align_left": "왼쪽 정렬",
+            "align_center": "가운데 정렬",
+            "align_right": "오른쪽 정렬",
+            "list": "글머리 기호",
+            "ordered_list": "번호 매기기",
+            "link": "링크",
+            "image": "이미지",
+            "code": "코드"
+        },
+        "read": {
+            "title": "게시글 보기"
+        },
+        "author": "작성자",
+        "date": "작성일",
+        "views": "조회수"
     },
     "header": {
         "nav": {

@@ -4,8 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { Button } from '@/components/ui/button'
 import {
     Reply, Forward, Trash2,
-    ChevronLeft, Paperclip, Download, FileText,
-
+    ChevronLeft, Paperclip, Download, FileText, User
 } from 'lucide-vue-next'
 import { mockMessages } from '@/mocks/mailData'
 import { useI18n } from 'vue-i18n'
@@ -19,8 +18,26 @@ const message = computed(() => {
     return mockMessages.find(m => m.id === messageId)
 })
 
+const isSentMail = computed(() => {
+    // Check if query param indicates sent folder, or if message context implies it
+    // For now, assume if 'receipt' query is present or 'folder=sent'
+    return route.query.folder === 'sent' || route.query.receipt === 'true'
+})
+
 const handleBack = () => {
-    router.back()
+    if (route.query.receipt === 'true') {
+        // If came from receipt, go back there
+        router.push(`/mail/receipt/${messageId}`)
+    } else {
+        router.back()
+    }
+}
+
+const goToReceipt = () => {
+    router.push({
+        path: `/mail/receipt/${messageId}`,
+        query: { folder: route.query.folder || 'sent' } // Fallback to sent if undefined but context is logically sent
+    })
 }
 
 // Mock formatting details
@@ -62,6 +79,13 @@ const headerDate = computed(() => {
                 class="h-[28px] bg-white text-[#444] text-[11px] dark:bg-zinc-800 dark:text-gray-200 dark:border-zinc-700">
                 <Trash2 class="h-3.5 w-3.5 mr-1 text-red-600 dark:text-red-400" /> {{ t('mail.list.toolbar.delete') }}
             </Button>
+
+            <!-- Receipt Button (Only for Sent Mail context) -->
+            <div v-if="isSentMail" class="h-4 w-[1px] bg-[#CCC] mx-2"></div>
+            <Button v-if="isSentMail" variant="outline" size="sm" @click="goToReceipt"
+                class="h-[28px] bg-white text-[#444] text-[11px] dark:bg-zinc-800 dark:text-gray-200 dark:border-zinc-700">
+                <User class="h-3.5 w-3.5 mr-1 text-green-600 dark:text-green-400" /> {{ t('sidebar.receipt') }}
+            </Button>
         </div>
 
         <!-- Read Content Area -->
@@ -74,8 +98,8 @@ const headerDate = computed(() => {
                     <div class="mb-3">
                         <h1 class="text-[18px] font-bold text-[#333] dark:text-white tracking-tight leading-tight">
                             <span
-                                class="inline-block px-1.5 py-0.5 rounded bg-[#EEE] dark:bg-zinc-700 text-[#666] dark:text-gray-300 text-[11px] font-normal align-middle mr-2 border border-[#DDD] dark:border-zinc-600">{{
-                                    t('mail.read.received_mail') }}</span>
+                                class="inline-block px-1.5 py-0.5 rounded bg-[#EEE] dark:bg-zinc-700 text-[#666] dark:text-gray-300 text-[11px] font-normal align-middle mr-2 border border-[#DDD] dark:border-zinc-600">
+                                {{ isSentMail ? '보낸메일' : t('mail.read.received_mail') }}</span>
                             {{ message.subject }}
                         </h1>
                     </div>

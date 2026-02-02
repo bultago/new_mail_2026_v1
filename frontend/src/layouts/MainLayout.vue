@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import AppSidebar from '@/components/layout/AppSidebar.vue'
-import AppHeader from '@/components/layout/AppHeader.vue'
-import { useTheme } from '@/composables/useTheme'
-
-const { initTheme } = useTheme()
 
 const sidebarWidth = ref(230)
 const isResizing = ref(false)
@@ -41,16 +37,15 @@ const toggleSidebar = () => {
 const checkMobile = () => {
     isMobile.value = window.innerWidth < 768
     if (!isMobile.value) {
-        isSidebarOpen.value = true // Reset on desktop
+        isSidebarOpen.value = true
     } else {
-        isSidebarOpen.value = false // Close on mobile init
+        isSidebarOpen.value = false
     }
 }
 
 onMounted(() => {
     checkMobile()
     window.addEventListener('resize', checkMobile)
-    initTheme()
 })
 
 onUnmounted(() => {
@@ -59,36 +54,30 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="flex min-h-screen w-full flex-col bg-background font-sans">
-        <!-- 1. Header at Top (Full Width) -->
-        <AppHeader @toggle-sidebar="toggleSidebar" />
+    <div class="flex flex-1 overflow-hidden relative">
+        <!-- Mobile Sidebar Overlay -->
+        <div v-if="isMobile && isSidebarOpen" class="absolute inset-0 bg-black/50 z-40 md:hidden"
+            @click="isSidebarOpen = false"></div>
 
-        <!-- 2. Main Content Area (Sidebar + View) -->
-        <div class="flex flex-1 overflow-hidden relative">
+        <!-- Sidebar -->
+        <AppSidebar
+            v-if="!$route.path.startsWith('/addr') && !$route.path.startsWith('/schedule') && !$route.path.startsWith('/settings')"
+            class="z-[100] transition-transform duration-300 ease-in-out md:translate-x-0 absolute md:relative h-full"
+            :class="[
+                isMobile && !isSidebarOpen ? '-translate-x-full' : 'translate-x-0'
+            ]" :width="sidebarWidth" />
 
-            <!-- Mobile Sidebar Overlay -->
-            <div v-if="isMobile && isSidebarOpen" class="absolute inset-0 bg-black/50 z-40 md:hidden"
-                @click="isSidebarOpen = false"></div>
+        <!-- Resizer Handle (Desktop Only) -->
+        <div class="hidden md:flex w-[5px] cursor-col-resize hover:bg-blue-200 active:bg-blue-400 z-30 justify-center bg-gray-50"
+            @mousedown="startResize">
+            <div class="h-full w-[1px] border-l border-dotted border-gray-400"></div>
+        </div>
 
-            <!-- Sidebar -->
-            <AppSidebar v-if="!$route.path.startsWith('/addr') && !$route.path.startsWith('/schedule')"
-                class="z-[100] transition-transform duration-300 ease-in-out md:translate-x-0 absolute md:relative h-full"
-                :class="[
-                    isMobile && !isSidebarOpen ? '-translate-x-full' : 'translate-x-0'
-                ]" :width="sidebarWidth" />
-
-            <!-- Resizer Handle (Desktop Only) -->
-            <div class="hidden md:flex w-[5px] cursor-col-resize hover:bg-blue-200 active:bg-blue-400 z-30 justify-center bg-gray-50"
-                @mousedown="startResize">
-                <div class="h-full w-[1px] border-l border-dotted border-gray-400"></div>
-            </div>
-
-            <!-- Content -->
-            <div class="flex flex-col flex-1 min-w-0 transition-all duration-300">
-                <main class="flex-1 overflow-auto text-foreground bg-[#F7F7F7] dark:bg-zinc-900">
-                    <router-view />
-                </main>
-            </div>
+        <!-- Content -->
+        <div class="flex flex-col flex-1 min-w-0 transition-all duration-300">
+            <main class="flex-1 overflow-auto text-foreground bg-[#F7F7F7] dark:bg-zinc-900">
+                <router-view />
+            </main>
         </div>
     </div>
 </template>

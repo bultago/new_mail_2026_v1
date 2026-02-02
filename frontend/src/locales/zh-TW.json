@@ -11,7 +11,9 @@
         "preview": "預覽",
         "address_book": "通訊錄",
         "count": "個",
-        "required": "是必填項。"
+        "required": "是必填項。",
+        "refresh": "重新整理",
+        "confirm_cancel_sending": "確定要取消傳送嗎？（郵件將從伺服器刪除）"
     },
     "sidebar": {
         "compose": "撰寫郵件",
@@ -140,6 +142,7 @@
             "selected": "已選",
             "search_placeholder": "搜尋郵件",
             "search_detail": "詳細",
+            "search_subject_content": "主旨+內文",
             "headers": {
                 "from": "寄件者",
                 "subject": "主旨",
@@ -228,6 +231,17 @@
             "add_address": "加入通訊錄",
             "attachments": "附件",
             "save_all": "全部儲存"
+        },
+        "receipt": {
+            "go_sent": "寄件備份",
+            "send_date": "傳送時間",
+            "read_date": "讀取時間",
+            "read_status": "接收確認",
+            "total_recipients": "全部收件者",
+            "view_original": "檢視原郵件",
+            "cancel_sending": "取消傳送",
+            "cancel_confirm": "確定要取消傳送給此收件者嗎？",
+            "unread": "未讀"
         },
         "result": {
             "success": "郵件發送成功。",

@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: nugenmail-api
+  datasource:
+    # Placeholder for Legacy Database Connection
+    url: jdbc:mysql://localhost:3306/legacy_db?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+      continue-on-error: true # For safety if tables exist
+  jpa:
+    open-in-view: false
+  
+  # Mail Configuration (SMTP)
+  mail:
+    host: localhost
+    port: 25
+    username: postmaster
+    password: password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+  config:
+    import: "optional:file:./config/nugenmail.conf[properties], optional:classpath:nugenmail.properties"
+
+logging:
+  level:
+    com.nugenmail: DEBUG
+    org.springframework.web: INFO
+    org.mybatis: DEBUG

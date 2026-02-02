@@ -16,7 +16,7 @@ import {
     FolderInput, Copy, Printer, ShieldAlert, Ban, Search,
     ChevronDown, FileText, AlertCircle, RefreshCw, Undo2,
     ShieldCheck, PenLine, Eraser, Mail, Tag, ArrowUpFromLine,
-    Send, XCircle, CheckCircle2, ExternalLink
+    Send, XCircle, CheckCircle2, ExternalLink, ClipboardCheck
 } from 'lucide-vue-next'
 
 import { useI18n } from 'vue-i18n'
@@ -44,6 +44,11 @@ const filteredMessages = computed(() => {
 })
 
 const activeTab = ref<'basic' | 'advanced'>('basic')
+const isSearchDetailOpen = ref(false)
+
+const toggleSearchDetail = () => {
+    isSearchDetailOpen.value = !isSearchDetailOpen.value
+}
 
 const formatDate = (dateString: string) => {
     const date = new Date(dateString)
@@ -56,7 +61,10 @@ const formatDate = (dateString: string) => {
 }
 
 const handleRowClick = (id: string) => {
-    router.push(`/mail/read/${id}`)
+    router.push({
+        path: `/mail/read/${id}`,
+        query: { folder: currentFolder.value }
+    })
 }
 
 const openPopupRead = (id: string, event: Event) => {
@@ -105,6 +113,7 @@ const toolbarConfig: Record<string, { basic: ToolbarButton[], advanced: ToolbarB
             { labelKey: 'mail.list.toolbar.move', icon: FolderInput, color: 'group-hover:text-orange-600', action: 'move' },
             { labelKey: 'mail.list.toolbar.copy', icon: Copy, action: 'copy' },
             { labelKey: 'mail.list.toolbar.print', icon: Printer, action: 'print' },
+            { labelKey: 'sidebar.receipt', icon: ClipboardCheck, color: 'group-hover:text-green-600', action: 'receipt' },
         ],
         advanced: [
             { labelKey: 'mail.list.toolbar.mark_read', icon: Mail, action: 'markRead' },
@@ -181,13 +190,24 @@ const currentToolbarButtons = computed(() => {
 
     return activeTab.value === 'basic' ? toolbarConfig[key].basic : toolbarConfig[key].advanced
 })
+
+const handleToolbarAction = (action: string) => {
+    console.log('Toolbar Action:', action)
+    if (action === 'receipt') {
+        router.push({
+            path: '/mail/receipt',
+            query: { folder: currentFolder.value }
+        })
+    }
+    // Add other actions here
+}
 </script>
 
 <template>
     <div class="h-full flex flex-col bg-legacy-bg">
         <!-- Header Area with Integrated Search -->
         <div
-            class="flex justify-between items-center px-4 py-3 border-b border-legacy-border bg-white dark:bg-zinc-900 shadow-sm h-[50px]">
+            class="flex flex-wrap justify-between items-center px-4 py-3 border-b border-legacy-border bg-white dark:bg-zinc-900 shadow-sm min-h-[50px] gap-y-2">
             <div class="flex items-center gap-2">
                 <h2 class="text-[16px] text-legacy-text tracking-tight leading-none dark:text-white">
                     {{ folderName }}
@@ -198,25 +218,91 @@ const currentToolbarButtons = computed(() => {
                         class="text-red-500">1</span></span>
             </div>
 
-            <!-- Compact Search Bar -->
-            <div class="flex gap-1 items-center">
+            <!-- Compact Search Bar (Restored: New line on mobile) -->
+            <div class="flex gap-1 items-center relative w-full sm:w-auto sm:flex-none justify-end mt-2 sm:mt-0">
                 <select
-                    class="h-[26px] text-[12px] border border-legacy-border px-1 bg-white text-legacy-text rounded-sm dark:bg-zinc-800 dark:border-zinc-600 dark:text-gray-200">
+                    class="h-[26px] text-[12px] border border-legacy-border px-1 bg-white text-legacy-text rounded-sm dark:bg-zinc-800 dark:border-zinc-600 dark:text-gray-200 w-[80px] sm:w-auto">
                     <option>{{ t('mail.list.headers.subject') }}</option>
                     <option>{{ t('mail.list.headers.from') }}</option>
+                    <option>{{ t('mail.write.to') }}</option>
+                    <option>{{ t('mail.write.content') }}</option>
+                    <option>{{ t('mail.list.search_subject_content') || '제목+내용' }}</option>
+                    <option>{{ t('mail.write.attach') }}</option>
                 </select>
                 <div class="relative">
                     <input type="text"
-                        class="h-[26px] w-[200px] border border-legacy-border pl-2 pr-7 text-[12px] focus:outline-none focus:border-gray-400 bg-white text-legacy-text rounded-sm dark:bg-zinc-800 dark:border-zinc-600 dark:text-gray-200"
+                        class="h-[26px] w-full sm:w-[200px] border border-legacy-border pl-2 pr-7 text-[12px] focus:outline-none focus:border-gray-400 bg-white text-legacy-text rounded-sm dark:bg-zinc-800 dark:border-zinc-600 dark:text-gray-200"
                         :placeholder="t('mail.list.search_placeholder')">
                     <Search
                         class="absolute right-1 top-1.5 h-4 w-4 text-legacy-text-muted cursor-pointer hover:text-gray-600" />
                 </div>
-                <button
+                <button @click="toggleSearchDetail"
                     class="h-[26px] bg-white hover:bg-gray-50 border border-legacy-border text-legacy-text text-[12px] px-2 rounded-sm flex items-center gap-1 ml-1 dark:bg-zinc-800 dark:border-zinc-600 dark:text-gray-200 dark:hover:bg-zinc-700">
                     {{ t('mail.list.search_detail') }}
-                    <ChevronDown class="h-3 w-3" />
+                    <ChevronDown class="h-3 w-3 transition-transform" :class="{ 'rotate-180': isSearchDetailOpen }" />
                 </button>
+            </div>
+
+            <!-- Detailed Search Form (Collapsible) -->
+            <div v-if="isSearchDetailOpen"
+                class="w-full bg-gray-50 dark:bg-zinc-800 border-t border-legacy-border p-3 mt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                <!-- Row 1: Period -->
+                <div class="flex items-center gap-2 sm:col-span-2">
+                    <label class="w-20 text-right font-medium text-gray-600 dark:text-gray-400">기간</label>
+                    <input type="date"
+                        class="border border-gray-300 rounded px-2 py-1 dark:bg-zinc-700 dark:border-zinc-600" />
+                    ~
+                    <input type="date"
+                        class="border border-gray-300 rounded px-2 py-1 dark:bg-zinc-700 dark:border-zinc-600" />
+                    <button class="text-xs bg-gray-200 px-2 py-1 rounded dark:bg-zinc-600">오늘</button>
+                    <button class="text-xs bg-gray-200 px-2 py-1 rounded dark:bg-zinc-600">1주일</button>
+                    <button class="text-xs bg-gray-200 px-2 py-1 rounded dark:bg-zinc-600">1개월</button>
+                </div>
+
+                <!-- Row 2: From / To -->
+                <div class="flex items-center gap-2">
+                    <label class="w-20 text-right font-medium text-gray-600 dark:text-gray-400">보낸사람</label>
+                    <input type="text"
+                        class="flex-1 border border-gray-300 rounded px-2 py-1 dark:bg-zinc-700 dark:border-zinc-600" />
+                </div>
+                <div class="flex items-center gap-2">
+                    <label class="w-20 text-right font-medium text-gray-600 dark:text-gray-400">받는사람</label>
+                    <input type="text"
+                        class="flex-1 border border-gray-300 rounded px-2 py-1 dark:bg-zinc-700 dark:border-zinc-600" />
+                </div>
+
+                <!-- Row 3: Subject / Content -->
+                <div class="flex items-center gap-2">
+                    <label class="w-20 text-right font-medium text-gray-600 dark:text-gray-400">제목</label>
+                    <input type="text"
+                        class="flex-1 border border-gray-300 rounded px-2 py-1 dark:bg-zinc-700 dark:border-zinc-600" />
+                </div>
+                <div class="flex items-center gap-2">
+                    <label class="w-20 text-right font-medium text-gray-600 dark:text-gray-400">내용</label>
+                    <input type="text"
+                        class="flex-1 border border-gray-300 rounded px-2 py-1 dark:bg-zinc-700 dark:border-zinc-600" />
+                </div>
+
+                <!-- Row 4: Attach / Status -->
+                <div class="flex items-center gap-2">
+                    <label class="w-20 text-right font-medium text-gray-600 dark:text-gray-400">첨부파일명</label>
+                    <input type="text"
+                        class="flex-1 border border-gray-300 rounded px-2 py-1 dark:bg-zinc-700 dark:border-zinc-600" />
+                </div>
+                <div class="flex items-center gap-2">
+                    <label class="w-20 text-right font-medium text-gray-600 dark:text-gray-400">상태</label>
+                    <select
+                        class="flex-1 border border-gray-300 rounded px-2 py-1 dark:bg-zinc-700 dark:border-zinc-600">
+                        <option value="all">전체</option>
+                        <option value="unread">안읽음</option>
+                        <option value="read">읽음</option>
+                        <option value="flagged">중요</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-2 sm:col-span-2 justify-end">
+                    <button
+                        class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 transition-colors">검색</button>
+                </div>
             </div>
         </div>
 
@@ -236,12 +322,12 @@ const currentToolbarButtons = computed(() => {
 
         <!-- Toolbar (Context Aware) -->
         <div
-            class="bg-legacy-bg-toolbar border-b border-legacy-border flex items-center px-4 h-[56px] gap-2 shadow-sm overflow-hidden">
+            class="bg-legacy-bg-toolbar border-b border-legacy-border flex flex-wrap items-center px-4 min-h-[56px] py-1 gap-2 shadow-sm overflow-hidden">
 
             <!-- Dynamic Actions -->
             <div class="flex items-center gap-1 overflow-x-auto no-scrollbar">
                 <template v-for="(btn, index) in currentToolbarButtons" :key="index">
-                    <button
+                    <button @click="handleToolbarAction(btn.action)"
                         class="flex flex-col items-center justify-center gap-0.5 px-3 min-w-[50px] h-full py-1 bg-transparent hover:bg-legacy-bg-hover rounded-sm transition-colors group">
                         <component :is="btn.icon"
                             class="h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:scale-110 transition-transform"
@@ -266,7 +352,7 @@ const currentToolbarButtons = computed(() => {
 
         <!-- Modern Mail List Table -->
         <div class="flex-1 overflow-auto bg-white dark:bg-zinc-900 p-4 pt-2">
-            <Table class="w-full border-collapse border border-gray-200 dark:border-zinc-700 font-sans">
+            <Table class="w-full min-w-[600px] border-collapse border border-gray-200 dark:border-zinc-700 font-sans">
                 <!-- Header -->
                 <TableHeader
                     class="bg-gray-50 sticky top-0 z-10 shadow-sm ring-1 ring-gray-200 dark:ring-zinc-700 dark:bg-zinc-800">

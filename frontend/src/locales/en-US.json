@@ -12,7 +12,9 @@
         "address_book": "Address Book",
         "count": "",
         "select": "Select",
-        "required": " is required."
+        "required": " is required.",
+        "refresh": "Refresh",
+        "confirm_cancel_sending": "Are you sure you want to cancel sending? (Mail will be deleted from server)"
     },
     "sidebar": {
         "compose": "Compose",
@@ -44,6 +46,7 @@
             "selected": "Selected",
             "search_placeholder": "Search Mail",
             "search_detail": "Detail",
+            "search_subject_content": "Subject+Body",
             "headers": {
                 "from": "From",
                 "subject": "Subject",
@@ -131,7 +134,19 @@
             "date": "Date Sent",
             "add_address": "Add to Contacts",
             "attachments": "Attachments",
+            "attachments": "Attachments",
             "save_all": "Save All"
+        },
+        "receipt": {
+            "go_sent": "Sent Mailbox",
+            "send_date": "Sent Date",
+            "read_date": "Read Date",
+            "read_status": "Status",
+            "total_recipients": "Recipients",
+            "view_original": "View Original",
+            "cancel_sending": "Cancel Sending",
+            "cancel_confirm": "Are you sure you want to cancel sending for this recipient?",
+            "unread": "Unread"
         },
         "result": {
             "success": "Mail sent successfully.",

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nugenmail.domain.mail.mapper.SharedFolderMapper">
+
+    <resultMap id="sharedFolderResult" type="com.nugenmail.domain.mail.model.SharedFolder">
+        <result property="ownerId" column="mail_uid"/>
+        <result property="ownerName" column="user_name"/>
+        <result property="folderName" column="folder_name"/>
+    </resultMap>
+
+    <select id="findSharedFolders" resultMap="sharedFolderResult">
+        select sf.folder_uid, sf.folder_name, m.mail_user_seq , mi.user_name, m.mail_uid
+			from mail_user m, mail_user_info mi,mail_shared_folder sf ,mail_shared_folder_reader sr
+		where
+			 sr.mail_user_seq = (
+                 SELECT mail_user_seq FROM mail_user 
+                 WHERE mail_uid = #{userId} 
+                 AND mail_domain_seq = (SELECT mail_domain_seq FROM mail_domain WHERE mail_domain = #{domain})
+             ) 
+             and sr.folder_uid = sf.folder_uid 
+			 and sf.mail_user_seq = m.mail_user_seq
+			 and mi.mail_user_seq = sf.mail_user_seq
+    </select>
+
+</mapper>
